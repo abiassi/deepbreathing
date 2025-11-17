@@ -18,13 +18,22 @@ export const metadata: Metadata = {
     description: "Inhale 4, hold 4, exhale 4, hold 4—simple on-screen guide.",
     type: "website",
     url: siteUrl,
-    siteName: "Deep Breathing Exercises"
+    siteName: "Deep Breathing Exercises",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Box breathing orb expanding against a coral gradient"
+      }
+    ]
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Box Breathing Visualizer",
     description: "Guided 4x4x4x4 breathing visualizer with realtime cues.",
-    creator: "@deepbreathing"
+    creator: "@deepbreathing",
+    images: ["/og-image.png"]
   },
   alternates: {
     canonical: siteUrl
