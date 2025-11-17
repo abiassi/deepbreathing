@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontSans.variable} min-h-screen bg-background text-foreground`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
