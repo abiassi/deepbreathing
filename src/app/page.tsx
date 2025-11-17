@@ -47,13 +47,12 @@ const faqSchema = {
 
 export default function HomePage() {
   return (
-    <main className="relative overflow-hidden bg-gradient-to-b from-[#fff7ef] via-[#ffece2] to-[#fff9f3] pb-20">
+    <main className="relative bg-gradient-to-b from-[#fff7ef] via-[#ffece2] to-[#fff9f3] h-screen pb-20">
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(255,166,120,0.35),_transparent_65%)]" />
+      <JsonLd data={[websiteSchema, faqSchema]} />
+      <BreathingVisualizer />
+
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 py-16 sm:px-6 lg:px-8">
-        <JsonLd data={[websiteSchema, faqSchema]} />
-
-        <BreathingVisualizer />
-
         <section className="text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-primary">Deep breathing exercises</p>
           <h1 className="mt-4 text-balance text-4xl font-semibold text-foreground sm:text-5xl">
@@ -129,6 +128,19 @@ export default function HomePage() {
           </div>
         </section>
       </div>
+      <footer className="relative z-10 mx-auto w-full max-w-6xl px-4 py-8 text-center sm:px-6 lg:px-8">
+        <p className="text-xs text-muted-foreground">
+          Created by{" "}
+          <a
+            href="https://abiassi.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-foreground transition-colors"
+          >
+            Abiassi
+          </a>
+        </p>
+      </footer>
     </main>
   );
 }

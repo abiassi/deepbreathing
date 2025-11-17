@@ -4,9 +4,9 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import { AuroraBackground } from "@/components/magicui/aurora-background";
 
 const PHASES = ["Inhale", "Hold", "Exhale", "Hold"] as const;
-
 const clampSeconds = (value: number) => Math.max(3, Math.min(8, Math.round(value)));
 
 export function BreathingVisualizer() {
@@ -30,9 +30,7 @@ export function BreathingVisualizer() {
   const startCountdown = useCallback((duration: number) => {
     phaseDurationRef.current = duration;
     setCountdown(duration);
-    if (countdownRef.current) {
-      clearInterval(countdownRef.current);
-    }
+    if (countdownRef.current) clearInterval(countdownRef.current);
     countdownRef.current = setInterval(() => {
       setCountdown((prev) => (prev > 0 ? prev - 1 : prev));
     }, 1000);
@@ -54,9 +52,7 @@ export function BreathingVisualizer() {
         timersRef.current.push(timer);
       });
       const loopTimer = setTimeout(() => {
-        if (running) {
-          scheduleCycle(duration);
-        }
+        if (running) scheduleCycle(duration);
       }, PHASES.length * stepMs);
       timersRef.current.push(loopTimer);
     },
@@ -79,9 +75,7 @@ export function BreathingVisualizer() {
     beginPhase(0, seconds);
     scheduleCycle(seconds);
 
-    return () => {
-      clearTimers();
-    };
+    return () => clearTimers();
   }, [beginPhase, clearTimers, resetPhase, running, scheduleCycle, seconds]);
 
   useEffect(() => {
@@ -91,16 +85,11 @@ export function BreathingVisualizer() {
         setRunning((prev) => !prev);
       }
     };
-
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
-  useEffect(() => {
-    return () => {
-      clearTimers();
-    };
-  }, [clearTimers]);
+  useEffect(() => () => clearTimers(), [clearTimers]);
 
   const secondsPerBreath = useMemo(() => clampSeconds(seconds), [seconds]);
   const activePhase = PHASES[phaseIndex];
@@ -128,16 +117,17 @@ export function BreathingVisualizer() {
   };
 
   return (
-    <section className="relative isolate flex min-h-[90vh] flex-col overflow-hidden rounded-[56px] bg-gradient-to-br from-[#ffb88a] via-[#ff9faa] to-[#f57fb5] px-6 py-10 text-white shadow-[0_40px_80px_rgba(255,143,119,0.35)] sm:px-12">
-      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-60">
-        <div className="absolute left-1/2 top-[-20%] h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-white/20 blur-[150px]" />
-        <div className="absolute bottom-[-10%] right-0 h-[22rem] w-[22rem] translate-x-1/3 rounded-full bg-[#ff9d7a]/20 blur-[130px]" />
-      </div>
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-between gap-8">
-        <div className="pt-6 text-center">
-          <p className="text-[0.65rem] uppercase tracking-[0.5em] text-white/60">{secondsPerBreath}s cadence</p>
-          <p className="mt-3 text-4xl font-semibold tracking-tight text-white" aria-live="polite">
-            {activePhase}
+    <AuroraBackground
+      className="relative isolate flex min-h-screen w-full flex-col overflow-hidden px-6 pb-10 pt-16 text-white sm:px-12"
+      backgroundClassName="bg-gradient-to-br from-[#ffb88a] via-[#ff9faa] to-[#f57fb5]"
+    >
+      <div className="flex flex-1 flex-col items-center justify-center gap-12">
+        <div className="text-center">
+          <p className="text-[0.65rem] uppercase tracking-[0.5em] text-white/80 font-bold drop-shadow-[0_10px_25px_rgba(0,0,0,0.35)]">
+            {secondsPerBreath}s cadence
+          </p>
+          <p className="mt-4 text-4xl font-black tracking-tight text-white drop-shadow-[0_18px_40px_rgba(0,0,0,0.35)]" aria-live="polite">
+            {orbPrompt}
           </p>
         </div>
         <button
@@ -151,10 +141,10 @@ export function BreathingVisualizer() {
             className="absolute inset-6 rounded-full border border-white/30"
             style={{
               background: `conic-gradient(var(--tw-gradient-stops))`,
-              "--tw-gradient-stops": `${running ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)"} ${Math.max(
+              "--tw-gradient-stops": `${running ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.08)"} ${Math.max(
                 progress * 100,
                 5
-              )}%, rgba(255,255,255,0.2) ${Math.max(progress * 100, 5)}%`
+              )}%, rgba(255,255,255,0.025) ${Math.max(progress * 100, 5)}%`
             } as CSSProperties}
           />
           <div
@@ -162,27 +152,31 @@ export function BreathingVisualizer() {
             className="relative h-full w-full rounded-full bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.95),_rgba(255,255,255,0.35)_65%,_rgba(255,255,255,0.08))] shadow-[0_35px_90px_rgba(255,255,255,0.35)] transition-transform duration-700 ease-in-out"
             style={{ transform: `scale(${orbScale})` }}
           />
-        <span className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center" aria-live="polite">
-          <span className="text-[0.75rem] uppercase tracking-[0.4em] text-white/70">{orbPrompt}</span>
-          <span className="mt-2 text-5xl font-semibold tabular-nums text-white">{countdown}s</span>
-        </span>
-      </button>
-        <div className="w-full max-w-xl space-y-5 pb-4 text-center">
-          <Label htmlFor="seconds" className="block text-xs uppercase tracking-[0.5em] text-white/70">
+          <span className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center text-white drop-shadow-[0_12px_35px_rgba(0,0,0,0.35)]" aria-live="polite">
+            <span className="text-base uppercase tracking-[0.4em] text-white/85 font-bold">{activePhase}</span>
+            <span className="mt-2 text-5xl font-black tabular-nums">{countdown}s</span>
+          </span>
+        </button>
+      </div>
+      <div className="flex justify-center pb-4 pt-40">
+        <div className="w-[min(90vw,24rem)] rounded-3xl border border-white/40 bg-white/85 p-5 text-center text-foreground shadow-[0_25px_50px_rgba(0,0,0,0.15)] backdrop-blur">
+          <Label htmlFor="seconds" className="text-[0.65rem] uppercase tracking-[0.45em] text-foreground/70">
             Seconds per phase
           </Label>
-          <Slider
-            id="seconds"
-            min={3}
-            max={8}
-            step={1}
-            value={[secondsPerBreath]}
-            onValueChange={handleSliderChange}
-            aria-label="Seconds per phase"
-          />
-          <p className="text-xs uppercase tracking-[0.4em] text-white/55">Tap orb or press space</p>
+          <div className="mt-2">
+            <Slider
+              id="seconds"
+              min={3}
+              max={8}
+              step={1}
+              value={[secondsPerBreath]}
+              onValueChange={handleSliderChange}
+              aria-label="Seconds per phase"
+            />
+          </div>
+          <p className="mt-2 text-[0.6rem] uppercase tracking-[0.4em] text-foreground/70">Tap orb or press space</p>
         </div>
       </div>
-    </section>
+    </AuroraBackground>
   );
 }
