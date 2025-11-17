@@ -159,8 +159,8 @@ export function BreathingVisualizer() {
         </button>
       </div>
       <div className="flex justify-center pb-4 pt-40">
-        <div className="w-[min(90vw,24rem)] rounded-3xl border border-white/40 bg-white/85 p-5 text-center text-foreground shadow-[0_25px_50px_rgba(0,0,0,0.15)] backdrop-blur">
-          <Label htmlFor="seconds" className="text-[0.65rem] uppercase tracking-[0.45em] text-foreground/70">
+        <div className="w-[min(90vw,24rem)] rounded-3xl border border-white/40 dark:border-white/20 bg-white/85 dark:bg-card/90 p-5 text-center text-foreground shadow-[0_25px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_25px_50px_rgba(0,0,0,0.4)] backdrop-blur">
+          <Label htmlFor="seconds" className="text-[0.65rem] uppercase tracking-[0.45em] text-foreground">
             Seconds per phase
           </Label>
           <div className="mt-2">
@@ -174,7 +174,7 @@ export function BreathingVisualizer() {
               aria-label="Seconds per phase"
             />
           </div>
-          <p className="mt-2 text-[0.6rem] uppercase tracking-[0.4em] text-foreground/70">Tap orb or press space</p>
+          <p className="mt-2 text-[0.6rem] uppercase tracking-[0.4em] text-foreground">Tap orb or press space</p>
         </div>
       </div>
     </AuroraBackground>

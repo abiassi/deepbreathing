@@ -47,8 +47,8 @@ const faqSchema = {
 
 export default function HomePage() {
   return (
-    <main className="relative bg-gradient-to-b from-[#fff7ef] via-[#ffece2] to-[#fff9f3] h-screen pb-20">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(255,166,120,0.35),_transparent_65%)]" />
+    <main className="relative bg-background h-screen pb-20">
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(255,166,120,0.35),_transparent_65%)] dark:bg-[radial-gradient(circle_at_top,_rgba(255,166,120,0.15),_transparent_65%)]" />
       <JsonLd data={[websiteSchema, faqSchema]} />
       <BreathingVisualizer />
 
@@ -65,21 +65,21 @@ export default function HomePage() {
         </section>
 
         <section className="grid gap-6 text-left lg:grid-cols-3">
-          <div className="rounded-[32px] bg-white/80 p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)]">
+          <div className="rounded-[32px] bg-card p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.3)]">
             <p className="text-sm uppercase tracking-wider text-primary">Evidence based</p>
-            <h2 className="mt-2 text-2xl font-semibold text-foreground">Regulate vagal tone</h2>
+            <h2 className="mt-2 text-2xl font-semibold text-card-foreground">Regulate vagal tone</h2>
             <p className="mt-3 text-muted-foreground">
               Box breathing activates the parasympathetic response, settling cortisol spikes and improving heart-rate
               variability within a few cycles.
             </p>
           </div>
-          <div className="rounded-[32px] bg-white/80 p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)]">
+          <div className="rounded-[32px] bg-card p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.3)]">
             <p className="text-sm uppercase tracking-wider text-primary">Thoughtful defaults</p>
             <p className="mt-3 text-muted-foreground">
               Accessible labels, keyboard shortcuts, and structured data keep the page lightweight yet indexable.
             </p>
           </div>
-          <div className="rounded-[32px] bg-white/80 p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)]">
+          <div className="rounded-[32px] bg-card p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.3)]">
             <p className="text-sm uppercase tracking-wider text-primary">Personal pace</p>
             <p className="mt-3 text-muted-foreground">
               Choose any cadence between 3–8 seconds per phase. Small adjustments create a quick drop in perceived stress.
@@ -88,8 +88,8 @@ export default function HomePage() {
         </section>
 
         <section className="grid gap-8 lg:grid-cols-2">
-          <div className="space-y-4 rounded-[40px] bg-white/80 p-8 shadow-[0_25px_80px_rgba(255,170,130,0.2)]">
-            <h2 className="text-2xl font-semibold text-foreground">Practice cues</h2>
+          <div className="space-y-4 rounded-[40px] bg-card p-8 shadow-[0_25px_80px_rgba(255,170,130,0.2)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.3)]">
+            <h2 className="text-2xl font-semibold text-card-foreground">Practice cues</h2>
             <p className="text-muted-foreground">
               Sit upright, rest your tongue on the roof of your mouth, and exhale gently through the nose before the next
               inhale begins. If you feel dizzy, shorten each phase and return to natural breathing.
@@ -97,11 +97,11 @@ export default function HomePage() {
             <dl className="grid gap-4 sm:grid-cols-2">
               <div>
                 <dt className="text-xs uppercase tracking-widest text-muted-foreground">Recommended reps</dt>
-                <dd className="text-2xl font-semibold text-foreground">4–8 cycles</dd>
+                <dd className="text-2xl font-semibold text-card-foreground">4–8 cycles</dd>
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-widest text-muted-foreground">Full cycle duration</dt>
-                <dd className="text-2xl font-semibold text-foreground">16–32s</dd>
+                <dd className="text-2xl font-semibold text-card-foreground">16–32s</dd>
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-widest text-muted-foreground">Best moments</dt>
@@ -113,11 +113,11 @@ export default function HomePage() {
               </div>
             </dl>
           </div>
-          <div className="space-y-4 rounded-[40px] bg-white/80 p-8 shadow-[0_25px_80px_rgba(255,170,130,0.2)]">
-            <h2 className="text-2xl font-semibold text-foreground">FAQ</h2>
+          <div className="space-y-4 rounded-[40px] bg-card p-8 shadow-[0_25px_80px_rgba(255,170,130,0.2)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.3)]">
+            <h2 className="text-2xl font-semibold text-card-foreground">FAQ</h2>
             <div className="space-y-3">
               {faqs.map((faq) => (
-                <details key={faq.question} className="group rounded-2xl bg-white/70 p-4 shadow-inner">
+                <details key={faq.question} className="group rounded-2xl bg-muted p-4 shadow-inner">
                   <summary className="cursor-pointer list-none text-lg font-medium text-foreground">
                     {faq.question}
                   </summary>
