@@ -214,7 +214,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     setThemePreference('system');
   }, []);
 
-  const handleTogglePlay = () => {
+  const handleTogglePlay = useCallback(() => {
     const audio = getAudioService();
     if (!isRunning) {
       setIsRunning(true);
@@ -246,7 +246,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       audio.stopBinaural();
       setScale(0);
     }
-  };
+  }, [isRunning, activeMode, themeColor]);
 
   const handleStop = () => {
     const audio = getAudioService();
@@ -452,6 +452,17 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     const event = new CustomEvent('resonance:run-state', { detail: { running: isRunning } });
     window.dispatchEvent(event);
   }, [isRunning]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handleStartRequest = () => {
+      if (!isRunning) {
+        handleTogglePlay();
+      }
+    };
+    window.addEventListener('resonance:start', handleStartRequest);
+    return () => window.removeEventListener('resonance:start', handleStartRequest);
+  }, [isRunning, handleTogglePlay]);
 
   const getPhaseLabel = (p: BreathingPhase) => {
     if (p === BreathingPhase.Idle) return "Ready";
