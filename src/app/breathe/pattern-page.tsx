@@ -14,9 +14,10 @@ export function createPatternMetadata(slug: string): Metadata {
 
   const pageContent: BreathingPageContent = page;
   const canonicalUrl = `${baseUrl}/breathe/${pageContent.slug}`;
-  const ogImageUrl = pageContent.meta.ogImage
+  // Use dynamic OG image route if available, otherwise fall back to static or custom image
+  const ogImageUrl = pageContent.meta.ogImage && !pageContent.meta.ogImage.startsWith('og/')
     ? new URL(pageContent.meta.ogImage, baseUrl).toString()
-    : new URL("/og-image.png", baseUrl).toString();
+    : new URL(`/og/${pageContent.slug}`, baseUrl).toString();
 
   return {
     metadataBase: new URL(baseUrl),

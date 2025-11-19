@@ -41,11 +41,11 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
     [color]
   );
 
-  const transformStyle = {
-    transform: `scale(${0.6 + scale * 0.4})`,
-    transition: 'transform 100ms linear',
-    animation: 'morph 10s ease-in-out infinite, hue-rotate 10s linear infinite'
-  };
+    const transformStyle = {
+      transform: `scale(${0.6 + scale * 0.4})`,
+      transition: isRunning ? 'none' : 'transform 100ms linear',
+      animation: 'morph 10s ease-in-out infinite, hue-rotate 10s linear infinite'
+    };
 
   return (
     <div className="relative z-10 flex h-80 w-80 flex-col items-center justify-center md:h-96 md:w-96">
@@ -59,7 +59,9 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
 
       <button
         onClick={onClick}
-        className="group absolute z-20 flex h-full w-full cursor-pointer items-center justify-center rounded-full transition-all duration-100 ease-linear outline-none hover:brightness-110"
+        className={`group absolute z-20 flex h-full w-full cursor-pointer items-center justify-center rounded-full outline-none hover:brightness-110 ${
+          isRunning ? '' : 'transition-all duration-100 ease-linear'
+        }`}
         style={{ ...orbStyle, ...transformStyle }}
         aria-label={isRunning ? 'Pause Session' : 'Start Session'}
       >
