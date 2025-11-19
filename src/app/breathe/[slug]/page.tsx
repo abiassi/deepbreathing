@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
 import Resonance from "@/components/resonance/Resonance";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breathingPages, breathingPageMap } from "@/data/breathing-pages";
+import { breathingPages, breathingPageMap, type BreathingPageContent } from "@/data/breathing-pages";
 
 const baseUrl = "https://deepbreathingexercises.com";
 
@@ -17,11 +17,13 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: Params }): Metadata {
   const page = breathingPageMap[params.slug];
   if (!page) return {};
+  // TypeScript should narrow here, but we'll be explicit for Vercel's build
+  const pageContent: BreathingPageContent = page;
   return {
-    title: page.meta.title,
-    description: page.meta.description,
+    title: pageContent.meta.title,
+    description: pageContent.meta.description,
     alternates: {
-      canonical: `${baseUrl}/breathe/${page.slug}`
+      canonical: `${baseUrl}/breathe/${pageContent.slug}`
     }
   };
 }
