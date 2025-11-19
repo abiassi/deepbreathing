@@ -1,5 +1,8 @@
+import Link from "next/link";
+
 import { BreathingVisualizer } from "@/components/breathing-visualizer";
 import { JsonLd } from "@/components/seo/json-ld";
+import { breathingPages } from "@/data/breathing-pages";
 
 const baseUrl = "https://deepbreathingexercises.com";
 
@@ -47,7 +50,7 @@ const faqSchema = {
 
 export default function HomePage() {
   return (
-    <main className="relative bg-background h-screen pb-20">
+    <main className="relative min-h-screen bg-background pb-20">
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(255,166,120,0.35),_transparent_65%)] dark:bg-[radial-gradient(circle_at_top,_rgba(255,166,120,0.15),_transparent_65%)]" />
       <JsonLd data={[websiteSchema, faqSchema]} />
       <BreathingVisualizer />
@@ -84,6 +87,35 @@ export default function HomePage() {
             <p className="mt-3 text-muted-foreground">
               Choose any cadence between 3–8 seconds per phase. Small adjustments create a quick drop in perceived stress.
             </p>
+          </div>
+        </section>
+
+        <section className="rounded-[48px] bg-card/80 p-8 shadow-[0_30px_90px_rgba(15,23,42,0.12)]">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-sm uppercase tracking-[0.35em] text-primary">Deep dives</p>
+              <h2 className="mt-2 text-3xl font-semibold text-card-foreground">Explore each breathing style</h2>
+              <p className="mt-2 text-muted-foreground">Dedicated pages with SEO-ready guides for every pattern.</p>
+            </div>
+            <Link href="/breathe/box" className="text-sm font-semibold text-primary underline-offset-2 hover:underline">
+              Browse library
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {breathingPages.map((pattern) => (
+              <Link
+                key={pattern.slug}
+                href={`/breathe/${pattern.slug}`}
+                className="group rounded-3xl border border-border/70 bg-card/80 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:bg-card dark:border-border/50 dark:bg-card/40 dark:shadow-[0_20px_60px_rgba(0,0,0,0.45)] dark:hover:bg-card/60"
+              >
+                <p className="text-xs uppercase tracking-[0.3em] text-primary">/{pattern.slug}</p>
+                <h3 className="mt-3 text-2xl font-semibold text-card-foreground">{pattern.heroTitle}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{pattern.heroSubtitle}</p>
+                <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary">
+                  Read guide → 
+                </span>
+              </Link>
+            ))}
           </div>
         </section>
 

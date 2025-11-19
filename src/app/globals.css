@@ -23,6 +23,7 @@
   --input: 27 44% 86%;
   --ring: 18 90% 60%;
   --radius: 1.5rem;
+  --shadow: 222 47% 11%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,6 +47,7 @@
     --border: 20 19% 28%;
     --input: 20 19% 28%;
     --ring: 18 86% 66%;
+    --shadow: 0 0% 0%;
   }
 }
 
@@ -124,8 +126,8 @@ body {
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 25px 80px rgba(15, 23, 42, 0.18);
+  background-color: hsl(var(--card) / 0.75);
+  border: 1px solid hsl(var(--border) / 0.7);
+  box-shadow: 0 25px 80px hsl(var(--shadow) / 0.25);
   backdrop-filter: blur(22px);
 }

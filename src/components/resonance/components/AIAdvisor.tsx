@@ -39,7 +39,7 @@ const AIAdvisor: React.FC<AIAdvisorProps> = ({ onRecommendation, apiKey }) => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 hover:bg-white/60 backdrop-blur text-slate-700 shadow-sm border border-white/50 transition-all text-sm font-medium"
+        className="flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-4 py-2 text-sm font-medium text-card-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40"
       >
         <Sparkles size={16} className="text-yellow-500" />
         AI Personalize
@@ -51,18 +51,18 @@ const AIAdvisor: React.FC<AIAdvisorProps> = ({ onRecommendation, apiKey }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm p-4">
       <div className="glass-panel w-full max-w-md rounded-2xl p-6 shadow-2xl animate-in fade-in zoom-in duration-300">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-card-foreground flex items-center gap-2">
             <Sparkles className="text-yellow-500" size={20} />
             How are you feeling?
           </h3>
-          <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-slate-600">
+          <button onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-primary">
             ✕
           </button>
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <textarea
-            className="w-full p-3 rounded-xl bg-white/50 border border-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 text-slate-700 resize-none placeholder:text-slate-400"
+            className="w-full resize-none rounded-xl border border-border/70 bg-card/80 p-3 text-card-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-card/30"
             rows={3}
             placeholder="e.g., I'm feeling scattered and anxious about a deadline..."
             value={input}

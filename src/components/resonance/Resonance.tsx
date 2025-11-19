@@ -1,13 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER } from './constants';
 import { AudioService } from './services/audioService';
 import ParticleBackground from './components/ParticleBackground';
 import Visualizer from './components/Visualizer';
-import AIAdvisor from './components/AIAdvisor';
+import { modeToBreathingPage } from '@/data/breathing-pages';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 const STORAGE_KEYS = {
   STATS: 'resonance_stats',
@@ -17,13 +19,18 @@ const STORAGE_KEYS = {
 interface ResonanceProps {
   apiKey?: string;
   className?: string;
+  defaultMode?: ModeName;
 }
 
-const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '' }) => {
+const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMode }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+
   // --- State ---
-  const [activeMode, setActiveMode] = useState<ModeName>(ModeName.Box);
+  const initialMode = defaultMode ?? ModeName.Box;
+  const [activeMode, setActiveMode] = useState<ModeName>(initialMode);
   const [speedMultiplier, setSpeedMultiplier] = useState(DEFAULT_SPEED_MULTIPLIER);
-  const [themeColor, setThemeColor] = useState(BREATHING_PATTERNS[ModeName.Box].color);
+  const [themeColor, setThemeColor] = useState(BREATHING_PATTERNS[initialMode].color);
   const [totalMinutes, setTotalMinutes] = useState(0);
 
   // Client-side hydration check
@@ -32,31 +39,33 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '' }) => {
   useEffect(() => {
     setMounted(true);
     
-    // Load Settings from LocalStorage
     const savedSettings = localStorage.getItem(STORAGE_KEYS.SETTINGS);
     if (savedSettings) {
         const parsed = JSON.parse(savedSettings);
-        if (parsed.mode) setActiveMode(parsed.mode);
+        if (!defaultMode && parsed.mode) setActiveMode(parsed.mode);
         if (parsed.speed) setSpeedMultiplier(parsed.speed);
-        if (parsed.color) setThemeColor(parsed.color);
-    } else {
-        // Circadian Defaults
+        if (!defaultMode && parsed.color) setThemeColor(parsed.color);
+    } else if (!defaultMode) {
         const hour = new Date().getHours();
-        if (hour >= 5 && hour < 11) setThemeColor("#0d9488"); // Morning Teal
-        else if (hour >= 18 || hour < 5) setThemeColor("#ea580c"); // Night Amber
+        if (hour >= 5 && hour < 11) setThemeColor("#0d9488"); 
+        else if (hour >= 18 || hour < 5) setThemeColor("#ea580c");
     }
 
-    // Load Stats
+    if (defaultMode) {
+      setActiveMode(defaultMode);
+      setThemeColor(BREATHING_PATTERNS[defaultMode].color);
+    }
+
     const savedStats = localStorage.getItem(STORAGE_KEYS.STATS);
     if (savedStats) {
         setTotalMinutes(JSON.parse(savedStats).totalMinutes || 0);
     }
-  }, []);
+  }, [defaultMode]);
 
   const [phase, setPhase] = useState<BreathingPhase>(BreathingPhase.Idle);
   const [isRunning, setIsRunning] = useState(false);
-  const [zenMode, setZenMode] = useState(false);
   const [muted, setMuted] = useState(false);
+  const [controlsOpen, setControlsOpen] = useState(false);
   
   // Animation State
   const [scale, setScale] = useState(0); 
@@ -170,8 +179,31 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '' }) => {
     audio.stopBinaural();
   };
 
+  const handleModeSelect = useCallback(
+    (mode: ModeName, options: { navigate?: boolean } = {}) => {
+      setActiveMode(mode);
+      setAiReasoning(null);
+
+      if (!isRunning) {
+        setThemeColor(BREATHING_PATTERNS[mode].color);
+      }
+
+      const shouldNavigate = options.navigate ?? true;
+      if (shouldNavigate) {
+        const page = modeToBreathingPage[mode];
+        if (page) {
+          const target = `/breathe/${page.slug}`;
+          if (pathname !== target) {
+            router.push(target);
+          }
+        }
+      }
+    },
+    [isRunning, pathname, router]
+  );
+
   const handleAIRecommendation = (rec: AIRecommendation) => {
-    setActiveMode(rec.recommendedMode);
+    handleModeSelect(rec.recommendedMode);
     setThemeColor(rec.suggestedColor);
     setSpeedMultiplier(rec.suggestedSpeedMultiplier);
     setAiReasoning(rec.explanation);
@@ -329,40 +361,40 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '' }) => {
       const ambienceType = (activeMode === ModeName.Relax || activeMode === ModeName.Coherent) ? "Pink Noise (Rain)" : "Drone Synth";
 
       return (
-          <div className="mt-4 bg-white/50 rounded-lg p-3 text-xs text-slate-600 space-y-3">
-              <div className="grid grid-cols-4 gap-2 text-center divide-x divide-slate-300">
+          <div className="mt-4 rounded-lg bg-card/70 p-3 text-xs text-muted-foreground shadow-inner backdrop-blur supports-[backdrop-filter]:bg-card/60 dark:bg-card/30">
+              <div className="grid grid-cols-4 gap-2 text-center divide-x divide-border/60">
                   <div>
-                    <span className="block font-bold text-slate-800">{(p.inhale * speedMultiplier).toFixed(1)}s</span>
-                    <span className="text-[10px] uppercase tracking-wide opacity-70">Inhale</span>
+                    <span className="block font-bold text-card-foreground">{(p.inhale * speedMultiplier).toFixed(1)}s</span>
+                    <span className="text-[10px] uppercase tracking-wide">Inhale</span>
                   </div>
                   {p.holdIn > 0 && (
                   <div>
-                    <span className="block font-bold text-slate-800">{(p.holdIn * speedMultiplier).toFixed(1)}s</span>
-                    <span className="text-[10px] uppercase tracking-wide opacity-70">Hold</span>
+                    <span className="block font-bold text-card-foreground">{(p.holdIn * speedMultiplier).toFixed(1)}s</span>
+                    <span className="text-[10px] uppercase tracking-wide">Hold</span>
                   </div>
                   )}
                   <div>
-                    <span className="block font-bold text-slate-800">{(p.exhale * speedMultiplier).toFixed(1)}s</span>
-                    <span className="text-[10px] uppercase tracking-wide opacity-70">Exhale</span>
+                    <span className="block font-bold text-card-foreground">{(p.exhale * speedMultiplier).toFixed(1)}s</span>
+                    <span className="text-[10px] uppercase tracking-wide">Exhale</span>
                   </div>
                   {p.holdOut > 0 && (
                   <div>
-                    <span className="block font-bold text-slate-800">{(p.holdOut * speedMultiplier).toFixed(1)}s</span>
-                    <span className="text-[10px] uppercase tracking-wide opacity-70">Hold</span>
+                    <span className="block font-bold text-card-foreground">{(p.holdOut * speedMultiplier).toFixed(1)}s</span>
+                    <span className="text-[10px] uppercase tracking-wide">Hold</span>
                   </div>
                   )}
               </div>
 
-              <div className="border-t border-slate-300/50 pt-2 space-y-1">
+              <div className="border-t border-border/60 pt-2 space-y-1">
                   <div className="flex items-center gap-2">
                       <Activity size={12} className="text-primary" />
-                      <span className="font-semibold text-slate-700">{waveType}</span>
-                      <span className="text-slate-400 ml-auto">{waveDesc}</span>
+                      <span className="font-semibold text-card-foreground">{waveType}</span>
+                      <span className="ml-auto text-muted-foreground">{waveDesc}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                      {ambienceType.includes("Rain") ? <Wind size={12} className="text-blue-500"/> : <Waves size={12} className="text-indigo-500" />}
-                      <span className="font-medium text-slate-700">{ambienceType}</span>
-                      <span className="text-slate-400 ml-auto">8D Audio</span>
+                      {ambienceType.includes("Rain") ? <Wind size={12} className="text-primary" /> : <Waves size={12} className="text-primary" />}
+                      <span className="font-medium text-card-foreground">{ambienceType}</span>
+                      <span className="ml-auto text-muted-foreground">8D Audio</span>
                   </div>
               </div>
           </div>
@@ -372,42 +404,23 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '' }) => {
   if (!mounted) return null;
 
   return (
-    <div className={`relative w-full h-full flex flex-col overflow-hidden transition-colors duration-1000 ${className}`}
-         style={{ backgroundColor: isRunning ? `${themeColor}10` : '#fff7ed' }}>
+    <div
+      className={`relative flex h-full w-full flex-col overflow-hidden bg-background transition-colors duration-1000 ${className}`}
+      style={{ backgroundColor: isRunning ? `${themeColor}1a` : undefined }}
+    >
       
       <ParticleBackground phase={phase} color={themeColor} speedMultiplier={speedMultiplier} />
 
-      <header className={`relative z-20 p-6 flex justify-between items-start transition-opacity duration-500 ${zenMode && isRunning ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}>
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-800">Resonance</h1>
-          <p className="text-sm text-slate-500 font-medium flex items-center gap-2">
-            Mindful Breathing 
-            {totalMinutes > 0 && <span className="text-slate-400">• {totalMinutes}m Lifetime</span>}
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3">
-            <div className="bg-white/40 rounded-full px-4 py-2 backdrop-blur-sm text-sm font-semibold text-slate-700 shadow-sm border border-white/50 tabular-nums">
-                {Math.floor(sessionSeconds / 60)}:{String(sessionSeconds % 60).padStart(2, '0')}
-            </div>
-            <button 
-                onClick={() => setZenMode(!zenMode)}
-                className="p-3 rounded-full bg-white/40 hover:bg-white/60 backdrop-blur transition-all text-slate-700 shadow-sm border border-white/50"
-                title="Zen Mode"
-            >
-                {zenMode ? <EyeOff size={20} /> : <Eye size={20} />}
-            </button>
-            <button 
-                onClick={toggleMute}
-                className="p-3 rounded-full bg-white/40 hover:bg-white/60 backdrop-blur transition-all text-slate-700 shadow-sm border border-white/50"
-            >
-                {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-            </button>
-        </div>
+      <header className="relative z-20 flex justify-end p-6">
+        <button
+          onClick={() => setControlsOpen(true)}
+          className="inline-flex items-center rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
+        >
+          Settings
+        </button>
       </header>
 
-      <main className="flex-1 flex flex-col items-center justify-center relative z-10">
-        
+      <main className="relative z-10 flex flex-1 flex-col items-center justify-center">
         <Visualizer 
             phase={phase}
             scale={scale}
@@ -418,72 +431,97 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '' }) => {
             isRunning={isRunning}
             onClick={handleTogglePlay}
         />
-
-        <div className={`mt-12 w-full max-w-md px-6 transition-all duration-700 transform ${zenMode && isRunning ? 'translate-y-20 opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
-            
+      </main>
+      
+      <Sheet open={controlsOpen} onOpenChange={setControlsOpen}>
+        <SheetContent side="right" className="bg-transparent shadow-none outline-none border-0 p-0">
+          <div className="fixed right-6 top-20 z-50 w-[360px] max-w-[calc(100vw-2rem)] rounded-[32px] border border-border/70 bg-background/95 p-7 text-foreground shadow-[0_35px_90px_rgba(15,23,42,0.25)] backdrop-blur-2xl">
+          <SheetHeader className="mb-6 text-left">
+            <SheetTitle className="text-xl font-semibold text-card-foreground">Settings</SheetTitle>
+            <p className="text-sm text-muted-foreground">Adjust modes, pacing, and personalization.</p>
+          </SheetHeader>
+          <div className="flex-1 space-y-6 overflow-y-auto pb-12">
+            <div className="flex flex-col gap-4 rounded-2xl bg-card/70 p-4 shadow-inner dark:bg-card/30">
+              <div>
+                <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Session</p>
+                <p className="text-3xl font-semibold text-card-foreground tabular-nums">
+                  {Math.floor(sessionSeconds / 60)}:{String(sessionSeconds % 60).padStart(2, '0')}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={toggleMute}
+                  className={`flex flex-1 items-center justify-center rounded-xl px-3 py-2 text-sm font-medium transition ${
+                    muted ? 'bg-foreground text-background' : 'bg-card text-card-foreground'
+                  }`}
+                >
+                  {muted ? 'Sound Off' : 'Sound On'}
+                </button>
+              </div>
+            </div>
             {aiReasoning && (
-                <div className="mb-6 bg-white/60 backdrop-blur border border-white/60 p-4 rounded-xl text-sm text-slate-700 shadow-sm animate-in fade-in slide-in-from-bottom-4">
-                    <span className="font-semibold text-primary block mb-1">AI Suggestion:</span>
-                    {aiReasoning}
-                    <button 
-                        onClick={() => setAiReasoning(null)} 
-                        className="text-xs text-slate-400 underline ml-2 hover:text-primary"
-                    >
-                        Dismiss
-                    </button>
+              <div className="rounded-xl border border-border/70 bg-card/70 p-4 text-sm text-card-foreground shadow-sm dark:bg-card/30">
+                <div className="mb-1 flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-primary">
+                  AI Suggestion
+                  <button onClick={() => setAiReasoning(null)} className="text-muted-foreground underline hover:text-primary">
+                    Dismiss
+                  </button>
                 </div>
+                {aiReasoning}
+              </div>
             )}
 
-            <div className="flex flex-col gap-6">
-                {!isRunning && (
-                    <div className="glass-panel p-1 rounded-xl flex flex-wrap justify-between gap-1">
-                        {Object.values(BREATHING_PATTERNS).map((m) => (
-                            <button
-                                key={m.name}
-                                onClick={() => {
-                                    setActiveMode(m.name);
-                                    setAiReasoning(null); 
-                                }}
-                                className={`flex-1 py-2 px-2 text-xs md:text-sm font-medium rounded-lg transition-all whitespace-nowrap ${activeMode === m.name ? 'bg-white shadow-sm text-slate-800' : 'text-slate-500 hover:bg-white/30'}`}
-                            >
-                                {m.name === ModeName.Sigh ? "Sigh" : m.name.split(' ')[0]}
-                            </button>
-                        ))}
-                    </div>
-                )}
+            {!isRunning ? (
+              <>
+                <div className="glass-panel flex flex-wrap justify-between gap-1 rounded-2xl p-2">
+                  {Object.values(BREATHING_PATTERNS).map((m) => (
+                    <button
+                      key={m.name}
+                      onClick={() => handleModeSelect(m.name)}
+                      className={`flex-1 py-2 px-3 text-xs font-medium rounded-xl transition-all whitespace-nowrap ${
+                        activeMode === m.name
+                          ? 'bg-card text-card-foreground shadow-sm'
+                          : 'text-muted-foreground hover:bg-card/60 dark:hover:bg-card/30'
+                      }`}
+                    >
+                      {m.name === ModeName.Sigh ? 'Sigh' : m.name.split(' ')[0]}
+                    </button>
+                  ))}
+                </div>
 
-                 {!isRunning && (
-                    <div className="space-y-4 px-2">
-                         <div className="flex justify-between items-center">
-                             <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Pattern</span>
-                             <span className="text-sm text-slate-700 font-medium">{currentPattern.description}</span>
-                         </div>
-                         <div className="flex flex-col gap-2">
-                             <div className="flex justify-between items-center">
-                                <span className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Speed</span>
-                                <span className="text-sm text-slate-700 font-medium">{speedMultiplier.toFixed(1)}x</span>
-                             </div>
-                             <input 
-                                type="range" 
-                                min="0.5" 
-                                max="2.0" 
-                                step="0.1" 
-                                value={speedMultiplier}
-                                onChange={(e) => setSpeedMultiplier(parseFloat(e.target.value))}
-                                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-600"
-                             />
-                         </div>
-                         
-                         {renderStats()}
+                <div className="space-y-4 rounded-2xl bg-card/70 p-4 shadow-inner dark:bg-card/30">
+                  <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    <span>Pattern</span>
+                    <span className="text-sm text-card-foreground normal-case">{currentPattern.description}</span>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      <span>Speed</span>
+                      <span className="text-sm text-card-foreground">{speedMultiplier.toFixed(1)}x</span>
                     </div>
-                 )}
-            </div>
-        </div>
-      </main>
+                    <input
+                      type="range"
+                      min="0.5"
+                      max="2.0"
+                      step="0.1"
+                      value={speedMultiplier}
+                      onChange={(e) => setSpeedMultiplier(parseFloat(e.target.value))}
+                      className="h-2 w-full cursor-pointer appearance-none rounded-full bg-muted accent-primary"
+                    />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="rounded-2xl bg-muted/60 p-4 text-sm text-muted-foreground dark:bg-muted/30">
+                Pause the session to switch modes or adjust pacing.
+              </div>
+            )}
 
-      <footer className={`relative z-20 p-6 flex justify-center transition-opacity duration-500 ${zenMode && isRunning ? 'opacity-0' : 'opacity-100'}`}>
-        <AIAdvisor onRecommendation={handleAIRecommendation} apiKey={apiKey} />
-      </footer>
+            {renderStats()}
+          </div>
+          </div>
+        </SheetContent>
+      </Sheet>
     </div>
   );
 };
