@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind } from 'lucide-react';
+import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER } from './constants';
 import { AudioService } from './services/audioService';
@@ -13,7 +13,8 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sh
 
 const STORAGE_KEYS = {
   STATS: 'resonance_stats',
-  SETTINGS: 'resonance_settings'
+  SETTINGS: 'resonance_settings',
+  THEME: 'resonance_theme'
 };
 
 interface ResonanceProps {
@@ -22,6 +23,8 @@ interface ResonanceProps {
   defaultMode?: ModeName;
   immersive?: boolean;
 }
+
+type ThemePreference = 'system' | 'light' | 'dark';
 
 const toRgba = (hex: string, alpha: number) => {
   const sanitized = hex.replace('#', '');
@@ -42,6 +45,9 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const [speedMultiplier, setSpeedMultiplier] = useState(DEFAULT_SPEED_MULTIPLIER);
   const [themeColor, setThemeColor] = useState(BREATHING_PATTERNS[initialMode].color);
   const [totalMinutes, setTotalMinutes] = useState(0);
+  const [themePreference, setThemePreference] = useState<ThemePreference>('system');
+  const [systemPrefersDark, setSystemPrefersDark] = useState(false);
+  const [themeReady, setThemeReady] = useState(false);
 
   // Client-side hydration check
   const [mounted, setMounted] = useState(false);
@@ -70,6 +76,18 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     if (savedStats) {
         setTotalMinutes(JSON.parse(savedStats).totalMinutes || 0);
     }
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    setSystemPrefersDark(mediaQuery.matches);
+
+    const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      setThemePreference(savedTheme);
+    } else {
+      setThemePreference('system');
+    }
+
+    setThemeReady(true);
   }, [defaultMode]);
 
   const [phase, setPhase] = useState<BreathingPhase>(BreathingPhase.Idle);
@@ -96,6 +114,17 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const requestRef = useRef<number | null>(null);
   const phaseStartRef = useRef<number>(0);
 
+  const applyThemePreference = useCallback((mode: 'dark' | 'light') => {
+    if (typeof document === 'undefined') return;
+    const root = document.documentElement;
+    root.dataset.theme = mode;
+    if (mode === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, []);
+
   useEffect(() => {
     getAudioService().setThemeColor(themeColor);
   }, [themeColor]);
@@ -112,10 +141,27 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   useEffect(() => {
     if (!mounted) return;
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (event: MediaQueryListEvent) => setSystemPrefersDark(event.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [mounted]);
+
+  useEffect(() => {
+    if (!mounted) return;
     localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify({
       totalMinutes
     }));
   }, [totalMinutes, mounted]);
+
+  useEffect(() => {
+    if (!mounted || !themeReady) return;
+    if (themePreference === 'system') {
+      localStorage.removeItem(STORAGE_KEYS.THEME);
+    } else {
+      localStorage.setItem(STORAGE_KEYS.THEME, themePreference);
+    }
+  }, [themePreference, mounted, themeReady]);
 
   // --- Haptics Effect ---
   useEffect(() => {
@@ -138,9 +184,35 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
   }, [phase, isRunning]);
 
+  const activeTheme = themePreference === 'system'
+    ? (systemPrefersDark ? 'dark' : 'light')
+    : themePreference;
+
+  useEffect(() => {
+    if (!themeReady) return;
+    applyThemePreference(activeTheme);
+  }, [activeTheme, applyThemePreference, themeReady]);
+
   // --- Logic ---
 
   const currentPattern = BREATHING_PATTERNS[activeMode];
+  const isDarkTheme = activeTheme === 'dark';
+  const appearanceLabel = themePreference === 'system'
+    ? `Auto (${systemPrefersDark ? 'Dark' : 'Light'})`
+    : themePreference === 'dark'
+      ? 'Dark'
+      : 'Light';
+
+  const handleThemeToggle = useCallback(() => {
+    setThemePreference(prev => {
+      const current = prev === 'system' ? (systemPrefersDark ? 'dark' : 'light') : prev;
+      return current === 'dark' ? 'light' : 'dark';
+    });
+  }, [systemPrefersDark]);
+
+  const handleThemeReset = useCallback(() => {
+    setThemePreference('system');
+  }, []);
 
   const handleTogglePlay = () => {
     const audio = getAudioService();
@@ -493,6 +565,38 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                 >
                   {muted ? 'Sound Off' : 'Sound On'}
                 </button>
+              </div>
+              <div className="rounded-2xl bg-background/50 p-3 text-sm text-muted-foreground shadow-inner dark:bg-background/20">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Appearance</p>
+                    <p className="text-base font-semibold text-card-foreground">{appearanceLabel}</p>
+                  </div>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={isDarkTheme}
+                    onClick={handleThemeToggle}
+                    className={`relative inline-flex h-9 w-16 items-center rounded-full border border-border/60 px-1 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:border-border/40 ${isDarkTheme ? 'bg-primary/80 text-primary-foreground' : 'bg-muted'}`}
+                  >
+                    <span
+                      className={`flex h-7 w-7 items-center justify-center rounded-full bg-card text-foreground shadow-sm transition-transform ${isDarkTheme ? 'translate-x-6' : 'translate-x-0'}`}
+                    >
+                      {isDarkTheme ? <Moon size={16} /> : <Sun size={16} />}
+                    </span>
+                  </button>
+                </div>
+                {themePreference !== 'system' ? (
+                  <button
+                    type="button"
+                    onClick={handleThemeReset}
+                    className="mt-2 text-left text-xs font-medium text-muted-foreground underline decoration-dotted underline-offset-2 transition hover:text-card-foreground"
+                  >
+                    Match system default
+                  </button>
+                ) : (
+                  <p className="mt-2 text-xs text-muted-foreground">Following your device preference.</p>
+                )}
               </div>
             </div>
             {aiReasoning && (
