@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit } from 'lucide-react';
+import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER } from './constants';
 import { AudioService } from './services/audioService';
@@ -94,6 +94,8 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const [isRunning, setIsRunning] = useState(false);
   const [muted, setMuted] = useState(false);
   const [controlsOpen, setControlsOpen] = useState(false);
+  const [touchUnlocked, setTouchUnlocked] = useState(false);
+  const [isIosDevice, setIsIosDevice] = useState(false);
   
   // Animation State
   const [instruction, setInstruction] = useState("Ready to start?");
@@ -102,17 +104,28 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   // Refs
   const audioServiceRef = useRef<AudioService | null>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   
-  const getAudioService = () => {
+  const getAudioService = useCallback(() => {
       if (!audioServiceRef.current) {
           audioServiceRef.current = new AudioService({});
       }
       return audioServiceRef.current;
-  };
+  }, []);
+
+  const handleGlobalUnlock = useCallback(() => {
+    if (touchUnlocked) return;
+    getAudioService()
+      .resume()
+      .catch(() => {})
+      .finally(() => setTouchUnlocked(true));
+  }, [touchUnlocked, getAudioService]);
 
   const requestRef = useRef<number | null>(null);
   const phaseStartRef = useRef<number>(0);
   const visualizerRef = useRef<VisualizerHandle | null>(null);
+  const phaseProgressRef = useRef(0);
+
   const updateOrbScale = useCallback((value: number) => {
     visualizerRef.current?.setScale(value);
   }, []);
@@ -131,6 +144,24 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   useEffect(() => {
     getAudioService().setThemeColor(themeColor);
   }, [themeColor]);
+
+  useEffect(() => {
+    if (touchUnlocked || typeof document === 'undefined') return;
+    const handler = () => {
+      handleGlobalUnlock();
+    };
+    document.addEventListener('pointerdown', handler, { once: true, capture: true });
+    document.addEventListener('touchstart', handler, { once: true, capture: true });
+    return () => {
+      document.removeEventListener('pointerdown', handler, true);
+      document.removeEventListener('touchstart', handler, true);
+    };
+  }, [touchUnlocked, handleGlobalUnlock]);
+
+  useEffect(() => {
+    if (typeof navigator === 'undefined') return;
+    setIsIosDevice(/iPad|iPhone|iPod/i.test(navigator.userAgent));
+  }, []);
   
   // --- Persistence Effects ---
   useEffect(() => {
@@ -263,7 +294,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       audio.stopBinaural();
       updateOrbScale(0);
     }
-  }, [isRunning, activeMode, themeColor, updateOrbScale]);
+  }, [isRunning, activeMode, themeColor, updateOrbScale, getAudioService]);
 
   const handleStop = () => {
     const audio = getAudioService();
@@ -413,6 +444,8 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       else audio.playCue('hold', themeColor);
     }
 
+    phaseProgressRef.current = progress;
+
     requestRef.current = requestAnimationFrame(animate);
   }, [activeMode, isRunning, phase, speedMultiplier, themeColor, updateOrbScale]);
 
@@ -545,7 +578,12 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       style={{ backgroundColor: isRunning ? `${themeColor}1a` : undefined }}
     >
       
-      <ParticleBackground phase={phase} color={themeColor} speedMultiplier={speedMultiplier} />
+      <ParticleBackground
+        phase={phase}
+        color={themeColor}
+        speedMultiplier={speedMultiplier}
+        phaseProgressRef={phaseProgressRef}
+      />
 
       <header className="relative z-20 flex justify-end p-6">
         <button
@@ -567,14 +605,75 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
             isRunning={isRunning}
             onClick={handleTogglePlay}
         />
+        {isIosDevice && (
+          <p className="relative z-20 mt-6 text-center text-xs uppercase tracking-[0.4em] text-muted-foreground">
+            iPhone Silent Mode mutes Web Audio—flip the hardware switch and raise volume.
+          </p>
+        )}
       </main>
       
-      <Sheet open={controlsOpen} onOpenChange={setControlsOpen}>
-        <SheetContent side="right" className="bg-transparent shadow-none outline-none border-0 p-0">
-          <div className="fixed right-6 top-20 z-50 w-[360px] max-w-[calc(100vw-2rem)] rounded-[32px] border border-border/70 bg-background/95 p-7 text-foreground shadow-[0_35px_90px_rgba(15,23,42,0.25)] backdrop-blur-2xl">
-          <SheetHeader className="mb-6 text-left">
-            <SheetTitle className="text-xl font-semibold text-card-foreground">Settings</SheetTitle>
-            <p className="text-sm text-muted-foreground">Adjust modes, pacing, and personalization.</p>
+      <Sheet open={controlsOpen} onOpenChange={setControlsOpen} modal={true}>
+        <SheetContent 
+          side="right" 
+          className="bg-transparent shadow-none outline-none border-0 p-0"
+          onOverlayClick={() => setControlsOpen(false)}
+          onClick={(e) => {
+            // Close if clicking on the transparent SheetContent area (not on the inner content div)
+            if (e.target === e.currentTarget) {
+              setControlsOpen(false);
+            }
+          }}
+        >
+          <div 
+            className="fixed right-6 top-20 z-50 w-[360px] max-w-[calc(100vw-2rem)] rounded-[32px] border border-border/70 bg-background/95 p-7 text-foreground shadow-[0_35px_90px_rgba(15,23,42,0.25)] backdrop-blur-2xl"
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={(e) => {
+              const touch = e.touches[0];
+              touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+            }}
+            onTouchMove={(e) => {
+              // Prevent scrolling if user is swiping down
+              if (touchStartRef.current) {
+                const touch = e.touches[0];
+                const deltaY = touch.clientY - touchStartRef.current.y;
+                const deltaX = Math.abs(touch.clientX - touchStartRef.current.x);
+                
+                // If swiping down more than horizontally, prevent default scrolling
+                if (deltaY > 0 && deltaY > deltaX) {
+                  e.preventDefault();
+                }
+              }
+            }}
+            onTouchEnd={(e) => {
+              if (touchStartRef.current) {
+                const touch = e.changedTouches[0];
+                const deltaY = touch.clientY - touchStartRef.current.y;
+                const deltaX = Math.abs(touch.clientX - touchStartRef.current.x);
+                const minSwipeDistance = 50; // Minimum distance for a swipe
+                
+                // Detect swipe down: vertical movement down is greater than horizontal and exceeds threshold
+                if (deltaY > minSwipeDistance && deltaY > deltaX) {
+                  setControlsOpen(false);
+                }
+                
+                touchStartRef.current = null;
+              }
+            }}
+          >
+          <SheetHeader className="mb-6">
+            <div className="flex items-start justify-between gap-4">
+              <div className="text-left">
+                <SheetTitle className="text-xl font-semibold text-card-foreground">Settings</SheetTitle>
+                <p className="text-sm text-muted-foreground">Adjust modes, pacing, and personalization.</p>
+              </div>
+              <button
+                onClick={() => setControlsOpen(false)}
+                className="flex-shrink-0 rounded-full p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                aria-label="Close settings"
+              >
+                <X size={20} />
+              </button>
+            </div>
           </SheetHeader>
           <div className="flex-1 space-y-6 overflow-y-auto pb-12">
             <div className="flex flex-col gap-4 rounded-2xl bg-card/70 p-4 shadow-inner dark:bg-card/30">

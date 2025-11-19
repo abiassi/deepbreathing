@@ -35,7 +35,13 @@ export class AudioService {
 
   private initContext() {
     if (!this.ctx && typeof window !== 'undefined') {
-      this.ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const AudioCtor = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioCtor) return;
+      try {
+        this.ctx = new AudioCtor({ latencyHint: 'playback' });
+      } catch {
+        this.ctx = new AudioCtor();
+      }
       this.masterGain = this.ctx.createGain();
       this.masterGain.connect(this.ctx.destination);
     }
@@ -58,6 +64,32 @@ export class AudioService {
       } catch (error) {
         console.warn('AudioContext resume failed:', error);
       }
+    }
+
+    this.playSilentUnlock();
+  }
+
+  private playSilentUnlock() {
+    if (!this.ctx) return;
+    const destination = this.masterGain ?? this.ctx.destination;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      const now = this.ctx.currentTime;
+      gain.gain.setValueAtTime(0.0001, now);
+      osc.connect(gain);
+      gain.connect(destination);
+      const endTime = now + 0.02;
+      osc.start(now);
+      osc.stop(endTime);
+      const cleanup = () => {
+        osc.disconnect();
+        gain.disconnect();
+        osc.removeEventListener('ended', cleanup);
+      };
+      osc.addEventListener('ended', cleanup);
+    } catch (error) {
+      console.warn('Silent unlock failed:', error);
     }
   }
 
@@ -227,13 +259,14 @@ export class AudioService {
 
       panner.panningModel = 'HRTF';
       panner.distanceModel = 'inverse';
+      panner.refDistance = 2;
       osc.frequency.value = baseFreq * ratio;
       osc.type = profile.oscType === 'triangle' ? 'triangle' : 'sine';
       osc.detune.value = profile.detune * (index + 0.5);
 
       const t = this.ctx!.currentTime;
       gain.gain.setValueAtTime(0, t);
-      gain.gain.linearRampToValueAtTime(this.isMuted ? 0 : this.musicVolume * 0.1, t + 2);
+      gain.gain.linearRampToValueAtTime(this.isMuted ? 0 : this.musicVolume * 0.3, t + 2);
 
       const lfo = this.ctx!.createOscillator();
       const lfoGain = this.ctx!.createGain();
@@ -288,7 +321,7 @@ export class AudioService {
     const gain = this.ctx.createGain();
     const t = this.ctx.currentTime;
     gain.gain.setValueAtTime(0, t);
-    gain.gain.linearRampToValueAtTime(this.isMuted ? 0 : this.musicVolume * 0.15, t + 2);
+    gain.gain.linearRampToValueAtTime(this.isMuted ? 0 : this.musicVolume * 0.25, t + 2);
 
     source.connect(gain);
     gain.connect(this.masterGain);

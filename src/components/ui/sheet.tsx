@@ -32,10 +32,34 @@ const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content> & {
     side?: "top" | "bottom" | "left" | "right";
+    onOverlayClick?: () => void;
   }
->(({ side = "right", className, children, ...props }, ref) => (
+>(({ side = "right", className, children, onOverlayClick, ...props }, ref) => {
+  const overlayRef = React.useRef<HTMLDivElement>(null);
+  
+  React.useEffect(() => {
+    if (onOverlayClick && overlayRef.current) {
+      const overlay = overlayRef.current;
+      const handleClick = (e: Event) => {
+        const target = e.target as HTMLElement;
+        // Close if clicking directly on the overlay
+        if (target === overlay) {
+          onOverlayClick();
+        }
+      };
+      // Use capture phase to catch events before they bubble
+      overlay.addEventListener('mousedown', handleClick, true);
+      overlay.addEventListener('touchstart', handleClick, true);
+      return () => {
+        overlay.removeEventListener('mousedown', handleClick, true);
+        overlay.removeEventListener('touchstart', handleClick, true);
+      };
+    }
+  }, [onOverlayClick]);
+  
+  return (
   <SheetPortal>
-    <SheetOverlay />
+    <SheetOverlay ref={overlayRef} />
     <SheetPrimitive.Content
       ref={ref}
       className={cn(
@@ -51,7 +75,8 @@ const SheetContent = React.forwardRef<
       {children}
     </SheetPrimitive.Content>
   </SheetPortal>
-));
+  );
+});
 SheetContent.displayName = SheetPrimitive.Content.displayName;
 
 const SheetHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
