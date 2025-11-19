@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon } from 'lucide-react';
+import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER } from './constants';
 import { AudioService } from './services/audioService';
@@ -637,17 +637,22 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                       <span>Speed</span>
-                      <span className="text-sm text-card-foreground">{speedMultiplier.toFixed(1)}x</span>
+                      <span className="text-sm text-card-foreground">{speedMultiplier.toFixed(1)}s per phase</span>
                     </div>
-                    <input
-                      type="range"
-                      min="0.5"
-                      max="2.0"
-                      step="0.1"
-                      value={speedMultiplier}
-                      onChange={(e) => setSpeedMultiplier(parseFloat(e.target.value))}
-                      className="h-2 w-full cursor-pointer appearance-none rounded-full bg-muted accent-primary"
-                    />
+                    <div className="flex items-center gap-3">
+                      <Turtle className="h-4 w-4 text-muted-foreground" aria-hidden />
+                      <input
+                        type="range"
+                        min="0.5"
+                        max="2.0"
+                        step="0.1"
+                        value={speedMultiplier}
+                        onChange={(e) => setSpeedMultiplier(parseFloat(e.target.value))}
+                        className="h-2 w-full cursor-pointer appearance-none rounded-full bg-muted accent-primary"
+                        aria-label="Breath speed"
+                      />
+                      <Rabbit className="h-4 w-4 text-muted-foreground" aria-hidden />
+                    </div>
                   </div>
                 </div>
               </>

@@ -50,11 +50,7 @@ const faqSchema = {
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen bg-background pb-20">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-1/2 z-0 h-[110vh] -translate-y-1/2 transform bg-[radial-gradient(circle_at_center,_rgba(255,166,120,0.32),_transparent_70%)] dark:bg-[radial-gradient(circle_at_center,_rgba(255,166,120,0.14),_transparent_70%)]"
-      />
+    <main className="relative min-h-screen bg-transparent pb-20">
       <JsonLd data={[websiteSchema, faqSchema]} />
       <BreathingVisualizer />
 
@@ -109,7 +105,7 @@ export default function HomePage() {
               <Link
                 key={pattern.slug}
                 href={`/breathe/${pattern.slug}`}
-                className="group rounded-3xl border border-border/70 bg-card/80 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:bg-card dark:border-border/50 dark:bg-card/40 dark:shadow-[0_20px_60px_rgba(0,0,0,0.45)] dark:hover:bg-card/60"
+                className="group rounded-3xl border border-border/70 bg-card/80 p-5 transition hover:-translate-y-1 hover:bg-card dark:border-border/50 dark:bg-card/40 dark:hover:bg-card/60"
               >
                 <p className="text-xs uppercase tracking-[0.3em] text-primary">/{pattern.slug}</p>
                 <h3 className="mt-3 text-2xl font-semibold text-card-foreground">{pattern.hero.title}</h3>
@@ -152,7 +148,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-semibold text-card-foreground">FAQ</h2>
             <div className="space-y-3">
               {faqs.map((faq) => (
-                <details key={faq.question} className="group rounded-2xl bg-muted p-4 shadow-inner">
+                <details key={faq.question} className="group rounded-2xl bg-muted p-4">
                   <summary className="cursor-pointer list-none text-lg font-medium text-foreground">
                     {faq.question}
                   </summary>
@@ -166,14 +162,27 @@ export default function HomePage() {
       <footer className="relative z-10 mx-auto w-full max-w-6xl px-4 py-8 text-center sm:px-6 lg:px-8">
         <p className="text-xs text-muted-foreground">
           Created by{" "}
-          <a
-            href="https://abiassi.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-foreground transition-colors"
-          >
-            Abiassi
-          </a>
+          <span className="underline">
+            <a
+              href="https://abiassi.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              Abiassi
+            </a>
+          </span>
+          {" + "}
+          <span className="underline">
+            <a
+              href="https://darkmatter.is/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              Darkmatter AI Labs
+            </a>
+          </span>
         </p>
       </footer>
     </main>
