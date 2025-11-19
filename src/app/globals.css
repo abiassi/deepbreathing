@@ -122,3 +122,10 @@ body {
     transform: translate(-10%, 25%) scale(0.7);
   }
 }
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 25px 80px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(22px);
+}

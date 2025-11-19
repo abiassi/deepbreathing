@@ -61,11 +61,26 @@ const config: Config = {
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" }
+        },
+        morph: {
+          "0%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" },
+          "25%": { borderRadius: "45% 55% 50% 50% / 55% 45% 55% 45%" },
+          "50%": { borderRadius: "30% 60% 70% 40% / 50% 60% 30% 60%" },
+          "75%": { borderRadius: "45% 55% 40% 60% / 40% 60% 40% 60%" },
+          "100%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }
+        },
+        "hue-rotate": {
+          "0%": { filter: "hue-rotate(0deg)" },
+          "50%": { filter: "hue-rotate(30deg)" },
+          "100%": { filter: "hue-rotate(0deg)" }
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out"
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        blob: "morph 10s ease-in-out infinite",
+        hue: "hue-rotate 10s infinite linear"
       }
     }
   },
