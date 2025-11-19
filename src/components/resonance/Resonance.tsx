@@ -7,7 +7,7 @@ import { BreathingPhase, ModeName, AIRecommendation } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER } from './constants';
 import { AudioService } from './services/audioService';
 import ParticleBackground from './components/ParticleBackground';
-import Visualizer from './components/Visualizer';
+import Visualizer, { VisualizerHandle } from './components/Visualizer';
 import { modeToBreathingPage } from '@/data/breathing-pages';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
@@ -96,7 +96,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const [controlsOpen, setControlsOpen] = useState(false);
   
   // Animation State
-  const [scale, setScale] = useState(0); 
   const [instruction, setInstruction] = useState("Ready to start?");
   const [sessionSeconds, setSessionSeconds] = useState(0);
   const [aiReasoning, setAiReasoning] = useState<string | null>(null);
@@ -113,6 +112,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   const requestRef = useRef<number | null>(null);
   const phaseStartRef = useRef<number>(0);
+  const visualizerRef = useRef<VisualizerHandle | null>(null);
+  const updateOrbScale = useCallback((value: number) => {
+    visualizerRef.current?.setScale(value);
+  }, []);
 
   const applyThemePreference = useCallback((mode: 'dark' | 'light') => {
     if (typeof document === 'undefined') return;
@@ -193,6 +196,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     applyThemePreference(activeTheme);
   }, [activeTheme, applyThemePreference, themeReady]);
 
+  useEffect(() => {
+    updateOrbScale(0);
+  }, [updateOrbScale]);
+
   // --- Logic ---
 
   const currentPattern = BREATHING_PATTERNS[activeMode];
@@ -221,6 +228,14 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setPhase(BreathingPhase.Inhale);
       phaseStartRef.current = performance.now();
       
+      // Scroll to top on mobile when starting session
+      if (typeof window !== 'undefined') {
+        const isMobile = window.innerWidth < 768; // md breakpoint
+        if (isMobile) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+      
       // Resume audio context first (critical for mobile)
       await audio.resume();
       
@@ -246,9 +261,9 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       audio.stopDrone();
       audio.stopPinkNoise();
       audio.stopBinaural();
-      setScale(0);
+      updateOrbScale(0);
     }
-  }, [isRunning, activeMode, themeColor]);
+  }, [isRunning, activeMode, themeColor, updateOrbScale]);
 
   const handleStop = () => {
     const audio = getAudioService();
@@ -261,7 +276,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
     
     setSessionSeconds(0);
-    setScale(0);
+    updateOrbScale(0);
     audio.stopDrone();
     audio.stopPinkNoise();
     audio.stopBinaural();
@@ -333,7 +348,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       
       // If there is a second inhale, only scale to 75%
       const maxScale = inhale2Dur > 0 ? 0.75 : 1.0;
-      setScale(progress * maxScale);
+      updateOrbScale(progress * maxScale);
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
         // Check for Inhale 2 (Double Inhale)
@@ -343,7 +358,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         } else {
              nextPhase = holdInDur > 0 ? BreathingPhase.HoldIn : BreathingPhase.Exhale;
              setInstruction(holdInDur > 0 ? "" : "Exhale...");
-             setScale(1);
+             updateOrbScale(1);
         }
       }
     } 
@@ -351,18 +366,18 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         currentPhaseDuration = inhale2Dur;
         progress = Math.min(timeSincePhaseStart / currentPhaseDuration, 1);
         // Scale from 0.75 to 1.0
-        setScale(0.75 + (progress * 0.25));
+        updateOrbScale(0.75 + (progress * 0.25));
 
         if (timeSincePhaseStart >= currentPhaseDuration) {
             nextPhase = holdInDur > 0 ? BreathingPhase.HoldIn : BreathingPhase.Exhale;
             setInstruction(holdInDur > 0 ? "" : "Exhale fully...");
-            setScale(1);
+            updateOrbScale(1);
         }
     }
     else if (phase === BreathingPhase.HoldIn) {
       currentPhaseDuration = holdInDur;
       progress = Math.min(timeSincePhaseStart / currentPhaseDuration, 1);
-      setScale(1);
+      updateOrbScale(1);
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
         nextPhase = BreathingPhase.Exhale;
@@ -371,17 +386,17 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     } else if (phase === BreathingPhase.Exhale) {
       currentPhaseDuration = exhaleDur;
       progress = Math.min(timeSincePhaseStart / currentPhaseDuration, 1);
-      setScale(1 - progress);
+      updateOrbScale(1 - progress);
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
         nextPhase = holdOutDur > 0 ? BreathingPhase.HoldOut : BreathingPhase.Inhale;
         setInstruction(holdOutDur > 0 ? "" : "Inhale...");
-        setScale(0);
+        updateOrbScale(0);
       }
     } else if (phase === BreathingPhase.HoldOut) {
       currentPhaseDuration = holdOutDur;
       progress = Math.min(timeSincePhaseStart / currentPhaseDuration, 1);
-      setScale(0);
+      updateOrbScale(0);
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
         nextPhase = BreathingPhase.Inhale;
@@ -399,7 +414,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
 
     requestRef.current = requestAnimationFrame(animate);
-  }, [activeMode, isRunning, phase, speedMultiplier, themeColor]);
+  }, [activeMode, isRunning, phase, speedMultiplier, themeColor, updateOrbScale]);
 
   useEffect(() => {
     if (isRunning) {
@@ -543,8 +558,8 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
       <main className="relative z-10 flex flex-1 flex-col items-center justify-center">
         <Visualizer 
+            ref={visualizerRef}
             phase={phase}
-            scale={scale}
             color={themeColor}
             label={getPhaseLabel(phase)}
             instructions={instruction}
