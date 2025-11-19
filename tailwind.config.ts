@@ -62,6 +62,7 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" }
         },
+        // Organic blob morphing used by the breathing orb.
         morph: {
           "0%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" },
           "25%": { borderRadius: "45% 55% 50% 50% / 55% 45% 55% 45%" },
@@ -79,8 +80,9 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        // Blob/Aurora effects rely on these base animations, combined inline in Visualizer.tsx.
         blob: "morph 10s ease-in-out infinite",
-        hue: "hue-rotate 10s infinite linear"
+        hue: "hue-rotate 10s linear infinite"
       }
     }
   },

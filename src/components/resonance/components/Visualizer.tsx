@@ -19,8 +19,7 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
   const orbStyle = useMemo(
     () => ({
       boxShadow: `0 0 60px ${color}60, inset 0 0 40px ${color}AA`,
-      background: `radial-gradient(circle at 30% 30%, ${color} 0%, ${color}DD 60%, ${color}AA 100%)`,
-      animation: 'morph 10s ease-in-out infinite, hue-rotate 10s linear infinite'
+      background: `radial-gradient(circle at 30% 30%, ${color} 0%, ${color}DD 60%, ${color}AA 100%)`
     }),
     [color]
   );
@@ -44,7 +43,8 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
 
   const transformStyle = {
     transform: `scale(${0.6 + scale * 0.4})`,
-    transition: 'transform 100ms linear'
+    transition: 'transform 100ms linear',
+    animation: 'morph 10s ease-in-out infinite, hue-rotate 10s linear infinite'
   };
 
   return (

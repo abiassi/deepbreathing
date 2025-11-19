@@ -20,9 +20,19 @@ interface ResonanceProps {
   apiKey?: string;
   className?: string;
   defaultMode?: ModeName;
+  immersive?: boolean;
 }
 
-const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMode }) => {
+const toRgba = (hex: string, alpha: number) => {
+  const sanitized = hex.replace('#', '');
+  const bigint = parseInt(sanitized, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
+const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMode, immersive }) => {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -85,6 +95,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   const requestRef = useRef<number | null>(null);
   const phaseStartRef = useRef<number>(0);
+
+  useEffect(() => {
+    getAudioService().setThemeColor(themeColor);
+  }, [themeColor]);
   
   // --- Persistence Effects ---
   useEffect(() => {
@@ -149,7 +163,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           audio.startBinaural(10);
       }
 
-      audio.playCue('inhale');
+      audio.playCue('inhale', themeColor);
       setInstruction("Inhale slowly...");
     } else {
       setIsRunning(false);
@@ -254,7 +268,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
              setInstruction("...and again!");
         } else {
              nextPhase = holdInDur > 0 ? BreathingPhase.HoldIn : BreathingPhase.Exhale;
-             setInstruction(holdInDur > 0 ? "Hold breath..." : "Exhale...");
+             setInstruction(holdInDur > 0 ? "" : "Exhale...");
              setScale(1);
         }
       }
@@ -267,7 +281,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
         if (timeSincePhaseStart >= currentPhaseDuration) {
             nextPhase = holdInDur > 0 ? BreathingPhase.HoldIn : BreathingPhase.Exhale;
-            setInstruction(holdInDur > 0 ? "Hold..." : "Exhale fully...");
+            setInstruction(holdInDur > 0 ? "" : "Exhale fully...");
             setScale(1);
         }
     }
@@ -278,7 +292,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
         nextPhase = BreathingPhase.Exhale;
-        setInstruction("Exhale slowly...");
+        setInstruction("Exhale...");
       }
     } else if (phase === BreathingPhase.Exhale) {
       currentPhaseDuration = exhaleDur;
@@ -287,7 +301,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
         nextPhase = holdOutDur > 0 ? BreathingPhase.HoldOut : BreathingPhase.Inhale;
-        setInstruction(holdOutDur > 0 ? "Hold empty..." : "Inhale...");
+        setInstruction(holdOutDur > 0 ? "" : "Inhale...");
         setScale(0);
       }
     } else if (phase === BreathingPhase.HoldOut) {
@@ -305,13 +319,13 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setPhase(nextPhase);
       phaseStartRef.current = time;
       
-      if (nextPhase === BreathingPhase.Inhale || nextPhase === BreathingPhase.Inhale2) audio.playCue('inhale');
-      else if (nextPhase === BreathingPhase.Exhale) audio.playCue('exhale');
-      else audio.playCue('hold');
+      if (nextPhase === BreathingPhase.Inhale || nextPhase === BreathingPhase.Inhale2) audio.playCue('inhale', themeColor);
+      else if (nextPhase === BreathingPhase.Exhale) audio.playCue('exhale', themeColor);
+      else audio.playCue('hold', themeColor);
     }
 
     requestRef.current = requestAnimationFrame(animate);
-  }, [activeMode, isRunning, phase, speedMultiplier]);
+  }, [activeMode, isRunning, phase, speedMultiplier, themeColor]);
 
   useEffect(() => {
     if (isRunning) {
@@ -344,6 +358,28 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         setThemeColor(BREATHING_PATTERNS[activeMode].color);
      }
   }, [activeMode, isRunning, aiReasoning]);
+
+  useEffect(() => {
+    if (!immersive || typeof document === 'undefined') return;
+    const body = document.body;
+    if (isRunning) {
+      body.dataset.resonanceImmersive = 'true';
+      document.documentElement.style.setProperty('--immersive-color', toRgba(themeColor, 0.3));
+    } else {
+      delete body.dataset.resonanceImmersive;
+      document.documentElement.style.removeProperty('--immersive-color');
+    }
+    return () => {
+      delete body.dataset.resonanceImmersive;
+      document.documentElement.style.removeProperty('--immersive-color');
+    };
+  }, [immersive, isRunning, themeColor]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const event = new CustomEvent('resonance:run-state', { detail: { running: isRunning } });
+    window.dispatchEvent(event);
+  }, [isRunning]);
 
   const getPhaseLabel = (p: BreathingPhase) => {
     if (p === BreathingPhase.Idle) return "Ready";
@@ -490,9 +526,9 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                 </div>
 
                 <div className="space-y-4 rounded-2xl bg-card/70 p-4 shadow-inner dark:bg-card/30">
-                  <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    <span>Pattern</span>
-                    <span className="text-sm text-card-foreground normal-case">{currentPattern.description}</span>
+                  <div className="space-y-1">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pattern</p>
+                    <p className="text-base text-card-foreground">{currentPattern.description}</p>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
