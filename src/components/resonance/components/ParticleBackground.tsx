@@ -130,32 +130,48 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
     let displayHeight = window.innerHeight;
 
     const initParticles = () => {
-        particles.current = Array.from({ length: 80 }, () => new Particle(displayWidth, displayHeight));
+        // Reduce particle count on mobile for better performance
+        const isMobile = displayWidth < 768 || window.innerHeight < 768;
+        const particleCount = isMobile ? 50 : 80;
+        particles.current = Array.from({ length: particleCount }, () => new Particle(displayWidth, displayHeight));
     };
 
     let animationFrameId: number;
     let lastTimestamp = 0;
 
+    let resizeTimeout: ReturnType<typeof setTimeout>;
     const resize = () => {
-      displayWidth = window.innerWidth;
-      displayHeight = window.innerHeight;
-      const ratio = Math.max(window.devicePixelRatio || 1, 1);
-      canvas.style.width = `${displayWidth}px`;
-      canvas.style.height = `${displayHeight}px`;
-      canvas.width = displayWidth * ratio;
-      canvas.height = displayHeight * ratio;
-      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-      initParticles();
-      lastTimestamp = 0;
+      // Debounce resize to prevent jitter on mobile
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        displayWidth = window.innerWidth;
+        displayHeight = window.innerHeight;
+        // Cap devicePixelRatio at 2 for better mobile performance
+        const ratio = Math.min(Math.max(window.devicePixelRatio || 1, 1), 2);
+        canvas.style.width = `${displayWidth}px`;
+        canvas.style.height = `${displayHeight}px`;
+        canvas.width = displayWidth * ratio;
+        canvas.height = displayHeight * ratio;
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        initParticles();
+        lastTimestamp = 0;
+      }, 100);
     };
 
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
     resize(); 
 
     const animate = (timestamp: number) => {
       if (!canvas || !ctx) return;
-      const deltaSeconds = lastTimestamp ? Math.min((timestamp - lastTimestamp) / 1000, 0.05) : 0.016;
+      
+      // Use a more stable delta time calculation for mobile
+      const deltaSeconds = lastTimestamp 
+        ? Math.min(Math.max((timestamp - lastTimestamp) / 1000, 0), 0.05) 
+        : 0.016;
       lastTimestamp = timestamp;
+      
+      // Use save/restore for better performance on mobile
+      ctx.save();
       ctx.clearRect(0, 0, displayWidth, displayHeight);
       
       const currentPhase = phaseRef.current;
@@ -195,10 +211,13 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
       smoothedRadialSpeedRef.current += (targetRadialSpeed - smoothedRadialSpeedRef.current) * 0.05;
       smoothedDriftSpeedRef.current += (targetDriftSpeed - smoothedDriftSpeedRef.current) * 0.05;
 
+      // Batch drawing operations for better mobile performance
       particles.current.forEach(p => {
         p.update(smoothedRadialSpeedRef.current, smoothedDriftSpeedRef.current, deltaSeconds, displayWidth, displayHeight);
         p.draw(ctx, currentColor);
       });
+      
+      ctx.restore();
 
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -206,6 +225,7 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
     animationFrameId = requestAnimationFrame(animate);
 
     return () => {
+      clearTimeout(resizeTimeout);
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationFrameId);
     };
@@ -214,7 +234,8 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 transition-opacity duration-1000 opacity-70" 
+      className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 transition-opacity duration-1000 opacity-70"
+      style={{ willChange: 'transform' }}
     />
   );
 };

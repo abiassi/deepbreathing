@@ -43,8 +43,21 @@ export class AudioService {
 
   public async resume() {
     this.initContext();
-    if (this.ctx?.state === 'suspended') {
-      await this.ctx.resume();
+    if (!this.ctx) return;
+    
+    // Mobile browsers require explicit resume after user interaction
+    if (this.ctx.state === 'suspended') {
+      try {
+        await this.ctx.resume();
+        // Double-check state after resume (some browsers need a moment)
+        if (this.ctx.state === 'suspended') {
+          // Retry once more after a brief delay
+          await new Promise(resolve => setTimeout(resolve, 100));
+          await this.ctx.resume();
+        }
+      } catch (error) {
+        console.warn('AudioContext resume failed:', error);
+      }
     }
   }
 
@@ -99,7 +112,13 @@ export class AudioService {
    * Breathing cues now adapt oscillator types/envelopes to the color palette.
    */
   public playCue(type: CueType, colorHex?: string) {
-    if (this.isMuted || !this.ctx || !this.masterGain) return;
+    if (this.isMuted || !this.ctx || !this.masterGain) {
+      // If context is suspended, try to resume
+      if (this.ctx?.state === 'suspended') {
+        this.ctx.resume().catch(console.warn);
+      }
+      return;
+    }
 
     const theme = colorHex || this.themeColor;
     const profile = this.getCueProfile(theme);
@@ -136,7 +155,13 @@ export class AudioService {
   public startBinaural(beatHz: number = 10) {
     this.stopBinaural();
     this.initContext();
-    if (!this.ctx || !this.masterGain) return;
+    if (!this.ctx || !this.masterGain) {
+      // If context is suspended, try to resume
+      if (this.ctx?.state === 'suspended') {
+        this.ctx.resume().catch(console.warn);
+      }
+      return;
+    }
 
     const t = this.ctx.currentTime;
     const baseFreq = 200;
@@ -182,7 +207,13 @@ export class AudioService {
   public startDrone(colorHex: string) {
     this.stopDrone();
     this.initContext();
-    if (!this.ctx || !this.masterGain) return;
+    if (!this.ctx || !this.masterGain) {
+      // If context is suspended, try to resume
+      if (this.ctx?.state === 'suspended') {
+        this.ctx.resume().catch(console.warn);
+      }
+      return;
+    }
 
     this.themeColor = colorHex || this.themeColor;
     const profile = this.getCueProfile(this.themeColor);
@@ -239,7 +270,13 @@ export class AudioService {
   public startPinkNoise() {
     this.stopPinkNoise();
     this.initContext();
-    if (!this.ctx || !this.masterGain) return;
+    if (!this.ctx || !this.masterGain) {
+      // If context is suspended, try to resume
+      if (this.ctx?.state === 'suspended') {
+        this.ctx.resume().catch(console.warn);
+      }
+      return;
+    }
 
     const buffer = this.generatePinkNoiseBuffer();
     if (!buffer) return;

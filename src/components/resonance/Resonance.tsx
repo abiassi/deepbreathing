@@ -214,13 +214,15 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     setThemePreference('system');
   }, []);
 
-  const handleTogglePlay = useCallback(() => {
+  const handleTogglePlay = useCallback(async () => {
     const audio = getAudioService();
     if (!isRunning) {
       setIsRunning(true);
       setPhase(BreathingPhase.Inhale);
       phaseStartRef.current = performance.now();
-      audio.resume();
+      
+      // Resume audio context first (critical for mobile)
+      await audio.resume();
       
       // Adaptive Audio Logic
       if (activeMode === ModeName.Relax || activeMode === ModeName.Coherent) {
