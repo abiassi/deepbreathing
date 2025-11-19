@@ -16,7 +16,7 @@ export function createPatternMetadata(slug: string): Metadata {
   const canonicalUrl = `${baseUrl}/breathe/${pageContent.slug}`;
   const ogImageUrl = pageContent.meta.ogImage
     ? new URL(pageContent.meta.ogImage, baseUrl).toString()
-    : undefined;
+    : new URL("/og-image.png", baseUrl).toString();
 
   return {
     metadataBase: new URL(baseUrl),
@@ -31,22 +31,20 @@ export function createPatternMetadata(slug: string): Metadata {
       title: pageContent.meta.ogTitle || pageContent.meta.title,
       description: pageContent.meta.ogDescription || pageContent.meta.description,
       url: canonicalUrl,
-      images: ogImageUrl
-        ? [
-            {
-              url: ogImageUrl,
-              alt: `${pageContent.hero.title} – Interactive breathing visualizer`,
-              width: 1200,
-              height: 630
-            }
-          ]
-        : undefined
+      images: [
+        {
+          url: ogImageUrl,
+          alt: `${pageContent.hero.title} – Interactive breathing visualizer`,
+          width: 1200,
+          height: 630
+        }
+      ]
     },
     twitter: {
-      card: ogImageUrl ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title: pageContent.meta.twitterTitle || pageContent.meta.title,
       description: pageContent.meta.twitterDescription || pageContent.meta.description,
-      images: ogImageUrl ? [ogImageUrl] : undefined
+      images: [ogImageUrl]
     }
   };
 }

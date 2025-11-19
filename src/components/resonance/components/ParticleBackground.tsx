@@ -106,7 +106,7 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
   
   // Two speed factors: Radial (In/Out) and Drift (Random Chaos)
   const smoothedRadialSpeedRef = useRef<number>(0);
-  const smoothedDriftSpeedRef = useRef<number>(0.2);
+  const smoothedDriftSpeedRef = useRef<number>(0.2 * 60);
   
   // Refs to hold latest props for the animation loop
   const phaseRef = useRef(phase);
@@ -163,27 +163,28 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
       const currentMultiplier = speedMultiplierRef.current;
 
       // Determine target speeds based on phase
+      const SPEED_PER_SECOND = 60;
       let targetRadialSpeed = 0;
-      let targetDriftSpeed = 0.2;
+      let targetDriftSpeed = 0.2 * SPEED_PER_SECOND;
 
       if (currentPhase === BreathingPhase.Inhale) {
           // Inhale: Particles move Inward (negative radial speed)
-          targetRadialSpeed = -3.5;
-          targetDriftSpeed = 0.5; // Slightly more chaos
+          targetRadialSpeed = -3.5 * SPEED_PER_SECOND;
+          targetDriftSpeed = 0.5 * SPEED_PER_SECOND; // Slightly more chaos
       } else if (currentPhase === BreathingPhase.Exhale) {
           // Exhale: Particles move Outward (positive radial speed)
           // Reduced from 3.5 to 1.2 (approx 1/3) for gentler exhale
-          targetRadialSpeed = 1.2; 
-          targetDriftSpeed = 0.5;
+          targetRadialSpeed = 1.2 * SPEED_PER_SECOND; 
+          targetDriftSpeed = 0.5 * SPEED_PER_SECOND;
       } else if (currentPhase === BreathingPhase.HoldIn || currentPhase === BreathingPhase.HoldOut) {
           // Hold: Suspended
           targetRadialSpeed = 0;
           // Increased from 0.1 to 0.6 so they float/drift more noticeably in space
-          targetDriftSpeed = 0.6; 
+          targetDriftSpeed = 0.6 * SPEED_PER_SECOND; 
       } else {
           // Idle
           targetRadialSpeed = 0;
-          targetDriftSpeed = 0.3;
+          targetDriftSpeed = 0.3 * SPEED_PER_SECOND;
       }
 
       // Apply user speed multiplier to the intensity
