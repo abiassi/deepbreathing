@@ -90,9 +90,11 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
         </div>
       </button>
 
-      <div className="pointer-events-none absolute -bottom-16 w-full text-center">
-        <p className="text-lg font-medium tracking-wide text-muted-foreground">{instructions}</p>
-      </div>
+      {!isRunning && instructions && instructions !== 'Ready to start?' && instructions !== 'Paused' && (
+        <div className="pointer-events-none absolute -bottom-16 w-full text-center">
+          <p className="text-lg font-medium tracking-wide text-muted-foreground">{instructions}</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -337,7 +337,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         // Check for Inhale 2 (Double Inhale)
         if (inhale2Dur > 0) {
              nextPhase = BreathingPhase.Inhale2;
-             setInstruction("...and again!");
+             setInstruction("Inhale again...");
         } else {
              nextPhase = holdInDur > 0 ? BreathingPhase.HoldIn : BreathingPhase.Exhale;
              setInstruction(holdInDur > 0 ? "" : "Exhale...");
@@ -456,7 +456,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const getPhaseLabel = (p: BreathingPhase) => {
     if (p === BreathingPhase.Idle) return "Ready";
     if (p === BreathingPhase.HoldIn || p === BreathingPhase.HoldOut) return "Hold";
-    if (p === BreathingPhase.Inhale2) return "Inhale";
+    if (p === BreathingPhase.Inhale2) return "Inhale Again";
     return p;
   };
 
