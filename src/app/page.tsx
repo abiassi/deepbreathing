@@ -51,7 +51,10 @@ const faqSchema = {
 export default function HomePage() {
   return (
     <main className="relative min-h-screen bg-background pb-20">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(255,166,120,0.35),_transparent_65%)] dark:bg-[radial-gradient(circle_at_top,_rgba(255,166,120,0.15),_transparent_65%)]" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-1/2 z-0 h-[110vh] -translate-y-1/2 transform bg-[radial-gradient(circle_at_center,_rgba(255,166,120,0.32),_transparent_70%)] dark:bg-[radial-gradient(circle_at_center,_rgba(255,166,120,0.14),_transparent_70%)]"
+      />
       <JsonLd data={[websiteSchema, faqSchema]} />
       <BreathingVisualizer />
 

@@ -785,23 +785,23 @@ export const breathingPages: BreathingPageContent[] = [
     faqs: [
       {
         question: "What evidence supports the physiological sigh?",
-        answer: "A month‑long randomized study comparing three breathwork protocols to mindfulness found breathwork improved mood and reduced respiratory rate more, with the exhale‑focused cyclic sighing showing the largest gains. A pilot RCT in an orthopedic clinic waiting room found a 4‑minute cyclic‑sighing audio reduced pain intensity and unpleasantness vs. a time‑matched control. Together these suggest quick, modest benefits for mood and acute symptoms with brief daily practice. :contentReference[oaicite:0]{index=0}"
+        answer: "A month‑long randomized study comparing three breathwork protocols to mindfulness found breathwork improved mood and reduced respiratory rate more, with the exhale‑focused cyclic sighing showing the largest gains. A pilot RCT in an orthopedic clinic waiting room found a 4‑minute cyclic‑sighing audio reduced pain intensity and unpleasantness vs. a time‑matched control. Together these suggest quick, modest benefits for mood and acute symptoms with brief daily practice."
       },
       {
         question: "How does a sigh help the lungs?",
-        answer: "Sighs are deeper‑than‑normal breaths that periodically reinflate under‑ventilated lung regions, which helps prevent alveolar collapse and restores lung compliance. Neurophysiology studies identify a dedicated brainstem circuit (RTN/pFRG → preBötzinger complex) that can trigger sighs—explaining how they arise and why they increase under stress or hypoxia. :contentReference[oaicite:1]{index=1}"
+        answer: "Sighs are deeper‑than‑normal breaths that periodically reinflate under‑ventilated lung regions, which helps prevent alveolar collapse and restores lung compliance. Neurophysiology studies identify a dedicated brainstem circuit (RTN/pFRG → preBötzinger complex) that can trigger sighs—explaining how they arise and why they increase under stress or hypoxia."
       },
       {
         question: "How many repetitions and how often?",
-        answer: "For an in‑the‑moment reset, do 1–3 physiological sighs. For training effects, use 2–5 minutes of cyclic sighing most days. In the RCT, 5 minutes daily produced the clearest changes in mood and respiratory rate; a clinic pilot showed 4 minutes reduced pain. Start small and increase only if it stays comfortable. :contentReference[oaicite:2]{index=2}"
+        answer: "For an in‑the‑moment reset, do 1–3 physiological sighs. For training effects, use 2–5 minutes of cyclic sighing most days. In the RCT, 5 minutes daily produced the clearest changes in mood and respiratory rate; a clinic pilot showed 4 minutes reduced pain. Start small and increase only if it stays comfortable."
       },
       {
         question: "Is it safe for everyone?",
-        answer: "It’s generally safe when done gently. Practice seated if you’re prone to dizziness. People who are pregnant or have cardiopulmonary disease or syncope history should avoid straining and keep breaths small. Any light‑headedness likely reflects over‑breathing—shrink the inhale and slow the exhale or stop and resume later. :contentReference[oaicite:3]{index=3}"
+        answer: "It’s generally safe when done gently. Practice seated if you’re prone to dizziness. People who are pregnant or have cardiopulmonary disease or syncope history should avoid straining and keep breaths small. Any light‑headedness likely reflects over‑breathing—shrink the inhale and slow the exhale or stop and resume later."
       },
       {
         question: "Is the physiological sigh better than box breathing?",
-        answer: "They’re tools for different aims. The RCT found exhale‑focused cyclic sighing yielded the largest mood and respiration‑rate improvements vs. mindfulness, with box breathing also helpful. For rapid relief in a few breaths, many prefer sighing; for structured pacing or longer sessions, box breathing or coherent breathing may suit better. :contentReference[oaicite:4]{index=4}"
+        answer: "They’re tools for different aims. The RCT found exhale‑focused cyclic sighing yielded the largest mood and respiration‑rate improvements vs. mindfulness, with box breathing also helpful. For rapid relief in a few breaths, many prefer sighing; for structured pacing or longer sessions, box breathing or coherent breathing may suit better."
       }
     ],
     howTo: {
