@@ -81,7 +81,7 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         // Blob/Aurora effects rely on these base animations, combined inline in Visualizer.tsx.
-        blob: "morph 10s ease-in-out infinite",
+        blob: "morph 20s ease-in-out infinite",
         "blob-slow": "morph 22s ease-in-out infinite",
         hue: "hue-rotate 10s linear infinite"
       }

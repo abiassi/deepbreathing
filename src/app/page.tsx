@@ -8,6 +8,7 @@ import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { BREATHING_PATTERNS, ModeName } from "@/components/resonance/constants";
 
 const baseUrl = "https://deepbreathingexercises.com";
 
@@ -61,6 +62,40 @@ const faqSchema = {
   }))
 };
 
+const practiceCues = [
+  "Breathe nasal and quiet; feel low belly rise.",
+  "Exhale ends softly—don't squeeze empty.",
+  "Shoulders stay down; jaw unclenched."
+];
+
+const durationGuidelines = [
+  "Quick reset: 1–2 minutes (4–8 cycles).",
+  "Deeper shift: 3–5 minutes.",
+  "Training effect (HRV focus): 5–10 minutes at an easy, equal in/out pace."
+];
+
+const bestMoments = [
+  "Before events",
+  "Between tasks",
+  "Post-conflict",
+  "Bedtime wind-down",
+  "In-flight"
+];
+
+const whyItWorks = [
+  "Slow breathing can increase vagally mediated HRV during sessions.",
+  "Exhale-emphasized or 0.1 Hz pacing often feels calmer within minutes.",
+  "Consistency matters; short daily sessions beat rare long ones."
+];
+
+const infoCardClass =
+  "glow-card rounded-[36px] border border-border bg-card p-6 transition-colors duration-200";
+const startButtonColor = BREATHING_PATTERNS[ModeName.Box].color;
+const startButtonStyle = {
+  backgroundColor: startButtonColor,
+  boxShadow: `0 12px 36px ${startButtonColor}60`
+};
+
 export default function HomePage() {
   const [running, setRunning] = useState(false);
 
@@ -93,7 +128,13 @@ export default function HomePage() {
         "flex flex-wrap gap-4 transition-all duration-500",
         running ? "opacity-0 translate-y-2 pointer-events-none" : "opacity-100 translate-y-0"
       )}>
-        <Button onClick={handleStartSession} type="button" size="lg">
+        <Button
+          onClick={handleStartSession}
+          type="button"
+          size="lg"
+          className="shadow-none text-white hover:brightness-105 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-white/70"
+          style={startButtonStyle}
+        >
           Start session
         </Button>
         <Button asChild variant="outline" size="lg">
@@ -127,19 +168,19 @@ export default function HomePage() {
         </section>
 
         <section className="grid gap-6 text-left lg:grid-cols-3">
-          <div className="rounded-[32px] bg-card p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.3)]">
+          <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <p className="text-sm uppercase tracking-wider text-primary">Calm by design</p>
             <p className="mt-3 text-muted-foreground">
               Slow, even breathing often increases vagally mediated HRV and lowers perceived stress during practice.
             </p>
           </div>
-          <div className="rounded-[32px] bg-card p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.3)]">
+          <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <p className="text-sm uppercase tracking-wider text-primary">Built for real life</p>
             <p className="mt-3 text-muted-foreground">
               Short sets (1–5 min) before meetings, between tasks, or at lights‑out.
             </p>
           </div>
-          <div className="rounded-[32px] bg-card p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.3)]">
+          <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <p className="text-sm uppercase tracking-wider text-primary">Your pace</p>
             <p className="mt-3 text-muted-foreground">
               Choose 3–8 seconds per phase. Smaller, quieter breaths beat "big" breaths.
@@ -147,14 +188,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="mode-picker" className="rounded-[48px] bg-card/80 p-8 shadow-[0_30px_90px_rgba(15,23,42,0.12)]">
+        <section id="mode-picker" className="glow-card rounded-[48px] border border-border bg-card p-8">
           <div>
             <h2 className="text-3xl font-semibold text-card-foreground">Pick a mode</h2>
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             <Link
               href="/breathe/box"
-              className="group rounded-3xl border border-border/70 bg-card/80 p-5 transition hover:-translate-y-1 hover:bg-card dark:border-border/50 dark:bg-card/40 dark:hover:bg-card/60"
+              className="group rounded-3xl border border-border/70 bg-card p-5 transition hover:-translate-y-1 dark:border-border/50"
             >
               <p className="text-xs uppercase tracking-[0.3em] text-primary">/box</p>
               <h3 className="mt-3 text-2xl font-semibold text-card-foreground">Box Breathing (4‑4‑4‑4)</h3>
@@ -165,7 +206,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/breathe/4-7-8"
-              className="group rounded-3xl border border-border/70 bg-card/80 p-5 transition hover:-translate-y-1 hover:bg-card dark:border-border/50 dark:bg-card/40 dark:hover:bg-card/60"
+              className="group rounded-3xl border border-border/70 bg-card p-5 transition hover:-translate-y-1 dark:border-border/50"
             >
               <p className="text-xs uppercase tracking-[0.3em] text-primary">/4-7-8</p>
               <h3 className="mt-3 text-2xl font-semibold text-card-foreground">4‑7‑8 Breathing</h3>
@@ -176,7 +217,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/breathe/coherent"
-              className="group rounded-3xl border border-border/70 bg-card/80 p-5 transition hover:-translate-y-1 hover:bg-card dark:border-border/50 dark:bg-card/40 dark:hover:bg-card/60"
+              className="group rounded-3xl border border-border/70 bg-card p-5 transition hover:-translate-y-1 dark:border-border/50"
             >
               <p className="text-xs uppercase tracking-[0.3em] text-primary">/coherent</p>
               <h3 className="mt-3 text-2xl font-semibold text-card-foreground">Coherent Breathing</h3>
@@ -187,7 +228,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/breathe/physiological-sigh"
-              className="group rounded-3xl border border-border/70 bg-card/80 p-5 transition hover:-translate-y-1 hover:bg-card dark:border-border/50 dark:bg-card/40 dark:hover:bg-card/60"
+              className="group rounded-3xl border border-border/70 bg-card p-5 transition hover:-translate-y-1 dark:border-border/50"
             >
               <p className="text-xs uppercase tracking-[0.3em] text-primary">/physiological-sigh</p>
               <h3 className="mt-3 text-2xl font-semibold text-card-foreground">Physiological Sigh</h3>
@@ -199,79 +240,81 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="rounded-[48px] bg-card/80 p-8 shadow-[0_30px_90px_rgba(15,23,42,0.12)]">
-          <h2 className="text-3xl font-semibold text-card-foreground">One minute to steady</h2>
-          <ul className="mt-6 space-y-3 text-muted-foreground">
-            <li>• Sit tall. Shoulders soft. Tongue to roof of mouth.</li>
-            <li>• Inhale gently through the nose; exhale quietly (nose or pursed lips).</li>
-            <li>• Keep it easy. If dizzy, shorten phases or pause.</li>
-          </ul>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild variant="outline">
-              <Link href="/breathe/box">60 s / 3–3–3–3</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/breathe/box">2 min / 4–4–4–4</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/breathe/box">3 min / 5–5 (no holds)</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/breathe/physiological-sigh">3 cycles / physiological sigh</Link>
-            </Button>
+        <section className="grid gap-8 lg:grid-cols-[1fr,2fr]">
+          <article className={cn("glow-card glow-card-inward rounded-[52px] border border-border bg-card p-10 transition-colors duration-200")}>
+            <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Quick anchor</p>
+            <h2 className="mt-3 text-4xl font-semibold leading-tight text-card-foreground sm:text-5xl">
+              One minute to steady
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Sit tall. Shoulders soft. Tongue to the roof of your mouth. Inhale gently through the nose;
+              exhale quietly through the nose or pursed lips.
+            </p>
+            <ul className="mt-6 space-y-3 text-base text-muted-foreground [&>li]:leading-relaxed">
+              <li>• Keep it easy. If dizzy, shorten phases or pause.</li>
+              <li>• Breathe nasal and quiet; feel the low belly rise.</li>
+              <li>• Exhale ends softly—don't squeeze empty.</li>
+            </ul>
+            <p className="mt-5 text-sm text-muted-foreground">
+              Dial in a smooth cadence, then keep breathing. Small, steady breaths trump deep gasps.
+            </p>
+          </article>
+
+          <div className="grid gap-6">
+            <div className="grid gap-6 sm:grid-cols-2">
+              <article className={cn(infoCardClass)}>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Dial it in</p>
+                <h3 className="mt-2 text-2xl font-semibold text-card-foreground">Smooth over deep</h3>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  Slide between 3–8 s per phase. Start small. Smooth &gt; deep. If holds feel edgy, skip them and
+                  keep an even inhale/exhale.
+                </p>
+              </article>
+              <article className={cn(infoCardClass)}>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Practice cues</p>
+                <h3 className="mt-2 text-2xl font-semibold text-card-foreground">What to notice</h3>
+                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                  {practiceCues.map((cue) => (
+                    <li key={cue}>• {cue}</li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              <article className={cn(infoCardClass)}>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">How long?</p>
+                <h3 className="mt-2 text-2xl font-semibold text-card-foreground">Match the moment</h3>
+                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                  {durationGuidelines.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </article>
+              <article className={cn(infoCardClass)}>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Best moments</p>
+                <h3 className="mt-2 text-2xl font-semibold text-card-foreground">Slide in anytime</h3>
+                <div className="mt-4 space-y-3 text-lg font-semibold text-card-foreground leading-relaxed">
+                  {bestMoments.map((moment) => (
+                    <p key={moment}>{moment}</p>
+                  ))}
+                </div>
+              </article>
+            </div>
+
+            <article className={cn(infoCardClass)}>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Why it works</p>
+              <h3 className="mt-2 text-2xl font-semibold text-card-foreground">Calmer in minutes</h3>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                {whyItWorks.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </article>
           </div>
         </section>
 
-        <section className="rounded-[32px] bg-card p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.3)]">
-          <h2 className="text-2xl font-semibold text-card-foreground">Dial it in</h2>
-          <p className="mt-3 text-muted-foreground">
-            Slide between 3–8 s per phase. Start small. Smooth &gt; deep. If holds feel edgy, skip them and keep an even inhale/exhale.
-          </p>
-        </section>
-
-        <section className="space-y-4 rounded-[40px] bg-card p-8 shadow-[0_25px_80px_rgba(255,170,130,0.2)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.3)]">
-          <h2 className="text-2xl font-semibold text-card-foreground">Practice cues</h2>
-          <ul className="space-y-2 text-muted-foreground">
-            <li>• Breathe nasal and quiet; feel low belly rise.</li>
-            <li>• Exhale ends softly—don't squeeze empty.</li>
-            <li>• Shoulders stay down; jaw unclenched.</li>
-          </ul>
-        </section>
-
-        <section className="space-y-4 rounded-[40px] bg-card p-8 shadow-[0_25px_80px_rgba(255,170,130,0.2)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.3)]">
-          <h2 className="text-2xl font-semibold text-card-foreground">How long?</h2>
-          <ul className="space-y-2 text-muted-foreground">
-            <li>• Quick reset: 1–2 minutes (4–8 cycles).</li>
-            <li>• Deeper shift: 3–5 minutes.</li>
-            <li>• Training effect (HRV focus): 5–10 minutes at an easy, equal in/out pace.</li>
-          </ul>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Full cycle duration at 4‑4‑4‑4: ~16 s (≈3.75 bpm).
-          </p>
-        </section>
-
-        <section className="rounded-[32px] bg-card p-6 shadow-[0_25px_60px_rgba(255,170,130,0.18)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.3)]">
-          <h2 className="text-2xl font-semibold text-card-foreground mb-4">Best moments</h2>
-          <p className="text-muted-foreground">
-            Before events • between tasks • post‑conflict • bedtime wind‑down • in‑flight
-          </p>
-        </section>
-
-        <section className="space-y-4 rounded-[40px] bg-card p-8 shadow-[0_25px_80px_rgba(255,170,130,0.2)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.3)]">
-          <h2 className="text-2xl font-semibold text-card-foreground">Why it works</h2>
-          <ul className="space-y-2 text-muted-foreground">
-            <li>• Slow breathing can increase vagally mediated HRV during sessions.</li>
-            <li>• Exhale‑emphasized or 0.1 Hz pacing often feels calmer within minutes.</li>
-            <li>• Consistency matters; short daily sessions beat rare long ones.</li>
-          </ul>
-          {/* <p className="mt-4">
-            <Link href="/evidence" className="text-sm font-semibold text-primary underline-offset-2 hover:underline">
-              How we evaluate the research
-            </Link>
-          </p> */}
-        </section>
-
-        <section className="space-y-4 rounded-[40px] bg-card p-8 shadow-[0_25px_80px_rgba(255,170,130,0.2)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.3)]">
+        <section className="glow-card space-y-4 rounded-[40px] border border-border bg-card p-8">
           <h2 className="text-2xl font-semibold text-card-foreground">FAQ</h2>
           <div className="space-y-3">
             {faqs.map((faq) => (
@@ -288,7 +331,7 @@ export default function HomePage() {
           Stop if dizzy, tingly, or chest‑tight. Resume later with shorter, easier breaths. Skip prolonged holds during pregnancy or if advised by your clinician.
         </p>
         <p className="text-xs text-muted-foreground">
-          Keyboard controls and screen‑reader labels available in Settings. Created by{" "}
+          Created by{" "}
           <span className="underline">
             <a
               href="https://abiassi.com/"

@@ -13,11 +13,40 @@ export function createPatternMetadata(slug: string): Metadata {
   if (!page) return {};
 
   const pageContent: BreathingPageContent = page;
+  const canonicalUrl = `${baseUrl}/breathe/${pageContent.slug}`;
+  const ogImageUrl = pageContent.meta.ogImage
+    ? new URL(pageContent.meta.ogImage, baseUrl).toString()
+    : undefined;
+
   return {
+    metadataBase: new URL(baseUrl),
     title: pageContent.meta.title,
     description: pageContent.meta.description,
+    keywords: pageContent.keywords,
     alternates: {
-      canonical: `${baseUrl}/breathe/${pageContent.slug}`
+      canonical: canonicalUrl
+    },
+    openGraph: {
+      type: "article",
+      title: pageContent.meta.ogTitle || pageContent.meta.title,
+      description: pageContent.meta.ogDescription || pageContent.meta.description,
+      url: canonicalUrl,
+      images: ogImageUrl
+        ? [
+            {
+              url: ogImageUrl,
+              alt: `${pageContent.hero.title} – Interactive breathing visualizer`,
+              width: 1200,
+              height: 630
+            }
+          ]
+        : undefined
+    },
+    twitter: {
+      card: ogImageUrl ? "summary_large_image" : "summary",
+      title: pageContent.meta.twitterTitle || pageContent.meta.title,
+      description: pageContent.meta.twitterDescription || pageContent.meta.description,
+      images: ogImageUrl ? [ogImageUrl] : undefined
     }
   };
 }

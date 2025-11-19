@@ -1,5 +1,7 @@
 import { BreathingPattern, ModeName } from './types';
 
+export { ModeName };
+
 export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
   [ModeName.Box]: {
     name: ModeName.Box,

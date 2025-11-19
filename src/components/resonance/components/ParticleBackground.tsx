@@ -46,7 +46,7 @@ class Particle {
     this.alpha = 0; // Fade in
   }
 
-  update(radialSpeed: number, driftSpeed: number, w: number, h: number) {
+  update(radialSpeed: number, driftSpeed: number, deltaTime: number, w: number, h: number) {
     // Fade in effect if alpha was reset
     if (this.alpha < 0.5) this.alpha += 0.01;
 
@@ -60,13 +60,15 @@ class Particle {
     if (dist > 0.1) {
         const uX = dx / dist;
         const uY = dy / dist;
-        this.x += uX * radialSpeed;
-        this.y += uY * radialSpeed;
+        const radialStep = radialSpeed * deltaTime;
+        this.x += uX * radialStep;
+        this.y += uY * radialStep;
     }
 
     // Apply Drift Velocity (Random noise)
-    this.x += this.speedX * driftSpeed;
-    this.y += this.speedY * driftSpeed;
+    const driftStep = driftSpeed * deltaTime;
+    this.x += this.speedX * driftStep;
+    this.y += this.speedY * driftStep;
 
     // --- Boundary & Respawn Logic ---
 
@@ -124,24 +126,37 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    let displayWidth = window.innerWidth;
+    let displayHeight = window.innerHeight;
+
     const initParticles = () => {
-        particles.current = Array.from({ length: 80 }, () => new Particle(canvas.width, canvas.height));
+        particles.current = Array.from({ length: 80 }, () => new Particle(displayWidth, displayHeight));
     };
 
+    let animationFrameId: number;
+    let lastTimestamp = 0;
+
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      displayWidth = window.innerWidth;
+      displayHeight = window.innerHeight;
+      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+      canvas.style.width = `${displayWidth}px`;
+      canvas.style.height = `${displayHeight}px`;
+      canvas.width = displayWidth * ratio;
+      canvas.height = displayHeight * ratio;
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       initParticles();
+      lastTimestamp = 0;
     };
 
     window.addEventListener('resize', resize);
     resize(); 
 
-    let animationFrameId: number;
-
-    const animate = () => {
+    const animate = (timestamp: number) => {
       if (!canvas || !ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const deltaSeconds = lastTimestamp ? Math.min((timestamp - lastTimestamp) / 1000, 0.05) : 0.016;
+      lastTimestamp = timestamp;
+      ctx.clearRect(0, 0, displayWidth, displayHeight);
       
       const currentPhase = phaseRef.current;
       const currentColor = colorRef.current;
@@ -180,14 +195,14 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
       smoothedDriftSpeedRef.current += (targetDriftSpeed - smoothedDriftSpeedRef.current) * 0.05;
 
       particles.current.forEach(p => {
-        p.update(smoothedRadialSpeedRef.current, smoothedDriftSpeedRef.current, canvas.width, canvas.height);
+        p.update(smoothedRadialSpeedRef.current, smoothedDriftSpeedRef.current, deltaSeconds, displayWidth, displayHeight);
         p.draw(ctx, currentColor);
       });
 
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    animate();
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('resize', resize);

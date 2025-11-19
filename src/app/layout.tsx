@@ -10,14 +10,15 @@ const siteUrl = "https://deepbreathingexercises.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Box Breathing Visualizer – Deep Breathing Exercises",
+    default: "Interactive Breathing Visualizer – Deep Breathing Exercises",
     template: "%s | Deep Breathing Exercises"
   },
   description:
-    "An ultra-simple box breathing visualizer with guided timing, tactile prompts, and accessibility-friendly controls.",
+    "Interactive breathing visualizer with adjustable pacing, tactile prompts, and calm-focused cues so you can downshift anytime.",
   openGraph: {
-    title: "Box Breathing Visualizer",
-    description: "Inhale 4, hold 4, exhale 4, hold 4—simple on-screen guide.",
+    title: "Interactive Breathing Visualizer",
+    description:
+      "Adjustable breaths, holds, and cues that keep your breathing slow and steady—anytime, anywhere.",
     type: "website",
     url: siteUrl,
     siteName: "Deep Breathing Exercises",
@@ -26,14 +27,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Box breathing orb expanding against a coral gradient"
+        alt: "Interactive breathing orb expanding against a coral gradient"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Box Breathing Visualizer",
-    description: "Guided 4x4x4x4 breathing visualizer with realtime cues.",
+    title: "Interactive Breathing Visualizer",
+    description:
+      "Guided interactive breathing with adjustable timing and tactile cues, designed for calm anywhere.",
     creator: "@deepbreathing",
     images: ["/og-image.png"]
   },
