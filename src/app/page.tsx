@@ -76,7 +76,6 @@ const durationGuidelines = [
 
 const bestMoments = [
   "Before events",
-  "Between tasks",
   "Post-conflict",
   "Bedtime wind-down",
   "In-flight"
@@ -183,7 +182,7 @@ export default function HomePage() {
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <p className="text-sm uppercase tracking-wider text-primary">Your pace</p>
             <p className="mt-3 text-muted-foreground">
-              Choose 3–8 seconds per phase. Smaller, quieter breaths beat "big" breaths.
+              Choose 3–8 seconds per phase. Smaller, quieter breaths beat &quot;big&quot; breaths.
             </p>
           </div>
         </section>
@@ -253,7 +252,7 @@ export default function HomePage() {
             <ul className="mt-6 space-y-3 text-base text-muted-foreground [&>li]:leading-relaxed">
               <li>• Keep it easy. If dizzy, shorten phases or pause.</li>
               <li>• Breathe nasal and quiet; feel the low belly rise.</li>
-              <li>• Exhale ends softly—don't squeeze empty.</li>
+              <li>• Exhale ends softly—don&apos;t squeeze empty.</li>
             </ul>
             <p className="mt-5 text-sm text-muted-foreground">
               Dial in a smooth cadence, then keep breathing. Small, steady breaths trump deep gasps.
