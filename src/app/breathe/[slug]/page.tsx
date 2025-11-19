@@ -18,8 +18,8 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   const page = breathingPageMap[params.slug];
   if (!page) return {};
   return {
-    title: page.metaTitle,
-    description: page.metaDescription,
+    title: page.meta.title,
+    description: page.meta.description,
     alternates: {
       canonical: `${baseUrl}/breathe/${page.slug}`
     }
@@ -46,7 +46,7 @@ export default function BreathePatternPage({ params }: { params: Params }) {
   };
 
   const heroHeader = (
-    <FadingHeroTitle label="DEEP BREATHING EXERCISES" title={page.heroTitle} subtitle={page.heroSubtitle} />
+    <FadingHeroTitle label="DEEP BREATHING EXERCISES" title={page.hero.title} subtitle={page.hero.subtitle} />
   );
 
   return (
