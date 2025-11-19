@@ -1,0 +1,106 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
+import Resonance from "@/components/resonance/Resonance";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breathingPages, breathingPageMap } from "@/data/breathing-pages";
+
+const baseUrl = "https://deepbreathingexercises.com";
+
+type Params = { slug: string };
+
+export function generateStaticParams() {
+  return breathingPages.map((page) => ({ slug: page.slug }));
+}
+
+export function generateMetadata({ params }: { params: Params }): Metadata {
+  const page = breathingPageMap[params.slug];
+  if (!page) return {};
+  return {
+    title: page.metaTitle,
+    description: page.metaDescription,
+    alternates: {
+      canonical: `${baseUrl}/breathe/${page.slug}`
+    }
+  };
+}
+
+export default function BreathePatternPage({ params }: { params: Params }) {
+  const page = breathingPageMap[params.slug];
+  if (!page) {
+    notFound();
+  }
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: page.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  };
+
+  const heroHeader = (
+    <FadingHeroTitle label="DEEP BREATHING EXERCISES" title={page.heroTitle} subtitle={page.heroSubtitle} />
+  );
+
+  return (
+    <main className="bg-transparent">
+      <JsonLd data={[faqSchema]} />
+
+      <section className="relative isolate min-h-screen w-full text-foreground">
+        <Resonance defaultMode={page.mode} className="min-h-screen" />
+        <div className="absolute inset-y-0 left-0 z-30 hidden w-full max-w-xl px-6 py-20 lg:flex lg:flex-col lg:justify-center">
+          {heroHeader}
+        </div>
+      </section>
+
+      <section className="px-4 py-10 sm:px-6 lg:px-8">
+        <div className="lg:hidden">{heroHeader}</div>
+      </section>
+
+      <section className="relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] bg-background/95 px-4 pb-20 pt-16 shadow-[0_-20px_80px_rgba(15,23,42,0.25)] backdrop-blur-sm sm:px-6 lg:px-8">
+        <div className="grid gap-6 lg:grid-cols-3">
+          {page.benefits.map((benefit) => (
+            <div key={benefit.title} className="rounded-[32px] bg-card p-6 shadow-[0_20px_50px_rgba(15,23,42,0.1)]">
+              <p className="text-sm uppercase tracking-widest text-primary">Benefit</p>
+              <h2 className="mt-2 text-2xl font-semibold text-card-foreground">{benefit.title}</h2>
+              <p className="mt-2 text-muted-foreground">{benefit.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <section className="grid gap-8 lg:grid-cols-2">
+          <div className="space-y-4 rounded-[32px] bg-card p-8 shadow-[0_25px_60px_rgba(15,23,42,0.12)]">
+            <h2 className="text-2xl font-semibold text-card-foreground">Practice notes</h2>
+            <p className="text-muted-foreground">Helpful reminders so the pattern stays gentle and sustainable.</p>
+            <ul className="space-y-4">
+              {page.practiceTips.map((tip) => (
+                <li key={tip.title}>
+                  <p className="text-sm uppercase tracking-widest text-muted-foreground">{tip.title}</p>
+                  <p className="text-base text-card-foreground">{tip.description}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div id="faq" className="space-y-4 rounded-[32px] bg-card p-8 shadow-[0_25px_60px_rgba(15,23,42,0.12)]">
+            <h2 className="text-2xl font-semibold text-card-foreground">FAQ</h2>
+            <div className="space-y-3">
+              {page.faqs.map((faq) => (
+                <details key={faq.question} className="rounded-2xl bg-muted p-4 shadow-inner">
+                  <summary className="cursor-pointer text-lg font-medium text-foreground">{faq.question}</summary>
+                  <p className="mt-2 text-sm text-muted-foreground">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  );
+}
