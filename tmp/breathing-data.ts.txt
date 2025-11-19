@@ -1,106 +1,5 @@
-import { ModeName } from "@/components/resonance/types";
-
-export interface HeroContent {
-  title: string;
-  subtitle: string;
-  intro: string;
-}
-
-export interface MetaContent {
-  title: string;
-  description: string;
-  ogTitle: string;
-  ogDescription: string;
-  ogImage: string;
-  twitterTitle: string;
-  twitterDescription: string;
-  author: string;
-  reviewer: string;
-  datePublished: string;
-  dateModified: string;
-}
-
-export interface BodySection {
-  heading: string;
-  content: string;
-}
-
-export interface Benefit {
-  title: string;
-  description: string;
-}
-
-export interface PracticeTip {
-  title: string;
-  description: string;
-}
-
-export interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-export interface HowToStep {
-  name: string;
-  instruction: string;
-  duration?: string;
-}
-
-export interface HowToContent {
-  totalTime: string;
-  difficulty: string;
-  tools: string[];
-  supplies: string[];
-  steps: HowToStep[];
-}
-
-export interface UseCase {
-  name: string;
-  description: string;
-  dose?: string;
-}
-
-export interface ResearchStudy {
-  title: string;
-  summary: string;
-}
-
-export interface ResearchQuote {
-  text: string;
-  attribution: string;
-}
-
-export interface ResearchContent {
-  studies: ResearchStudy[];
-  safety: string[];
-  quotes: ResearchQuote[];
-}
-
-export interface RelatedPattern {
-  slug: string;
-  reason: string;
-}
-
-export interface BreathingPageContent {
-  slug: string;
-  mode: ModeName;
-  hero: HeroContent;
-  meta: MetaContent;
-  body: BodySection[];
-  benefits: Benefit[];
-  practiceTips: PracticeTip[];
-  faqs: FaqItem[];
-  howTo: HowToContent;
-  useCases: UseCase[];
-  research: ResearchContent;
-  related: RelatedPattern[];
-  keywords: string[];
-  synonyms: string[];
-  frequency: string;
-}
-
-export const breathingPages: BreathingPageContent[] = [
-  {
+[
+{
     slug: "box",
     mode: ModeName.Box,
     hero: {
@@ -308,7 +207,7 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     frequency: "Daily, 1–3 minutes for resets; optionally 5–10 minutes for HRV training"
   },
-  {
+{
     slug: "4-7-8",
     mode: ModeName.Relax,
     hero: {
@@ -509,7 +408,7 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     frequency: "Nightly 3–4 cycles before bed; optional 1–3 minutes during daytime stress"
   },
-  {
+{
     slug: "coherent",
     mode: ModeName.Coherent,
     hero: {
@@ -715,7 +614,7 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     frequency: "Daily, 5–10 minutes; optional 2–3 minute resets between tasks"
   },
-  {
+{
     slug: "physiological-sigh",
     mode: ModeName.Sigh,
     hero: {
@@ -913,16 +812,4 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     frequency: "As needed for acute stress (1–3 cycles); optional 2–5 minutes daily for mood and breathing‑rate changes"
   }
-];
-
-export const breathingPageMap: Record<string, BreathingPageContent> = Object.fromEntries(
-  breathingPages.map((page) => [page.slug, page])
-) as Record<string, BreathingPageContent>;
-
-export const modeToBreathingPage = breathingPages.reduce(
-  (acc, page) => {
-    acc[page.mode] = page;
-    return acc;
-  },
-  {} as Partial<Record<ModeName, BreathingPageContent>>
-);
+]
