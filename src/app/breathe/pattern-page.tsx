@@ -1,5 +1,6 @@
-import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
 import Resonance from "@/components/resonance/Resonance";
@@ -55,6 +56,7 @@ export function PatternPage({ slug }: { slug: string }) {
   if (!page) {
     notFound();
   }
+  const canonicalUrl = `${baseUrl}/breathe/${page.slug}`;
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -69,13 +71,69 @@ export function PatternPage({ slug }: { slug: string }) {
     }))
   };
 
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: page.hero.title,
+    description: page.hero.intro || page.hero.subtitle,
+    totalTime: page.howTo.totalTime,
+    difficulty: page.howTo.difficulty,
+    step: page.howTo.steps.map((step) => ({
+      "@type": "HowToStep",
+      name: step.name,
+      text: step.instruction,
+      url: `${canonicalUrl}#how-to`,
+      performTime: step.duration
+    })),
+    tool: page.howTo.tools.length
+      ? page.howTo.tools.map((tool) => ({
+          "@type": "HowToTool",
+          name: tool
+        }))
+      : undefined,
+    supply: page.howTo.supplies.length
+      ? page.howTo.supplies.map((supply) => ({
+          "@type": "HowToSupply",
+          name: supply
+        }))
+      : undefined
+  };
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: page.meta.title,
+    description: page.meta.description,
+    author: page.meta.author
+      ? {
+          "@type": "Person",
+          name: page.meta.author
+        }
+      : undefined,
+    reviewedBy: page.meta.reviewer
+      ? {
+          "@type": "Person",
+          name: page.meta.reviewer
+        }
+      : undefined,
+    datePublished: page.meta.datePublished,
+    dateModified: page.meta.dateModified,
+    mainEntityOfPage: canonicalUrl,
+    keywords: page.keywords.join(", ")
+  };
+
+  const structuredData = [faqSchema, howToSchema, articleSchema];
+
   const heroHeader = (
-    <FadingHeroTitle label="DEEP BREATHING EXERCISES" title={page.hero.title} subtitle={page.hero.subtitle} />
+    <div className="space-y-4">
+      <FadingHeroTitle label="DEEP BREATHING EXERCISES" title={page.hero.title} subtitle={page.hero.subtitle} />
+      {page.hero.intro ? <p className="text-base text-muted-foreground">{page.hero.intro}</p> : null}
+    </div>
   );
 
   return (
     <main className="bg-transparent">
-      <JsonLd data={[faqSchema]} />
+      <JsonLd data={structuredData} />
 
       <section className="relative isolate min-h-screen w-full text-foreground">
         <Resonance defaultMode={page.mode} className="min-h-screen" />
@@ -89,7 +147,21 @@ export function PatternPage({ slug }: { slug: string }) {
       </section>
 
       <section className="relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] bg-background/95 px-4 pb-20 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-3">
+        {page.body.length ? (
+          <section className="rounded-[32px] bg-card p-8 text-card-foreground">
+            <p className="text-sm uppercase tracking-widest text-primary">Technique overview</p>
+            <div className="mt-6 space-y-6">
+              {page.body.map((section) => (
+                <div key={section.heading}>
+                  <h2 className="text-2xl font-semibold">{section.heading}</h2>
+                  <p className="mt-2 text-muted-foreground">{section.content}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        <section className="grid gap-6 lg:grid-cols-3">
           {page.benefits.map((benefit) => (
             <div key={benefit.title} className="rounded-[32px] bg-card p-6">
               <p className="text-sm uppercase tracking-widest text-primary">Benefit</p>
@@ -97,7 +169,7 @@ export function PatternPage({ slug }: { slug: string }) {
               <p className="mt-2 text-muted-foreground">{benefit.description}</p>
             </div>
           ))}
-        </div>
+        </section>
 
         <section className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-4 rounded-[32px] bg-card p-8">
@@ -124,6 +196,148 @@ export function PatternPage({ slug }: { slug: string }) {
             </div>
           </div>
         </section>
+
+        <section className="grid gap-8 lg:grid-cols-2">
+          <div id="how-to" className="space-y-6 rounded-[32px] bg-card p-8">
+            <div>
+              <p className="text-sm uppercase tracking-widest text-primary">Step-by-step</p>
+              <h2 className="text-2xl font-semibold text-card-foreground">How to practice</h2>
+              <p className="text-muted-foreground">Structured walkthrough pulled from the editorial brief.</p>
+            </div>
+
+            <dl className="grid gap-4 text-sm text-muted-foreground sm:grid-cols-2">
+              {page.howTo.totalTime ? (
+                <div>
+                  <dt className="font-semibold uppercase tracking-widest text-xs text-primary">Total time</dt>
+                  <dd className="text-base text-card-foreground">{page.howTo.totalTime}</dd>
+                </div>
+              ) : null}
+              {page.howTo.difficulty ? (
+                <div>
+                  <dt className="font-semibold uppercase tracking-widest text-xs text-primary">Difficulty</dt>
+                  <dd className="text-base text-card-foreground capitalize">{page.howTo.difficulty}</dd>
+                </div>
+              ) : null}
+              {page.howTo.tools.length ? (
+                <div className="sm:col-span-2">
+                  <dt className="font-semibold uppercase tracking-widest text-xs text-primary">Tools</dt>
+                  <dd className="text-base text-card-foreground">{page.howTo.tools.join(", ")}</dd>
+                </div>
+              ) : null}
+              {page.howTo.supplies.length ? (
+                <div className="sm:col-span-2">
+                  <dt className="font-semibold uppercase tracking-widest text-xs text-primary">Supplies</dt>
+                  <dd className="text-base text-card-foreground">{page.howTo.supplies.join(", ")}</dd>
+                </div>
+              ) : null}
+            </dl>
+
+            <ol className="space-y-4">
+              {page.howTo.steps.map((step, index) => (
+                <li key={step.name} className="flex gap-4 rounded-2xl bg-muted/70 p-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-lg font-semibold text-primary">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <p className="text-lg font-medium text-card-foreground">{step.name}</p>
+                    <p className="text-sm text-muted-foreground">{step.instruction}</p>
+                    {step.duration ? <p className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{step.duration}</p> : null}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="space-y-6 rounded-[32px] bg-card p-8">
+            <div>
+              <p className="text-sm uppercase tracking-widest text-primary">Use cases</p>
+              <h2 className="text-2xl font-semibold text-card-foreground">Where it fits</h2>
+              <p className="text-muted-foreground">Situations where this breathing cadence excels.</p>
+            </div>
+            <div className="space-y-4">
+              {page.useCases.map((useCase) => (
+                <div key={useCase.name} className="rounded-2xl border border-border/60 p-4">
+                  <p className="text-lg font-semibold text-card-foreground">{useCase.name}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{useCase.description}</p>
+                  {useCase.dose ? <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{useCase.dose}</p> : null}
+                </div>
+              ))}
+            </div>
+            {page.frequency ? (
+              <div className="rounded-2xl bg-muted/70 p-4">
+                <p className="text-sm uppercase tracking-widest text-primary">Suggested frequency</p>
+                <p className="mt-1 text-base text-card-foreground">{page.frequency}</p>
+              </div>
+            ) : null}
+          </div>
+        </section>
+
+        <section className="space-y-6 rounded-[32px] bg-card p-8">
+          <div>
+            <p className="text-sm uppercase tracking-widest text-primary">Research & safety</p>
+            <h2 className="text-2xl font-semibold text-card-foreground">What evidence says</h2>
+            <p className="text-muted-foreground">Peer-reviewed highlights and guardrails pulled from the content brief.</p>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-card-foreground">Study highlights</h3>
+              <ul className="space-y-4">
+                {page.research.studies.map((study) => (
+                  <li key={study.title} className="rounded-2xl bg-muted/70 p-4">
+                    <p className="font-semibold text-card-foreground">{study.title}</p>
+                    <p className="mt-2 text-sm text-muted-foreground">{study.summary}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-card-foreground">Safety notes</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                {page.research.safety.map((note, index) => (
+                  <li key={`${note}-${index}`} className="rounded-2xl bg-muted/40 p-3">
+                    {note}
+                  </li>
+                ))}
+              </ul>
+              {page.research.quotes.length ? (
+                <div className="space-y-3 rounded-2xl bg-background/60 p-4">
+                  {page.research.quotes.map((quote, index) => (
+                    <blockquote key={`${quote.text}-${index}`}>
+                      <p className="text-card-foreground">&quot;{quote.text}&quot;</p>
+                      <cite className="mt-2 block text-sm uppercase tracking-widest text-muted-foreground">{quote.attribution}</cite>
+                    </blockquote>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </section>
+
+        {page.related.length ? (
+          <section className="space-y-4">
+            <p className="text-sm uppercase tracking-widest text-primary">Related patterns</p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {page.related.map((relatedPattern) => {
+                const relatedPage = breathingPageMap[relatedPattern.slug];
+                return (
+                  <Link
+                    key={relatedPattern.slug}
+                    href={`/breathe/${relatedPattern.slug}`}
+                    className="group rounded-[28px] border border-border/60 p-5 transition hover:border-primary"
+                  >
+                    <p className="text-lg font-semibold text-card-foreground">
+                      {relatedPage?.hero.title ?? relatedPattern.slug}
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">{relatedPattern.reason}</p>
+                    <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">
+                      Practice →
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        ) : null}
       </section>
     </main>
   );
