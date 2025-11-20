@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit } from 'lucide-react';
+import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER } from './constants';
 import { AudioService } from './services/audioService';
 import ParticleBackground from './components/ParticleBackground';
 import Visualizer from './components/Visualizer';
 import { modeToBreathingPage } from '@/data/breathing-pages';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet';
 
 const STORAGE_KEYS = {
   STATS: 'resonance_stats',
@@ -558,8 +558,17 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         <SheetContent side="right" className="bg-transparent shadow-none outline-none border-0 p-0">
           <div className="fixed right-6 top-20 z-50 w-[360px] max-w-[calc(100vw-2rem)] rounded-[32px] border border-border/70 bg-background/95 p-7 text-foreground shadow-[0_35px_90px_rgba(15,23,42,0.25)] backdrop-blur-2xl">
           <SheetHeader className="mb-6 text-left">
-            <SheetTitle className="text-xl font-semibold text-card-foreground">Settings</SheetTitle>
-            <p className="text-sm text-muted-foreground">Adjust modes, pacing, and personalization.</p>
+            <div className="flex items-start justify-between">
+              <div>
+                <SheetTitle className="text-xl font-semibold text-card-foreground">Settings</SheetTitle>
+                <p className="text-sm text-muted-foreground">Adjust modes, pacing, and personalization.</p>
+              </div>
+              <SheetClose asChild>
+                <button className="rounded-full p-1.5 text-muted-foreground hover:bg-card hover:text-card-foreground transition-colors">
+                  <X size={20} />
+                </button>
+              </SheetClose>
+            </div>
           </SheetHeader>
           <div className="flex-1 space-y-6 overflow-y-auto pb-12">
             <div className="flex flex-col gap-4 rounded-2xl bg-card/70 p-4 shadow-inner dark:bg-card/30">
