@@ -21,6 +21,9 @@ interface CueProfile {
 export class AudioService {
   private ctx: AudioContext | null = null;
   private masterGain: GainNode | null = null;
+  private debug = false;
+  private mediaUnlocking: Promise<void> | null = null;
+  private mediaUnlocked = false;
 
   private droneNodes: { osc: OscillatorNode; panner: PannerNode; gain: GainNode }[] = [];
   private binauralNodes: { osc: OscillatorNode; pan: StereoPannerNode; gain: GainNode }[] = [];
@@ -31,7 +34,49 @@ export class AudioService {
   private musicVolume = 0.3;
   private themeColor = '#4f46e5';
 
-  constructor(options: { debug?: boolean } = {}) {}
+  constructor(options: { debug?: boolean } = {}) {
+    this.debug = Boolean(options.debug);
+  }
+
+  private log(...args: unknown[]) {
+    if (this.debug) {
+      // eslint-disable-next-line no-console
+      console.log('[AudioService]', ...args);
+    }
+  }
+
+  private async unlockWithMediaElement() {
+    if (this.mediaUnlocked || typeof window === 'undefined') return;
+    if (this.mediaUnlocking) return this.mediaUnlocking;
+
+    const src =
+      'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQAAAAA=';
+
+    this.mediaUnlocking = (async () => {
+      try {
+        const el = document.createElement('audio');
+        el.src = src;
+        el.loop = false;
+        el.autoplay = false;
+        (el as any).playsInline = true;
+        el.setAttribute('playsinline', 'true');
+        el.muted = true; // muted to satisfy autoplay but still trigger the unlock
+        el.volume = 0.0001;
+        el.load();
+        await el.play();
+        el.pause();
+        el.currentTime = 0;
+        this.mediaUnlocked = true;
+        this.log('Media element unlock success');
+      } catch (error) {
+        this.log('Media element unlock failed', error);
+      } finally {
+        this.mediaUnlocking = null;
+      }
+    })();
+
+    return this.mediaUnlocking;
+  }
 
   private initContext() {
     if (!this.ctx && typeof window !== 'undefined') {
@@ -44,29 +89,97 @@ export class AudioService {
       }
       this.masterGain = this.ctx.createGain();
       this.masterGain.connect(this.ctx.destination);
+      if (this.debug && this.ctx) {
+        this.ctx.onstatechange = () => {
+          this.log('statechange', this.ctx?.state);
+        };
+        this.log('AudioContext created', { state: this.ctx.state });
+      }
     }
   }
 
-  public async resume() {
+  /**
+   * Ensure the AudioContext is present and running.
+   * Handles Safari's "interrupted" state and recreates the context if it was closed.
+   */
+  private async ensureContextReady() {
+    this.log('ensureContextReady:begin');
     this.initContext();
-    if (!this.ctx) return;
-    
-    // Mobile browsers require explicit resume after user interaction
-    if (this.ctx.state === 'suspended') {
+    if (!this.ctx) return false;
+
+    // Fire-and-forget media element unlock; don't let a blocked play promise stall resume.
+    const unlockPromise = this.unlockWithMediaElement();
+    if (unlockPromise) {
+      unlockPromise
+        .catch((error) => this.log('Media unlock error (non-blocking)', error));
+    }
+
+    // Recreate if the context was closed by the browser.
+    const state = (this.ctx.state as AudioContextState | 'interrupted');
+    if (state === 'closed') {
+      this.ctx = null;
+      this.masterGain = null;
+      this.initContext();
+      if (!this.ctx) return false;
+    }
+
+    if (!this.masterGain && this.ctx) {
+      this.masterGain = this.ctx.createGain();
+      this.masterGain.connect(this.ctx.destination);
+    }
+
+    const readyState = (this.ctx.state as AudioContextState | 'interrupted');
+    if (readyState === 'suspended' || readyState === 'interrupted') {
       try {
+        this.log('Attempting ctx.resume()', { state: this.ctx.state });
         await this.ctx.resume();
-        // Double-check state after resume (some browsers need a moment)
+        // Some mobile browsers need a beat before the context actually unlocks
         if (this.ctx.state === 'suspended') {
-          // Retry once more after a brief delay
-          await new Promise(resolve => setTimeout(resolve, 100));
+          await new Promise(resolve => setTimeout(resolve, 120));
           await this.ctx.resume();
+        }
+        if (this.ctx.state === 'suspended') {
+          this.log('AudioContext still suspended after resume; recreating');
+          try {
+            await this.ctx.close();
+          } catch (error) {
+            this.log('ctx.close failed (can ignore)', error);
+          }
+          this.ctx = null;
+          this.masterGain = null;
+          this.initContext();
+          if (this.ctx) {
+            try {
+              await this.ctx.resume();
+            } catch (error) {
+              this.log('Recreated ctx resume failed', error);
+            }
+          }
         }
       } catch (error) {
         console.warn('AudioContext resume failed:', error);
+        return false;
       }
     }
 
-    this.playSilentUnlock();
+    if (this.masterGain && this.ctx && this.masterGain.context !== this.ctx) {
+      this.masterGain.disconnect();
+      this.masterGain.connect(this.ctx.destination);
+    }
+
+    this.log('ensureContextReady:end', { state: this.ctx.state });
+    return this.ctx.state === 'running';
+  }
+
+  public async resume() {
+    const ready = await this.ensureContextReady();
+
+    // Mobile browsers require explicit resume after user interaction
+    if (ready) {
+      this.playSilentUnlock();
+    }
+
+    return ready;
   }
 
   private playSilentUnlock() {
@@ -82,6 +195,7 @@ export class AudioService {
       const endTime = now + 0.02;
       osc.start(now);
       osc.stop(endTime);
+      this.log('playSilentUnlock fired');
       const cleanup = () => {
         osc.disconnect();
         gain.disconnect();
@@ -152,6 +266,11 @@ export class AudioService {
       return;
     }
 
+    if (this.ctx.state !== 'running') {
+      void this.resume();
+      return;
+    }
+
     const theme = colorHex || this.themeColor;
     const profile = this.getCueProfile(theme);
     const t = this.ctx.currentTime;
@@ -184,16 +303,10 @@ export class AudioService {
     });
   }
 
-  public startBinaural(beatHz: number = 10) {
+  public async startBinaural(beatHz: number = 10) {
     this.stopBinaural();
-    this.initContext();
-    if (!this.ctx || !this.masterGain) {
-      // If context is suspended, try to resume
-      if (this.ctx?.state === 'suspended') {
-        this.ctx.resume().catch(console.warn);
-      }
-      return;
-    }
+    const ready = await this.ensureContextReady();
+    if (!ready || !this.ctx || !this.masterGain) return;
 
     const t = this.ctx.currentTime;
     const baseFreq = 200;
@@ -236,16 +349,10 @@ export class AudioService {
     this.binauralNodes = [];
   }
 
-  public startDrone(colorHex: string) {
+  public async startDrone(colorHex: string) {
     this.stopDrone();
-    this.initContext();
-    if (!this.ctx || !this.masterGain) {
-      // If context is suspended, try to resume
-      if (this.ctx?.state === 'suspended') {
-        this.ctx.resume().catch(console.warn);
-      }
-      return;
-    }
+    const ready = await this.ensureContextReady();
+    if (!ready || !this.ctx || !this.masterGain) return;
 
     this.themeColor = colorHex || this.themeColor;
     const profile = this.getCueProfile(this.themeColor);
@@ -300,16 +407,10 @@ export class AudioService {
     this.droneNodes = [];
   }
 
-  public startPinkNoise() {
+  public async startPinkNoise() {
     this.stopPinkNoise();
-    this.initContext();
-    if (!this.ctx || !this.masterGain) {
-      // If context is suspended, try to resume
-      if (this.ctx?.state === 'suspended') {
-        this.ctx.resume().catch(console.warn);
-      }
-      return;
-    }
+    const ready = await this.ensureContextReady();
+    if (!ready || !this.ctx || !this.masterGain) return;
 
     const buffer = this.generatePinkNoiseBuffer();
     if (!buffer) return;
@@ -341,6 +442,28 @@ export class AudioService {
     this.noiseNode.gain.gain.linearRampToValueAtTime(0, t + 1);
     this.noiseNode.source.stop(t + 1.1);
     this.noiseNode = null;
+  }
+
+  public getDebugState() {
+    return {
+      ctx: {
+        state: this.ctx?.state,
+        sampleRate: this.ctx?.sampleRate,
+        currentTime: this.ctx?.currentTime
+      },
+      nodes: {
+        drone: this.droneNodes.length,
+        binaural: this.binauralNodes.length,
+        noise: Boolean(this.noiseNode)
+      },
+      gain: {
+        master: this.masterGain?.gain.value,
+        cueVolume: this.cueVolume,
+        musicVolume: this.musicVolume,
+        muted: this.isMuted
+      },
+      themeColor: this.themeColor
+    };
   }
 
   private generatePinkNoiseBuffer() {

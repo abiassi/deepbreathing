@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation } from './types';
@@ -14,7 +14,8 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/comp
 const STORAGE_KEYS = {
   STATS: 'resonance_stats',
   SETTINGS: 'resonance_settings',
-  THEME: 'resonance_theme'
+  THEME: 'resonance_theme',
+  SOUND_OK: 'resonance_sound_ok'
 };
 
 interface ResonanceProps {
@@ -48,6 +49,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const [themePreference, setThemePreference] = useState<ThemePreference>('system');
   const [systemPrefersDark, setSystemPrefersDark] = useState(false);
   const [themeReady, setThemeReady] = useState(false);
+  const isIOS = useMemo(
+    () => (typeof navigator !== 'undefined' ? /iP(hone|od|ad)/i.test(navigator.userAgent) : false),
+    []
+  );
 
   // Client-side hydration check
   const [mounted, setMounted] = useState(false);
@@ -77,6 +82,11 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         setTotalMinutes(JSON.parse(savedStats).totalMinutes || 0);
     }
 
+    const soundFlag = localStorage.getItem(STORAGE_KEYS.SOUND_OK);
+    if (soundFlag === 'true') {
+      setSoundStatus('confirmed');
+    }
+
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     setSystemPrefersDark(mediaQuery.matches);
 
@@ -94,6 +104,9 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const [isRunning, setIsRunning] = useState(false);
   const [muted, setMuted] = useState(false);
   const [controlsOpen, setControlsOpen] = useState(false);
+  const [soundStatus, setSoundStatus] = useState<'unknown' | 'confirmed'>('unknown');
+  const [soundHintVisible, setSoundHintVisible] = useState(false);
+  const [soundHintMounted, setSoundHintMounted] = useState(false);
   
   // Animation State
   const [scale, setScale] = useState(0); 
@@ -103,13 +116,18 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   // Refs
   const audioServiceRef = useRef<AudioService | null>(null);
+  const soundHintTimeoutRef = useRef<number | null>(null);
+  const soundHintUnmountRef = useRef<number | null>(null);
   
-  const getAudioService = () => {
+  const getAudioService = useCallback(() => {
       if (!audioServiceRef.current) {
-          audioServiceRef.current = new AudioService({});
+          const debugEnabled =
+            typeof window !== 'undefined' &&
+            (window as any).__RESONANCE_DEBUG === true;
+          audioServiceRef.current = new AudioService({ debug: debugEnabled });
       }
       return audioServiceRef.current;
-  };
+  }, []);
 
   const requestRef = useRef<number | null>(null);
   const phaseStartRef = useRef<number>(0);
@@ -127,7 +145,51 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   useEffect(() => {
     getAudioService().setThemeColor(themeColor);
-  }, [themeColor]);
+  }, [getAudioService, themeColor]);
+
+  // Proactively unlock mobile audio on the first user interaction
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const audio = getAudioService();
+    let unlocked = false;
+
+    const unlock = () => {
+      if (unlocked) return;
+      unlocked = true;
+      void audio.resume();
+    };
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        void audio.resume();
+      }
+    };
+
+    window.addEventListener('pointerdown', unlock, { once: true, passive: true });
+    window.addEventListener('touchstart', unlock, { once: true, passive: true });
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      window.removeEventListener('pointerdown', unlock);
+      window.removeEventListener('touchstart', unlock);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
+  }, [getAudioService]);
+
+  useEffect(() => {
+    if (soundHintVisible) {
+      setSoundHintMounted(true);
+      if (soundHintUnmountRef.current) window.clearTimeout(soundHintUnmountRef.current);
+    } else if (soundHintMounted) {
+      soundHintUnmountRef.current = window.setTimeout(() => setSoundHintMounted(false), 400);
+    }
+  }, [soundHintVisible, soundHintMounted]);
+
+  useEffect(() => {
+    return () => {
+      if (soundHintTimeoutRef.current) window.clearTimeout(soundHintTimeoutRef.current);
+      if (soundHintUnmountRef.current) window.clearTimeout(soundHintUnmountRef.current);
+    };
+  }, []);
   
   // --- Persistence Effects ---
   useEffect(() => {
@@ -217,28 +279,39 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const handleTogglePlay = useCallback(async () => {
     const audio = getAudioService();
     if (!isRunning) {
+      // Resume audio context first (critical for mobile)
+      const resumed = await audio.resume();
+      if (!resumed) {
+        setInstruction("Tap once to enable sound");
+        return;
+      }
+
       setIsRunning(true);
       setPhase(BreathingPhase.Inhale);
       phaseStartRef.current = performance.now();
       
-      // Resume audio context first (critical for mobile)
-      await audio.resume();
-      
       // Adaptive Audio Logic
       if (activeMode === ModeName.Relax || activeMode === ModeName.Coherent) {
           // Relax/Coherent get Pink Noise (Rain)
-          audio.startPinkNoise();
+          await audio.startPinkNoise();
           // Relax gets Delta Waves (Sleep), Coherent gets Alpha
           const hz = activeMode === ModeName.Relax ? 2 : 10;
-          audio.startBinaural(hz);
+          await audio.startBinaural(hz);
       } else {
           // Others get Drone Synth + Alpha
-          audio.startDrone(themeColor);
-          audio.startBinaural(10);
+          await audio.startDrone(themeColor);
+          await audio.startBinaural(10);
       }
 
       audio.playCue('inhale', themeColor);
       setInstruction("Inhale slowly...");
+
+      if (isIOS && soundStatus !== 'confirmed') {
+        setSoundHintVisible(true);
+        setSoundHintMounted(true);
+        if (soundHintTimeoutRef.current) window.clearTimeout(soundHintTimeoutRef.current);
+        soundHintTimeoutRef.current = window.setTimeout(() => setSoundHintVisible(false), 4200);
+      }
     } else {
       setIsRunning(false);
       setPhase(BreathingPhase.Idle);
@@ -248,7 +321,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       audio.stopBinaural();
       setScale(0);
     }
-  }, [isRunning, activeMode, themeColor]);
+  }, [isRunning, activeMode, themeColor, getAudioService, isIOS, soundStatus]);
 
   const handleStop = () => {
     const audio = getAudioService();
@@ -296,6 +369,13 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     setSpeedMultiplier(rec.suggestedSpeedMultiplier);
     setAiReasoning(rec.explanation);
     handleStop();
+  };
+
+  const markSoundConfirmed = () => {
+    setSoundStatus('confirmed');
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(STORAGE_KEYS.SOUND_OK, 'true');
+    }
   };
 
   const toggleMute = () => {
@@ -399,7 +479,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
 
     requestRef.current = requestAnimationFrame(animate);
-  }, [activeMode, isRunning, phase, speedMultiplier, themeColor]);
+  }, [activeMode, getAudioService, isRunning, phase, speedMultiplier, themeColor]);
 
   useEffect(() => {
     if (isRunning) {
@@ -553,6 +633,21 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
             onClick={handleTogglePlay}
         />
       </main>
+
+      {soundHintMounted && (
+        <div className="pointer-events-none fixed bottom-6 left-0 right-0 z-30 flex justify-center px-4 transition-all duration-500 ease-out">
+          <div
+            className={`pointer-events-auto max-w-md rounded-2xl bg-card/90 px-4 py-3 text-sm text-card-foreground shadow-lg backdrop-blur supports-[backdrop-filter]:bg-card/70 transition-all duration-500 ease-out ${
+              soundHintVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <Volume2 size={18} className="shrink-0" style={{ color: themeColor }} />
+              <span>If you do not hear any sound, make sure your phone is not on silent.</span>
+            </div>
+          </div>
+        </div>
+      )}
       
       <Sheet open={controlsOpen} onOpenChange={setControlsOpen}>
         <SheetContent side="right" className="bg-transparent shadow-none outline-none border-0 p-0">
@@ -588,6 +683,20 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                   {muted ? 'Sound Off' : 'Sound On'}
                 </button>
               </div>
+              {soundStatus !== 'confirmed' && (
+                <div className="space-y-2 rounded-xl border border-border/60 bg-background/50 p-3 text-xs text-muted-foreground shadow-inner dark:border-border/40 dark:bg-background/20">
+                  <p className="font-semibold text-card-foreground">No sound? Flip your mute switch off and raise volume.</p>
+                  <p>iOS Safari can silence Web Audio when the ringer is off. Try the side switch/volume buttons, then tap Play again.</p>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={markSoundConfirmed}
+                      className="flex-1 rounded-lg bg-card px-3 py-2 text-sm font-medium text-card-foreground shadow-sm"
+                    >
+                      I heard it
+                    </button>
+                  </div>
+                </div>
+              )}
               <div className="rounded-2xl bg-background/50 p-3 text-sm text-muted-foreground shadow-inner dark:bg-background/20">
                 <div className="flex items-center justify-between gap-3">
                   <div>
