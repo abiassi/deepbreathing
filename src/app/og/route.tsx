@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
             position: 'relative',
           }}
         >
-          {/* Background particles effect */}
+          {/* Background particles effect - using fixed positions for edge runtime */}
           <div
             style={{
               position: 'absolute',
@@ -51,27 +51,42 @@ export async function GET(request: NextRequest) {
               opacity: 0.3,
             }}
           >
-            {Array.from({ length: 20 }).map((_, i) => {
-              const size = Math.random() * 4 + 2;
-              const x = Math.random() * 1200;
-              const y = Math.random() * 630;
-              const opacity = Math.random() * 0.5 + 0.2;
-              return (
-                <div
-                  key={i}
-                  style={{
-                    position: 'absolute',
-                    left: x,
-                    top: y,
-                    width: size,
-                    height: size,
-                    borderRadius: '50%',
-                    background: color,
-                    opacity,
-                  }}
-                />
-              );
-            })}
+            {[
+              { x: 100, y: 80, size: 3, opacity: 0.4 },
+              { x: 300, y: 120, size: 2, opacity: 0.3 },
+              { x: 500, y: 90, size: 4, opacity: 0.5 },
+              { x: 700, y: 150, size: 2.5, opacity: 0.35 },
+              { x: 900, y: 100, size: 3.5, opacity: 0.45 },
+              { x: 1100, y: 130, size: 2, opacity: 0.3 },
+              { x: 150, y: 300, size: 3, opacity: 0.4 },
+              { x: 350, y: 350, size: 2.5, opacity: 0.35 },
+              { x: 550, y: 320, size: 4, opacity: 0.5 },
+              { x: 750, y: 380, size: 2, opacity: 0.3 },
+              { x: 950, y: 340, size: 3.5, opacity: 0.45 },
+              { x: 1150, y: 360, size: 2.5, opacity: 0.35 },
+              { x: 200, y: 500, size: 3, opacity: 0.4 },
+              { x: 400, y: 550, size: 2, opacity: 0.3 },
+              { x: 600, y: 520, size: 4, opacity: 0.5 },
+              { x: 800, y: 580, size: 2.5, opacity: 0.35 },
+              { x: 1000, y: 540, size: 3.5, opacity: 0.45 },
+              { x: 50, y: 250, size: 2, opacity: 0.3 },
+              { x: 250, y: 450, size: 3, opacity: 0.4 },
+              { x: 1050, y: 480, size: 2.5, opacity: 0.35 },
+            ].map((particle, i) => (
+              <div
+                key={i}
+                style={{
+                  position: 'absolute',
+                  left: particle.x,
+                  top: particle.y,
+                  width: particle.size,
+                  height: particle.size,
+                  borderRadius: '50%',
+                  background: color,
+                  opacity: particle.opacity,
+                }}
+              />
+            ))}
           </div>
 
           {/* Outer glow ring */}
@@ -158,9 +173,12 @@ export async function GET(request: NextRequest) {
       }
     );
   } catch (e: any) {
-    console.log(`${e.message}`);
-    return new Response(`Failed to generate the image`, {
+    console.error('OG Image generation error:', e);
+    return new Response(`Failed to generate the image: ${e.message}`, {
       status: 500,
+      headers: {
+        'Content-Type': 'text/plain',
+      },
     });
   }
 }
