@@ -118,8 +118,8 @@ export const breathingPages: BreathingPageContent[] = [
       twitterDescription: "Equal‑count breathing to steady arousal in minutes. Evidence‑based, safe pacing.",
       author: "Resonance Editorial Team",
       reviewer: "",
-      datePublished: "2025-11-19",
-      dateModified: "2025-11-19"
+      datePublished: "2025-11-17",
+      dateModified: "2025-11-20"
     },
     body: [
       {
@@ -326,8 +326,8 @@ export const breathingPages: BreathingPageContent[] = [
       twitterDescription: "Exhale‑emphasized cadence to relax quickly. Evidence, safety, and step‑by‑step practice.",
       author: "Resonance Editorial Team",
       reviewer: "",
-      datePublished: "2025-11-19",
-      dateModified: "2025-11-19"
+      datePublished: "2025-11-17",
+      dateModified: "2025-11-20"
     },
     body: [
       {
@@ -527,8 +527,8 @@ export const breathingPages: BreathingPageContent[] = [
       twitterDescription: "Breathe ~5–6 times/min to maximize HRV. Evidence, safety, and step‑by‑step practice.",
       author: "Resonance Editorial Team",
       reviewer: "",
-      datePublished: "2025-11-19",
-      dateModified: "2025-11-19"
+      datePublished: "2025-11-17",
+      dateModified: "2025-11-20"
     },
     body: [
       {
@@ -733,8 +733,8 @@ export const breathingPages: BreathingPageContent[] = [
       twitterDescription: "Double inhale, long exhale for rapid calm. Research, safety, and a guided timer.",
       author: "Resonance Editorial Team",
       reviewer: "",
-      datePublished: "2025-11-19",
-      dateModified: "2025-11-19"
+      datePublished: "2025-11-17",
+      dateModified: "2025-11-20"
     },
     body: [
       {
