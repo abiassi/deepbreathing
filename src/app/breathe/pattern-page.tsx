@@ -148,9 +148,9 @@ export function PatternPage({ slug }: { slug: string }) {
 
       <section className="relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] bg-background/95 px-4 pb-20 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
         {page.body.length ? (
-          <section className="rounded-[32px] bg-card p-8 text-card-foreground">
+          <section className="glow-card rounded-[32px] border border-border bg-card p-8 text-card-foreground">
             <p className="text-sm uppercase tracking-widest text-primary">Technique overview</p>
-            <div className="mt-6 space-y-6">
+            <div className="mt-6 grid gap-6 lg:grid-cols-2">
               {page.body.map((section) => (
                 <div key={section.heading}>
                   <h2 className="text-2xl font-semibold">{section.heading}</h2>
@@ -163,7 +163,7 @@ export function PatternPage({ slug }: { slug: string }) {
 
         <section className="grid gap-6 lg:grid-cols-3">
           {page.benefits.map((benefit) => (
-            <div key={benefit.title} className="rounded-[32px] bg-card p-6">
+            <div key={benefit.title} className="glow-card rounded-[32px] border border-border bg-card p-6">
               <p className="text-sm uppercase tracking-widest text-primary">Benefit</p>
               <h2 className="mt-2 text-2xl font-semibold text-card-foreground">{benefit.title}</h2>
               <p className="mt-2 text-muted-foreground">{benefit.description}</p>
@@ -172,33 +172,7 @@ export function PatternPage({ slug }: { slug: string }) {
         </section>
 
         <section className="grid gap-8 lg:grid-cols-2">
-          <div className="space-y-4 rounded-[32px] bg-card p-8">
-            <h2 className="text-2xl font-semibold text-card-foreground">Practice notes</h2>
-            <p className="text-muted-foreground">Helpful reminders so the pattern stays gentle and sustainable.</p>
-            <ul className="space-y-4">
-              {page.practiceTips.map((tip) => (
-                <li key={tip.title}>
-                  <p className="text-sm uppercase tracking-widest text-muted-foreground">{tip.title}</p>
-                  <p className="text-base text-card-foreground">{tip.description}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div id="faq" className="space-y-4 rounded-[32px] bg-card p-8">
-            <h2 className="text-2xl font-semibold text-card-foreground">FAQ</h2>
-            <div className="space-y-3">
-              {page.faqs.map((faq) => (
-                <details key={faq.question} className="rounded-2xl bg-muted p-4">
-                  <summary className="cursor-pointer text-lg font-medium text-foreground">{faq.question}</summary>
-                  <p className="mt-2 text-sm text-muted-foreground">{faq.answer}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="grid gap-8 lg:grid-cols-2">
-          <div id="how-to" className="space-y-6 rounded-[32px] bg-card p-8">
+          <div id="how-to" className="glow-card space-y-6 rounded-[32px] border border-border bg-card p-8">
             <div>
               <p className="text-sm uppercase tracking-widest text-primary">Step-by-step</p>
               <h2 className="text-2xl font-semibold text-card-foreground">How to practice</h2>
@@ -248,7 +222,7 @@ export function PatternPage({ slug }: { slug: string }) {
             </ol>
           </div>
 
-          <div className="space-y-6 rounded-[32px] bg-card p-8">
+          <div className="glow-card space-y-6 rounded-[32px] border border-border bg-card p-8">
             <div>
               <p className="text-sm uppercase tracking-widest text-primary">Use cases</p>
               <h2 className="text-2xl font-semibold text-card-foreground">Where it fits</h2>
@@ -272,7 +246,40 @@ export function PatternPage({ slug }: { slug: string }) {
           </div>
         </section>
 
-        <section className="space-y-6 rounded-[32px] bg-card p-8">
+        <section className="grid gap-8 lg:grid-cols-2">
+          <div className="glow-card space-y-6 rounded-[32px] border border-border bg-card p-8">
+            <div>
+              <p className="text-sm uppercase tracking-widest text-primary">Practice notes</p>
+              <h2 className="text-2xl font-semibold text-card-foreground">Keep it gentle</h2>
+              <p className="text-muted-foreground">Helpful reminders so the pattern stays sustainable day after day.</p>
+            </div>
+            <ul className="space-y-4">
+              {page.practiceTips.map((tip) => (
+                <li key={tip.title}>
+                  <p className="text-sm uppercase tracking-widest text-muted-foreground">{tip.title}</p>
+                  <p className="text-base text-card-foreground">{tip.description}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div id="faq" className="glow-card space-y-6 rounded-[32px] border border-border bg-card p-8">
+            <div>
+              <p className="text-sm uppercase tracking-widest text-primary">FAQ</p>
+              <h2 className="text-2xl font-semibold text-card-foreground">Common questions</h2>
+              <p className="text-muted-foreground">Evidence-backed answers we hear from practitioners most often.</p>
+            </div>
+            <div className="space-y-3">
+              {page.faqs.map((faq) => (
+                <details key={faq.question} className="rounded-2xl bg-muted p-4">
+                  <summary className="cursor-pointer text-lg font-medium text-foreground">{faq.question}</summary>
+                  <p className="mt-2 text-sm text-muted-foreground">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="glow-card space-y-6 rounded-[32px] border border-border bg-card p-8">
           <div>
             <p className="text-sm uppercase tracking-widest text-primary">Research & safety</p>
             <h2 className="text-2xl font-semibold text-card-foreground">What evidence says</h2>
@@ -292,9 +299,9 @@ export function PatternPage({ slug }: { slug: string }) {
             </div>
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-card-foreground">Safety notes</h3>
-              <ul className="space-y-3 text-sm text-muted-foreground">
+              <ul className="grid grid-cols-1 gap-3 text-sm text-card-foreground sm:grid-cols-2">
                 {page.research.safety.map((note, index) => (
-                  <li key={`${note}-${index}`} className="rounded-2xl bg-muted/40 p-3">
+                  <li key={`${note}-${index}`} className="rounded-2xl border border-border/60 bg-muted/60 p-4">
                     {note}
                   </li>
                 ))}
