@@ -99,12 +99,6 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
           <Pause size={56} className="fill-white text-white opacity-90 drop-shadow-md" />
         </div>
       </button>
-
-      {instructions && instructions !== 'Ready to start?' && instructions !== 'Paused' && (
-        <div className="pointer-events-none absolute -bottom-16 w-full text-center">
-          <p className="text-lg font-medium tracking-wide text-muted-foreground">{instructions}</p>
-        </div>
-      )}
     </div>
   );
 };
