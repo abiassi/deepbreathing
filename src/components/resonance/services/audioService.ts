@@ -140,8 +140,9 @@ export class AudioService {
         }
         if (this.ctx.state === 'suspended') {
           this.log('AudioContext still suspended after resume; recreating');
+          const oldCtx = this.ctx;
           try {
-            await this.ctx.close();
+            await oldCtx.close();
           } catch (error) {
             this.log('ctx.close failed (can ignore)', error);
           }
@@ -150,7 +151,7 @@ export class AudioService {
           this.initContext();
           if (this.ctx) {
             try {
-              await this.ctx.resume();
+              await (this.ctx as AudioContext).resume();
             } catch (error) {
               this.log('Recreated ctx resume failed', error);
             }
@@ -167,8 +168,8 @@ export class AudioService {
       this.masterGain.connect(this.ctx.destination);
     }
 
-    this.log('ensureContextReady:end', { state: this.ctx.state });
-    return this.ctx.state === 'running';
+    this.log('ensureContextReady:end', { state: this.ctx?.state });
+    return this.ctx?.state === 'running';
   }
 
   public async resume() {
