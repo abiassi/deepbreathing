@@ -651,150 +651,150 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       
       <Sheet open={controlsOpen} onOpenChange={setControlsOpen}>
         <SheetContent side="right" className="bg-transparent shadow-none outline-none border-0 p-0">
-          <div className="fixed right-6 top-20 z-50 w-[360px] max-w-[calc(100vw-2rem)] rounded-[32px] border border-border/70 bg-background/95 p-7 text-foreground shadow-[0_35px_90px_rgba(15,23,42,0.25)] backdrop-blur-2xl">
-          <SheetHeader className="mb-6 text-left">
-            <div className="flex items-start justify-between">
-              <div>
-                <SheetTitle className="text-xl font-semibold text-card-foreground">Settings</SheetTitle>
-                <p className="text-sm text-muted-foreground">Adjust modes, pacing, and personalization.</p>
+          <div className="fixed right-4 top-4 z-50 w-[360px] max-h-[calc(100vh-2rem)] max-w-[calc(100vw-2rem)] rounded-[32px] border border-border/70 bg-background/95 p-7 text-foreground shadow-[0_35px_90px_rgba(15,23,42,0.25)] backdrop-blur-2xl flex flex-col overflow-hidden sm:right-6 sm:top-20 sm:max-h-[calc(100vh-5rem)]">
+            <SheetHeader className="mb-6 text-left">
+              <div className="flex items-start justify-between">
+                <div>
+                  <SheetTitle className="text-xl font-semibold text-card-foreground">Settings</SheetTitle>
+                  <p className="text-sm text-muted-foreground">Adjust modes, pacing, and personalization.</p>
+                </div>
+                <SheetClose asChild>
+                  <button className="rounded-full p-1.5 text-muted-foreground hover:bg-card hover:text-card-foreground transition-colors">
+                    <X size={20} />
+                  </button>
+                </SheetClose>
               </div>
-              <SheetClose asChild>
-                <button className="rounded-full p-1.5 text-muted-foreground hover:bg-card hover:text-card-foreground transition-colors">
-                  <X size={20} />
-                </button>
-              </SheetClose>
-            </div>
-          </SheetHeader>
-          <div className="flex-1 space-y-6 overflow-y-auto pb-12">
-            <div className="flex flex-col gap-4 rounded-2xl bg-card/70 p-4 shadow-inner dark:bg-card/30">
-              <div>
-                <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Session</p>
-                <p className="text-3xl font-semibold text-card-foreground tabular-nums">
-                  {Math.floor(sessionSeconds / 60)}:{String(sessionSeconds % 60).padStart(2, '0')}
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={toggleMute}
-                  className={`flex flex-1 items-center justify-center rounded-xl px-3 py-2 text-sm font-medium transition ${
-                    muted ? 'bg-foreground text-background' : 'bg-card text-card-foreground'
-                  }`}
-                >
-                  {muted ? 'Sound Off' : 'Sound On'}
-                </button>
-              </div>
-              {soundStatus !== 'confirmed' && (
-                <div className="space-y-2 rounded-xl border border-border/60 bg-background/50 p-3 text-xs text-muted-foreground shadow-inner dark:border-border/40 dark:bg-background/20">
-                  <p className="font-semibold text-card-foreground">No sound? Flip your mute switch off and raise volume.</p>
-                  <p>iOS Safari can silence Web Audio when the ringer is off. Try the side switch/volume buttons, then tap Play again.</p>
-                  <div className="flex gap-2">
+            </SheetHeader>
+            <div className="flex-1 space-y-6 overflow-y-auto pb-12 min-h-0">
+              <div className="flex flex-col gap-4 rounded-2xl bg-card/70 p-4 shadow-inner dark:bg-card/30">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Session</p>
+                  <p className="text-3xl font-semibold text-card-foreground tabular-nums">
+                    {Math.floor(sessionSeconds / 60)}:{String(sessionSeconds % 60).padStart(2, '0')}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={toggleMute}
+                    className={`flex flex-1 items-center justify-center rounded-xl px-3 py-2 text-sm font-medium transition ${
+                      muted ? 'bg-foreground text-background' : 'bg-card text-card-foreground'
+                    }`}
+                  >
+                    {muted ? 'Sound Off' : 'Sound On'}
+                  </button>
+                </div>
+                {soundStatus !== 'confirmed' && (
+                  <div className="space-y-2 rounded-xl border border-border/60 bg-background/50 p-3 text-xs text-muted-foreground shadow-inner dark:border-border/40 dark:bg-background/20">
+                    <p className="font-semibold text-card-foreground">No sound? Flip your mute switch off and raise volume.</p>
+                    <p>iOS Safari can silence Web Audio when the ringer is off. Try the side switch/volume buttons, then tap Play again.</p>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={markSoundConfirmed}
+                        className="flex-1 rounded-lg bg-card px-3 py-2 text-sm font-medium text-card-foreground shadow-sm"
+                      >
+                        I heard it
+                      </button>
+                    </div>
+                  </div>
+                )}
+                <div className="rounded-2xl bg-background/50 p-3 text-sm text-muted-foreground shadow-inner dark:bg-background/20">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Appearance</p>
+                      <p className="text-base font-semibold text-card-foreground">{appearanceLabel}</p>
+                    </div>
                     <button
-                      onClick={markSoundConfirmed}
-                      className="flex-1 rounded-lg bg-card px-3 py-2 text-sm font-medium text-card-foreground shadow-sm"
+                      type="button"
+                      role="switch"
+                      aria-checked={isDarkTheme}
+                      onClick={handleThemeToggle}
+                      className={`relative inline-flex h-9 w-16 items-center rounded-full border border-border/60 px-1 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:border-border/40 ${isDarkTheme ? 'bg-primary/80 text-primary-foreground' : 'bg-muted'}`}
                     >
-                      I heard it
+                      <span
+                        className={`flex h-7 w-7 items-center justify-center rounded-full bg-card text-foreground shadow-sm transition-transform ${isDarkTheme ? 'translate-x-6' : 'translate-x-0'}`}
+                      >
+                        {isDarkTheme ? <Moon size={16} /> : <Sun size={16} />}
+                      </span>
                     </button>
                   </div>
+                  {themePreference !== 'system' ? (
+                    <button
+                      type="button"
+                      onClick={handleThemeReset}
+                      className="mt-2 text-left text-xs font-medium text-muted-foreground underline decoration-dotted underline-offset-2 transition hover:text-card-foreground"
+                    >
+                      Match system default
+                    </button>
+                  ) : (
+                    <p className="mt-2 text-xs text-muted-foreground">Following your device preference.</p>
+                  )}
+                </div>
+              </div>
+              {aiReasoning && (
+                <div className="rounded-xl border border-border/70 bg-card/70 p-4 text-sm text-card-foreground shadow-sm dark:bg-card/30">
+                  <div className="mb-1 flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-primary">
+                    AI Suggestion
+                    <button onClick={() => setAiReasoning(null)} className="text-muted-foreground underline hover:text-primary">
+                      Dismiss
+                    </button>
+                  </div>
+                  {aiReasoning}
                 </div>
               )}
-              <div className="rounded-2xl bg-background/50 p-3 text-sm text-muted-foreground shadow-inner dark:bg-background/20">
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Appearance</p>
-                    <p className="text-base font-semibold text-card-foreground">{appearanceLabel}</p>
+
+              {!isRunning ? (
+                <>
+                  <div className="glass-panel flex flex-wrap justify-between gap-1 rounded-2xl p-2">
+                    {Object.values(BREATHING_PATTERNS).map((m) => (
+                      <button
+                        key={m.name}
+                        onClick={() => handleModeSelect(m.name)}
+                        className={`flex-1 py-2 px-3 text-xs font-medium rounded-xl transition-all whitespace-nowrap ${
+                          activeMode === m.name
+                            ? 'bg-card text-card-foreground shadow-sm'
+                            : 'text-muted-foreground hover:bg-card/60 dark:hover:bg-card/30'
+                        }`}
+                      >
+                        {m.name === ModeName.Sigh ? 'Sigh' : m.name.split(' ')[0]}
+                      </button>
+                    ))}
                   </div>
-                  <button
-                    type="button"
-                    role="switch"
-                    aria-checked={isDarkTheme}
-                    onClick={handleThemeToggle}
-                    className={`relative inline-flex h-9 w-16 items-center rounded-full border border-border/60 px-1 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:border-border/40 ${isDarkTheme ? 'bg-primary/80 text-primary-foreground' : 'bg-muted'}`}
-                  >
-                    <span
-                      className={`flex h-7 w-7 items-center justify-center rounded-full bg-card text-foreground shadow-sm transition-transform ${isDarkTheme ? 'translate-x-6' : 'translate-x-0'}`}
-                    >
-                      {isDarkTheme ? <Moon size={16} /> : <Sun size={16} />}
-                    </span>
-                  </button>
+
+                  <div className="space-y-4 rounded-2xl bg-card/70 p-4 shadow-inner dark:bg-card/30">
+                    <div className="space-y-1">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pattern</p>
+                      <p className="text-base text-card-foreground">{currentPattern.description}</p>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        <span>Speed</span>
+                        <span className="text-sm text-card-foreground">{speedMultiplier.toFixed(1)}s per phase</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Turtle className="h-4 w-4 text-muted-foreground" aria-hidden />
+                        <input
+                          type="range"
+                          min="0.5"
+                          max="2.0"
+                          step="0.1"
+                          value={speedMultiplier}
+                          onChange={(e) => setSpeedMultiplier(parseFloat(e.target.value))}
+                          className="h-2 w-full cursor-pointer appearance-none rounded-full bg-muted accent-primary"
+                          aria-label="Breath speed"
+                        />
+                        <Rabbit className="h-4 w-4 text-muted-foreground" aria-hidden />
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="rounded-2xl bg-muted/60 p-4 text-sm text-muted-foreground dark:bg-muted/30">
+                  Pause the session to switch modes or adjust pacing.
                 </div>
-                {themePreference !== 'system' ? (
-                  <button
-                    type="button"
-                    onClick={handleThemeReset}
-                    className="mt-2 text-left text-xs font-medium text-muted-foreground underline decoration-dotted underline-offset-2 transition hover:text-card-foreground"
-                  >
-                    Match system default
-                  </button>
-                ) : (
-                  <p className="mt-2 text-xs text-muted-foreground">Following your device preference.</p>
-                )}
-              </div>
+              )}
+
+              {renderStats()}
             </div>
-            {aiReasoning && (
-              <div className="rounded-xl border border-border/70 bg-card/70 p-4 text-sm text-card-foreground shadow-sm dark:bg-card/30">
-                <div className="mb-1 flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-primary">
-                  AI Suggestion
-                  <button onClick={() => setAiReasoning(null)} className="text-muted-foreground underline hover:text-primary">
-                    Dismiss
-                  </button>
-                </div>
-                {aiReasoning}
-              </div>
-            )}
-
-            {!isRunning ? (
-              <>
-                <div className="glass-panel flex flex-wrap justify-between gap-1 rounded-2xl p-2">
-                  {Object.values(BREATHING_PATTERNS).map((m) => (
-                    <button
-                      key={m.name}
-                      onClick={() => handleModeSelect(m.name)}
-                      className={`flex-1 py-2 px-3 text-xs font-medium rounded-xl transition-all whitespace-nowrap ${
-                        activeMode === m.name
-                          ? 'bg-card text-card-foreground shadow-sm'
-                          : 'text-muted-foreground hover:bg-card/60 dark:hover:bg-card/30'
-                      }`}
-                    >
-                      {m.name === ModeName.Sigh ? 'Sigh' : m.name.split(' ')[0]}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="space-y-4 rounded-2xl bg-card/70 p-4 shadow-inner dark:bg-card/30">
-                  <div className="space-y-1">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pattern</p>
-                    <p className="text-base text-card-foreground">{currentPattern.description}</p>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      <span>Speed</span>
-                      <span className="text-sm text-card-foreground">{speedMultiplier.toFixed(1)}s per phase</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Turtle className="h-4 w-4 text-muted-foreground" aria-hidden />
-                      <input
-                        type="range"
-                        min="0.5"
-                        max="2.0"
-                        step="0.1"
-                        value={speedMultiplier}
-                        onChange={(e) => setSpeedMultiplier(parseFloat(e.target.value))}
-                        className="h-2 w-full cursor-pointer appearance-none rounded-full bg-muted accent-primary"
-                        aria-label="Breath speed"
-                      />
-                      <Rabbit className="h-4 w-4 text-muted-foreground" aria-hidden />
-                    </div>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <div className="rounded-2xl bg-muted/60 p-4 text-sm text-muted-foreground dark:bg-muted/30">
-                Pause the session to switch modes or adjust pacing.
-              </div>
-            )}
-
-            {renderStats()}
-          </div>
           </div>
         </SheetContent>
       </Sheet>
