@@ -124,19 +124,19 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What it is",
-        content: "Box breathing, also called square or four-square breathing, paces the breath into four equal phases. A common pattern is 4 seconds inhale, 4 seconds hold, 4 seconds exhale, 4 seconds hold. The aim is smoothness, not big breaths. Breathe quietly through the nose, let the belly rise on inhale, and keep the jaw and shoulders relaxed. Choose a count that feels easy (3-6 seconds) and only scale up when it stays comfortable. If air hunger or light-headedness shows up, shorten the holds or switch to equal inhale and exhale with no holds while keeping the same total cycle time."
+        content: "Four equal phases: inhale (4s), hold (4s), exhale (4s), hold (4s). Adjust counts to 3–6 seconds for comfort. Breathe quietly through the nose, keep shoulders and jaw soft, let your belly lead. If holds feel uncomfortable or cause dizziness, drop them and maintain an even inhale/exhale instead."
       },
       {
         heading: "Benefits",
-        content: "Slow, even breathing increases vagally mediated heart-rate variability (vmHRV), a marker of parasympathetic activity, for many people. Equal-phase pacing can reduce perceived stress and steady attention in short sessions (1-5 minutes). For peak HRV amplitude, many adults respond best to about 5-6 breaths per minute with equal inhale and exhale and minimal or no holds. Box breathing still helps when a structured, count-based cadence boosts adherence. It is easy to memorize, portable, and adaptable because the counts and holds can scale to comfort and context."
+        content: "Slows breathing and increases parasympathetic tone in 1–5 minutes. Easy to remember and use anywhere. Flexible dosing: shorten, lengthen, or skip holds to fit your comfort."
       },
       {
         heading: "When to use",
-        content: "Use box breathing for short resets during the day: pre-meeting composure, between back-to-back tasks, after a difficult conversation, or as a pre-sleep wind-down. It works well for people who like clear structure or visual or haptic pacing. Athletes and performers can run 60-120 seconds before a high-focus moment. For longer HRV sessions (5-10 minutes), shift to equal inhale and exhale at about 5-6 breaths per minute with little or no holds if the goal is maximum amplitude."
+        content: "Before meetings, between tasks, after stress, or before bed. Great for people who like clear structure. For maximum HRV boost, coherent breathing (5–6 breaths/min, no holds) often works better."
       },
       {
         heading: "When to skip",
-        content: "Skip long or strained holds if you are pregnant or have cardiopulmonary disease, a syncope history, or uncontrolled hypertension. If holds trigger dizziness, tingling, or chest tightness, drop the holds and breathe gently at a slower, even cadence. During acute panic or strong air hunger, use a long-exhale pattern (such as 4-6 breathing or a few physiological sighs) instead, then return to box breathing once you feel comfortable."
+        content: "Avoid strained holds if pregnant, have cardiopulmonary disease, syncope history, or high blood pressure. If dizzy or tingly, drop the holds or pause. During panic, try a physiological sigh instead."
       }
     ],
     benefits: [
@@ -332,19 +332,19 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What it is",
-        content: "4‑7‑8 (popularized as the “relaxing breath”) spaces the breath into a short nasal inhale (4), a gentle top hold (7), and a long, controlled exhale (8). The emphasis is the extended exhale, which slows overall breathing rate and can promote a calmer autonomic state. Keep mechanics quiet: nasal inhale with a light belly rise; shoulders and jaw soft; exhale through pursed lips or nose with a smooth whoosh. Holds should feel easy. Avoid straining. If you notice air hunger, chest tightness, or dizziness, shorten the hold, reduce counts, or omit holds while keeping a longer exhale than inhale."
+        content: "Inhale (4s), hold gently (7s), exhale slowly (8s). The long exhale is what calms. Breathe quietly through the nose, keep shoulders and jaw soft. If the hold feels tense or triggers dizziness, shorten it or drop it—keep the exhale longer than the inhale."
       },
       {
         heading: "Benefits",
-        content: "Exhale‑biased, slow breathing reduces respiratory rate and can increase vagally mediated HRV during practice for many people. Small randomized trials and controlled studies suggest 4‑7‑8 reduces state anxiety in clinical contexts and can acutely shift HRV and blood pressure in healthy adults. More broadly, slow‑paced breathing shows reliable short‑term cardiovascular effects and modest improvements in negative affect. For sleep, pre‑bed slow breathing (often at ~0.1 Hz) has reduced awakenings and improved subjective sleep in small studies. Bottom line: 4‑7‑8 is a simple, portable option for wind‑down and momentary calm; if the 7‑count hold feels edgy, you can still benefit by shortening or skipping it."
+        content: "Long exhales slow breathing and activate the parasympathetic system in minutes. Good for winding down before bed or settling during stress. Simple, memorable, and no equipment needed."
       },
       {
         heading: "When to use",
-        content: "Best for pre‑sleep wind‑down, middle‑of‑the‑night wakeups, and daytime tension spikes. A few cycles can settle you before presentations, after difficult conversations, or during travel. For longer sessions (2–5 minutes), keep breaths small and smooth; comfort beats depth. If your main goal is maximal HRV amplitude (training effect), consider equal in/out near 5–6 breaths/min on other sessions."
+        content: "Before bed, during daytime tension, or after stressful events. Great for people seeking calm without deep focus. Works well for anxiety spikes and sleep onset."
       },
       {
         heading: "When to skip",
-        content: "Avoid prolonged or forceful breath holds if you are pregnant or have cardiopulmonary disease, a history of syncope, or feel panic with holds. During acute air hunger, choose patterns without holds (e.g., 4‑6 or physiological sighs) until steady. Stop if you feel dizzy, tingly, or chest‑tight; resume later with shorter counts or no holds."
+        content: "Avoid strained holds if pregnant, have cardiopulmonary disease, syncope history, or panic with holding breath. If dizzy or air-hungry, drop the hold entirely and just lengthen the exhale. During acute panic, try a physiological sigh instead."
       }
     ],
     benefits: [
@@ -533,19 +533,19 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What it is",
-        content: "Coherent (aka resonance‑frequency) breathing uses equal‑length inhales and exhales at ~0.1 Hz (about 5–6 breaths/min). At this rhythm, heart‑rate oscillations (RSA) and blood‑pressure oscillations synchronize through the baroreflex, often yielding the largest HRV amplitude. Most adults land between 4.5–6.5 breaths/min; 5:5 or 5.5:5.5 seconds is a practical start. Mechanics: nasal, quiet, low (belly leads), shoulders and jaw soft. Focus on smooth flow rather than big breaths."
+        content: "Equal inhale and exhale at 5–6 breaths per minute (5s inhale, 5s exhale). Keep breaths quiet and small; let your belly lead. No holds. This pace aligns your heart rhythm and breath, maximizing HRV during the session."
       },
       {
         heading: "Benefits",
-        content: "During practice, many people show increased vagally mediated HRV and baroreflex sensitivity, with lower heart rate and steadier blood pressure reactivity. Short, single sessions can improve state calm and stress reactivity; multi‑week practice can raise resting HRV and baroreflex gain in some populations. For mental‑health endpoints (stress, anxiety, mood), coherent breathing performs similarly to a well‑designed paced‑breathing placebo in a large randomized trial. Expect small‑to‑moderate improvements with regular practice rather than dramatic changes. Net: reliable physiology, modest subjective benefits, excellent fit for pre‑focus or recovery blocks."
+        content: "Highest HRV during practice. Steadies stress response and supports calm focus. Most reliable when practiced regularly. Good for training your nervous system."
       },
       {
         heading: "When to use",
-        content: "Before deep work or creative sessions (5–10 minutes). Between task blocks to reset attention (2–5 minutes). Pre‑performance to reduce jitters without sedation (2–3 minutes). As a daily nervous‑system practice (5–10 minutes). For sleep wind‑down, coherent breathing can help, but some prefer exhale‑emphasized patterns; choose comfort."
+        content: "Before deep work, creative sessions, or between task blocks. Daily practice (5–10 min) trains your nervous system; shorter sessions (2–3 min) help with pre-performance jitters."
       },
       {
         heading: "When to skip",
-        content: "If you feel dizzy, tingly, or air‑hungry, pause; resume with smaller, quieter breaths or shorter sessions. People with cardiopulmonary disease, uncontrolled hypertension, syncope history, or during pregnancy should avoid straining and may prefer shorter sessions and gentle pacing. If slow breathing triggers panic, use patterns without long holds (coherent uses no holds) or switch to a physiological sigh for rapid relief."
+        content: "If dizzy or air-hungry, make breaths smaller or shorten the session. Avoid straining if pregnant, have cardiopulmonary disease, syncope history, or high blood pressure. If panic or strong air hunger arises, switch to a physiological sigh for faster relief."
       }
     ],
     benefits: [
@@ -739,19 +739,19 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What it is",
-        content: "The physiological sigh is a brief pattern: take a deep nasal inhale, add a small top‑up inhale without shrugging, then exhale slowly until comfortably empty. Sighs are a natural reflex that appear every few minutes to maintain healthy lung mechanics. Practicing them deliberately leverages that reflex: the extra sip of air re‑expands areas of the lungs, and the extended exhale promotes a calmer state. Keep breaths quiet and small to moderate. Smoothness beats volume. If you feel edgy or light‑headed, make the breaths smaller or pause."
+        content: "Deep nasal inhale, small top‑up inhale, then a long slow exhale. The second inhale opens lung areas; the long exhale triggers calm. Keep it smooth and quiet. No straining."
       },
       {
         heading: "Benefits",
-        content: "Daily exhale‑focused cyclic sighing (≈5 minutes) improved mood and lowered respiratory rate more than mindfulness meditation in a randomized trial. A single short bout can help many people feel calmer; a pilot RCT in a clinic waiting room found a 4‑minute cyclic‑sighing audio reduced pain intensity and unpleasantness vs. control. Physiologically, sighs help prevent alveolar collapse and restore lung compliance. That is one reason they naturally increase under stress or hypoxia. Expect quick, modest relief; combine with good sleep, movement, and light exposure for larger gains."
+        content: "Fastest relief during acute stress (1–3 cycles in seconds). Just as effective as meditation for mood when done daily. Naturally recruits your body's own calming reflex."
       },
       {
         heading: "When to use",
-        content: "Use 1–3 cycles during spikes of stress, before difficult conversations, after alarms, or mid‑flight turbulence. Run 2–5 minutes as a micro‑practice before bed or between work blocks. For performance or focus where you want calm‑alert without feeling drowsy, this pattern works well because exhales are long but the practice is brief."
+        content: "Stress spikes, before hard conversations, after startles. Or 2–5 minutes daily for mood. Fast, subtle, works anywhere—even in meetings."
       },
       {
         heading: "When to skip",
-        content: "If you feel dizzy, tingly, or chest‑tight, stop and resume with smaller breaths. People with cardiopulmonary disease, uncontrolled hypertension, or syncope history should keep the effort gentle and practice seated. During pregnancy, avoid straining; use light breaths and skip prolonged breath‑holding (not required for this pattern). If strong air hunger or panic arises, pause and return later."
+        content: "If dizzy or tingly, stop and try smaller, gentler breaths later. Avoid straining if pregnant, have cardiopulmonary disease, syncope history, or high blood pressure. If panic arises, pause and return when calm."
       }
     ],
     benefits: [

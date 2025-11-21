@@ -58,11 +58,11 @@ class Particle {
 
     // Apply Radial Velocity (Inward/Outward)
     if (dist > 0.1) {
-        const uX = dx / dist;
-        const uY = dy / dist;
-        const radialStep = radialSpeed * deltaTime;
-        this.x += uX * radialStep;
-        this.y += uY * radialStep;
+      const uX = dx / dist;
+      const uY = dy / dist;
+      const radialStep = radialSpeed * deltaTime;
+      this.x += uX * radialStep;
+      this.y += uY * radialStep;
     }
 
     // Apply Drift Velocity (Random noise)
@@ -75,20 +75,20 @@ class Particle {
     // Case 1: Strong Inhale (Sucking in)
     // If particle gets too close to center, respawn at edge
     if (radialSpeed < -1 && dist < 30) {
-        this.resetToEdge(w, h);
+      this.resetToEdge(w, h);
     }
     // Case 2: Strong Exhale (Blowing out)
     // If particle goes off screen, respawn near center
     else if (radialSpeed > 1 && (this.x < 0 || this.x > w || this.y < 0 || this.y > h)) {
-        this.resetToCenter(w, h);
+      this.resetToCenter(w, h);
     }
     // Case 3: Idle/Hold (Drift)
     // Standard screen wrapping
     else {
-        if (this.x < 0) this.x = w;
-        if (this.x > w) this.x = 0;
-        if (this.y < 0) this.y = h;
-        if (this.y > h) this.y = 0;
+      if (this.x < 0) this.x = w;
+      if (this.x > w) this.x = 0;
+      if (this.y < 0) this.y = h;
+      if (this.y > h) this.y = 0;
     }
   }
 
@@ -103,11 +103,11 @@ class Particle {
 const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultiplier }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particles = useRef<Particle[]>([]);
-  
+
   // Two speed factors: Radial (In/Out) and Drift (Random Chaos)
   const smoothedRadialSpeedRef = useRef<number>(0);
   const smoothedDriftSpeedRef = useRef<number>(0.2 * 60);
-  
+
   // Refs to hold latest props for the animation loop
   const phaseRef = useRef(phase);
   const colorRef = useRef(color);
@@ -126,14 +126,14 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let displayWidth = window.innerWidth;
-    let displayHeight = window.innerHeight;
+    let displayWidth = canvas.clientWidth;
+    let displayHeight = canvas.clientHeight;
 
     const initParticles = () => {
-        // Reduce particle count on mobile for better performance
-        const isMobile = displayWidth < 768 || window.innerHeight < 768;
-        const particleCount = isMobile ? 50 : 80;
-        particles.current = Array.from({ length: particleCount }, () => new Particle(displayWidth, displayHeight));
+      // Reduce particle count on mobile for better performance
+      const isMobile = displayWidth < 768 || window.innerHeight < 768;
+      const particleCount = isMobile ? 50 : 80;
+      particles.current = Array.from({ length: particleCount }, () => new Particle(displayWidth, displayHeight));
     };
 
     let animationFrameId: number;
@@ -144,12 +144,11 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
       // Debounce resize to prevent jitter on mobile
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        displayWidth = window.innerWidth;
-        displayHeight = window.innerHeight;
+        displayWidth = canvas.clientWidth;
+        displayHeight = canvas.clientHeight;
         // Cap devicePixelRatio at 2 for better mobile performance
         const ratio = Math.min(Math.max(window.devicePixelRatio || 1, 1), 2);
-        canvas.style.width = `${displayWidth}px`;
-        canvas.style.height = `${displayHeight}px`;
+        // canvas.style.width/height are handled by CSS (w-full h-full)
         canvas.width = displayWidth * ratio;
         canvas.height = displayHeight * ratio;
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -159,21 +158,21 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
     };
 
     window.addEventListener('resize', resize, { passive: true });
-    resize(); 
+    resize();
 
     const animate = (timestamp: number) => {
       if (!canvas || !ctx) return;
-      
+
       // Use a more stable delta time calculation for mobile
-      const deltaSeconds = lastTimestamp 
-        ? Math.min(Math.max((timestamp - lastTimestamp) / 1000, 0), 0.05) 
+      const deltaSeconds = lastTimestamp
+        ? Math.min(Math.max((timestamp - lastTimestamp) / 1000, 0), 0.05)
         : 0.016;
       lastTimestamp = timestamp;
-      
+
       // Use save/restore for better performance on mobile
       ctx.save();
       ctx.clearRect(0, 0, displayWidth, displayHeight);
-      
+
       const currentPhase = phaseRef.current;
       const currentColor = colorRef.current;
       const currentMultiplier = speedMultiplierRef.current;
@@ -184,28 +183,28 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
       let targetDriftSpeed = 0.2 * SPEED_PER_SECOND;
 
       if (currentPhase === BreathingPhase.Inhale) {
-          // Inhale: Particles move Inward (negative radial speed)
-          targetRadialSpeed = -3.5 * SPEED_PER_SECOND;
-          targetDriftSpeed = 0.5 * SPEED_PER_SECOND; // Slightly more chaos
+        // Inhale: Particles move Inward (negative radial speed)
+        targetRadialSpeed = -3.5 * SPEED_PER_SECOND;
+        targetDriftSpeed = 0.5 * SPEED_PER_SECOND; // Slightly more chaos
       } else if (currentPhase === BreathingPhase.Exhale) {
-          // Exhale: Particles move Outward (positive radial speed)
-          // Reduced from 3.5 to 1.2 (approx 1/3) for gentler exhale
-          targetRadialSpeed = 1.2 * SPEED_PER_SECOND; 
-          targetDriftSpeed = 0.5 * SPEED_PER_SECOND;
+        // Exhale: Particles move Outward (positive radial speed)
+        // Reduced from 3.5 to 1.2 (approx 1/3) for gentler exhale
+        targetRadialSpeed = 1.2 * SPEED_PER_SECOND;
+        targetDriftSpeed = 0.5 * SPEED_PER_SECOND;
       } else if (currentPhase === BreathingPhase.HoldIn || currentPhase === BreathingPhase.HoldOut) {
-          // Hold: Suspended
-          targetRadialSpeed = 0;
-          // Increased from 0.1 to 0.6 so they float/drift more noticeably in space
-          targetDriftSpeed = 0.6 * SPEED_PER_SECOND; 
+        // Hold: Suspended
+        targetRadialSpeed = 0;
+        // Increased from 0.1 to 0.6 so they float/drift more noticeably in space
+        targetDriftSpeed = 0.6 * SPEED_PER_SECOND;
       } else {
-          // Idle
-          targetRadialSpeed = 0;
-          targetDriftSpeed = 0.3 * SPEED_PER_SECOND;
+        // Idle
+        targetRadialSpeed = 0;
+        targetDriftSpeed = 0.3 * SPEED_PER_SECOND;
       }
 
       // Apply user speed multiplier to the intensity
       targetRadialSpeed *= currentMultiplier;
-      
+
       // Smoothly interpolate (Lerp) current values towards targets
       // Using 0.05 for a smooth, heavy feel
       smoothedRadialSpeedRef.current += (targetRadialSpeed - smoothedRadialSpeedRef.current) * 0.05;
@@ -216,7 +215,7 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
         p.update(smoothedRadialSpeedRef.current, smoothedDriftSpeedRef.current, deltaSeconds, displayWidth, displayHeight);
         p.draw(ctx, currentColor);
       });
-      
+
       ctx.restore();
 
       animationFrameId = requestAnimationFrame(animate);
@@ -232,8 +231,8 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 transition-opacity duration-1000 opacity-70"
       style={{ willChange: 'transform' }}
     />
