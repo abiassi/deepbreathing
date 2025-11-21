@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { BREATHING_PATTERNS, ModeName } from "@/components/resonance/constants";
+import { modeToBreathingPage } from "@/data/breathing-pages";
 
 const baseUrl = "https://deepbreathingexercises.com";
 
@@ -166,20 +167,20 @@ export default function HomePage() {
           </p>
         </section>
 
-        <section className="grid gap-6 text-left lg:grid-cols-3">
-          <div className="glow-card rounded-[32px] border border-border bg-card p-6">
+        <section className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 -mx-4 px-4 no-scrollbar lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0 lg:mx-0 lg:px-0">
+          <div className="min-w-[85vw] snap-center glow-card rounded-[32px] border border-border bg-card p-6 sm:min-w-[400px] lg:min-w-0">
             <p className="text-sm uppercase tracking-wider text-primary">Calm by design</p>
             <p className="mt-3 text-muted-foreground">
               Slow, even breathing often increases vagally mediated HRV and lowers perceived stress during practice.
             </p>
           </div>
-          <div className="glow-card rounded-[32px] border border-border bg-card p-6">
+          <div className="min-w-[85vw] snap-center glow-card rounded-[32px] border border-border bg-card p-6 sm:min-w-[400px] lg:min-w-0">
             <p className="text-sm uppercase tracking-wider text-primary">Built for real life</p>
             <p className="mt-3 text-muted-foreground">
               Short sets (1–5 min) before meetings, between tasks, or at lights‑out.
             </p>
           </div>
-          <div className="glow-card rounded-[32px] border border-border bg-card p-6">
+          <div className="min-w-[85vw] snap-center glow-card rounded-[32px] border border-border bg-card p-6 sm:min-w-[400px] lg:min-w-0">
             <p className="text-sm uppercase tracking-wider text-primary">Your pace</p>
             <p className="mt-3 text-muted-foreground">
               Choose 3–8 seconds per phase. Smaller, quieter breaths beat &quot;big&quot; breaths.
@@ -191,51 +192,34 @@ export default function HomePage() {
           <div>
             <h2 className="text-3xl font-semibold text-card-foreground">Pick a mode</h2>
           </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <Link
-              href="/breathe/box"
-              className="group rounded-3xl border border-border/70 bg-card p-5 transition hover:-translate-y-1 dark:border-border/50"
-            >
-              <p className="text-xs uppercase tracking-[0.3em] text-primary">/box</p>
-              <h3 className="mt-3 text-2xl font-semibold text-card-foreground">Box Breathing (4‑4‑4‑4)</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Equal counts to steady arousal and sharpen focus.</p>
-              <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary">
-                Start session →
-              </span>
-            </Link>
-            <Link
-              href="/breathe/4-7-8"
-              className="group rounded-3xl border border-border/70 bg-card p-5 transition hover:-translate-y-1 dark:border-border/50"
-            >
-              <p className="text-xs uppercase tracking-[0.3em] text-primary">/4-7-8</p>
-              <h3 className="mt-3 text-2xl font-semibold text-card-foreground">4‑7‑8 Breathing</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Long‑exhale cadence to downshift quickly.</p>
-              <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary">
-                Start session →
-              </span>
-            </Link>
-            <Link
-              href="/breathe/coherent"
-              className="group rounded-3xl border border-border/70 bg-card p-5 transition hover:-translate-y-1 dark:border-border/50"
-            >
-              <p className="text-xs uppercase tracking-[0.3em] text-primary">/coherent</p>
-              <h3 className="mt-3 text-2xl font-semibold text-card-foreground">Coherent Breathing</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Equal in/out near 0.1 Hz to amplify HRV.</p>
-              <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary">
-                Start session →
-              </span>
-            </Link>
-            <Link
-              href="/breathe/physiological-sigh"
-              className="group rounded-3xl border border-border/70 bg-card p-5 transition hover:-translate-y-1 dark:border-border/50"
-            >
-              <p className="text-xs uppercase tracking-[0.3em] text-primary">/physiological-sigh</p>
-              <h3 className="mt-3 text-2xl font-semibold text-card-foreground">Physiological Sigh</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Double inhale, long exhale—rapid reset.</p>
-              <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary">
-                Start session →
-              </span>
-            </Link>
+          <div className="mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pt-4 pb-8 -mx-8 no-scrollbar md:mt-8 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:pt-0 md:pb-0 md:mx-0 md:px-0">
+            {Object.values(BREATHING_PATTERNS).map((pattern) => {
+              const slug = modeToBreathingPage[pattern.name]?.slug;
+              if (!slug) return null;
+
+              return (
+                <Link
+                  key={pattern.name}
+                  href={`/breathe/${slug}`}
+                  className="group relative min-w-[70vw] snap-center rounded-3xl border bg-card p-6 transition-all first:ml-8 last:mr-8 md:first:ml-0 md:last:mr-0 hover:scale-[1.02] sm:min-w-0"
+                  style={{
+                    borderColor: `${pattern.color}40`,
+                  }}
+                >
+                  <p className="text-xs font-medium uppercase tracking-[0.3em] opacity-80" style={{ color: pattern.color }}>
+                    /{slug}
+                  </p>
+                  <h3 className="mt-3 text-2xl font-semibold text-card-foreground">{pattern.name}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{pattern.description}</p>
+                  <span
+                    className="mt-6 inline-flex items-center text-sm font-semibold transition-transform group-hover:translate-x-1"
+                    style={{ color: pattern.color }}
+                  >
+                    Start session →
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </section>
 
@@ -259,8 +243,8 @@ export default function HomePage() {
             </p>
           </article>
 
-          <div className="grid gap-6">
-            <div className="grid gap-6 sm:grid-cols-2">
+          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 -mx-4 sm:-mx-6 no-scrollbar lg:grid lg:gap-6 lg:overflow-visible lg:pb-0 lg:mx-0 lg:px-0">
+            <div className="min-w-[85vw] snap-center grid gap-6 first:ml-4 sm:first:ml-6 last:mr-4 sm:last:mr-6 lg:first:ml-0 lg:last:mr-0 sm:min-w-[400px] lg:min-w-0 sm:grid-cols-2">
               <article className={cn(infoCardClass)}>
                 <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Dial it in</p>
                 <h3 className="mt-2 text-2xl font-semibold text-card-foreground">Smooth over deep</h3>
@@ -280,7 +264,7 @@ export default function HomePage() {
               </article>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="min-w-[85vw] snap-center grid gap-6 sm:min-w-[400px] lg:min-w-0 sm:grid-cols-2">
               <article className={cn(infoCardClass)}>
                 <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">How long?</p>
                 <h3 className="mt-2 text-2xl font-semibold text-card-foreground">Match the moment</h3>
@@ -301,15 +285,17 @@ export default function HomePage() {
               </article>
             </div>
 
-            <article className={cn(infoCardClass)}>
+            <div className="min-w-[85vw] snap-center first:ml-4 sm:first:ml-6 last:mr-4 sm:last:mr-6 lg:first:ml-0 lg:last:mr-0 sm:min-w-[400px] lg:min-w-0">
+              <article className={cn(infoCardClass, "h-full")}>
                 <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Why it works</p>
-              <h3 className="mt-2 text-2xl font-semibold text-card-foreground">Calmer in minutes</h3>
-              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                {whyItWorks.map((item) => (
-                  <li key={item}>• {item}</li>
-                ))}
-              </ul>
-            </article>
+                <h3 className="mt-2 text-2xl font-semibold text-card-foreground">Calmer in minutes</h3>
+                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                  {whyItWorks.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </article>
+            </div>
           </div>
         </section>
 

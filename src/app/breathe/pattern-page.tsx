@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
 import Resonance from "@/components/resonance/Resonance";
+import { BREATHING_PATTERNS } from "@/components/resonance/constants";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breathingPageMap, type BreathingPageContent } from "@/data/breathing-pages";
 
@@ -87,15 +88,15 @@ export function PatternPage({ slug }: { slug: string }) {
     })),
     tool: page.howTo.tools.length
       ? page.howTo.tools.map((tool) => ({
-          "@type": "HowToTool",
-          name: tool
-        }))
+        "@type": "HowToTool",
+        name: tool
+      }))
       : undefined,
     supply: page.howTo.supplies.length
       ? page.howTo.supplies.map((supply) => ({
-          "@type": "HowToSupply",
-          name: supply
-        }))
+        "@type": "HowToSupply",
+        name: supply
+      }))
       : undefined
   };
 
@@ -106,15 +107,15 @@ export function PatternPage({ slug }: { slug: string }) {
     description: page.meta.description,
     author: page.meta.author
       ? {
-          "@type": "Person",
-          name: page.meta.author
-        }
+        "@type": "Person",
+        name: page.meta.author
+      }
       : undefined,
     reviewedBy: page.meta.reviewer
       ? {
-          "@type": "Person",
-          name: page.meta.reviewer
-        }
+        "@type": "Person",
+        name: page.meta.reviewer
+      }
       : undefined,
     datePublished: page.meta.datePublished,
     dateModified: page.meta.dateModified,
@@ -161,9 +162,9 @@ export function PatternPage({ slug }: { slug: string }) {
           </section>
         ) : null}
 
-        <section className="grid gap-6 lg:grid-cols-3">
+        <section className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 -mx-4 sm:-mx-6 no-scrollbar lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0 lg:mx-0 lg:px-0">
           {page.benefits.map((benefit) => (
-            <div key={benefit.title} className="glow-card rounded-[32px] border border-border bg-card p-6">
+            <div key={benefit.title} className="min-w-[70vw] snap-center glow-card rounded-[32px] border border-border bg-card p-6 first:ml-4 sm:first:ml-6 last:mr-4 sm:last:mr-6 lg:first:ml-0 lg:last:mr-0 sm:min-w-[400px] lg:min-w-0">
               <p className="text-sm uppercase tracking-widest text-primary">Benefit</p>
               <h2 className="mt-2 text-2xl font-semibold text-card-foreground">{benefit.title}</h2>
               <p className="mt-2 text-muted-foreground">{benefit.description}</p>
@@ -323,20 +324,26 @@ export function PatternPage({ slug }: { slug: string }) {
         {page.related.length ? (
           <section className="space-y-4">
             <p className="text-sm uppercase tracking-widest text-primary">Related patterns</p>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 -mx-4 sm:-mx-6 no-scrollbar md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0">
               {page.related.map((relatedPattern) => {
                 const relatedPage = breathingPageMap[relatedPattern.slug];
+                const pattern = relatedPage ? BREATHING_PATTERNS[relatedPage.mode] : null;
+
                 return (
                   <Link
                     key={relatedPattern.slug}
                     href={`/breathe/${relatedPattern.slug}`}
-                    className="group rounded-[28px] border border-border/60 p-5 transition hover:border-primary"
+                    className="min-w-[70vw] snap-center group rounded-[28px] border bg-card p-5 transition hover:border-primary first:ml-4 sm:first:ml-6 last:mr-4 sm:last:mr-6 md:first:ml-0 md:last:mr-0 sm:min-w-0"
+                    style={{ borderColor: pattern ? `${pattern.color}40` : undefined }}
                   >
                     <p className="text-lg font-semibold text-card-foreground">
                       {relatedPage?.hero.title ?? relatedPattern.slug}
                     </p>
                     <p className="mt-1 text-sm text-muted-foreground">{relatedPattern.reason}</p>
-                    <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">
+                    <span
+                      className="mt-3 inline-flex items-center text-sm font-semibold text-primary"
+                      style={{ color: pattern?.color }}
+                    >
                       Practice →
                     </span>
                   </Link>
