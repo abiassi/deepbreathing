@@ -126,8 +126,9 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let displayWidth = canvas.clientWidth;
-    let displayHeight = canvas.clientHeight;
+    const rect = canvas.getBoundingClientRect();
+    let displayWidth = rect.width || window.innerWidth;
+    let displayHeight = rect.height || window.innerHeight;
 
     const initParticles = () => {
       // Reduce particle count on mobile for better performance
@@ -144,11 +145,17 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
       // Debounce resize to prevent jitter on mobile
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        displayWidth = canvas.clientWidth;
-        displayHeight = canvas.clientHeight;
+        const rect = canvas.getBoundingClientRect();
+        displayWidth = rect.width || window.innerWidth;
+        displayHeight = rect.height || window.innerHeight;
+
         // Cap devicePixelRatio at 2 for better mobile performance
         const ratio = Math.min(Math.max(window.devicePixelRatio || 1, 1), 2);
-        // canvas.style.width/height are handled by CSS (w-full h-full)
+
+        // Ensure we don't set 0 dimensions
+        if (displayWidth === 0) displayWidth = 1;
+        if (displayHeight === 0) displayHeight = 1;
+
         canvas.width = displayWidth * ratio;
         canvas.height = displayHeight * ratio;
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
