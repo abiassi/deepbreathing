@@ -128,7 +128,6 @@ export function PatternPage({ slug }: { slug: string }) {
   const heroHeader = (
     <div className="space-y-4">
       <FadingHeroTitle label="DEEP BREATHING EXERCISES" title={page.hero.title} subtitle={page.hero.subtitle} />
-      {page.hero.intro ? <p className="text-base text-muted-foreground">{page.hero.intro}</p> : null}
     </div>
   );
 
