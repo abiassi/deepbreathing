@@ -290,10 +290,26 @@ export function PatternPage({ slug }: { slug: string }) {
               <h3 className="text-lg font-semibold text-card-foreground">Study highlights</h3>
               <ul className="space-y-4">
                 {page.research.studies.map((study) => (
-                  <li key={study.title} className="rounded-2xl bg-muted/70 p-4">
-                    <p className="font-semibold text-card-foreground">{study.title}</p>
-                    <p className="mt-2 text-sm text-muted-foreground">{study.summary}</p>
-                  </li>
+                  study.url ? (
+                    <li key={study.title}>
+                      <a
+                        href={study.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block rounded-2xl bg-muted/70 p-4 transition-colors hover:bg-muted"
+                      >
+                        <p className="font-semibold text-primary underline underline-offset-2">
+                          {study.title}
+                        </p>
+                        <p className="mt-2 text-sm text-muted-foreground">{study.summary}</p>
+                      </a>
+                    </li>
+                  ) : (
+                    <li key={study.title} className="rounded-2xl bg-muted/70 p-4">
+                      <p className="font-semibold text-card-foreground">{study.title}</p>
+                      <p className="mt-2 text-sm text-muted-foreground">{study.summary}</p>
+                    </li>
+                  )
                 ))}
               </ul>
             </div>
