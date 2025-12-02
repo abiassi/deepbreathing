@@ -81,6 +81,12 @@ export interface RelatedPattern {
   reason: string;
 }
 
+export interface RelatedUseCase {
+  slug: string;
+  title: string;
+  teaser: string;
+}
+
 export interface BreathingPageContent {
   slug: string;
   mode: ModeName;
@@ -94,6 +100,7 @@ export interface BreathingPageContent {
   useCases: UseCase[];
   research: ResearchContent;
   related: RelatedPattern[];
+  relatedUseCases?: RelatedUseCase[];
   keywords: string[];
   synonyms: string[];
   frequency: string;
@@ -282,6 +289,13 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "physiological-sigh",
         reason: "Fast downshift during spikes of stress; 1–3 cycles can relieve acute arousal quickly."
+      }
+    ],
+    relatedUseCases: [
+      {
+        slug: "public-speaking",
+        title: "Public Speaking & Stage Fright",
+        teaser: "The Navy SEAL method to stop stage fright in 60 seconds"
       }
     ],
     keywords: [
@@ -489,6 +503,18 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "physiological-sigh",
         reason: "Rapid relief during stress spikes; 1–3 cycles can downshift arousal quickly."
+      }
+    ],
+    relatedUseCases: [
+      {
+        slug: "sleep",
+        title: "Better Sleep",
+        teaser: "Fall asleep faster with the 'natural tranquilizer' technique"
+      },
+      {
+        slug: "high-blood-pressure",
+        title: "Blood Pressure Support",
+        teaser: "Naturally support healthy blood pressure with slow breathing"
       }
     ],
     keywords: [
@@ -892,6 +918,13 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "coherent",
         reason: "For HRV training, equal in/out at ~5–6 breaths/min provides strong physiological effects."
+      }
+    ],
+    relatedUseCases: [
+      {
+        slug: "running",
+        title: "Running Recovery",
+        teaser: "Recover faster and stop side stitches with the double-inhale technique"
       }
     ],
     keywords: [

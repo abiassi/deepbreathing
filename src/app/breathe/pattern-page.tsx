@@ -320,6 +320,37 @@ export function PatternPage({ slug }: { slug: string }) {
           </div>
         </section>
 
+        {page.relatedUseCases && page.relatedUseCases.length > 0 && (
+          <section className="space-y-4">
+            <p className="text-sm uppercase tracking-widest text-primary">Use case guides</p>
+            <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 -mx-4 sm:-mx-6 no-scrollbar md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0">
+              {page.relatedUseCases.map((useCase) => {
+                const pattern = BREATHING_PATTERNS[page.mode];
+
+                return (
+                  <Link
+                    key={useCase.slug}
+                    href={`/for/${useCase.slug}`}
+                    className="min-w-[70vw] snap-center group rounded-[28px] border bg-card p-5 transition hover:border-primary first:ml-4 sm:first:ml-6 last:mr-4 sm:last:mr-6 md:first:ml-0 md:last:mr-0 sm:min-w-0"
+                    style={{ borderColor: pattern ? `${pattern.color}40` : undefined }}
+                  >
+                    <p className="text-lg font-semibold text-card-foreground">
+                      {useCase.title}
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">{useCase.teaser}</p>
+                    <span
+                      className="mt-3 inline-flex items-center text-sm font-semibold text-primary"
+                      style={{ color: pattern?.color }}
+                    >
+                      Learn more →
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
         {page.related.length ? (
           <section className="space-y-4">
             <p className="text-sm uppercase tracking-widest text-primary">Related patterns</p>
