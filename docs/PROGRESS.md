@@ -24,6 +24,7 @@ Added 4 SEO-optimized "hub & spoke" pages targeting specific user problems:
 - Bidirectional links: /breathe/ pages now link to relevant /for/ pages and vice versa
 - Full JSON-LD schemas (FAQPage, HowTo, Article)
 - Inline medical disclaimer for blood pressure page
+- CTAs: Primary "Start practicing now" scrolls to visualizer (#practice), secondary "Learn more" links to /breathe/ pages (SEO interlinking preserved)
 
 ### SEO Improvements
 - Updated page titles for better CTR: added "Tool" and "Interactive" to differentiate from article-heavy search results

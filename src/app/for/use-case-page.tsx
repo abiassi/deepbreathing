@@ -7,7 +7,6 @@ import Resonance from "@/components/resonance/Resonance";
 import { BREATHING_PATTERNS } from "@/components/resonance/constants";
 import { JsonLd } from "@/components/seo/json-ld";
 import { useCasePageMap, type UseCasePageContent } from "@/data/use-case-pages";
-import { breathingPageMap } from "@/data/breathing-pages";
 
 const baseUrl = "https://deepbreathingexercises.com";
 
@@ -47,7 +46,6 @@ export function UseCasePage({ slug }: { slug: string }) {
   }
 
   const pattern = BREATHING_PATTERNS[page.mode];
-  const breathingPage = breathingPageMap[page.breathingPageSlug];
   const canonicalUrl = `${baseUrl}/for/${page.slug}`;
 
   const faqSchema = {
@@ -110,7 +108,7 @@ export function UseCasePage({ slug }: { slug: string }) {
       <JsonLd data={structuredData} />
 
       {/* Hero with Visualizer */}
-      <section className="relative isolate min-h-screen w-full text-foreground">
+      <section id="practice" className="relative isolate min-h-screen w-full text-foreground">
         <Resonance defaultMode={page.mode} className="min-h-screen" />
         <div className="absolute inset-y-0 left-0 z-30 hidden w-full max-w-xl px-6 py-20 lg:flex lg:flex-col lg:justify-center">
           {heroHeader}
@@ -172,14 +170,23 @@ export function UseCasePage({ slug }: { slug: string }) {
             <p className="mt-2 text-card-foreground">{page.solution.whyThisPattern}</p>
           </div>
 
-          {/* CTA to breathing page */}
-          <Link
-            href={`/breathe/${page.relatedTechnique.slug}`}
-            className="mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition"
-            style={{ backgroundColor: `${pattern.color}20`, color: pattern.color }}
-          >
-            {page.relatedTechnique.callToAction} →
-          </Link>
+          {/* CTAs */}
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <a
+              href="#practice"
+              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+              style={{ backgroundColor: pattern.color }}
+            >
+              Start practicing now →
+            </a>
+            <Link
+              href={`/breathe/${page.relatedTechnique.slug}`}
+              className="inline-flex items-center gap-2 text-sm font-medium transition hover:underline"
+              style={{ color: pattern.color }}
+            >
+              Learn more about {pattern.name} Breathing →
+            </Link>
+          </div>
         </section>
 
         {/* Why It Works (Science) */}
@@ -313,24 +320,33 @@ export function UseCasePage({ slug }: { slug: string }) {
           </section>
         )}
 
-        {/* Link to main technique page */}
+        {/* Ready to practice */}
         <section className="rounded-[32px] p-8 text-center" style={{ backgroundColor: `${pattern.color}10` }}>
           <p className="text-sm uppercase tracking-widest" style={{ color: pattern.color }}>
             Ready to practice?
           </p>
           <h2 className="mt-2 text-2xl font-semibold text-card-foreground">
-            {breathingPage?.hero.title ?? `${pattern.name} Breathing`}
+            Start Your Session
           </h2>
           <p className="mx-auto mt-2 max-w-lg text-muted-foreground">
-            Get the full experience with our interactive visualizer, detailed guides, and research-backed instructions.
+            Use the interactive visualizer above to guide your breathing. Follow the animation and let your body relax.
           </p>
-          <Link
-            href={`/breathe/${page.relatedTechnique.slug}`}
-            className="mt-6 inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-semibold text-white transition hover:opacity-90"
-            style={{ backgroundColor: pattern.color }}
-          >
-            {page.relatedTechnique.callToAction} →
-          </Link>
+          <div className="mt-6 flex flex-col items-center gap-3">
+            <a
+              href="#practice"
+              className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-semibold text-white transition hover:opacity-90"
+              style={{ backgroundColor: pattern.color }}
+            >
+              Go to visualizer →
+            </a>
+            <Link
+              href={`/breathe/${page.relatedTechnique.slug}`}
+              className="inline-flex items-center gap-2 text-sm font-medium transition hover:underline"
+              style={{ color: pattern.color }}
+            >
+              Learn more about {pattern.name} Breathing →
+            </Link>
+          </div>
         </section>
       </section>
     </main>
