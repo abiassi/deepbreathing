@@ -109,12 +109,12 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "Box (square) breathing uses four equal phases: inhale, hold, exhale, hold. The pattern slows respiration and stabilizes attention. Keep counts comfortable (e.g., 3–6 seconds each). If holds feel tight or dizzying, shorten them or remove holds and keep the rhythm even."
     },
     meta: {
-      title: "Box Breathing (4‑4‑4‑4): Visual Guide & How To",
+      title: "Box Breathing Tool (4-4-4-4) - Interactive Visualizer & Guide",
       description: "Learn box breathing: equal inhale‑hold‑exhale‑hold counts to reduce arousal. Evidence, tips, and a visual timer to practice comfortably in 1–5 minutes.",
-      ogTitle: "Box Breathing (4‑4‑4‑4): Visual Guide & How To",
+      ogTitle: "Box Breathing Tool (4-4-4-4) - Interactive Visualizer & Guide",
       ogDescription: "Four equal phases to calm quickly. Research‑informed tips, safety, and a step‑by‑step timer.",
       ogImage: "og/breathe-box.png",
-      twitterTitle: "Box Breathing (4‑4‑4‑4): Visual Guide",
+      twitterTitle: "Box Breathing Tool (4-4-4-4) - Interactive Visualizer",
       twitterDescription: "Equal‑count breathing to steady arousal in minutes. Evidence‑based, safe pacing.",
       author: "Resonance Editorial Team",
       reviewer: "",
@@ -317,12 +317,12 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "Inhale for 4 counts, hold lightly for 7, exhale for 8. This exhale‑emphasized pattern slows breathing, often increases vagal markers, and helps many people settle into sleep or reduce acute tension. Keep holds gentle; shorten or skip them if uncomfortable."
     },
     meta: {
-      title: "4‑7‑8 Breathing: Visual Guide & How To",
+      title: "4-7-8 Breathing Tool - Interactive Visualizer & Guide",
       description: "Follow a 4‑7‑8 cadence to slow breathing and lengthen exhales. Evidence‑informed tips, safety guidance, and a step‑by‑step timer for calm or pre‑sleep wind‑down.",
-      ogTitle: "4‑7‑8 Breathing: Visual Guide & How To",
+      ogTitle: "4-7-8 Breathing Tool - Interactive Visualizer & Guide",
       ogDescription: "Inhale 4, hold 7 (gentle), exhale 8. Research‑informed tips, safety, and a visual timer for fast calm and better wind‑down.",
       ogImage: "og/breathe-4-7-8.png",
-      twitterTitle: "4‑7‑8 Breathing: Visual Guide",
+      twitterTitle: "4-7-8 Breathing Tool - Interactive Visualizer",
       twitterDescription: "Exhale‑emphasized cadence to relax quickly. Evidence, safety, and step‑by‑step practice.",
       author: "Resonance Editorial Team",
       reviewer: "",
@@ -518,12 +518,12 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "Breathe ~5–6 times per minute with equal inhales and exhales (e.g., 5–6 seconds each). This pace often maximizes respiratory–cardiovascular coupling and baroreflex engagement, acutely boosting HRV. Keep breaths small and quiet; comfort beats depth. If dizzy or air‑hungry, make breaths smaller or pause."
     },
     meta: {
-      title: "Coherent Breathing: 0.1 Hz Visual Trainer",
+      title: "Coherent Breathing Tool - Interactive 0.1 Hz Trainer",
       description: "Train near 0.1 Hz (~5–6 breaths/min). Evidence‑based guide to increase HRV and baroreflex sensitivity with tips, safety, and a step‑by‑step visual timer.",
-      ogTitle: "Coherent Breathing: 0.1 Hz Visual Trainer",
+      ogTitle: "Coherent Breathing Tool - Interactive 0.1 Hz Trainer",
       ogDescription: "Equal inhale/exhale at ~5–6 breaths/min. HRV‑focused pacing, practical protocols, safety, and research.",
       ogImage: "og/breathe-coherent.png",
-      twitterTitle: "Coherent Breathing: 0.1 Hz Visual Trainer",
+      twitterTitle: "Coherent Breathing Tool - Interactive 0.1 Hz Trainer",
       twitterDescription: "Breathe ~5–6 times/min to maximize HRV. Evidence, safety, and step‑by‑step practice.",
       author: "Resonance Editorial Team",
       reviewer: "",
@@ -724,12 +724,12 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "A physiological sigh is two quick inhales followed by a long, unforced exhale. The second inhale helps expand under‑ventilated lung regions; the long exhale slows breathing and can reduce arousal within minutes. Use as a brief on‑demand reset or a 2–5 minute practice."
     },
     meta: {
-      title: "Physiological Sigh: Double Inhale, Long Exhale",
+      title: "Physiological Sigh Tool - Interactive Timer & Guide",
       description: "Learn the physiological sigh: two inhales, one long exhale. Fast calming, evidence, safety, and step‑by‑step visual timing for 1–5 minute sessions.",
-      ogTitle: "Physiological Sigh: Rapid Calming Breath",
+      ogTitle: "Physiological Sigh Tool - Interactive Timer & Guide",
       ogDescription: "Two inhales + long exhale. Evidence‑based instructions, safety tips, and a visual timer for quick state reset.",
       ogImage: "og/breathe-physiological-sigh.png",
-      twitterTitle: "Physiological Sigh: How‑To & Evidence",
+      twitterTitle: "Physiological Sigh Tool - Interactive Timer",
       twitterDescription: "Double inhale, long exhale for rapid calm. Research, safety, and a guided timer.",
       author: "Resonance Editorial Team",
       reviewer: "",
