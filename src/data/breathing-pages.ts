@@ -63,6 +63,7 @@ export interface UseCase {
 export interface ResearchStudy {
   title: string;
   summary: string;
+  url?: string;
 }
 
 export interface ResearchQuote {
@@ -258,19 +259,23 @@ export const breathingPages: BreathingPageContent[] = [
       studies: [
         {
           title: "Laborde et al., 2022 meta‑analysis (VSB → vmHRV)",
-          summary: "Systematic review/meta‑analysis found voluntary slow breathing increases vagally mediated HRV during sessions, acutely after a session, and after multi‑session training."
+          summary: "Systematic review/meta‑analysis found voluntary slow breathing increases vagally mediated HRV during sessions, acutely after a session, and after multi‑session training.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/35623448/"
         },
         {
           title: "Marchant et al., 2025 comparative trial",
-          summary: "In 84 adults, 6 breaths/min increased HRV more than square (box) or 4‑7‑8; no meaningful BP or mood changes; mild over‑breathing occurred at 6 bpm."
+          summary: "In 84 adults, 6 breaths/min increased HRV more than square (box) or 4‑7‑8; no meaningful BP or mood changes; mild over‑breathing occurred at 6 bpm.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/39864026/"
         },
         {
           title: "Steffen et al., 2017 RCT (resonance vs +1 vs control)",
-          summary: "Resonance‑frequency breathing improved HRV and reduced blood‑pressure reactivity to a stressor vs control; mood improved post‑practice."
+          summary: "Resonance‑frequency breathing improved HRV and reduced blood‑pressure reactivity to a stressor vs control; mood improved post‑practice.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/28890890/"
         },
         {
           title: "Fincham et al., 2023 meta‑analysis (breathwork & stress)",
-          summary: "Across RCTs, breathwork produced small‑to‑moderate reductions in subjective stress, anxiety, and depressive symptoms vs non‑breathwork controls."
+          summary: "Across RCTs, breathwork produced small‑to‑moderate reductions in subjective stress, anxiety, and depressive symptoms vs non‑breathwork controls.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/36624160/"
         }
       ],
       safety: [
@@ -468,23 +473,28 @@ export const breathingPages: BreathingPageContent[] = [
       studies: [
         {
           title: "Aktaş & İlgin 2023 (RCT, post‑bariatric)",
-          summary: "4‑7‑8 group showed lower post‑test state anxiety vs deep‑breathing and usual‑care; QoL improved in deep‑breathing group."
+          summary: "4‑7‑8 group showed lower post‑test state anxiety vs deep‑breathing and usual‑care; QoL improved in deep‑breathing group.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/36480101/"
         },
         {
           title: "Vierra et al. 2022 (controlled, healthy adults)",
-          summary: "4‑7‑8 increased HF‑HRV and lowered HR/SBP within a session; between‑group differences small."
+          summary: "4‑7‑8 increased HF‑HRV and lowered HR/SBP within a session; between‑group differences small.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/35822447/"
         },
         {
           title: "Laborde et al. 2022 (systematic review/meta‑analysis)",
-          summary: "Voluntary slow breathing increased vagally mediated HRV during and after sessions and after multi‑session training."
+          summary: "Voluntary slow breathing increased vagally mediated HRV during and after sessions and after multi‑session training.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/35623448/"
         },
         {
           title: "Shao et al. 2024 (systematic review/meta‑analysis)",
-          summary: "Slow‑paced breathing showed reliable short‑term cardiovascular effects and modest reductions in negative emotions."
+          summary: "Slow‑paced breathing showed reliable short‑term cardiovascular effects and modest reductions in negative emotions.",
+          url: "https://link.springer.com/article/10.1007/s12671-023-02294-2"
         },
         {
           title: "Tsai et al. 2015; Kuula et al. 2020 (sleep)",
-          summary: "Pre‑bed slow breathing improved sleep metrics in small trials (reduced awakenings, better efficiency) in insomniac samples."
+          summary: "Pre‑bed slow breathing improved sleep metrics in small trials (reduced awakenings, better efficiency) in insomniac samples.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/25234581/"
         }
       ],
       safety: [
@@ -687,19 +697,23 @@ export const breathingPages: BreathingPageContent[] = [
       studies: [
         {
           title: "Lehrer et al., 2003 (Psychosomatic Medicine)",
-          summary: "10 sessions of HRV biofeedback increased resting baroreflex gain and improved pulmonary function vs control in healthy adults; large within‑session baroreflex gains observed."
+          summary: "10 sessions of HRV biofeedback increased resting baroreflex gain and improved pulmonary function vs control in healthy adults; large within‑session baroreflex gains observed.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/14508023/"
         },
         {
           title: "Joseph et al., 2005 (Hypertension)",
-          summary: "Breathing at 6 breaths/min increased arterial baroreflex sensitivity and reduced sympathetic activity in healthy adults."
+          summary: "Breathing at 6 breaths/min increased arterial baroreflex sensitivity and reduced sympathetic activity in healthy adults.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/16129818/"
         },
         {
           title: "Steffen et al., 2017 (Frontiers in Public Health)",
-          summary: "Single session: breathing at personal resonance reduced BP reactivity during a stress task and improved mood vs control or +1 bpm condition."
+          summary: "Single session: breathing at personal resonance reduced BP reactivity during a stress task and improved mood vs control or +1 bpm condition.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/28890890/"
         },
         {
           title: "Fincham et al., 2023 (Scientific Reports)",
-          summary: "4‑week RCT: coherent breathing (~5.5 bpm, 10 min/day) did not outperform a 12‑bpm placebo on mental‑health outcomes; both arms improved from baseline."
+          summary: "4‑week RCT: coherent breathing (~5.5 bpm, 10 min/day) did not outperform a 12‑bpm placebo on mental‑health outcomes; both arms improved from baseline.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/38092805/"
         }
       ],
       safety: [
@@ -887,19 +901,23 @@ export const breathingPages: BreathingPageContent[] = [
       studies: [
         {
           title: "Balban et al., 2023 - Cell Reports Medicine (RCT)",
-          summary: "Remote 4‑arm randomized study (5 min/day for 28 days): breathwork > mindfulness on mood and respiratory‑rate change; exhale‑focused cyclic sighing largest gains."
+          summary: "Remote 4‑arm randomized study (5 min/day for 28 days): breathwork > mindfulness on mood and respiratory‑rate change; exhale‑focused cyclic sighing largest gains.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/36630953/"
         },
         {
           title: "Hanley et al., 2025 - Journal of Behavioral Medicine (pilot RCT)",
-          summary: "4‑minute cyclic‑sighing audio in an orthopedic clinic waiting room reduced pain intensity and unpleasantness vs. control."
+          summary: "4‑minute cyclic‑sighing audio in an orthopedic clinic waiting room reduced pain intensity and unpleasantness vs. control.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/39904867/"
         },
         {
           title: "Severs, Vlemincx, Ramirez, 2022 - Biological Psychology (Review)",
-          summary: "Sighs maintain lung compliance by preventing alveolar collapse; frequency increases with stress/hypoxia; preBötzinger complex involvement."
+          summary: "Sighs maintain lung compliance by preventing alveolar collapse; frequency increases with stress/hypoxia; preBötzinger complex involvement.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/35288214/"
         },
         {
           title: "Li et al., 2016 - Nature (Mechanism)",
-          summary: "Identified peptidergic RTN/pFRG → preBötzinger circuit controlling sigh generation; sighs re‑inflate alveoli and may preserve lung integrity."
+          summary: "Identified peptidergic RTN/pFRG → preBötzinger circuit controlling sigh generation; sighs re‑inflate alveoli and may preserve lung integrity.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/26855425/"
         }
       ],
       safety: [

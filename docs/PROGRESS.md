@@ -2,6 +2,15 @@
 
 ## 2025-12-02
 
+### Study URLs Added to Breathing Pages
+Added PubMed/journal URLs to all 17 academic studies referenced in the breathing technique pages:
+- **Box Breathing**: 4 studies (Laborde 2022, Marchant 2025, Steffen 2017, Fincham 2023)
+- **4-7-8 Breathing**: 5 studies (Aktaş & İlgin 2023, Vierra 2022, Laborde 2022, Shao 2024, Tsai 2015/Kuula 2020)
+- **Coherent Breathing**: 4 studies (Lehrer 2003, Joseph 2005, Steffen 2017, Fincham 2023)
+- **Physiological Sigh**: 4 studies (Balban 2023, Hanley 2025, Severs 2022, Li 2016)
+
+Updated `ResearchStudy` interface in `src/data/breathing-pages.ts` to include optional `url` field.
+
 ### Use Case Landing Pages
 Added 4 SEO-optimized "hub & spoke" pages targeting specific user problems:
 - `/for/public-speaking` - Box breathing for stage fright (Navy SEAL method)
