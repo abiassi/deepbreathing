@@ -2,6 +2,44 @@
 
 ## 2025-12-07
 
+### Content Expansion - New Use Case Page: Athletic Recovery
+Created `/for/athletes` page targeting "breathing for athletic recovery" (targeted niche keyword).
+
+**New Page Details:**
+- **URL:** `/for/athletes`
+- **Technique:** Physiological Sigh (double-inhale, long exhale)
+- **Target Keywords:** "breathing for athletic recovery", "breathwork for athletes", "breathing between sets", "CrossFit breathing technique", "HIIT recovery breathing"
+- **Content:** 220+ lines including problem, solution, 4 science points, 7-step how-to, 5 peer-reviewed references, 6 FAQs, disclaimer
+- **SEO Metadata:** Optimized title "Faster Athletic Recovery: Physiological Sigh Between Sets (Stanford Study)"
+- **Cross-Linking:** Added to physiological sigh page's relatedUseCases; links to panic-attacks and running pages
+
+**Files Created:**
+- `/src/app/for/athletes/page.tsx` - Route file
+
+**Files Modified:**
+- `/src/data/use-case-pages.ts` - Added complete athletes page object (~220 lines)
+- `/src/data/breathing-pages.ts` - Added athletes to physiological sigh's relatedUseCases
+
+**Schema Markup (automatic via template):**
+- FAQPage (6 Q&A pairs)
+- HowTo (7 steps with timing)
+- Article (with author, dates, keywords)
+- BreadcrumbList (Home → Use Cases → Athletes)
+
+**Key Differentiators:**
+- Targets CrossFit, HIIT, weightlifting, and endurance athletes
+- Emphasizes heart rate recovery (HRR) science and Stanford research
+- Explains alveoli re-inflation, lactate clearance, vagus nerve activation
+- Practical protocols: 3-5 sighs between sets, timing recommendations
+- Addresses competition use and self-consciousness
+- Quantifiable claims: "2x faster heart rate reduction", "20-30 BPM drop in 60-90 seconds"
+
+**Expected Impact:**
+- Target keywords appeal to CrossFit/HIIT community
+- Appeals to performance-focused athletes seeking marginal gains
+- Cross-traffic from physiological sigh, panic-attacks, and running pages
+- 5 peer-reviewed references including Stanford RCT and HRR research
+
 ### Content Expansion - New Use Case Page: Meditation for Beginners
 Created `/for/meditation` page targeting "breathing techniques for meditation" (HIGH search volume keyword).
 

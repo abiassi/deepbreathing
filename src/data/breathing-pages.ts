@@ -965,6 +965,11 @@ export const breathingPages: BreathingPageContent[] = [
         slug: "running",
         title: "Running Recovery",
         teaser: "Recover faster and stop side stitches with the double-inhale technique"
+      },
+      {
+        slug: "athletes",
+        title: "Athletic Recovery",
+        teaser: "Bring your heart rate down 2x faster between sets with this recovery breathing technique"
       }
     ],
     keywords: [

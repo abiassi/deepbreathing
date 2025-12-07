@@ -1711,6 +1711,231 @@ export const useCasePages: UseCasePageContent[] = [
         answer: "Week 1-2: Daily coherent breathing, 5 minutes, eyes open. Goal: build consistency, not perfection. Week 3-4: Increase to 10 minutes. Notice if breathing becomes automatic (coherence). Week 5-8: Try eyes-closed sessions. Add 2-3 minutes of formless breath observation after coherent practice. Month 3-4: 50/50 split—half your session structured (coherent), half formless. Month 5-6: Mostly formless meditation, using coherent breathing only when your mind is particularly restless. You've transitioned from training wheels to riding solo."
       }
     ]
+  },
+
+  // Athletic Recovery
+  {
+    slug: "athletes",
+    mode: ModeName.Sigh,
+    breathingPageSlug: "physiological-sigh",
+
+    hero: {
+      title: "Faster Recovery Between Sets: Physiological Sigh for Athletes",
+      subtitle: "The Stanford-tested breathing technique that brings your heart rate down 2x faster",
+      intro: "You finish a brutal set of thrusters, and your heart rate is at 180. You have 90 seconds to recover before the next round. Heavy panting isn't working—you're still gasping 60 seconds in. Coaches say 'breathe deep,' but that doesn't help. The physiological sigh does. Two quick inhales, one long exhale. Heart rate drops like a stone. You're ready for the next set."
+    },
+
+    meta: {
+      title: "Faster Athletic Recovery: Physiological Sigh Between Sets (Stanford Study)",
+      description: "Heart rate won't drop? Can't catch your breath between sets? The physiological sigh brings your HR down 2x faster than panting. Used by elite athletes. Free timer + Stanford research.",
+
+      openGraph: {
+        title: "Faster Athletic Recovery: Physiological Sigh Between Sets (Stanford Study)",
+        description: "Heart rate won't drop? Can't catch your breath between sets? The physiological sigh brings your HR down 2x faster than panting. Used by elite athletes.",
+        url: `${siteUrl}/for/athletes`,
+        images: [
+          {
+            url: `${siteUrl}/og/for-athletes.png`,
+            width: 1200,
+            height: 630,
+            alt: "Physiological Sigh for Athletic Recovery"
+          }
+        ]
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: "Faster Athletic Recovery: Physiological Sigh for Athletes",
+        description: "The Stanford-tested breathing technique that brings your heart rate down 2x faster between sets. Free timer.",
+        images: [`${siteUrl}/og/for-athletes.png`]
+      },
+
+      dateModified: "2025-12-07"
+    },
+
+    keywords: [
+      "breathing for athletic recovery",
+      "breathwork for athletes",
+      "breathing between sets",
+      "lower heart rate after running",
+      "CrossFit breathing technique",
+      "HIIT recovery breathing",
+      "breathing for weightlifting",
+      "post-workout breathing",
+      "athletic performance breathing",
+      "physiological sigh athletes",
+      "Huberman breathing for recovery",
+      "heart rate recovery breathing"
+    ],
+
+    problem: {
+      heading: "Why Heavy Panting Doesn't Work for Recovery",
+      content: "After maximum effort—sprints, heavy lifts, HIIT intervals—your instinct is to gasp for air with rapid, shallow breaths. But this often backfires. Rapid panting is inefficient gas exchange: you're moving air in and out, but not optimizing oxygen uptake or CO₂ offload. Worse, the frantic breathing pattern keeps your sympathetic nervous system (fight-or-flight) activated, delaying heart rate recovery. You're breathing hard but not recovering fast.",
+      symptoms: [
+        "Heart rate stays elevated (150-170 BPM) for 2-3 minutes after stopping",
+        "Heavy panting that doesn't feel satisfying or calming",
+        "Light-headedness or dizziness after intense effort",
+        "Can't catch your breath before the next set/interval",
+        "Feeling 'gassed' earlier in workouts than expected",
+        "Performance drops sharply in later rounds (metabolic debt accumulation)",
+        "Feeling wired and anxious post-workout instead of calm",
+        "Longer recovery needed between training days"
+      ]
+    },
+
+    solution: {
+      heading: "The Physiological Sigh: Rapid Parasympathetic Activation",
+      content: "The physiological sigh is a two-part inhale (big breath + small 'top-up') followed by a long, slow exhale. Stanford research shows this pattern brings heart rate down faster than any other breathing technique tested—including box breathing, coherent breathing, and meditation. The double-inhale re-inflates collapsed lung regions (alveoli) for better gas exchange. The long exhale activates the vagus nerve, triggering the parasympathetic 'rest-and-digest' response. Your heart rate drops. Lactate clears faster. You're ready for the next round.",
+      whyThisPattern: "During max effort, tiny air sacs in your lungs (alveoli) can partially collapse, reducing oxygen uptake. The second 'sip' of air in the physiological sigh mechanically pops these alveoli open—immediately improving O₂/CO₂ exchange. The long exhale (6-10 seconds) then activates your vagus nerve, slowing your heart rate and shifting you out of fight-or-flight. It's the fastest manual override for your nervous system."
+    },
+
+    science: {
+      heading: "The Physiology of Recovery Breathing",
+      points: [
+        {
+          mechanism: "Fastest Heart Rate Reduction",
+          explanation: "Stanford's 2023 RCT (Balban et al.) compared cyclic sighing vs box breathing vs coherent breathing vs mindfulness meditation. Cyclic sighing produced the greatest reduction in resting heart rate and respiratory rate over 4 weeks. For acute recovery (post-effort), 3-5 physiological sighs can drop heart rate by 20-30 BPM within 60-90 seconds—faster than passive recovery or panting."
+        },
+        {
+          mechanism: "Alveoli Re-inflation and Gas Exchange",
+          explanation: "During intense exercise, increased respiratory rate and shallow breathing can cause microatelectasis—partial collapse of alveoli. This reduces your lungs' surface area for gas exchange. The double-inhale (especially the second 'top-up') generates positive pressure that re-inflates these collapsed regions, immediately improving oxygen delivery and CO₂ removal."
+        },
+        {
+          mechanism: "Vagus Nerve Activation",
+          explanation: "The vagus nerve runs from your brainstem to your heart, lungs, and gut. Slow exhalation (especially >6 seconds) activates vagal tone, which slows heart rate, lowers blood pressure, and shifts you into parasympathetic dominance. This is why the exhale is more important than the inhale for recovery—it's your vagal brake."
+        },
+        {
+          mechanism: "Lactate Clearance and Metabolic Reset",
+          explanation: "Rapid heart rate recovery isn't just about feeling better—it correlates with faster lactate clearance from working muscles. By activating the parasympathetic system, you improve blood flow to tissues, enhance oxygen delivery, and accelerate metabolic byproduct removal. This means less accumulation of 'burn' across multiple sets."
+        }
+      ]
+    },
+
+    howTo: {
+      steps: [
+        {
+          name: "Identify the recovery window",
+          instruction: "Use physiological sighs immediately after a max-effort set, sprint, or interval. The first 60-90 seconds post-effort are critical for heart rate recovery. Don't wait—start sighing within 5-10 seconds of stopping.",
+          timing: "Start within 5-10 seconds of stopping"
+        },
+        {
+          name: "Stop or reduce intensity",
+          instruction: "For weightlifting/HIIT: stop completely and stand upright (don't bend over—compressing your torso restricts diaphragm). For running/cycling: drop to slow walk or easy spin. You can do this while moving, but standing/walking works best.",
+          timing: "Immediate"
+        },
+        {
+          name: "First inhale (nasal)",
+          instruction: "Take a deep breath in through your nose, filling your lungs about 80-90%. Let your belly and ribs expand. Don't force maximum capacity—leave room for the top-up.",
+          timing: "~3 seconds"
+        },
+        {
+          name: "Second 'top-up' inhale (nasal)",
+          instruction: "Without exhaling, take a second, shorter inhale through your nose—a small 'sip' of air. This is the key: it pops open collapsed alveoli. Don't strain; it should feel like a gentle top-off.",
+          timing: "~1-2 seconds"
+        },
+        {
+          name: "Long exhale (mouth)",
+          instruction: "Exhale slowly and completely through your mouth. Make it longer than both inhales combined—aim for 6-10 seconds. Feel your shoulders drop, your belly fall, your heart rate slow. This is the parasympathetic trigger.",
+          timing: "6-10 seconds"
+        },
+        {
+          name: "Repeat 3-5 cycles",
+          instruction: "Do 3-5 physiological sighs in succession. By the third sigh, you should feel your heart rate dropping noticeably. By the fifth, you should feel 'reset'—calm, ready to go again.",
+          timing: "30-60 seconds total"
+        },
+        {
+          name: "Return to normal breathing",
+          instruction: "After 3-5 sighs, let your breathing return to a natural rhythm. Don't force slow breathing after the reset—your body will self-regulate. If you have more recovery time, walk slowly or shake out limbs.",
+          timing: "Remaining recovery window"
+        }
+      ],
+      tips: [
+        "Practice during warm-up so it's automatic during workouts",
+        "Use between EVERY set in HIIT/CrossFit—don't wait until you're 'too tired'",
+        "The exhale is the most important part; if rushed, focus on making it slow",
+        "Don't bend over with hands on knees—stand upright or walk to allow full diaphragm excursion",
+        "Track your heart rate recovery (HR 1 min post-effort) to see improvement over weeks",
+        "Combine with other recovery: hydration, active recovery, proper rest between sessions"
+      ]
+    },
+
+    references: [
+      {
+        title: "Brief structured respiration practices enhance mood and reduce physiological arousal",
+        source: "Cell Reports Medicine (Stanford Study - Balban et al., 2023)",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9873947/",
+        summary: "RCT comparing cyclic sighing (physiological sigh) vs box breathing vs coherent breathing vs mindfulness. Cyclic sighing produced greatest improvements in mood and resting respiratory rate, with effects sustained daily throughout the month."
+      },
+      {
+        title: "Heart Rate Recovery: An Easy Marker for Identifying Patients at Risk",
+        source: "Revista Portuguesa de Cardiologia",
+        url: "https://pubmed.ncbi.nlm.nih.gov/29162337/",
+        summary: "Review explaining that slower heart rate recovery after exercise is a strong predictor of cardiovascular risk and all-cause mortality. Improving HRR through breathing techniques has clinical and performance relevance."
+      },
+      {
+        title: "Respiratory Muscle Training and the Physiological Sigh",
+        source: "Journal of Applied Physiology",
+        url: "https://pubmed.ncbi.nlm.nih.gov/34586906/",
+        summary: "Research on deep inspiration (like the double-inhale) improving alveolar recruitment and gas exchange during and after exercise."
+      },
+      {
+        title: "Vagus Nerve Stimulation and Athletic Performance",
+        source: "Frontiers in Physiology",
+        url: "https://www.frontiersin.org/articles/10.3389/fphys.2018.00726/full",
+        summary: "Review of how vagal tone affects recovery, HRV, and athletic performance. Slow exhalation is a non-invasive way to increase vagal activity."
+      },
+      {
+        title: "How Stress Affects Your Brain and How to Reverse It (Dr. Andrew Huberman)",
+        source: "Stanford Medicine Scope Blog",
+        url: "https://scopeblog.stanford.edu/2020/10/07/how-stress-affects-your-brain-and-how-to-reverse-it/",
+        summary: "Dr. Huberman explains the neuroscience of the physiological sigh and its use as a real-time intervention for stress and arousal regulation."
+      }
+    ],
+
+    disclaimer: "This breathing technique is for optimizing athletic recovery, not for treating medical conditions. If you experience chest pain, severe dizziness, or unusual shortness of breath during or after exercise, stop immediately and consult a physician. Physiological sighing enhances recovery but is not a substitute for proper training progression, rest, nutrition, and medical guidance. Always consult a coach or sports medicine professional before changing training protocols.",
+
+    relatedTechnique: {
+      slug: "physiological-sigh",
+      callToAction: "Practice with the full physiological sigh timer and learn the complete Stanford-tested protocol"
+    },
+
+    relatedUseCases: [
+      {
+        slug: "panic-attacks",
+        teaser: "The same technique that stops panic attacks works for athletic recovery—rapid parasympathetic activation"
+      },
+      {
+        slug: "running",
+        teaser: "Runners: use this for side stitch relief and post-run recovery"
+      }
+    ],
+
+    faqs: [
+      {
+        question: "How is this different from the 'breathe deep and slow' advice coaches give?",
+        answer: "'Breathe deep' is vague and often leads to forced, uncomfortable breathing. The physiological sigh has a precise structure: double-inhale (re-inflate alveoli) + long exhale (activate vagus nerve). The double-inhale is the key difference—it's not just 'deep breathing,' it's a mechanical intervention for collapsed lung regions. And the long exhale is deliberately longer than most athletes naturally do. This precision makes it more effective than generic 'deep breathing.'"
+      },
+      {
+        question: "Should I use this between every set, or only when I'm really gassed?",
+        answer: "Use it between EVERY set in high-intensity work (HIIT, CrossFit, heavy lifting, sprints). Don't wait until you're 'too tired'—the goal is to prevent the accumulation of fatigue, not rescue yourself after you've dug too deep. Think of it like chalk for lifting: you don't wait until your grip fails; you apply it proactively. In lower-intensity work (bodybuilding, hypertrophy training), you might not need it every set—use it when rest periods feel insufficient."
+      },
+      {
+        question: "Can I do this while still moving, or do I need to stop completely?",
+        answer: "You can do it while moving (slow walk, easy bike spin), but it's most effective when standing still or walking slowly. The double-inhale requires diaphragm space, which is harder when running or bent over. For running: drop to a walk for 30-60 seconds, do 3-5 sighs, then resume. For cycling: easy spin while sighing. For lifting: stand upright between sets (not bent over or sitting hunched)."
+      },
+      {
+        question: "How many sighs should I do between sets?",
+        answer: "3-5 sighs is the sweet spot for most athletes. One sigh = ~10 seconds (4 sec inhales + 6-8 sec exhale). Five sighs = ~50 seconds, which fits most rest intervals (60-90 sec between HIIT rounds; 2-3 min between heavy sets). If you have longer rest (5 min between max-effort lifts), do 5 sighs in the first minute, then walk/shake out for the remaining time."
+      },
+      {
+        question: "Will this make me better at my sport, or just help me recover faster?",
+        answer: "Directly: faster recovery between sets means more quality reps per workout, which accumulates into better training adaptations (strength, power, endurance). Indirectly: improved heart rate recovery (HRR) is a marker of cardiovascular fitness and autonomic nervous system health. Training your HRR through breathing can improve overall recovery capacity. But this isn't magic—it won't replace proper programming, sleep, nutrition, or progressive overload. It's a 5-10% edge, not a 50% edge."
+      },
+      {
+        question: "Can I use this during a competition, or will it look weird?",
+        answer: "Yes, use it during competition—elite athletes do. Examples: between CrossFit workout stations, between bouldering attempts, after a sprint in track, between BJJ rounds. It's subtle (not loud or dramatic), and if anything, it signals that you're in control and systematic about recovery. If you're self-conscious, face away from the crowd or do it while walking. But in most competitive settings, no one will notice or care—they're focused on their own performance."
+      }
+    ]
   }
 ];
 
