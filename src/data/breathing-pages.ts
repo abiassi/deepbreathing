@@ -945,6 +945,11 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     relatedUseCases: [
       {
+        slug: "panic-attacks",
+        title: "Panic Attack Relief",
+        teaser: "Stop a panic attack in 30 seconds with Stanford's double-inhale technique"
+      },
+      {
         slug: "running",
         title: "Running Recovery",
         teaser: "Recover faster and stop side stitches with the double-inhale technique"

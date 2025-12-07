@@ -2,6 +2,43 @@
 
 ## 2025-12-07
 
+### Content Expansion - New Use Case Page: Panic Attacks
+Created `/for/panic-attacks` page targeting "breathing for panic attacks" (HIGH search volume keyword).
+
+**New Page Details:**
+- **URL:** `/for/panic-attacks`
+- **Technique:** Physiological Sigh (double-inhale, long exhale)
+- **Target Keywords:** "breathing for panic attacks", "stop panic attack fast", "panic attack breathing technique", "how to stop a panic attack"
+- **Content:** 200+ lines including problem, solution, 4 science points, 6-step how-to, 5 peer-reviewed references, 6 FAQs, emergency medical disclaimer
+- **SEO Metadata:** Optimized title "Stop a Panic Attack in 30 Seconds: Physiological Sigh Technique"
+- **Cross-Linking:** Added to physiological sigh page's relatedUseCases; links to anxiety and public-speaking pages
+
+**Files Created:**
+- `/src/app/for/panic-attacks/page.tsx` - Route file
+
+**Files Modified:**
+- `/src/data/use-case-pages.ts` - Added complete panic-attacks page object (~200 lines)
+- `/src/data/breathing-pages.ts` - Added panic-attacks to physiological sigh's relatedUseCases
+
+**Schema Markup (automatic via template):**
+- FAQPage (6 Q&A pairs)
+- HowTo (6 steps with timing)
+- Article (with author, dates, keywords)
+- BreadcrumbList (Home → Use Cases → Panic Attacks)
+
+**Key Differentiators:**
+- Emphasizes ACUTE panic vs chronic anxiety (different from anxiety page)
+- Focuses on hyperventilation and CO₂ regulation science
+- Includes emergency medical disclaimer (call 911 for first-time symptoms)
+- Stanford research authority (Balban 2023 study)
+- Explains why physiological sigh > box breathing for acute panic
+
+**Expected Impact:**
+- Target keyword "breathing for panic attacks" has high search volume
+- Complements anxiety page by targeting acute episodes vs chronic state
+- Cross-traffic from anxiety and physiological sigh pages
+- 5 peer-reviewed references including Stanford RCT
+
 ### Content Expansion - New Use Case Page: Anxiety
 Created `/for/anxiety` page targeting "breathing exercises for anxiety" (HUGE search volume keyword).
 

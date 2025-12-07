@@ -1060,6 +1060,207 @@ export const useCasePages: UseCasePageContent[] = [
         answer: "You may notice a subtle shift within the first 1-3 minutes of practice (lower heart rate, less chest tightness). However, the biggest benefits come from consistent daily practice over weeks. Studies show 4-8 weeks of regular slow breathing produces measurable reductions in anxiety symptoms, resting heart rate, and stress hormone levels. Think of it like strength training—one session helps a bit, but the real changes happen with sustained practice. Most people report noticeable anxiety reduction after 2-3 weeks of twice-daily practice."
       }
     ]
+  },
+  {
+    slug: "panic-attacks",
+    mode: ModeName.Sigh,
+    breathingPageSlug: "physiological-sigh",
+
+    hero: {
+      title: "How to Stop a Panic Attack in 30 Seconds",
+      subtitle: "The physiological sigh: Stanford's double-inhale technique for acute panic",
+      intro: "Your heart is pounding out of your chest. You can't catch your breath. Your hands are tingling. You feel like you're dying or going insane. This is a panic attack—and it's terrifying, but it's not dangerous. The physiological sigh, a double-inhale-long-exhale pattern, can interrupt the hyperventilation cycle and bring you back to baseline in under a minute."
+    },
+
+    meta: {
+      title: "Stop a Panic Attack in 30 Seconds: Physiological Sigh Technique",
+      description: "Heart racing. Can't breathe. Feel like you're dying. Stop a panic attack in 30 seconds with the physiological sigh. Stanford-tested for acute panic. Free timer.",
+      ogTitle: "Stop a Panic Attack in 30 Seconds - Physiological Sigh",
+      ogDescription: "Stanford-tested breathing technique stops panic attacks in 30 seconds. Used for acute hyperventilation and overwhelming fear. Free timer.",
+      twitterTitle: "Stop Panic Attack in 30 Seconds - Physiological Sigh",
+      twitterDescription: "Stanford-tested double-inhale technique stops panic attacks in seconds. Free timer.",
+      author: "Resonance Editorial Team",
+      datePublished: "2025-12-07",
+      dateModified: "2025-12-07"
+    },
+
+    keywords: [
+      "breathing for panic attacks",
+      "stop panic attack fast",
+      "panic attack breathing technique",
+      "how to stop a panic attack",
+      "breathing during panic attack",
+      "calm panic attack breathing",
+      "physiological sigh panic",
+      "hyperventilation panic attack",
+      "panic attack relief breathing",
+      "acute panic breathing"
+    ],
+
+    problem: {
+      heading: "What Happens During a Panic Attack",
+      content: "A panic attack is your body's alarm system firing at maximum intensity—even though there's no actual danger. Your amygdala (fear center) floods your system with adrenaline, your breathing becomes rapid and shallow (hyperventilation), and you blow off too much CO₂. Low CO₂ causes blood vessels to constrict, making you feel dizzy, tingly, and short of breath—which makes you panic MORE, creating a vicious spiral.",
+      symptoms: [
+        "Heart pounding or racing (tachycardia)",
+        "Hyperventilating—rapid, shallow breathing",
+        "Feeling like you can't get enough air (air hunger)",
+        "Tingling or numbness in hands/face (paresthesia)",
+        "Dizziness, lightheadedness, or feeling faint",
+        "Chest pain or tightness",
+        "Fear of dying, losing control, or 'going crazy'",
+        "Derealization (feeling detached from reality)",
+        "Sweating, trembling, or shaking",
+        "Nausea or stomach distress"
+      ]
+    },
+
+    solution: {
+      heading: "Physiological Sigh: The Double-Inhale That Stops Panic",
+      content: "The physiological sigh is a breathing pattern your body does naturally when you're stressed—you've probably noticed yourself doing spontaneous 'double-sniff' breaths during intense moments. Scientists at Stanford identified this pattern and found it's the fastest way to offload CO₂ and calm your nervous system. It's specifically designed for ACUTE panic, not chronic anxiety.",
+      whyThisPattern: "The double-inhale (big breath + small top-up breath) rapidly re-inflates collapsed alveoli (tiny air sacs in your lungs), which improves gas exchange. The LONG exhale (6-10 seconds) is where the magic happens—it activates your vagus nerve and slows your heart rate. Unlike box breathing (which has holds that can feel scary during panic), the physiological sigh has no holds and focuses on a powerful exhale that gives you something concrete to DO when you're spiraling."
+    },
+
+    science: {
+      heading: "Why the Physiological Sigh Stops Panic Attacks",
+      points: [
+        {
+          mechanism: "Rapidly Offloads CO₂",
+          explanation: "During a panic attack, you're hyperventilating—breathing too fast and shallow, which lowers CO₂ in your blood. Low CO₂ causes blood vessels to constrict and creates the tingling, dizzy sensations that make panic worse. The physiological sigh's long exhale (6-10 seconds) allows CO₂ to normalize quickly, signaling to your brainstem that you're safe."
+        },
+        {
+          mechanism: "Activates Vagus Nerve Fast",
+          explanation: "The vagus nerve is your body's 'brake pedal' for the panic response. Long, slow exhales stimulate vagal afferents that signal your brainstem to activate the parasympathetic nervous system. A 2023 Stanford study (Balban et al.) found cyclic sighing produced the largest improvements in mood and heart rate variability of any breathing pattern tested—outperforming box breathing and mindfulness meditation."
+        },
+        {
+          mechanism: "Re-Inflates Collapsed Alveoli",
+          explanation: "When you're breathing rapidly and shallowly during panic, some of the tiny air sacs in your lungs (alveoli) collapse, reducing oxygen exchange efficiency. The double-inhale mechanically pops these alveoli back open. This is why sighing feels so relieving—it's your body's natural way of resetting lung mechanics."
+        },
+        {
+          mechanism: "Gives You Control During Chaos",
+          explanation: "Panic attacks create a feeling of total loss of control. The physiological sigh gives you a specific, physical action to focus on—two sharp inhales, one long exhale—which interrupts the 'I'm dying' thought spiral. You can't stop the panic attack instantly, but you CAN control your exhale, and that sense of agency helps break the feedback loop."
+        }
+      ]
+    },
+
+    howTo: {
+      steps: [
+        {
+          name: "Recognize you're having a panic attack",
+          instruction: "First, acknowledge what's happening: 'This is a panic attack. It's terrifying but not dangerous. It will pass.' This cognitive label helps activate your prefrontal cortex.",
+          timing: "5 seconds"
+        },
+        {
+          name: "First inhale (deep, through nose)",
+          instruction: "Take a deep breath in through your nose until your lungs feel about 80% full. Don't strain—make it smooth.",
+          timing: "3 seconds"
+        },
+        {
+          name: "Top-up inhale (small sip of air)",
+          instruction: "Without exhaling, take a small second sip of air through your nose to completely fill your lungs. This is the 'double-inhale' that re-inflates collapsed alveoli.",
+          timing: "1-2 seconds"
+        },
+        {
+          name: "Long, slow exhale (through mouth)",
+          instruction: "Exhale slowly through pursed lips or an open mouth for as long as you comfortably can (aim for 6-10 seconds). Let all the air drain out—this is the key step.",
+          timing: "6-10 seconds"
+        },
+        {
+          name: "Repeat 3-5 times",
+          instruction: "Do 3-5 full cycles of the pattern. You should notice your heart rate slowing and the tingling/dizziness decreasing. If not, keep going—it won't hurt you.",
+          timing: "1-2 minutes total"
+        },
+        {
+          name: "Transition to normal breathing",
+          instruction: "Once the acute panic subsides, switch to gentle, slow breathing (no holds) to prevent re-triggering. Sit or lie down if you feel weak.",
+          timing: "As needed"
+        }
+      ],
+      tips: [
+        "The exhale should be LONGER than the inhale—this is critical for activating your vagus nerve",
+        "If you can't breathe through your nose (too congested/panicked), do mouth breathing—it still works",
+        "Don't force the double-inhale if it feels scary—a single deep inhale + long exhale is fine",
+        "Practice this when you're NOT panicking so it's automatic when you need it",
+        "Combine with grounding techniques: name 5 things you can see, 4 you can touch, 3 you can hear"
+      ]
+    },
+
+    references: [
+      {
+        title: "Balban et al., 2023 - Cyclic sighing reduces anxiety better than meditation",
+        source: "Cell Reports Medicine (RCT)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/36630953/",
+        summary: "Month-long randomized study comparing breathwork to mindfulness found cyclic sighing (physiological sigh pattern) produced the largest improvements in mood and respiratory rate—outperforming box breathing and meditation."
+      },
+      {
+        title: "Li et al., 2016 - Brainstem circuits for sighing",
+        source: "Nature (Mechanism Study)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/26855425/",
+        summary: "Identified the peptidergic neurons in the brainstem that control sigh generation. Sighs re-inflate collapsed alveoli and maintain lung compliance—explaining why they feel so relieving during stress."
+      },
+      {
+        title: "Meuret et al., 2010 - Hyperventilation and panic disorder",
+        source: "Depression and Anxiety (Clinical Review)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/19798748/",
+        summary: "Hyperventilation is a core feature of panic attacks, lowering CO₂ and creating physical symptoms (dizziness, tingling). Slowing breathing to normalize CO₂ is a first-line behavioral intervention."
+      },
+      {
+        title: "Severs et al., 2022 - Physiology of sighing",
+        source: "Biological Psychology (Review)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/35288214/",
+        summary: "Sighs prevent alveolar collapse and increase with stress/hypoxia. PreBötzinger complex in brainstem controls sigh frequency—providing automatic lung maintenance and emotional regulation."
+      },
+      {
+        title: "Craske & Barlow, 2014 - Panic disorder treatment",
+        source: "Annual Review of Clinical Psychology (Review)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/24387234/",
+        summary: "Cognitive-behavioral therapy for panic disorder includes interoceptive exposure (learning to tolerate physical sensations) and breathing retraining to reduce hyperventilation sensitivity."
+      }
+    ],
+
+    disclaimer: "Panic attacks can feel like a heart attack or other medical emergency. If you're experiencing chest pain, shortness of breath, or other severe symptoms for the first time, call 911 to rule out a medical cause. This breathing technique is not a substitute for professional mental health treatment. If you have frequent panic attacks, please see a therapist trained in cognitive-behavioral therapy (CBT) for panic disorder.",
+
+    relatedTechnique: {
+      slug: "physiological-sigh",
+      callToAction: "Learn the full physiological sigh technique with research, tips, and guided timer"
+    },
+
+    relatedUseCases: [
+      {
+        slug: "anxiety",
+        teaser: "Chronic anxiety instead of acute panic? Try box breathing for ongoing nervous system regulation"
+      },
+      {
+        slug: "public-speaking",
+        teaser: "Pre-speech panic? Use this technique 60 seconds before you step on stage"
+      }
+    ],
+
+    faqs: [
+      {
+        question: "What's the difference between a panic attack and anxiety?",
+        answer: "Anxiety is like a simmering pot—ongoing worry, muscle tension, and vigilance that can last hours, days, or weeks. A panic attack is like the pot boiling over—a sudden, intense surge of overwhelming fear with physical symptoms (racing heart, hyperventilation, feeling like you're dying) that peaks within 10 minutes. Panic attacks are acute episodes; anxiety is a chronic state. Use the physiological sigh for panic attacks (acute relief). Use box breathing for ongoing anxiety (sustained regulation)."
+      },
+      {
+        question: "Can I use this during a panic attack, or will it make it worse?",
+        answer: "Yes, use it during a panic attack—that's exactly what it's designed for. The key is the LONG EXHALE (6-10 seconds). Some people worry the double-inhale will make hyperventilation worse, but the long exhale immediately offloads the excess air. If the double-inhale feels scary, skip it and just do: single deep inhale + very long exhale. The exhale is what matters most for stopping panic."
+      },
+      {
+        question: "How is this different from box breathing for panic?",
+        answer: "Box breathing (4-4-4-4 with holds) is great for chronic anxiety but can feel scary during acute panic—the breath holds might trigger 'I can't breathe' fears when you're already hyperventilating. The physiological sigh has NO holds and focuses on a powerful exhale, which gives you something concrete to DO when you're spiraling. Research (Balban 2023) found cyclic sighing outperformed box breathing for mood improvement."
+      },
+      {
+        question: "I felt tingling in my hands and face. Is that normal?",
+        answer: "Yes—that's called paresthesia and it's caused by low CO₂ from hyperventilation during the panic attack. It's not dangerous (you're not having a stroke or heart attack), but it's terrifying. The tingling should DECREASE after 3-5 physiological sighs as your CO₂ normalizes. If it persists, you might still be breathing too fast—slow down and focus on making each exhale as long as possible."
+      },
+      {
+        question: "Can this technique prevent future panic attacks?",
+        answer: "The physiological sigh is an 'in-the-moment' tool for stopping acute panic, not a prevention strategy. To reduce panic attack frequency, you need: (1) Daily breathwork practice (box breathing or coherent breathing) to train your nervous system. (2) Cognitive-behavioral therapy (CBT) to address the thought patterns that trigger panic. (3) Exposure therapy to reduce fear of the physical sensations. (4) Lifestyle changes (sleep, caffeine reduction, exercise). Think of the physiological sigh as your emergency brake, not your daily prevention."
+      },
+      {
+        question: "What if I can't do the double-inhale because I'm panicking too hard?",
+        answer: "That's fine—skip the double-inhale. Just do: one deep inhale + one VERY long exhale (8-10 seconds). The long exhale is the critical part for activating your vagus nerve and slowing your heart rate. The double-inhale helps with lung mechanics, but it's not essential if it feels overwhelming. Even a single inhale + long exhale will interrupt the hyperventilation cycle."
+      }
+    ]
   }
 ];
 
