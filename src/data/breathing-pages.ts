@@ -298,6 +298,11 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     relatedUseCases: [
       {
+        slug: "anxiety",
+        title: "Anxiety Relief",
+        teaser: "Stop racing thoughts and chest tightness with the Navy SEAL breathing method"
+      },
+      {
         slug: "public-speaking",
         title: "Public Speaking & Stage Fright",
         teaser: "The Navy SEAL method to stop stage fright in 60 seconds"

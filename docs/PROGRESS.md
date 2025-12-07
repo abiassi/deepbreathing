@@ -2,6 +2,36 @@
 
 ## 2025-12-07
 
+### Content Expansion - New Use Case Page: Anxiety
+Created `/for/anxiety` page targeting "breathing exercises for anxiety" (HUGE search volume keyword).
+
+**New Page Details:**
+- **URL:** `/for/anxiety`
+- **Technique:** Box Breathing (4-4-4-4)
+- **Target Keywords:** "breathing exercises for anxiety", "breathing techniques for anxiety", "anxiety breathing exercises", "best breathing for anxiety"
+- **Content:** 200+ lines including problem, solution, 4 science points, 7-step how-to, 5 peer-reviewed references, 6 FAQs, medical disclaimer
+- **SEO Metadata:** Optimized title "Stop Anxiety in 60 Seconds: Box Breathing Technique (Navy SEAL Method)"
+- **Cross-Linking:** Added to box breathing page's relatedUseCases; links to panic-attacks and public-speaking pages
+
+**Files Created:**
+- `/src/app/for/anxiety/page.tsx` - Route file
+
+**Files Modified:**
+- `/src/data/use-case-pages.ts` - Added complete anxiety page object (~210 lines)
+- `/src/data/breathing-pages.ts` - Added anxiety to box breathing's relatedUseCases
+
+**Schema Markup (automatic via template):**
+- FAQPage (6 Q&A pairs)
+- HowTo (7 steps with timing)
+- Article (with author, dates, keywords)
+- BreadcrumbList (Home → Use Cases → Anxiety)
+
+**Expected Impact:**
+- Target keyword "breathing exercises for anxiety" has MASSIVE search volume
+- Page optimized for high CTR with emotional hooks and Navy SEAL authority
+- Strategic cross-linking creates hub-and-spoke model with other anxiety-related pages
+- 5 peer-reviewed references boost E-A-T signals
+
 ### SEO Optimization - Phase 1 Quick Wins
 Implemented critical CTR optimizations to address 0-click problem (Search Console shows 9-24 impressions but 0 clicks).
 

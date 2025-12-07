@@ -854,6 +854,212 @@ export const useCasePages: UseCasePageContent[] = [
         answer: "The exact cause isn't fully understood, but the leading theories involve diaphragm spasm from the jarring of running, strain on ligaments connecting the diaphragm to internal organs, and reduced blood flow to the diaphragm during exercise. Warming up properly, avoiding large meals before running, and strengthening your core can all help prevent them."
       }
     ]
+  },
+  {
+    slug: "anxiety",
+    mode: ModeName.Box,
+    breathingPageSlug: "box",
+
+    hero: {
+      title: "How to Stop Anxiety in 60 Seconds with Box Breathing",
+      subtitle: "The Navy SEAL breathing method that calms racing thoughts and chest tightness",
+      intro: "Your chest feels tight. Your thoughts won't stop racing. You feel like you can't catch your breath. Anxiety isn't a weakness—it's your nervous system stuck in overdrive. Box breathing, the same technique Navy SEALs use before high-stress missions, can interrupt this anxiety response in under a minute."
+    },
+
+    meta: {
+      title: "Stop Anxiety in 60 Seconds: Box Breathing Technique (Navy SEAL Method)",
+      description: "Chest tightness. Racing thoughts. Constant worry. Stop anxiety in 60 seconds with the Navy SEAL box breathing technique. Used by thousands daily. Free guided visualizer.",
+      ogTitle: "Stop Anxiety in 60 Seconds - Navy SEAL Box Breathing",
+      ogDescription: "The breathing technique Navy SEALs use for anxiety. Stop racing thoughts and chest tightness in 60 seconds. Free visualizer.",
+      twitterTitle: "Stop Anxiety in 60 Seconds - Box Breathing Technique",
+      twitterDescription: "Navy SEAL breathing technique stops anxiety in 60 seconds. Free guided visualizer.",
+      author: "Resonance Editorial Team",
+      datePublished: "2025-12-07",
+      dateModified: "2025-12-07"
+    },
+
+    keywords: [
+      "breathing exercises for anxiety",
+      "breathing techniques for anxiety",
+      "anxiety breathing exercises",
+      "best breathing for anxiety",
+      "how to calm anxiety with breathing",
+      "breathing to reduce anxiety",
+      "box breathing for anxiety",
+      "tactical breathing anxiety",
+      "Navy SEAL breathing anxiety",
+      "stop anxiety fast breathing",
+      "anxiety relief breathing",
+      "breathing to calm anxiety attack"
+    ],
+
+    problem: {
+      heading: "Why Anxiety Makes It Hard to Breathe",
+      content: "When anxiety strikes, your body activates the sympathetic nervous system—the same system that kicks in during actual danger. Your breathing becomes rapid and shallow (hyperventilation), which paradoxically makes you feel like you're not getting enough air. This creates a vicious cycle: shallow breathing → more CO₂ expelled → brain perceives danger → more anxiety → even shallower breathing.",
+      symptoms: [
+        "Chest tightness and difficulty taking deep breaths",
+        "Racing thoughts that won't stop",
+        "Constant worry about worst-case scenarios",
+        "Feeling on edge or 'keyed up' all day",
+        "Difficulty concentrating or mind going blank",
+        "Physical tension (clenched jaw, tight shoulders)",
+        "Rapid heartbeat even when resting",
+        "Feeling like something bad is about to happen"
+      ]
+    },
+
+    solution: {
+      heading: "Box Breathing: The 4-4-4-4 Pattern That Stops Anxiety",
+      content: "Box breathing—also called square breathing or tactical breathing—uses four equal phases (inhale-hold-exhale-hold) to regulate your autonomic nervous system. The 4-second rhythm is slow enough to activate your parasympathetic 'rest and digest' system, but fast enough that it doesn't trigger panic if you're already anxious.",
+      whyThisPattern: "The breath holds are the secret weapon. When you pause your breathing, CO₂ builds up slightly in your blood. This signals to your brain that you're safe—you wouldn't hold your breath if you were actually in danger. The equal counts give your racing mind a simple structure to follow, breaking the rumination loop that feeds anxiety."
+    },
+
+    science: {
+      heading: "Why Box Breathing Works for Anxiety",
+      points: [
+        {
+          mechanism: "Activates the Vagus Nerve",
+          explanation: "Slow, controlled breathing stimulates the vagus nerve—the main nerve of your parasympathetic nervous system. This triggers the 'relaxation response' that counteracts the fight-or-flight anxiety response. Studies show slow breathing increases vagal tone and heart rate variability (HRV), both markers of better stress resilience."
+        },
+        {
+          mechanism: "Regulates CO₂ Levels",
+          explanation: "Anxiety often causes hyperventilation (rapid, shallow breathing), which lowers CO₂ in your blood. Low CO₂ makes blood vessels constrict, reducing oxygen delivery to your brain—which paradoxically makes you feel breathless. Box breathing's holds allow CO₂ to normalize, signaling safety to your nervous system."
+        },
+        {
+          mechanism: "Breaks the Rumination Loop",
+          explanation: "Anxious thoughts spiral because your prefrontal cortex (rational brain) is overwhelmed by your amygdala (fear center). The 4-4-4-4 count gives your mind a simple, repetitive task—counting—which engages your prefrontal cortex and interrupts the rumination cycle. It's like a pattern interrupt for your brain."
+        },
+        {
+          mechanism: "Lowers Cortisol and Heart Rate",
+          explanation: "Multiple studies show slow breathing reduces cortisol (your primary stress hormone) and lowers heart rate within minutes. A 2017 study found resonance-frequency breathing (similar to box breathing) reduced blood pressure reactivity to stress and improved mood compared to controls."
+        }
+      ]
+    },
+
+    howTo: {
+      steps: [
+        {
+          name: "Find a quiet space",
+          instruction: "Sit comfortably with your back supported. Close your eyes or soften your gaze. Place one hand on your chest and one on your belly to feel your breath.",
+          timing: "15 seconds"
+        },
+        {
+          name: "Exhale completely",
+          instruction: "Start by exhaling all the air from your lungs through your mouth. This creates a 'clean slate' for the pattern.",
+          timing: "4 seconds"
+        },
+        {
+          name: "Inhale through nose (count to 4)",
+          instruction: "Breathe in slowly through your nose while counting to 4. Feel your belly expand first, then your chest. Keep it gentle—no gulping air.",
+          timing: "4 seconds"
+        },
+        {
+          name: "Hold (count to 4)",
+          instruction: "Pause at the top of your inhale. Keep your throat soft—don't clamp down. This should feel like a gentle pause, not straining.",
+          timing: "4 seconds"
+        },
+        {
+          name: "Exhale through nose or mouth (count to 4)",
+          instruction: "Release the air slowly and smoothly through your nose or pursed lips. Feel your belly fall, then your chest. Make it gentle and controlled.",
+          timing: "4 seconds"
+        },
+        {
+          name: "Hold at the bottom (count to 4)",
+          instruction: "Pause with empty lungs. Keep your shoulders and jaw relaxed. This is the bottom of the box.",
+          timing: "4 seconds"
+        },
+        {
+          name: "Repeat for 5-10 cycles",
+          instruction: "Continue the 4-4-4-4 pattern for 1-3 minutes (about 5-10 full cycles). If you feel dizzy, shorten the holds to 2-3 seconds or skip them entirely.",
+          timing: "1-3 minutes"
+        }
+      ],
+      tips: [
+        "If 4 seconds feels too long, start with 3-3-3-3 and work up gradually",
+        "Keep your breathing silent and smooth—no audible inhales or exhales",
+        "If you feel dizzy or tingly, you're breathing too deeply. Make your breaths smaller and quieter.",
+        "Practice daily even when not anxious—this 'trains' your nervous system to respond faster when you need it",
+        "Use the visualizer on this page for guided pacing—it removes the mental effort of counting"
+      ]
+    },
+
+    references: [
+      {
+        title: "Laborde et al., 2022 - Voluntary slow breathing increases vagally mediated HRV",
+        source: "International Journal of Psychophysiology (Meta-analysis)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/35623448/",
+        summary: "Systematic review/meta-analysis found voluntary slow breathing increases vagally mediated heart rate variability during sessions, acutely after sessions, and after multi-session training—indicating improved stress regulation."
+      },
+      {
+        title: "Steffen et al., 2017 - Resonance breathing reduces stress reactivity",
+        source: "Frontiers in Public Health (RCT)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/28890890/",
+        summary: "Single-session study showed breathing at personal resonance frequency reduced blood pressure reactivity during a stress task and improved mood compared to control or faster breathing."
+      },
+      {
+        title: "Fincham et al., 2023 - Breathwork reduces anxiety and depression",
+        source: "Scientific Reports (Meta-analysis)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/36624160/",
+        summary: "Across randomized controlled trials, breathwork interventions produced small-to-moderate reductions in subjective stress, anxiety, and depressive symptoms versus non-breathwork controls."
+      },
+      {
+        title: "Jerath et al., 2015 - Physiology of slow breathing",
+        source: "Medical Hypotheses (Review)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/25669897/",
+        summary: "Review explains how slow breathing shifts autonomic balance toward parasympathetic dominance through vagal afferent signaling, improving emotional regulation and reducing anxiety."
+      },
+      {
+        title: "Ma et al., 2017 - Breathing reduces cortisol",
+        source: "Frontiers in Psychology (Study)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/28676790/",
+        summary: "Single session of slow breathing significantly reduced salivary cortisol levels and subjective anxiety in stressed adults compared to control group."
+      }
+    ],
+
+    disclaimer: "This breathing technique is not a substitute for professional mental health treatment. If you experience severe anxiety, panic attacks, or suicidal thoughts, please contact a mental health professional or call the 988 Suicide & Crisis Lifeline.",
+
+    relatedTechnique: {
+      slug: "box",
+      callToAction: "Master the full box breathing technique with research, tips, and guided practice"
+    },
+
+    relatedUseCases: [
+      {
+        slug: "panic-attacks",
+        teaser: "Acute anxiety turning into full panic? Try the physiological sigh for rapid relief in 30 seconds"
+      },
+      {
+        slug: "public-speaking",
+        teaser: "Performance anxiety before speeches? Box breathing stops stage fright in 60 seconds"
+      }
+    ],
+
+    faqs: [
+      {
+        question: "How is anxiety breathing different from panic attack breathing?",
+        answer: "Anxiety is chronic and ongoing—your nervous system is in a sustained state of elevated arousal, causing persistent worry, muscle tension, and shallow breathing throughout the day. A panic attack is acute and intense—a sudden surge of overwhelming fear with rapid heartbeat, hyperventilation, and feeling like you might die or lose control. For chronic anxiety, box breathing (4-4-4-4) works well because it's sustainable for longer sessions. For panic attacks, the physiological sigh (double-inhale, long exhale) often works faster because it rapidly offloads CO₂ and interrupts the acute hyperventilation cycle."
+      },
+      {
+        question: "Can box breathing replace anti-anxiety medication?",
+        answer: "Box breathing is a powerful self-regulation tool, but it's not a replacement for medication or therapy. Think of it as a complementary skill, like exercise or sleep hygiene. Studies show breathwork produces small-to-moderate reductions in anxiety symptoms—meaningful, but not miracle-level. If you're on medication, continue it and add box breathing as a daily practice. If you want to reduce medication, work with your doctor to create a plan. Many people find breathwork most effective when combined with cognitive-behavioral therapy (CBT) and lifestyle changes (exercise, sleep, caffeine reduction)."
+      },
+      {
+        question: "How many times per day should I practice box breathing for anxiety?",
+        answer: "For chronic anxiety, practice twice daily: once in the morning (to set a calm baseline for the day) and once before bed (to prevent anxious rumination). Each session should be 3-5 minutes (10-15 cycles). Also use it 'in the moment' whenever you notice anxiety rising—before meetings, during stressful tasks, or when you catch yourself spiraling into worry. The key is consistency: daily practice 'trains' your nervous system to respond faster when you need it. Most studies showing anxiety benefits used 5-10 minutes daily for 4-8 weeks."
+      },
+      {
+        question: "Why do the breath holds help with anxiety?",
+        answer: "The holds serve two purposes: (1) They allow CO₂ to build up slightly in your blood, which signals to your brain that you're safe—you wouldn't hold your breath if you were in actual danger. This breaks the hyperventilation cycle common in anxiety. (2) The holds give your racing mind a clear structure to follow, interrupting the rumination loop. However, if holds make you feel MORE anxious (some people don't like the sensation), skip them entirely and just do 4-second inhale, 4-second exhale with no pauses. The slow pace is what matters most."
+      },
+      {
+        question: "I felt more anxious when I tried this. What did I do wrong?",
+        answer: "This is common and doesn't mean you did anything wrong. Possible causes: (1) You held your breath too forcefully—holds should be gentle pauses, not straining. Try shorter holds (2 seconds) or skip holds entirely. (2) You breathed too deeply—anxiety often makes people take big gulps of air, which can trigger more panic. Keep breaths small, quiet, and smooth. (3) You focused too hard on 'doing it right'—this activates your anxious perfectionism. Use a guided visualizer (like the one on this page) so you don't have to think about counting. (4) You're in the middle of a panic attack—switch to physiological sighs (double-inhale, long exhale) for acute episodes; box breathing works better for ongoing anxiety."
+      },
+      {
+        question: "How long does it take to feel less anxious?",
+        answer: "You may notice a subtle shift within the first 1-3 minutes of practice (lower heart rate, less chest tightness). However, the biggest benefits come from consistent daily practice over weeks. Studies show 4-8 weeks of regular slow breathing produces measurable reductions in anxiety symptoms, resting heart rate, and stress hormone levels. Think of it like strength training—one session helps a bit, but the real changes happen with sustained practice. Most people report noticeable anxiety reduction after 2-3 weeks of twice-daily practice."
+      }
+    ]
   }
 ];
 
