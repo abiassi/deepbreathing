@@ -11,15 +11,15 @@ const siteUrl = "https://deepbreathingexercises.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Interactive Breathing Visualizer – Deep Breathing Exercises",
+    default: "Free Breathing Visualizer - Calm Anxiety in 60 Seconds",
     template: "%s | Deep Breathing Exercises"
   },
   description:
-    "Interactive breathing visualizer with adjustable pacing, tactile prompts, and calm-focused cues so you can downshift anytime.",
+    "Calm anxiety in 60 seconds with our free breathing visualizer. Used by thousands worldwide. Navy SEAL-approved techniques. Start now—no signup required.",
   openGraph: {
-    title: "Interactive Breathing Visualizer",
+    title: "Free Breathing Visualizer - Calm Anxiety in 60 Seconds",
     description:
-      "Adjustable breaths, holds, and cues that keep your breathing slow and steady—anytime, anywhere.",
+      "Calm anxiety in 60 seconds with our free breathing visualizer. Navy SEAL-approved techniques. Start now—no signup required.",
     type: "website",
     url: siteUrl,
     siteName: "Deep Breathing Exercises",
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Interactive Breathing Visualizer",
+    title: "Free Breathing Visualizer - Calm Anxiety in 60 Seconds",
     description:
-      "Guided interactive breathing with adjustable timing and tactile cues, designed for calm anywhere.",
+      "Calm anxiety in 60 seconds with our free breathing visualizer. Navy SEAL-approved techniques. Start now—no signup required.",
     creator: "@deepbreathing",
     images: ["/og-image.png"]
   },

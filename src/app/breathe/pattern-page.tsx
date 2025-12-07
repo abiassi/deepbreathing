@@ -123,7 +123,31 @@ export function PatternPage({ slug }: { slug: string }) {
     keywords: page.keywords.join(", ")
   };
 
-  const structuredData = [faqSchema, howToSchema, articleSchema];
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: baseUrl
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Breathing Techniques",
+        item: `${baseUrl}/breathe`
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: page.hero.title
+      }
+    ]
+  };
+
+  const structuredData = [faqSchema, howToSchema, articleSchema, breadcrumbSchema];
 
   const heroHeader = (
     <div className="space-y-4">
