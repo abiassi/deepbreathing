@@ -2,6 +2,54 @@
 
 ## 2025-12-07
 
+### Content Expansion - New Use Case Page: Pregnancy & Labor Preparation
+Created `/for/pregnancy` page targeting "breathing exercises during pregnancy" (HIGH search volume keyword).
+
+**New Page Details:**
+- **URL:** `/for/pregnancy`
+- **Technique:** Modified 4-7-8 Breathing (4-4-8 instead of 4-7-8)
+- **Target Keywords:** "breathing exercises during pregnancy", "pregnancy breathing techniques", "breathing for labor", "pregnancy anxiety breathing"
+- **Content:** 230+ lines including problem, solution, 4 science points, 7-step how-to, 5 peer-reviewed references, 6 FAQs, EXTENSIVE medical disclaimer
+- **SEO Metadata:** Optimized title "Breathing Exercises During Pregnancy: Safe 4-7-8 Technique for Anxiety & Labor"
+- **Cross-Linking:** Added to 4-7-8 breathing page's relatedUseCases; links to anxiety and sleep pages
+
+**Files Created:**
+- `/src/app/for/pregnancy/page.tsx` - Route file
+
+**Files Modified:**
+- `/src/data/use-case-pages.ts` - Added complete pregnancy page object (~230 lines)
+- `/src/data/breathing-pages.ts` - Added pregnancy to 4-7-8 breathing's relatedUseCases
+
+**Schema Markup (automatic via template):**
+- FAQPage (6 Q&A pairs)
+- HowTo (7 steps with timing)
+- Article (with author, dates, keywords)
+- BreadcrumbList (Home → Use Cases → Pregnancy)
+
+**Key Differentiators:**
+- EXTENSIVE medical disclaimer covering high-risk conditions, emergency symptoms, vena cava compression
+- Modified timing (4-4-8 instead of 4-7-8) for pregnancy safety
+- Addresses trimester-specific safety (position, hold duration, practice modifications)
+- Labor preparation focus (between contractions vs during contractions)
+- ACOG-approved guidance and Cochrane review citations
+- Addresses common fears (breath-holding, oxygen to baby, light-headedness)
+- Practical safety rules (NEVER lie flat after 20 weeks, left-side lying preferred)
+
+**Expected Impact:**
+- Target keyword "breathing exercises during pregnancy" has MASSIVE search volume
+- Requires high E-A-T signals due to medical nature
+- Appeals to pregnant women seeking non-medication anxiety relief
+- Cross-traffic from 4-7-8 breathing, anxiety, and sleep pages
+- 5 peer-reviewed references including Cochrane review and ACOG guidelines
+- High medical trust requirement necessitates extensive disclaimers
+
+**IMPORTANT MEDICAL NOTES:**
+- Extensive disclaimer covers: high-risk pregnancy, preeclampsia, placenta previa, preterm labor history, gestational diabetes
+- Emergency stop conditions: dizziness, vaginal bleeding, severe pain, reduced fetal movement
+- Position safety: NEVER flat on back after 20 weeks (vena cava compression risk)
+- Modified holds: 4-5 seconds max, skip if uncomfortable
+- OB-GYN consultation required for high-risk conditions
+
 ### Content Expansion - New Use Case Page: Athletic Recovery
 Created `/for/athletes` page targeting "breathing for athletic recovery" (targeted niche keyword).
 

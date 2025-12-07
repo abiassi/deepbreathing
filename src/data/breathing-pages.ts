@@ -530,6 +530,11 @@ export const breathingPages: BreathingPageContent[] = [
         slug: "high-blood-pressure",
         title: "Blood Pressure Support",
         teaser: "Naturally support healthy blood pressure with slow breathing"
+      },
+      {
+        slug: "pregnancy",
+        title: "Pregnancy & Labor",
+        teaser: "Safe, modified 4-7-8 breathing for pregnancy anxiety and labor preparation"
       }
     ],
     keywords: [

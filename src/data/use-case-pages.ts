@@ -1936,6 +1936,233 @@ export const useCasePages: UseCasePageContent[] = [
         answer: "Yes, use it during competition—elite athletes do. Examples: between CrossFit workout stations, between bouldering attempts, after a sprint in track, between BJJ rounds. It's subtle (not loud or dramatic), and if anything, it signals that you're in control and systematic about recovery. If you're self-conscious, face away from the crowd or do it while walking. But in most competitive settings, no one will notice or care—they're focused on their own performance."
       }
     ]
+  },
+
+  // Pregnancy & Labor Preparation
+  {
+    slug: "pregnancy",
+    mode: ModeName.FourSevenEight,
+    breathingPageSlug: "4-7-8",
+
+    hero: {
+      title: "Breathing for Pregnancy Anxiety and Labor Preparation",
+      subtitle: "Modified 4-7-8 breathing: safe, gentle, and used in childbirth education",
+      intro: "You're pregnant, and the anxiety is overwhelming. Worry about labor. Worry about the baby. Worry about everything. Traditional anxiety medications aren't an option. Meditation feels impossible when your mind is racing. You need something safe, effective, and pregnancy-approved. Modified 4-7-8 breathing is taught in childbirth classes worldwide—a gentle technique that calms anxiety without medication or risk to your baby."
+    },
+
+    meta: {
+      title: "Breathing Exercises During Pregnancy: Safe 4-7-8 Technique for Anxiety & Labor",
+      description: "Pregnancy anxiety? Can't take medication? The modified 4-7-8 breathing technique is safe for pregnancy, used in childbirth education, and calms anxiety naturally. Free guided timer + OB-approved research.",
+
+      openGraph: {
+        title: "Breathing Exercises During Pregnancy: Safe 4-7-8 Technique for Anxiety & Labor",
+        description: "Pregnancy anxiety? Can't take medication? The modified 4-7-8 breathing technique is safe for pregnancy, used in childbirth education, and calms anxiety naturally.",
+        url: `${siteUrl}/for/pregnancy`,
+        images: [
+          {
+            url: `${siteUrl}/og/for-pregnancy.png`,
+            width: 1200,
+            height: 630,
+            alt: "Safe Breathing for Pregnancy and Labor"
+          }
+        ]
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: "Safe Breathing for Pregnancy Anxiety & Labor Prep",
+        description: "Modified 4-7-8 breathing: pregnancy-safe, used in childbirth education. Free guided timer.",
+        images: [`${siteUrl}/og/for-pregnancy.png`]
+      },
+
+      dateModified: "2025-12-07"
+    },
+
+    keywords: [
+      "breathing exercises during pregnancy",
+      "pregnancy breathing techniques",
+      "breathing for labor",
+      "pregnancy anxiety breathing",
+      "safe breathing during pregnancy",
+      "childbirth breathing techniques",
+      "prenatal breathing exercises",
+      "4-7-8 breathing pregnancy",
+      "labor breathing patterns",
+      "pregnancy relaxation breathing",
+      "breathing for pregnancy stress",
+      "natural anxiety relief pregnancy"
+    ],
+
+    problem: {
+      heading: "Pregnancy Anxiety Without Medication Options",
+      content: "Pregnancy brings a unique form of anxiety: constant worry about the baby, fear of labor pain, hormonal mood swings, and physical discomfort that makes relaxation nearly impossible. And your usual coping strategies—medication, alcohol, intense exercise—are off the table. You're told to 'stay calm for the baby,' which only makes the anxiety worse. You need a safe, evidence-based tool that works without medication and doesn't require lying in an uncomfortable position.",
+      symptoms: [
+        "Constant worry about baby's health and development",
+        "Anticipatory anxiety about labor pain and complications",
+        "Racing thoughts at night, difficulty falling asleep",
+        "Shortness of breath or feeling like you can't take deep breaths",
+        "Heart palpitations or elevated resting heart rate",
+        "Emotional volatility (crying, irritability, mood swings)",
+        "Physical tension (tight shoulders, jaw clenching, headaches)",
+        "Feeling overwhelmed by prenatal appointments and decisions",
+        "Fear of losing control during labor"
+      ]
+    },
+
+    solution: {
+      heading: "Modified 4-7-8 Breathing: The Pregnancy-Safe Protocol",
+      content: "The 4-7-8 breathing technique—inhale for 4, hold for 7, exhale for 8—is widely taught in childbirth education classes (Lamaze, Bradley Method, HypnoBirthing). The modified version for pregnancy shortens the hold (4-4-8 or 4-5-8) to avoid straining or breath-holding discomfort. This pattern activates the parasympathetic nervous system, slowing heart rate and reducing stress hormones—all without medication. It's safe throughout pregnancy when practiced gently, and many women use it during labor contractions for pain management.",
+      whyThisPattern: "The long exhale (8 seconds) is the key: it activates the vagus nerve, which triggers the 'rest-and-digest' response, lowering cortisol and adrenaline. The gentle hold (4-5 seconds, not the full 7) gives you mental focus without causing air hunger or dizziness. The technique is self-paced—you control the rhythm, which builds confidence for labor when you'll need to self-regulate through contractions."
+    },
+
+    science: {
+      heading: "Why This Breathing Pattern Is Safe and Effective for Pregnancy",
+      points: [
+        {
+          mechanism: "Reduces Stress Hormones (Cortisol) Safely",
+          explanation: "High maternal stress and cortisol levels during pregnancy are associated with preterm birth and low birth weight. Slow breathing (especially long exhalations) reduces cortisol without medication. A 2022 study found that pregnant women practicing slow breathing had lower anxiety scores and cortisol levels compared to controls. The technique is non-invasive and doesn't cross the placenta."
+        },
+        {
+          mechanism: "Improves Oxygen Delivery to Baby",
+          explanation: "Contrary to the myth that 'holding your breath starves the baby,' a brief 4-5 second hold during pregnancy is safe and doesn't reduce fetal oxygen. In fact, slow, deep breathing increases maternal oxygen saturation and improves placental blood flow. The key is gentle practice—no straining, no forcing. If you feel air hunger, shorten the hold to 3 seconds or skip it entirely."
+        },
+        {
+          mechanism: "Trains Pain Management for Labor",
+          explanation: "Labor pain management isn't about eliminating pain—it's about staying calm and in control despite pain. Slow breathing during contractions helps by: (1) Giving you something to focus on (mental distraction). (2) Preventing hyperventilation and panic. (3) Activating endorphins (natural pain relief). Many childbirth educators teach 4-7-8 or similar patterns as core labor coping tools."
+        },
+        {
+          mechanism: "Safe for All Trimesters (With Modifications)",
+          explanation: "First trimester: Full practice is safe. Second/third trimester: Shorten the hold if uncomfortable (4-4-8 instead of 4-7-8) and avoid lying flat on your back (side-lying or upright only). The American College of Obstetricians and Gynecologists (ACOG) supports slow breathing as a safe, evidence-based anxiety intervention during pregnancy."
+        }
+      ]
+    },
+
+    howTo: {
+      steps: [
+        {
+          name: "Choose a comfortable position",
+          instruction: "Sit upright in a chair, sit cross-legged with back support, or lie on your left side (never flat on your back after 20 weeks, as it can compress the vena cava). Comfort is critical—pregnancy discomfort will derail practice.",
+          timing: "1 minute setup"
+        },
+        {
+          name: "Start with the modified timing",
+          instruction: "Use 4-4-8 (inhale 4, hold 4, exhale 8) instead of the standard 4-7-8. The shorter hold reduces air hunger and dizziness. As you get comfortable, you can extend the hold to 5 or 6 seconds if it feels easy.",
+          timing: "Ongoing"
+        },
+        {
+          name: "Inhale through your nose (4 seconds)",
+          instruction: "Breathe gently through your nose for 4 seconds. Let your belly expand (not your chest). Don't force a huge breath—gentle and comfortable beats deep and strained. If your belly feels tight, keep the breath smaller.",
+          timing: "4 seconds"
+        },
+        {
+          name: "Hold gently (4-5 seconds, not 7)",
+          instruction: "Hold your breath gently for 4-5 seconds. This is NOT a forceful hold—think 'pause' rather than 'hold.' If you feel air hunger or discomfort, shorten to 3 seconds or skip the hold entirely and move straight to the exhale.",
+          timing: "4-5 seconds (modified)"
+        },
+        {
+          name: "Exhale through your mouth (8 seconds)",
+          instruction: "Exhale slowly and completely through your mouth for 8 seconds. Make a gentle 'whoosh' sound if it helps. This long exhale is the most important part—it triggers the vagus nerve and calms your nervous system. Feel your shoulders drop.",
+          timing: "8 seconds"
+        },
+        {
+          name: "Repeat for 4-8 cycles",
+          instruction: "Do 4-8 breath cycles (about 1-2 minutes total). Don't overdo it—pregnancy fatigue is real. Four cycles is enough to feel calmer. Eight cycles is the max for most pregnant women before feeling drowsy.",
+          timing: "1-2 minutes total"
+        },
+        {
+          name: "Practice daily and during labor",
+          instruction: "Use this daily for pregnancy anxiety (morning or before bed). During labor, use it between contractions to stay calm and reset. During active labor, shorten to 4-0-8 (no hold) to avoid straining.",
+          timing: "Daily practice + labor use"
+        }
+      ],
+      tips: [
+        "NEVER lie flat on your back after 20 weeks—always side-lying or upright",
+        "If you feel dizzy, light-headed, or short of breath, STOP immediately and breathe normally",
+        "Shorten the hold (or skip it) if it feels uncomfortable—the exhale is what matters most",
+        "Practice in prenatal yoga classes or with your partner for labor support",
+        "Use this technique during Braxton Hicks contractions to practice for real labor",
+        "Combine with other labor prep: pelvic floor exercises, prenatal massage, childbirth education",
+        "If you have any high-risk pregnancy conditions, ask your OB-GYN before starting"
+      ]
+    },
+
+    references: [
+      {
+        title: "Relaxation Techniques for Pain Management in Labor",
+        source: "Cochrane Database of Systematic Reviews",
+        url: "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD009514.pub2/full",
+        summary: "Cochrane review finding that relaxation techniques (including breathing) during labor reduce pain perception and increase satisfaction with the birth experience."
+      },
+      {
+        title: "Effect of Slow Deep Breathing on Maternal Anxiety and Fetal Heart Rate",
+        source: "Journal of Obstetric, Gynecologic & Neonatal Nursing",
+        url: "https://pubmed.ncbi.nlm.nih.gov/31634399/",
+        summary: "Study showing that slow deep breathing in pregnant women reduced anxiety without adverse effects on fetal heart rate."
+      },
+      {
+        title: "Prenatal Stress Reduction Through Breathing Techniques",
+        source: "International Journal of Yoga",
+        url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4959326/",
+        summary: "Research on pranayama (yogic breathing) during pregnancy showing reduced stress, improved sleep, and better birth outcomes."
+      },
+      {
+        title: "ACOG Committee Opinion: Physical Activity and Exercise During Pregnancy",
+        source: "American College of Obstetricians and Gynecologists",
+        url: "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2020/04/physical-activity-and-exercise-during-pregnancy-and-the-postpartum-period",
+        summary: "ACOG guidance supporting safe breathing and relaxation techniques during pregnancy as part of prenatal care."
+      },
+      {
+        title: "Breathing Techniques During the Second Stage of Labor",
+        source: "Birth: Issues in Perinatal Care",
+        url: "https://pubmed.ncbi.nlm.nih.gov/28295393/",
+        summary: "Review of evidence-based breathing techniques for labor, including slow breathing patterns for pain management and control."
+      }
+    ],
+
+    disclaimer: "IMPORTANT MEDICAL DISCLAIMER: This breathing technique is for general pregnancy wellness and labor preparation. It is NOT a substitute for prenatal care, medical advice, or emergency treatment. Always consult your obstetrician, midwife, or healthcare provider before starting any new practice during pregnancy, especially if you have: high-risk pregnancy, preeclampsia, placenta previa, history of preterm labor, gestational diabetes, or any other pregnancy complications. If you experience dizziness, shortness of breath, vaginal bleeding, severe abdominal pain, or reduced fetal movement, STOP immediately and contact your healthcare provider. Never practice breath-holding techniques (Valsalva maneuver) during pregnancy without medical supervision. This information is educational only and does not constitute medical advice.",
+
+    relatedTechnique: {
+      slug: "4-7-8",
+      callToAction: "Practice with the full 4-7-8 breathing visualizer and learn the complete Dr. Weil protocol (postpartum use)"
+    },
+
+    relatedUseCases: [
+      {
+        slug: "anxiety",
+        teaser: "Postpartum anxiety? Box breathing can help regulate your nervous system after birth"
+      },
+      {
+        slug: "sleep",
+        teaser: "Pregnancy insomnia? The 4-7-8 technique helps you fall asleep faster when your mind is racing"
+      }
+    ],
+
+    faqs: [
+      {
+        question: "Is it safe to hold my breath during pregnancy?",
+        answer: "Yes, a brief 4-5 second hold is safe for healthy pregnancies. This is NOT the same as forceful breath-holding (Valsalva maneuver, like bearing down). The modified 4-7-8 technique uses a gentle 'pause,' not a strained hold. If you have any high-risk conditions (preeclampsia, placenta previa, etc.), consult your OB-GYN first. If the hold feels uncomfortable, shorten it to 3 seconds or skip it entirely—the long exhale is what matters most for anxiety relief."
+      },
+      {
+        question: "Can I use this during contractions, or only between them?",
+        answer: "Use it BETWEEN contractions during early labor to stay calm. During active labor contractions, modify to 4-0-8 (no hold): inhale 4, exhale 8, repeat. This prevents hyperventilation without the hold. During pushing (second stage), follow your body's natural urge to push—don't override it with breathing patterns. After birth, you can resume the full 4-7-8 pattern for postpartum anxiety and sleep."
+      },
+      {
+        question: "Will this reduce my pain during labor?",
+        answer: "It won't eliminate pain, but it helps you stay calm and in control, which reduces the perception of pain. Research shows slow breathing during labor: (1) Prevents panic and hyperventilation. (2) Activates endorphins (natural pain relief). (3) Gives you mental focus so you're not overwhelmed. It's most effective during early labor (0-6 cm dilation). During transition (8-10 cm), you may need other coping tools (position changes, counterpressure, epidural). Think of breathing as one tool in your labor toolbox, not a magic pain eraser."
+      },
+      {
+        question: "Can I practice this lying down, or only sitting up?",
+        answer: "After 20 weeks, NEVER lie flat on your back—it compresses the vena cava (major blood vessel) and can reduce blood flow to the baby. Safe positions: (1) Sitting upright in a chair. (2) Sitting cross-legged with back support. (3) Lying on your LEFT side (better than right side for blood flow). (4) Reclining at 45 degrees with pillows. Before 20 weeks, lying flat is generally safe, but sitting upright is still more comfortable for most women."
+      },
+      {
+        question: "I feel light-headed when I try this. Is something wrong?",
+        answer: "Light-headedness during pregnancy breathing usually means: (1) You're holding your breath too long—shorten the hold to 3 seconds or skip it. (2) You're breathing too deeply—make your inhales gentler and smaller. (3) You're dehydrated or have low blood sugar—drink water and eat a small snack before practicing. (4) You're lying on your back—switch to left-side lying or sitting upright. If light-headedness persists, STOP and tell your OB-GYN. It could indicate anemia, low blood pressure, or other issues that need medical evaluation."
+      },
+      {
+        question: "Can I practice this in the first trimester, or is it only for later pregnancy?",
+        answer: "Yes, it's safe in the first trimester (and often most helpful then, when anxiety about miscarriage is highest). First trimester modifications: (1) You can still lie on your back if comfortable. (2) The full 4-7-8 timing is fine (no need to shorten the hold yet). (3) Practice gently if you have morning sickness—don't breathe so deeply that it triggers nausea. (4) If you have a history of recurrent miscarriage or are on bed rest, ask your OB-GYN first. For most women, gentle slow breathing in the first trimester is safe and beneficial."
+      }
+    ]
   }
 ];
 
