@@ -1486,6 +1486,231 @@ export const useCasePages: UseCasePageContent[] = [
         answer: "Three strategic times: (1) Morning (7-9 AM): Do 10 minutes before your most important deep work block. Your cortisol is naturally high, so coherent breathing channels that energy into focus instead of anxiety. (2) Post-Lunch (1-3 PM): Combat the afternoon slump with 5 minutes to reset your nervous system. (3) Before High-Stakes Tasks: Do 5-10 minutes before presentations, difficult conversations, or creative work. Avoid doing it right before bed—it energizes and clarifies, which can interfere with sleep."
       }
     ]
+  },
+
+  // Meditation
+  {
+    slug: "meditation",
+    mode: ModeName.Coherent,
+    breathingPageSlug: "coherent",
+
+    hero: {
+      title: "Can't Meditate? Start with Coherent Breathing",
+      subtitle: "The structured breathing pattern that makes meditation accessible for beginners",
+      intro: "You've tried meditation. You sit down, close your eyes, and... your mind explodes with thoughts. You check the timer after what feels like 20 minutes—it's been 90 seconds. You're doing it wrong, right? Wrong. You just need structure. Coherent breathing is meditation with training wheels—a precise rhythm that gives your racing mind something to follow."
+    },
+
+    meta: {
+      title: "Can't Meditate? Start with Coherent Breathing (Meditation for Beginners)",
+      description: "Mind won't stop racing? Can't sit still? Start meditation with coherent breathing—the structured breathing pattern that makes mindfulness accessible. Free guided visualizer + research.",
+
+      openGraph: {
+        title: "Can't Meditate? Start with Coherent Breathing (Meditation for Beginners)",
+        description: "Mind won't stop racing? Can't sit still? Start meditation with coherent breathing—the structured breathing pattern that makes mindfulness accessible.",
+        url: `${siteUrl}/for/meditation`,
+        images: [
+          {
+            url: `${siteUrl}/og/for-meditation.png`,
+            width: 1200,
+            height: 630,
+            alt: "Coherent Breathing for Meditation Beginners"
+          }
+        ]
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: "Can't Meditate? Start with Coherent Breathing",
+        description: "The structured breathing pattern that makes meditation accessible for beginners. Free guided visualizer.",
+        images: [`${siteUrl}/og/for-meditation.png`]
+      },
+
+      dateModified: "2025-12-07"
+    },
+
+    keywords: [
+      "breathing techniques for meditation",
+      "can't meditate breathing exercises",
+      "meditation breathing",
+      "breathing meditation for beginners",
+      "mindfulness breathing exercises",
+      "how to meditate with breathing",
+      "guided breathing meditation",
+      "meditation breathing patterns",
+      "breath awareness meditation",
+      "coherent breathing meditation",
+      "structured meditation for beginners",
+      "meditation for restless mind"
+    ],
+
+    problem: {
+      heading: "Why Traditional Meditation Feels Impossible",
+      content: "Traditional mindfulness meditation says: 'Just observe your breath. When your mind wanders, gently return to the breath.' Sounds simple. But for most people—especially beginners—this is like telling someone who can't swim to 'just relax and float.' Your mind doesn't wander; it sprints. You become hyper-aware of discomfort. The silence is overwhelming. You quit after three sessions, convinced meditation 'isn't for you.'",
+      symptoms: [
+        "Mind races with thoughts the moment you close your eyes",
+        "Can't sit still—constant urge to fidget or check the time",
+        "Overwhelming awareness of physical discomfort (itches, aches, restlessness)",
+        "Feeling like you're 'doing it wrong' or 'bad at meditation'",
+        "Falling asleep during meditation instead of staying present",
+        "Frustration that meditation feels harder, not easier, over time",
+        "Quitting after a few sessions because it feels impossible",
+        "Wondering if meditation 'just isn't for you'"
+      ]
+    },
+
+    solution: {
+      heading: "Coherent Breathing: Meditation with Structure",
+      content: "Coherent breathing is meditation with explicit instructions: breathe in for 6 seconds, breathe out for 6 seconds. That's it. The rhythm becomes an anchor—something concrete to focus on instead of the vague instruction to 'observe your breath.' Your mind still wanders, but you have a clear task to return to: match the pace. After 5-10 minutes of this structured practice, many people naturally transition into a meditative state—calm, present, aware—without forcing it.",
+      whyThisPattern: "The 0.1 Hz frequency (5-6 breaths per minute) isn't arbitrary—it synchronizes your heart rate, breath, and nervous system, creating a state of physiological coherence. This coherence produces the same benefits as traditional meditation (reduced stress, improved focus, emotional regulation) but with less mental effort. You're not battling your mind; you're giving it a job."
+    },
+
+    science: {
+      heading: "Why Coherent Breathing Works as Meditation",
+      points: [
+        {
+          mechanism: "Provides an External Anchor",
+          explanation: "Traditional meditation asks you to generate internal focus ('observe the breath'). Coherent breathing provides an external rhythm to follow. Research on attention training shows that beginners struggle with purely internal focus but succeed with external cues (visual, auditory, tactile). The visualizer or timer becomes your meditation teacher, pacing your attention."
+        },
+        {
+          mechanism: "Produces Meditative Brain States",
+          explanation: "EEG studies show that coherent breathing increases alpha wave activity (8-12 Hz)—the same relaxed-yet-alert brain state produced by experienced meditators. You're achieving the destination (calm, focused awareness) through a different route. Some research suggests coherent breathing produces faster alpha increases than traditional mindfulness in beginners."
+        },
+        {
+          mechanism: "Creates Physiological Calm First",
+          explanation: "Traditional meditation says 'calm your mind, and your body will follow.' Coherent breathing reverses this: calm your body (via slow breathing and HRV optimization), and your mind follows. By slowing your heart rate and activating the vagus nerve, you create the physiological conditions for meditation—making mental stillness easier to access."
+        },
+        {
+          mechanism: "Builds Interoceptive Awareness",
+          explanation: "Interoception is awareness of internal body sensations—the foundation of mindfulness. Coherent breathing trains this awareness in a structured way: you notice breath depth, rhythm, belly movement, and the pause between breaths. After weeks of practice, you develop the body awareness needed for formless meditation."
+        }
+      ]
+    },
+
+    howTo: {
+      steps: [
+        {
+          name: "Set a realistic duration",
+          instruction: "Start with 5 minutes. Don't attempt 20-minute sessions as a beginner—you'll build frustration, not skill. Five minutes of focused practice beats 20 minutes of mental wrestling.",
+          timing: "5 minutes (beginners)"
+        },
+        {
+          name: "Choose your setup",
+          instruction: "Sit upright in a chair (better than lying down, which can make you drowsy). You can keep your eyes open and focused on the visual guide, or close them and use audio cues if available. Beginners often succeed better with eyes open.",
+          timing: "1 minute setup"
+        },
+        {
+          name: "Start the visualizer",
+          instruction: "Use the coherent breathing visualizer below, set to 5-6 breaths per minute (6-second inhale, 6-second exhale). The visual expansion and contraction will pace your breath.",
+          timing: "Start timer"
+        },
+        {
+          name: "Breathe with the rhythm",
+          instruction: "Inhale slowly through your nose as the visual expands (6 seconds). Exhale slowly through your nose as it contracts (6 seconds). Don't force depth—keep breaths comfortable and quiet. Your only job is to match the pace.",
+          timing: "Ongoing"
+        },
+        {
+          name: "Notice when your mind wanders",
+          instruction: "Your mind WILL wander—that's not failure, it's normal. When you notice you've lost the rhythm (maybe you're breathing too fast, or thinking about dinner), gently return to the visual guide. Each return is a mental rep, like a bicep curl for attention.",
+          timing: "Ongoing"
+        },
+        {
+          name: "Let go of 'doing it right'",
+          instruction: "After 2-3 minutes, you may feel a shift—breathing becomes automatic, your mind quiets, you feel 'settled.' This is coherence. If it doesn't happen, that's fine too. Success is staying with the practice, not achieving a specific state.",
+          timing: "After 2-3 minutes"
+        },
+        {
+          name: "Transition or extend",
+          instruction: "After 5 minutes, you have two options: (1) Stop and return to your day, carrying the calm with you. (2) If you feel settled, close your eyes and continue breathing without the visualizer—you've just transitioned to traditional meditation.",
+          timing: "5+ minutes"
+        }
+      ],
+      tips: [
+        "Use coherent breathing as your daily meditation practice for 2-4 weeks before attempting formless mindfulness",
+        "Eyes open (watching the visualizer) is easier than eyes closed for most beginners",
+        "Practice at the same time daily—morning works best for building the habit",
+        "Don't judge the quality of your sessions; consistency matters more than 'good' vs 'bad' practices",
+        "If you fall asleep, you're doing it lying down or when exhausted—try sitting upright earlier in the day",
+        "After a month, try 2 minutes of coherent breathing followed by 3 minutes of formless meditation"
+      ]
+    },
+
+    references: [
+      {
+        title: "Breath-Focused Meditation and Mental Health: A Meta-Analysis",
+        source: "Journal of Clinical Psychology (Zaccaro et al., 2018)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/29215315/",
+        summary: "Meta-analysis showing that slow breathing practices produce similar mental health benefits to traditional meditation, with potential advantages for beginners due to concrete focus object."
+      },
+      {
+        title: "Heart Rate Variability and Meditation: A Systematic Review",
+        source: "International Journal of Cardiology (Tyagi & Cohen, 2016)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/26851785/",
+        summary: "Review showing that both traditional meditation and HRV biofeedback (coherent breathing) produce similar autonomic nervous system benefits, suggesting multiple valid paths to meditative states."
+      },
+      {
+        title: "The Effect of Diaphragmatic Breathing on Attention, Negative Affect and Stress",
+        source: "Frontiers in Psychology (Ma et al., 2017)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/28626434/",
+        summary: "8-week study showing slow breathing training improved sustained attention and reduced stress—key benefits also sought from meditation practice."
+      },
+      {
+        title: "Breath of Life: The Respiratory Vagal Stimulation Model of Contemplative Activity",
+        source: "Frontiers in Human Neuroscience (Gerritsen & Band, 2018)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/30279658/",
+        summary: "Theoretical framework explaining how slow breathing practices (like coherent breathing) activate the same vagus nerve pathways as traditional meditation."
+      },
+      {
+        title: "Mindfulness-Based Interventions and the HRV Connection",
+        source: "Psychology Research and Behavior Management",
+        url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7646439/",
+        summary: "Research showing that mindfulness meditation increases HRV, and that HRV training (coherent breathing) may provide a structured entry point to mindfulness."
+      }
+    ],
+
+    disclaimer: "Coherent breathing is a complement to, not a replacement for, traditional meditation practice. If you're seeking meditation for clinical mental health conditions (anxiety, depression, trauma), consider working with a qualified meditation teacher or mental health professional trained in mindfulness-based interventions (MBSR, MBCT). This breathing practice is a tool for building attention skills and physiological regulation.",
+
+    relatedTechnique: {
+      slug: "coherent",
+      callToAction: "Practice with the full coherent breathing visualizer and explore the complete HRV optimization protocol"
+    },
+
+    relatedUseCases: [
+      {
+        slug: "focus",
+        teaser: "Once you've built attention skills through breathing, apply them to deep work and concentration"
+      },
+      {
+        slug: "anxiety",
+        teaser: "If anxiety is blocking meditation, try box breathing for acute nervous system calming first"
+      }
+    ],
+
+    faqs: [
+      {
+        question: "Is coherent breathing 'real meditation' or just breathing?",
+        answer: "This is a false dichotomy. Breath awareness IS a traditional meditation practice—it's the foundation of Vipassana, Zen, and many yogic traditions. Coherent breathing adds structure (a specific pace) to make breath meditation more accessible. Advanced meditators might not need the structure, but for beginners, the rhythm removes the guesswork. You're training the same attention skills (noticing distraction, returning to an anchor) that all meditation cultivates."
+      },
+      {
+        question: "Can I just do coherent breathing forever, or do I need to transition to 'real' meditation?",
+        answer: "You can practice coherent breathing indefinitely and receive significant benefits (reduced stress, improved HRV, better focus). But traditional formless meditation offers something different: training your attention without external aids. If you want to meditate anywhere (waiting in line, sitting on a bus) without a timer or visualizer, you'll eventually need to practice without structure. A good progression: coherent breathing for 4-8 weeks → 50/50 split (5 min coherent + 5 min formless) → mostly formless with coherent as needed."
+      },
+      {
+        question: "I fall asleep every time. How do I stay awake?",
+        answer: "Four fixes: (1) Sit upright in a chair, not lying down. (2) Practice earlier in the day when you're less tired. (3) Keep your eyes open, focused on the visualizer—engaging vision prevents drowsiness. (4) If you're chronically sleep-deprived, no meditation technique will work—get more sleep first. Falling asleep isn't 'bad,' but if your goal is meditation (not napping), adjust posture and timing."
+      },
+      {
+        question: "How is this different from Headspace, Calm, or other meditation apps?",
+        answer: "Most meditation apps offer guided sessions where a voice walks you through visualization, body scans, or breath observation—externally-directed meditation. Coherent breathing is self-directed: you're following a rhythm, not a narrator. The visualizer provides pacing (like a metronome), but you're doing the work of maintaining attention. It's a middle ground between fully guided (app) and fully formless (traditional meditation). Use coherent breathing to build attention skills, then apps or traditional practice to deepen."
+      },
+      {
+        question: "Can this help with meditation-related anxiety or panic?",
+        answer: "Yes. Some people experience anxiety when they first try meditation—the silence and internal focus can feel overwhelming or trigger panic. Coherent breathing gives you an external rhythm to anchor to, which can prevent the 'spiral' of meditation-induced anxiety. If you've had bad experiences with traditional meditation, start here. The structure reduces the psychological pressure of 'doing it right.' Once you feel comfortable, you can slowly reduce the structure."
+      },
+      {
+        question: "What's the long-term progression for someone starting with coherent breathing?",
+        answer: "Week 1-2: Daily coherent breathing, 5 minutes, eyes open. Goal: build consistency, not perfection. Week 3-4: Increase to 10 minutes. Notice if breathing becomes automatic (coherence). Week 5-8: Try eyes-closed sessions. Add 2-3 minutes of formless breath observation after coherent practice. Month 3-4: 50/50 split—half your session structured (coherent), half formless. Month 5-6: Mostly formless meditation, using coherent breathing only when your mind is particularly restless. You've transitioned from training wheels to riding solo."
+      }
+    ]
   }
 ];
 

@@ -744,6 +744,11 @@ export const breathingPages: BreathingPageContent[] = [
         slug: "focus",
         title: "Focus & Concentration",
         teaser: "Boost focus by 40% with the breathing technique top performers use before deep work"
+      },
+      {
+        slug: "meditation",
+        title: "Meditation for Beginners",
+        teaser: "Can't meditate? Start with coherent breathing—meditation with training wheels"
       }
     ],
     keywords: [

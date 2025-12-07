@@ -2,6 +2,44 @@
 
 ## 2025-12-07
 
+### Content Expansion - New Use Case Page: Meditation for Beginners
+Created `/for/meditation` page targeting "breathing techniques for meditation" (HIGH search volume keyword).
+
+**New Page Details:**
+- **URL:** `/for/meditation`
+- **Technique:** Coherent Breathing (structured 6-6 rhythm)
+- **Target Keywords:** "breathing techniques for meditation", "can't meditate breathing exercises", "meditation breathing", "breathing meditation for beginners"
+- **Content:** 220+ lines including problem, solution, 4 science points, 7-step how-to, 5 peer-reviewed references, 6 FAQs, disclaimer
+- **SEO Metadata:** Optimized title "Can't Meditate? Start with Coherent Breathing (Meditation for Beginners)"
+- **Cross-Linking:** Added to coherent breathing page's relatedUseCases; links to focus and anxiety pages
+
+**Files Created:**
+- `/src/app/for/meditation/page.tsx` - Route file
+
+**Files Modified:**
+- `/src/data/use-case-pages.ts` - Added complete meditation page object (~220 lines)
+- `/src/data/breathing-pages.ts` - Added meditation to coherent breathing's relatedUseCases
+
+**Schema Markup (automatic via template):**
+- FAQPage (6 Q&A pairs)
+- HowTo (7 steps with timing)
+- Article (with author, dates, keywords)
+- BreadcrumbList (Home → Use Cases → Meditation)
+
+**Key Differentiators:**
+- Positions coherent breathing as "meditation with training wheels" for beginners
+- Addresses common meditation struggles (racing mind, can't sit still, falling asleep)
+- Explains why external rhythm helps beginners vs formless meditation
+- 6-month progression roadmap from structured to formless practice
+- Compares to meditation apps (Headspace, Calm)
+- Science of alpha waves and meditative brain states
+
+**Expected Impact:**
+- Target keyword "breathing techniques for meditation" has strong search volume
+- Appeals to meditation beginners who've struggled with traditional practice
+- Cross-traffic from coherent breathing and focus pages
+- 5 peer-reviewed references including meditation/HRV research
+
 ### Content Expansion - New Use Case Page: Focus & Concentration
 Created `/for/focus` page targeting "breathing for focus and concentration" (HIGH search volume keyword).
 
