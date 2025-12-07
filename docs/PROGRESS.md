@@ -2,6 +2,44 @@
 
 ## 2025-12-07
 
+### Content Expansion - New Use Case Page: Focus & Concentration
+Created `/for/focus` page targeting "breathing for focus and concentration" (HIGH search volume keyword).
+
+**New Page Details:**
+- **URL:** `/for/focus`
+- **Technique:** Coherent Breathing (0.1 Hz / 5 breaths per minute)
+- **Target Keywords:** "breathing for focus and concentration", "breathing techniques for ADHD", "how to focus with breathing", "breathing for deep work"
+- **Content:** 220+ lines including problem, solution, 4 science points, 7-step how-to, 5 peer-reviewed references, 6 FAQs, medical disclaimer
+- **SEO Metadata:** Optimized title "Boost Focus by 40%: Coherent Breathing for Concentration (5 Min/Day)"
+- **Cross-Linking:** Added to coherent breathing page's relatedUseCases; links to meditation and anxiety pages
+
+**Files Created:**
+- `/src/app/for/focus/page.tsx` - Route file
+
+**Files Modified:**
+- `/src/data/use-case-pages.ts` - Added complete focus page object (~220 lines)
+- `/src/data/breathing-pages.ts` - Added focus to coherent breathing's relatedUseCases
+
+**Schema Markup (automatic via template):**
+- FAQPage (6 Q&A pairs)
+- HowTo (7 steps with timing)
+- Article (with author, dates, keywords)
+- BreadcrumbList (Home → Use Cases → Focus)
+
+**Key Differentiators:**
+- Emphasizes HRV optimization and 0.1 Hz resonance frequency
+- Targets cognitive performance metrics (attention, working memory, cognitive flexibility)
+- Positions coherent breathing vs box breathing (focus optimization vs acute stress relief)
+- Includes ADHD research with medical caveats
+- 3 strategic timing recommendations (morning, post-lunch, pre-high-stakes tasks)
+- Explains alpha brain waves and autonomic balance for deep work
+
+**Expected Impact:**
+- Target keywords "breathing for focus" and "ADHD breathing techniques" have strong search volume
+- Appeals to knowledge workers, students, and peak performers
+- Cross-traffic from coherent breathing and meditation pages
+- 5 peer-reviewed references including HRV biofeedback research
+
 ### Content Expansion - New Use Case Page: Panic Attacks
 Created `/for/panic-attacks` page targeting "breathing for panic attacks" (HIGH search volume keyword).
 

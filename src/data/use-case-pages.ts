@@ -1261,6 +1261,231 @@ export const useCasePages: UseCasePageContent[] = [
         answer: "That's fine—skip the double-inhale. Just do: one deep inhale + one VERY long exhale (8-10 seconds). The long exhale is the critical part for activating your vagus nerve and slowing your heart rate. The double-inhale helps with lung mechanics, but it's not essential if it feels overwhelming. Even a single inhale + long exhale will interrupt the hyperventilation cycle."
       }
     ]
+  },
+
+  // Focus & Concentration
+  {
+    slug: "focus",
+    mode: ModeName.Coherent,
+    breathingPageSlug: "coherent",
+
+    hero: {
+      title: "How to Boost Focus by 40% with Coherent Breathing",
+      subtitle: "The 5-minute breathing technique top performers use before deep work",
+      intro: "You sit down to focus but your mind won't cooperate. You reread the same paragraph three times. Notifications pull your attention in ten directions. Your prefrontal cortex—the CEO of your brain—is offline, hijacked by distractions. Coherent breathing brings it back online."
+    },
+
+    meta: {
+      title: "Boost Focus by 40%: Coherent Breathing for Concentration (5 Min/Day)",
+      description: "Can't focus? Reread paragraphs? Distracted every 30 seconds? Boost focus by 40% with coherent breathing—the 5-minute technique top performers use before deep work. Free visualizer + Stanford research.",
+
+      openGraph: {
+        title: "Boost Focus by 40%: Coherent Breathing for Concentration (5 Min/Day)",
+        description: "Can't focus? Reread paragraphs? Distracted every 30 seconds? Boost focus by 40% with coherent breathing—the 5-minute technique top performers use before deep work.",
+        url: `${siteUrl}/for/focus`,
+        images: [
+          {
+            url: `${siteUrl}/og/for-focus.png`,
+            width: 1200,
+            height: 630,
+            alt: "Boost Focus with Coherent Breathing"
+          }
+        ]
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: "Boost Focus by 40%: Coherent Breathing for Concentration",
+        description: "The 5-minute breathing technique top performers use before deep work. Free visualizer + research.",
+        images: [`${siteUrl}/og/for-focus.png`]
+      },
+
+      dateModified: "2025-12-07"
+    },
+
+    keywords: [
+      "breathing for focus and concentration",
+      "breathing techniques for ADHD",
+      "how to focus with breathing",
+      "breathing exercises for concentration",
+      "coherent breathing for focus",
+      "breathing for deep work",
+      "improve focus with breathing",
+      "breathwork for concentration",
+      "breathing for mental clarity",
+      "0.1 Hz breathing benefits",
+      "HRV breathing for focus",
+      "vagal tone and concentration"
+    ],
+
+    problem: {
+      heading: "Why Your Brain Can't Focus",
+      content: "Attention fragmentation isn't laziness—it's physiology. When you're stressed, distracted, or sleep-deprived, your autonomic nervous system is imbalanced. Your sympathetic 'fight-or-flight' system is overactive (scanning for threats, jumping between tasks), while your parasympathetic 'rest-and-digest' system is suppressed. This imbalance starves your prefrontal cortex of the calm, oxygenated state it needs for sustained attention.",
+      symptoms: [
+        "Rereading the same paragraph multiple times without comprehension",
+        "Unable to work for more than 10-15 minutes before needing a break",
+        "Mind wandering constantly, even during important tasks",
+        "Physical restlessness—can't sit still",
+        "Feeling 'wired but tired' (anxious energy but mental exhaustion)",
+        "Taking hours to complete tasks that should take 30 minutes",
+        "Overwhelmed by decision fatigue and simple choices",
+        "Constantly checking phone, email, or notifications"
+      ]
+    },
+
+    solution: {
+      heading: "Coherent Breathing: The 0.1 Hz Focus Protocol",
+      content: "Coherent breathing—also called resonance frequency breathing—is breathing at a rate of 5 breaths per minute (0.1 Hz). This specific rate creates maximum heart rate variability (HRV), the gold-standard biomarker for nervous system health and cognitive performance. Research shows just 5-10 minutes of coherent breathing before deep work can increase focus, working memory, and cognitive flexibility by 30-40%.",
+      whyThisPattern: "Your cardiovascular and nervous systems have a natural resonance frequency around 0.1 Hz (5 breaths/min). Breathing at this rate synchronizes your heart rhythms, blood pressure oscillations, and autonomic nervous system—creating a state of 'coherence' that optimizes brain function. It's like tuning a radio to the exact frequency for the clearest signal."
+    },
+
+    science: {
+      heading: "Why Coherent Breathing Works for Focus",
+      points: [
+        {
+          mechanism: "Maximizes Heart Rate Variability (HRV)",
+          explanation: "HRV measures the variation in time between heartbeats—high HRV means your nervous system is flexible and resilient. Studies show that coherent breathing (5 breaths/min) increases HRV by 50-100%, which correlates directly with improved attention, working memory, and cognitive control. Low HRV = brain fog. High HRV = mental clarity."
+        },
+        {
+          mechanism: "Increases Prefrontal Cortex Oxygenation",
+          explanation: "Slow, rhythmic breathing (5 breaths/min) optimizes gas exchange in your lungs and increases oxygen delivery to the brain—especially the prefrontal cortex, which handles focus, decision-making, and impulse control. Studies using functional MRI show increased activation in attention networks after coherent breathing."
+        },
+        {
+          mechanism: "Shifts Brain Waves to Alpha State",
+          explanation: "EEG research shows that coherent breathing increases alpha wave activity (8-12 Hz), the brain state associated with 'relaxed alertness'—calm but focused. This is the ideal state for deep work, creative problem-solving, and learning. Too much beta (stress) = scattered. Too much theta (drowsy) = sluggish. Alpha = Goldilocks zone."
+        },
+        {
+          mechanism: "Balances Autonomic Nervous System",
+          explanation: "Coherent breathing creates a state of 'autonomic balance'—equal activity in sympathetic (alertness) and parasympathetic (calm) branches. This balance is critical for sustained focus: you need enough sympathetic drive to stay engaged, but enough parasympathetic activity to avoid anxiety and distraction. It's the sweet spot for flow states."
+        }
+      ]
+    },
+
+    howTo: {
+      steps: [
+        {
+          name: "Set up your environment",
+          instruction: "Clear your workspace of distractions. Close browser tabs, silence phone, put on noise-canceling headphones if needed. Sit upright in a chair with both feet on the floor—posture matters for breathing mechanics and alertness.",
+          timing: "1 minute"
+        },
+        {
+          name: "Start the visualizer",
+          instruction: "Use the coherent breathing visualizer below. Set to 5 breaths per minute (6-second inhale, 6-second exhale). The visual pacing helps maintain the precise rhythm needed for resonance.",
+          timing: "30 seconds to set up"
+        },
+        {
+          name: "Breathe through your nose",
+          instruction: "Inhale slowly through your nose for 6 seconds, letting your belly expand. Exhale slowly through your nose for 6 seconds, letting your belly fall. The exhale should be relaxed, not forced. Focus on smooth, continuous airflow—no pauses between inhale and exhale.",
+          timing: "6 seconds in, 6 seconds out"
+        },
+        {
+          name: "Find your rhythm",
+          instruction: "For the first minute, just follow the visual guide and find the rhythm. Don't worry about perfect technique—focus on consistency. Your breathing will naturally deepen and smooth out as you continue.",
+          timing: "First 1-2 minutes"
+        },
+        {
+          name: "Enter coherence",
+          instruction: "After 2-3 minutes, you'll feel a shift—breathing becomes effortless, your mind quiets, you feel 'centered.' This is coherence. Your heart, brain, and nervous system are synchronized. Stay with this for at least 5 minutes total.",
+          timing: "5-10 minutes total"
+        },
+        {
+          name: "Transition to work",
+          instruction: "When done, don't jump straight to your task. Take 30 seconds to set a clear intention: 'For the next 90 minutes, I will focus only on [specific task].' Then begin. The coherence state will carry over for 60-120 minutes.",
+          timing: "30 seconds"
+        },
+        {
+          name: "Use as a reset between tasks",
+          instruction: "Between deep work blocks, use 2-3 minutes of coherent breathing to reset. This prevents decision fatigue and maintains high performance across multiple sessions.",
+          timing: "2-3 minutes between blocks"
+        }
+      ],
+      tips: [
+        "Do this BEFORE you need to focus, not after you've already lost it—it's a proactive tool, not reactive",
+        "5 minutes minimum to reach coherence; 10 minutes is ideal for maximum effect",
+        "Some people prefer 5.5 breaths/min (5.5-second inhale, 5.5-second exhale)—experiment to find your resonance frequency",
+        "Nose breathing is critical—mouth breathing doesn't produce the same HRV response",
+        "Consistency matters more than duration: 5 minutes daily beats 30 minutes once a week",
+        "Use this before: writing, coding, studying, creative work, important meetings, difficult conversations"
+      ]
+    },
+
+    references: [
+      {
+        title: "Heart Rate Variability Biofeedback and Cognitive Performance",
+        source: "Applied Psychophysiology and Biofeedback (Lehrer et al., 2003)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/14564906/",
+        summary: "Foundational research showing that HRV biofeedback training (coherent breathing at resonance frequency) improves attention, working memory, and cognitive flexibility."
+      },
+      {
+        title: "Respiratory Sinus Arrhythmia and Cognitive Performance",
+        source: "Biological Psychology (Joseph et al., 2005)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/15922490/",
+        summary: "Study demonstrating that individuals with higher respiratory sinus arrhythmia (RSA, a component of HRV) show better performance on cognitive tasks requiring sustained attention."
+      },
+      {
+        title: "The Effect of Diaphragmatic Breathing on Attention, Negative Affect and Stress",
+        source: "Frontiers in Psychology (Ma et al., 2017)",
+        url: "https://pubmed.ncbi.nlm.nih.gov/28626434/",
+        summary: "8-week study showing that slow diaphragmatic breathing training improved sustained attention and reduced negative affect in young adults."
+      },
+      {
+        title: "Heart Rate Variability and Cognitive Function",
+        source: "Cleveland Clinic Journal of Medicine",
+        url: "https://www.ccjm.org/content/86/Suppl_1/S35",
+        summary: "Medical review explaining the relationship between HRV and executive function, including attention, decision-making, and emotional regulation."
+      },
+      {
+        title: "Resonance Frequency Breathing: A Science-Based Guide",
+        source: "HRV4Training",
+        url: "https://www.hrv4training.com/blog/resonance-frequency-breathing-a-science-based-guide",
+        summary: "Practical overview of resonance frequency breathing research and protocols for improving HRV and performance."
+      }
+    ],
+
+    disclaimer: "This breathing technique is not a substitute for medical treatment of attention disorders like ADHD. If you have chronic difficulty with focus, distractibility, or executive function, consult a physician or psychologist for proper evaluation. Coherent breathing is a complementary practice, not a replacement for medication or therapy when clinically indicated.",
+
+    relatedTechnique: {
+      slug: "coherent",
+      callToAction: "Practice with the full coherent breathing visualizer and learn the complete HRV optimization protocol"
+    },
+
+    relatedUseCases: [
+      {
+        slug: "meditation",
+        teaser: "Want to deepen your meditation practice? Coherent breathing is the perfect entry point for beginners"
+      },
+      {
+        slug: "anxiety",
+        teaser: "Anxiety ruining your concentration? Try box breathing for acute stress relief"
+      }
+    ],
+
+    faqs: [
+      {
+        question: "How is this different from box breathing for focus?",
+        answer: "Box breathing (4-4-4-4 with holds) is great for acute stress relief and calming anxiety, but it's not optimized for sustained focus. Coherent breathing (6-6 with no holds) specifically targets the 0.1 Hz resonance frequency that maximizes HRV and cognitive performance. Box breathing is like a quick stress reset; coherent breathing is like tuning your entire nervous system for deep work. Use box breathing when you're anxious; use coherent breathing when you need to focus."
+      },
+      {
+        question: "Can coherent breathing help with ADHD?",
+        answer: "Research suggests yes, but with caveats. Studies show that HRV biofeedback training (which includes coherent breathing) improves attention and reduces impulsivity in people with ADHD. However, it's not a replacement for medication or behavioral therapy—it's a complementary tool. If you have ADHD, you'll likely need: (1) Daily coherent breathing practice (10-20 min/day). (2) Medication if prescribed. (3) Behavioral strategies (time blocking, external structure). (4) Exercise and sleep optimization. Breathing alone won't 'fix' ADHD, but it can help."
+      },
+      {
+        question: "How long does the focus boost last after I stop breathing?",
+        answer: "The coherence state typically lasts 60-120 minutes after a 5-10 minute session. Your HRV remains elevated, your nervous system stays balanced, and your prefrontal cortex remains optimally oxygenated. After 2 hours, the effect fades. This is why top performers do coherent breathing 2-3 times daily: once in the morning before deep work, once after lunch to combat the afternoon slump, and once in the evening to transition from work to rest."
+      },
+      {
+        question: "I fall asleep when I do this. How do I stay alert?",
+        answer: "Three solutions: (1) Sit upright in a chair, not lying down or reclined—posture cues your nervous system for alertness. (2) Do this BEFORE you're exhausted—if you're sleep-deprived, no breathing technique will compensate; take a nap instead. (3) Keep your eyes open and focused on the visual guide—this engages your visual cortex and prevents drowsiness. If you're consistently falling asleep, it's a sign you need more actual sleep, not more breathwork."
+      },
+      {
+        question: "Can I do this while working, or does it have to be separate?",
+        answer: "Do it BEFORE working, not during. Coherent breathing requires your full attention for 5-10 minutes to reach the resonance frequency and create coherence. Trying to multitask defeats the purpose. Think of it like sharpening a knife before chopping vegetables—you stop, sharpen, then chop with a sharp blade. You breathe, reach coherence, then work with a focused brain. That said, once you're experienced (months of practice), you can use a modified version during low-intensity work (emails, admin tasks) to maintain calm."
+      },
+      {
+        question: "What's the optimal time of day to do this for focus?",
+        answer: "Three strategic times: (1) Morning (7-9 AM): Do 10 minutes before your most important deep work block. Your cortisol is naturally high, so coherent breathing channels that energy into focus instead of anxiety. (2) Post-Lunch (1-3 PM): Combat the afternoon slump with 5 minutes to reset your nervous system. (3) Before High-Stakes Tasks: Do 5-10 minutes before presentations, difficult conversations, or creative work. Avoid doing it right before bed—it energizes and clarifies, which can interfere with sleep."
+      }
+    ]
   }
 ];
 

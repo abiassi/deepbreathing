@@ -739,6 +739,13 @@ export const breathingPages: BreathingPageContent[] = [
         reason: "If exhale‑emphasis feels more calming for sleep or anxiety spikes."
       }
     ],
+    relatedUseCases: [
+      {
+        slug: "focus",
+        title: "Focus & Concentration",
+        teaser: "Boost focus by 40% with the breathing technique top performers use before deep work"
+      }
+    ],
     keywords: [
       "coherent breathing",
       "resonance frequency breathing",
