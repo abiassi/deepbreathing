@@ -1278,28 +1278,12 @@ export const useCasePages: UseCasePageContent[] = [
     meta: {
       title: "Boost Focus by 40%: Coherent Breathing for Concentration (5 Min/Day)",
       description: "Can't focus? Reread paragraphs? Distracted every 30 seconds? Boost focus by 40% with coherent breathing—the 5-minute technique top performers use before deep work. Free visualizer + Stanford research.",
-
-      openGraph: {
-        title: "Boost Focus by 40%: Coherent Breathing for Concentration (5 Min/Day)",
-        description: "Can't focus? Reread paragraphs? Distracted every 30 seconds? Boost focus by 40% with coherent breathing—the 5-minute technique top performers use before deep work.",
-        url: `${siteUrl}/for/focus`,
-        images: [
-          {
-            url: `${siteUrl}/og/for-focus.png`,
-            width: 1200,
-            height: 630,
-            alt: "Boost Focus with Coherent Breathing"
-          }
-        ]
-      },
-
-      twitter: {
-        card: "summary_large_image",
-        title: "Boost Focus by 40%: Coherent Breathing for Concentration",
-        description: "The 5-minute breathing technique top performers use before deep work. Free visualizer + research.",
-        images: [`${siteUrl}/og/for-focus.png`]
-      },
-
+      ogTitle: "Boost Focus by 40%: Coherent Breathing for Concentration",
+      ogDescription: "The 5-minute breathing technique top performers use before deep work. Boost focus by 40% with coherent breathing.",
+      twitterTitle: "Boost Focus by 40%: Coherent Breathing for Concentration",
+      twitterDescription: "The 5-minute breathing technique top performers use before deep work. Free visualizer + research.",
+      author: "Resonance Editorial Team",
+      datePublished: "2025-12-07",
       dateModified: "2025-12-07"
     },
 
@@ -1503,28 +1487,12 @@ export const useCasePages: UseCasePageContent[] = [
     meta: {
       title: "Can't Meditate? Start with Coherent Breathing (Meditation for Beginners)",
       description: "Mind won't stop racing? Can't sit still? Start meditation with coherent breathing—the structured breathing pattern that makes mindfulness accessible. Free guided visualizer + research.",
-
-      openGraph: {
-        title: "Can't Meditate? Start with Coherent Breathing (Meditation for Beginners)",
-        description: "Mind won't stop racing? Can't sit still? Start meditation with coherent breathing—the structured breathing pattern that makes mindfulness accessible.",
-        url: `${siteUrl}/for/meditation`,
-        images: [
-          {
-            url: `${siteUrl}/og/for-meditation.png`,
-            width: 1200,
-            height: 630,
-            alt: "Coherent Breathing for Meditation Beginners"
-          }
-        ]
-      },
-
-      twitter: {
-        card: "summary_large_image",
-        title: "Can't Meditate? Start with Coherent Breathing",
-        description: "The structured breathing pattern that makes meditation accessible for beginners. Free guided visualizer.",
-        images: [`${siteUrl}/og/for-meditation.png`]
-      },
-
+      ogTitle: "Can't Meditate? Start with Coherent Breathing",
+      ogDescription: "The structured breathing pattern that makes meditation accessible for beginners. Free guided visualizer.",
+      twitterTitle: "Can't Meditate? Start with Coherent Breathing",
+      twitterDescription: "The structured breathing pattern that makes meditation accessible for beginners. Free guided visualizer.",
+      author: "Resonance Editorial Team",
+      datePublished: "2025-12-07",
       dateModified: "2025-12-07"
     },
 
@@ -1728,28 +1696,12 @@ export const useCasePages: UseCasePageContent[] = [
     meta: {
       title: "Faster Athletic Recovery: Physiological Sigh Between Sets (Stanford Study)",
       description: "Heart rate won't drop? Can't catch your breath between sets? The physiological sigh brings your HR down 2x faster than panting. Used by elite athletes. Free timer + Stanford research.",
-
-      openGraph: {
-        title: "Faster Athletic Recovery: Physiological Sigh Between Sets (Stanford Study)",
-        description: "Heart rate won't drop? Can't catch your breath between sets? The physiological sigh brings your HR down 2x faster than panting. Used by elite athletes.",
-        url: `${siteUrl}/for/athletes`,
-        images: [
-          {
-            url: `${siteUrl}/og/for-athletes.png`,
-            width: 1200,
-            height: 630,
-            alt: "Physiological Sigh for Athletic Recovery"
-          }
-        ]
-      },
-
-      twitter: {
-        card: "summary_large_image",
-        title: "Faster Athletic Recovery: Physiological Sigh for Athletes",
-        description: "The Stanford-tested breathing technique that brings your heart rate down 2x faster between sets. Free timer.",
-        images: [`${siteUrl}/og/for-athletes.png`]
-      },
-
+      ogTitle: "Faster Athletic Recovery: Physiological Sigh Between Sets",
+      ogDescription: "The Stanford-tested breathing technique that brings your heart rate down 2x faster between sets. Used by elite athletes.",
+      twitterTitle: "Faster Athletic Recovery: Physiological Sigh for Athletes",
+      twitterDescription: "The Stanford-tested breathing technique that brings your heart rate down 2x faster between sets. Free timer.",
+      author: "Resonance Editorial Team",
+      datePublished: "2025-12-07",
       dateModified: "2025-12-07"
     },
 
@@ -1941,7 +1893,7 @@ export const useCasePages: UseCasePageContent[] = [
   // Pregnancy & Labor Preparation
   {
     slug: "pregnancy",
-    mode: ModeName.FourSevenEight,
+    mode: ModeName.Relax,
     breathingPageSlug: "4-7-8",
 
     hero: {
@@ -1953,28 +1905,12 @@ export const useCasePages: UseCasePageContent[] = [
     meta: {
       title: "Breathing Exercises During Pregnancy: Safe 4-7-8 Technique for Anxiety & Labor",
       description: "Pregnancy anxiety? Can't take medication? The modified 4-7-8 breathing technique is safe for pregnancy, used in childbirth education, and calms anxiety naturally. Free guided timer + OB-approved research.",
-
-      openGraph: {
-        title: "Breathing Exercises During Pregnancy: Safe 4-7-8 Technique for Anxiety & Labor",
-        description: "Pregnancy anxiety? Can't take medication? The modified 4-7-8 breathing technique is safe for pregnancy, used in childbirth education, and calms anxiety naturally.",
-        url: `${siteUrl}/for/pregnancy`,
-        images: [
-          {
-            url: `${siteUrl}/og/for-pregnancy.png`,
-            width: 1200,
-            height: 630,
-            alt: "Safe Breathing for Pregnancy and Labor"
-          }
-        ]
-      },
-
-      twitter: {
-        card: "summary_large_image",
-        title: "Safe Breathing for Pregnancy Anxiety & Labor Prep",
-        description: "Modified 4-7-8 breathing: pregnancy-safe, used in childbirth education. Free guided timer.",
-        images: [`${siteUrl}/og/for-pregnancy.png`]
-      },
-
+      ogTitle: "Safe Breathing for Pregnancy Anxiety & Labor",
+      ogDescription: "Modified 4-7-8 breathing: pregnancy-safe, used in childbirth education, and calms anxiety naturally.",
+      twitterTitle: "Safe Breathing for Pregnancy Anxiety & Labor Prep",
+      twitterDescription: "Modified 4-7-8 breathing: pregnancy-safe, used in childbirth education. Free guided timer.",
+      author: "Resonance Editorial Team",
+      datePublished: "2025-12-07",
       dateModified: "2025-12-07"
     },
 
