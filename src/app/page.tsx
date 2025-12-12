@@ -315,6 +315,23 @@ export default function HomePage() {
         <p className="mb-4 text-xs text-muted-foreground">
           Stop if dizzy, tingly, or chest‑tight. Resume later with shorter, easier breaths. Skip prolonged holds during pregnancy or if advised by your clinician.
         </p>
+        <div className="mb-4 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
+          <Link href="/breathe" className="underline underline-offset-2 transition-colors hover:text-foreground">
+            Techniques
+          </Link>
+          <Link href="/for" className="underline underline-offset-2 transition-colors hover:text-foreground">
+            Guides
+          </Link>
+          <Link href="/breathing-app" className="underline underline-offset-2 transition-colors hover:text-foreground">
+            App
+          </Link>
+          <Link href="/about" className="underline underline-offset-2 transition-colors hover:text-foreground">
+            About
+          </Link>
+          <Link href="/privacy" className="underline underline-offset-2 transition-colors hover:text-foreground">
+            Privacy
+          </Link>
+        </div>
         <p className="text-xs text-muted-foreground">
           Created by{" "}
           <span className="underline">

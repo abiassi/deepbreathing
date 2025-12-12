@@ -5,6 +5,39 @@ import { useCasePages } from "@/data/use-case-pages";
 const siteUrl = "https://deepbreathingexercises.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const staticRoutes = [
+    {
+      url: `${siteUrl}/breathe`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/for`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/breathing-app`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.3,
+    },
+    {
+      url: `${siteUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.3,
+    },
+  ];
+
   const breathingRoutes = breathingPages.map((page) => ({
     url: `${siteUrl}/breathe/${page.slug}`,
     lastModified: new Date(page.meta.dateModified),
@@ -26,6 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    ...staticRoutes,
     ...breathingRoutes,
     ...useCaseRoutes,
   ];

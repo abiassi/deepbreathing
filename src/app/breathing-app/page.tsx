@@ -1,0 +1,145 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+import { JsonLd } from "@/components/seo/json-ld";
+
+const siteUrl = "https://deepbreathingexercises.com";
+const canonicalUrl = `${siteUrl}/breathing-app`;
+
+export const metadata: Metadata = {
+  title: "Free Breathing App (No Download) — Calm Anxiety, Sleep & Focus",
+  description:
+    "A free breathing app that runs in your browser. Box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh. No signup. Start in seconds.",
+  alternates: {
+    canonical: canonicalUrl
+  },
+  openGraph: {
+    title: "Free Breathing App (No Download)",
+    description:
+      "A free breathing app that runs in your browser: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh. No signup.",
+    url: canonicalUrl,
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free Breathing App (No Download)",
+    description:
+      "A free breathing app that runs in your browser: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh."
+  }
+};
+
+export default function BreathingAppPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Breathing App",
+        item: canonicalUrl
+      }
+    ]
+  };
+
+  const appSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Deep Breathing Exercises",
+    applicationCategory: "HealthApplication",
+    operatingSystem: "Web",
+    url: siteUrl,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD"
+    }
+  };
+
+  return (
+    <main className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+      <JsonLd data={[breadcrumbSchema, appSchema]} />
+
+      <header className="space-y-4">
+        <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
+        <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">Free breathing app</h1>
+        <p className="max-w-2xl text-lg text-muted-foreground">
+          A simple breathing app that runs in your browser—no download and no signup. Use it for calm, focus, sleep, or
+          a quick stress reset.
+        </p>
+      </header>
+
+      <section className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="glow-card rounded-[32px] border border-border bg-card p-6">
+          <h2 className="text-2xl font-semibold text-card-foreground">Start a session</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Pick a breathing technique and press Start. You can adjust pacing, sound, and haptics.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
+              Open the visualizer
+            </Link>
+            <Link href="/breathe" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+              Browse techniques
+            </Link>
+          </div>
+        </div>
+
+        <div className="glow-card rounded-[32px] border border-border bg-card p-6">
+          <h2 className="text-2xl font-semibold text-card-foreground">What’s included</h2>
+          <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+            <li>Box breathing (4-4-4-4) for stress + focus</li>
+            <li>4-7-8 breathing for sleep + relaxation</li>
+            <li>Coherent breathing (~5–6 breaths/min) for HRV training</li>
+            <li>Physiological sigh for rapid stress relief</li>
+          </ul>
+          <div className="mt-5">
+            <Link href="/for" className="text-sm font-semibold text-primary hover:underline">
+              Explore guides by goal →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="glow-card rounded-[32px] border border-border bg-card p-6">
+          <h2 className="text-xl font-semibold text-card-foreground">Fast</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Designed to load quickly and get you into a session within seconds.
+          </p>
+        </div>
+        <div className="glow-card rounded-[32px] border border-border bg-card p-6">
+          <h2 className="text-xl font-semibold text-card-foreground">Customizable</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Adjust pacing and settings so the practice stays comfortable and sustainable.
+          </p>
+        </div>
+        <div className="glow-card rounded-[32px] border border-border bg-card p-6">
+          <h2 className="text-xl font-semibold text-card-foreground">Evidence-informed</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Each guide includes practical instructions, safety notes, and references to relevant research.
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-12 glow-card rounded-[32px] border border-border bg-card p-6">
+        <h2 className="text-2xl font-semibold text-card-foreground">Can I install this like an app?</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          You can add it to your home screen from your browser (look for “Add to Home Screen”). This will create an app
+          icon and open the visualizer in a standalone window.
+        </p>
+        <div className="mt-4">
+          <Link href="/privacy" className="text-sm font-semibold text-primary hover:underline">
+            Privacy policy →
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
+}

@@ -372,6 +372,29 @@ export function UseCasePage({ slug }: { slug: string }) {
             </Link>
           </div>
         </section>
+
+        <footer className="rounded-[32px] border border-border bg-card p-6 text-center">
+          <p className="text-xs text-muted-foreground">
+            Stop if dizzy, tingly, or chest‑tight. Resume later with shorter, easier breaths.
+          </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
+            <Link href="/breathe" className="underline underline-offset-2 transition-colors hover:text-foreground">
+              Techniques
+            </Link>
+            <Link href="/for" className="underline underline-offset-2 transition-colors hover:text-foreground">
+              Guides
+            </Link>
+            <Link href="/breathing-app" className="underline underline-offset-2 transition-colors hover:text-foreground">
+              App
+            </Link>
+            <Link href="/about" className="underline underline-offset-2 transition-colors hover:text-foreground">
+              About
+            </Link>
+            <Link href="/privacy" className="underline underline-offset-2 transition-colors hover:text-foreground">
+              Privacy
+            </Link>
+          </div>
+        </footer>
       </section>
     </main>
   );

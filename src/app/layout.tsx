@@ -11,11 +11,11 @@ const siteUrl = "https://deepbreathingexercises.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Free Breathing Visualizer - Calm Anxiety in 60 Seconds",
+    default: "Deep Breathing Exercises – Free Breathing Visualizer",
     template: "%s | Deep Breathing Exercises"
   },
   description:
-    "Calm anxiety in 60 seconds with our free breathing visualizer. Used by thousands worldwide. Navy SEAL-approved techniques. Start now—no signup required.",
+    "Free breathing visualizer for deep breathing exercises: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh. Adjustable pacing, sound, and haptics. No signup required.",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Free Breathing Visualizer - Calm Anxiety in 60 Seconds",
+    title: "Deep Breathing Exercises – Free Breathing Visualizer",
     description:
-      "Calm anxiety in 60 seconds with our free breathing visualizer. Navy SEAL-approved techniques. Start now—no signup required.",
+      "Free breathing visualizer for deep breathing exercises: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh. Adjustable pacing. No signup required.",
     type: "website",
     url: siteUrl,
     siteName: "Deep Breathing Exercises",
@@ -55,9 +55,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Breathing Visualizer - Calm Anxiety in 60 Seconds",
+    title: "Deep Breathing Exercises – Free Breathing Visualizer",
     description:
-      "Calm anxiety in 60 seconds with our free breathing visualizer. Navy SEAL-approved techniques. Start now—no signup required.",
+      "Free breathing visualizer for deep breathing exercises: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh. No signup required.",
     creator: "@deepbreathing",
     images: ["/og-image.png"]
   },
