@@ -129,6 +129,22 @@ export default function BreathingAppPage() {
       </section>
 
       <section className="mt-12 glow-card rounded-[32px] border border-border bg-card p-6">
+        <h2 className="text-2xl font-semibold text-card-foreground">Popular breathing timers</h2>
+        <p className="mt-2 text-sm text-muted-foreground">Jump straight into the most common app-style breathing timers.</p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Link href="/box-breathing-app" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+            Box breathing app
+          </Link>
+          <Link href="/4-7-8-breathing-timer" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+            4-7-8 breathing timer
+          </Link>
+          <Link href="/coherent-breathing-app" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+            Coherent (HRV) breathing
+          </Link>
+        </div>
+      </section>
+
+      <section className="mt-12 glow-card rounded-[32px] border border-border bg-card p-6">
         <h2 className="text-2xl font-semibold text-card-foreground">Can I install this like an app?</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           You can add it to your home screen from your browser (look for “Add to Home Screen”). This will create an app

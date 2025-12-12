@@ -1,5 +1,71 @@
 # Progress
 
+## 2025-12-12
+
+### Money Pages Enhanced - Box Breathing, 4-7-8, and Coherent Breathing Apps
+Significantly expanded three money/landing pages with comprehensive content to improve SEO and conversion:
+
+**Pages Updated:**
+- `/box-breathing-app` - Box breathing timer landing page
+- `/4-7-8-breathing-timer` - 4-7-8 breathing timer landing page
+- `/coherent-breathing-app` - Coherent breathing/HRV timer landing page
+
+**Enhancements Made:**
+- **Content depth increased 6-8x**: Each page grew from ~150 words to 1,200-1,500 words
+- **Added 4 comprehensive content sections per page:**
+  - "What is [technique]?" - Explains the technique, history, and what makes it unique
+  - "Benefits of [technique]" - 6-7 specific, evidence-based benefits with explanations
+  - "How [technique] works" - Deep dive into physiological mechanisms (vagus nerve, HRV, autonomic nervous system, etc.)
+  - "When to use [technique]" - 7+ specific use cases with practical timing recommendations
+- **Added FAQ section**: 6 SEO-optimized questions per page with structured data
+- **Added FAQ schema markup**: FAQPage structured data for rich snippet eligibility in SERPs
+- **Better H2/H3 structure**: Improved semantic HTML hierarchy for SEO
+
+**Key Content Differentiators:**
+
+*Box Breathing Page:*
+- Emphasized Navy SEAL/tactical breathing authority
+- Explained equal intervals for balance and predictability
+- Covered acute stress management, focus, and sleep applications
+- Addressed beginner modifications (3-3-3-3, no-holds)
+
+*4-7-8 Breathing Page:*
+- Emphasized Dr. Andrew Weil authority and "natural tranquilizer" positioning
+- Deep dive into exhale-emphasis mechanics and vagus nerve activation
+- Focused on sleep, anxiety relief, and anger management
+- Explained CO₂ buildup benefits (Bohr effect)
+- Addressed modification options for comfort
+
+*Coherent Breathing Page:*
+- Emphasized HRV training and resonance frequency (0.1 Hz)
+- Explained cardiovascular synchronization and respiratory sinus arrhythmia
+- Positioned as training practice vs acute intervention
+- Covered athletic recovery, daily HRV optimization, meditation prep
+- Addressed cumulative benefits from consistent practice
+
+**Target Keywords Addressed:**
+- Box breathing: "box breathing app", "box breathing anxiety", "tactical breathing", "box breathing for sleep"
+- 4-7-8: "4-7-8 breathing sleep", "4-7-8 anxiety", "Dr. Weil breathing", "4-7-8 breathing timer"
+- Coherent: "coherent breathing HRV", "resonance frequency breathing", "HRV breathing", "0.1 Hz breathing"
+
+**Technical SEO:**
+- All three pages already had proper metadata and SoftwareApplication schema
+- Added FAQPage schema to each for rich snippet eligibility
+- Maintained existing BreadcrumbList and SoftwareApplication schemas
+- Cross-linking maintained between all three pages
+
+**Expected Impact:**
+- Better ranking for long-tail keywords through increased content depth
+- Higher time-on-page and lower bounce rate due to more comprehensive content
+- FAQ rich snippets may appear in SERPs for question-based queries
+- Improved E-A-T signals through detailed scientific explanations
+- Better conversion due to addressing more user objections/questions
+
+**Files Modified:**
+- `/src/app/box-breathing-app/page.tsx` - Expanded from 170 to 440 lines
+- `/src/app/4-7-8-breathing-timer/page.tsx` - Expanded from 170 to 450 lines
+- `/src/app/coherent-breathing-app/page.tsx` - Expanded from 170 to 485 lines
+
 ## 2025-12-07
 
 ### Content Expansion - New Use Case Page: Pregnancy & Labor Preparation
