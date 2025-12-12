@@ -298,7 +298,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
                 <span className="text-primary">•</span>
                 <span>
                   <strong className="text-card-foreground">After a stressful day:</strong> Use 4-7-8 as a transition ritual when
-                  you get home from work to help you leave the day's stress behind.
+                  you get home from work to help you leave the day&apos;s stress behind.
                 </span>
               </li>
               <li className="flex gap-3">
@@ -373,7 +373,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-card-foreground">What if I can't hold my breath for 7 counts?</h3>
+              <h3 className="text-lg font-semibold text-card-foreground">What if I can&apos;t hold my breath for 7 counts?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 If holding for 7 counts feels uncomfortable, modify the pattern while keeping the ratio similar. Try 2-3.5-4 or
                 3-5.25-6 (half or three-quarters of the original). The key is maintaining the exhale-emphasis pattern. Comfort
@@ -384,7 +384,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
               <h3 className="text-lg font-semibold text-card-foreground">When is the best time to do 4-7-8 breathing?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 4-7-8 breathing works best when you need to calm down: before bed, during stressful moments, after a difficult
-                day, or before anxiety-inducing situations. Many people use it at night for sleep, but it's also effective for
+                day, or before anxiety-inducing situations. Many people use it at night for sleep, but it&apos;s also effective for
                 managing daytime stress and nervous energy.
               </p>
             </div>

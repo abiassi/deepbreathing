@@ -290,7 +290,7 @@ export default function CoherentBreathingAppMoneyPage() {
             <p>
               Perhaps most importantly, the training effect is cumulative. While a single session feels calming, the real magic
               happens with consistent daily practice. Studies show that 10-20 minutes daily for 4-8 weeks produces significant,
-              measurable improvements in HRV and stress resilience that persist even when you're not actively practicing.
+              measurable improvements in HRV and stress resilience that persist even when you&apos;re not actively practicing.
             </p>
           </div>
         </div>
@@ -391,7 +391,7 @@ export default function CoherentBreathingAppMoneyPage() {
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-card-foreground">What's the best breathing rate for HRV?</h3>
+              <h3 className="text-lg font-semibold text-card-foreground">What&apos;s the best breathing rate for HRV?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Most people&apos;s resonance frequency falls between 4.5-6.5 breaths per minute, with 5.5 breaths per minute (about
                 5.5 seconds in, 5.5 seconds out) being common. Your individual resonance frequency is where your HRV amplitude is
