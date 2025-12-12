@@ -5,6 +5,8 @@
  * - Phase cues shift timbre based on the active color theme.
  * - Binaural beats accept adaptive entrainment frequencies.
  */
+ import { ModeName } from '../types';
+
 type CueType = 'inhale' | 'exhale' | 'hold';
 
 interface CueProfile {
@@ -18,6 +20,34 @@ interface CueProfile {
   harmonics: number[];
 }
 
+ type CuePreset = {
+   duration: number;
+   tone?: {
+     oscType: OscillatorType;
+     freqStart: number;
+     freqEnd: number;
+     detune: number;
+     attack: number;
+     release: number;
+     gain: number;
+   };
+   noise?: {
+     gain: number;
+     attack: number;
+     release: number;
+     lowpassStart: number;
+     lowpassEnd: number;
+     highpass: number;
+     q: number;
+   };
+   reverb?: {
+     mix: number;
+     duration: number;
+     decay: number;
+   };
+   masterLowpassHz: number;
+ };
+
 export class AudioService {
   private ctx: AudioContext | null = null;
   private masterGain: GainNode | null = null;
@@ -29,8 +59,13 @@ export class AudioService {
   private binauralNodes: { osc: OscillatorNode; pan: StereoPannerNode; gain: GainNode }[] = [];
   private noiseNode: { source: AudioBufferSourceNode; gain: GainNode } | null = null;
 
+   private breathingMode: ModeName = ModeName.Box;
+   private cueNoiseBuffer: AudioBuffer | null = null;
+   private cueReverb: ConvolverNode | null = null;
+   private cueReverbBuffer: AudioBuffer | null = null;
+
   private isMuted = false;
-  private cueVolume = 0.5;
+  private cueVolume = 0.32;
   private musicVolume = 0.3;
   private themeColor = '#4f46e5';
 
@@ -213,6 +248,10 @@ export class AudioService {
     this.themeColor = colorHex;
   }
 
+  public setBreathingMode(mode: ModeName) {
+    this.breathingMode = mode;
+  }
+
   /**
    * Slowly rotate drone sources around the listener (8D audio).
    */
@@ -273,34 +312,115 @@ export class AudioService {
     }
 
     const theme = colorHex || this.themeColor;
-    const profile = this.getCueProfile(theme);
+    const preset = this.getCuePreset(this.breathingMode, type, theme);
     const t = this.ctx.currentTime;
-    const baseFreq = this.getCueFrequency(type, profile.pitchShift);
+    const endTime = t + preset.duration;
 
-    profile.harmonics.forEach((amp, index) => {
-      const osc = this.ctx!.createOscillator();
-      const gain = this.ctx!.createGain();
+    const cueBus = this.ctx.createGain();
+    cueBus.gain.setValueAtTime(1, t);
 
-      osc.frequency.value = baseFreq * (1 + index * 0.45);
-      osc.type = profile.oscType;
-      if (profile.detune !== 0) {
-        osc.detune.value = profile.detune * (index + 1);
+    const masterLowpass = this.ctx.createBiquadFilter();
+    masterLowpass.type = 'lowpass';
+    masterLowpass.frequency.setValueAtTime(preset.masterLowpassHz, t);
+    masterLowpass.Q.setValueAtTime(0.7, t);
+
+    const dryGain = this.ctx.createGain();
+    dryGain.gain.setValueAtTime(1, t);
+
+    const output = this.masterGain;
+    cueBus.connect(masterLowpass);
+    masterLowpass.connect(dryGain);
+    dryGain.connect(output);
+
+    let convolver: ConvolverNode | null = null;
+    let wetGain: GainNode | null = null;
+    if (preset.reverb) {
+      convolver = this.getCueReverb(preset.reverb.duration, preset.reverb.decay);
+      if (convolver) {
+        wetGain = this.ctx.createGain();
+        wetGain.gain.setValueAtTime(Math.max(0, Math.min(1, preset.reverb.mix)), t);
+        masterLowpass.connect(convolver);
+        convolver.connect(wetGain);
+        wetGain.connect(output);
       }
+    }
 
-      const attackEnd = t + profile.attack;
-      const decayEnd = attackEnd + profile.decay;
-      const releaseEnd = decayEnd + profile.release;
+    const cleanup = () => {
+      try {
+        cueBus.disconnect();
+        masterLowpass.disconnect();
+        dryGain.disconnect();
+        convolver?.disconnect();
+        wetGain?.disconnect();
+      } catch {
+        // ignore
+      }
+    };
+
+    const nodesToStop: Array<{ stopAt: number; node: AudioScheduledSourceNode }> = [];
+
+    if (preset.noise) {
+      const buffer = this.getCueNoiseBuffer();
+      if (buffer) {
+        const src = this.ctx.createBufferSource();
+        src.buffer = buffer;
+
+        const gain = this.ctx.createGain();
+        const n = preset.noise;
+
+        const lowpass = this.ctx.createBiquadFilter();
+        lowpass.type = 'lowpass';
+        lowpass.Q.setValueAtTime(n.q, t);
+        lowpass.frequency.setValueAtTime(n.lowpassStart, t);
+        lowpass.frequency.linearRampToValueAtTime(n.lowpassEnd, endTime);
+
+        const highpass = this.ctx.createBiquadFilter();
+        highpass.type = 'highpass';
+        highpass.Q.setValueAtTime(0.7, t);
+        highpass.frequency.setValueAtTime(n.highpass, t);
+
+        gain.gain.setValueAtTime(0.0001, t);
+        gain.gain.linearRampToValueAtTime(n.gain * this.cueVolume, t + n.attack);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + n.attack + n.release);
+
+        src.connect(lowpass);
+        lowpass.connect(highpass);
+        highpass.connect(gain);
+        gain.connect(cueBus);
+
+        src.start(t);
+        nodesToStop.push({ node: src, stopAt: endTime + 0.05 });
+      }
+    }
+
+    if (preset.tone) {
+      const tone = preset.tone;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = tone.oscType;
+      osc.detune.setValueAtTime(tone.detune, t);
+      osc.frequency.setValueAtTime(tone.freqStart, t);
+      osc.frequency.exponentialRampToValueAtTime(Math.max(20, tone.freqEnd), endTime);
 
       gain.gain.setValueAtTime(0.0001, t);
-      gain.gain.linearRampToValueAtTime(amp * this.cueVolume, attackEnd);
-      gain.gain.linearRampToValueAtTime(profile.sustain * amp * this.cueVolume, decayEnd);
-      gain.gain.exponentialRampToValueAtTime(0.0001, releaseEnd);
+      gain.gain.linearRampToValueAtTime(tone.gain * this.cueVolume, t + tone.attack);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + tone.attack + tone.release);
 
       osc.connect(gain);
-      gain.connect(this.masterGain!);
+      gain.connect(cueBus);
 
       osc.start(t);
-      osc.stop(releaseEnd + 0.05);
+      nodesToStop.push({ node: osc, stopAt: endTime + 0.05 });
+    }
+
+    nodesToStop.forEach(({ node, stopAt }) => {
+      try {
+        node.stop(stopAt);
+        node.addEventListener('ended', cleanup, { once: true });
+      } catch {
+        // ignore
+      }
     });
   }
 
@@ -490,9 +610,320 @@ export class AudioService {
     return buffer;
   }
 
-  private getCueFrequency(type: CueType, pitchShift: number) {
-    const base = type === 'inhale' ? 440 : type === 'exhale' ? 392 : 523;
-    return base * pitchShift;
+  private getCuePreset(mode: ModeName, type: CueType, colorHex: string): CuePreset {
+    const metrics = this.getColorMetrics(colorHex);
+    const bright = metrics.luminance > 0.55;
+
+    if (mode === ModeName.Box) {
+      if (type === 'inhale') {
+        return {
+          duration: 0.28,
+          masterLowpassHz: 2800,
+          tone: {
+            oscType: 'sine',
+            freqStart: 520,
+            freqEnd: 660,
+            detune: -8,
+            attack: 0.02,
+            release: 0.18,
+            gain: 0.8
+          },
+          noise: {
+            gain: 0.18,
+            attack: 0.02,
+            release: 0.22,
+            lowpassStart: 900,
+            lowpassEnd: 2200,
+            highpass: 140,
+            q: 0.8
+          },
+          reverb: { mix: 0.08, duration: 0.35, decay: 3.2 }
+        };
+      }
+
+      if (type === 'exhale') {
+        return {
+          duration: 0.3,
+          masterLowpassHz: 2400,
+          tone: {
+            oscType: 'sine',
+            freqStart: 520,
+            freqEnd: 420,
+            detune: -10,
+            attack: 0.02,
+            release: 0.22,
+            gain: 0.75
+          },
+          noise: {
+            gain: 0.16,
+            attack: 0.02,
+            release: 0.26,
+            lowpassStart: 2000,
+            lowpassEnd: 850,
+            highpass: 140,
+            q: 0.9
+          },
+          reverb: { mix: 0.08, duration: 0.35, decay: 3.2 }
+        };
+      }
+
+      return {
+        duration: 0.24,
+        masterLowpassHz: 2200,
+        tone: {
+          oscType: 'triangle',
+          freqStart: 660,
+          freqEnd: 660,
+          detune: -5,
+          attack: 0.01,
+          release: 0.16,
+          gain: 0.55
+        },
+        reverb: { mix: 0.05, duration: 0.25, decay: 3.8 }
+      };
+    }
+
+    if (mode === ModeName.Relax) {
+      if (type === 'inhale') {
+        return {
+          duration: 0.38,
+          masterLowpassHz: 1800,
+          tone: {
+            oscType: 'triangle',
+            freqStart: 220,
+            freqEnd: 247,
+            detune: 9,
+            attack: 0.05,
+            release: 0.32,
+            gain: 0.75
+          },
+          noise: {
+            gain: 0.22,
+            attack: 0.04,
+            release: 0.34,
+            lowpassStart: 650,
+            lowpassEnd: bright ? 1600 : 1300,
+            highpass: 120,
+            q: 0.7
+          },
+          reverb: { mix: 0.14, duration: 0.6, decay: 2.6 }
+        };
+      }
+
+      if (type === 'exhale') {
+        return {
+          duration: 0.42,
+          masterLowpassHz: 1700,
+          tone: {
+            oscType: 'triangle',
+            freqStart: 220,
+            freqEnd: 196,
+            detune: 7,
+            attack: 0.05,
+            release: 0.36,
+            gain: 0.8
+          },
+          noise: {
+            gain: 0.24,
+            attack: 0.04,
+            release: 0.38,
+            lowpassStart: bright ? 1700 : 1400,
+            lowpassEnd: 520,
+            highpass: 120,
+            q: 0.7
+          },
+          reverb: { mix: 0.16, duration: 0.7, decay: 2.5 }
+        };
+      }
+
+      return {
+        duration: 0.26,
+        masterLowpassHz: 1600,
+        tone: {
+          oscType: 'sine',
+          freqStart: 330,
+          freqEnd: 330,
+          detune: 4,
+          attack: 0.03,
+          release: 0.22,
+          gain: 0.5
+        },
+        reverb: { mix: 0.12, duration: 0.55, decay: 2.8 }
+      };
+    }
+
+    if (mode === ModeName.Coherent) {
+      if (type === 'inhale') {
+        return {
+          duration: 0.34,
+          masterLowpassHz: 2600,
+          tone: {
+            oscType: 'sine',
+            freqStart: 294,
+            freqEnd: 330,
+            detune: -4,
+            attack: 0.04,
+            release: 0.26,
+            gain: 0.7
+          },
+          noise: {
+            gain: 0.25,
+            attack: 0.03,
+            release: 0.28,
+            lowpassStart: 700,
+            lowpassEnd: bright ? 2400 : 2000,
+            highpass: 130,
+            q: 0.75
+          },
+          reverb: { mix: 0.12, duration: 0.5, decay: 2.9 }
+        };
+      }
+
+      if (type === 'exhale') {
+        return {
+          duration: 0.36,
+          masterLowpassHz: 2400,
+          tone: {
+            oscType: 'sine',
+            freqStart: 294,
+            freqEnd: 262,
+            detune: -6,
+            attack: 0.04,
+            release: 0.3,
+            gain: 0.75
+          },
+          noise: {
+            gain: 0.26,
+            attack: 0.03,
+            release: 0.32,
+            lowpassStart: bright ? 2200 : 1800,
+            lowpassEnd: 650,
+            highpass: 130,
+            q: 0.8
+          },
+          reverb: { mix: 0.13, duration: 0.55, decay: 2.8 }
+        };
+      }
+
+      return {
+        duration: 0.24,
+        masterLowpassHz: 2300,
+        tone: {
+          oscType: 'triangle',
+          freqStart: 440,
+          freqEnd: 440,
+          detune: -2,
+          attack: 0.02,
+          release: 0.18,
+          gain: 0.45
+        },
+        reverb: { mix: 0.08, duration: 0.4, decay: 3.1 }
+      };
+    }
+
+    if (type === 'inhale') {
+      return {
+        duration: 0.24,
+        masterLowpassHz: 2900,
+        tone: {
+          oscType: 'sine',
+          freqStart: 540,
+          freqEnd: 740,
+          detune: 0,
+          attack: 0.015,
+          release: 0.18,
+          gain: 0.85
+        },
+        noise: {
+          gain: 0.24,
+          attack: 0.015,
+          release: 0.2,
+          lowpassStart: 800,
+          lowpassEnd: 2600,
+          highpass: 160,
+          q: 0.75
+        },
+        reverb: { mix: 0.1, duration: 0.45, decay: 2.9 }
+      };
+    }
+
+    if (type === 'exhale') {
+      return {
+        duration: 0.3,
+        masterLowpassHz: 2500,
+        tone: {
+          oscType: 'sine',
+          freqStart: 480,
+          freqEnd: 360,
+          detune: 0,
+          attack: 0.02,
+          release: 0.24,
+          gain: 0.85
+        },
+        noise: {
+          gain: 0.26,
+          attack: 0.02,
+          release: 0.28,
+          lowpassStart: 2300,
+          lowpassEnd: 700,
+          highpass: 160,
+          q: 0.8
+        },
+        reverb: { mix: 0.1, duration: 0.5, decay: 2.8 }
+      };
+    }
+
+    return {
+      duration: 0.22,
+      masterLowpassHz: 2200,
+      tone: {
+        oscType: 'triangle',
+        freqStart: 620,
+        freqEnd: 620,
+        detune: 0,
+        attack: 0.01,
+        release: 0.16,
+        gain: 0.55
+      },
+      reverb: { mix: 0.07, duration: 0.35, decay: 3.1 }
+    };
+  }
+
+  private getCueNoiseBuffer() {
+    if (!this.ctx) return null;
+    if (this.cueNoiseBuffer) return this.cueNoiseBuffer;
+
+    const durationSeconds = 1;
+    const length = Math.floor(this.ctx.sampleRate * durationSeconds);
+    const buffer = this.ctx.createBuffer(1, length, this.ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < length; i++) {
+      data[i] = (Math.random() * 2 - 1) * 0.5;
+    }
+    this.cueNoiseBuffer = buffer;
+    return buffer;
+  }
+
+  private getCueReverb(duration: number, decay: number) {
+    if (!this.ctx) return null;
+    if (this.cueReverb && this.cueReverbBuffer) return this.cueReverb;
+
+    const length = Math.max(1, Math.floor(this.ctx.sampleRate * Math.max(0.08, duration)));
+    const buffer = this.ctx.createBuffer(2, length, this.ctx.sampleRate);
+
+    for (let channel = 0; channel < buffer.numberOfChannels; channel++) {
+      const data = buffer.getChannelData(channel);
+      for (let i = 0; i < length; i++) {
+        const x = 1 - i / length;
+        data[i] = (Math.random() * 2 - 1) * Math.pow(x, Math.max(0.5, decay));
+      }
+    }
+
+    const convolver = this.ctx.createConvolver();
+    convolver.buffer = buffer;
+    this.cueReverb = convolver;
+    this.cueReverbBuffer = buffer;
+    return convolver;
   }
 
   private getDroneRootFrequency(colorHex: string) {

@@ -147,6 +147,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     getAudioService().setThemeColor(themeColor);
   }, [getAudioService, themeColor]);
 
+  useEffect(() => {
+    getAudioService().setBreathingMode(activeMode);
+  }, [getAudioService, activeMode]);
+
   // Proactively unlock mobile audio on the first user interaction
   useEffect(() => {
     if (typeof window === 'undefined') return;
