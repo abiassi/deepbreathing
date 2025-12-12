@@ -294,6 +294,42 @@ export class AudioService {
     }
   }
 
+  public async fadeOutAndSuspend(options: { fadeSeconds?: number } = {}) {
+    const fadeSeconds = options.fadeSeconds ?? 0.35;
+    if (!this.ctx || !this.masterGain) return;
+    if (this.ctx.state !== 'running') return;
+
+    const now = this.ctx.currentTime;
+    const previousMaster = this.masterGain.gain.value;
+
+    try {
+      this.masterGain.gain.cancelScheduledValues(now);
+      this.masterGain.gain.setValueAtTime(previousMaster, now);
+      this.masterGain.gain.linearRampToValueAtTime(0, now + Math.max(0.05, fadeSeconds));
+    } catch {
+      // ignore
+    }
+
+    this.stopDrone();
+    this.stopPinkNoise();
+    this.stopBinaural();
+
+    await new Promise((resolve) => setTimeout(resolve, (fadeSeconds * 1000) + 40));
+
+    try {
+      await this.ctx.suspend();
+    } catch {
+      // ignore
+    }
+
+    try {
+      this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
+      this.masterGain.gain.setValueAtTime(previousMaster, this.ctx.currentTime);
+    } catch {
+      // ignore
+    }
+  }
+
   /**
    * Breathing cues now adapt oscillator types/envelopes to the color palette.
    */

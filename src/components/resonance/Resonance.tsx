@@ -151,6 +151,38 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     getAudioService().setBreathingMode(activeMode);
   }, [getAudioService, activeMode]);
 
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    if (typeof window === 'undefined') return;
+
+    const audio = getAudioService();
+
+    const handleBackground = () => {
+      if (!isRunning) return;
+      setIsRunning(false);
+      setInstruction('Paused');
+      void audio.fadeOutAndSuspend({ fadeSeconds: 0.25 });
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState === 'hidden') {
+        handleBackground();
+      }
+    };
+
+    const handlePageHide = () => {
+      handleBackground();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('pagehide', handlePageHide);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('pagehide', handlePageHide);
+    };
+  }, [getAudioService, isRunning]);
+
   // Proactively unlock mobile audio on the first user interaction
   useEffect(() => {
     if (typeof window === 'undefined') return;
