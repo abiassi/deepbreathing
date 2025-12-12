@@ -125,7 +125,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
         <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
         <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">4-7-8 breathing timer</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          A free 4-7-8 breathing app (Dr. Andrew Weil's method) you can run right now in your browser. Press Start, follow
+          A free 4-7-8 breathing app (Dr. Andrew Weil&apos;s method) you can run right now in your browser. Press Start, follow
           the visual pacing, and adjust the counts if you need a gentler version.
         </p>
       </header>
@@ -176,11 +176,11 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
             </p>
             <p>
               What makes 4-7-8 breathing unique is its emphasis on the exhale. The 8-count exhale is twice as long as the
-              inhale, creating an exhale-dominant pattern that actively engages the parasympathetic nervous system—your body's
+              inhale, creating an exhale-dominant pattern that actively engages the parasympathetic nervous system—your body&apos;s
               built-in relaxation mechanism. This makes it particularly effective for sleep and anxiety relief.
             </p>
             <p>
-              Dr. Weil calls 4-7-8 breathing a "natural tranquilizer for the nervous system." Unlike pharmaceutical
+              Dr. Weil calls 4-7-8 breathing a &ldquo;natural tranquilizer for the nervous system.&rdquo; Unlike pharmaceutical
               tranquilizers that can lose effectiveness over time, 4-7-8 breathing actually becomes more powerful with practice.
               The technique is based on pranayama, an ancient yogic practice of breath control, but adapted for modern use
               without any spiritual or cultural requirements.
@@ -197,7 +197,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
                 <span className="text-primary">•</span>
                 <span>
                   <strong className="text-card-foreground">Helps you fall asleep faster:</strong> The extended exhale and breath
-                  hold trigger your body's natural sleep mechanisms. Many practitioners report falling asleep within minutes of
+                  hold trigger your body&apos;s natural sleep mechanisms. Many practitioners report falling asleep within minutes of
                   starting the technique.
                 </span>
               </li>
@@ -262,7 +262,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
               effect on the nervous system and improve oxygen delivery to your cells—a phenomenon called the Bohr effect.
             </p>
             <p>
-              The counting itself provides a cognitive anchor. When you're anxious, stressed, or unable to sleep, your mind is
+              The counting itself provides a cognitive anchor. When you&apos;re anxious, stressed, or unable to sleep, your mind is
               usually racing with thoughts. The simple act of counting gives your conscious mind a single point of focus,
               interrupting rumination and worry patterns.
             </p>
@@ -332,7 +332,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
             </ul>
             <p className="mt-4">
               <strong className="text-card-foreground">Important note:</strong> While 4-7-8 is generally calming, some people
-              find breath holds energizing or uncomfortable. If it doesn't feel right, try removing the hold or using a
+              find breath holds energizing or uncomfortable. If it doesn&apos;t feel right, try removing the hold or using a
               different technique like coherent breathing instead.
             </p>
           </div>
@@ -352,7 +352,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
             <div>
               <h3 className="text-lg font-semibold text-card-foreground">Is 4-7-8 breathing good for sleep?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Yes, 4-7-8 breathing is particularly effective for sleep. The long exhale helps activate the body's relaxation
+                Yes, 4-7-8 breathing is particularly effective for sleep. The long exhale helps activate the body&apos;s relaxation
                 response, slowing heart rate and calming the nervous system. Many people use it as part of their bedtime routine
                 to fall asleep faster.
               </p>
@@ -362,7 +362,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
               <p className="mt-2 text-sm text-muted-foreground">
                 Dr. Weil recommends starting with 4 breath cycles (about 1 minute) twice daily, then gradually increasing to 8
                 cycles as you get comfortable. For sleep, practice 4-8 cycles when you get into bed. Avoid doing more than 8
-                cycles in one sitting when you're just starting out.
+                cycles in one sitting when you&apos;re just starting out.
               </p>
             </div>
             <div>

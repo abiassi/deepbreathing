@@ -169,13 +169,13 @@ export default function BoxBreathingAppMoneyPage() {
           <div className="mt-4 space-y-4 text-muted-foreground">
             <p>
               Box breathing is a structured breathing technique that follows a simple four-step pattern: inhale, hold, exhale,
-              hold. Each phase lasts the same number of counts, typically 4 seconds each, creating a balanced "box" or "square"
+              hold. Each phase lasts the same number of counts, typically 4 seconds each, creating a balanced &ldquo;box&rdquo; or &ldquo;square&rdquo;
               shape when visualized.
             </p>
             <p>
               Also known as square breathing or four-square breathing, this method is widely used by Navy SEALs, emergency
               responders, and athletes to maintain composure under pressure. The technique gained mainstream attention because of
-              its effectiveness in high-stress situations, but it's equally valuable for everyday stress management.
+              its effectiveness in high-stress situations, but it&apos;s equally valuable for everyday stress management.
             </p>
             <p>
               The classic pattern is 4-4-4-4 (inhale 4 seconds, hold 4 seconds, exhale 4 seconds, hold 4 seconds), but you can
@@ -242,7 +242,7 @@ export default function BoxBreathingAppMoneyPage() {
           <div className="mt-4 space-y-4 text-muted-foreground">
             <p>
               Box breathing works by engaging your autonomic nervous system—the unconscious system that controls functions like
-              heart rate, digestion, and stress response. When you're anxious or stressed, your sympathetic nervous system
+              heart rate, digestion, and stress response. When you&apos;re anxious or stressed, your sympathetic nervous system
               (fight-or-flight) dominates. Box breathing activates the opposing parasympathetic nervous system (rest-and-digest).
             </p>
             <p>
@@ -358,7 +358,7 @@ export default function BoxBreathingAppMoneyPage() {
             <div>
               <h3 className="text-lg font-semibold text-card-foreground">Is box breathing the same as tactical breathing?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Yes, tactical breathing and box breathing refer to the same technique. It's called tactical breathing when used
+                Yes, tactical breathing and box breathing refer to the same technique. It&apos;s called tactical breathing when used
                 by military personnel, law enforcement, and first responders to maintain calm and focus in high-stress
                 situations.
               </p>

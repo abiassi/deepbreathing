@@ -170,7 +170,7 @@ export default function CoherentBreathingAppMoneyPage() {
             <p>
               Coherent breathing is a paced breathing technique where you breathe at approximately 5-6 breaths per minute with
               equal inhale and exhale durations. This specific breathing rate—around 10-12 seconds per breath cycle—aligns your
-              breathing with your cardiovascular rhythms, creating a state of "coherence" in your autonomic nervous system.
+              breathing with your cardiovascular rhythms, creating a state of &ldquo;coherence&rdquo; in your autonomic nervous system.
             </p>
             <p>
               The technique was developed by researchers studying heart rate variability (HRV) and the resonance frequency of
@@ -185,8 +185,8 @@ export default function CoherentBreathingAppMoneyPage() {
               sustain the practice without strain or discomfort.
             </p>
             <p>
-              Coherent breathing is also called "resonant frequency breathing," "HRV breathing," or "0.1 Hz breathing" (because
-              6 breaths per minute equals a frequency of 0.1 Hz). It's widely used in biofeedback therapy, sports psychology, and
+              Coherent breathing is also called &ldquo;resonant frequency breathing,&rdquo; &ldquo;HRV breathing,&rdquo; or &ldquo;0.1 Hz breathing&rdquo; (because
+              6 breaths per minute equals a frequency of 0.1 Hz). It&apos;s widely used in biofeedback therapy, sports psychology, and
               stress management programs.
             </p>
           </div>
@@ -233,7 +233,7 @@ export default function CoherentBreathingAppMoneyPage() {
                 <span className="text-primary">•</span>
                 <span>
                   <strong className="text-card-foreground">Improves emotional regulation:</strong> By strengthening the connection
-                  between your heart and brain (the "heart-brain axis"), coherent breathing enhances your ability to stay
+                  between your heart and brain (the &ldquo;heart-brain axis&rdquo;), coherent breathing enhances your ability to stay
                   emotionally balanced during challenging situations.
                 </span>
               </li>
@@ -262,16 +262,16 @@ export default function CoherentBreathingAppMoneyPage() {
           <div className="mt-4 space-y-4 text-muted-foreground">
             <p>
               Coherent breathing works by synchronizing multiple physiological rhythms in your body—primarily your breathing,
-              heart rate, and blood pressure. This synchronization occurs at what's called your "resonance frequency," typically
+              heart rate, and blood pressure. This synchronization occurs at what&apos;s called your &ldquo;resonance frequency,&rdquo; typically
               around 5-6 breaths per minute for most adults.
             </p>
             <p>
               When you breathe, your heart rate naturally speeds up slightly on the inhale and slows down on the exhale. This is
-              called respiratory sinus arrhythmia (RSA), and it's a sign of healthy autonomic function. At your resonance
+              called respiratory sinus arrhythmia (RSA), and it&apos;s a sign of healthy autonomic function. At your resonance
               frequency, this heart rate oscillation reaches its maximum amplitude—your HRV is at its peak.
             </p>
             <p>
-              This maximized HRV isn't just a number—it reflects optimal coordination between your sympathetic (activation) and
+              This maximized HRV isn&apos;t just a number—it reflects optimal coordination between your sympathetic (activation) and
               parasympathetic (relaxation) nervous systems. Instead of one dominating the other or fighting for control, they
               work together in a balanced, flexible rhythm. Think of it like tuning an instrument: when you hit the right
               frequency, everything resonates together perfectly.
@@ -340,7 +340,7 @@ export default function CoherentBreathingAppMoneyPage() {
               <li className="flex gap-3">
                 <span className="text-primary">•</span>
                 <span>
-                  <strong className="text-card-foreground">Chronic stress management:</strong> If you're dealing with ongoing
+                  <strong className="text-card-foreground">Chronic stress management:</strong> If you&apos;re dealing with ongoing
                   stress, anxiety, or burnout, coherent breathing is one of the most evidence-based practices for building
                   resilience over time.
                 </span>
@@ -393,7 +393,7 @@ export default function CoherentBreathingAppMoneyPage() {
             <div>
               <h3 className="text-lg font-semibold text-card-foreground">What's the best breathing rate for HRV?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Most people's resonance frequency falls between 4.5-6.5 breaths per minute, with 5.5 breaths per minute (about
+                Most people&apos;s resonance frequency falls between 4.5-6.5 breaths per minute, with 5.5 breaths per minute (about
                 5.5 seconds in, 5.5 seconds out) being common. Your individual resonance frequency is where your HRV amplitude is
                 highest. Start with 5-6 breaths per minute and adjust based on what feels sustainable.
               </p>
@@ -413,8 +413,8 @@ export default function CoherentBreathingAppMoneyPage() {
               <h3 className="text-lg font-semibold text-card-foreground">Can coherent breathing help with anxiety?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Yes, regular coherent breathing practice improves your baseline stress resilience and emotional regulation over
-                time. While it's not typically used for acute anxiety relief (4-7-8 or box breathing are better for that), daily
-                coherent breathing training strengthens your autonomic nervous system's ability to handle stress.
+                time. While it&apos;s not typically used for acute anxiety relief (4-7-8 or box breathing are better for that), daily
+                coherent breathing training strengthens your autonomic nervous system&apos;s ability to handle stress.
               </p>
             </div>
           </div>
