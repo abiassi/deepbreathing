@@ -571,11 +571,16 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   // Auto-stop when targetDuration is reached
   useEffect(() => {
     if (targetDuration && isRunning && sessionSeconds >= targetDuration) {
+      const audio = getAudioService();
       setIsRunning(false);
       setPhase(BreathingPhase.Idle);
       setInstruction('Session complete');
+      // Stop all audio
+      audio.stopDrone();
+      audio.stopPinkNoise();
+      audio.stopBinaural();
     }
-  }, [targetDuration, isRunning, sessionSeconds]);
+  }, [targetDuration, isRunning, sessionSeconds, getAudioService]);
 
   useEffect(() => {
      if (!isRunning && !aiReasoning) {
