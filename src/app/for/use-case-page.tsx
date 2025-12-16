@@ -1,12 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
-import Resonance from "@/components/resonance/Resonance";
 import { BREATHING_PATTERNS } from "@/components/resonance/constants";
 import { JsonLd } from "@/components/seo/json-ld";
 import { useCasePageMap, type UseCasePageContent } from "@/data/use-case-pages";
+
+// Lazy-load Resonance to improve initial page load
+const Resonance = dynamic(
+  () => import("@/components/resonance/Resonance"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="animate-pulse text-muted-foreground">Loading breathing exercise...</div>
+      </div>
+    )
+  }
+);
 
 const baseUrl = "https://deepbreathingexercises.com";
 

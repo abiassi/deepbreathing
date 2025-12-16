@@ -1,5 +1,50 @@
 # Progress
 
+## 2025-12-16
+
+### Performance Optimizations - Vercel Speed Insights
+Implemented Phase 1 + 2 optimizations to improve Real Experience Score (was 81, target >90).
+
+**Root Causes Identified:**
+- Resonance component (841 lines) loading eagerly with canvas, audio, particles
+- Build ID regenerating every deploy, breaking browser caching
+- CSS blur animations (160px) expensive on mobile
+- ParticleBackground loading immediately on all pages
+
+**Changes Made:**
+
+1. **Removed dynamic build ID** (`next.config.js`)
+   - Deleted `generateBuildId: async () => build-${Date.now()}`
+   - Allows stable browser caching across deploys
+
+2. **Lazy-loaded ParticleBackground** (`src/components/resonance/Resonance.tsx`)
+   - Converted to `next/dynamic` with `ssr: false`
+   - Canvas animations now load after initial render
+
+3. **Reduced CSS animation cost** (`src/app/globals.css`)
+   - Reduced aurora blur from 160px → 80px
+   - Added `@media (prefers-reduced-motion: reduce)` to disable animations and backdrop-filter
+
+4. **Lazy-loaded Resonance on use-case pages** (`src/app/for/use-case-page.tsx`)
+   - Added loading skeleton ("Loading breathing exercise...")
+   - Content renders immediately, interactive component loads after
+
+5. **Lazy-loaded Resonance on pattern pages** (`src/app/breathe/pattern-page.tsx`)
+   - Same treatment as use-case pages
+
+**Expected Impact:**
+- FCP improvement: content renders before heavy JS loads
+- Better caching: stable build IDs across deploys
+- Mobile performance: reduced GPU work from blur
+- Improved RES on worst pages: /for/athletes (was 54), /breathing-app (was 66), /breathe/4-7-8 (was 88)
+
+**Files Modified:**
+- `next.config.js` - Removed generateBuildId
+- `src/components/resonance/Resonance.tsx` - Dynamic import ParticleBackground
+- `src/app/for/use-case-page.tsx` - Dynamic import Resonance with skeleton
+- `src/app/breathe/pattern-page.tsx` - Dynamic import Resonance with skeleton
+- `src/app/globals.css` - Reduced blur, added reduced-motion support
+
 ## 2025-12-12
 
 ### Money Pages Enhanced - Box Breathing, 4-7-8, and Coherent Breathing Apps

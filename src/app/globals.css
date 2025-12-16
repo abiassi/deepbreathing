@@ -139,9 +139,23 @@ body[data-resonance-immersive="true"] {
   width: 40rem;
   height: 40rem;
   border-radius: 9999px;
-  filter: blur(160px);
+  filter: blur(80px);
   opacity: 0.6;
   mix-blend-mode: screen;
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-layer,
+  .aurora-one,
+  .aurora-two,
+  .aurora-three {
+    animation: none !important;
+  }
+
+  .glass-panel {
+    backdrop-filter: none;
+  }
 }
 
 .aurora-one {
