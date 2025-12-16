@@ -436,6 +436,22 @@ export function PatternPage({ slug }: { slug: string }) {
           </section>
         ) : null}
 
+        <section className="glow-card rounded-[32px] border border-border bg-card p-6">
+          <p className="text-sm uppercase tracking-widest text-primary">Quick sessions</p>
+          <p className="mt-2 text-sm text-muted-foreground">Short on time? Try a timed session:</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Link href="/1-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
+              1 minute
+            </Link>
+            <Link href="/2-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
+              2 minutes
+            </Link>
+            <Link href="/5-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
+              5 minutes
+            </Link>
+          </div>
+        </section>
+
         <footer className="rounded-[32px] border border-border bg-card p-6 text-center">
           <p className="text-xs text-muted-foreground">
             Stop if dizzy, tingly, or chest‑tight. Resume later with shorter, easier breaths.

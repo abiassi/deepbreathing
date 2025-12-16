@@ -101,18 +101,18 @@ export const useCasePages: UseCasePageContent[] = [
     breathingPageSlug: "box",
 
     hero: {
-      title: "How to Stop Stage Fright in 60 Seconds",
-      subtitle: "The Navy SEAL breathing method for instant calm before any presentation",
+      title: "Breathing Exercises for Public Speaking",
+      subtitle: "Stop stage fright in 60 seconds with the Navy SEAL method",
       intro: "Your heart races. Your hands shake. Your mouth goes dry. Stage fright isn't a character flaw—it's your body's ancient survival system misfiring. Box breathing, the same technique used by Navy SEALs and first responders, can interrupt this panic response in under a minute."
     },
 
     meta: {
-      title: "Stop Stage Fright in 60 Seconds - Navy SEAL Box Breathing Method",
-      description: "Your hands shake. Your voice cracks. Stop stage fright in 60 seconds with the Navy SEAL breathing method. Used before 100,000+ presentations. Free visualizer.",
-      ogTitle: "Stop Stage Fright in 60 Seconds - Navy SEAL Box Breathing",
-      ogDescription: "The breathing technique Navy SEALs use before combat. Stop presentation anxiety in 60 seconds. Used before 100,000+ speeches.",
-      twitterTitle: "Stop Stage Fright in 60 Seconds - Navy SEAL Method",
-      twitterDescription: "The breathing technique Navy SEALs use before combat. Stop presentation anxiety instantly. Free visualizer.",
+      title: "Breathing Exercises for Public Speaking — Stop Stage Fright in 60 Seconds",
+      description: "Breathing exercises for public speaking that stop stage fright in 60 seconds. The Navy SEAL box breathing method used before 100,000+ presentations. Free visualizer.",
+      ogTitle: "Breathing Exercises for Public Speaking — Stop Stage Fright",
+      ogDescription: "Breathing techniques for public speaking that Navy SEALs use before combat. Stop presentation anxiety in 60 seconds. Free visualizer.",
+      twitterTitle: "Breathing Exercises for Public Speaking — Navy SEAL Method",
+      twitterDescription: "Breathing exercises for public speaking that stop stage fright instantly. Free visualizer.",
       author: "Resonance Editorial Team",
       datePublished: "2025-12-02",
       dateModified: "2025-12-07"
@@ -481,18 +481,18 @@ export const useCasePages: UseCasePageContent[] = [
     breathingPageSlug: "4-7-8",
 
     hero: {
-      title: "The 'Natural Tranquilizer' for Your Nervous System",
-      subtitle: "Fall asleep faster with the 4-7-8 breathing technique",
+      title: "4-7-8 Breathing for Sleep",
+      subtitle: "Dr. Weil's 'natural tranquilizer' for your nervous system",
       intro: "You're exhausted but your mind won't stop. Racing thoughts, tomorrow's to-do list, that awkward thing you said five years ago—your brain replays it all the moment your head hits the pillow. The 4-7-8 breathing technique forces a rhythm that's physically incompatible with stress, helping you transition from 'tired but wired' to actually asleep."
     },
 
     meta: {
-      title: "Fall Asleep in 2 Minutes: 4-7-8 Breathing (The Natural Tranquilizer)",
-      description: "Racing thoughts keeping you awake? Fall asleep in 2 minutes with Dr. Weil's 'natural tranquilizer' breathing technique. Used by thousands nightly. Free sleep visualizer.",
-      ogTitle: "Fall Asleep in 2 Minutes: 4-7-8 Breathing Technique",
-      ogDescription: "Dr. Weil's 'natural tranquilizer' breathing technique helps you fall asleep in minutes. Used by thousands nightly. Free visualizer.",
-      twitterTitle: "Fall Asleep in 2 Minutes - 4-7-8 Breathing",
-      twitterDescription: "Dr. Weil's 'natural tranquilizer' breathing technique. Fall asleep in minutes without medication. Free visualizer.",
+      title: "4-7-8 Breathing for Sleep — Fall Asleep in 2 Minutes (Free)",
+      description: "4-7-8 breathing for sleep: Dr. Weil's 'natural tranquilizer' helps you fall asleep in 2 minutes. Stop racing thoughts. Free sleep visualizer, no download.",
+      ogTitle: "4-7-8 Breathing for Sleep — Fall Asleep in 2 Minutes",
+      ogDescription: "4-7-8 breathing for sleep: Dr. Weil's 'natural tranquilizer' helps you fall asleep in minutes. Free visualizer.",
+      twitterTitle: "4-7-8 Breathing for Sleep — Fall Asleep Fast",
+      twitterDescription: "4-7-8 breathing for sleep: Dr. Weil's 'natural tranquilizer'. Fall asleep in minutes without medication. Free visualizer.",
       author: "Resonance Editorial Team",
       datePublished: "2025-12-02",
       dateModified: "2025-12-07"

@@ -113,6 +113,14 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
           "@type": "Answer",
           text: "4-7-8 breathing works best when you need to calm down: before bed, during stressful moments, after a difficult day, or before anxiety-inducing situations. Many people use it at night for sleep, but it's also effective for managing daytime stress and nervous energy."
         }
+      },
+      {
+        "@type": "Question",
+        name: "Is it 4-7-8 or 7-8-4 breathing?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The correct order is 4-7-8: inhale for 4 counts, hold for 7 counts, exhale for 8 counts. The numbers describe the sequence of the breath cycle. '7-8-4' is a common mix-up, but the technique starts with the 4-count inhale and ends with the 8-count exhale—the extended exhale is what activates the relaxation response."
+        }
       }
     ]
   };
@@ -386,6 +394,14 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
                 4-7-8 breathing works best when you need to calm down: before bed, during stressful moments, after a difficult
                 day, or before anxiety-inducing situations. Many people use it at night for sleep, but it&apos;s also effective for
                 managing daytime stress and nervous energy.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-card-foreground">Is it 4-7-8 or 7-8-4 breathing?</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                The correct order is 4-7-8: inhale for 4 counts, hold for 7 counts, exhale for 8 counts. The numbers describe
+                the sequence of the breath cycle. &quot;7-8-4&quot; is a common mix-up, but the technique starts with the 4-count inhale
+                and ends with the 8-count exhale—the extended exhale is what activates the relaxation response.
               </p>
             </div>
           </div>

@@ -120,9 +120,9 @@ export default function HomePage() {
   const heroHeader = (
     <div className="space-y-6">
       <FadingHeroTitle
-        label="DEEP BREATHING EXERCISES"
-        title="Calm, on demand"
-        subtitle="Visual breathing exercise that helps your body downshift. Anytime, anywhere."
+        label="Free Breathing Visualizer"
+        title="Deep Breathing Exercises"
+        subtitle="Visual pacing that helps your body downshift. Calm on demand, anytime, anywhere."
       />
       <div className={cn(
         "flex flex-wrap gap-4 transition-all duration-500",
@@ -273,6 +273,11 @@ export default function HomePage() {
                     <li key={item}>• {item}</li>
                   ))}
                 </ul>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Link href="/1-minute-breathing-exercise" className="text-xs underline underline-offset-2 text-muted-foreground hover:text-foreground">1 min</Link>
+                  <Link href="/2-minute-breathing-exercise" className="text-xs underline underline-offset-2 text-muted-foreground hover:text-foreground">2 min</Link>
+                  <Link href="/5-minute-breathing-exercise" className="text-xs underline underline-offset-2 text-muted-foreground hover:text-foreground">5 min</Link>
+                </div>
               </article>
               <article className={cn(infoCardClass)}>
                 <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Best moments</p>

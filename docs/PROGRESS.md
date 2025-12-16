@@ -2,6 +2,151 @@
 
 ## 2025-12-16
 
+### SEO Overhaul - GSC Query Alignment
+Based on Google Search Console data showing impressions but 0 clicks at position ~20, implemented comprehensive SEO optimizations to align titles/H1s with actual search queries and expand query surface area.
+
+**Phase 1: Title/H1 Optimizations**
+
+*Homepage Pillar Optimization:*
+- Updated FadingHeroTitle: Label "FREE BREATHING VISUALIZER", Title "Deep Breathing Exercises"
+- Targets query: "breathing visualizer"
+- File: `/src/app/page.tsx`
+
+*Public Speaking Page:*
+- Updated hero.title: "Breathing Exercises for Public Speaking"
+- Updated meta.title: "Breathing Exercises for Public Speaking — Stop Stage Fright in 60 Seconds"
+- Targets query: "breathing exercises for public speaking"
+- File: `/src/data/use-case-pages.ts`
+
+*Sleep Page:*
+- Updated hero.title: "4-7-8 Breathing for Sleep"
+- Updated meta.title: "4-7-8 Breathing for Sleep — Fall Asleep in 2 Minutes (Free)"
+- Targets query: "4-7-8 breathing for sleep"
+- File: `/src/data/use-case-pages.ts`
+
+**Phase 2: FAQ Additions for Query Variants**
+
+*4-7-8 Timer Page:*
+- Added FAQ: "Is it 4-7-8 or 7-8-4 breathing?"
+- Captures variant query: "7-8-4 breathing"
+- File: `/src/app/4-7-8-breathing-timer/page.tsx`
+
+*Coherent Breathing App Page:*
+- Added FAQ: "Is it 'coherent' or 'coherence' breathing?"
+- Captures variant query: "coherence breathing"
+- File: `/src/app/coherent-breathing-app/page.tsx`
+
+**Phase 3: New Time-Based Tool Pages**
+
+Created 3 standalone tool pages for quick protocol + timer intent:
+
+*/1-minute-breathing-exercise:*
+- Protocol: Box breathing 4-4-4-4 (4 cycles = ~64s)
+- Target query: "1 minute breathing exercise"
+- Lightweight content: How it works, When to use, 6 FAQs
+- Internal links to /breathe/box, /for/anxiety, /for/public-speaking
+
+*/2-minute-breathing-exercise:*
+- Protocol: Box breathing or Coherent breathing
+- Target query: "2 minute breathing exercise"
+- Offers choice between structured (box) and gentle (coherent) approaches
+
+*/5-minute-breathing-exercise:*
+- Protocol: Coherent breathing (5-5 pacing, ~30 breaths)
+- Target query: "5 minute breathing exercise"
+- Emphasizes HRV training and deeper relaxation benefits
+
+**Phase 4: Internal Linking & Sitemap**
+
+*Homepage:*
+- Added quick session links (1 min, 2 min, 5 min) to "How long?" section
+- File: `/src/app/page.tsx`
+
+*Sitemap:*
+- Added 3 new time-based pages with priority 0.8
+- File: `/src/app/sitemap.ts`
+
+**Files Created:**
+- `/src/app/1-minute-breathing-exercise/page.tsx`
+- `/src/app/2-minute-breathing-exercise/page.tsx`
+- `/src/app/5-minute-breathing-exercise/page.tsx`
+
+**Files Modified:**
+- `/src/app/page.tsx` - H1 optimization + quick session links
+- `/src/data/use-case-pages.ts` - Public speaking + sleep title updates
+- `/src/app/4-7-8-breathing-timer/page.tsx` - 7-8-4 FAQ
+- `/src/app/coherent-breathing-app/page.tsx` - Coherence spelling FAQ
+- `/src/app/sitemap.ts` - Added new pages
+
+**Expected Impact:**
+- Better ranking for existing queries through exact-match titles
+- Capture variant queries (7-8-4, coherence) through FAQs
+- New query discovery for time-based searches (1/2/5 minute exercises)
+- Improved internal link equity distribution
+
+### SEO Overhaul - Phase 5: Duration Parameter Support & Refinements
+
+**URL Duration Parameters:**
+- Added `targetDuration` prop to Resonance component with auto-stop logic
+- Session automatically stops when target duration is reached
+- Pattern pages now parse `?duration=X` URL parameter (in seconds)
+- Updated all 4 pattern routes (`/breathe/box`, `/breathe/coherent`, `/breathe/4-7-8`, `/breathe/physiological-sigh`) to pass searchParams
+
+**Time-Based Page Links Updated:**
+- 1-minute: `/breathe/box?duration=60`
+- 2-minute: `/breathe/box?duration=120` and `/breathe/coherent?duration=120`
+- 5-minute: `/breathe/coherent?duration=300`
+
+**ALL CAPS Label Fixes:**
+- Homepage: "FREE BREATHING VISUALIZER" → "Free Breathing Visualizer"
+- 1-minute page: "QUICK BREATHING EXERCISE" → "Quick Breathing Exercise"
+- 2-minute page: "QUICK BREATHING EXERCISE" → "Quick Breathing Exercise"
+- 5-minute page: "DEEP BREATHING EXERCISE" → "Deep Breathing Exercise"
+- Rationale: Google often rewrites ALL CAPS titles
+
+**Quick Sessions Internal Linking:**
+- Added Quick Sessions section to `/src/app/breathe/pattern-page.tsx` (appears on all technique pages)
+- Added Quick Sessions section to `/src/app/for/use-case-page.tsx` (appears on all use-case pages)
+- Links to 1-min, 2-min, 5-min exercises for improved internal link equity
+
+**Files Modified:**
+- `/src/components/resonance/Resonance.tsx` - Added targetDuration prop and auto-stop logic
+- `/src/app/breathe/pattern-page.tsx` - Parse duration param, pass to Resonance, add Quick Sessions
+- `/src/app/breathe/box/page.tsx` - Pass searchParams to PatternPage
+- `/src/app/breathe/coherent/page.tsx` - Pass searchParams to PatternPage
+- `/src/app/breathe/4-7-8/page.tsx` - Pass searchParams to PatternPage
+- `/src/app/breathe/physiological-sigh/page.tsx` - Pass searchParams to PatternPage
+- `/src/app/for/use-case-page.tsx` - Add Quick Sessions section
+- `/src/app/page.tsx` - Fix ALL CAPS label
+- `/src/app/1-minute-breathing-exercise/page.tsx` - Fix ALL CAPS, add duration param
+- `/src/app/2-minute-breathing-exercise/page.tsx` - Fix ALL CAPS, add duration params
+- `/src/app/5-minute-breathing-exercise/page.tsx` - Fix ALL CAPS, add duration param
+
+### SEO Overhaul - Phase 6: Static Page Preservation
+
+**Problem:** Server-side searchParams parsing made `/breathe/*` pages dynamic (λ in build output).
+
+**Solution:** Moved duration parsing to client-side using `useSearchParams` in Resonance component.
+
+**Changes:**
+1. Removed `targetDuration` prop from Resonance - now reads from URL client-side
+2. Added `parseAndClampDuration()` function with MAX_DURATION = 600 seconds
+3. Reverted all 4 pattern routes to simple static exports (no searchParams)
+4. Pattern pages now use `useSearchParams` hook client-side
+
+**Build verification:**
+- All `/breathe/*` pages show ○ (Static) instead of λ (Dynamic)
+- Canonical URLs correctly set to clean paths (no query strings)
+- Duration clamped to max 600 seconds to prevent abuse
+
+**Files Modified:**
+- `/src/components/resonance/Resonance.tsx` - Client-side duration parsing with clamping
+- `/src/app/breathe/pattern-page.tsx` - Removed searchParams prop
+- `/src/app/breathe/box/page.tsx` - Reverted to static export
+- `/src/app/breathe/coherent/page.tsx` - Reverted to static export
+- `/src/app/breathe/4-7-8/page.tsx` - Reverted to static export
+- `/src/app/breathe/physiological-sigh/page.tsx` - Reverted to static export
+
 ### Performance Optimizations - Vercel Speed Insights
 Implemented Phase 1 + 2 optimizations to improve Real Experience Score (was 81, target >90).
 

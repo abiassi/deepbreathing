@@ -113,6 +113,14 @@ export default function CoherentBreathingAppMoneyPage() {
           "@type": "Answer",
           text: "Yes, regular coherent breathing practice improves your baseline stress resilience and emotional regulation over time. While it's not typically used for acute anxiety relief (4-7-8 or box breathing are better for that), daily coherent breathing training strengthens your autonomic nervous system's ability to handle stress."
         }
+      },
+      {
+        "@type": "Question",
+        name: "Is it 'coherent' or 'coherence' breathing?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Both terms refer to the same technique. 'Coherent breathing' is the most common name, describing the coherent state you achieve. 'Coherence breathing' or 'cardiac coherence breathing' emphasizes the heart-brain coherence that results from the practice. You may also see it called 'resonant frequency breathing' or 'HRV breathing.' All describe the same 5-6 breaths per minute technique."
+        }
       }
     ]
   };
@@ -415,6 +423,15 @@ export default function CoherentBreathingAppMoneyPage() {
                 Yes, regular coherent breathing practice improves your baseline stress resilience and emotional regulation over
                 time. While it&apos;s not typically used for acute anxiety relief (4-7-8 or box breathing are better for that), daily
                 coherent breathing training strengthens your autonomic nervous system&apos;s ability to handle stress.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-card-foreground">Is it &quot;coherent&quot; or &quot;coherence&quot; breathing?</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Both terms refer to the same technique. &quot;Coherent breathing&quot; is the most common name, describing the coherent
+                state you achieve. &quot;Coherence breathing&quot; or &quot;cardiac coherence breathing&quot; emphasizes the heart-brain coherence
+                that results from the practice. You may also see it called &quot;resonant frequency breathing&quot; or &quot;HRV breathing.&quot;
+                All describe the same 5-6 breaths per minute technique.
               </p>
             </div>
           </div>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import dynamic from 'next/dynamic';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER } from './constants';
@@ -31,6 +31,18 @@ interface ResonanceProps {
   immersive?: boolean;
 }
 
+// Valid duration values in seconds (clamped to prevent abuse)
+const VALID_DURATIONS = [60, 120, 300, 600] as const;
+const MAX_DURATION = 600; // 10 minutes max
+
+function parseAndClampDuration(value: string | null): number | undefined {
+  if (!value) return undefined;
+  const parsed = parseInt(value, 10);
+  if (isNaN(parsed) || parsed <= 0) return undefined;
+  // Clamp to max duration
+  return Math.min(parsed, MAX_DURATION);
+}
+
 type ThemePreference = 'system' | 'light' | 'dark';
 
 const toRgba = (hex: string, alpha: number) => {
@@ -45,6 +57,13 @@ const toRgba = (hex: string, alpha: number) => {
 const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMode, immersive }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // Parse duration from URL params client-side (keeps page static)
+  const targetDuration = useMemo(
+    () => parseAndClampDuration(searchParams.get('duration')),
+    [searchParams]
+  );
 
   // --- State ---
   const initialMode = defaultMode ?? ModeName.Box;
@@ -548,6 +567,15 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
     return () => clearInterval(interval);
   }, [isRunning]);
+
+  // Auto-stop when targetDuration is reached
+  useEffect(() => {
+    if (targetDuration && isRunning && sessionSeconds >= targetDuration) {
+      setIsRunning(false);
+      setPhase(BreathingPhase.Idle);
+      setInstruction('Session complete');
+    }
+  }, [targetDuration, isRunning, sessionSeconds]);
 
   useEffect(() => {
      if (!isRunning && !aiReasoning) {
