@@ -1,12 +1,9 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { BreathingVisualizer } from "@/components/breathing-visualizer";
 import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
+import { HomeHeroActions } from "@/components/home/home-hero-actions";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { BREATHING_PATTERNS, ModeName } from "@/components/resonance/constants";
 import { modeToBreathingPage } from "@/data/breathing-pages";
@@ -90,33 +87,8 @@ const whyItWorks = [
 
 const infoCardClass =
   "glow-card rounded-[36px] border border-border bg-card p-6 transition-colors duration-200";
-const startButtonColor = BREATHING_PATTERNS[ModeName.Box].color;
-const startButtonStyle = {
-  backgroundColor: startButtonColor,
-  boxShadow: `0 12px 36px ${startButtonColor}60`
-};
 
 export default function HomePage() {
-  const [running, setRunning] = useState(false);
-
-  useEffect(() => {
-    const handleRunState = (event: Event) => {
-      const custom = event as CustomEvent<{ running: boolean }>;
-      setRunning(Boolean(custom.detail?.running));
-    };
-
-    window.addEventListener("resonance:run-state", handleRunState);
-    return () => window.removeEventListener("resonance:run-state", handleRunState);
-  }, []);
-
-  const handleStartSession = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('resonance:start'));
-    }
-  };
-
   const heroHeader = (
     <div className="space-y-6">
       <FadingHeroTitle
@@ -124,23 +96,7 @@ export default function HomePage() {
         title="Deep Breathing Exercises"
         subtitle="Visual pacing that helps your body downshift. Calm on demand, anytime, anywhere."
       />
-      <div className={cn(
-        "flex flex-wrap gap-4 transition-all duration-500",
-        running ? "opacity-0 translate-y-2 pointer-events-none" : "opacity-100 translate-y-0"
-      )}>
-        <Button
-          onClick={handleStartSession}
-          type="button"
-          size="lg"
-          className="shadow-none text-white hover:brightness-105 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-white/70"
-          style={startButtonStyle}
-        >
-          Start session
-        </Button>
-        <Button asChild variant="outline" size="lg">
-          <a href="#mode-picker">Pick a mode</a>
-        </Button>
-      </div>
+      <HomeHeroActions />
     </div>
   );
 
