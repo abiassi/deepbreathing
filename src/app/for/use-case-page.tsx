@@ -8,6 +8,12 @@ import { BREATHING_PATTERNS } from "@/components/resonance/constants";
 import { JsonLd } from "@/components/seo/json-ld";
 import { useCasePageMap, type UseCasePageContent } from "@/data/use-case-pages";
 
+// Dynamic import for client component
+const ShareButton = dynamic(
+  () => import("./share-button").then(mod => ({ default: mod.ShareButton })),
+  { ssr: false }
+);
+
 // Lazy-load Resonance to improve initial page load
 const Resonance = dynamic(
   () => import("@/components/resonance/Resonance"),
@@ -52,12 +58,18 @@ export function createUseCaseMetadata(slug: string): Metadata {
   };
 }
 
+// Winter blue colors (must match Resonance.tsx)
+const WINTER_BLUE = '#0c1929';
+const WINTER_CARD = '#162a43';  // Lighter blue for cards
+const WINTER_MUTED = '#1a3352'; // Even lighter for nested elements
+
 export function UseCasePage({ slug }: { slug: string }) {
   const page = useCasePageMap[slug];
   if (!page) {
     notFound();
   }
 
+  const isHolidayPage = slug === "holiday-stress" || slug === "travel-anxiety";
   const pattern = BREATHING_PATTERNS[page.mode];
   const canonicalUrl = `${baseUrl}/for/${page.slug}`;
 
@@ -131,34 +143,81 @@ export function UseCasePage({ slug }: { slug: string }) {
   const structuredData = [faqSchema, howToSchema, articleSchema, breadcrumbSchema];
 
   const heroHeader = (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <FadingHeroTitle
         label="DEEP BREATHING EXERCISES"
         title={page.hero.title}
         subtitle={page.hero.subtitle}
       />
+      {isHolidayPage && (
+        <div className="pt-2">
+          <ShareButton
+            url={canonicalUrl}
+            title={page.hero.title}
+            text={slug === "holiday-stress"
+              ? "Holiday stress? This 30-second breathing technique helps instantly."
+              : "Travel anxiety? This breathing technique keeps you calm through flights and delays."
+            }
+            buttonText="Share with someone"
+            size="large"
+            variant="winter"
+          />
+        </div>
+      )}
     </div>
   );
 
   return (
-    <main className="bg-transparent">
+    <main
+      className={isHolidayPage ? "dark" : "bg-transparent"}
+      style={isHolidayPage ? { backgroundColor: WINTER_BLUE } : undefined}
+    >
       <JsonLd data={structuredData} />
 
       {/* Hero with Visualizer */}
       <section id="practice" className="relative isolate min-h-screen w-full text-foreground">
-        <Resonance defaultMode={page.mode} className="min-h-screen" />
+        <Resonance
+          defaultMode={page.mode}
+          className="min-h-screen"
+          snowMode={isHolidayPage}
+          forcedTheme={isHolidayPage ? "dark" : undefined}
+          backgroundVariant={isHolidayPage ? "winter-blue" : "default"}
+        />
         <div className="absolute inset-y-0 left-0 z-30 hidden w-full max-w-xl px-6 py-20 lg:flex lg:flex-col lg:justify-center">
           {heroHeader}
         </div>
       </section>
 
       {/* Mobile Hero */}
-      <section className="px-4 py-10 sm:px-6 lg:hidden lg:px-8">
+      <section
+        className={`px-4 py-10 sm:px-6 lg:hidden lg:px-8 ${isHolidayPage ? 'text-white' : ''}`}
+        style={isHolidayPage ? { backgroundColor: WINTER_BLUE } : undefined}
+      >
         {heroHeader}
       </section>
 
       {/* Main Content */}
-      <section className="relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] bg-background/95 px-4 pb-20 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
+      <section
+        className={`relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] px-4 pb-20 pt-16 sm:px-6 lg:px-8 ${
+          isHolidayPage
+            ? 'bg-[#0f1f33]/95 backdrop-blur-sm'
+            : 'bg-background/95 backdrop-blur-sm'
+        }`}
+        style={isHolidayPage ? { backgroundColor: 'rgba(15, 31, 51, 0.97)' } : undefined}
+      >
+
+        {/* Back to Holiday Hub link */}
+        {isHolidayPage && (
+          <div className="-mt-4 mb-2">
+            <Link
+              href="/holiday-breathing-exercises"
+              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              Back to Holiday Hub
+            </Link>
+          </div>
+        )}
 
         {/* Intro */}
         <div className="prose prose-lg max-w-none text-muted-foreground">
@@ -176,7 +235,10 @@ export function UseCasePage({ slug }: { slug: string }) {
         )}
 
         {/* The Problem */}
-        <section className="glow-card rounded-[32px] border border-border bg-card p-8 text-card-foreground">
+        <section
+          className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
+          style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
+        >
           <p className="text-sm uppercase tracking-widest text-primary">The Problem</p>
           <h2 className="mt-2 text-2xl font-semibold">{page.problem.heading}</h2>
           <p className="mt-4 text-muted-foreground">{page.problem.content}</p>
@@ -197,12 +259,18 @@ export function UseCasePage({ slug }: { slug: string }) {
         </section>
 
         {/* The Solution */}
-        <section className="glow-card rounded-[32px] border border-border bg-card p-8 text-card-foreground">
+        <section
+          className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
+          style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
+        >
           <p className="text-sm uppercase tracking-widest text-primary">The Solution</p>
           <h2 className="mt-2 text-2xl font-semibold">{page.solution.heading}</h2>
           <p className="mt-4 text-muted-foreground">{page.solution.content}</p>
 
-          <div className="mt-6 rounded-2xl bg-muted/70 p-4">
+          <div
+            className="mt-6 rounded-2xl p-4"
+            style={isHolidayPage ? { backgroundColor: WINTER_MUTED } : undefined}
+          >
             <p className="text-sm font-medium uppercase tracking-widest text-primary">Why this technique</p>
             <p className="mt-2 text-card-foreground">{page.solution.whyThisPattern}</p>
           </div>
@@ -227,13 +295,20 @@ export function UseCasePage({ slug }: { slug: string }) {
         </section>
 
         {/* Why It Works (Science) */}
-        <section className="glow-card rounded-[32px] border border-border bg-card p-8 text-card-foreground">
+        <section
+          className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
+          style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
+        >
           <p className="text-sm uppercase tracking-widest text-primary">Why It Works</p>
           <h2 className="mt-2 text-2xl font-semibold">{page.science.heading}</h2>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {page.science.points.map((point) => (
-              <div key={point.mechanism} className="rounded-2xl bg-muted/70 p-4">
+              <div
+                key={point.mechanism}
+                className="rounded-2xl p-4"
+                style={isHolidayPage ? { backgroundColor: WINTER_MUTED } : undefined}
+              >
                 <p className="font-semibold text-card-foreground">{point.mechanism}</p>
                 <p className="mt-2 text-sm text-muted-foreground">{point.explanation}</p>
               </div>
@@ -242,13 +317,21 @@ export function UseCasePage({ slug }: { slug: string }) {
         </section>
 
         {/* How-To Steps */}
-        <section id="how-to" className="glow-card rounded-[32px] border border-border bg-card p-8 text-card-foreground">
+        <section
+          id="how-to"
+          className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
+          style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
+        >
           <p className="text-sm uppercase tracking-widest text-primary">Step-by-Step</p>
           <h2 className="mt-2 text-2xl font-semibold">How to Practice</h2>
 
           <ol className="mt-6 space-y-4">
             {page.howTo.steps.map((step, index) => (
-              <li key={step.name} className="flex gap-4 rounded-2xl bg-muted/70 p-4">
+              <li
+                key={step.name}
+                className="flex gap-4 rounded-2xl p-4"
+                style={isHolidayPage ? { backgroundColor: WINTER_MUTED } : undefined}
+              >
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-lg font-semibold text-primary">
                   {index + 1}
                 </div>
@@ -281,13 +364,20 @@ export function UseCasePage({ slug }: { slug: string }) {
         </section>
 
         {/* References */}
-        <section className="glow-card rounded-[32px] border border-border bg-card p-8 text-card-foreground">
+        <section
+          className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
+          style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
+        >
           <p className="text-sm uppercase tracking-widest text-primary">Research & References</p>
           <h2 className="mt-2 text-2xl font-semibold">Scientific Sources</h2>
 
           <ul className="mt-6 space-y-4">
             {page.references.map((ref) => (
-              <li key={ref.url} className="rounded-2xl bg-muted/70 p-4">
+              <li
+                key={ref.url}
+                className="rounded-2xl p-4"
+                style={isHolidayPage ? { backgroundColor: WINTER_MUTED } : undefined}
+              >
                 <a
                   href={ref.url}
                   target="_blank"
@@ -308,13 +398,21 @@ export function UseCasePage({ slug }: { slug: string }) {
         </section>
 
         {/* FAQ */}
-        <section id="faq" className="glow-card rounded-[32px] border border-border bg-card p-8 text-card-foreground">
+        <section
+          id="faq"
+          className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
+          style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
+        >
           <p className="text-sm uppercase tracking-widest text-primary">FAQ</p>
           <h2 className="mt-2 text-2xl font-semibold">Common Questions</h2>
 
           <div className="mt-6 space-y-3">
             {page.faqs.map((faq) => (
-              <details key={faq.question} className="rounded-2xl bg-muted p-4">
+              <details
+                key={faq.question}
+                className="rounded-2xl p-4"
+                style={isHolidayPage ? { backgroundColor: WINTER_MUTED } : undefined}
+              >
                 <summary className="cursor-pointer text-lg font-medium text-foreground">
                   {faq.question}
                 </summary>
@@ -337,8 +435,11 @@ export function UseCasePage({ slug }: { slug: string }) {
                   <Link
                     key={related.slug}
                     href={`/for/${related.slug}`}
-                    className="group rounded-[28px] border bg-card p-5 transition hover:border-primary"
-                    style={{ borderColor: relatedPattern ? `${relatedPattern.color}40` : undefined }}
+                    className="group rounded-[28px] border p-5 transition hover:border-primary"
+                    style={{
+                      borderColor: relatedPattern ? `${relatedPattern.color}40` : undefined,
+                      backgroundColor: isHolidayPage ? WINTER_CARD : undefined
+                    }}
                   >
                     <p className="text-lg font-semibold text-card-foreground">
                       {relatedPage?.hero.title ?? related.slug}
@@ -368,14 +469,29 @@ export function UseCasePage({ slug }: { slug: string }) {
           <p className="mx-auto mt-2 max-w-lg text-muted-foreground">
             Use the interactive visualizer above to guide your breathing. Follow the animation and let your body relax.
           </p>
-          <div className="mt-6 flex flex-col items-center gap-3">
-            <a
-              href="#practice"
-              className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-semibold text-white transition hover:opacity-90"
-              style={{ backgroundColor: pattern.color }}
-            >
-              Go to visualizer →
-            </a>
+          <div className="mt-6 flex flex-col items-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="#practice"
+                className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-base font-semibold text-white transition hover:opacity-90"
+                style={{ backgroundColor: pattern.color }}
+              >
+                Go to visualizer →
+              </a>
+              {isHolidayPage && (
+                <ShareButton
+                  url={canonicalUrl}
+                  title={page.hero.title}
+                  text={slug === "holiday-stress"
+                    ? "Holiday stress? This 30-second breathing technique helps instantly."
+                    : "Travel anxiety? This breathing technique keeps you calm through flights and delays."
+                  }
+                  buttonText="Share"
+                  size="large"
+                  variant="winter"
+                />
+              )}
+            </div>
             <Link
               href={`/breathe/${page.relatedTechnique.slug}`}
               className="inline-flex items-center gap-2 text-sm font-medium transition hover:underline"
@@ -386,23 +502,68 @@ export function UseCasePage({ slug }: { slug: string }) {
           </div>
         </section>
 
-        <section className="glow-card rounded-[32px] border border-border bg-card p-6">
+        <section
+          className="glow-card rounded-[32px] border border-border p-6"
+          style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
+        >
           <p className="text-sm uppercase tracking-widest text-primary">Quick sessions</p>
-          <p className="mt-2 text-sm text-muted-foreground">Short on time? Try a timed session:</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {isHolidayPage ? "Holiday-ready sessions:" : "Short on time? Try a timed session:"}
+          </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Link href="/1-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
-              1 minute
-            </Link>
-            <Link href="/2-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
-              2 minutes
-            </Link>
-            <Link href="/5-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
-              5 minutes
-            </Link>
+            {isHolidayPage ? (
+              <>
+                <Link
+                  href={`/breathe/${page.breathingPageSlug}?duration=30`}
+                  className="rounded-full border px-4 py-2 text-sm font-medium text-card-foreground transition-colors"
+                  style={{ borderColor: 'rgba(255,255,255,0.2)', backgroundColor: WINTER_MUTED }}
+                >
+                  30s Reset
+                </Link>
+                <Link
+                  href={`/breathe/${page.breathingPageSlug}?duration=60`}
+                  className="rounded-full border px-4 py-2 text-sm font-medium text-card-foreground transition-colors"
+                  style={{ borderColor: 'rgba(255,255,255,0.2)', backgroundColor: WINTER_MUTED }}
+                >
+                  1min Breather
+                </Link>
+                <Link
+                  href={`/breathe/${page.breathingPageSlug}?duration=120`}
+                  className="rounded-full border px-4 py-2 text-sm font-medium text-card-foreground transition-colors"
+                  style={{ borderColor: 'rgba(255,255,255,0.2)', backgroundColor: WINTER_MUTED }}
+                >
+                  2min Calm Down
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/1-minute-breathing-exercise"
+                  className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors"
+                >
+                  1 minute
+                </Link>
+                <Link
+                  href="/2-minute-breathing-exercise"
+                  className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors"
+                >
+                  2 minutes
+                </Link>
+                <Link
+                  href="/5-minute-breathing-exercise"
+                  className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors"
+                >
+                  5 minutes
+                </Link>
+              </>
+            )}
           </div>
         </section>
 
-        <footer className="rounded-[32px] border border-border bg-card p-6 text-center">
+        <footer
+          className="rounded-[32px] border border-border p-6 text-center"
+          style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
+        >
           <p className="text-xs text-muted-foreground">
             Stop if dizzy, tingly, or chest‑tight. Resume later with shorter, easier breaths.
           </p>

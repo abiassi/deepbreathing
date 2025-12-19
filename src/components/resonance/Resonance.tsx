@@ -14,6 +14,13 @@ const ParticleBackground = dynamic(
   () => import('./components/ParticleBackground'),
   { ssr: false }
 );
+const SnowBackground = dynamic(
+  () => import('./components/SnowBackground'),
+  {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 z-0" />
+  }
+);
 import { modeToBreathingPage } from '@/data/breathing-pages';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet';
 
@@ -29,6 +36,9 @@ interface ResonanceProps {
   className?: string;
   defaultMode?: ModeName;
   immersive?: boolean;
+  snowMode?: boolean;
+  forcedTheme?: 'light' | 'dark';
+  backgroundVariant?: 'default' | 'winter-blue';
 }
 
 // Valid duration values in seconds (clamped to prevent abuse)
@@ -45,6 +55,14 @@ function parseAndClampDuration(value: string | null): number | undefined {
 
 type ThemePreference = 'system' | 'light' | 'dark';
 
+const DURATION_OPTIONS: Array<{ label: string; value: number | null }> = [
+  { label: 'Open', value: null },
+  ...VALID_DURATIONS.map((duration) => ({
+    label: `${duration / 60} min`,
+    value: duration
+  }))
+];
+
 const toRgba = (hex: string, alpha: number) => {
   const sanitized = hex.replace('#', '');
   const bigint = parseInt(sanitized, 16);
@@ -54,19 +72,20 @@ const toRgba = (hex: string, alpha: number) => {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 };
 
-const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMode, immersive }) => {
+const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMode, immersive, snowMode = false, forcedTheme, backgroundVariant = 'default' }) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   // Parse duration from URL params client-side (keeps page static)
-  const targetDuration = useMemo(
+  const durationFromUrl = useMemo(
     () => parseAndClampDuration(searchParams.get('duration')),
     [searchParams]
   );
 
   // --- State ---
   const initialMode = defaultMode ?? ModeName.Box;
+  const [selectedDuration, setSelectedDuration] = useState<number | null>(() => durationFromUrl ?? null);
   const [activeMode, setActiveMode] = useState<ModeName>(initialMode);
   const [speedMultiplier, setSpeedMultiplier] = useState(DEFAULT_SPEED_MULTIPLIER);
   const [themeColor, setThemeColor] = useState(BREATHING_PATTERNS[initialMode].color);
@@ -124,6 +143,27 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
     setThemeReady(true);
   }, [defaultMode]);
+
+  useEffect(() => {
+    if (durationFromUrl === undefined) return;
+    setSelectedDuration(durationFromUrl);
+  }, [durationFromUrl]);
+
+  useEffect(() => {
+    if (!mounted || durationFromUrl !== undefined) return;
+    const savedSettings = localStorage.getItem(STORAGE_KEYS.SETTINGS);
+    if (!savedSettings) return;
+    try {
+      const parsed = JSON.parse(savedSettings);
+      if (parsed.duration === null) {
+        setSelectedDuration(null);
+      } else if (typeof parsed.duration === 'number') {
+        setSelectedDuration(Math.min(parsed.duration, MAX_DURATION));
+      }
+    } catch (_err) {
+      // Ignore invalid persisted settings.
+    }
+  }, [mounted, durationFromUrl]);
 
   const [phase, setPhase] = useState<BreathingPhase>(BreathingPhase.Idle);
   const [isRunning, setIsRunning] = useState(false);
@@ -258,9 +298,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify({
       mode: activeMode,
       speed: speedMultiplier,
-      color: themeColor
+      color: themeColor,
+      duration: selectedDuration
     }));
-  }, [activeMode, speedMultiplier, themeColor, mounted]);
+  }, [activeMode, speedMultiplier, themeColor, selectedDuration, mounted]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -307,9 +348,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
   }, [phase, isRunning]);
 
-  const activeTheme = themePreference === 'system'
+  // forcedTheme overrides user preference (used for holiday pages)
+  const activeTheme = forcedTheme ?? (themePreference === 'system'
     ? (systemPrefersDark ? 'dark' : 'light')
-    : themePreference;
+    : themePreference);
 
   useEffect(() => {
     if (!themeReady) return;
@@ -336,6 +378,22 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const handleThemeReset = useCallback(() => {
     setThemePreference('system');
   }, []);
+
+  const updateDurationParam = useCallback((value: number | null) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value === null) {
+      params.delete('duration');
+    } else {
+      params.set('duration', String(value));
+    }
+    const queryString = params.toString();
+    router.replace(queryString ? `${pathname}?${queryString}` : pathname, { scroll: false });
+  }, [pathname, router, searchParams]);
+
+  const handleDurationSelect = useCallback((value: number | null) => {
+    setSelectedDuration(value);
+    updateDurationParam(value);
+  }, [updateDurationParam]);
 
   const handleTogglePlay = useCallback(async () => {
     const audio = getAudioService();
@@ -570,7 +628,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   // Auto-stop when targetDuration is reached
   useEffect(() => {
-    if (targetDuration && isRunning && sessionSeconds >= targetDuration) {
+    if (typeof selectedDuration === 'number' && isRunning && sessionSeconds >= selectedDuration) {
       const audio = getAudioService();
       setIsRunning(false);
       setPhase(BreathingPhase.Idle);
@@ -580,7 +638,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       audio.stopPinkNoise();
       audio.stopBinaural();
     }
-  }, [targetDuration, isRunning, sessionSeconds, getAudioService]);
+  }, [selectedDuration, isRunning, sessionSeconds, getAudioService]);
 
   useEffect(() => {
      if (!isRunning && !aiReasoning) {
@@ -627,6 +685,12 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     if (p === BreathingPhase.Inhale2) return "Inhale Again";
     return p;
   };
+
+  const durationSummary = selectedDuration === null
+    ? 'Open'
+    : selectedDuration % 60 === 0
+      ? `${selectedDuration / 60} min`
+      : `${selectedDuration}s`;
 
   // --- Helper for Stats ---
   const renderStats = () => {
@@ -679,13 +743,32 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   if (!mounted) return null;
 
+  // Winter blue background: deep navy that works well with snow
+  const winterBlueBase = '#0c1929';
+  const winterBlueActive = '#0f1f33';
+
+  const getBackgroundColor = () => {
+    if (backgroundVariant === 'winter-blue') {
+      return isRunning ? winterBlueActive : winterBlueBase;
+    }
+    return isRunning ? `${themeColor}1a` : undefined;
+  };
+
   return (
     <div
-      className={`relative flex h-full w-full flex-col overflow-hidden bg-background transition-colors duration-1000 ${className}`}
-      style={{ backgroundColor: isRunning ? `${themeColor}1a` : undefined }}
+      className={`relative flex h-full w-full flex-col overflow-hidden ${backgroundVariant === 'winter-blue' ? '' : 'bg-background'} transition-colors duration-1000 ${className}`}
+      style={{ backgroundColor: getBackgroundColor() }}
     >
       
-      <ParticleBackground phase={phase} color={themeColor} speedMultiplier={speedMultiplier} />
+      {snowMode ? (
+        <SnowBackground
+          tone={activeTheme}
+          speedMultiplier={speedMultiplier}
+          phase={phase}
+        />
+      ) : (
+        <ParticleBackground phase={phase} color={themeColor} speedMultiplier={speedMultiplier} />
+      )}
 
       <header className="relative z-20 flex justify-end p-6">
         <button
@@ -804,6 +887,35 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                     <p className="mt-2 text-xs text-muted-foreground">Following your device preference.</p>
                   )}
                 </div>
+
+                <div className="rounded-2xl bg-background/50 p-3 text-sm text-muted-foreground shadow-inner dark:bg-background/20">
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Session length</p>
+                    <p className="text-xs text-muted-foreground">{durationSummary}</p>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {DURATION_OPTIONS.map((option) => {
+                      const isActive = selectedDuration === option.value;
+                      return (
+                        <button
+                          key={option.label}
+                          onClick={() => handleDurationSelect(option.value)}
+                          disabled={isRunning}
+                          className={`rounded-xl px-3 py-1.5 text-xs font-medium transition ${
+                            isActive
+                              ? 'bg-card text-card-foreground shadow-sm'
+                              : 'text-muted-foreground hover:bg-card/60 dark:hover:bg-card/30'
+                          } disabled:cursor-not-allowed disabled:opacity-60`}
+                        >
+                          {option.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  {isRunning && (
+                    <p className="mt-2 text-xs text-muted-foreground">Pause to change the session length.</p>
+                  )}
+                </div>
               </div>
               {aiReasoning && (
                 <div className="rounded-xl border border-border/70 bg-card/70 p-4 text-sm text-card-foreground shadow-sm dark:bg-card/30">
@@ -864,7 +976,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                 </>
               ) : (
                 <div className="rounded-2xl bg-muted/60 p-4 text-sm text-muted-foreground dark:bg-muted/30">
-                  Pause the session to switch modes or adjust pacing.
+                  Pause the session to switch modes, adjust pacing, or change length.
                 </div>
               )}
 

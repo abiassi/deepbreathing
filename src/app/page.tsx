@@ -76,7 +76,8 @@ const bestMoments = [
   "Before events",
   "Post-conflict",
   "Bedtime wind-down",
-  "In-flight"
+  "In-flight",
+  "Holiday stress"
 ];
 
 const whyItWorks = [
@@ -282,6 +283,9 @@ export default function HomePage() {
           </Link>
           <Link href="/for" className="underline underline-offset-2 transition-colors hover:text-foreground">
             Guides
+          </Link>
+          <Link href="/holiday-breathing-exercises" className="underline underline-offset-2 transition-colors hover:text-foreground">
+            Holiday
           </Link>
           <Link href="/breathing-app" className="underline underline-offset-2 transition-colors hover:text-foreground">
             App

@@ -61,6 +61,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${siteUrl}/holiday-breathing-exercises`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
       url: `${siteUrl}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,

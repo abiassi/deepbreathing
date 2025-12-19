@@ -641,6 +641,10 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "high-blood-pressure",
         teaser: "High blood pressure? See how the same 4-7-8 technique can help manage hypertension"
+      },
+      {
+        slug: "holiday-stress",
+        teaser: "Can't sleep after stressful holiday gatherings? Use this bedtime wind-down routine"
       }
     ],
 
@@ -1031,6 +1035,14 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "public-speaking",
         teaser: "Performance anxiety before speeches? Box breathing stops stage fright in 60 seconds"
+      },
+      {
+        slug: "holiday-stress",
+        teaser: "Holiday gatherings triggering anxiety? The physiological sigh works at the dinner table"
+      },
+      {
+        slug: "travel-anxiety",
+        teaser: "Travel anxiety before holiday trips? Coherent breathing keeps you calm for hours"
       }
     ],
 
@@ -1232,6 +1244,10 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "public-speaking",
         teaser: "Pre-speech panic? Use this technique 60 seconds before you step on stage"
+      },
+      {
+        slug: "holiday-stress",
+        teaser: "Holiday gatherings triggering panic? This same technique works discreetly at the table"
       }
     ],
 
@@ -2097,6 +2113,410 @@ export const useCasePages: UseCasePageContent[] = [
       {
         question: "Can I practice this in the first trimester, or is it only for later pregnancy?",
         answer: "Yes, it's safe in the first trimester (and often most helpful then, when anxiety about miscarriage is highest). First trimester modifications: (1) You can still lie on your back if comfortable. (2) The full 4-7-8 timing is fine (no need to shorten the hold yet). (3) Practice gently if you have morning sickness—don't breathe so deeply that it triggers nausea. (4) If you have a history of recurrent miscarriage or are on bed rest, ask your OB-GYN first. For most women, gentle slow breathing in the first trimester is safe and beneficial."
+      }
+    ]
+  },
+
+  // Holiday Stress
+  {
+    slug: "holiday-stress",
+    mode: ModeName.Sigh,
+    breathingPageSlug: "physiological-sigh",
+
+    hero: {
+      title: "How to Handle Holiday Stress in 30 Seconds",
+      subtitle: "The physiological sigh technique for family gatherings and social overwhelm",
+      intro: "The dinner table conversation turns tense. Your in-laws start their usual comments. The kids are melting down. Holiday gatherings are supposed to be joyful, but your nervous system is screaming. The physiological sigh—a double-inhale-long-exhale that takes just 30 seconds—can reset your stress response before anyone notices."
+    },
+
+    meta: {
+      title: "Holiday Stress Relief in 30 Seconds: Physiological Sigh Technique",
+      description: "Overwhelmed at holiday gatherings? Reset your nervous system in 30 seconds with the physiological sigh—the Stanford-tested technique for acute stress relief. Free visualizer.",
+      ogTitle: "Holiday Stress Relief in 30 Seconds — Physiological Sigh",
+      ogDescription: "The Stanford-tested breathing technique that stops holiday stress in 30 seconds. Works at the dinner table, in crowds, or hiding in the bathroom.",
+      twitterTitle: "Holiday Stress Relief in 30 Seconds — Physiological Sigh",
+      twitterDescription: "Stanford-tested breathing technique for holiday stress. Works in 30 seconds. Free visualizer.",
+      author: "Resonance Editorial Team",
+      datePublished: "2025-12-19",
+      dateModified: "2025-12-19"
+    },
+
+    keywords: [
+      "holiday stress relief",
+      "breathing for holiday anxiety",
+      "family gathering stress",
+      "holiday overwhelm",
+      "physiological sigh holiday",
+      "holiday breathing exercises",
+      "stress relief at family events",
+      "calm down during holidays",
+      "holiday party anxiety",
+      "holiday stress management"
+    ],
+
+    problem: {
+      heading: "Why Holidays Overwhelm Your Nervous System",
+      content: "Holiday stress is unique because it combines multiple triggers at once: social pressure to be 'merry,' financial strain from gift-giving, disrupted routines, difficult family dynamics, overstimulation from crowds and noise, and the impossible expectation to feel grateful while exhausted. Your nervous system can't distinguish between a passive-aggressive comment and a genuine threat—it activates the same fight-or-flight response either way.",
+      symptoms: [
+        "Jaw clenching and shoulder tension at family gatherings",
+        "Snapping at loved ones over minor issues",
+        "Feeling like you can't escape or get a moment alone",
+        "Racing thoughts about everything you need to do",
+        "Sensory overload from noise, crowds, and chaos",
+        "Post-event exhaustion that lasts for days",
+        "Dreading events you're supposed to enjoy"
+      ]
+    },
+
+    solution: {
+      heading: "The Physiological Sigh: Your 30-Second Escape",
+      content: "The physiological sigh is the fastest way to shift your nervous system from stress to calm. It's the same pattern your body uses naturally when you sob or when you transition from sleep. The technique is simple: two inhales through your nose (a big breath, then a small 'top-up'), followed by one long exhale through your mouth. Stanford research shows it's more effective than box breathing or meditation for acute stress relief.",
+      whyThisPattern: "Unlike other breathing techniques that require 2-5 minutes to work, the physiological sigh produces measurable stress reduction in just 1-3 breaths. The double inhale re-inflates collapsed air sacs in your lungs (maximizing oxygen), while the long exhale activates your vagus nerve (triggering the calm-down response). You can do it discreetly at the dinner table, in a bathroom, or walking to your car."
+    },
+
+    science: {
+      heading: "Why This Works for Holiday Stress",
+      points: [
+        {
+          mechanism: "Fastest Vagus Nerve Activation",
+          explanation: "The long exhale phase is key. When you exhale, your heart rate naturally slows (this is called respiratory sinus arrhythmia). A 6-8 second exhale stimulates the vagus nerve more powerfully than any other breathing pattern, rapidly shifting you from fight-or-flight to rest-and-digest."
+        },
+        {
+          mechanism: "CO₂ Rebalancing",
+          explanation: "When stressed, you tend to over-breathe, depleting carbon dioxide and causing tingling, dizziness, or feeling 'unreal.' The controlled exhale normalizes CO₂ levels, resolving these physical symptoms within seconds."
+        },
+        {
+          mechanism: "Immediate Cortisol Reduction",
+          explanation: "Stanford research (Balban et al., 2023) found that just 5 minutes of cyclic sighing per day produced greater reductions in anxiety and improved mood compared to mindfulness meditation. But even 1-3 sighs provide immediate relief for acute stress."
+        },
+        {
+          mechanism: "Interrupts Rumination",
+          explanation: "The double-inhale pattern requires momentary focus—you can't simultaneously sigh properly and spiral into anxious thoughts. It's a physiological pattern interrupt that breaks the stress-thought-stress loop."
+        }
+      ]
+    },
+
+    howTo: {
+      steps: [
+        {
+          name: "Recognize the trigger",
+          instruction: "Notice when you're tensing up: clenching jaw, tight shoulders, racing thoughts, or the urge to snap. This is your cue to use the technique—before you react.",
+          timing: "Immediately when stressed"
+        },
+        {
+          name: "Excuse yourself if needed",
+          instruction: "If possible, step away briefly—bathroom, kitchen, outside for 'fresh air.' But you can also do this discreetly at the table by disguising it as a big sigh.",
+          timing: "Optional"
+        },
+        {
+          name: "First inhale (deep)",
+          instruction: "Breathe in deeply through your nose, filling your lungs about 80-90%. Let your belly expand. This takes about 2-3 seconds.",
+          timing: "2-3 seconds"
+        },
+        {
+          name: "Second inhale (top-up)",
+          instruction: "Without exhaling, take a second, shorter sniff through your nose—like you're sniffing a flower. This 'top-up' breath re-inflates collapsed air sacs and maximizes oxygen.",
+          timing: "1-2 seconds"
+        },
+        {
+          name: "Long exhale",
+          instruction: "Exhale slowly and completely through your mouth, making the exhale longer than both inhales combined. Let your shoulders drop. Feel the tension release.",
+          timing: "6-8 seconds"
+        },
+        {
+          name: "Repeat 1-3 times",
+          instruction: "One sigh often provides immediate relief. Do 2-3 if you need a full reset. Then return to the situation with a calmer nervous system.",
+          timing: "30 seconds to 1 minute"
+        }
+      ],
+      tips: [
+        "The exhale is the most important part—make it slow and complete",
+        "You can disguise this as a 'tired sigh' so no one notices",
+        "Practice when calm so it's automatic when you need it",
+        "Do one before entering a stressful situation (prevention, not just cure)",
+        "Combine with a quick walk or bathroom break for maximum effect"
+      ]
+    },
+
+    references: [
+      {
+        title: "Brief structured respiration practices enhance mood and reduce physiological arousal",
+        source: "Cell Reports Medicine (Balban et al., 2023)",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9873947/",
+        summary: "Stanford study showing cyclic sighing (physiological sigh) outperformed box breathing and mindfulness meditation for stress reduction and mood improvement."
+      },
+      {
+        title: "How stress affects your brain and how to reverse it",
+        source: "Stanford Medicine Scope Blog",
+        url: "https://scopeblog.stanford.edu/2020/10/07/how-stress-affects-your-brain-and-how-to-reverse-it/",
+        summary: "Dr. Andrew Huberman explains the neuroscience of stress and how the physiological sigh works as a real-time intervention."
+      },
+      {
+        title: "The Physiological Sigh: A 30-Second Breathing Exercise to Lower Stress",
+        source: "Oura Ring Blog",
+        url: "https://ouraring.com/blog/what-is-the-physiological-sigh-how-to-do-it/",
+        summary: "Practical guide to the physiological sigh with HRV and heart rate data showing rapid stress reduction."
+      },
+      {
+        title: "Holiday stress: Tips for coping",
+        source: "Mayo Clinic",
+        url: "https://www.mayoclinic.org/healthy-lifestyle/stress-management/in-depth/stress/art-20047544",
+        summary: "Medical overview of holiday-specific stressors and evidence-based coping strategies."
+      }
+    ],
+
+    relatedTechnique: {
+      slug: "physiological-sigh",
+      callToAction: "Practice with the full-screen Physiological Sigh visualizer"
+    },
+
+    relatedUseCases: [
+      {
+        slug: "travel-anxiety",
+        teaser: "Traveling for the holidays? Coherent breathing keeps you calm through flights and crowds"
+      },
+      {
+        slug: "anxiety",
+        teaser: "For ongoing anxiety throughout the season, try box breathing for sustained calm"
+      },
+      {
+        slug: "panic-attacks",
+        teaser: "If holiday stress escalates to panic, this technique stops panic attacks fast"
+      },
+      {
+        slug: "sleep",
+        teaser: "Can't sleep after stressful gatherings? 4-7-8 breathing is designed for bedtime"
+      }
+    ],
+
+    faqs: [
+      {
+        question: "Can I really do this at the dinner table without anyone noticing?",
+        answer: "Yes. The physiological sigh can be disguised as a natural 'tired sigh' or deep breath. People sigh all the time—it's socially invisible. The key is making it look casual: don't close your eyes or make a production of it. Just sigh like you would naturally, but with the double-inhale technique. If you need multiple sighs, excuse yourself briefly."
+      },
+      {
+        question: "What if I need to respond immediately to something stressful?",
+        answer: "You don't need time to 'prepare.' The physiological sigh takes 10 seconds and works immediately. Before responding to a provocative comment, take one sigh. The brief pause will feel like you're considering your response (which you are), and you'll answer from a calmer state. The few seconds of silence won't be awkward—it shows thoughtfulness."
+      },
+      {
+        question: "Is this just 'deep breathing'? I've tried that and it doesn't work.",
+        answer: "No. Regular deep breathing often makes stress worse by over-breathing and depleting CO₂. The physiological sigh is specifically designed for rapid stress relief: the double inhale maximizes oxygen uptake and re-inflates collapsed lung tissue, while the extended exhale activates the vagus nerve. It's a physiological mechanism, not just 'relaxation.' Stanford research shows it outperforms both box breathing and meditation for acute stress."
+      },
+      {
+        question: "I get stressed before the gathering even starts. How can I prepare?",
+        answer: "Do 5-10 physiological sighs before you arrive—in your car, outside the venue, or during your commute. This pre-emptively lowers your baseline stress level so you have more capacity for the event. You can also set phone reminders to take 'sigh breaks' every 30-60 minutes during long gatherings."
+      },
+      {
+        question: "What about other holiday stressors like travel or shopping crowds?",
+        answer: "The physiological sigh works for any acute stress situation. Use it when stuck in traffic, waiting in long checkout lines, navigating crowded stores, or dealing with flight delays. It's particularly useful because you can do it anywhere without special equipment or time commitment. For sustained stress during travel, consider coherent breathing for the longer-term calm."
+      },
+      {
+        question: "My stress isn't acute—it's a constant low-grade dread about the holidays. Will this help?",
+        answer: "The physiological sigh is designed for acute stress moments. For the chronic background anxiety of the holiday season, you'll benefit more from a daily breathing practice: 5-10 minutes of coherent breathing each morning, plus physiological sighs as needed for acute flare-ups. Think of coherent breathing as daily maintenance, and the sigh as your emergency tool."
+      }
+    ]
+  },
+
+  // Travel Anxiety
+  {
+    slug: "travel-anxiety",
+    mode: ModeName.Coherent,
+    breathingPageSlug: "coherent",
+
+    hero: {
+      title: "Breathing Exercises for Travel Anxiety",
+      subtitle: "Stay calm through flights, delays, and crowds with coherent breathing",
+      intro: "Your heart races as the plane accelerates. The crowds at the airport feel suffocating. Every delay triggers catastrophic thinking. Travel anxiety isn't irrational—it's your nervous system responding to genuine loss of control. Coherent breathing creates a sustained calm that lasts for hours, getting you through the entire journey."
+    },
+
+    meta: {
+      title: "Breathing Exercises for Travel Anxiety — Calm Flights & Crowds",
+      description: "Flight anxiety? Panic in crowds? Coherent breathing keeps you calm for hours—through takeoff, turbulence, delays, and crowded airports. Stanford research. Free visualizer.",
+      ogTitle: "Breathing Exercises for Travel Anxiety — Stay Calm for Hours",
+      ogDescription: "The breathing technique that keeps you calm through flights, delays, and crowds. Works for hours, not minutes. Free visualizer.",
+      twitterTitle: "Breathing Exercises for Travel Anxiety — Calm Flights & Crowds",
+      twitterDescription: "Stay calm through flights, turbulence, delays, and crowds. Coherent breathing works for hours. Free visualizer.",
+      author: "Resonance Editorial Team",
+      datePublished: "2025-12-19",
+      dateModified: "2025-12-19"
+    },
+
+    keywords: [
+      "breathing for travel anxiety",
+      "flight anxiety breathing",
+      "calm during turbulence",
+      "breathing exercises for flying",
+      "airport anxiety relief",
+      "breathing for claustrophobia",
+      "travel stress breathing",
+      "fear of flying breathing technique",
+      "how to stay calm on a plane",
+      "breathing for motion sickness"
+    ],
+
+    problem: {
+      heading: "Why Travel Triggers Your Nervous System",
+      content: "Travel strips away your sense of control. You can't leave when you want. You're crammed into small spaces with strangers. Delays and cancellations are unpredictable. Your nervous system interprets this lack of control as danger—triggering the same fight-or-flight response as actual threats. Flying adds extra triggers: turbulence feels like falling, cabin pressure changes affect your inner ear, and you're trapped in a metal tube at 35,000 feet.",
+      symptoms: [
+        "Racing heart during takeoff and landing",
+        "Panic during turbulence or unexpected movements",
+        "Claustrophobic feelings in crowded spaces",
+        "Hypervigilance—scanning for threats constantly",
+        "Catastrophic thinking ('What if the plane crashes?')",
+        "Physical symptoms: sweating, nausea, trembling",
+        "Avoidance behaviors—turning down trips you'd enjoy",
+        "Exhaustion after travel, even short trips"
+      ]
+    },
+
+    solution: {
+      heading: "Coherent Breathing: Hours of Sustained Calm",
+      content: "Unlike quick-fix techniques that wear off in minutes, coherent breathing creates a physiological state of calm that can last 2-4 hours after just 5-10 minutes of practice. By breathing at your body's resonance frequency (about 5 breaths per minute), you optimize heart rate variability and balance your autonomic nervous system—the key to sustained stress resilience.",
+      whyThisPattern: "Travel anxiety isn't one moment of panic—it's hours of low-grade stress punctuated by acute spikes. You need a technique that provides baseline calm (coherent breathing before and during travel) plus an acute rescue tool (physiological sigh for turbulence or sudden panic). Coherent breathing is your foundation; the sigh is your emergency button."
+    },
+
+    science: {
+      heading: "Why Coherent Breathing Works for Travel",
+      points: [
+        {
+          mechanism: "Sustained HRV Optimization",
+          explanation: "Heart rate variability (HRV) measures your nervous system's flexibility. Low HRV = stuck in stress mode. High HRV = resilient and adaptable. Coherent breathing maximizes HRV by syncing your breath to your body's natural resonance frequency (~0.1 Hz). This elevated HRV persists for 1-4 hours after practice, providing sustained calm throughout your journey."
+        },
+        {
+          mechanism: "Motion Sickness Prevention",
+          explanation: "Motion sickness is partly caused by autonomic nervous system dysregulation. Studies show that slow, rhythmic breathing reduces motion sickness symptoms by 50% or more. The steady rhythm of coherent breathing also provides a stable internal focus, helping your brain reconcile the conflicting signals that cause nausea."
+        },
+        {
+          mechanism: "Prefrontal Cortex Engagement",
+          explanation: "Anxiety hijacks your prefrontal cortex—the rational part of your brain. You know the plane is safe, but you can't 'think' your way out of panic. Coherent breathing increases blood flow to the prefrontal cortex and shifts your brain into alpha wave states, restoring rational thought and reducing catastrophic thinking."
+        },
+        {
+          mechanism: "Vagal Tone Strengthening",
+          explanation: "The vagus nerve is your 'calm-down' nerve. People with high vagal tone recover faster from stress. Regular coherent breathing practice strengthens vagal tone over time, meaning travel becomes progressively less stressful. Even one session before a flight provides immediate benefit."
+        }
+      ]
+    },
+
+    howTo: {
+      steps: [
+        {
+          name: "Practice before travel day",
+          instruction: "Don't wait until you're anxious. Practice coherent breathing for 5-10 minutes daily in the week before your trip. This builds your HRV baseline and makes the technique automatic.",
+          timing: "5-10 minutes daily, starting 1 week before travel"
+        },
+        {
+          name: "Pre-flight session",
+          instruction: "Before leaving for the airport, do 10 minutes of coherent breathing. This creates a calm baseline that will last for several hours. You can do this at home, in an Uber, or at the airport before security.",
+          timing: "10 minutes, 1-2 hours before flight"
+        },
+        {
+          name: "At your seat",
+          instruction: "Once seated on the plane, do another 5-minute session before takeoff. Use the coherent breathing visualizer on your phone (download for offline use). This is when anxiety typically peaks, so don't skip this step.",
+          timing: "5 minutes before takeoff"
+        },
+        {
+          name: "The rhythm",
+          instruction: "Breathe in slowly through your nose for 5.5-6 seconds. Breathe out slowly through your nose for 5.5-6 seconds. No pauses between inhale and exhale—one continuous flow. Focus on making your breath smooth and gentle.",
+          timing: "5.5 seconds in, 5.5 seconds out (5 breaths/minute)"
+        },
+        {
+          name: "During turbulence",
+          instruction: "If turbulence triggers acute panic, switch to the physiological sigh: double inhale (big breath + small sniff), long exhale. This provides immediate relief. Then return to coherent breathing once the turbulence passes.",
+          timing: "As needed"
+        },
+        {
+          name: "Maintenance during flight",
+          instruction: "Every 1-2 hours, do 2-3 minutes of coherent breathing to maintain your calm state. Set a silent alarm or do it whenever you notice tension building. This prevents the gradual stress accumulation that leads to exhaustion.",
+          timing: "2-3 minutes every 1-2 hours"
+        }
+      ],
+      tips: [
+        "Download the visualizer for offline use—you'll need it in airplane mode",
+        "Noise-canceling headphones help block the ambient engine noise that triggers stress",
+        "Aisle seats provide more perceived space and easier bathroom access (reduces claustrophobia)",
+        "Avoid caffeine and alcohol before/during flights—both worsen anxiety",
+        "Cold water on your wrists or face can enhance the calming effect (activates dive reflex)",
+        "Tell flight attendants you're an anxious flyer—they're trained to help and will check on you"
+      ]
+    },
+
+    references: [
+      {
+        title: "Heart Rate Variability Biofeedback for Flight Anxiety",
+        source: "Applied Psychophysiology and Biofeedback",
+        url: "https://pubmed.ncbi.nlm.nih.gov/14564906/",
+        summary: "Research on HRV biofeedback (coherent breathing at resonance frequency) for anxiety reduction, showing significant improvements in physiological and psychological measures."
+      },
+      {
+        title: "Respiratory sinus arrhythmia as a function of state anxiety",
+        source: "International Journal of Psychophysiology",
+        url: "https://pubmed.ncbi.nlm.nih.gov/12892028/",
+        summary: "Study demonstrating the relationship between slow breathing, respiratory sinus arrhythmia, and anxiety reduction."
+      },
+      {
+        title: "Slow Breathing and Motion Sickness",
+        source: "Aviation, Space, and Environmental Medicine",
+        url: "https://pubmed.ncbi.nlm.nih.gov/16018348/",
+        summary: "Research showing that controlled slow breathing reduces motion sickness symptoms by 50% or more."
+      },
+      {
+        title: "Fear of flying: psychological treatment approaches",
+        source: "BMJ Open",
+        url: "https://bmjopen.bmj.com/content/8/9/e021012",
+        summary: "Review of evidence-based treatments for flight anxiety, including breathing techniques as a component of effective interventions."
+      }
+    ],
+
+    disclaimer: "If you have severe flight anxiety, claustrophobia, or panic disorder that significantly impacts your ability to travel, please consult a mental health professional. Breathing techniques are a helpful tool but may not be sufficient for clinical anxiety disorders. Cognitive-behavioral therapy (CBT) and, in some cases, medication can be very effective for travel anxiety.",
+
+    relatedTechnique: {
+      slug: "coherent",
+      callToAction: "Practice with the full coherent breathing visualizer—download for offline use"
+    },
+
+    relatedUseCases: [
+      {
+        slug: "holiday-stress",
+        teaser: "Dreading family gatherings? The physiological sigh works in 30 seconds for acute stress"
+      },
+      {
+        slug: "panic-attacks",
+        teaser: "If travel triggers full panic attacks, learn the physiological sigh for immediate relief"
+      },
+      {
+        slug: "anxiety",
+        teaser: "For general anxiety that extends beyond travel, box breathing provides quick relief"
+      },
+      {
+        slug: "sleep",
+        teaser: "Jet-lagged? Use 4-7-8 breathing to fall asleep faster in new time zones"
+      }
+    ],
+
+    faqs: [
+      {
+        question: "Can I do this during turbulence, or will it make things worse?",
+        answer: "You can, but turbulence may break your rhythm. If turbulence causes acute panic, switch to the physiological sigh (double inhale + long exhale)—it's faster-acting for acute stress. Once the turbulence passes, return to coherent breathing. Many people find that continuing to breathe slowly during mild turbulence actually helps, because it gives them something to focus on besides the movement."
+      },
+      {
+        question: "I can't breathe slowly—it makes me feel like I'm suffocating.",
+        answer: "This is common and usually means you're trying to breathe too deeply. With coherent breathing, you don't need to take giant breaths—normal-sized breaths at a slow pace are enough. Start with a faster rhythm (4 seconds in, 4 seconds out) and gradually slow down as you get comfortable. If you still feel short of breath, check that you're not holding tension in your chest or throat. The breath should feel easy, not strained."
+      },
+      {
+        question: "How is this different from just 'taking deep breaths'?",
+        answer: "The rate matters more than the depth. Random deep breaths can actually worsen anxiety by disrupting your CO₂ balance. Coherent breathing's specific rhythm (about 5 breaths per minute) synchronizes with your body's natural cardiovascular oscillations, creating a state of physiological coherence that sustains calm for hours. It's not about breathing more—it's about breathing at the right frequency."
+      },
+      {
+        question: "Will this help with jet lag?",
+        answer: "Indirectly, yes. By reducing travel stress and helping you stay calm during flights, you'll arrive less exhausted. For sleep specifically, use 4-7-8 breathing at bedtime in your new time zone. For daytime alertness, coherent breathing can help you feel more centered. But the biggest jet lag factors are light exposure and meal timing—no breathing technique can override your circadian rhythm directly."
+      },
+      {
+        question: "What if I'm too anxious to focus on breathing?",
+        answer: "Use the visual guide—watching the animation is easier than counting in your head. You can also try the 'sigh first, then slow down' approach: do 2-3 physiological sighs to take the edge off acute anxiety, then transition to coherent breathing for sustained calm. If you're extremely anxious, even partial success is helpful. Breathing at 8 breaths/minute is still better than panicked hyperventilation."
+      },
+      {
+        question: "My ears hurt when flying. Does this help with that?",
+        answer: "Ear pain is caused by pressure differences, not anxiety—so breathing won't directly help. But if anxiety makes you clench your jaw and stiffen your neck (which it often does), relaxing through breathwork can make the pressure equalization easier. For ear pressure specifically: yawn, swallow, chew gum, or do the Valsalva maneuver (pinch nose, close mouth, gently blow). Some people find that coherent breathing during descent reduces ear discomfort because they're more relaxed."
       }
     ]
   }

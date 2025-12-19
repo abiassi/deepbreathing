@@ -1,5 +1,77 @@
 # Progress
 
+## 2025-12-19
+
+### Holiday Breathing Feature
+
+Created comprehensive holiday-themed breathing content with snow effect visualizer.
+
+**New Pages:**
+- `/holiday-breathing-exercises` - Hub page with quick-start cards, moment-based recommendations, and day plans for gatherings, travel, and hosting
+- `/for/holiday-stress` - Use-case page using Physiological Sigh for acute holiday stress (family gatherings, social overwhelm)
+- `/for/travel-anxiety` - Use-case page using Coherent Breathing for sustained calm during flights and travel
+
+**Snow Effect (SnowBackground component):**
+- Breathing-responsive snowfall animation
+- Inhale: snow falls normally (gravity)
+- Exhale: snow floats/drifts upward (suspended, weightless effect)
+- Holds: gentle suspension
+- Idle: soft steady drift
+- Usage: `<Resonance snowMode />` or `<Resonance snowMode={true} />`
+
+**Hub Page Features:**
+- Interactive Resonance with snow effect in hero section
+- Holiday-specific guides prioritized at top (holiday-stress, travel-anxiety)
+- Quick-start cards linking to techniques with durations
+- "Choose your moment" grid
+- Holiday day plans (Gathering Day, Travel Day, Hosting Day)
+- Share button with native share API + clipboard fallback
+- HowTo schema for rich snippets
+
+**Cross-linking & SEO:**
+- Added holiday-stress/travel-anxiety to relatedUseCases on anxiety, sleep, panic-attacks pages
+- Added holiday hub to sitemap.ts
+- Added "Holiday" link to homepage footer
+- Added "Holiday stress" to homepage best moments section
+- HowTo, FAQ, and Article schemas on hub page
+
+**Files modified:**
+- `/src/data/use-case-pages.ts` - Added holiday-stress and travel-anxiety entries + cross-links
+- `/src/components/resonance/components/SnowBackground.tsx` - Updated phase motion for breathing-responsive behavior
+- `/src/components/resonance/Resonance.tsx` - Fixed targetDuration → selectedDuration bug
+- `/src/app/page.tsx` - Added holiday link to footer and best moments
+- `/src/app/sitemap.ts` - Added holiday hub page
+
+**Dark Winter Theme for Holiday Pages:**
+- Added `forcedTheme` prop to Resonance component to override user theme preference
+- Added `backgroundVariant` prop with 'winter-blue' option (`#0c1929` deep navy)
+- Holiday use-case pages (`/for/holiday-stress`, `/for/travel-anxiety`) now use:
+  - Dark blue background throughout (hero + content sections)
+  - Blue card backgrounds (`#162a43`) instead of brown
+  - Blue nested elements (`#1a3352`) for inner cards
+  - White snow particles
+  - Consistent winter aesthetic matching the holiday hub
+- Added share buttons for holiday pages:
+  - Below intro text (large, winter variant)
+  - Next to "Go to visualizer" button (large, winter variant)
+- ShareButton component updated with `size` and `variant` props
+- Share button in hero below subtitle
+
+**Additional Improvements:**
+- "Back to Holiday Hub" link on holiday use-case pages
+- Cross-linked all three holiday pages (hub ↔ stress ↔ travel)
+- Holiday-specific timer presets: 30s Reset, 1min Breather, 2min Calm Down
+- Seasonal banner on homepage (shows in Dec/Jan)
+- Preloaded snow animation with loading placeholder
+
+**Files created:**
+- `/src/app/holiday-breathing-exercises/page.tsx` - Hub page with snow Resonance
+- `/src/app/holiday-breathing-exercises/share-button.tsx` - Share functionality
+- `/src/app/for/holiday-stress/page.tsx`
+- `/src/app/for/travel-anxiety/page.tsx`
+- `/src/app/for/share-button.tsx` - Reusable share button for use-case pages
+- `/src/components/home/seasonal-banner.tsx` - Homepage seasonal banner
+
 ## 2025-12-16
 
 ### SEO Overhaul - GSC Query Alignment

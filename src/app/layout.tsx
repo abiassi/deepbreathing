@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import "./globals.css";
+import { SeasonalBanner } from "@/components/home/seasonal-banner";
 
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const siteUrl = "https://deepbreathingexercises.com";
@@ -78,6 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="resonance-theme-init" strategy="beforeInteractive">
           {`(function(){try{var storageKey='resonance_theme';var root=document.documentElement;var stored=localStorage.getItem(storageKey);var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=stored&&stored!=='system'?stored:(prefersDark?'dark':'light');if(theme==='dark'){root.classList.add('dark');}else{root.classList.remove('dark');}root.dataset.theme=theme;}catch(_e){}})();`}
         </Script>
+        <SeasonalBanner />
         {children}
         <Analytics />
         <SpeedInsights />
