@@ -9,9 +9,10 @@ interface FadingHeroTitleProps {
   title: string;
   subtitle: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
-export function FadingHeroTitle({ label, title, subtitle, className }: FadingHeroTitleProps) {
+export function FadingHeroTitle({ label, title, subtitle, className, children }: FadingHeroTitleProps) {
   const [running, setRunning] = useState(false);
 
   useEffect(() => {
@@ -37,6 +38,7 @@ export function FadingHeroTitle({ label, title, subtitle, className }: FadingHer
         <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">{title}</h1>
         <p className="mt-4 text-lg text-muted-foreground">{subtitle}</p>
       </div>
+      {children}
     </div>
   );
 }

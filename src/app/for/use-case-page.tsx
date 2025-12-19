@@ -143,12 +143,11 @@ export function UseCasePage({ slug }: { slug: string }) {
   const structuredData = [faqSchema, howToSchema, articleSchema, breadcrumbSchema];
 
   const heroHeader = (
-    <div className="space-y-6">
-      <FadingHeroTitle
-        label="DEEP BREATHING EXERCISES"
-        title={page.hero.title}
-        subtitle={page.hero.subtitle}
-      />
+    <FadingHeroTitle
+      label="DEEP BREATHING EXERCISES"
+      title={page.hero.title}
+      subtitle={page.hero.subtitle}
+    >
       {isHolidayPage && (
         <div className="pt-2">
           <ShareButton
@@ -164,7 +163,7 @@ export function UseCasePage({ slug }: { slug: string }) {
           />
         </div>
       )}
-    </div>
+    </FadingHeroTitle>
   );
 
   return (
