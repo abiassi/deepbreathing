@@ -29,12 +29,21 @@ export const metadata: Metadata = {
       "Quick breathing resets for holiday gatherings, travel stress, and seasonal overwhelm. 60-second techniques that actually work.",
     url: `${baseUrl}/holiday-breathing-exercises`,
     type: "article",
+    images: [
+      {
+        url: "/og-image-holidays.png",
+        width: 1200,
+        height: 630,
+        alt: "Holiday Breathing Exercises - Find calm during the season"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Holiday Breathing Exercises — Find Calm During the Season",
     description:
       "Quick breathing resets for holiday gatherings, travel stress, and seasonal overwhelm. Free visualizer.",
+    images: ["/og-image-holidays.png"]
   },
   alternates: {
     canonical: `${baseUrl}/holiday-breathing-exercises`,

@@ -35,6 +35,8 @@ export function createUseCaseMetadata(slug: string): Metadata {
 
   const pageContent: UseCasePageContent = page;
   const canonicalUrl = `${baseUrl}/for/${pageContent.slug}`;
+  const isHolidayPage = slug === "holiday-stress" || slug === "travel-anxiety";
+  const ogImage = isHolidayPage ? "/og-image-holidays.png" : "/og-image.png";
 
   return {
     metadataBase: new URL(baseUrl),
@@ -48,12 +50,21 @@ export function createUseCaseMetadata(slug: string): Metadata {
       type: "article",
       title: pageContent.meta.ogTitle || pageContent.meta.title,
       description: pageContent.meta.ogDescription || pageContent.meta.description,
-      url: canonicalUrl
+      url: canonicalUrl,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: pageContent.meta.title
+        }
+      ]
     },
     twitter: {
       card: "summary_large_image",
       title: pageContent.meta.twitterTitle || pageContent.meta.title,
-      description: pageContent.meta.twitterDescription || pageContent.meta.description
+      description: pageContent.meta.twitterDescription || pageContent.meta.description,
+      images: [ogImage]
     }
   };
 }
