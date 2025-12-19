@@ -54,7 +54,7 @@ export function HolidayShareButton() {
       ) : (
         <>
           <ShareIcon className="h-4 w-4" />
-          Share with someone stressed
+          Share with someone
         </>
       )}
     </button>
