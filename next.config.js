@@ -29,6 +29,11 @@ const nextConfig = {
         destination: '/for/panic-attacks',
         permanent: true,
       },
+      {
+        source: '/breathing-exercises-that-help-with-asthma/:path*',
+        destination: '/breathe',
+        permanent: true,
+      },
     ];
   },
 };
