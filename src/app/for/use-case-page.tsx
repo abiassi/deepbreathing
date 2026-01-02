@@ -117,9 +117,9 @@ export function UseCasePage({ slug }: { slug: string }) {
     description: page.meta.description,
     author: page.meta.author
       ? {
-          "@type": "Person",
-          name: page.meta.author
-        }
+        "@type": "Person",
+        name: page.meta.author
+      }
       : undefined,
     datePublished: page.meta.datePublished,
     dateModified: page.meta.dateModified,
@@ -193,26 +193,19 @@ export function UseCasePage({ slug }: { slug: string }) {
           forcedTheme={isHolidayPage ? "dark" : undefined}
           backgroundVariant={isHolidayPage ? "winter-blue" : "default"}
         />
-        <div className="absolute inset-y-0 left-0 z-30 hidden w-full max-w-xl px-6 py-20 lg:flex lg:flex-col lg:justify-center">
-          {heroHeader}
+        <div className="absolute inset-y-0 left-0 z-30 flex w-full max-w-xl flex-col justify-center px-6 py-20 pointer-events-none">
+          <div className="pointer-events-auto">
+            {heroHeader}
+          </div>
         </div>
-      </section>
-
-      {/* Mobile Hero */}
-      <section
-        className={`px-4 py-10 sm:px-6 lg:hidden lg:px-8 ${isHolidayPage ? 'text-white' : ''}`}
-        style={isHolidayPage ? { backgroundColor: WINTER_BLUE } : undefined}
-      >
-        {heroHeader}
       </section>
 
       {/* Main Content */}
       <section
-        className={`relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] px-4 pb-20 pt-16 sm:px-6 lg:px-8 ${
-          isHolidayPage
+        className={`relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] px-4 pb-20 pt-16 sm:px-6 lg:px-8 ${isHolidayPage
             ? 'bg-[#0f1f33]/95 backdrop-blur-sm'
             : 'bg-background/95 backdrop-blur-sm'
-        }`}
+          }`}
         style={isHolidayPage ? { backgroundColor: 'rgba(15, 31, 51, 0.97)' } : undefined}
       >
 
@@ -223,7 +216,7 @@ export function UseCasePage({ slug }: { slug: string }) {
               href="/holiday-breathing-exercises"
               className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
               Back to Holiday Hub
             </Link>
           </div>
@@ -568,6 +561,40 @@ export function UseCasePage({ slug }: { slug: string }) {
               </>
             )}
           </div>
+          {/* Dedicated app links based on breathing technique */}
+          {!isHolidayPage && page.breathingPageSlug === "box" && (
+            <div className="mt-4 pt-4 border-t border-border">
+              <Link
+                href="/box-breathing-app"
+                className="inline-flex items-center gap-2 text-sm font-medium transition hover:underline"
+                style={{ color: pattern.color }}
+              >
+                Try the dedicated Box Breathing App →
+              </Link>
+            </div>
+          )}
+          {!isHolidayPage && page.breathingPageSlug === "coherent" && (
+            <div className="mt-4 pt-4 border-t border-border">
+              <Link
+                href="/coherent-breathing-app"
+                className="inline-flex items-center gap-2 text-sm font-medium transition hover:underline"
+                style={{ color: pattern.color }}
+              >
+                Try the dedicated Coherent Breathing App →
+              </Link>
+            </div>
+          )}
+          {!isHolidayPage && page.breathingPageSlug === "4-7-8" && (
+            <div className="mt-4 pt-4 border-t border-border">
+              <Link
+                href="/4-7-8-breathing-timer"
+                className="inline-flex items-center gap-2 text-sm font-medium transition hover:underline"
+                style={{ color: pattern.color }}
+              >
+                Try the dedicated 4-7-8 Breathing Timer →
+              </Link>
+            </div>
+          )}
         </section>
 
         <footer

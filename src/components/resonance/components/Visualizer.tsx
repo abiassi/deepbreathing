@@ -67,38 +67,49 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
         style={ringStyle}
       />
 
+      {/* Interactive Orb */}
       <button
         onClick={onClick}
         className="group absolute z-20 flex h-full w-full cursor-pointer items-center justify-center rounded-full outline-none hover:brightness-110 animate-blob animate-hue"
         style={{ ...orbStyle, ...orbTransformStyle }}
         aria-label={isRunning ? 'Pause Session' : 'Start Session'}
-      >
+      />
+
+      {/* Overlay Content (Not Scaled) */}
+      <div className="pointer-events-none absolute z-30 flex h-full w-full flex-col items-center justify-center">
+        {/* Play Icon */}
         <div
-          className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
-            !isRunning ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
-          }`}
+          className={`absolute flex items-center justify-center transition-all duration-500 ${!isRunning ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
+            }`}
         >
           <Play size={64} className="ml-2 fill-white text-white opacity-90 drop-shadow-md" />
         </div>
 
+        {/* Text visuals */}
         <div
-          className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
-            isRunning ? 'scale-100 opacity-100' : 'scale-110 opacity-0'
-          }`}
+          className={`absolute flex flex-col items-center justify-center transition-all duration-300 ${isRunning ? 'opacity-100' : 'opacity-0'
+            }`}
         >
-          <div className="flex flex-col items-center transition-opacity duration-300 md:group-hover:opacity-0">
-            <h2 className="text-4xl font-bold uppercase tracking-widest text-white opacity-90 drop-shadow-sm">{label}</h2>
+          <div className="flex flex-col items-center transition-opacity duration-300">
+            <h2 className="text-4xl font-bold uppercase tracking-widest text-white opacity-90 drop-shadow-sm text-center px-4">
+              {label}
+            </h2>
+            {instructions && (
+              <p className="mt-2 text-lg font-medium text-white/80 drop-shadow-sm text-center max-w-[200px] leading-tight opacity-75">
+                {instructions}
+              </p>
+            )}
           </div>
         </div>
 
+        {/* Pause Icon Overlay */}
         <div
-          className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
-            isRunning ? 'scale-100 opacity-0 md:group-hover:opacity-100' : 'scale-50 opacity-0'
-          }`}
+          className={`absolute flex items-center justify-center transition-all duration-300 ${isRunning ? 'opacity-0' : 'opacity-0'
+            } pointer-events-none`}
         >
-          <Pause size={56} className="fill-white text-white opacity-90 drop-shadow-md" />
+          {/* Pause icon removed from hover state to keep text visible, can re-add if needed */}
         </div>
-      </button>
+      </div>
     </div>
   );
 };

@@ -11,7 +11,39 @@ export enum ModeName {
   Box = 'Box Breathing',
   Relax = '4-7-8 Relax',
   Coherent = 'Coherent Breathing',
-  Sigh = 'Physiological Sigh'
+  Sigh = 'Physiological Sigh',
+  WimHof = 'Wim Hof Breathing'
+}
+
+// Protocol-based breathing (for multi-round techniques like Wim Hof)
+export enum ProtocolPhase {
+  Idle = 'Get Ready',
+  PowerBreathe = 'Power Breathe',
+  RetentionHold = 'Hold',
+  RecoveryInhale = 'Recovery Inhale',
+  RecoveryHold = 'Recovery Hold',
+  RoundComplete = 'Round Complete',
+  ProtocolComplete = 'Complete'
+}
+
+export interface ProtocolPattern {
+  name: string;
+  rounds: number;
+  powerBreathCount: number;
+  powerBreathTiming: { inhale: number; exhale: number };
+  retentionHoldMin: number;
+  retentionHoldMax: number;
+  recoveryTiming: { inhale: number; hold: number };
+  roundRestDuration: number;
+  color: string;
+}
+
+export interface ProtocolState {
+  currentRound: number;
+  currentBreathIndex: number;
+  phase: ProtocolPhase;
+  retentionTime: number; // seconds held so far
+  isUserControlledHold: boolean;
 }
 
 export interface BreathingPattern {

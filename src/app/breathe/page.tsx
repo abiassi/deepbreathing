@@ -8,16 +8,16 @@ const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/breathe`;
 
 export const metadata: Metadata = {
-  title: "Breathing Techniques: Box Breathing, 4-7-8, Coherent, Physiological Sigh",
+  title: "Breathing Techniques: Box, 4-7-8, Coherent, Physiological Sigh, Wim Hof",
   description:
-    "Free guided breathing visualizers for the most effective techniques. Pick a pattern, press start, and follow along—no signup required.",
+    "Free guided breathing visualizers for the most effective techniques. Box breathing, 4-7-8, coherent, physiological sigh, and Wim Hof method. Pick a pattern, press start, and follow along—no signup required.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
     title: "Breathing Techniques (Free Guided Visualizers)",
     description:
-      "Box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh—free guided visualizers. No signup required.",
+      "Box breathing, 4-7-8, coherent breathing, physiological sigh, and Wim Hof method—free guided visualizers. No signup required.",
     url: canonicalUrl,
     type: "website"
   },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Breathing Techniques (Free Guided Visualizers)",
     description:
-      "Box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh—free guided visualizers."
+      "Box breathing, 4-7-8, coherent breathing, physiological sigh, and Wim Hof—free guided visualizers."
   }
 };
 

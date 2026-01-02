@@ -1,5 +1,100 @@
 # Progress
 
+## 2026-01-02
+
+### Internal Linking - App Pages
+
+Added contextual internal links to dedicated app pages for SEO ranking boost.
+
+**Links Added:**
+- `/for/anxiety` → `/box-breathing-app`
+- `/for/public-speaking` → `/box-breathing-app`
+- `/for/focus` → `/coherent-breathing-app`
+- `/for/meditation` → `/coherent-breathing-app`
+- `/for/sleep` → `/4-7-8-breathing-timer`
+- `/breathe/box` → `/box-breathing-app`
+- `/breathe/coherent` → `/coherent-breathing-app`
+- `/breathe/4-7-8` → `/4-7-8-breathing-timer`
+
+**Implementation:**
+- Added conditional app links in "Quick Sessions" section of use-case pages
+- Added conditional app links in "Quick Sessions" section of pattern pages
+- Links appear based on `breathingPageSlug` (box, coherent, 4-7-8)
+
+**Files Modified:**
+- `/src/app/for/use-case-page.tsx` - Added conditional app links
+- `/src/app/breathe/pattern-page.tsx` - Added conditional app links
+
+**Canonical URL Verification:**
+- All pattern pages use clean canonical URLs (no query params)
+- All use-case pages use clean canonical URLs
+- `?duration=` params used for functionality only, not indexed
+
+### SEO Optimizations - 4-7-8 and Physiological Sigh Pages
+
+Optimized existing pages to improve rankings based on Search Console data.
+
+**4-7-8 Page Optimization (Position 9 → targeting top 5):**
+- Added query variant FAQ: "Is it '4 7 8' or '4-7-8' breathing?" to capture both search patterns
+- Added sleep-specific FAQ: "What are the best 4-7-8 settings for sleep?" for sleep bridge
+- Added query variant keywords: "4 7 8 breathing", "4 7 8 breathing timer"
+- Targets users searching with spaces vs hyphens
+
+**Physiological Sigh Optimization (344% impression spike momentum):**
+- Added Huberman-focused FAQ: "What is the Huberman physiological sigh?"
+- Added high-value keywords: "Huberman physiological sigh", "Huberman Lab breathing", "cyclic sighing Stanford", "Stanford breathing technique", "double inhale breathing"
+- Added "Huberman sigh" to synonyms
+- Aligns with actual search queries from Google Search Console
+
+**Files Modified:**
+- `/src/data/breathing-pages.ts` - Updated FAQs and keywords for both pages
+
+### Wim Hof Breathing - Full Protocol Implementation
+
+Added complete Wim Hof breathing technique with protocol-based multi-round support.
+
+**New Features:**
+- **Protocol-based breathing**: Unlike other patterns, Wim Hof uses a multi-round protocol system
+- **3 rounds × 30 breaths**: Full authentic Wim Hof Method implementation
+- **User-controlled retention**: Hold as long as comfortable with "End Hold" button
+- **Round/breath counters**: Real-time UI showing current round and breath count
+- **Recovery breath phase**: Deep inhale + 15s hold after retention
+
+**Technical Implementation:**
+- New `ProtocolPhase` enum: PowerBreathe, RetentionHold, RecoveryInhale, RecoveryHold, RoundComplete, ProtocolComplete
+- New `ProtocolPattern` and `ProtocolState` interfaces
+- `animateProtocol()` callback in Resonance.tsx for protocol state machine
+- Beta waves (15Hz) audio for alertness during power breathing
+
+**Files Created:**
+- `/src/app/breathe/wim-hof/page.tsx` - Route file
+
+**Files Modified:**
+- `/src/components/resonance/types.ts` - Added protocol types + WimHof to ModeName enum
+- `/src/components/resonance/constants.ts` - Added WIM_HOF_PROTOCOL config
+- `/src/components/resonance/Resonance.tsx` - Added protocol mode state, animateProtocol, UI elements
+- `/src/data/breathing-pages.ts` - Added comprehensive Wim Hof page content (~220 lines)
+
+**Page Content Includes:**
+- 12 target keywords (wim hof breathing, iceman breathing, tummo breathing, etc.)
+- 5 FAQs covering safety, hold duration, body effects, cold exposure, frequency
+- 4 peer-reviewed research citations (Kox 2014, Muzik 2018, van Middendorp 2016, Buijze 2016)
+- Extensive safety warnings (never in water, cardiac contraindications, etc.)
+- 3 use cases: morning energy, pre-workout, cold exposure prep
+
+**SEO Target Keywords:**
+- "wim hof breathing"
+- "wim hof method"
+- "wim hof breathing technique"
+- "iceman breathing"
+- "power breathing"
+- "tummo breathing"
+
+**Expected Impact:**
+- Captures high-volume Wim Hof search traffic (trending topic)
+- Differentiates from competitors with full protocol implementation
+- Cross-links to athletes and focus use case pages
+
 ## 2025-12-19
 
 ### Holiday Breathing Feature

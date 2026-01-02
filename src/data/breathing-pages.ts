@@ -401,6 +401,10 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     faqs: [
       {
+        question: "Is it '4 7 8' or '4-7-8' breathing?",
+        answer: "Both '4 7 8 breathing' and '4-7-8 breathing' refer to the same technique—the numbers represent the count for each phase: inhale for 4 counts, hold for 7 counts, exhale for 8 counts. Whether written with spaces (4 7 8) or hyphens (4-7-8), the breathing timer works the same way. This technique is also called the 'relaxing breath' or Dr. Weil's breathing method."
+      },
+      {
         question: "Is there direct evidence for 4‑7‑8?",
         answer: "Direct trials are limited but growing. A randomized clinical trial in post‑bariatric patients reported lower post‑test state anxiety in a 4‑7‑8 group compared with deep‑breathing and usual‑care groups. In healthy adults, a controlled study found 4‑7‑8 increased high‑frequency HRV and lowered heart rate and systolic blood pressure within a session, though between‑group differences were small. Larger comparisons often favor ~5–6 breaths/min equal in/out for maximal HRV amplitude, but 4‑7‑8 remains useful for exhale‑led calming."
       },
@@ -413,8 +417,8 @@ export const breathingPages: BreathingPageContent[] = [
         answer: "No. Benefits mainly come from slow, smooth, exhale‑emphasized breathing. If holds feel uncomfortable or trigger air hunger, shorten them or remove holds entirely (e.g., 4‑6 or 4‑8). The exhale should be longer than the inhale and unforced."
       },
       {
-        question: "Can 4‑7‑8 help with sleep?",
-        answer: "It can help some people settle at bedtime by reducing pre‑sleep arousal. Trials with related slow‑paced breathing show fewer awakenings and improved subjective sleep quality; evidence is preliminary and effects are modest. Use as part of a broader sleep routine (regular schedule, light/digital wind‑down)."
+        question: "What are the best 4-7-8 settings for sleep?",
+        answer: "For sleep, use 3-4 cycles of 4-7-8 breathing lying in bed with lights off. Start with the 1x speed multiplier and slow down to 0.8x if comfortable. If the 7-second hold feels too long, try 4-5-8 or 4-4-8 instead. Combine with other sleep hygiene: consistent bedtime, no screens 30 minutes prior, and a cool, dark room. Many find it works best as the last thing before sleep."
       },
       {
         question: "Is 4‑7‑8 safe in pregnancy?",
@@ -440,11 +444,11 @@ export const breathingPages: BreathingPageContent[] = [
           instruction: "Inhale gently through the nose.",
           duration: "4 seconds"
         },
-      {
-        name: "Hold (soft)",
-        instruction: "Pause lightly at the top without straining.",
-        duration: "7 seconds"
-      },
+        {
+          name: "Hold (soft)",
+          instruction: "Pause lightly at the top without straining.",
+          duration: "7 seconds"
+        },
         {
           name: "Exhale",
           instruction: "Exhale slowly through pursed lips (or nose) with a controlled whoosh.",
@@ -538,7 +542,11 @@ export const breathingPages: BreathingPageContent[] = [
       }
     ],
     keywords: [
-      "4‑7‑8 breathing",
+      "4-7-8 breathing",
+      "4 7 8 breathing",
+      "4-7-8 breathing timer",
+      "4 7 8 breathing timer",
+      "4-7-8 breathing for sleep",
       "relaxing breath",
       "long exhale breathing",
       "paced breathing for sleep",
@@ -846,6 +854,10 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     faqs: [
       {
+        question: "What is the Huberman physiological sigh?",
+        answer: "The physiological sigh popularized by Dr. Andrew Huberman on the Huberman Lab podcast is a natural stress-relief mechanism your body already uses. It consists of a double inhale (first through the nose to fill the lungs, then a second short sniff to top off), followed by a long exhale. Dr. Huberman explains that this technique was studied at Stanford and shown to be the fastest way to reduce stress in real-time. The 2023 Stanford study (Balban et al.) found cyclic sighing outperformed mindfulness meditation for mood improvement."
+      },
+      {
         question: "What evidence supports the physiological sigh?",
         answer: "A month‑long randomized study comparing three breathwork protocols to mindfulness found breathwork improved mood and reduced respiratory rate more, with the exhale‑focused cyclic sighing showing the largest gains. A pilot RCT in an orthopedic clinic waiting room found a 4‑minute cyclic‑sighing audio reduced pain intensity and unpleasantness vs. a time‑matched control. Together these suggest quick, modest benefits for mood and acute symptoms with brief daily practice."
       },
@@ -859,11 +871,11 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         question: "Is it safe for everyone?",
-        answer: "It’s generally safe when done gently. Practice seated if you’re prone to dizziness. People who are pregnant or have cardiopulmonary disease or syncope history should avoid straining and keep breaths small. Any light‑headedness likely reflects over‑breathing. Shrink the inhale and slow the exhale or stop and resume later."
+        answer: "It's generally safe when done gently. Practice seated if you're prone to dizziness. People who are pregnant or have cardiopulmonary disease or syncope history should avoid straining and keep breaths small. Any light‑headedness likely reflects over‑breathing. Shrink the inhale and slow the exhale or stop and resume later."
       },
       {
         question: "Is the physiological sigh better than box breathing?",
-        answer: "They’re tools for different aims. The RCT found exhale‑focused cyclic sighing yielded the largest mood and respiration‑rate improvements vs. mindfulness, with box breathing also helpful. For rapid relief in a few breaths, many prefer sighing; for structured pacing or longer sessions, box breathing or coherent breathing may suit better."
+        answer: "They're tools for different aims. The RCT found exhale‑focused cyclic sighing yielded the largest mood and respiration‑rate improvements vs. mindfulness, with box breathing also helpful. For rapid relief in a few breaths, many prefer sighing; for structured pacing or longer sessions, box breathing or coherent breathing may suit better."
       }
     ],
     howTo: {
@@ -885,11 +897,11 @@ export const breathingPages: BreathingPageContent[] = [
           instruction: "Inhale smoothly through the nose until the lower ribs expand.",
           duration: "~3–4 seconds"
         },
-      {
-        name: "Top‑up inhale",
-        instruction: "Take a small second sip of air to gently fill the upper chest without shrugging.",
-        duration: "~1–2 seconds"
-      },
+        {
+          name: "Top‑up inhale",
+          instruction: "Take a small second sip of air to gently fill the upper chest without shrugging.",
+          duration: "~1–2 seconds"
+        },
         {
           name: "Long exhale",
           instruction: "Exhale slowly through pursed lips (or nose) until comfortably empty.",
@@ -979,22 +991,250 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     keywords: [
       "physiological sigh",
+      "Huberman physiological sigh",
+      "Huberman Lab breathing",
       "cyclic sighing",
+      "cyclic sighing Stanford",
+      "Stanford breathing technique",
+      "double inhale breathing",
       "double inhale long exhale",
       "rapid calming breath",
       "anxiety breathing exercise",
       "breathwork for stress",
       "vagus nerve breathing",
       "sigh reflex",
-      "alveolar recruitment",
-      "preBötzinger complex"
+      "alveolar recruitment"
     ],
     synonyms: [
       "cyclic sighing",
       "double‑inhale sigh",
-      "sigh breath"
+      "sigh breath",
+      "Huberman sigh"
     ],
     frequency: "As needed for acute stress (1–3 cycles); optional 2–5 minutes daily for mood and breathing‑rate changes"
+  },
+  {
+    slug: "wim-hof",
+    mode: ModeName.WimHof,
+    hero: {
+      title: "Wim Hof Breathing Method",
+      subtitle: "The Iceman's technique for energy, focus, and resilience.",
+      intro: "The Wim Hof Method combines controlled hyperventilation with breath retention to boost energy, reduce stress, and potentially influence the immune system. Practice 3 rounds of 30 power breaths followed by a breath hold and recovery breath. Always practice in a safe environment—never in water or while driving."
+    },
+    meta: {
+      title: "Wim Hof Breathing: The Iceman's 3-Round Method (Free Guided Tool)",
+      description: "Master the Wim Hof breathing technique with our free guided tool. 30 power breaths × 3 rounds with retention holds. Boost energy, reduce stress, build cold tolerance. Try now.",
+      ogTitle: "Wim Hof Breathing: The Iceman's 3-Round Method",
+      ogDescription: "Master the Wim Hof breathing technique with our free guided tool. 30 power breaths × 3 rounds. Boost energy and reduce stress.",
+      ogImage: "og/breathe-wim-hof.png",
+      twitterTitle: "Wim Hof Breathing: Free Guided Tool",
+      twitterDescription: "Master the Iceman's breathing technique. 30 power breaths × 3 rounds with retention holds. Free guided visualizer.",
+      author: "Resonance Editorial Team",
+      reviewer: "",
+      datePublished: "2026-01-02",
+      dateModified: "2026-01-02"
+    },
+    body: [
+      {
+        heading: "What it is",
+        content: "The Wim Hof Method breathing technique is a powerful 3-round protocol. Each round consists of 30 rhythmic 'power breaths' (deep inhale, relaxed exhale), followed by a breath retention on empty lungs for up to 90+ seconds, and finishing with a 15-second recovery breath. This controlled hyperventilation temporarily alters blood chemistry (respiratory alkalosis), often leading to tingling sensations, light-headedness, and a profound sense of calm."
+      },
+      {
+        heading: "Benefits",
+        content: "Practitioners report increased energy, improved focus, reduced stress, and enhanced cold tolerance. Research shows the method can influence the autonomic nervous system and immune response. The breath holds train CO2 tolerance and mental resilience. Many use it as a morning ritual for energy or before cold exposure."
+      },
+      {
+        heading: "When to use",
+        content: "Best practiced on an empty stomach, ideally in the morning. Use before cold showers, workouts, or when you need an energy boost. The full protocol takes 10-15 minutes. Not suitable for quick stress relief—use physiological sigh or box breathing instead for acute calm."
+      },
+      {
+        heading: "When to skip",
+        content: "NEVER practice in water, while driving, or standing. Avoid if pregnant, have epilepsy, cardiac issues, or respiratory conditions. Stop if you experience severe discomfort, persistent dizziness, or unusual symptoms. The breath holds may cause temporary tingling or light-headedness—this is normal but practice seated."
+      }
+    ],
+    benefits: [
+      {
+        title: "Energy boost",
+        description: "The controlled hyperventilation and breath holds create a natural high and surge of energy without caffeine."
+      },
+      {
+        title: "Stress resilience",
+        description: "Regular practice trains your nervous system to handle stress better and recover faster from challenges."
+      },
+      {
+        title: "Mental clarity",
+        description: "The oxygenation and retention phases sharpen focus and create a meditative, present-moment awareness."
+      }
+    ],
+    practiceTips: [
+      {
+        title: "Always sit or lie down",
+        description: "Never practice standing, in water, or while driving. The breath holds can cause temporary light-headedness."
+      },
+      {
+        title: "Empty stomach is best",
+        description: "Practice first thing in the morning before eating for the best experience and to avoid discomfort."
+      },
+      {
+        title: "Don't force the retention",
+        description: "Hold only as long as comfortable. The hold time naturally increases with practice—no need to push."
+      }
+    ],
+    faqs: [
+      {
+        question: "Is Wim Hof breathing safe?",
+        answer: "When practiced correctly in a safe environment, Wim Hof breathing is generally safe for healthy adults. However, it involves controlled hyperventilation which can cause tingling, light-headedness, and temporary loss of motor control. Always practice seated or lying down, never in water or while driving. Those with cardiac conditions, epilepsy, pregnancy, or respiratory issues should consult a doctor first."
+      },
+      {
+        question: "How long should I hold my breath?",
+        answer: "Hold only as long as comfortable—there's no competition. Beginners might hold 30-60 seconds; experienced practitioners often reach 2-3 minutes. The hold time naturally increases with practice as your CO2 tolerance improves. Listen to your body and never force it."
+      },
+      {
+        question: "What does Wim Hof breathing do to your body?",
+        answer: "The power breaths temporarily lower CO2 levels and increase blood pH (respiratory alkalosis), causing tingling and light-headedness. During the retention, oxygen levels drop while CO2 rises, triggering the body's survival mechanisms. Research shows this can influence the autonomic nervous system and even the immune response through voluntary activation of the sympathetic system."
+      },
+      {
+        question: "Can I do Wim Hof breathing before cold exposure?",
+        answer: "Yes, this is the traditional way. Many practitioners do 2-3 rounds of breathing before a cold shower or ice bath. The breathing prepares your body and mind for the cold stress. However, NEVER do breathing exercises in the cold water itself—always complete the breathing before entering."
+      },
+      {
+        question: "How often should I practice?",
+        answer: "Most practitioners do 1 session daily, typically in the morning. Each session is 3 rounds, taking about 10-15 minutes. Some do 2 sessions (morning and afternoon). Consistency matters more than frequency—daily practice for several weeks builds the strongest effects."
+      }
+    ],
+    howTo: {
+      totalTime: "10–15 minutes",
+      difficulty: "intermediate",
+      tools: [
+        "Comfortable seated or lying position",
+        "Timer or guided audio (optional)"
+      ],
+      supplies: [],
+      steps: [
+        {
+          name: "Get comfortable",
+          instruction: "Sit or lie down in a safe, comfortable position. Never practice in water, while driving, or standing.",
+          duration: "30 seconds"
+        },
+        {
+          name: "Power breathing (30 breaths)",
+          instruction: "Take 30 deep, rhythmic breaths. Inhale fully through nose or mouth, letting belly and chest expand. Exhale relaxed—don't force it out. Maintain a steady rhythm.",
+          duration: "~90 seconds"
+        },
+        {
+          name: "Retention hold",
+          instruction: "After the 30th exhale, stop breathing and hold on empty lungs. Relax completely. Hold as long as comfortable—don't force it.",
+          duration: "30–90+ seconds"
+        },
+        {
+          name: "Recovery breath",
+          instruction: "When you need to breathe, take one deep breath in and hold for 10-15 seconds with full lungs. Then exhale and relax.",
+          duration: "15–20 seconds"
+        },
+        {
+          name: "Repeat",
+          instruction: "That's one round complete. Rest for a few breaths, then begin round 2. Complete 3 rounds total.",
+          duration: "Repeat 3 times"
+        }
+      ]
+    },
+    useCases: [
+      {
+        name: "Morning energy ritual",
+        description: "Replace or enhance your coffee with 3 rounds of Wim Hof breathing. Creates natural alertness and energy.",
+        dose: "3 full rounds on empty stomach"
+      },
+      {
+        name: "Pre-workout activation",
+        description: "Prime your nervous system before intense exercise or competition.",
+        dose: "2–3 rounds, 15 min before activity"
+      },
+      {
+        name: "Cold exposure prep",
+        description: "Prepare body and mind before cold showers or ice baths.",
+        dose: "2–3 rounds immediately before"
+      }
+    ],
+    research: {
+      studies: [
+        {
+          title: "Kox et al., 2014 - PNAS (Landmark study)",
+          summary: "Trained Wim Hof practitioners showed voluntary activation of the sympathetic nervous system and attenuation of the innate immune response when exposed to bacterial endotoxin.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/24799686/"
+        },
+        {
+          title: "Muzik et al., 2018 - NeuroImage",
+          summary: "fMRI and PET imaging showed Wim Hof Method generates significant increases in sympathetic innervation of intercostal muscles, causing heat generation and allowing cold resistance.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/29438845/"
+        },
+        {
+          title: "van Middendorp et al., 2016 - Psychosomatic Medicine",
+          summary: "Self-administered training of the Wim Hof Method attenuated cytokine response and flu-like symptoms after endotoxin administration.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/27428859/"
+        },
+        {
+          title: "Buijze et al., 2016 - PLOS ONE",
+          summary: "Cold showering led to 29% reduction in self-reported sick leave from work, with regular cold shower practitioners reporting increased perceived energy.",
+          url: "https://pubmed.ncbi.nlm.nih.gov/27631616/"
+        }
+      ],
+      safety: [
+        "NEVER practice in water, while driving, or standing—fainting risk exists.",
+        "Sit or lie down in a safe environment with no sharp edges nearby.",
+        "Stop if you experience severe discomfort, vision changes, or unusual symptoms.",
+        "Tingling, light-headedness, and emotional release are normal—trust the process.",
+        "Contraindicated for pregnancy, epilepsy, cardiac conditions, and severe respiratory issues."
+      ],
+      quotes: [
+        {
+          text: "The cold is your warm friend and one of the three pillars of the Wim Hof Method. Proper exposure to the cold starts a cascade of health benefits.",
+          attribution: "Wim Hof"
+        }
+      ]
+    },
+    related: [
+      {
+        slug: "box",
+        reason: "For calm and focus without hyperventilation, box breathing offers structured relaxation."
+      },
+      {
+        slug: "physiological-sigh",
+        reason: "For quick stress relief in the moment, the physiological sigh provides fast results."
+      }
+    ],
+    relatedUseCases: [
+      {
+        slug: "athletes",
+        title: "Athletic Performance",
+        teaser: "Boost your energy and mental game before competition"
+      },
+      {
+        slug: "focus",
+        title: "Focus & Concentration",
+        teaser: "Clear mental fog and sharpen your attention"
+      }
+    ],
+    keywords: [
+      "wim hof breathing",
+      "wim hof method",
+      "wim hof breathing technique",
+      "iceman breathing",
+      "wim hof tutorial",
+      "power breathing",
+      "tummo breathing",
+      "wim hof for beginners",
+      "cold exposure breathing",
+      "breath retention training",
+      "hyperventilation breathing",
+      "wim hof guided breathing"
+    ],
+    synonyms: [
+      "iceman breathing",
+      "power breathing",
+      "tummo breathing",
+      "WHM breathing"
+    ],
+    frequency: "Once daily, 3 rounds, 10–15 minutes. Best in the morning on empty stomach."
   }
 ];
 

@@ -174,13 +174,11 @@ export function PatternPage({ slug }: { slug: string }) {
 
       <section className="relative isolate min-h-screen w-full text-foreground">
         <Resonance defaultMode={page.mode} className="min-h-screen" />
-        <div className="absolute inset-y-0 left-0 z-30 hidden w-full max-w-xl px-6 py-20 lg:flex lg:flex-col lg:justify-center">
-          {heroHeader}
+        <div className="absolute inset-y-0 left-0 z-30 flex w-full max-w-xl flex-col justify-end px-6 py-20 pointer-events-none sm:justify-center">
+          <div className="pointer-events-auto">
+            {heroHeader}
+          </div>
         </div>
-      </section>
-
-      <section className="px-4 py-10 sm:px-6 lg:px-8">
-        <div className="lg:hidden">{heroHeader}</div>
       </section>
 
       <section className="relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] bg-background/95 px-4 pb-20 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
@@ -436,21 +434,55 @@ export function PatternPage({ slug }: { slug: string }) {
           </section>
         ) : null}
 
-        <section className="glow-card rounded-[32px] border border-border bg-card p-6">
-          <p className="text-sm uppercase tracking-widest text-primary">Quick sessions</p>
-          <p className="mt-2 text-sm text-muted-foreground">Short on time? Try a timed session:</p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link href="/1-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
-              1 minute
-            </Link>
-            <Link href="/2-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
-              2 minutes
-            </Link>
-            <Link href="/5-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
-              5 minutes
-            </Link>
-          </div>
-        </section>
+        {/* Quick sessions - not applicable for protocol-based patterns like Wim Hof */}
+        {slug !== "wim-hof" && (
+          <section className="glow-card rounded-[32px] border border-border bg-card p-6">
+            <p className="text-sm uppercase tracking-widest text-primary">Quick sessions</p>
+            <p className="mt-2 text-sm text-muted-foreground">Short on time? Try a timed session:</p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <Link href="/1-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
+                1 minute
+              </Link>
+              <Link href="/2-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
+                2 minutes
+              </Link>
+              <Link href="/5-minute-breathing-exercise" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-card-foreground hover:bg-muted transition-colors">
+                5 minutes
+              </Link>
+            </div>
+            {/* Dedicated app links based on breathing technique */}
+            {slug === "box" && (
+              <div className="mt-4 pt-4 border-t border-border">
+                <Link
+                  href="/box-breathing-app"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-primary transition hover:underline"
+                >
+                  Try the dedicated Box Breathing App →
+                </Link>
+              </div>
+            )}
+            {slug === "coherent" && (
+              <div className="mt-4 pt-4 border-t border-border">
+                <Link
+                  href="/coherent-breathing-app"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-primary transition hover:underline"
+                >
+                  Try the dedicated Coherent Breathing App →
+                </Link>
+              </div>
+            )}
+            {slug === "4-7-8" && (
+              <div className="mt-4 pt-4 border-t border-border">
+                <Link
+                  href="/4-7-8-breathing-timer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-primary transition hover:underline"
+                >
+                  Try the dedicated 4-7-8 Breathing Timer →
+                </Link>
+              </div>
+            )}
+          </section>
+        )}
 
         <footer className="rounded-[32px] border border-border bg-card p-6 text-center">
           <p className="text-xs text-muted-foreground">
