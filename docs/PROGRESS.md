@@ -2,6 +2,56 @@
 
 ## 2026-01-02
 
+### Major SEO Content Expansion - Physiological Sigh & 4-7-8 Timer
+
+Based on Search Console data showing impressions but low clicks (position 23 for physiological sigh, position 9 for 4-7-8 timer), expanded content depth to improve rankings.
+
+**Physiological Sigh Page (Position 23 → Target: Top 10):**
+- Rewrote "What it is" section to comprehensive "What Is a Physiological Sigh?" with definition, natural reflex explanation, and Huberman context
+- Added "The Science Behind Physiological Sighing" section explaining alveoli reinflation, vagus nerve activation, and Stanford study findings
+- Added "Physiological Sigh vs Box Breathing" comparison section to capture "vs" queries
+- Added 4 new FAQs: cycles count, mouth breathing, cyclic sighing definition, sigh vs physiological sigh difference
+- Expanded keywords array with: "what is a physiological sigh", "cyclic sighing technique", "double inhale exhale breathing", "Stanford sighing study", "physiological sigh vs box breathing", "how many physiological sighs"
+
+**4-7-8 Timer Page (Position 9 → Target: Top 5):**
+- Updated meta title: "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes (Free App)"
+- Updated meta description with "natural tranquilizer" hook and "Try tonight" CTA
+- Enhanced "Suggested settings" → "Best 4-7-8 Timer Settings" with goal-based recommendations
+- Added "4-7-8 vs Other Sleep Breathing Techniques" comparison table (4-7-8, box, coherent, physiological sigh)
+- Added 4 new FAQs to schema and display: cycles for sleep, lying down, box breathing comparison
+- Added internal link to physiological sigh page
+
+**Files Modified:**
+- `/src/data/breathing-pages.ts` - Physiological sigh: 3 new body sections, 4 new FAQs, 6 new keywords
+- `/src/app/4-7-8-breathing-timer/page.tsx` - New metadata, settings section, comparison table, 4 new FAQs
+
+**Expected Impact:**
+- Physiological sigh: Deeper content should improve ranking from position 23 toward top 10
+- 4-7-8 timer: Better CTR from improved title + content depth should push from position 9 to top 5
+- Comparison content captures "vs" query variations
+- Internal linking strengthens topic cluster
+
+### Follow-up SEO Improvements
+
+Additional optimizations based on page review:
+
+**Physiological Sigh:**
+- Updated H1 from "Physiological Sigh Coach" → "Physiological Sigh: Instant Stress Relief" (aligns with meta title)
+- FAQ schema already implemented via pattern-page.tsx - no action needed
+- Added Huberman YouTube video embed (https://youtu.be/kSZKIupBUuc) - increases time on page, adds authority
+- Added VideoObject schema for video rich snippets in search results
+
+**4-7-8 Timer:**
+- Updated H1 to "4-7-8 Breathing Timer: Fall Asleep Faster" (includes benefit, aligns with meta title)
+- Moved comparison table from bottom to position 2 (right after "What is" section) - better for featured snippets
+- Page order now: What is → Comparison table → Benefits → How it works → When to use → FAQs
+
+**Technical Implementation (Video Embed):**
+- Added `VideoEmbed` interface to `/src/data/breathing-pages.ts`
+- Added optional `video` field to `BreathingPageContent`
+- Updated `/src/app/breathe/pattern-page.tsx` to render YouTube embed with privacy-enhanced mode
+- VideoObject schema added to structured data for video SEO
+
 ### Internal Linking - App Pages
 
 Added contextual internal links to dedicated app pages for SEO ranking boost.
@@ -745,3 +795,52 @@ Added 4 SEO-optimized "hub & spoke" pages targeting specific user problems:
   - Physiological Sigh Tool - Interactive Timer & Guide
 - Added `src/app/sitemap.ts` - auto-generates sitemap.xml with all pages (now includes /for/ routes)
 - Added `src/app/robots.ts` - points crawlers to sitemap
+
+### Advanced SEO Schema & Internal Linking Improvements
+
+Further optimizations to improve search rankings and click-through rates.
+
+**Schema Markup Additions:**
+
+*4-7-8 Timer Page:*
+- Added HowTo schema with 6 steps ("How to Do 4-7-8 Breathing for Sleep")
+- Added Article schema with datePublished/dateModified for freshness signals
+- Now has: BreadcrumbList, SoftwareApplication, Article, HowTo, FAQPage schemas
+
+*Physiological Sigh Page:*
+- Already had HowTo, FAQ, Article, Breadcrumb, VideoObject schemas via pattern-page.tsx ✓
+
+**Content Additions:**
+
+*Physiological Sigh:*
+- Added "Cyclic Sighing: The Clinical Term" H2 section - targets "cyclic sighing" keyword (Stanford's research term)
+- Updated hero subtitle: "Calm down in 30 seconds with the double-inhale technique" - prominent time claim for featured snippets
+- Updated hero intro with "30 seconds" and "1-3 sighs" time claims
+- Added 4-7-8 as related pattern (internal link to /breathe/4-7-8)
+- Added 2 new relatedUseCases: anxiety, public-speaking
+
+*4-7-8 Timer:*
+- Added inline internal links to /for/sleep, /for/anxiety, /breathe/coherent, /breathe/physiological-sigh
+- Added "Use case guides" section with 3 cards: Better Sleep, Anxiety Relief, Blood Pressure Support
+
+**Freshness Signals:**
+- Added "Last updated" visible date display to both pages
+- Physiological sigh: "Last updated: January 2, 2026"
+- 4-7-8 timer: "Last updated: January 2, 2026"
+- Pattern-page.tsx now displays dateModified from breathing-pages.ts
+
+**Internal Links Added:**
+- 4-7-8 page internal links increased from ~13 to 20
+- Physiological sigh page: added 4-7-8 to related patterns, 2 new use cases
+
+**Files Modified:**
+- `/src/data/breathing-pages.ts` - Cyclic sighing section, hero updates, related patterns/use cases
+- `/src/app/4-7-8-breathing-timer/page.tsx` - HowTo schema, Article schema, use case cards, internal links
+- `/src/app/breathe/pattern-page.tsx` - "Last updated" date display
+
+**Expected Impact:**
+- HowTo schema enables rich results with step numbers in SERPs
+- "Cyclic sighing" keyword captures clinical/research search traffic
+- "30 seconds" time claim improves featured snippet eligibility
+- Freshness signals (Last updated) support E-E-A-T
+- Internal linking strengthens topic cluster authority

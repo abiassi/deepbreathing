@@ -10,24 +10,24 @@ const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/4-7-8-breathing-timer`;
 
 export const metadata: Metadata = {
-  title: "4-7-8 Breathing Timer — Free 4-7-8 Breathing App (No Download)",
+  title: "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes (Free App)",
   description:
-    "A free 4-7-8 breathing timer (Dr. Weil's method). Run the 4-7-8 breathing app in your browser—no download, no signup. Start in seconds.",
+    "Dr. Weil's 4-7-8 breathing timer for sleep. The 'natural tranquilizer' technique—fall asleep faster, calm anxiety in minutes. Free, no download. Try tonight.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "4-7-8 Breathing Timer (Free)",
+    title: "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes",
     description:
-      "A free 4-7-8 breathing timer (Dr. Weil's method). Run it in your browser—no download and no signup.",
+      "Dr. Weil's 4-7-8 breathing timer. The 'natural tranquilizer' for sleep and anxiety. Free in your browser—try tonight.",
     url: canonicalUrl,
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "4-7-8 Breathing Timer (Free)",
+    title: "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes",
     description:
-      "A free 4-7-8 breathing timer (Dr. Weil's method). Run it in your browser—no download and no signup."
+      "Dr. Weil's 4-7-8 breathing timer. The 'natural tranquilizer' for sleep and anxiety. Free in your browser—try tonight."
   }
 };
 
@@ -79,6 +79,66 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
       price: "0",
       priceCurrency: "USD"
     }
+  };
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes",
+    description: "Dr. Weil's 4-7-8 breathing timer for sleep. The 'natural tranquilizer' technique—fall asleep faster, calm anxiety in minutes.",
+    author: {
+      "@type": "Organization",
+      name: "Deep Breathing Exercises"
+    },
+    datePublished: "2025-11-17",
+    dateModified: "2026-01-02",
+    mainEntityOfPage: canonicalUrl
+  };
+
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Do 4-7-8 Breathing for Sleep",
+    description: "Dr. Andrew Weil's 4-7-8 breathing technique to fall asleep faster and calm anxiety. Follow this step-by-step guide.",
+    totalTime: "PT2M",
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Get comfortable",
+        text: "Sit or lie down in a comfortable position. Place the tip of your tongue against the ridge behind your upper front teeth.",
+        url: `${canonicalUrl}#how-to`
+      },
+      {
+        "@type": "HowToStep",
+        name: "Exhale completely",
+        text: "Exhale completely through your mouth, making a whoosh sound.",
+        url: `${canonicalUrl}#how-to`
+      },
+      {
+        "@type": "HowToStep",
+        name: "Inhale for 4 counts",
+        text: "Close your mouth and inhale quietly through your nose for a mental count of 4.",
+        url: `${canonicalUrl}#how-to`
+      },
+      {
+        "@type": "HowToStep",
+        name: "Hold for 7 counts",
+        text: "Hold your breath for a count of 7. Keep your body relaxed.",
+        url: `${canonicalUrl}#how-to`
+      },
+      {
+        "@type": "HowToStep",
+        name: "Exhale for 8 counts",
+        text: "Exhale completely through your mouth, making a whoosh sound, for a count of 8.",
+        url: `${canonicalUrl}#how-to`
+      },
+      {
+        "@type": "HowToStep",
+        name: "Repeat 4 cycles",
+        text: "This completes one breath cycle. Repeat for a total of 4 cycles when starting out, working up to 8 cycles.",
+        url: `${canonicalUrl}#how-to`
+      }
+    ]
   };
 
   const faqSchema = {
@@ -140,20 +200,44 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
           "@type": "Answer",
           text: "The correct order is 4-7-8: inhale for 4 counts, hold for 7 counts, exhale for 8 counts. The numbers describe the sequence of the breath cycle. '7-8-4' is a common mix-up, but the technique starts with the 4-count inhale and ends with the 8-count exhale—the extended exhale is what activates the relaxation response."
         }
+      },
+      {
+        "@type": "Question",
+        name: "How many cycles of 4-7-8 breathing for sleep?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "For sleep, do 4-8 cycles of 4-7-8 breathing when you get into bed. Each cycle takes about 15-20 seconds, so 4 cycles is roughly 1 minute and 8 cycles is about 2-3 minutes. Many people fall asleep before completing all cycles. Dr. Weil recommends starting with 4 cycles and gradually increasing to 8 as you get comfortable with the technique."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Can I do 4-7-8 breathing lying down?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, 4-7-8 breathing works great lying down—in fact, that's the most common position for using it as a sleep aid. Lie on your back with your hands resting comfortably. The technique works in any position: sitting, lying down, or even standing. For sleep specifically, lying down allows you to transition directly into sleep without changing positions."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Is 4-7-8 breathing the same as box breathing?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No, they're different techniques with different purposes. 4-7-8 has unequal phases (4-7-8) with an exhale-dominant pattern designed for relaxation and sleep. Box breathing has equal phases (4-4-4-4) designed for focus and alertness. Use 4-7-8 when you want to wind down; use box breathing when you need to stay sharp before a presentation or task."
+        }
       }
     ]
   };
 
   return (
     <main className="bg-transparent">
-      <JsonLd data={[breadcrumbSchema, appSchema, faqSchema]} />
+      <JsonLd data={[breadcrumbSchema, appSchema, articleSchema, howToSchema, faqSchema]} />
 
       <section className="relative isolate min-h-screen w-full text-foreground">
         <Resonance defaultMode={ModeName.Relax} className="min-h-screen" />
         <div className="absolute inset-y-0 left-0 z-30 flex w-full max-w-xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="space-y-4">
             <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
-            <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">4-7-8 breathing timer</h1>
+            <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">4-7-8 Breathing Timer: Fall Asleep Faster</h1>
             <p className="max-w-xl text-lg text-muted-foreground">
               A free 4-7-8 breathing app (Dr. Andrew Weil&apos;s method) you can run right now in your browser. Press Start, follow
               the visual pacing, and adjust the counts if you need a gentler version.
@@ -163,6 +247,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
       </section>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl rounded-t-[48px] bg-background/95 px-4 pb-16 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
+        <p className="mb-6 text-xs text-muted-foreground">Last updated: January 2, 2026</p>
         <section className="grid gap-6 md:grid-cols-2">
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <h2 className="text-2xl font-semibold text-card-foreground">Start the timer</h2>
@@ -180,15 +265,15 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
           </div>
 
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
-            <h2 className="text-2xl font-semibold text-card-foreground">Suggested settings</h2>
+            <h2 className="text-2xl font-semibold text-card-foreground">Best 4-7-8 Timer Settings</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              The classic 4-7-8 includes a hold. If holding feels uncomfortable, modify it.
+              Choose your goal and adjust the timer accordingly:
             </p>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>Classic: 4 in / 7 hold / 8 out</li>
-              <li>Gentler: 4 in / 4 hold / 6–8 out</li>
-              <li>No-hold option: 4 in / 6–8 out</li>
-              <li>If you feel light-headed: make breaths smaller and quieter, and shorten or remove the hold</li>
+              <li><strong className="text-card-foreground">For sleep:</strong> Classic 4-7-8, do 6-8 cycles in bed with lights off</li>
+              <li><strong className="text-card-foreground">For anxiety:</strong> Gentler 4-4-6-8 (shorter hold), do 4-6 cycles</li>
+              <li><strong className="text-card-foreground">For beginners:</strong> Start with 2-3-4 and work up to full counts</li>
+              <li><strong className="text-card-foreground">If light-headed:</strong> Remove the hold entirely, use 4 in / 8 out</li>
             </ul>
             <div className="mt-5">
               <Link href="/breathe/4-7-8#how-to" className="text-sm font-semibold text-primary hover:underline">
@@ -216,7 +301,55 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
                 Dr. Weil calls 4-7-8 breathing a &ldquo;natural tranquilizer for the nervous system.&rdquo; Unlike pharmaceutical
                 tranquilizers that can lose effectiveness over time, 4-7-8 breathing actually becomes more powerful with practice.
                 The technique is based on pranayama, an ancient yogic practice of breath control, but adapted for modern use
-                without any spiritual or cultural requirements.
+                without any spiritual or cultural requirements. If you struggle with <Link href="/for/sleep" className="text-primary hover:underline">sleep</Link> or
+                need help with <Link href="/for/anxiety" className="text-primary hover:underline">anxiety</Link>, 4-7-8 is one of the most effective breathing techniques available.
+              </p>
+            </div>
+          </div>
+
+          <div className="glow-card rounded-[32px] border border-border bg-card p-8">
+            <h2 className="text-2xl font-semibold text-card-foreground">4-7-8 vs Other Sleep Breathing Techniques</h2>
+            <div className="mt-4 space-y-4 text-muted-foreground">
+              <p>
+                Each breathing technique has its strengths. Here&apos;s how 4-7-8 compares to other popular methods:
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="py-3 text-left font-semibold text-card-foreground">Technique</th>
+                      <th className="py-3 text-left font-semibold text-card-foreground">Best For</th>
+                      <th className="py-3 text-left font-semibold text-card-foreground">Pattern</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-border/50">
+                      <td className="py-3 font-medium text-card-foreground">4-7-8 Breathing</td>
+                      <td className="py-3">Falling asleep, calming anxiety</td>
+                      <td className="py-3">4 in, 7 hold, 8 out (exhale-dominant)</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="py-3 font-medium text-card-foreground">Box Breathing</td>
+                      <td className="py-3">Focus and alertness before tasks</td>
+                      <td className="py-3">4 in, 4 hold, 4 out, 4 hold (equal phases)</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="py-3 font-medium text-card-foreground">Coherent Breathing</td>
+                      <td className="py-3">HRV training, long-term stress resilience</td>
+                      <td className="py-3">5 in, 5 out (no hold, ~6 breaths/min)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 font-medium text-card-foreground">Physiological Sigh</td>
+                      <td className="py-3">Instant panic relief (1-3 breaths)</td>
+                      <td className="py-3">Double inhale, long exhale</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4">
+                <strong className="text-card-foreground">Bottom line:</strong> Use 4-7-8 when you need to wind down for sleep or calm anxiety.
+                The extended exhale is key—it activates your parasympathetic nervous system more powerfully than equal-phase techniques like box breathing.
+                For instant relief in just 1-3 breaths, try the <Link href="/breathe/physiological-sigh" className="text-primary hover:underline">physiological sigh</Link>.
               </p>
             </div>
           </div>
@@ -366,7 +499,9 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
               <p className="mt-4">
                 <strong className="text-card-foreground">Important note:</strong> While 4-7-8 is generally calming, some people
                 find breath holds energizing or uncomfortable. If it doesn&apos;t feel right, try removing the hold or using a
-                different technique like coherent breathing instead.
+                different technique like <Link href="/breathe/coherent" className="text-primary hover:underline">coherent breathing</Link> instead.
+                For instant panic relief, the <Link href="/breathe/physiological-sigh" className="text-primary hover:underline">physiological sigh</Link> works
+                in just 1-3 breaths.
               </p>
             </div>
           </div>
@@ -429,6 +564,31 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
                   and ends with the 8-count exhale—the extended exhale is what activates the relaxation response.
                 </p>
               </div>
+              <div>
+                <h3 className="text-lg font-semibold text-card-foreground">How many cycles of 4-7-8 breathing for sleep?</h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  For sleep, do 4-8 cycles of 4-7-8 breathing when you get into bed. Each cycle takes about 15-20 seconds, so 4
+                  cycles is roughly 1 minute and 8 cycles is about 2-3 minutes. Many people fall asleep before completing all
+                  cycles. Dr. Weil recommends starting with 4 cycles and gradually increasing to 8 as you get comfortable with the technique.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-card-foreground">Can I do 4-7-8 breathing lying down?</h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Yes, 4-7-8 breathing works great lying down—in fact, that&apos;s the most common position for using it as a sleep
+                  aid. Lie on your back with your hands resting comfortably. The technique works in any position: sitting, lying
+                  down, or even standing. For sleep specifically, lying down allows you to transition directly into sleep without
+                  changing positions.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-card-foreground">Is 4-7-8 breathing the same as box breathing?</h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  No, they&apos;re different techniques with different purposes. 4-7-8 has unequal phases (4-7-8) with an exhale-dominant
+                  pattern designed for relaxation and sleep. Box breathing has equal phases (4-4-4-4) designed for focus and alertness.
+                  Use 4-7-8 when you want to wind down; use box breathing when you need to stay sharp before a presentation or task.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -445,6 +605,27 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <h2 className="text-xl font-semibold text-card-foreground">No download</h2>
             <p className="mt-2 text-sm text-muted-foreground">Runs on mobile and desktop with nothing to install.</p>
+          </div>
+        </section>
+
+        <section className="mt-12 space-y-4">
+          <p className="text-sm uppercase tracking-widest text-primary">Use case guides</p>
+          <div className="grid gap-4 md:grid-cols-3">
+            <Link href="/for/sleep" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+              <p className="text-lg font-semibold text-card-foreground">Better Sleep</p>
+              <p className="mt-1 text-sm text-muted-foreground">Fall asleep faster with the &apos;natural tranquilizer&apos; technique</p>
+              <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Learn more →</span>
+            </Link>
+            <Link href="/for/anxiety" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+              <p className="text-lg font-semibold text-card-foreground">Anxiety Relief</p>
+              <p className="mt-1 text-sm text-muted-foreground">Calm anxious thoughts with exhale-focused breathing</p>
+              <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Learn more →</span>
+            </Link>
+            <Link href="/for/high-blood-pressure" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+              <p className="text-lg font-semibold text-card-foreground">Blood Pressure Support</p>
+              <p className="mt-1 text-sm text-muted-foreground">Naturally support healthy blood pressure with slow breathing</p>
+              <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Learn more →</span>
+            </Link>
           </div>
         </section>
 

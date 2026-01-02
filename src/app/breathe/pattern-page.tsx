@@ -160,7 +160,18 @@ export function PatternPage({ slug }: { slug: string }) {
     ]
   };
 
-  const structuredData = [faqSchema, howToSchema, articleSchema, breadcrumbSchema];
+  const videoSchema = page.video ? {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: page.video.title,
+    description: page.video.description,
+    thumbnailUrl: `https://img.youtube.com/vi/${page.video.youtubeId}/maxresdefault.jpg`,
+    uploadDate: page.meta.datePublished,
+    embedUrl: `https://www.youtube.com/embed/${page.video.youtubeId}`,
+    contentUrl: `https://www.youtube.com/watch?v=${page.video.youtubeId}`
+  } : null;
+
+  const structuredData = [faqSchema, howToSchema, articleSchema, breadcrumbSchema, ...(videoSchema ? [videoSchema] : [])];
 
   const heroHeader = (
     <div className="space-y-4">
@@ -182,6 +193,11 @@ export function PatternPage({ slug }: { slug: string }) {
       </section>
 
       <section className="relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] bg-background/95 px-4 pb-20 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
+        {page.meta.dateModified && (
+          <p className="text-xs text-muted-foreground -mt-6">
+            Last updated: {new Date(page.meta.dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+        )}
         {page.body.length ? (
           <section className="glow-card rounded-[32px] border border-border bg-card p-8 text-card-foreground">
             <p className="text-sm uppercase tracking-widest text-primary">Technique overview</p>
@@ -313,6 +329,26 @@ export function PatternPage({ slug }: { slug: string }) {
             </div>
           </div>
         </section>
+
+        {page.video ? (
+          <section className="glow-card space-y-6 rounded-[32px] border border-border bg-card p-8">
+            <div>
+              <p className="text-sm uppercase tracking-widest text-primary">Watch & learn</p>
+              <h2 className="text-2xl font-semibold text-card-foreground">{page.video.title}</h2>
+              <p className="text-muted-foreground">{page.video.description}</p>
+            </div>
+            <div className="aspect-video w-full overflow-hidden rounded-2xl">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${page.video.youtubeId}`}
+                title={page.video.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full"
+                loading="lazy"
+              />
+            </div>
+          </section>
+        ) : null}
 
         <section className="glow-card space-y-6 rounded-[32px] border border-border bg-card p-8">
           <div>

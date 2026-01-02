@@ -88,6 +88,12 @@ export interface RelatedUseCase {
   teaser: string;
 }
 
+export interface VideoEmbed {
+  youtubeId: string;
+  title: string;
+  description: string;
+}
+
 export interface BreathingPageContent {
   slug: string;
   mode: ModeName;
@@ -105,6 +111,7 @@ export interface BreathingPageContent {
   keywords: string[];
   synonyms: string[];
   frequency: string;
+  video?: VideoEmbed;
 }
 
 export const breathingPages: BreathingPageContent[] = [
@@ -789,9 +796,9 @@ export const breathingPages: BreathingPageContent[] = [
     slug: "physiological-sigh",
     mode: ModeName.Sigh,
     hero: {
-      title: "Physiological Sigh Coach",
-      subtitle: "Double inhale, long exhale for a rapid downshift.",
-      intro: "A physiological sigh is two quick inhales followed by a long, unforced exhale. The second inhale helps expand under‑ventilated lung regions; the long exhale slows breathing and can reduce arousal within minutes. Use as a brief on‑demand reset or a 2–5 minute practice."
+      title: "Physiological Sigh: Instant Stress Relief",
+      subtitle: "Calm down in 30 seconds with the double-inhale technique.",
+      intro: "A physiological sigh is two quick inhales followed by a long, unforced exhale—the fastest way to reduce stress in real-time. Just 1-3 sighs (about 30 seconds) can lower your heart rate and cortisol. The second inhale re-expands collapsed lung tissue; the long exhale activates your vagus nerve. Use for instant relief or practice 2–5 minutes daily for mood benefits."
     },
     meta: {
       title: "Huberman's Physiological Sigh: Instant Stress Relief (Stanford Study)",
@@ -804,16 +811,28 @@ export const breathingPages: BreathingPageContent[] = [
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2025-12-07"
+      dateModified: "2026-01-02"
     },
     body: [
       {
-        heading: "What it is",
-        content: "Deep nasal inhale, small top‑up inhale, then a long slow exhale. The second inhale opens lung areas; the long exhale triggers calm. Keep it smooth and quiet. No straining."
+        heading: "What Is a Physiological Sigh?",
+        content: "A physiological sigh is your body's natural stress-relief mechanism—a double inhale followed by a long exhale. You do it instinctively when crying, yawning, or transitioning from sleep. Babies sigh about every 50 breaths to keep their lungs healthy. When done deliberately, this ancient reflex becomes a powerful tool: two quick inhales through the nose (the second a short 'top-up' to fill the upper lungs), then a slow, unforced exhale. Dr. Andrew Huberman popularized the controlled version on his podcast after Stanford research showed it outperforms meditation for rapid stress relief."
+      },
+      {
+        heading: "The Science Behind Physiological Sighing",
+        content: "When you breathe normally, some of your 500 million lung alveoli gradually collapse—reducing oxygen exchange and triggering stress signals. The double inhale of a physiological sigh reinflates these collapsed air sacs, maximizing lung surface area. Meanwhile, the extended exhale activates your vagus nerve, shifting your nervous system from fight-or-flight (sympathetic) to rest-and-digest (parasympathetic). This combination—mechanical lung reset plus neural calming—explains why one sigh can drop your heart rate and cortisol faster than any other breathing technique. The 2023 Stanford study (Balban et al.) found that just 5 minutes of daily cyclic sighing improved mood more than mindfulness meditation."
       },
       {
         heading: "Benefits",
         content: "Fastest relief during acute stress (1–3 cycles in seconds). Just as effective as meditation for mood when done daily. Naturally recruits your body's own calming reflex."
+      },
+      {
+        heading: "Physiological Sigh vs Box Breathing",
+        content: "Choose the physiological sigh when you need instant relief in 1-3 breaths—panic spikes, sudden anxiety, or stress that hits mid-conversation. It's invisible and takes only seconds. Choose box breathing when you have 2-5 minutes and want sustained focus or a structured practice—before presentations, during breaks, or as a daily routine. The sigh is a fire extinguisher; box breathing is climate control. For deepest calm, some practitioners start with 3 sighs to break acute stress, then transition to box breathing for extended downregulation."
+      },
+      {
+        heading: "Cyclic Sighing: The Clinical Term",
+        content: "In research papers and clinical settings, repeated physiological sighs are called 'cyclic sighing' or 'cyclic physiological sighing.' The 2023 Stanford study by Balban et al. used this term when comparing breathwork protocols to mindfulness meditation. Whether you call it physiological sighing, cyclic sighing, or the Huberman sigh—it's the same technique: double inhale, long exhale, repeat. The word 'cyclic' simply means you're doing multiple sighs in a row (2-5 minutes) rather than a single sigh for acute relief."
       },
       {
         heading: "When to use",
@@ -876,6 +895,22 @@ export const breathingPages: BreathingPageContent[] = [
       {
         question: "Is the physiological sigh better than box breathing?",
         answer: "They're tools for different aims. The RCT found exhale‑focused cyclic sighing yielded the largest mood and respiration‑rate improvements vs. mindfulness, with box breathing also helpful. For rapid relief in a few breaths, many prefer sighing; for structured pacing or longer sessions, box breathing or coherent breathing may suit better."
+      },
+      {
+        question: "How many physiological sighs should I do?",
+        answer: "For an immediate reset during acute stress, 1-3 physiological sighs is usually enough—many people feel relief after just one. For a more sustained practice with training effects on mood and stress resilience, do continuous cyclic sighing for 2-5 minutes. The Stanford study used 5 minutes daily. Start with fewer repetitions and increase only if it feels comfortable."
+      },
+      {
+        question: "Can I do a physiological sigh through my mouth?",
+        answer: "Nasal breathing is preferred for both inhales because it filters, warms, and humidifies the air, and may enhance nitric oxide production. However, the technique still works with mouth breathing if nasal congestion makes nose breathing difficult. The exhale can be through pursed lips (like sighing 'ahh') or through the nose—whichever feels more natural and allows a longer, slower release."
+      },
+      {
+        question: "Is cyclic sighing the same as physiological sigh?",
+        answer: "Yes—cyclic sighing is the research term for repeatedly performing physiological sighs in sequence. A single physiological sigh is one double-inhale followed by a long exhale. Cyclic sighing strings these together for 2-5+ minutes as a structured practice. The Stanford study that compared breathwork to meditation used 'cyclic physiological sighing' as the formal name for this continuous practice."
+      },
+      {
+        question: "What's the difference between a sigh and a physiological sigh?",
+        answer: "A regular sigh is a single deep breath—typically one inhale followed by an exhale. A physiological sigh specifically involves TWO inhales: a full inhale followed by a short 'top-up' breath before the long exhale. This double inhale is what makes it physiological—it reinflates collapsed lung alveoli and triggers a stronger parasympathetic (calming) response than a regular sigh. Your body does this naturally about every 5 minutes, but doing it deliberately amplifies the stress-relief effect."
       }
     ],
     howTo: {
@@ -968,6 +1003,10 @@ export const breathingPages: BreathingPageContent[] = [
         reason: "Prefer clear phase markers and structure for 1–3 minute resets."
       },
       {
+        slug: "4-7-8",
+        reason: "For sleep and longer relaxation sessions, the exhale-dominant 4-7-8 pattern is highly effective."
+      },
+      {
         slug: "coherent",
         reason: "For HRV training, equal in/out at ~5–6 breaths/min provides strong physiological effects."
       }
@@ -979,6 +1018,11 @@ export const breathingPages: BreathingPageContent[] = [
         teaser: "Stop a panic attack in 30 seconds with Stanford's double-inhale technique"
       },
       {
+        slug: "anxiety",
+        title: "Anxiety Relief",
+        teaser: "The fastest breathing technique to calm anxiety—works in 1-3 breaths"
+      },
+      {
         slug: "running",
         title: "Running Recovery",
         teaser: "Recover faster and stop side stitches with the double-inhale technique"
@@ -987,23 +1031,34 @@ export const breathingPages: BreathingPageContent[] = [
         slug: "athletes",
         title: "Athletic Recovery",
         teaser: "Bring your heart rate down 2x faster between sets with this recovery breathing technique"
+      },
+      {
+        slug: "public-speaking",
+        title: "Public Speaking Calm",
+        teaser: "Use the physiological sigh backstage to eliminate stage fright in seconds"
       }
     ],
     keywords: [
       "physiological sigh",
+      "what is a physiological sigh",
       "Huberman physiological sigh",
       "Huberman Lab breathing",
       "cyclic sighing",
+      "cyclic sighing technique",
       "cyclic sighing Stanford",
       "Stanford breathing technique",
+      "Stanford sighing study",
       "double inhale breathing",
+      "double inhale exhale breathing",
       "double inhale long exhale",
+      "physiological sigh vs box breathing",
       "rapid calming breath",
       "anxiety breathing exercise",
       "breathwork for stress",
       "vagus nerve breathing",
       "sigh reflex",
-      "alveolar recruitment"
+      "alveolar recruitment",
+      "how many physiological sighs"
     ],
     synonyms: [
       "cyclic sighing",
@@ -1011,7 +1066,12 @@ export const breathingPages: BreathingPageContent[] = [
       "sigh breath",
       "Huberman sigh"
     ],
-    frequency: "As needed for acute stress (1–3 cycles); optional 2–5 minutes daily for mood and breathing‑rate changes"
+    frequency: "As needed for acute stress (1–3 cycles); optional 2–5 minutes daily for mood and breathing‑rate changes",
+    video: {
+      youtubeId: "kSZKIupBUuc",
+      title: "Dr. Andrew Huberman Explains the Physiological Sigh",
+      description: "Stanford neuroscientist Dr. Andrew Huberman demonstrates and explains the physiological sigh—the fastest way to reduce stress in real-time."
+    }
   },
   {
     slug: "wim-hof",
