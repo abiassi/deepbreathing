@@ -1,6 +1,7 @@
 "use client";
 
 import Resonance from "@/components/resonance/Resonance";
+import { ModeName } from "@/components/resonance/constants";
 
 export function BreathingVisualizer() {
   const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
@@ -11,6 +12,7 @@ export function BreathingVisualizer() {
         <Resonance
           apiKey={apiKey}
           className="min-h-screen w-full overflow-hidden"
+          defaultMode={ModeName.Box}
         />
       </div>
     </section>

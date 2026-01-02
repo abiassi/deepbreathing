@@ -1204,25 +1204,27 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
               {!isRunning ? (
                 <>
                   <div className="glass-panel flex flex-wrap justify-between gap-1 rounded-2xl p-2">
-                    {Object.values(BREATHING_PATTERNS).map((m) => {
-                      // Short labels for mode buttons
-                      let label = m.name.split(' ')[0];
-                      if (m.name === ModeName.Sigh) label = 'Sigh';
-                      if (m.name === ModeName.WimHof) label = 'Wim Hof';
+                    {Object.values(BREATHING_PATTERNS)
+                      .filter(m => m.name !== ModeName.WimHof || activeMode === ModeName.WimHof || defaultMode === ModeName.WimHof)
+                      .map((m) => {
+                        // Short labels for mode buttons
+                        let label = m.name.split(' ')[0];
+                        if (m.name === ModeName.Sigh) label = 'Sigh';
+                        if (m.name === ModeName.WimHof) label = 'Wim Hof';
 
-                      return (
-                        <button
-                          key={m.name}
-                          onClick={() => handleModeSelect(m.name)}
-                          className={`flex-1 py-2 px-3 text-xs font-medium rounded-xl transition-all whitespace-nowrap ${activeMode === m.name
-                            ? 'bg-card text-card-foreground shadow-sm'
-                            : 'text-muted-foreground hover:bg-card/60 dark:hover:bg-card/30'
-                            }`}
-                        >
-                          {label}
-                        </button>
-                      );
-                    })}
+                        return (
+                          <button
+                            key={m.name}
+                            onClick={() => handleModeSelect(m.name)}
+                            className={`flex-1 py-2 px-3 text-xs font-medium rounded-xl transition-all whitespace-nowrap ${activeMode === m.name
+                              ? 'bg-card text-card-foreground shadow-sm'
+                              : 'text-muted-foreground hover:bg-card/60 dark:hover:bg-card/30'
+                              }`}
+                          >
+                            {label}
+                          </button>
+                        );
+                      })}
                   </div>
 
                   <div className="space-y-4 rounded-2xl bg-card/70 p-4 shadow-inner dark:bg-card/30">
