@@ -166,7 +166,7 @@ export function PatternPage({ slug }: { slug: string }) {
     name: page.video.title,
     description: page.video.description,
     thumbnailUrl: `https://img.youtube.com/vi/${page.video.youtubeId}/maxresdefault.jpg`,
-    uploadDate: page.meta.datePublished,
+    uploadDate: `${page.meta.datePublished}T08:00:00+00:00`,
     embedUrl: `https://www.youtube.com/embed/${page.video.youtubeId}`,
     contentUrl: `https://www.youtube.com/watch?v=${page.video.youtubeId}`
   } : null;
