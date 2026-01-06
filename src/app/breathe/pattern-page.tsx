@@ -319,12 +319,12 @@ export function PatternPage({ slug }: { slug: string }) {
               <h2 className="text-2xl font-semibold text-card-foreground">Common questions</h2>
               <p className="text-muted-foreground">Evidence-backed answers we hear from practitioners most often.</p>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-6">
               {page.faqs.map((faq) => (
-                <details key={faq.question} className="rounded-2xl bg-muted p-4">
-                  <summary className="cursor-pointer text-lg font-medium text-foreground">{faq.question}</summary>
+                <div key={faq.question} className="rounded-2xl bg-muted p-4">
+                  <h3 className="text-lg font-semibold text-card-foreground">{faq.question}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{faq.answer}</p>
-                </details>
+                </div>
               ))}
             </div>
           </div>

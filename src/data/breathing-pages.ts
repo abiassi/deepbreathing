@@ -134,12 +134,16 @@ export const breathingPages: BreathingPageContent[] = [
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2025-12-07"
+      dateModified: "2026-01-06"
     },
     body: [
       {
         heading: "What it is",
         content: "Four equal phases: inhale (4s), hold (4s), exhale (4s), hold (4s). Adjust counts to 3–6 seconds for comfort. Breathe quietly through the nose, keep shoulders and jaw soft, let your belly lead. If holds feel uncomfortable or cause dizziness, drop them and maintain an even inhale/exhale instead."
+      },
+      {
+        heading: "Why Navy SEALs Use Box Breathing",
+        content: "Box breathing became a cornerstone of Navy SEAL training through Mark Divine, a retired SEAL Commander who introduced it to BUD/S (Basic Underwater Demolition/SEAL) training in the early 2000s. SEALs use it before high-stakes missions, during underwater drownproofing exercises, and in any situation where panic could be fatal. The technique works because the structured counting occupies the prefrontal cortex—the thinking brain—while the slow rhythm activates the parasympathetic nervous system. This dual action interrupts the amygdala's fear response, allowing SEALs to stay calm and make clear decisions under fire. Divine calls it 'taking control of your physiology before your physiology takes control of you.' The same technique that helps operators stay composed during combat works just as well before your next presentation, difficult conversation, or sleepless night."
       },
       {
         heading: "Benefits",
@@ -202,6 +206,10 @@ export const breathingPages: BreathingPageContent[] = [
       {
         question: "I felt light‑headed. What went wrong?",
         answer: "Likely over‑breathing (exhaling more CO₂ than you produce). Fixes: make breaths smaller and quieter, shorten holds, switch to equal in/out without holds, or pause and resume later. Capnometry studies in HRV training monitor this risk; you can self‑monitor by prioritizing comfort over depth."
+      },
+      {
+        question: "Why do Navy SEALs use box breathing?",
+        answer: "Navy SEALs use box breathing because it's simple to remember under stress and reliably activates the parasympathetic nervous system within 60–90 seconds. Mark Divine, a retired SEAL Commander, introduced it to BUD/S training after using it himself during deployments. SEALs practice it before missions, during stressful evolutions like underwater drownproofing, and whenever they need to stay calm and think clearly. The structured 4-count rhythm gives the mind something to focus on, which prevents spiraling thoughts, while the slow pace physiologically lowers heart rate and cortisol. It's been battle-tested in the most high-stakes situations imaginable."
       }
     ],
     howTo: {

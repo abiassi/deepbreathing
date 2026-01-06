@@ -409,18 +409,18 @@ export function UseCasePage({ slug }: { slug: string }) {
           <p className="text-sm uppercase tracking-widest text-primary">FAQ</p>
           <h2 className="mt-2 text-2xl font-semibold">Common Questions</h2>
 
-          <div className="mt-6 space-y-3">
+          <div className="mt-6 space-y-6">
             {page.faqs.map((faq) => (
-              <details
+              <div
                 key={faq.question}
                 className="rounded-2xl p-4"
-                style={isHolidayPage ? { backgroundColor: WINTER_MUTED } : undefined}
+                style={isHolidayPage ? { backgroundColor: WINTER_MUTED } : { backgroundColor: 'hsl(var(--muted))' }}
               >
-                <summary className="cursor-pointer text-lg font-medium text-foreground">
+                <h3 className="text-lg font-semibold text-card-foreground">
                   {faq.question}
-                </summary>
+                </h3>
                 <p className="mt-2 text-sm text-muted-foreground">{faq.answer}</p>
-              </details>
+              </div>
             ))}
           </div>
         </section>

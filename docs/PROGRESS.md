@@ -58,6 +58,49 @@ Based on Google Search Console data showing 1.29K impressions but only 4 clicks 
 - Coherent pages: Combined 368 impressions, removing HRV jargon should improve click appeal
 - Running: Position 5.85 (page 1!) - better description should convert impressions to clicks
 
+### Homepage Title CTR Fix
+
+Homepage was ranking at position 5.79 with 61 impressions but only 1.64% CTR. Generic title wasn't compelling.
+
+**Change:**
+- Old: "Deep Breathing Exercises – Free Breathing Visualizer"
+- New: "Free Breathing Visualizer: Calm Anxiety in 60 Seconds"
+
+Also updated description to lead with benefit and add social proof: "Calm anxiety in 60 seconds with our free breathing visualizer. Box breathing, 4-7-8, physiological sigh—all free, no signup. Used by 10,000+ people. Try now."
+
+**Files Modified:** `/src/app/layout.tsx`
+
+### Navy SEAL Content Expansion (Box Breathing)
+
+Box breathing page had Navy SEAL mentions in titles/meta but no substantial content. Navy SEAL queries (30+ combined impressions) were ranking at positions 60-70.
+
+**Changes:**
+- Added new body section: "Why Navy SEALs Use Box Breathing" (~150 words)
+  - Mark Divine attribution (retired SEAL Commander who introduced it to BUD/S)
+  - Training context (drownproofing, pre-mission, combat)
+  - Neuroscience explanation (prefrontal cortex + parasympathetic activation)
+  - Divine quote: "taking control of your physiology before your physiology takes control of you"
+- Added new FAQ: "Why do Navy SEALs use box breathing?" with detailed answer
+
+**Files Modified:** `/src/data/breathing-pages.ts`
+
+**Expected Impact:** Should help box breathing page rank higher for Navy SEAL queries currently at positions 60-70.
+
+### FAQ Rendering Upgrade for Featured Snippets
+
+FAQ sections on pattern pages and use-case pages were using `<details><summary>` accordion format. This is not optimal for featured snippets - Google prefers explicit heading tags.
+
+**Changes:**
+- Pattern pages (`/breathe/*`): Changed FAQ rendering from `<summary>` to `<h3>` headings
+- Use-case pages (`/for/*`): Changed FAQ rendering from `<summary>` to `<h3>` headings
+- Removed accordion behavior - FAQs now display as flat Q&A with H3 question headings
+
+**Files Modified:**
+- `/src/app/breathe/pattern-page.tsx`
+- `/src/app/for/use-case-page.tsx`
+
+**Expected Impact:** Better featured snippet eligibility for question-based queries across all breathing technique and use-case pages.
+
 ## 2026-01-02
 
 ### Major SEO Content Expansion - Physiological Sigh & 4-7-8 Timer

@@ -12,11 +12,11 @@ const siteUrl = "https://deepbreathingexercises.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Deep Breathing Exercises – Free Breathing Visualizer",
+    default: "Free Breathing Visualizer: Calm Anxiety in 60 Seconds",
     template: "%s | Deep Breathing Exercises"
   },
   description:
-    "Free breathing visualizer for deep breathing exercises: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh. Adjustable pacing, sound, and haptics. No signup required.",
+    "Calm anxiety in 60 seconds with our free breathing visualizer. Box breathing, 4-7-8, physiological sigh—all free, no signup. Used by 10,000+ people. Try now.",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Deep Breathing Exercises – Free Breathing Visualizer",
+    title: "Free Breathing Visualizer: Calm Anxiety in 60 Seconds",
     description:
-      "Free breathing visualizer for deep breathing exercises: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh. Adjustable pacing. No signup required.",
+      "Calm anxiety in 60 seconds with our free breathing visualizer. Box breathing, 4-7-8, physiological sigh. No signup required.",
     type: "website",
     url: siteUrl,
     siteName: "Deep Breathing Exercises",
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deep Breathing Exercises – Free Breathing Visualizer",
+    title: "Free Breathing Visualizer: Calm Anxiety in 60 Seconds",
     description:
-      "Free breathing visualizer for deep breathing exercises: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh. No signup required.",
+      "Calm anxiety in 60 seconds with our free breathing visualizer. Box breathing, 4-7-8, physiological sigh. Try now—no signup.",
     creator: "@deepbreathing",
     images: ["/og-image.png"]
   },
