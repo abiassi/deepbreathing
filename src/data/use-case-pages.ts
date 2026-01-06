@@ -68,6 +68,12 @@ export interface RelatedUseCasePage {
   teaser: string;
 }
 
+export interface UseCaseVideoEmbed {
+  youtubeId: string;
+  title: string;
+  description: string;
+}
+
 export interface UseCasePageContent {
   slug: string;
   mode: ModeName;
@@ -84,6 +90,7 @@ export interface UseCasePageContent {
   references: UseCaseReference[];
 
   disclaimer?: string;
+  video?: UseCaseVideoEmbed;
 
   relatedTechnique: {
     slug: string;
@@ -2517,6 +2524,201 @@ export const useCasePages: UseCasePageContent[] = [
       {
         question: "My ears hurt when flying. Does this help with that?",
         answer: "Ear pain is caused by pressure differences, not anxiety—so breathing won't directly help. But if anxiety makes you clench your jaw and stiffen your neck (which it often does), relaxing through breathwork can make the pressure equalization easier. For ear pressure specifically: yawn, swallow, chew gum, or do the Valsalva maneuver (pinch nose, close mouth, gently blow). Some people find that coherent breathing during descent reduces ear discomfort because they're more relaxed."
+      }
+    ]
+  },
+  {
+    slug: "huberman",
+    mode: ModeName.Sigh,
+    breathingPageSlug: "physiological-sigh",
+
+    hero: {
+      title: "Huberman Lab Breathing Techniques",
+      subtitle: "The science-backed breathwork methods from Stanford neuroscientist Dr. Andrew Huberman",
+      intro: "Dr. Andrew Huberman, Stanford neuroscientist and host of the Huberman Lab podcast, has brought scientific rigor to breathwork. His top recommendation? The physiological sigh—a double-inhale followed by a long exhale that he calls 'the fastest way to reduce stress in real-time.' This page covers Huberman's breathing protocols and the research behind them."
+    },
+
+    meta: {
+      title: "Huberman Lab Breathing: Physiological Sigh & Protocols (Free Timer)",
+      description: "Dr. Andrew Huberman's breathing techniques from the Huberman Lab podcast. The physiological sigh, cyclic sighing, and nasal breathing protocols. Stanford research + free timer.",
+      ogTitle: "Huberman Lab Breathing Techniques & Protocols",
+      ogDescription: "Stanford neuroscientist Dr. Andrew Huberman's recommended breathing techniques. Physiological sigh, cyclic sighing, and more. Free timer.",
+      twitterTitle: "Huberman Lab Breathing: Physiological Sigh (Free Timer)",
+      twitterDescription: "Dr. Huberman's top breathing technique—the physiological sigh. Stanford research. Free timer.",
+      author: "Resonance Editorial Team",
+      datePublished: "2026-01-06",
+      dateModified: "2026-01-06"
+    },
+
+    keywords: [
+      "huberman breathing",
+      "huberman lab breathing",
+      "andrew huberman breathing",
+      "huberman physiological sigh",
+      "huberman sigh",
+      "huberman breathing technique",
+      "huberman lab physiological sigh",
+      "cyclic sighing huberman",
+      "huberman stress relief",
+      "huberman breathwork",
+      "stanford breathing technique"
+    ],
+
+    problem: {
+      heading: "Why Most Breathing Advice Falls Short",
+      content: "The internet is full of breathing techniques, but few are backed by rigorous research. Dr. Huberman cuts through the noise by focusing on methods with peer-reviewed evidence. His key insight: different breathing patterns serve different purposes. The physiological sigh is for real-time stress relief (seconds), while other patterns like cyclic hyperventilation are for deliberate alertness. Matching the technique to your goal is crucial.",
+      symptoms: [
+        "Confusion about which breathing technique to use when",
+        "Breathing exercises that don't seem to work",
+        "Wanting evidence-based protocols, not wellness trends",
+        "Looking for the fastest way to calm down",
+        "Stress that hits suddenly and needs immediate intervention"
+      ]
+    },
+
+    solution: {
+      heading: "The Physiological Sigh: Huberman's #1 Recommendation",
+      content: "Dr. Huberman consistently recommends the physiological sigh as the single most effective tool for real-time stress reduction. It's not a new technique—your body does it naturally when you sob or transition from sleep. What's new is the Stanford research proving it outperforms other methods, including meditation, for rapid stress relief.",
+      whyThisPattern: "The double-inhale reinflates collapsed alveoli in your lungs (tiny air sacs that deflate when you're stressed), maximizing oxygen uptake. The extended exhale activates the parasympathetic nervous system via the vagus nerve. This one-two punch—mechanical lung reset plus neural calming—explains why a single sigh can drop your heart rate faster than any other technique."
+    },
+
+    science: {
+      heading: "The Stanford Research",
+      points: [
+        {
+          mechanism: "2023 Stanford Study (Balban et al.)",
+          explanation: "Published in Cell Reports Medicine, this randomized controlled trial compared cyclic sighing to mindfulness meditation. Result: 5 minutes of daily sighing improved mood and reduced anxiety more effectively than meditation. The physiological sigh group also showed greater reductions in respiratory rate throughout the day."
+        },
+        {
+          mechanism: "Real-Time Stress Reduction",
+          explanation: "Unlike meditation, which requires time and practice, the physiological sigh works in 1-3 breaths. Huberman calls it 'the fastest way to reduce stress in real-time' because it directly manipulates your autonomic nervous system rather than relying on cognitive reframing."
+        },
+        {
+          mechanism: "Alveoli Reinflation",
+          explanation: "Dr. Huberman explains that the double-inhale serves a mechanical purpose: stressed breathing causes lung alveoli to collapse, reducing CO₂ offload. The second 'sip' of air pops these sacs back open. This isn't just calming—it's restoring proper lung function."
+        },
+        {
+          mechanism: "Vagal Activation via Long Exhale",
+          explanation: "The extended exhale (longer than the inhale) is key. Exhalation activates the parasympathetic branch of your autonomic nervous system. The longer exhale in the physiological sigh maximizes this effect, slowing heart rate within seconds."
+        }
+      ]
+    },
+
+    howTo: {
+      steps: [
+        {
+          name: "First inhale through nose",
+          instruction: "Take a deep breath in through your nose, filling your lungs about 90%.",
+          timing: "2-3 seconds"
+        },
+        {
+          name: "Second inhale (the 'sip')",
+          instruction: "Without exhaling, take a second, shorter inhale through your nose to completely fill your lungs. This is the key step that reinflates collapsed alveoli.",
+          timing: "1 second"
+        },
+        {
+          name: "Long exhale through mouth",
+          instruction: "Exhale slowly and completely through your mouth. Let it be passive and unforced—just release the air. This exhale should be longer than both inhales combined.",
+          timing: "4-6 seconds"
+        },
+        {
+          name: "Repeat 1-3 times",
+          instruction: "For acute stress, 1-3 sighs is usually enough. You should feel calmer within 30 seconds.",
+          timing: "As needed"
+        },
+        {
+          name: "Optional: 5-minute daily practice",
+          instruction: "For mood and anxiety benefits shown in the Stanford study, practice cyclic sighing (repeated physiological sighs) for 5 minutes daily.",
+          timing: "5 minutes"
+        }
+      ],
+      tips: [
+        "The second inhale is what makes this different from a regular sigh—don't skip it",
+        "You can do this invisibly in meetings, on calls, or in public",
+        "Use it BEFORE stressful events, not just during them",
+        "If one sigh doesn't work, do 2-3 in a row"
+      ]
+    },
+
+    references: [
+      {
+        title: "Brief structured respiration practices enhance mood and reduce physiological arousal",
+        source: "Cell Reports Medicine (Balban et al., 2023)",
+        url: "https://www.cell.com/cell-reports-medicine/fulltext/S2666-3791(22)00474-8",
+        summary: "Stanford RCT showing cyclic sighing outperforms mindfulness meditation for mood improvement and anxiety reduction."
+      },
+      {
+        title: "Huberman Lab Podcast: Tools for Managing Stress & Anxiety",
+        source: "Huberman Lab",
+        url: "https://hubermanlab.com/tools-for-managing-stress-and-anxiety/",
+        summary: "Dr. Huberman's comprehensive episode on breathing techniques for stress, featuring the physiological sigh as his top recommendation."
+      },
+      {
+        title: "The Physiological Sigh Is the Fastest Way to Calm Down",
+        source: "Huberman Lab Clips",
+        url: "https://www.youtube.com/watch?v=kSZKIupBUuc",
+        summary: "Short video where Dr. Huberman demonstrates and explains the physiological sigh technique."
+      },
+      {
+        title: "How to Breathe Correctly for Optimal Health, Mood, Learning & Performance",
+        source: "Huberman Lab Podcast",
+        url: "https://hubermanlab.com/how-to-breathe-correctly-for-optimal-health-mood-learning-and-performance/",
+        summary: "Deep dive into breathing science covering nasal vs mouth breathing, CO₂ tolerance, and breathwork protocols."
+      }
+    ],
+
+    disclaimer: "This page summarizes Dr. Andrew Huberman's publicly shared breathing recommendations. It is not affiliated with or endorsed by Dr. Huberman, Stanford University, or the Huberman Lab podcast. Always consult a healthcare provider for medical advice.",
+
+    video: {
+      youtubeId: "kSZKIupBUuc",
+      title: "Dr. Andrew Huberman Explains the Physiological Sigh",
+      description: "Stanford neuroscientist Dr. Andrew Huberman demonstrates and explains the physiological sigh—the fastest way to reduce stress in real-time. This short clip covers the technique, the science behind it, and when to use it."
+    },
+
+    relatedTechnique: {
+      slug: "physiological-sigh",
+      callToAction: "Practice the full physiological sigh technique with our guided visualizer"
+    },
+
+    relatedUseCases: [
+      {
+        slug: "anxiety",
+        teaser: "Use box breathing for sustained anxiety management beyond acute stress"
+      },
+      {
+        slug: "panic-attacks",
+        teaser: "The physiological sigh is ideal for stopping panic attacks fast"
+      },
+      {
+        slug: "focus",
+        teaser: "Huberman also recommends coherent breathing for focus and cognitive performance"
+      }
+    ],
+
+    faqs: [
+      {
+        question: "What is the Huberman physiological sigh?",
+        answer: "The Huberman physiological sigh (or 'Huberman sigh') is a breathing technique Dr. Andrew Huberman popularized on his podcast. It consists of two inhales through the nose followed by one long exhale through the mouth. Huberman calls it 'the fastest way to reduce stress in real-time' based on Stanford research showing it outperforms meditation for rapid stress relief."
+      },
+      {
+        question: "How many physiological sighs should I do?",
+        answer: "For acute stress relief, Dr. Huberman recommends 1-3 physiological sighs—this is usually enough to feel noticeably calmer within 30 seconds. For daily mood benefits (as shown in the Stanford study), practice 'cyclic sighing' (repeated physiological sighs) for 5 minutes per day."
+      },
+      {
+        question: "What's the difference between physiological sigh and cyclic sighing?",
+        answer: "They're the same technique—cyclic sighing just means doing multiple physiological sighs in a row as a daily practice. The Stanford study used 5 minutes of cyclic sighing daily. For in-the-moment stress relief, a few sighs is enough; for long-term mood benefits, the 5-minute daily practice is more effective."
+      },
+      {
+        question: "Does Huberman recommend any other breathing techniques?",
+        answer: "Yes. For sustained calm and HRV training, he discusses coherent breathing (5-6 breaths per minute). For deliberate alertness, he mentions cyclic hyperventilation (like Wim Hof breathing). But for real-time stress reduction, the physiological sigh remains his top recommendation because it works in seconds rather than minutes."
+      },
+      {
+        question: "Is the physiological sigh better than box breathing?",
+        answer: "For acute, in-the-moment stress, yes—the physiological sigh works faster (1-3 breaths vs 2-5 minutes). For sustained calm, focus, or a structured daily practice, box breathing has its place. Dr. Huberman suggests using the physiological sigh as a 'fire extinguisher' for acute stress, and techniques like box or coherent breathing as 'climate control' for ongoing regulation."
+      },
+      {
+        question: "Why does Huberman emphasize nasal breathing?",
+        answer: "Dr. Huberman frequently discusses the benefits of nasal breathing: it filters and humidifies air, produces nitric oxide (a vasodilator), and engages the diaphragm more effectively. He recommends nasal breathing as a default during the day and sleep, reserving mouth exhales for techniques like the physiological sigh where a long, complete exhale is beneficial."
       }
     ]
   }

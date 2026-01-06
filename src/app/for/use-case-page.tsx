@@ -151,7 +151,18 @@ export function UseCasePage({ slug }: { slug: string }) {
     ]
   };
 
-  const structuredData = [faqSchema, howToSchema, articleSchema, breadcrumbSchema];
+  const videoSchema = page.video ? {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: page.video.title,
+    description: page.video.description,
+    thumbnailUrl: `https://img.youtube.com/vi/${page.video.youtubeId}/maxresdefault.jpg`,
+    uploadDate: `${page.meta.datePublished}T08:00:00+00:00`,
+    embedUrl: `https://www.youtube.com/embed/${page.video.youtubeId}`,
+    contentUrl: `https://www.youtube.com/watch?v=${page.video.youtubeId}`
+  } : null;
+
+  const structuredData = [faqSchema, howToSchema, articleSchema, breadcrumbSchema, ...(videoSchema ? [videoSchema] : [])];
 
   const heroHeader = (
     <FadingHeroTitle
@@ -399,6 +410,28 @@ export function UseCasePage({ slug }: { slug: string }) {
             ))}
           </ul>
         </section>
+
+        {/* Video */}
+        {page.video && (
+          <section
+            className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
+            style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
+          >
+            <p className="text-sm uppercase tracking-widest text-primary">Watch & Learn</p>
+            <h2 className="mt-2 text-2xl font-semibold">{page.video.title}</h2>
+            <p className="mt-2 text-muted-foreground">{page.video.description}</p>
+            <div className="mt-6 aspect-video w-full overflow-hidden rounded-2xl">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${page.video.youtubeId}`}
+                title={page.video.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full"
+                loading="lazy"
+              />
+            </div>
+          </section>
+        )}
 
         {/* FAQ */}
         <section

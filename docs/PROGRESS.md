@@ -122,6 +122,58 @@ Added authoritative expert videos to high-impression breathing technique pages f
 - VideoObject schema already implemented in pattern-page.tsx
 - Adds authority signals (Dr. Weil, Mark Divine, James Nestor, Huberman)
 
+### Huberman Hub Page Created
+
+Created `/for/huberman` to capture Huberman brand queries currently ranking at positions 42-48:
+- "andrew huberman physiological sigh" - position 42
+- "huberman sigh" - position 44
+- "huberman physiological sigh" - position 48
+
+**Page Content (~2,500 words):**
+- Hero explaining Huberman's approach to breathwork
+- Problem section: why most breathing advice falls short
+- Solution section: physiological sigh as his #1 recommendation
+- Science section: 4 detailed points including 2023 Stanford study (Balban et al.)
+- How-to: 5-step guide with tips
+- References: Cell Reports Medicine study, Huberman Lab podcast episodes, YouTube clips
+- 6 FAQs targeting long-tail queries ("What is the Huberman physiological sigh?", "Is physiological sigh better than box breathing?", etc.)
+- Disclaimer about non-affiliation with Huberman/Stanford
+
+**Target Keywords:**
+- huberman breathing, huberman lab breathing, andrew huberman breathing
+- huberman physiological sigh, huberman sigh
+- cyclic sighing huberman, stanford breathing technique
+
+**Files Created:**
+- `/src/app/for/huberman/page.tsx` - Route file
+- Added entry to `/src/data/use-case-pages.ts` (~200 lines)
+
+**Expected Impact:**
+- Direct ranking for Huberman brand queries (currently pages 4-5)
+- Internal link equity from physiological sigh page
+- Captures high-intent traffic looking for Huberman's specific recommendations
+
+### Video Support Added to Use-Case Pages
+
+Extended video embed support (previously only on breathing technique pages) to use-case pages for video rich results.
+
+**Changes:**
+- Added `UseCaseVideoEmbed` interface to `use-case-pages.ts`
+- Added optional `video` field to `UseCasePageContent` interface
+- Added VideoObject schema generation in `use-case-page.tsx`
+- Added video embed UI section (between References and FAQ)
+
+**First use-case page with video:**
+- `/for/huberman` now has Huberman's physiological sigh video (`kSZKIupBUuc`)
+
+**Files Modified:**
+- `/src/data/use-case-pages.ts` - Interface + Huberman video data
+- `/src/app/for/use-case-page.tsx` - VideoObject schema + video section UI
+
+**Expected Impact:**
+- Video rich results for Huberman page
+- Framework ready to add videos to other use-case pages (anxiety, sleep, etc.)
+
 ## 2026-01-02
 
 ### Major SEO Content Expansion - Physiological Sigh & 4-7-8 Timer
