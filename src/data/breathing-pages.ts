@@ -345,7 +345,12 @@ export const breathingPages: BreathingPageContent[] = [
       "equal breathing",
       "sama vritti pranayama"
     ],
-    frequency: "Daily, 1–3 minutes for resets; optionally 5–10 minutes for HRV training"
+    frequency: "Daily, 1–3 minutes for resets; optionally 5–10 minutes for HRV training",
+    video: {
+      youtubeId: "GZzhk9jEkkI",
+      title: "Box Breathing with Mark Divine (Navy SEAL Commander)",
+      description: "Former Navy SEAL Commander Mark Divine teaches the box breathing technique he introduced to BUD/S training—the same method SEALs use to stay calm under pressure."
+    }
   },
   {
     slug: "4-7-8",
@@ -576,7 +581,12 @@ export const breathingPages: BreathingPageContent[] = [
       "relaxing breath",
       "pranayama‑inspired breathing"
     ],
-    frequency: "Nightly 3–4 cycles before bed; optional 1–3 minutes during daytime stress"
+    frequency: "Nightly 3–4 cycles before bed; optional 1–3 minutes during daytime stress",
+    video: {
+      youtubeId: "YRPh_GaiL8s",
+      title: "Dr. Andrew Weil Demonstrates the 4-7-8 Breathing Technique",
+      description: "Dr. Andrew Weil, the Harvard-trained physician who popularized the 4-7-8 breath, demonstrates his 'natural tranquilizer for the nervous system' technique for sleep and anxiety relief."
+    }
   },
   {
     slug: "coherent",
@@ -798,7 +808,12 @@ export const breathingPages: BreathingPageContent[] = [
       "5–6 bpm breathing",
       "coherence breathing"
     ],
-    frequency: "Daily, 5–10 minutes; optional 2–3 minute resets between tasks"
+    frequency: "Daily, 5–10 minutes; optional 2–3 minute resets between tasks",
+    video: {
+      youtubeId: "CMsFIEyITPc",
+      title: "James Nestor on the Perfect Breath",
+      description: "Bestselling author James Nestor (Breath: The New Science of a Lost Art) explains the ideal breathing pattern: 5.5 seconds in, 5.5 seconds out—the foundation of coherent breathing."
+    }
   },
   {
     slug: "physiological-sigh",

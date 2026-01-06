@@ -101,6 +101,27 @@ FAQ sections on pattern pages and use-case pages were using `<details><summary>`
 
 **Expected Impact:** Better featured snippet eligibility for question-based queries across all breathing technique and use-case pages.
 
+### Video Embeds Added for Video Rich Results
+
+Added authoritative expert videos to high-impression breathing technique pages for video rich results in SERPs.
+
+**Videos Added:**
+
+| Page | Video | YouTube ID | Authority |
+|------|-------|------------|-----------|
+| `/breathe/box` | Box Breathing with Mark Divine | `GZzhk9jEkkI` | Former Navy SEAL Commander who introduced it to BUD/S |
+| `/breathe/4-7-8` | Dr. Andrew Weil 4-7-8 Demonstration | `YRPh_GaiL8s` | Harvard-trained physician who popularized the technique |
+| `/breathe/coherent` | James Nestor on the Perfect Breath | `CMsFIEyITPc` | Bestselling author of "Breath: The New Science of a Lost Art" |
+
+**Already had:** `/breathe/physiological-sigh` with Huberman video (`kSZKIupBUuc`)
+
+**Files Modified:** `/src/data/breathing-pages.ts`
+
+**Expected Impact:**
+- Video thumbnails in SERPs increase CTR 5-15%
+- VideoObject schema already implemented in pattern-page.tsx
+- Adds authority signals (Dr. Weil, Mark Divine, James Nestor, Huberman)
+
 ## 2026-01-02
 
 ### Major SEO Content Expansion - Physiological Sigh & 4-7-8 Timer
