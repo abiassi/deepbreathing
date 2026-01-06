@@ -579,17 +579,17 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "Breathe ~5–6 times per minute with equal inhales and exhales (e.g., 5–6 seconds each). This pace often maximizes respiratory–cardiovascular coupling and baroreflex engagement, acutely boosting HRV. Keep breaths small and quiet; comfort beats depth. If dizzy or air‑hungry, make breaths smaller or pause."
     },
     meta: {
-      title: "Increase Your HRV by 50% with Coherent Breathing (5 Min/Day)",
-      description: "Boost heart rate variability and reduce stress with 0.1 Hz breathing. Used by peak performers and backed by 20+ studies. Free HRV trainer. Start now.",
-      ogTitle: "Increase Your HRV by 50% with Coherent Breathing",
-      ogDescription: "Boost heart rate variability and reduce stress with 0.1 Hz breathing. Used by peak performers. Free HRV trainer with research-backed method.",
+      title: "Coherent Breathing: Build Lasting Calm in 5 Min/Day (Free Timer)",
+      description: "The 5-minute daily practice used by athletes and peak performers to train stress resilience. Equal breathing at 5-6 breaths/min boosts HRV. Free timer—try now.",
+      ogTitle: "Coherent Breathing: Build Lasting Calm in 5 Min/Day",
+      ogDescription: "Train your stress response in 5 min/day. Equal breathing at 5-6 breaths/min, used by peak performers. Free HRV trainer.",
       ogImage: "og/breathe-coherent.png",
-      twitterTitle: "Increase Your HRV with Coherent Breathing (5 Min/Day)",
-      twitterDescription: "Boost heart rate variability with 0.1 Hz breathing. Used by peak performers. Free HRV trainer.",
+      twitterTitle: "Coherent Breathing: 5 Min/Day for Lasting Calm",
+      twitterDescription: "Daily practice used by athletes and peak performers to build stress resilience. Free timer—try now.",
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2025-12-07"
+      dateModified: "2026-01-06"
     },
     body: [
       {
@@ -801,17 +801,17 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "A physiological sigh is two quick inhales followed by a long, unforced exhale—the fastest way to reduce stress in real-time. Just 1-3 sighs (about 30 seconds) can lower your heart rate and cortisol. The second inhale re-expands collapsed lung tissue; the long exhale activates your vagus nerve. Use for instant relief or practice 2–5 minutes daily for mood benefits."
     },
     meta: {
-      title: "Huberman's Physiological Sigh: Instant Stress Relief (Stanford Study)",
-      description: "The Stanford-tested breathing technique featured on Huberman Lab. Stop stress in 30 seconds with 2 inhales + long exhale. Free timer. Try now.",
-      ogTitle: "Huberman's Physiological Sigh: Instant Stress Relief",
+      title: "Calm Down in 30 Seconds: Physiological Sigh (Huberman/Stanford) | Free",
+      description: "Stop stress in 30 seconds with the Stanford-tested double-inhale technique from Huberman Lab. Works in just 1-3 breaths. Free visualizer—try it now.",
+      ogTitle: "Calm Down in 30 Seconds: The Physiological Sigh",
       ogDescription: "Stanford-tested breathing technique from Huberman Lab. Stop stress in 30 seconds with double-inhale method. Free timer.",
       ogImage: "og/breathe-physiological-sigh.png",
-      twitterTitle: "Huberman's Physiological Sigh: Instant Stress Relief",
-      twitterDescription: "Stanford-tested breathing technique from Huberman Lab. Stop stress in 30 seconds. Free timer.",
+      twitterTitle: "Calm Down in 30 Seconds: Physiological Sigh",
+      twitterDescription: "Stop stress in 30 seconds with Stanford's double-inhale technique. Free timer—try now.",
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2026-01-02"
+      dateModified: "2026-01-06"
     },
     body: [
       {

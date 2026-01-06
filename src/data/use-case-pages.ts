@@ -684,15 +684,15 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Stop Side Stitches in 30 Seconds: Physiological Sigh for Runners",
-      description: "Side stitch ruining your run? Stop pain in 30 seconds and recover 2x faster with the physiological sigh technique. Stanford-tested for runners. Free timer.",
-      ogTitle: "Stop Side Stitches in 30 Seconds - Physiological Sigh",
-      ogDescription: "Stanford-tested double-inhale breathing technique stops side stitches in 30 seconds and speeds recovery. Free running timer.",
-      twitterTitle: "Stop Side Stitches in 30 Seconds - Running Breathing",
-      twitterDescription: "Stanford-tested physiological sigh stops side stitches instantly and speeds recovery 2x. Free timer.",
+      title: "Stop Side Stitches in 30 Seconds + Recover 2x Faster (Free Timer)",
+      description: "Side stitch ruining your run? Stop pain in 30 seconds and recover 2x faster with the physiological sigh. Stanford-tested breathing for runners. Try now.",
+      ogTitle: "Stop Side Stitches in 30 Seconds - Free Running Timer",
+      ogDescription: "Stanford-tested double-inhale breathing stops side stitches in 30 seconds and speeds recovery 2x. Free timer.",
+      twitterTitle: "Stop Side Stitches in 30 Seconds - Free Timer",
+      twitterDescription: "Stanford-tested physiological sigh stops side stitches instantly and speeds recovery 2x. Try now.",
       author: "Resonance Editorial Team",
       datePublished: "2025-12-02",
-      dateModified: "2025-12-07"
+      dateModified: "2026-01-06"
     },
 
     keywords: [

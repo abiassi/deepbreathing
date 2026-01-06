@@ -1,5 +1,63 @@
 # Progress
 
+## 2026-01-06
+
+### CTR Optimization - Meta Titles & Descriptions
+
+Based on Google Search Console data showing 1.29K impressions but only 4 clicks (0.3% CTR), identified pages with high impressions but 0% CTR and rewrote titles/descriptions following the pattern that works (4-7-8 timer: 9.68% CTR).
+
+**Working Pattern (from 4-7-8 timer):**
+- Title: "[Benefit in X Time]: [Technique] (Free App/Timer)"
+- Lead with outcome, not attribution
+
+**Pages Optimized:**
+
+| Page | Impressions | Position | Old CTR | Change |
+|------|-------------|----------|---------|--------|
+| /breathe/physiological-sigh | 607 | 14.4 | 0% | Title rewritten |
+| /breathe/coherent | 282 | 8.88 | 0% | Title rewritten |
+| /coherent-breathing-app | 86 | 9.99 | 0% | Title rewritten |
+| /for/running | 27 | 5.85 | 0% | Title tweaked |
+| /box-breathing-app | 22 | 8.5 | 0% | Title rewritten |
+
+**Title Changes:**
+
+*Physiological Sigh (BIGGEST opportunity - 607 impressions):*
+- Old: "Huberman's Physiological Sigh: Instant Stress Relief (Stanford Study)"
+- New: "Calm Down in 30 Seconds: Physiological Sigh (Huberman/Stanford) | Free"
+- Rationale: Lead with benefit ("Calm Down in 30 Seconds"), not attribution
+
+*Coherent Breathing Page:*
+- Old: "Increase Your HRV by 50% with Coherent Breathing (5 Min/Day)"
+- New: "Coherent Breathing: Build Lasting Calm in 5 Min/Day (Free Timer)"
+- Rationale: "HRV" is technical jargon; "Build Lasting Calm" is accessible benefit
+
+*Coherent Breathing App:*
+- Old: "Coherent Breathing App (HRV Breathing) — Free, No Download"
+- New: "Coherent Breathing App: Train Stress Resilience in 5 Min (Free)"
+- Rationale: Benefit-focused, removed technical jargon
+
+*Running Page:*
+- Old: "Stop Side Stitches in 30 Seconds: Physiological Sigh for Runners"
+- New: "Stop Side Stitches in 30 Seconds + Recover 2x Faster (Free Timer)"
+- Rationale: Added "Free Timer" and "2x Faster" hooks
+
+*Box Breathing App:*
+- Old: "Box Breathing App (4-4-4-4 Timer) — Free, No Download"
+- New: "Box Breathing App: Navy SEAL Calm in 2 Minutes (Free Timer)"
+- Rationale: Added Navy SEAL authority + time-bound benefit
+
+**Files Modified:**
+- `/src/data/breathing-pages.ts` - Physiological sigh + coherent breathing metadata
+- `/src/data/use-case-pages.ts` - Running page metadata
+- `/src/app/coherent-breathing-app/page.tsx` - Metadata
+- `/src/app/box-breathing-app/page.tsx` - Metadata
+
+**Expected Impact:**
+- Physiological sigh: With 607 impressions at position 14.4, even 5% CTR = ~30 clicks/month
+- Coherent pages: Combined 368 impressions, removing HRV jargon should improve click appeal
+- Running: Position 5.85 (page 1!) - better description should convert impressions to clicks
+
 ## 2026-01-02
 
 ### Major SEO Content Expansion - Physiological Sigh & 4-7-8 Timer
