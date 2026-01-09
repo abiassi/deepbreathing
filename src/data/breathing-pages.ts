@@ -597,17 +597,17 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "Breathe ~5–6 times per minute with equal inhales and exhales (e.g., 5–6 seconds each). This pace often maximizes respiratory–cardiovascular coupling and baroreflex engagement, acutely boosting HRV. Keep breaths small and quiet; comfort beats depth. If dizzy or air‑hungry, make breaths smaller or pause."
     },
     meta: {
-      title: "Coherent Breathing: Build Lasting Calm in 5 Min/Day (Free Timer)",
-      description: "The 5-minute daily practice used by athletes and peak performers to train stress resilience. Equal breathing at 5-6 breaths/min boosts HRV. Free timer—try now.",
-      ogTitle: "Coherent Breathing: Build Lasting Calm in 5 Min/Day",
-      ogDescription: "Train your stress response in 5 min/day. Equal breathing at 5-6 breaths/min, used by peak performers. Free HRV trainer.",
+      title: "Coherent Breathing: The Science of 5 Breaths/Min (Free Trainer)",
+      description: "Why 5-6 breaths per minute maximizes HRV and trains stress resilience. The science, research, and a free interactive trainer. Equal inhale/exhale, no holds.",
+      ogTitle: "Coherent Breathing: The Science of 5 Breaths/Min",
+      ogDescription: "Learn why 5-6 breaths/min maximizes HRV. The research behind coherent breathing + free interactive trainer.",
       ogImage: "og/breathe-coherent.png",
-      twitterTitle: "Coherent Breathing: 5 Min/Day for Lasting Calm",
-      twitterDescription: "Daily practice used by athletes and peak performers to build stress resilience. Free timer—try now.",
+      twitterTitle: "Coherent Breathing: Science + Free Trainer",
+      twitterDescription: "Why 5-6 breaths/min maximizes HRV. The research + free interactive trainer.",
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2026-01-06"
+      dateModified: "2026-01-09"
     },
     body: [
       {
@@ -834,7 +834,7 @@ export const breathingPages: BreathingPageContent[] = [
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2026-01-06"
+      dateModified: "2026-01-09"
     },
     body: [
       {
@@ -864,6 +864,14 @@ export const breathingPages: BreathingPageContent[] = [
       {
         heading: "When to skip",
         content: "If dizzy or tingly, stop and try smaller, gentler breaths later. Avoid straining if pregnant, have cardiopulmonary disease, syncope history, or high blood pressure. If panic arises, pause and return when calm."
+      },
+      {
+        heading: "Physiological Sigh for Panic Attacks",
+        content: "When panic hits, your breathing goes haywire—fast, shallow, desperate. The physiological sigh works because it's simple enough to do mid-panic: just two quick inhales, then a long exhale. No counting, no complex timing. The double inhale forces your lungs open; the long exhale activates your vagus nerve. Many people report feeling relief after just 1-3 sighs. It won't cure a panic disorder, but it can interrupt the spiral and buy you time to ground yourself."
+      },
+      {
+        heading: "Physiological Sigh for Anxiety",
+        content: "Unlike panic attacks (which are acute), anxiety often simmers in the background. The physiological sigh helps in two ways: (1) As an instant reset when anxiety spikes—1-3 sighs can break the tension. (2) As a daily practice—5 minutes of cyclic sighing per day can lower baseline anxiety over weeks. The 2023 Stanford study found cyclic sighing improved mood more than mindfulness meditation. For chronic anxiety, pair the sigh with other evidence-based approaches; it's a tool, not a cure."
       }
     ],
     benefits: [

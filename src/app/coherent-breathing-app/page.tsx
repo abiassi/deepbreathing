@@ -7,24 +7,24 @@ const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/coherent-breathing-app`;
 
 export const metadata: Metadata = {
-  title: "Coherent Breathing App: Train Stress Resilience in 5 Min (Free)",
+  title: "Coherent Breathing App (Free) — No Download, Start Instantly",
   description:
-    "Free coherent breathing timer used by athletes and peak performers. 5 minutes daily builds lasting calm and boosts HRV. No download—start now.",
+    "Free coherent breathing timer in your browser. No download, no signup. 5-6 breaths/min for HRV training. Used by 10,000+ people. Start now.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "Coherent Breathing App: 5 Min to Lasting Calm",
+    title: "Coherent Breathing App — Free Browser Timer",
     description:
-      "Free coherent breathing timer used by athletes and peak performers. 5 min/day trains your stress response. No download.",
+      "Free coherent breathing timer. No download, no signup. 5-6 breaths/min for HRV. Start instantly.",
     url: canonicalUrl,
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Coherent Breathing App: 5 Min to Lasting Calm",
+    title: "Coherent Breathing App — Free, No Download",
     description:
-      "Free breathing timer used by athletes and peak performers. 5 min daily builds stress resilience. Try now."
+      "Free coherent breathing timer in your browser. No signup. Start HRV training instantly."
   }
 };
 

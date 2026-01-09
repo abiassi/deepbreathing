@@ -1,5 +1,58 @@
 # Progress
 
+## 2026-01-09
+
+### SEO Experiment Tracking System
+
+Created `/docs/SEO-EXPERIMENTS.md` to systematically track SEO changes with hypotheses, baselines, and results. Updated `~/.claude/CLAUDE.md` to remind agents to check this file before making SEO changes.
+
+**Purpose:**
+- Avoid re-testing failed experiments
+- Track before/after metrics properly
+- Document hypotheses for future reference
+
+**Files Created/Modified:**
+- `/docs/SEO-EXPERIMENTS.md` - New experiment log
+- `~/.claude/CLAUDE.md` - Added SEO experiment reminder
+
+### Coherent Breathing Page Differentiation
+
+Two pages were competing for the same keywords with similar titles:
+- `/breathe/coherent` (318 impressions, pos 9.03)
+- `/coherent-breathing-app` (110 impressions, pos 9.64)
+
+**Strategy:** Differentiate by intent
+- `/breathe/coherent` → Guide/science intent ("learn about coherent breathing")
+- `/coherent-breathing-app` → Tool intent ("use the app now")
+
+**Title Changes:**
+
+| Page | Old Title | New Title |
+|------|-----------|-----------|
+| /breathe/coherent | "Coherent Breathing: Build Lasting Calm in 5 Min/Day (Free Timer)" | "Coherent Breathing: The Science of 5 Breaths/Min (Free Trainer)" |
+| /coherent-breathing-app | "Coherent Breathing App: Train Stress Resilience in 5 Min (Free)" | "Coherent Breathing App (Free) — No Download, Start Instantly" |
+
+**Files Modified:**
+- `/src/data/breathing-pages.ts` - Coherent breathing metadata
+- `/src/app/coherent-breathing-app/page.tsx` - App page metadata
+
+### Physiological Sigh Content Optimization
+
+Added intent-targeted sections to `/breathe/physiological-sigh` (highest impression page: 989 impressions, position ~13) to help it rank for related searches:
+
+**New Sections Added:**
+- "Physiological Sigh for Panic Attacks" - Captures panic-related searches
+- "Physiological Sigh for Anxiety" - Captures anxiety-related searches
+
+**Rationale:** Page already had "Cyclic Sighing" and "vs Box Breathing" sections. Adding panic/anxiety sections captures more search intents and provides snippet-ready content for those queries.
+
+**Files Modified:**
+- `/src/data/breathing-pages.ts` - Physiological sigh body sections
+
+**Expected Impact:** Help move page from position ~13 into top 10 by matching more user intents.
+
+---
+
 ## 2026-01-06
 
 ### CTR Optimization - Meta Titles & Descriptions
