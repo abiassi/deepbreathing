@@ -10,14 +10,14 @@ const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/4-7-8-breathing-timer`;
 
 export const metadata: Metadata = {
-  title: "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes (Free App)",
+  title: "Free Online 4-7-8 Breathing Timer — Fall Asleep in 2 Minutes",
   description:
-    "Dr. Weil's 4-7-8 breathing timer for sleep. The 'natural tranquilizer' technique—fall asleep faster, calm anxiety in minutes. Free, no download. Try tonight.",
+    "Free online 4-7-8 breathing timer in your browser—no download. Dr. Weil's 'natural tranquilizer' technique for sleep and anxiety. Try tonight.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes",
+    title: "Free Online 4-7-8 Breathing Timer",
     description:
       "Dr. Weil's 4-7-8 breathing timer. The 'natural tranquilizer' for sleep and anxiety. Free in your browser—try tonight.",
     url: canonicalUrl,
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes",
+    title: "Free Online 4-7-8 Breathing Timer",
     description:
       "Dr. Weil's 4-7-8 breathing timer. The 'natural tranquilizer' for sleep and anxiety. Free in your browser—try tonight."
   }
@@ -40,8 +40,8 @@ const Resonance = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="animate-pulse text-muted-foreground">Loading breathing exercise...</div>
+      <div className="min-h-screen flex items-center justify-center bg-background" role="status" aria-label="Loading breathing exercise">
+        <div aria-hidden="true" className="h-12 w-12 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
       </div>
     )
   }

@@ -2,6 +2,106 @@
 
 ## 2026-01-09
 
+### Remove "Loading breathing exercise..." from SSR (Fixed Properly)
+
+Removed ALL text nodes from loading state. Initial fix used `sr-only` class which still left text in DOM. Now using `aria-label` attribute only.
+
+**Problem:** The loading text was indexable and appeared as first extracted text in snippets.
+
+**Solution:** CSS spinner with `role="status"` + `aria-label="Loading breathing exercise"` (attribute only, no text nodes).
+
+**Files Modified:**
+- `/src/app/breathe/pattern-page.tsx`
+- `/src/app/for/use-case-page.tsx`
+- `/src/app/box-breathing-app/page.tsx`
+- `/src/app/4-7-8-breathing-timer/page.tsx`
+
+**Verification:** After deployment, `curl | grep "loading"` should return nothing.
+
+---
+
+### Title Experiments: "Free Online Timer" Format
+
+Implemented title changes to match SERP winner patterns and compete against app store results.
+
+**Changes:**
+
+| Page | Old Title | New Title |
+|------|-----------|-----------|
+| `/4-7-8-breathing-timer` | "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes (Free App)" | "Free Online 4-7-8 Breathing Timer — Fall Asleep in 2 Minutes" |
+| `/box-breathing-app` | "Box Breathing App: Navy SEAL Calm in 2 Minutes (Free Timer)" | "Free Online Box Breathing Timer — Navy SEAL Calm (No Download)" |
+| `/breathe/physiological-sigh` | "Calm Down in 30 Seconds: Physiological Sigh (Huberman/Stanford) \| Free" | "Physiological Sigh Timer (Free) — Calm Down in 30 Seconds" |
+
+**Rationale:**
+- SERP winner for "4-7-8 breathing timer" uses "FREE Online 4-7-8 Breathing Timer"
+- "App" queries dominated by App Store/Play Store - pivot to "online/timer"
+- Leading with "Free Online" signals web-based tool vs mobile download
+
+**Files Modified:**
+- `/src/app/4-7-8-breathing-timer/page.tsx`
+- `/src/app/box-breathing-app/page.tsx`
+- `/src/data/breathing-pages.ts` (physiological sigh metadata)
+
+---
+
+### SERP Analysis: CTR Fix Queue (0-Click Pages at Positions ≤10)
+
+Analyzed SERPs for pages with high impressions but 0 clicks to diagnose why.
+
+#### `/breathe/coherent` & `/coherent-breathing-app` (position ~9)
+**Query:** "coherent breathing"
+- **Finding:** Not in visible top 10. SERP dominated by Verywell Mind, Nature journal, YouTube, coherentbreathing.com (official site)
+- **Diagnosis:** Competing against high-authority medical/scientific sites for informational query
+- **Recommendation:** Target "coherent breathing app" or "coherent breathing timer" - tool-focused queries where web app can compete
+
+#### `/for/huberman` (position ~9.4)
+**Query:** "huberman physiological sigh"
+- **Finding:** Not in visible top 10. Top results are Huberman's YouTube videos, hubermanlab.com, Stanford Medicine
+- **Diagnosis:** Branded query - users want Huberman's own content, not third-party
+- **Recommendation:** Deprioritize or pivot to non-branded queries ("double inhale breathing", "cyclic sighing technique")
+
+#### `/for/running` (position ~6.1)
+**Query:** "breathing for running"
+- **Finding:** Not in visible top 10. Top results: American Lung Association, Reddit, YouTube, Adidas, REI
+- **Diagnosis:** Intent mismatch - SERP is about breathing WHILE running (cadence, nose vs mouth), not recovery
+- **Recommendation:** Target "side stitch breathing" or "stop side stitch running" for clearer intent match
+
+#### `/for/holiday-stress` (position ~8.5)
+**Query:** "holiday stress breathing"
+- **Finding:** Not in visible top 10. Health organizations dominate (Harvard Health, Hawaii Pacific Health)
+- **Diagnosis:** E-A-T gap - medical sites have more authority for seasonal stress content
+- **Recommendation:** Build more medical citations or lean into 4-7-8 (featured in answer box)
+
+---
+
+### SERP Analysis: Striking Distance Queue (Positions 11-20)
+
+#### `/box-breathing-app` (position ~11.2)
+**Query:** "box breathing app"
+- **Finding:** Top 10 dominated by App Store (#1, #6), Google Play (#2, #5), letsbreathe.app, Headspace
+- **Diagnosis:** Users want downloadable mobile apps, not web apps
+- **Recommendation:** Target "box breathing online" or emphasize "no download needed" more prominently
+
+#### `/4-7-8-breathing-timer` (position ~12)
+**Query:** "4-7-8 breathing timer"
+- **Finding:** MindfulDevMag (#1), YouTube videos, ZenMix.io (#4), app stores
+- **Diagnosis:** WINNABLE - other web-based tools rank. MindfulDevMag's title: "FREE Online 4-7-8 Breathing Timer"
+- **Recommendation:** Match winning title format - emphasize "FREE Online" and "Timer" in title
+
+#### `/breathe/physiological-sigh` (position ~13)
+**Query:** "physiological sigh"
+- **Finding:** Stanford Medicine (#1), Huberman YouTube videos, Oura Ring blog, research sites
+- **Diagnosis:** Academic/research-dominated SERP - hard to compete for head term
+- **Recommendation:** Target long-tail: "physiological sigh timer", "physiological sigh practice"
+
+#### `/breathing-app` (position ~13.6)
+**Query:** "breathing app"
+- **Finding:** Dominated by actual mobile apps (App Store, Google Play, Breathwrk, Calm)
+- **Diagnosis:** Extremely competitive head term - mobile app listings dominate
+- **Recommendation:** Near-impossible to rank - target "free online breathing exercises" instead
+
+---
+
 ### SEO Experiment Tracking System
 
 Created `/docs/SEO-EXPERIMENTS.md` to systematically track SEO changes with hypotheses, baselines, and results. Updated `~/.claude/CLAUDE.md` to remind agents to check this file before making SEO changes.

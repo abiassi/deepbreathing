@@ -8,14 +8,14 @@ const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/box-breathing-app`;
 
 export const metadata: Metadata = {
-  title: "Box Breathing App: Navy SEAL Calm in 2 Minutes (Free Timer)",
+  title: "Free Online Box Breathing Timer — Navy SEAL Calm (No Download)",
   description:
-    "The Navy SEAL breathing technique to stay calm under pressure. Free 4-4-4-4 box breathing timer in your browser—no download. Start now.",
+    "Free online box breathing timer in your browser—no download needed. The Navy SEAL 4-4-4-4 breathing technique for focus and calm under pressure. Start now.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "Box Breathing App: Navy SEAL Calm in 2 Minutes",
+    title: "Free Online Box Breathing Timer",
     description:
       "The Navy SEAL breathing technique for focus and calm. Free 4-4-4-4 timer in your browser—no download.",
     url: canonicalUrl,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Box Breathing App: Navy SEAL Calm in 2 Minutes",
+    title: "Free Online Box Breathing Timer",
     description:
       "The Navy SEAL breathing technique for calm under pressure. Free 4-4-4-4 timer—no download. Try now."
   }
@@ -37,8 +37,8 @@ const Resonance = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="animate-pulse text-muted-foreground">Loading breathing exercise...</div>
+      <div className="min-h-screen flex items-center justify-center bg-background" role="status" aria-label="Loading breathing exercise">
+        <div aria-hidden="true" className="h-12 w-12 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
       </div>
     )
   }

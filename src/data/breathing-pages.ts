@@ -824,12 +824,12 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "A physiological sigh is two quick inhales followed by a long, unforced exhale—the fastest way to reduce stress in real-time. Just 1-3 sighs (about 30 seconds) can lower your heart rate and cortisol. The second inhale re-expands collapsed lung tissue; the long exhale activates your vagus nerve. Use for instant relief or practice 2–5 minutes daily for mood benefits."
     },
     meta: {
-      title: "Calm Down in 30 Seconds: Physiological Sigh (Huberman/Stanford) | Free",
-      description: "Stop stress in 30 seconds with the Stanford-tested double-inhale technique from Huberman Lab. Works in just 1-3 breaths. Free visualizer—try it now.",
-      ogTitle: "Calm Down in 30 Seconds: The Physiological Sigh",
+      title: "Physiological Sigh Timer (Free) — Calm Down in 30 Seconds",
+      description: "Free physiological sigh timer in your browser (no download). Stop stress in 30 seconds with the Stanford-tested double-inhale technique. Works in just 1-3 breaths—try now.",
+      ogTitle: "Free Physiological Sigh Timer — Calm Down in 30 Seconds",
       ogDescription: "Stanford-tested breathing technique from Huberman Lab. Stop stress in 30 seconds with double-inhale method. Free timer.",
       ogImage: "og/breathe-physiological-sigh.png",
-      twitterTitle: "Calm Down in 30 Seconds: Physiological Sigh",
+      twitterTitle: "Free Physiological Sigh Timer — Calm Down in 30 Seconds",
       twitterDescription: "Stop stress in 30 seconds with Stanford's double-inhale technique. Free timer—try now.",
       author: "Resonance Editorial Team",
       reviewer: "",

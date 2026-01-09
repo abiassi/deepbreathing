@@ -20,8 +20,8 @@ const Resonance = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="animate-pulse text-muted-foreground">Loading breathing exercise...</div>
+      <div className="min-h-screen flex items-center justify-center bg-background" role="status" aria-label="Loading breathing exercise">
+        <div aria-hidden="true" className="h-12 w-12 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
       </div>
     )
   }

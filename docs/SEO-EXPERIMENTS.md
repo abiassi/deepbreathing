@@ -143,6 +143,59 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 
 ---
 
+### 2026-01-09: Remove "Loading..." SSR Text
+
+**Hypothesis:** Removing "Loading breathing exercise..." from indexable text improves snippet quality. Google may be extracting this text for snippets since it appears early in SSR output before the H1/intro content.
+
+**Pages Affected:** All visualizer-embedded pages
+- `/breathe/*` (all 5 techniques)
+- `/for/*` (all 14 use cases)
+- `/box-breathing-app`
+- `/4-7-8-breathing-timer`
+
+**Changes Made:**
+- Removed ALL text nodes from loading state (no text in DOM at all)
+- Using CSS spinner with `role="status"` and `aria-label="Loading breathing exercise"` (attribute only)
+- No `sr-only` text span - accessibility via aria-label attribute
+
+**Measure After:** 2026-01-23 (2 weeks)
+
+**Result:** TBD
+
+**Status:** Waiting
+
+---
+
+### 2026-01-09: "Free Online Timer" Title Format Test (Batch)
+
+**Hypothesis:** Titles starting with "Free Online [X] Timer" match SERP winner patterns and compete better against app store results
+
+**Changes Made:**
+
+| Page | Old Title | New Title |
+|------|-----------|-----------|
+| /4-7-8-breathing-timer | "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes (Free App)" | "Free Online 4-7-8 Breathing Timer — Fall Asleep in 2 Minutes" |
+| /box-breathing-app | "Box Breathing App: Navy SEAL Calm in 2 Minutes (Free Timer)" | "Free Online Box Breathing Timer — Navy SEAL Calm (No Download)" |
+| /breathe/physiological-sigh | "Calm Down in 30 Seconds: Physiological Sigh (Huberman/Stanford) \| Free" | "Physiological Sigh Timer (Free) — Calm Down in 30 Seconds" |
+
+**Rationale:**
+- SERP winner for "4-7-8 breathing timer" is MindfulDevMag with "FREE Online 4-7-8 Breathing Timer"
+- "App" queries dominated by App Store/Google Play listings - pivot to "online/timer"
+- Leading with "Free Online" matches high-CTR patterns
+
+**Query Clusters to Monitor:**
+- 4-7-8: `4-7-8 breathing timer`, `4 7 8 timer`, `online 4-7-8 timer`, `4-7-8 breathing app`
+- Box: `box breathing online`, `box breathing timer`, `free box breathing`
+- Physiological sigh: `physiological sigh timer`, `physiological sigh practice`
+
+**Measure After:** 2026-01-23 (2 weeks)
+
+**Result:** TBD
+
+**Status:** Waiting
+
+---
+
 ## Planned Experiments
 
 (Add planned experiments here before implementation)
