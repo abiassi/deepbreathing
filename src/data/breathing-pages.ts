@@ -834,7 +834,7 @@ export const breathingPages: BreathingPageContent[] = [
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2026-01-09"
+      dateModified: "2026-01-10"
     },
     body: [
       {
@@ -855,7 +855,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         heading: "Cyclic Sighing: The Clinical Term",
-        content: "In research papers and clinical settings, repeated physiological sighs are called 'cyclic sighing' or 'cyclic physiological sighing.' The 2023 Stanford study by Balban et al. used this term when comparing breathwork protocols to mindfulness meditation. Whether you call it physiological sighing, cyclic sighing, or the Huberman sigh—it's the same technique: double inhale, long exhale, repeat. The word 'cyclic' simply means you're doing multiple sighs in a row (2-5 minutes) rather than a single sigh for acute relief."
+        content: "In research papers and clinical settings, repeated physiological sighs are called 'cyclic sighing' or 'cyclic physiological sighing.' Some people search for 'cyclical breathing' or 'sigh breathing technique'—these refer to the same pattern. The 2023 Stanford study by Balban et al. used 'cyclic sighing' when comparing breathwork protocols to mindfulness meditation. Whether you call it physiological sighing, cyclic sighing, cyclical breathing, or the Huberman sigh—it's the same technique: double inhale, long exhale, repeat. The word 'cyclic' simply means you're doing multiple sighs in a row (2-5 minutes) rather than a single sigh for acute relief."
       },
       {
         heading: "When to use",
@@ -1077,6 +1077,9 @@ export const breathingPages: BreathingPageContent[] = [
       "cyclic sighing",
       "cyclic sighing technique",
       "cyclic sighing Stanford",
+      "cyclical breathing",
+      "cyclical breathing technique",
+      "sigh breathing technique",
       "Stanford breathing technique",
       "Stanford sighing study",
       "double inhale breathing",
@@ -1093,6 +1096,8 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     synonyms: [
       "cyclic sighing",
+      "cyclical breathing",
+      "sigh breathing technique",
       "double‑inhale sigh",
       "sigh breath",
       "Huberman sigh"

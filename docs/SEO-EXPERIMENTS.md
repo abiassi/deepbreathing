@@ -196,6 +196,67 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 
 ---
 
+## GSC Baseline Snapshot (Dec 1, 2025 - Jan 7, 2026)
+
+**Pulled:** 2026-01-10 via GSC API
+
+### Top Pages by Impressions
+| Page | Impressions | Clicks | CTR | Avg Position |
+|------|-------------|--------|-----|--------------|
+| /breathe/physiological-sigh | 998 | 0 | 0% | 13.2 |
+| /breathe/coherent | 324 | 0 | 0% | 9.0 |
+| /breathe/box | 163 | 0 | 0% | 29.2 |
+| /coherent-breathing-app | 110 | 0 | 0% | 9.6 |
+| /for/public-speaking | 70 | 0 | 0% | 49.6 |
+| /for/sleep | 49 | 0 | 0% | 72.5 |
+| /breathe/4-7-8 | 48 | 0 | 0% | 49.1 |
+| / (homepage) | 45 | 1 | 2.2% | 4.2 |
+| /4-7-8-breathing-timer | 44 | 3 | 6.8% | 12.0 |
+| /for/huberman | 36 | 0 | 0% | 9.4 |
+
+### Top Keywords
+| Keyword | Impressions | Clicks | CTR | Position |
+|---------|-------------|--------|-----|----------|
+| physiological sigh | 43 | 0 | 0% | 69.7 |
+| 4-7-8 breathing timer | 17 | 2 | 11.8% | 10.6 |
+| box breathing navy seals | 13 | 0 | 0% | 69.8 |
+| breathing exercises for public speaking | 12 | 0 | 0% | 71.3 |
+| breathing techniques for public speaking | 11 | 0 | 0% | 74.0 |
+| public speaking breathing exercises | 10 | 0 | 0% | 66.4 |
+| navy seal box breathing | 8 | 0 | 0% | 70.8 |
+| navy seal breathing technique | 8 | 0 | 0% | 62.5 |
+| 4 7 8 breathing method sleep | 7 | 0 | 0% | 82.0 |
+| cyclic sighing | 7 | 0 | 0% | 86.9 |
+
+### Key Insights
+- **Best performing:** `/4-7-8-breathing-timer` at 6.8% CTR (validates "Free Online Timer" title format)
+- **Biggest opportunity:** Coherent pages at position 9 with 0% CTR - title/description problem
+- **High volume, bad position:** "physiological sigh" at position 70 despite 998 page impressions from long-tail variants
+
+---
+
+### 2026-01-10: Synonym Capture for Physiological Sigh
+
+**Hypothesis:** Adding "cyclical breathing" (200 vol, diff 13) and "sigh breathing technique" (30 vol, diff 8) as keywords and natural mentions will capture additional long-tail traffic.
+
+**Baseline:**
+- Page impressions: 998
+- Position for main keyword: 13.2
+- Already ranking for "cyclic sighing" variants
+
+**Changes Made:**
+- Added to keywords array: `cyclical breathing`, `cyclical breathing technique`, `sigh breathing technique`
+- Added to synonyms array: `cyclical breathing`, `sigh breathing technique`
+- Added natural mention in "Cyclic Sighing: The Clinical Term" section: "Some people search for 'cyclical breathing' or 'sigh breathing technique'—these refer to the same pattern."
+
+**Measure After:** 2026-01-24 (2 weeks)
+
+**Result:** TBD
+
+**Status:** Waiting
+
+---
+
 ## Planned Experiments
 
 (Add planned experiments here before implementation)

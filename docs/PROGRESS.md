@@ -1,5 +1,33 @@
 # Progress
 
+## 2026-01-10
+
+### Synonym Capture: Physiological Sigh Page
+
+Added missing keyword variants discovered via Ahrefs:
+- "cyclical breathing" (200 vol, difficulty 13)
+- "sigh breathing technique" (30 vol, difficulty 8)
+
+**Changes:**
+- Added to keywords and synonyms arrays in breathing-pages.ts
+- Added natural mention in "Cyclic Sighing: The Clinical Term" section
+
+**Files Modified:**
+- `/src/data/breathing-pages.ts`
+
+---
+
+### GSC + Ahrefs Baseline Established
+
+Pulled baseline metrics via API and saved to SEO-EXPERIMENTS.md:
+- Top pages by impressions
+- Top keywords with positions
+- Ahrefs keyword difficulty/volume data
+
+Key finding: "physiological sigh" has 3,400 volume with only 17 difficulty - biggest opportunity.
+
+---
+
 ## 2026-01-09
 
 ### Remove "Loading breathing exercise..." from SSR (Fixed Properly)
