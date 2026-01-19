@@ -1,0 +1,6 @@
+packages:
+  - apps/*
+  - "!apps/mobile"
+  - "!apps/resonance-app"
+  - "!apps/resonance-mobile"
+  - packages/*
