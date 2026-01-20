@@ -48,6 +48,51 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     exhale: 1.5,
     holdOut: 0,
     color: "#f97316" // Orange (energy)
+  },
+  [ModeName.PursedLip]: {
+    name: ModeName.PursedLip,
+    description: "Respiratory Health (2-4 exhale ratio)",
+    inhale: 2,
+    holdIn: 0,
+    exhale: 4,
+    holdOut: 0,
+    color: "#10b981" // Emerald
+  },
+  [ModeName.NadiShodhana]: {
+    name: ModeName.NadiShodhana,
+    description: "Balance & Focus (alternate nostril)",
+    inhale: 4,
+    holdIn: 4,
+    exhale: 4,
+    holdOut: 0,
+    color: "#8b5cf6" // Violet
+  },
+  [ModeName.Ujjayi]: {
+    name: ModeName.Ujjayi,
+    description: "Ocean Breath for Yoga & Focus (4-0-6-0)",
+    inhale: 4,
+    holdIn: 0,
+    exhale: 6,
+    holdOut: 0,
+    color: "#0891b2" // Ocean blue (cyan-600)
+  },
+  [ModeName.Belly]: {
+    name: ModeName.Belly,
+    description: "Diaphragmatic Breathing Foundation (4-0-6-0)",
+    inhale: 4,
+    holdIn: 0,
+    exhale: 6,
+    holdOut: 0,
+    color: "#f59e0b" // Warm amber
+  },
+  [ModeName.Buteyko]: {
+    name: ModeName.Buteyko,
+    description: "Light Nasal Breathing (3-0-3-3)",
+    inhale: 3,
+    holdIn: 0,
+    exhale: 3,
+    holdOut: 3,
+    color: "#38bdf8" // Sky blue
   }
 };
 

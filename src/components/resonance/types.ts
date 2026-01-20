@@ -12,7 +12,12 @@ export enum ModeName {
   Relax = '4-7-8 Relax',
   Coherent = 'Coherent Breathing',
   Sigh = 'Physiological Sigh',
-  WimHof = 'Wim Hof Breathing'
+  WimHof = 'Wim Hof Breathing',
+  PursedLip = 'Pursed Lip Breathing',
+  NadiShodhana = 'Nadi Shodhana',
+  Ujjayi = 'Ujjayi Breathing',
+  Belly = 'Belly Breathing',
+  Buteyko = 'Buteyko Breathing'
 }
 
 // Protocol-based breathing (for multi-round techniques like Wim Hof)
