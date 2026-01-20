@@ -652,6 +652,10 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "holiday-stress",
         teaser: "Can't sleep after stressful holiday gatherings? Use this bedtime wind-down routine"
+      },
+      {
+        slug: "kids",
+        teaser: "Kids having trouble sleeping? Bedtime breathing routines for children"
       }
     ],
 
@@ -1050,6 +1054,10 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "travel-anxiety",
         teaser: "Travel anxiety before holiday trips? Coherent breathing keeps you calm for hours"
+      },
+      {
+        slug: "kids",
+        teaser: "Teaching kids to manage anxiety? Simple breathing exercises they can use anywhere"
       }
     ],
 
@@ -1673,6 +1681,10 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "anxiety",
         teaser: "If anxiety is blocking meditation, try box breathing for acute nervous system calming first"
+      },
+      {
+        slug: "pranayama",
+        teaser: "Explore the yogic pranayama tradition for deeper meditation preparation"
       }
     ],
 
@@ -1882,6 +1894,10 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "running",
         teaser: "Runners: use this for side stitch relief and post-run recovery"
+      },
+      {
+        slug: "pranayama",
+        teaser: "Buteyko nasal breathing improves breath efficiency during training"
       }
     ],
 
@@ -2723,6 +2739,586 @@ export const useCasePages: UseCasePageContent[] = [
     ]
   }
 ];
+
+// Stress relief use-case page
+const stressPage: UseCasePageContent = {
+  slug: "stress",
+  mode: ModeName.Sigh,
+  breathingPageSlug: "physiological-sigh",
+
+  hero: {
+    title: "Breathing Exercises for Stress Relief",
+    subtitle: "Calm your nervous system in 30 seconds with the physiological sigh",
+    intro: "Deadlines piling up. Notifications buzzing. That constant low-grade tension that won't let go. Stress isn't just 'feeling busy'—it's your nervous system stuck in overdrive, draining your energy and clouding your thinking. The physiological sigh is the fastest way to break the stress response—just 1-3 breaths can shift your state in under 30 seconds."
+  },
+
+  meta: {
+    title: "Breathing Exercises for Stress: Calm Down in 30 Seconds (Free Tool)",
+    description: "The fastest breathing technique for stress relief—works in 30 seconds. The Stanford-tested physiological sigh is more effective than meditation for real-time stress reduction. Free guided tool.",
+    ogTitle: "Breathing Exercises for Stress: Calm Down in 30 Seconds",
+    ogDescription: "The Stanford-tested breathing technique that beats meditation for stress relief. Works in 30 seconds. Free tool.",
+    twitterTitle: "Breathing Exercises for Stress Relief - 30 Second Reset",
+    twitterDescription: "Stanford-tested breathing technique calms stress in 30 seconds. Free guided tool.",
+    author: "Resonance Editorial Team",
+    datePublished: "2026-01-20",
+    dateModified: "2026-01-20"
+  },
+
+  keywords: [
+    "breathing exercises for stress",
+    "breathing techniques for stress",
+    "stress relief breathing",
+    "how to calm down breathing",
+    "breathing for stress relief",
+    "stress breathing exercises",
+    "calm down breathing technique",
+    "deep breathing for stress",
+    "quick stress relief breathing",
+    "breathing to reduce stress"
+  ],
+
+  problem: {
+    heading: "The Stress Response That Won't Turn Off",
+    content: "Your body's stress response evolved to help you escape predators—not answer emails. When stress becomes chronic, your sympathetic nervous system stays activated: cortisol floods your bloodstream, your heart rate stays elevated, your muscles stay tense. This 'always-on' state drains your energy, disrupts sleep, clouds thinking, and over time contributes to serious health issues. The challenge isn't avoiding stress—it's learning to reset your nervous system quickly and often.",
+    symptoms: [
+      "Constant mental tension and inability to relax",
+      "Muscle tightness in shoulders, neck, and jaw",
+      "Racing thoughts that jump between worries",
+      "Difficulty concentrating on one thing",
+      "Feeling tired but wired",
+      "Shallow, rapid breathing without noticing"
+    ]
+  },
+
+  solution: {
+    heading: "The Physiological Sigh: Your 30-Second Reset",
+    content: "The physiological sigh is a double inhale followed by a long exhale—a pattern your body uses naturally when crying or transitioning from sleep. Done deliberately, it's the fastest way to shift from stress to calm. A 2023 Stanford study found that just 5 minutes of daily 'cyclic sighing' improved mood more than mindfulness meditation. For acute stress, even 1-3 sighs (about 30 seconds) can noticeably reduce tension.",
+    whyThisPattern: "The double inhale reinflates collapsed lung tissue, maximizing oxygen exchange. The long exhale directly stimulates your vagus nerve, shifting your nervous system from 'fight-or-flight' to 'rest-and-digest.' Unlike techniques that require minutes of practice, the physiological sigh works in seconds because it leverages your body's built-in calming reflex."
+  },
+
+  science: {
+    heading: "The Science of Stress Relief",
+    points: [
+      {
+        mechanism: "Vagal activation",
+        explanation: "The long exhale stimulates the vagus nerve, which runs from your brainstem to your gut. This activates your parasympathetic nervous system—the calming counterbalance to stress."
+      },
+      {
+        mechanism: "Alveolar reinflation",
+        explanation: "The double inhale reopens collapsed air sacs in your lungs. This improves oxygen exchange and sends 'safety' signals to your brain."
+      },
+      {
+        mechanism: "CO2 normalization",
+        explanation: "Stress often causes over-breathing, which depletes CO2 and causes anxiety symptoms like tingling and dizziness. The slow exhale helps normalize CO2 levels."
+      },
+      {
+        mechanism: "Cortisol reduction",
+        explanation: "Controlled breathing can lower cortisol (the stress hormone) within minutes, reducing the physical wear of chronic stress on your body."
+      }
+    ]
+  },
+
+  howTo: {
+    steps: [
+      {
+        name: "Pause what you're doing",
+        instruction: "You don't need to find a quiet room. The physiological sigh works at your desk, in a meeting, or in traffic. Just pause your current train of thought.",
+        timing: "2 seconds"
+      },
+      {
+        name: "First inhale through your nose",
+        instruction: "Breathe in through your nose until your lungs feel full. Let your belly expand rather than your chest.",
+        timing: "3-4 seconds"
+      },
+      {
+        name: "Second inhale (the top-up)",
+        instruction: "Take a second, shorter breath on top of the first one. This fills the upper lungs completely. Don't force it—it's like a sip of air.",
+        timing: "1-2 seconds"
+      },
+      {
+        name: "Long, slow exhale",
+        instruction: "Exhale slowly through your mouth or nose. Make it longer than both inhales combined. Let your shoulders drop as you exhale.",
+        timing: "6-8 seconds"
+      },
+      {
+        name: "Repeat 1-2 more times if needed",
+        instruction: "One sigh often provides noticeable relief. For deeper stress, do 2-3 sighs. For daily practice, continue for 2-5 minutes.",
+        timing: "As needed"
+      }
+    ],
+    tips: [
+      "The second inhale is key—it's what makes this a 'physiological' sigh, not just a deep breath",
+      "You can do this invisibly in meetings—just make the exhale through your nose",
+      "For chronic stress, practice 5 minutes of cyclic sighing daily (multiple sighs in a row)",
+      "Pair with a physical 'shake off'—drop your shoulders, unclench your jaw"
+    ]
+  },
+
+  references: [
+    {
+      title: "Balban et al., 2023 - Cell Reports Medicine",
+      source: "Stanford University",
+      url: "https://pubmed.ncbi.nlm.nih.gov/36630953/",
+      summary: "RCT comparing breathwork protocols to mindfulness meditation found cyclic sighing produced the largest improvements in mood and respiratory rate."
+    },
+    {
+      title: "Fincham et al., 2023 - Scientific Reports",
+      source: "Nature",
+      url: "https://pubmed.ncbi.nlm.nih.gov/36624160/",
+      summary: "Meta-analysis of breathwork RCTs found small-to-moderate reductions in stress, anxiety, and depressive symptoms."
+    },
+    {
+      title: "Laborde et al., 2022 - Psychophysiology",
+      source: "International Society for Psychophysiology",
+      url: "https://pubmed.ncbi.nlm.nih.gov/35623448/",
+      summary: "Systematic review found slow breathing reliably increases heart rate variability—a marker of stress resilience."
+    }
+  ],
+
+  relatedTechnique: {
+    slug: "physiological-sigh",
+    callToAction: "Try the full physiological sigh technique with our guided visualizer"
+  },
+
+  relatedUseCases: [
+    {
+      slug: "anxiety",
+      teaser: "For clinical anxiety or panic, box breathing provides structured relief"
+    },
+    {
+      slug: "focus",
+      teaser: "Once stress is cleared, coherent breathing helps maintain calm focus"
+    },
+    {
+      slug: "sleep",
+      teaser: "Use the physiological sigh to wind down before bed, then switch to 4-7-8 for sleep"
+    }
+  ],
+
+  faqs: [
+    {
+      question: "What's the difference between stress and anxiety?",
+      answer: "Stress is typically a response to an external trigger (deadlines, traffic, conflict) and often resolves when the trigger is removed. Anxiety can persist without a clear external cause and may involve excessive worry about future events. The physiological sigh works for both, but if you experience persistent anxiety that interferes with daily life, consider speaking with a mental health professional."
+    },
+    {
+      question: "How often should I use breathing exercises for stress?",
+      answer: "Use the physiological sigh whenever you notice stress building—there's no limit. For preventive benefits, the Stanford study found 5 minutes of daily practice improved overall mood. Many people benefit from short 'resets' throughout the day: before meetings, after checking email, during commutes."
+    },
+    {
+      question: "Why doesn't regular deep breathing work as well?",
+      answer: "Regular deep breathing can sometimes increase stress if you over-breathe (depleting CO2). The physiological sigh's double-inhale/long-exhale pattern is specifically designed to maximize parasympathetic activation while normalizing blood chemistry. It's working with your body's natural calming reflex, not against it."
+    },
+    {
+      question: "Can breathing exercises replace medication for stress?",
+      answer: "Breathing exercises are a complementary tool, not a replacement for medical treatment. They work well alongside therapy, medication, or lifestyle changes. If stress is significantly impacting your life, work, or relationships, consult a healthcare provider for a comprehensive approach."
+    },
+    {
+      question: "I tried breathing exercises and they made me more anxious. Why?",
+      answer: "This can happen if you're over-breathing (taking breaths that are too deep) or focusing too intensely on 'doing it right.' Try making your breaths smaller and quieter. The exhale should feel like a relief, not a strain. If focusing on breath triggers anxiety, start with just one sigh and see how it feels before continuing."
+    },
+    {
+      question: "What's the best time of day to practice stress-relief breathing?",
+      answer: "Anytime stress arises. That said, many people find proactive practice helpful: first thing in the morning (before checking your phone), during lunch breaks, after meetings, and before bed. Building it into transitions (before/after activities) creates natural reminders."
+    }
+  ]
+};
+
+useCasePages.push(stressPage);
+
+// Kids breathing exercises page (SEO expansion)
+const kidsPage: UseCasePageContent = {
+  slug: "kids",
+  mode: ModeName.Box,
+  breathingPageSlug: "box",
+
+  hero: {
+    title: "Breathing Exercises for Kids",
+    subtitle: "Simple calming techniques children can use anywhere",
+    intro: "Children experience stress and big emotions just like adults—but they often lack the tools to manage them. These kid-friendly breathing exercises are designed to be fun, easy to remember, and effective. Whether your child struggles with anxiety, anger, or just needs help winding down, these techniques can help them find calm in minutes."
+  },
+
+  meta: {
+    title: "Breathing Exercises for Kids: Calm Down Techniques That Actually Work",
+    description: "Simple breathing exercises for kids that stop tantrums, ease anxiety, and help children fall asleep. Parent-tested techniques with free visualizer. Ages 4+.",
+    ogTitle: "Breathing Exercises for Kids: Calm Down Techniques",
+    ogDescription: "Simple breathing exercises kids can use anywhere. Stop tantrums, ease anxiety, improve sleep. Free visualizer.",
+    twitterTitle: "Breathing Exercises for Kids: Calm Down Techniques",
+    twitterDescription: "Simple breathing techniques kids love. Stop tantrums and ease anxiety in minutes.",
+    author: "Resonance Editorial Team",
+    datePublished: "2026-01-20",
+    dateModified: "2026-01-20"
+  },
+
+  keywords: [
+    "breathing exercises for kids",
+    "calm down breathing for children",
+    "kids breathing techniques",
+    "child anxiety breathing",
+    "breathing exercises for toddlers",
+    "calming techniques for kids",
+    "deep breathing for children",
+    "relaxation exercises for kids"
+  ],
+
+  problem: {
+    heading: "Big Emotions, Limited Tools",
+    content: "Children's brains are still developing the prefrontal cortex—the part responsible for emotional regulation. When they feel overwhelmed, scared, or angry, they literally lack the neural wiring to 'just calm down.' This isn't defiance; it's development. But we can give them tools that work with their biology to help regulate their emotions.",
+    symptoms: [
+      "Tantrums or meltdowns over small frustrations",
+      "Difficulty falling asleep or staying asleep",
+      "Anxiety about school, friends, or new situations",
+      "Anger outbursts that seem disproportionate",
+      "Complaints of stomachaches or headaches (stress symptoms)",
+      "Trouble transitioning between activities"
+    ]
+  },
+
+  solution: {
+    heading: "Breathing Games That Actually Work",
+    content: "The key to teaching kids breathing exercises is making them fun and visual. Abstract instructions like 'take deep breaths' don't work for children—they need concrete imagery. 'Smell the flower, blow out the candle' gives their brain something to latch onto. These techniques are designed to be memorable, engaging, and effective for ages 4 and up.",
+    whyThisPattern: "We recommend simple box breathing (3-3-3-3) for kids because it's easy to count, symmetrical (satisfying for young minds), and effective. The short counts keep children engaged without feeling overwhelmed. For very young children (4-5), we simplify further to just 'breathe in... breathe out' with fun imagery."
+  },
+
+  science: {
+    heading: "Why Breathing Helps Kids",
+    points: [
+      {
+        mechanism: "Activates the Calming System",
+        explanation: "Slow breathing activates the vagus nerve, which triggers the parasympathetic nervous system—the body's natural 'brake pedal' that counters fight-or-flight responses. This works in children just as it does in adults."
+      },
+      {
+        mechanism: "Gives Focus During Overwhelm",
+        explanation: "When emotions are flooding, counting breaths gives the brain something specific to do. This interrupts the emotional spiral and engages the thinking brain instead of the reactive brain."
+      },
+      {
+        mechanism: "Creates Positive Associations",
+        explanation: "When breathing exercises are taught during calm moments (not just crises), children build positive associations. The technique becomes a familiar, comforting tool rather than something imposed during meltdowns."
+      },
+      {
+        mechanism: "Builds Emotional Vocabulary",
+        explanation: "Teaching breathing as a response to emotions helps children recognize and name their feelings. 'I'm feeling upset, so I'll do my breathing' is a huge developmental step."
+      }
+    ]
+  },
+
+  howTo: {
+    steps: [
+      {
+        name: "Introduce it during calm moments",
+        instruction: "Don't wait for a meltdown. Practice breathing exercises when your child is relaxed—maybe after bath time or before a story. Make it a fun game, not a discipline tool.",
+        timing: "Regular practice"
+      },
+      {
+        name: "Use kid-friendly imagery",
+        instruction: "Instead of 'inhale,' say 'smell the flower.' Instead of 'exhale,' say 'blow out the candle.' For box breathing, try 'breathe in like you're smelling pizza, hold it like you're underwater, breathe out like you're blowing bubbles, wait like a statue.'",
+        timing: "Every instruction"
+      },
+      {
+        name: "Keep counts short for young kids",
+        instruction: "Start with 3-second counts instead of 4. Very young children (4-5) may only manage 2 seconds. That's fine—the rhythm matters more than the duration.",
+        timing: "3 counts per phase"
+      },
+      {
+        name: "Make it visual",
+        instruction: "Use the visualizer on this page, or have kids watch their belly rise and fall with a stuffed animal on it. Pinwheels, bubbles, and feathers make exhale practice fun.",
+        timing: "Use props"
+      },
+      {
+        name: "Practice together",
+        instruction: "Children learn by watching. Do the breathing alongside them. This also helps you stay calm, which helps them stay calm—co-regulation is powerful.",
+        timing: "Every session"
+      },
+      {
+        name: "Celebrate the effort",
+        instruction: "Praise trying, not perfection. 'You did your breathing—that was brave!' helps build positive associations even if the breathing was messy.",
+        timing: "After practice"
+      }
+    ],
+    tips: [
+      "Practice when calm to build the habit before it's needed in crisis",
+      "Keep a pinwheel or bubble wand handy for visual feedback",
+      "Model the breathing yourself—kids learn by watching",
+      "Don't force it during meltdowns; offer it as an option, not a command",
+      "Use 'belly buddies'—a stuffed animal on the belly that rises and falls with breath"
+    ]
+  },
+
+  references: [
+    {
+      title: "Deep breathing for kids: How to teach them calming techniques",
+      source: "Children's Hospital Colorado",
+      url: "https://www.childrenscolorado.org/conditions-and-advice/parenting/parenting-articles/deep-breathing-for-kids/",
+      summary: "Overview of age-appropriate breathing techniques and why they work for children's developing brains."
+    },
+    {
+      title: "Breathing Exercises for Kids",
+      source: "Child Mind Institute",
+      url: "https://childmind.org/article/breathing-exercises-for-kids/",
+      summary: "Expert guide on teaching children breathing techniques for anxiety and emotional regulation."
+    },
+    {
+      title: "Can breathing exercises help children with anxiety?",
+      source: "Yale Medicine",
+      url: "https://www.yalemedicine.org/news/breathing-exercises-for-kids-anxiety",
+      summary: "Research-backed overview of how breathing exercises support children's mental health."
+    }
+  ],
+
+  video: {
+    youtubeId: "_mZbzDOpylA",
+    title: "Sesame Street: Belly Breathe with Elmo",
+    description: "Elmo, Common, and Colbie Caillat teach kids how to calm their 'inner monster' with belly breathing. This fun, Emmy-nominated song makes learning breath control engaging for young children."
+  },
+
+  relatedTechnique: {
+    slug: "box",
+    callToAction: "Learn the full Box Breathing technique"
+  },
+
+  relatedUseCases: [
+    {
+      slug: "anxiety",
+      teaser: "More breathing techniques for anxiety relief"
+    },
+    {
+      slug: "sleep",
+      teaser: "Breathing exercises for better sleep—works for kids too"
+    },
+    {
+      slug: "pranayama",
+      teaser: "Parents interested in yoga? Explore the pranayama tradition"
+    }
+  ],
+
+  faqs: [
+    {
+      question: "What age can kids start doing breathing exercises?",
+      answer: "Children as young as 3-4 can start with very simple breathing games—'smell the flower, blow out the candle.' By age 5-6, most children can do basic counted breathing (3 seconds per phase). By 7-8, they can handle standard techniques like box breathing. The key is making it age-appropriate and fun, not forcing adult techniques on young children."
+    },
+    {
+      question: "My child won't do breathing exercises during a meltdown. What should I do?",
+      answer: "This is completely normal. During a meltdown, the emotional brain has taken over and the thinking brain is offline—they literally can't follow instructions. Instead: stay calm yourself (they co-regulate with you), offer comfort without demanding anything, and wait for the wave to pass. Introduce breathing during calm moments so it's familiar. Over time, they may start using it independently."
+    },
+    {
+      question: "How do I make breathing exercises fun for kids?",
+      answer: "Use props and imagery! Blow pinwheels, bubbles, or feathers. Place a stuffed animal on their belly to watch it rise and fall ('belly buddy'). Use visualizers like the one on this page. Rename the exercises: 'dragon breath,' 'balloon belly,' 'smell the pizza.' Make it a game, not a chore."
+    },
+    {
+      question: "Can breathing exercises help with ADHD?",
+      answer: "Breathing exercises can help children with ADHD manage impulsivity and emotional regulation, though they're not a replacement for other interventions. The structure and counting involved in techniques like box breathing can be particularly helpful. Keep sessions short (1-2 minutes) as sustained focus is challenging. Consult with your child's healthcare provider for personalized strategies."
+    },
+    {
+      question: "Should I use breathing exercises as a consequence or punishment?",
+      answer: "Never. Breathing exercises should be a helpful tool, not a punishment. Saying 'go do your breathing!' in anger makes it feel like timeout. Instead, model it yourself ('I'm feeling frustrated, I'm going to do some breathing') and offer it as an option ('Would you like to try some breathing together?'). Building positive associations is key."
+    },
+    {
+      question: "How often should kids practice breathing exercises?",
+      answer: "For building the habit, 1-2 minutes daily during calm moments works well—perhaps as part of bedtime routine or before homework. The goal is making it familiar so it becomes a go-to tool during stress. You don't need long sessions; consistency matters more than duration."
+    },
+    {
+      question: "What's the difference between box breathing and balloon breathing for kids?",
+      answer: "Both calm the nervous system, but they work differently. Box breathing uses counted phases (4 seconds each: inhale, hold, exhale, hold)—great for older kids (7+) who can count and follow structure. Balloon breathing is more visual: imagine inflating a balloon in your belly (big breath in, belly expands) and slowly letting the air out. Balloon breathing is easier for younger kids (3-6) because it uses imagination rather than counting. Start with balloon breathing for little ones, graduate to box breathing as they develop."
+    }
+  ]
+};
+
+// Pranayama hub page (SEO expansion)
+const pranayamaPage: UseCasePageContent = {
+  slug: "pranayama",
+  mode: ModeName.NadiShodhana,
+  breathingPageSlug: "nadi-shodhana",
+
+  hero: {
+    title: "Pranayama: The Complete Guide to Yogic Breathing",
+    subtitle: "Ancient breath practices for modern life",
+    intro: "Pranayama (प्राणायाम) is the yogic science of breath control—a 5,000-year-old practice that modern science is finally catching up with. Far more than simple deep breathing, pranayama offers specific techniques for energy, relaxation, focus, and spiritual practice. This guide introduces the most effective pranayama techniques and how to practice them safely."
+  },
+
+  meta: {
+    title: "Pranayama: Complete Guide to Yogic Breathing Techniques (2026)",
+    description: "Learn pranayama breathing techniques: Nadi Shodhana, Ujjayi, Kapalabhati, and more. Ancient yogic practices with modern science. Free visualizers included.",
+    ogTitle: "Pranayama: Complete Guide to Yogic Breathing",
+    ogDescription: "Learn pranayama—the yogic science of breath control. Nadi Shodhana, Ujjayi, and more. Free visualizers.",
+    twitterTitle: "Pranayama: The Complete Guide to Yogic Breathing",
+    twitterDescription: "Ancient breath practices for modern life. Learn pranayama techniques with free visualizers.",
+    author: "Resonance Editorial Team",
+    datePublished: "2026-01-20",
+    dateModified: "2026-01-20"
+  },
+
+  keywords: [
+    "pranayama",
+    "pranayama breathing",
+    "yogic breathing",
+    "pranayama techniques",
+    "yoga breathing exercises",
+    "prana breath",
+    "pranayama benefits",
+    "pranayama for beginners"
+  ],
+
+  problem: {
+    heading: "Modern Stress, Ancient Solutions",
+    content: "Modern life is filled with chronic, low-grade stress that our bodies weren't designed for. We breathe shallowly, live in fight-or-flight mode, and rarely give our nervous systems a chance to rest. The ancient yogis understood that breath is the bridge between body and mind—and developed specific techniques to shift our physiology and mental state at will.",
+    symptoms: [
+      "Chronic shallow breathing",
+      "Feeling 'wired but tired'",
+      "Difficulty concentrating or meditating",
+      "Anxiety and racing thoughts",
+      "Low energy despite adequate sleep",
+      "Disconnection from body and present moment"
+    ]
+  },
+
+  solution: {
+    heading: "Pranayama: The Breath of Life",
+    content: "Pranayama comes from 'prana' (life force/breath) and 'ayama' (extension/control). Unlike simple relaxation breathing, pranayama includes specific techniques for different purposes: calming (Nadi Shodhana), energizing (Kapalabhati), focusing (Ujjayi), and more. Regular practice creates lasting changes in your nervous system and mental clarity.",
+    whyThisPattern: "We recommend starting with Nadi Shodhana (alternate nostril breathing) because it's safe, accessible, and profoundly balancing. It calms without sedating, focuses without stimulating, and is used across traditions as a preparation for meditation."
+  },
+
+  science: {
+    heading: "The Science of Pranayama",
+    points: [
+      {
+        mechanism: "Autonomic Balance",
+        explanation: "Different pranayama techniques shift the balance between sympathetic (fight-or-flight) and parasympathetic (rest-and-digest) nervous systems. Slow techniques calm; vigorous ones energize."
+      },
+      {
+        mechanism: "Brain Hemisphere Balance",
+        explanation: "Alternate nostril breathing (Nadi Shodhana) has been shown to balance activity between left and right brain hemispheres, which may explain its effects on focus and emotional equilibrium."
+      },
+      {
+        mechanism: "Heart Rate Variability",
+        explanation: "Slow pranayama practices increase heart rate variability (HRV)—a key marker of stress resilience and overall health. Higher HRV is associated with better emotional regulation and longevity."
+      },
+      {
+        mechanism: "Carbon Dioxide Tolerance",
+        explanation: "Pranayama with breath retention (kumbhaka) gradually increases tolerance to carbon dioxide, which can reduce anxiety and improve breath efficiency."
+      }
+    ]
+  },
+
+  howTo: {
+    steps: [
+      {
+        name: "Start with the basics",
+        instruction: "Begin with diaphragmatic breathing (belly breathing) before trying specific pranayama techniques. This is the foundation of all yogic breath practices.",
+        timing: "1-2 weeks"
+      },
+      {
+        name: "Learn Nadi Shodhana first",
+        instruction: "Alternate nostril breathing is the gateway to pranayama—safe, balancing, and suitable for beginners. Practice 5-10 minutes daily until it becomes comfortable.",
+        timing: "5-10 minutes daily"
+      },
+      {
+        name: "Add Ujjayi for yoga practice",
+        instruction: "Learn the ocean breath (Ujjayi) for use during asana practice. The slight throat constriction creates heat and focus. Practice separately before integrating with movement.",
+        timing: "During yoga"
+      },
+      {
+        name: "Practice on an empty stomach",
+        instruction: "Traditional guidance recommends pranayama at least 3 hours after eating. Morning practice before breakfast is ideal. Light clothing and fresh air support the practice.",
+        timing: "Morning, empty stomach"
+      },
+      {
+        name: "Build gradually",
+        instruction: "Start with short sessions (5 minutes) and simple techniques. Advanced practices like Kapalabhati or extended retention should only be attempted after establishing a foundation.",
+        timing: "Build over months"
+      },
+      {
+        name: "Work with a teacher for advanced practices",
+        instruction: "While basic pranayama is safe for self-study, advanced techniques benefit from in-person guidance. A qualified teacher can correct subtle errors and adapt practices to your needs.",
+        timing: "For advanced techniques"
+      }
+    ],
+    tips: [
+      "Consistency matters more than duration—5 minutes daily beats 30 minutes weekly",
+      "Practice in a clean, quiet space with good ventilation",
+      "Never strain or force the breath—ease is the sign of correct practice",
+      "Avoid vigorous pranayama (Kapalabhati, Bhastrika) during pregnancy or menstruation",
+      "If you feel dizzy or anxious, stop immediately and return to normal breathing"
+    ]
+  },
+
+  references: [
+    {
+      title: "Effect of pranayama on stress and cardiovascular function",
+      source: "International Journal of Yoga",
+      url: "https://pubmed.ncbi.nlm.nih.gov/27295609/",
+      summary: "Research showing pranayama practices improve cardiovascular function and reduce stress markers."
+    },
+    {
+      title: "Effects of yogic breath regulation: A narrative review",
+      source: "Journal of Ayurveda and Integrative Medicine",
+      url: "https://pubmed.ncbi.nlm.nih.gov/29395894/",
+      summary: "Comprehensive review of pranayama research covering neurological, respiratory, and psychological effects."
+    },
+    {
+      title: "Alternate nostril breathing and autonomic function",
+      source: "Nepal Medical College Journal",
+      url: "https://pubmed.ncbi.nlm.nih.gov/19558063/",
+      summary: "Study demonstrating that Nadi Shodhana shifts autonomic balance toward parasympathetic dominance."
+    }
+  ],
+
+  disclaimer: "While pranayama is generally safe, some advanced techniques (vigorous breathing, extended retention) have contraindications. People with cardiovascular conditions, respiratory disorders, pregnancy, or recent surgery should consult a healthcare provider before beginning pranayama practice.",
+
+  video: {
+    youtubeId: "CMsFIEyITPc",
+    title: "James Nestor on the Perfect Breath",
+    description: "Bestselling author James Nestor (Breath: The New Science of a Lost Art) explains the ancient yogic breathing pattern rediscovered by modern science: 5.5 seconds in, 5.5 seconds out—a rhythm found across pranayama traditions."
+  },
+
+  relatedTechnique: {
+    slug: "nadi-shodhana",
+    callToAction: "Practice Nadi Shodhana with our interactive visualizer"
+  },
+
+  relatedUseCases: [
+    {
+      slug: "meditation",
+      teaser: "Pranayama is traditional preparation for meditation"
+    },
+    {
+      slug: "focus",
+      teaser: "Use pranayama techniques to sharpen concentration"
+    }
+  ],
+
+  faqs: [
+    {
+      question: "What does pranayama mean?",
+      answer: "Pranayama comes from two Sanskrit words: 'prana' (life force, breath, vital energy) and 'ayama' (extension, expansion, control). It's often translated as 'breath control' or 'extension of the life force.' In yoga philosophy, prana is more than physical breath—it's the subtle energy that animates all life."
+    },
+    {
+      question: "What's the difference between pranayama and regular breathing exercises?",
+      answer: "While there's overlap, pranayama traditionally includes philosophical context (prana, nadis, chakras), specific hand positions (mudras), and is practiced as part of the eight limbs of yoga. Modern breathing exercises often focus purely on physiological effects. That said, many 'breathing exercises' taught today derive directly from pranayama techniques."
+    },
+    {
+      question: "Which pranayama is best for beginners?",
+      answer: "Start with Nadi Shodhana (alternate nostril breathing). It's safe, balancing, and accessible. Once comfortable, add Ujjayi for yoga practice. Avoid vigorous techniques like Kapalabhati or Bhastrika until you have several months of foundational practice."
+    },
+    {
+      question: "Can pranayama help with anxiety?",
+      answer: "Yes, extensively. Slow pranayama techniques like Nadi Shodhana activate the parasympathetic nervous system, directly countering the anxiety response. Research shows regular practice reduces cortisol levels and anxiety symptoms. However, avoid vigorous breathing during acute anxiety—stick to slow, gentle techniques."
+    },
+    {
+      question: "How long should I practice pranayama each day?",
+      answer: "For beginners, 5-10 minutes daily is sufficient. Consistency matters more than duration—daily short practice builds habit and creates cumulative benefits. Advanced practitioners may practice 20-30 minutes or longer, but this should develop gradually over months and years."
+    },
+    {
+      question: "What pranayama techniques do you offer on this site?",
+      answer: "We currently offer visualizers for Nadi Shodhana (alternate nostril breathing) and Ujjayi (ocean breath). Both are foundational pranayama techniques suitable for beginners. Use the links below to practice with guided timing."
+    },
+    {
+      question: "What's the difference between pranayama and Western breathing exercises?",
+      answer: "Modern Western breathing exercises (box breathing, 4-7-8, coherent breathing) are often simplified, secularized versions of pranayama techniques. The key differences: (1) Context—pranayama is traditionally practiced as part of yoga's eight limbs, with philosophical underpinnings about prana and subtle energy. Western approaches focus purely on physiology. (2) Techniques—pranayama includes advanced practices like vigorous breathing (Kapalabhati), breath retention (Kumbhaka), and energy locks (Bandhas) that aren't common in Western exercises. (3) Goals—Western exercises typically target specific outcomes (stress relief, focus); pranayama aims for broader transformation of body-mind-spirit. For practical daily use, they're often interchangeable—the breath doesn't know which tradition you're following."
+    }
+  ]
+};
+
+useCasePages.push(kidsPage);
+useCasePages.push(pranayamaPage);
 
 export const useCasePageMap: Record<string, UseCasePageContent> = Object.fromEntries(
   useCasePages.map((page) => [page.slug, page])

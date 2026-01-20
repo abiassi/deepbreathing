@@ -1,5 +1,150 @@
 # Progress
 
+## 2026-01-20
+
+### SEO Technique Expansion (PRD-SEO-TECHNIQUES.md Complete)
+
+Implemented 5 new SEO pages based on Ahrefs keyword research:
+
+**New Breathing Technique Pages (not featured on homepage, appear in footer):**
+
+1. **Ujjayi Breathing** (`/breathe/ujjayi`)
+   - Target: "ujjayi breathing" (2,700 vol, difficulty 7 - VERY LOW)
+   - Pattern: 4-0-6-0 (4s inhale, 6s exhale, no holds)
+   - Color: Ocean blue (#0891b2)
+   - Focus: Yoga practitioners, ocean breath technique, throat constriction
+
+2. **Belly Breathing** (`/breathe/belly`)
+   - Target: "belly breathing" (5,600 vol, difficulty 32 - LOW)
+   - Pattern: 4-0-6-0 (same as ujjayi but different focus)
+   - Color: Warm amber (#f59e0b)
+   - Focus: Beginners, diaphragmatic breathing foundation, stress relief
+
+3. **Buteyko Breathing** (`/breathe/buteyko`)
+   - Target: "buteyko breathing" (2,900 vol, difficulty 36 - LOW)
+   - Pattern: 3-0-3-3 (light nasal breathing with pause)
+   - Color: Sky blue (#38bdf8)
+   - Focus: Asthma management, nasal breathing, reduced breathing
+
+**New Use-Case Pages:**
+
+4. **Kids Breathing Exercises** (`/for/kids`)
+   - Target: "breathing exercises for kids" (1,800 vol, difficulty 12 - VERY LOW)
+   - Technique: Box breathing (3-3-3-3 for kids)
+   - Focus: Parents, teachers, child therapists, calming tantrums
+
+5. **Pranayama Hub** (`/for/pranayama`)
+   - Target: "pranayama" (3,000 vol, difficulty 30)
+   - Technique: Links to Nadi Shodhana, Ujjayi
+   - Focus: Yoga practitioners, pranayama overview, yogic breathing
+
+**Files Created:**
+- `/src/app/breathe/ujjayi/page.tsx`
+- `/src/app/breathe/belly/page.tsx`
+- `/src/app/breathe/buteyko/page.tsx`
+- `/src/app/for/kids/page.tsx`
+- `/src/app/for/pranayama/page.tsx`
+
+**Files Modified:**
+- `/src/data/breathing-pages.ts` - Added ujjayiPage, bellyPage, buteykoPage (~700 lines)
+- `/src/data/use-case-pages.ts` - Added kidsPage, pranayamaPage (~400 lines)
+
+**Note:** Types and patterns for Ujjayi, Belly, Buteyko were already added to types.ts/constants.ts in previous work.
+
+**Expected Impact:**
+- Combined target: +4,000-5,000 monthly organic sessions
+- All pages have: HowTo schema, FAQ schema, Article schema, internal linking
+- Kids page targets underserved niche with low competition
+- Pranayama hub connects yoga-related techniques
+
+---
+
+### Scalable Technique Architecture: Featured Flag + SEO Footer
+
+Implemented infrastructure to support many breathing techniques without cluttering the homepage:
+
+**Featured Flag System**
+- Added `featured?: boolean` to `BreathingPageContent` interface
+- Core 5 techniques marked `featured: true`: Box, 4-7-8, Coherent, Physiological Sigh, Wim Hof
+- New SEO techniques (Pursed Lip, Nadi Shodhana) are `featured: false` by default
+- Created `featuredBreathingPages` export for homepage "Pick a mode" section
+- Homepage now only shows featured techniques; all others exist for SEO
+
+**Comprehensive SEO Footer**
+- Expanded homepage footer with 4-column grid layout
+- Dynamically lists all breathing techniques from `breathingPages`
+- Dynamically lists all use-case guides from `useCasePages`
+- Includes timer pages (1min, 2min, 5min, 4-7-8, coherent app)
+- Internal linking to all pages for maximum crawlability
+
+**Files Modified:**
+- `src/data/breathing-pages.ts` - Added `featured` flag to interface and pages
+- `src/app/page.tsx` - Updated "Pick a mode" section + expanded footer
+
+This enables adding unlimited SEO-focused techniques without impacting the core user experience.
+
+---
+
+### SEO Experiment Results - 6x Click Growth!
+
+Measured results for experiments launched Jan 6-9 against baseline (Dec 1 - Jan 5):
+
+**CTR Title Rewrites (Jan 6)** - SUCCESS ✅
+- Total clicks grew from 4 → 24 (6x increase!)
+- Key pages:
+  - `/4-7-8-breathing-timer`: 32 → 403 imp, 3 → 9 clicks, pos 11.9 → 8.7
+  - `/breathe/physiological-sigh`: 767 → 2173 imp, 0 → 3 clicks, pos 13.7 → 9.6
+  - `/breathe/box`: 89 → 834 imp, pos 42.8 → 8.9
+
+**Coherent Page Differentiation (Jan 9)** - SUCCESS ✅
+- Both pages got first clicks ever!
+  - `/breathe/coherent`: 285 → 567 imp, 0 → 3 clicks, pos 9.0 → 8.6
+  - `/coherent-breathing-app`: 89 → 322 imp, 0 → 3 clicks, pos 10.0 → 7.6
+
+**Physiological Sigh Intent Sections (Jan 9)** - SUCCESS ✅
+- Position improved from 13.7 → 9.6 (now in top 10!)
+
+### New Breathing Techniques: Pursed Lip & Nadi Shodhana
+
+Added two new breathing patterns based on Ahrefs keyword research:
+
+**Pursed Lip Breathing** (`/breathe/pursed-lip`)
+- Target: "pursed lip breathing" (6.7K vol, difficulty 34)
+- Pattern: 2-second inhale, 4-second exhale (1:2 ratio)
+- Focus: Respiratory health, COPD, asthma, seniors
+- Color: Emerald (#10b981)
+
+**Nadi Shodhana/Alternate Nostril** (`/breathe/nadi-shodhana`)
+- Target: "alternate nostril breathing" (3.3K vol, difficulty 28)
+- Pattern: 4-4-4 (timer mode with text instructions for nostril switching)
+- Focus: Yoga, meditation, balance, energy harmonization
+- Color: Violet (#8b5cf6)
+
+### New Use-Case Page: Breathing for Stress
+
+Created `/for/stress` targeting "breathing exercises for stress" (1K vol).
+- Technique: Physiological Sigh
+- Differentiates from anxiety page (chronic vs acute stress)
+- Addresses work stress, overwhelm, tension
+
+**Files Created:**
+- `/src/app/breathe/pursed-lip/page.tsx`
+- `/src/app/breathe/nadi-shodhana/page.tsx`
+- `/src/app/for/stress/page.tsx`
+
+**Files Modified:**
+- `/src/components/resonance/types.ts` - Added PursedLip, NadiShodhana to ModeName
+- `/src/components/resonance/constants.ts` - Added pattern definitions
+- `/packages/engine/src/types.ts` - Added to engine types
+- `/packages/engine/src/patterns.ts` - Added to engine patterns
+- `/src/data/breathing-pages.ts` - Full page content for both techniques
+- `/src/data/use-case-pages.ts` - Stress page content
+- `/docs/SEO-EXPERIMENTS.md` - Updated with results + new experiments
+- `/pnpm-workspace.yaml` - Excluded mobile app from workspace
+- `/tsconfig.json` - Excluded apps folder from TS compilation
+
+---
+
 ## 2026-01-10
 
 ### Synonym Capture: Physiological Sigh Page

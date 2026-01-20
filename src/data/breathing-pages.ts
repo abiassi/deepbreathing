@@ -97,6 +97,8 @@ export interface VideoEmbed {
 export interface BreathingPageContent {
   slug: string;
   mode: ModeName;
+  /** Show on homepage "Pick a mode" section. Core techniques = true, SEO expansions = false */
+  featured?: boolean;
   hero: HeroContent;
   meta: MetaContent;
   body: BodySection[];
@@ -118,6 +120,7 @@ export const breathingPages: BreathingPageContent[] = [
   {
     slug: "box",
     mode: ModeName.Box,
+    featured: true,
     hero: {
       title: "Box Breathing (4‑4‑4‑4) Visualizer",
       subtitle: "Equal counts to steady arousal and sharpen focus.",
@@ -309,6 +312,10 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "physiological-sigh",
         reason: "Fast downshift during spikes of stress; 1–3 cycles can relieve acute arousal quickly."
+      },
+      {
+        slug: "belly",
+        reason: "Master belly breathing first as the foundation for all breathwork techniques."
       }
     ],
     relatedUseCases: [
@@ -355,6 +362,7 @@ export const breathingPages: BreathingPageContent[] = [
   {
     slug: "4-7-8",
     mode: ModeName.Relax,
+    featured: true,
     hero: {
       title: "4‑7‑8 Breathing Visualizer",
       subtitle: "Long‑exhale cadence to downshift quickly.",
@@ -542,6 +550,10 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "physiological-sigh",
         reason: "Rapid relief during stress spikes; 1–3 cycles can downshift arousal quickly."
+      },
+      {
+        slug: "belly",
+        reason: "Diaphragmatic breathing is the base technique—master it before adding the long exhale."
       }
     ],
     relatedUseCases: [
@@ -591,6 +603,7 @@ export const breathingPages: BreathingPageContent[] = [
   {
     slug: "coherent",
     mode: ModeName.Coherent,
+    featured: true,
     hero: {
       title: "Coherent Breathing Trainer",
       subtitle: "Equal inhale/exhale near 0.1 Hz to amplify HRV.",
@@ -775,6 +788,10 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "4-7-8",
         reason: "If exhale‑emphasis feels more calming for sleep or anxiety spikes."
+      },
+      {
+        slug: "belly",
+        reason: "Start here if you're new to breathwork—diaphragmatic breathing is the foundation."
       }
     ],
     relatedUseCases: [
@@ -818,6 +835,7 @@ export const breathingPages: BreathingPageContent[] = [
   {
     slug: "physiological-sigh",
     mode: ModeName.Sigh,
+    featured: true,
     hero: {
       title: "Physiological Sigh: Instant Stress Relief",
       subtitle: "Calm down in 30 seconds with the double-inhale technique.",
@@ -1112,6 +1130,7 @@ export const breathingPages: BreathingPageContent[] = [
   {
     slug: "wim-hof",
     mode: ModeName.WimHof,
+    featured: true,
     hero: {
       title: "Wim Hof Breathing Method",
       subtitle: "The Iceman's technique for energy, focus, and resilience.",
@@ -1334,9 +1353,1226 @@ export const breathingPages: BreathingPageContent[] = [
   }
 ];
 
+// Pursed Lip Breathing page
+const pursedLipPage: BreathingPageContent = {
+  slug: "pursed-lip",
+  mode: ModeName.PursedLip,
+  hero: {
+    title: "Pursed Lip Breathing Technique",
+    subtitle: "Slow your breath and ease shortness of breath in seconds.",
+    intro: "Pursed lip breathing is a simple technique that slows your breathing and helps you get more air out of your lungs. Inhale slowly through your nose, then exhale through pursed lips (like blowing out a candle) for twice as long. Used by respiratory therapists worldwide for COPD, asthma, and exercise recovery."
+  },
+  meta: {
+    title: "Pursed Lip Breathing: Stop Shortness of Breath Fast (Free Timer)",
+    description: "Free pursed lip breathing timer. The respiratory therapist-approved technique for COPD, asthma, and shortness of breath. 2:4 ratio breathing—inhale 2s, exhale 4s through pursed lips. Try now.",
+    ogTitle: "Pursed Lip Breathing: Stop Shortness of Breath Fast",
+    ogDescription: "Respiratory therapist-approved technique for COPD, asthma, and shortness of breath. Free timer with 2:4 ratio breathing.",
+    ogImage: "og/breathe-pursed-lip.png",
+    twitterTitle: "Pursed Lip Breathing: Free Timer",
+    twitterDescription: "Stop shortness of breath with the respiratory therapist-approved technique. Free timer.",
+    author: "Resonance Editorial Team",
+    reviewer: "",
+    datePublished: "2026-01-20",
+    dateModified: "2026-01-20"
+  },
+  body: [
+    {
+      heading: "What Is Pursed Lip Breathing?",
+      content: "Pursed lip breathing is a controlled breathing technique where you inhale slowly through your nose and exhale through tightly pursed lips—as if you're blowing through a straw or cooling hot soup. The exhale is typically twice as long as the inhale (2:4 ratio). This creates back-pressure in your airways, keeping them open longer and helping trapped air escape from your lungs."
+    },
+    {
+      heading: "Who Benefits Most",
+      content: "Originally developed for COPD and emphysema patients, pursed lip breathing helps anyone experiencing shortness of breath. It's particularly effective for: chronic lung conditions (COPD, emphysema, chronic bronchitis), asthma during mild episodes, exercise-induced breathlessness, anxiety-related breathing difficulty, recovery after physical exertion, and seniors wanting to maintain lung function."
+    },
+    {
+      heading: "Benefits",
+      content: "Slows your breathing rate immediately. Helps release trapped air from the lungs. Reduces work of breathing. Can lower anxiety during breathless episodes. Improves oxygen exchange. Easy to learn and use anywhere."
+    },
+    {
+      heading: "When to Use",
+      content: "Use during shortness of breath episodes, before and during physical activity, when climbing stairs or walking uphill, during anxiety or panic, after exercise for recovery, or as a daily practice to strengthen breathing habits."
+    },
+    {
+      heading: "When to Skip",
+      content: "Pursed lip breathing is very safe. However, stop if you feel dizzy or faint. If you have severe respiratory distress, seek medical attention—this technique helps mild-moderate breathlessness but isn't a substitute for emergency care."
+    }
+  ],
+  benefits: [
+    {
+      title: "Immediate relief",
+      description: "Slows breathing and releases trapped air within seconds, reducing the sensation of breathlessness."
+    },
+    {
+      title: "Keeps airways open",
+      description: "The back-pressure from pursed lips prevents small airways from collapsing during exhalation."
+    },
+    {
+      title: "Reduces breathing work",
+      description: "Makes each breath more efficient, reducing the effort needed to breathe comfortably."
+    }
+  ],
+  practiceTips: [
+    {
+      title: "Relax your neck and shoulders",
+      description: "Tension in your upper body makes breathing harder. Drop your shoulders and unclench your jaw before starting."
+    },
+    {
+      title: "Inhale through your nose",
+      description: "Nasal breathing filters, warms, and humidifies air. Keep your mouth closed during the inhale."
+    },
+    {
+      title: "Purse lips like blowing a candle",
+      description: "Not too tight, not too loose. Imagine gently blowing to make a candle flame flicker but not go out."
+    }
+  ],
+  faqs: [
+    {
+      question: "How long should I do pursed lip breathing?",
+      answer: "For immediate relief, 5-10 breaths (about 30-60 seconds) is often enough. For building the habit, practice 4-5 times daily for 5 minutes each. During activities that cause breathlessness (walking, stairs), use it continuously. There's no maximum—it's safe to use as long as needed."
+    },
+    {
+      question: "What's the correct ratio for pursed lip breathing?",
+      answer: "The standard ratio is 2:4—inhale for 2 seconds through your nose, exhale for 4 seconds through pursed lips. Some people prefer 2:6 or 3:6 for a longer exhale. The key is that the exhale should be at least twice as long as the inhale. Adjust to whatever feels comfortable and sustainable."
+    },
+    {
+      question: "Does pursed lip breathing help with anxiety?",
+      answer: "Yes. The slow, controlled exhale activates your parasympathetic nervous system (rest-and-digest mode), which counteracts anxiety's fight-or-flight response. The technique is particularly helpful when anxiety causes chest tightness or a feeling of not getting enough air."
+    },
+    {
+      question: "Can I use pursed lip breathing during exercise?",
+      answer: "Absolutely—this is one of its best uses. Use it before exercise to prepare your lungs, during exercise when you feel breathless, and after exercise for recovery. Many respiratory therapists teach it specifically for maintaining activity levels with lung conditions."
+    },
+    {
+      question: "Is pursed lip breathing good for COPD?",
+      answer: "Yes, it's one of the most recommended techniques for COPD management. Studies show it improves oxygen saturation, reduces respiratory rate, and decreases dyspnea (breathlessness) in COPD patients. It's often taught as part of pulmonary rehabilitation programs."
+    },
+    {
+      question: "What's the difference between pursed lip breathing and other techniques?",
+      answer: "Pursed lip breathing focuses specifically on the exhale mechanics—the pursed lips create back-pressure that keeps airways open. Box breathing and 4-7-8 use breath holds for relaxation. Diaphragmatic breathing focuses on belly vs. chest movement. Pursed lip breathing can be combined with diaphragmatic breathing for maximum benefit."
+    }
+  ],
+  howTo: {
+    totalTime: "1-5 minutes",
+    difficulty: "easy",
+    tools: [
+      "Chair or comfortable position",
+      "Optional timer or visualizer"
+    ],
+    supplies: [],
+    steps: [
+      {
+        name: "Relax",
+        instruction: "Sit comfortably or stand. Drop your shoulders and relax your neck. Unclench your jaw.",
+        duration: "10 seconds"
+      },
+      {
+        name: "Inhale through nose",
+        instruction: "Close your mouth. Breathe in slowly through your nose for 2 counts. Let your belly rise.",
+        duration: "2 seconds"
+      },
+      {
+        name: "Purse your lips",
+        instruction: "Pucker your lips as if you're about to whistle or blow out a candle.",
+        duration: "instant"
+      },
+      {
+        name: "Exhale through pursed lips",
+        instruction: "Breathe out slowly and gently through your pursed lips for 4 counts. Don't force the air out.",
+        duration: "4 seconds"
+      },
+      {
+        name: "Repeat",
+        instruction: "Continue for 5-10 breaths or longer as needed. Use during any activity that causes breathlessness.",
+        duration: "1-5 minutes"
+      }
+    ]
+  },
+  useCases: [
+    {
+      name: "COPD management",
+      description: "Daily practice to reduce breathlessness and improve lung function.",
+      dose: "4-5 times daily, 5 minutes each session"
+    },
+    {
+      name: "Exercise recovery",
+      description: "After cardio or climbing stairs to catch your breath faster.",
+      dose: "5-10 breaths or until breathing normalizes"
+    },
+    {
+      name: "Anxiety relief",
+      description: "When chest tightness or air hunger accompanies anxiety.",
+      dose: "1-2 minutes, or until calm"
+    }
+  ],
+  research: {
+    studies: [
+      {
+        title: "Roberts et al., 2009 - Respiratory Care",
+        summary: "Pursed lip breathing decreased respiratory rate and improved tidal volume and oxygen saturation in COPD patients.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/19712491/"
+      },
+      {
+        title: "Nield et al., 2007 - Heart & Lung",
+        summary: "Pursed lip breathing as part of dyspnea self-management improved functional performance and reduced breathlessness in COPD.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/17509428/"
+      },
+      {
+        title: "Garrod & Lasserson, 2007 - Cochrane Review",
+        summary: "Breathing exercises including pursed lip breathing showed modest benefits for dyspnea in COPD patients.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/17943897/"
+      }
+    ],
+    safety: [
+      "Stop if you feel dizzy or faint.",
+      "This technique is for mild-moderate breathlessness. Seek emergency care for severe respiratory distress.",
+      "If you have a diagnosed lung condition, consult your healthcare provider about incorporating this technique.",
+      "Safe for seniors, athletes, and most people without respiratory conditions."
+    ],
+    quotes: []
+  },
+  related: [
+    {
+      slug: "coherent",
+      reason: "For general stress reduction and HRV training without the pursed lip exhale."
+    },
+    {
+      slug: "4-7-8",
+      reason: "For sleep and deep relaxation with an extended exhale phase."
+    },
+    {
+      slug: "buteyko",
+      reason: "Another respiratory health technique focusing on light nasal breathing."
+    }
+  ],
+  relatedUseCases: [
+    {
+      slug: "high-blood-pressure",
+      title: "Blood Pressure Support",
+      teaser: "Slow breathing can help support healthy blood pressure"
+    },
+    {
+      slug: "running",
+      title: "Running & Cardio",
+      teaser: "Recover faster between intervals with pursed lip recovery breathing"
+    }
+  ],
+  keywords: [
+    "pursed lip breathing",
+    "pursed lip breathing technique",
+    "pursed lip breathing COPD",
+    "pursed lip breathing exercises",
+    "how to do pursed lip breathing",
+    "pursed lip breathing benefits",
+    "breathing for shortness of breath",
+    "COPD breathing exercises",
+    "respiratory therapy breathing",
+    "breathing for asthma",
+    "breathing for exercise recovery"
+  ],
+  synonyms: [
+    "PLB",
+    "puckered lip breathing",
+    "straw breathing"
+  ],
+  frequency: "As needed for breathlessness; optionally 4-5 times daily for 5 minutes to build the habit"
+};
+
+// Nadi Shodhana (Alternate Nostril Breathing) page
+const nadiShodhanaPage: BreathingPageContent = {
+  slug: "nadi-shodhana",
+  mode: ModeName.NadiShodhana,
+  hero: {
+    title: "Alternate Nostril Breathing (Nadi Shodhana)",
+    subtitle: "Balance your nervous system with this ancient yoga technique.",
+    intro: "Nadi Shodhana, or alternate nostril breathing, is a yogic practice that balances the left and right hemispheres of your brain and calms the nervous system. Inhale through one nostril, hold, exhale through the other, then reverse. The timer guides your rhythm—you control which nostril to use."
+  },
+  meta: {
+    title: "Alternate Nostril Breathing: Balance & Calm in 5 Minutes (Free Timer)",
+    description: "Free alternate nostril breathing timer (Nadi Shodhana). The ancient yoga technique for mental clarity, stress relief, and nervous system balance. 4-4-4 rhythm. Try now.",
+    ogTitle: "Alternate Nostril Breathing: Balance & Calm in 5 Minutes",
+    ogDescription: "Free timer for Nadi Shodhana—the ancient yoga technique for mental clarity and stress relief. 4-4-4 rhythm.",
+    ogImage: "og/breathe-nadi-shodhana.png",
+    twitterTitle: "Alternate Nostril Breathing: Free Timer",
+    twitterDescription: "Balance your nervous system with the ancient yoga technique. Free timer.",
+    author: "Resonance Editorial Team",
+    reviewer: "",
+    datePublished: "2026-01-20",
+    dateModified: "2026-01-20"
+  },
+  body: [
+    {
+      heading: "What Is Nadi Shodhana?",
+      content: "Nadi Shodhana (pronounced NAH-dee show-DAH-nah) means 'channel cleansing' in Sanskrit. It's a pranayama technique where you alternate breathing through your left and right nostrils in a specific pattern. The practice is believed to balance the ida (left/lunar/cooling) and pingala (right/solar/warming) energy channels, leading to mental clarity and emotional balance."
+    },
+    {
+      heading: "How It Works",
+      content: "Use your right hand in Vishnu Mudra: fold your index and middle fingers down, using your thumb to close your right nostril and your ring finger to close your left. The timer will guide the rhythm—you manually switch nostrils at each phase change. One complete round: inhale left → hold → exhale right → inhale right → hold → exhale left."
+    },
+    {
+      heading: "Benefits",
+      content: "Balances left/right brain hemispheres. Reduces stress and anxiety. Improves focus and mental clarity. Prepares the mind for meditation. Can help with sleep when practiced before bed. Ancient yogis believed it purifies the energy channels."
+    },
+    {
+      heading: "When to Use",
+      content: "Before meditation or yoga practice. When feeling scattered or unfocused. To calm anxiety or racing thoughts. Before important decisions or creative work. As a morning ritual for mental balance. Before bed for better sleep."
+    },
+    {
+      heading: "When to Skip",
+      content: "If you have a cold or nasal congestion, this technique may be difficult. Don't practice during acute illness with fever. If the breath hold feels uncomfortable, skip it and just alternate inhale/exhale. Stop if you feel dizzy."
+    }
+  ],
+  benefits: [
+    {
+      title: "Mental balance",
+      description: "Alternating nostrils is believed to balance the logical left brain and creative right brain."
+    },
+    {
+      title: "Stress reduction",
+      description: "The slow, rhythmic pattern activates the parasympathetic nervous system for deep calm."
+    },
+    {
+      title: "Improved focus",
+      description: "The concentration required to coordinate nostrils clears mental chatter and sharpens attention."
+    }
+  ],
+  practiceTips: [
+    {
+      title: "Use Vishnu Mudra",
+      description: "Fold your index and middle fingers to your palm. Use your thumb for the right nostril, ring finger for the left."
+    },
+    {
+      title: "Keep it gentle",
+      description: "Don't squeeze your nose too hard. Light pressure is enough to close each nostril."
+    },
+    {
+      title: "Follow the timer",
+      description: "The visualizer shows when to inhale, hold, and exhale. Switch nostrils each time the phase changes."
+    }
+  ],
+  faqs: [
+    {
+      question: "Which nostril do I start with?",
+      answer: "Traditionally, you start by closing the right nostril and inhaling through the left. The pattern is: inhale left → hold → exhale right → inhale right → hold → exhale left. That's one complete round. The timer will show 'Inhale' (left), 'Hold', 'Exhale' (right), then 'Inhale' (right), 'Hold', 'Exhale' (left)."
+    },
+    {
+      question: "How long should I practice?",
+      answer: "Start with 5 minutes (about 5-6 complete rounds). You can extend to 10-15 minutes as you become comfortable. Even 3 minutes provides noticeable calming effects. Quality matters more than quantity—stay relaxed throughout."
+    },
+    {
+      question: "What if I can't breathe through one nostril?",
+      answer: "It's normal for one nostril to be more open than the other—this naturally alternates throughout the day (the nasal cycle). If one side is completely blocked, try the practice anyway as it may help open it, or wait until congestion clears."
+    },
+    {
+      question: "Can I do alternate nostril breathing lying down?",
+      answer: "It's best to sit upright so you can use your hand to control the nostrils. If you want a pre-sleep breathing practice while lying down, try 4-7-8 breathing or coherent breathing instead."
+    },
+    {
+      question: "Is this the same as pranayama?",
+      answer: "Nadi Shodhana is one type of pranayama—the yogic science of breath control. Other pranayama techniques include Kapalabhati (skull shining breath), Ujjayi (ocean breath), and Bhastrika (bellows breath). Nadi Shodhana is one of the gentlest and most accessible for beginners."
+    },
+    {
+      question: "What does science say about alternate nostril breathing?",
+      answer: "Research shows alternate nostril breathing can reduce blood pressure, lower heart rate, and decrease anxiety. Studies also show it may improve attention and fine motor coordination. The mechanism appears to be related to activating the parasympathetic nervous system through slow, controlled breathing."
+    }
+  ],
+  howTo: {
+    totalTime: "5-15 minutes",
+    difficulty: "intermediate",
+    tools: [
+      "Comfortable seated position",
+      "Timer or visualizer for rhythm"
+    ],
+    supplies: [],
+    steps: [
+      {
+        name: "Sit comfortably",
+        instruction: "Sit with spine tall, shoulders relaxed. You can sit cross-legged or in a chair with feet flat.",
+        duration: "15 seconds"
+      },
+      {
+        name: "Form Vishnu Mudra",
+        instruction: "With your right hand, fold index and middle fingers down. Extend thumb, ring finger, and pinky.",
+        duration: "5 seconds"
+      },
+      {
+        name: "Close right nostril",
+        instruction: "Use your thumb to gently close your right nostril.",
+        duration: "instant"
+      },
+      {
+        name: "Inhale through left",
+        instruction: "Breathe in slowly through your left nostril for 4 counts.",
+        duration: "4 seconds"
+      },
+      {
+        name: "Hold",
+        instruction: "Close both nostrils (thumb on right, ring finger on left). Hold gently for 4 counts.",
+        duration: "4 seconds"
+      },
+      {
+        name: "Exhale through right",
+        instruction: "Release your thumb, keep left closed. Exhale through right nostril for 4 counts.",
+        duration: "4 seconds"
+      },
+      {
+        name: "Inhale through right",
+        instruction: "Keep left closed. Inhale through right nostril for 4 counts.",
+        duration: "4 seconds"
+      },
+      {
+        name: "Hold",
+        instruction: "Close both nostrils. Hold gently for 4 counts.",
+        duration: "4 seconds"
+      },
+      {
+        name: "Exhale through left",
+        instruction: "Release ring finger, keep right closed. Exhale through left nostril for 4 counts.",
+        duration: "4 seconds"
+      },
+      {
+        name: "Repeat",
+        instruction: "That's one complete round. Continue for 5-10 rounds or 5-15 minutes.",
+        duration: "5-15 minutes"
+      }
+    ]
+  },
+  useCases: [
+    {
+      name: "Pre-meditation prep",
+      description: "Clear the mind and balance energy before sitting for meditation.",
+      dose: "5 minutes (5-6 rounds)"
+    },
+    {
+      name: "Work focus reset",
+      description: "Clear mental fog and restore concentration between tasks.",
+      dose: "3-5 minutes"
+    },
+    {
+      name: "Before-bed calm",
+      description: "Wind down racing thoughts before sleep.",
+      dose: "5-10 minutes, skip holds if edgy"
+    }
+  ],
+  research: {
+    studies: [
+      {
+        title: "Sharma et al., 2013 - Journal of Clinical and Diagnostic Research",
+        summary: "Alternate nostril breathing for 15 minutes reduced blood pressure and pulse rate in healthy volunteers.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/23543860/"
+      },
+      {
+        title: "Telles et al., 2008 - Indian Journal of Physiology and Pharmacology",
+        summary: "Alternate nostril breathing improved performance on attention and fine motor tasks compared to breath awareness alone.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/19235006/"
+      },
+      {
+        title: "Sinha et al., 2013 - Journal of Ayurveda and Integrative Medicine",
+        summary: "Nadi Shodhana practiced for 4 weeks reduced anxiety and improved cognitive function in healthy adults.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/24455447/"
+      }
+    ],
+    safety: [
+      "Stop if you feel dizzy or uncomfortable.",
+      "Skip breath holds if they cause anxiety or strain.",
+      "Not recommended during acute illness with fever.",
+      "If severely congested, wait until nasal passages clear.",
+      "Practice seated—not while driving or in water."
+    ],
+    quotes: []
+  },
+  related: [
+    {
+      slug: "box",
+      reason: "For structured relaxation without the nostril switching."
+    },
+    {
+      slug: "coherent",
+      reason: "For HRV training with a simpler equal-ratio pattern."
+    },
+    {
+      slug: "ujjayi",
+      reason: "Another foundational pranayama, often practiced together in yoga."
+    }
+  ],
+  relatedUseCases: [
+    {
+      slug: "focus",
+      title: "Focus & Concentration",
+      teaser: "Clear mental fog and sharpen attention before deep work"
+    },
+    {
+      slug: "meditation",
+      title: "Meditation Prep",
+      teaser: "Traditional yogic preparation for seated meditation"
+    },
+    {
+      slug: "pranayama",
+      title: "Pranayama Guide",
+      teaser: "Part of the ancient pranayama tradition of yogic breathing"
+    }
+  ],
+  keywords: [
+    "alternate nostril breathing",
+    "nadi shodhana",
+    "nadi shodhana pranayama",
+    "alternate nostril breathing benefits",
+    "alternate nostril breathing technique",
+    "yoga breathing exercises",
+    "pranayama breathing",
+    "anulom vilom",
+    "nostril breathing meditation",
+    "balance breathing technique",
+    "yogic breathing"
+  ],
+  synonyms: [
+    "anulom vilom",
+    "anuloma viloma",
+    "channel cleansing breath",
+    "nostril breathing"
+  ],
+  frequency: "Daily, 5-15 minutes. Best before meditation, yoga, or creative work."
+};
+
+// Ujjayi Breathing page content (SEO expansion - not featured)
+const ujjayiPage: BreathingPageContent = {
+  slug: "ujjayi",
+  mode: ModeName.Ujjayi,
+  featured: false,
+  hero: {
+    title: "Ujjayi Breathing: The Ocean Breath Technique",
+    subtitle: "The yogic breath that sounds like ocean waves for deep focus and calm.",
+    intro: "Ujjayi breathing—also called 'ocean breath' or 'victorious breath'—creates a soft, rhythmic sound by gently constricting the back of your throat. This ancient pranayama technique is the foundation of most yoga practices, helping synchronize breath with movement while calming the nervous system."
+  },
+  meta: {
+    title: "Ujjayi Breathing: Ocean Breath Technique for Yoga & Focus (Free Guide)",
+    description: "Learn ujjayi breathing, the 'ocean breath' used in yoga for 5,000+ years. Step-by-step guide with free visualizer. Master the throat constriction technique today.",
+    ogTitle: "Ujjayi Breathing: The Ocean Breath Technique",
+    ogDescription: "Learn ujjayi breathing—the yogic 'ocean breath' that calms your nervous system in minutes. Free visualizer + step-by-step guide.",
+    ogImage: "og/breathe-ujjayi.png",
+    twitterTitle: "Ujjayi Breathing: Ocean Breath Technique for Yoga & Focus",
+    twitterDescription: "Learn the yogic 'ocean breath' that calms your nervous system. Free visualizer + guide.",
+    author: "Resonance Editorial Team",
+    reviewer: "",
+    datePublished: "2026-01-20",
+    dateModified: "2026-01-20"
+  },
+  body: [
+    {
+      heading: "What it is",
+      content: "Ujjayi (oo-JAH-yee) means 'victorious' in Sanskrit. You create the signature ocean sound by slightly narrowing the glottis—the opening at the back of your throat—while breathing through your nose. This creates a gentle resistance, slowing and smoothing your breath naturally. The timing is typically 4 seconds inhale, 6 seconds exhale, with no holds."
+    },
+    {
+      heading: "How to make the sound",
+      content: "Imagine fogging a mirror with your breath, but with your mouth closed. Or think of Darth Vader's breathing, but softer and through the nose. The sound should be audible to you but not the person next to you in yoga class. The constriction happens at the back of your throat, not in your nose or chest."
+    },
+    {
+      heading: "Benefits",
+      content: "The audible breath creates a focal point that anchors attention, making meditation and yoga flow easier. The slight resistance builds heat internally (tapas) and may increase oxygen absorption. Research on slow breathing techniques shows reduced cortisol, lower blood pressure, and increased HRV within minutes of practice."
+    },
+    {
+      heading: "When to use",
+      content: "During yoga practice (especially vinyasa and ashtanga), before meditation, when you need grounding focus, or anytime you want a calming rhythm. The audible breath helps maintain awareness during movement sequences."
+    },
+    {
+      heading: "When to skip",
+      content: "If you have a sore throat, respiratory infection, or any throat condition that makes the constriction uncomfortable. Don't strain—if the sound feels forced, lighten the constriction or practice without it until you build strength."
+    },
+    {
+      heading: "Ujjayi vs Box Breathing",
+      content: "Both ujjayi and box breathing calm the nervous system, but they serve different purposes. Ujjayi uses throat constriction to create an audible anchor—ideal for yoga flow, meditation, and sustained focus during movement. Box breathing uses equal counts (4-4-4-4) with holds—ideal for acute stress, quick resets, and structured calming without the sound component. Choose ujjayi when you want a flowing, yoga-compatible breath; choose box breathing when you need a simple, portable technique for immediate stress relief."
+    }
+  ],
+  benefits: [
+    {
+      title: "Anchored attention",
+      description: "The ocean sound gives your mind something tangible to follow, reducing mental wandering during practice."
+    },
+    {
+      title: "Natural breath control",
+      description: "The throat constriction naturally slows your breathing to the calming 5-6 breaths per minute range."
+    },
+    {
+      title: "Internal heat",
+      description: "Traditional yoga texts describe ujjayi as generating 'tapas'—internal heat that purifies and energizes."
+    }
+  ],
+  practiceTips: [
+    {
+      title: "Start without the sound",
+      description: "Practice the slow 4-6 breath rhythm first. Add the throat constriction gradually once you're comfortable."
+    },
+    {
+      title: "Keep it soft",
+      description: "The sound should be like distant ocean waves, not a forced rasp. If your throat tightens, you're working too hard."
+    },
+    {
+      title: "Nasal breathing only",
+      description: "Both inhale and exhale through the nose. The mouth stays gently closed throughout."
+    }
+  ],
+  faqs: [
+    {
+      question: "What does ujjayi mean?",
+      answer: "Ujjayi (उज्जायी) is Sanskrit for 'victorious' or 'triumphant.' The name suggests the expansive, empowering quality this breath creates. It's also called 'ocean breath' because of the wave-like sound, or 'victorious breath' as a direct translation."
+    },
+    {
+      question: "How do I know if I'm doing ujjayi correctly?",
+      answer: "You should hear a soft, steady sound like distant ocean waves or a gentle whisper. The sound should be consistent on both inhale and exhale. If you feel strain, lightheadedness, or the sound is harsh/forced, lighten the constriction. The breath should feel smooth and controlled, not effortful."
+    },
+    {
+      question: "Can I practice ujjayi outside of yoga?",
+      answer: "Absolutely. While ujjayi is foundational to yoga practice, you can use it anytime you want a calming, focused breath. It works well during meditation, before presentations, or as a general stress relief technique. The visualizer above lets you practice with timing guidance."
+    },
+    {
+      question: "Is ujjayi the same as Darth Vader breathing?",
+      answer: "The comparison helps people understand the throat constriction, but ujjayi should be much softer. Darth Vader's breathing is loud and mechanical; ujjayi is a gentle whisper, barely audible to others. Think of it as 'Darth Vader breathing lite'—same mechanism, 10% of the intensity."
+    },
+    {
+      question: "Why does ujjayi use a longer exhale?",
+      answer: "The 4-6 (inhale-exhale) ratio, with the exhale lasting 50% longer, activates the parasympathetic nervous system more strongly than equal breathing. This exhale-emphasis pattern is found across calming breath techniques and is associated with vagal tone improvement and stress reduction."
+    },
+    {
+      question: "Is ujjayi safe for beginners?",
+      answer: "Yes, ujjayi is beginner-friendly when practiced gently. Start without the throat constriction, just using the 4-6 timing. Add the sound gradually over days or weeks. If you have any throat conditions, respiratory issues, or feel discomfort, consult a qualified yoga instructor or healthcare provider."
+    }
+  ],
+  howTo: {
+    totalTime: "5–15 minutes",
+    difficulty: "easy",
+    tools: [
+      "Yoga mat or comfortable seat",
+      "On-screen timer (optional)"
+    ],
+    supplies: [],
+    steps: [
+      {
+        name: "Find your position",
+        instruction: "Sit comfortably or prepare for yoga practice. Spine tall, shoulders relaxed, jaw soft.",
+        duration: "30 seconds"
+      },
+      {
+        name: "Practice the throat position",
+        instruction: "Open your mouth and exhale like you're fogging a mirror—'haaaa.' Notice the slight throat constriction. Now close your mouth and make that same constriction while breathing through your nose.",
+        duration: "1 minute"
+      },
+      {
+        name: "Inhale with sound",
+        instruction: "Breathe in through your nose for 4 counts, maintaining the gentle throat constriction. You should hear a soft ocean sound. Let your belly expand.",
+        duration: "4 seconds"
+      },
+      {
+        name: "Exhale with sound",
+        instruction: "Exhale through your nose for 6 counts, keeping the same throat position. The sound should be smooth and consistent. Belly falls naturally.",
+        duration: "6 seconds"
+      },
+      {
+        name: "Find your rhythm",
+        instruction: "Continue for 5-15 minutes, letting the breath become automatic. If practicing during yoga, synchronize the breath with your movements.",
+        duration: "5–15 minutes"
+      }
+    ]
+  },
+  useCases: [
+    {
+      name: "Yoga practice",
+      description: "The foundation breath for vinyasa and ashtanga yoga, helping synchronize movement with breath.",
+      dose: "Throughout entire practice"
+    },
+    {
+      name: "Pre-meditation centering",
+      description: "5 minutes of ujjayi before silent meditation to settle the mind and establish rhythm.",
+      dose: "5 minutes before sitting"
+    },
+    {
+      name: "Focus work",
+      description: "Use during deep work sessions when you need sustained, calm attention.",
+      dose: "5-10 minutes as needed"
+    }
+  ],
+  research: {
+    studies: [
+      {
+        title: "Slow breathing and cardiovascular effects",
+        summary: "Research shows slow breathing at 5-6 breaths per minute (the natural rate during ujjayi) improves heart rate variability and reduces blood pressure through vagal activation.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/29923375/"
+      },
+      {
+        title: "Pranayama and autonomic function",
+        summary: "Studies on pranayama techniques including ujjayi show shifts toward parasympathetic dominance, reduced cortisol, and improved stress resilience with regular practice.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/27295609/"
+      }
+    ],
+    safety: [
+      "Keep the throat constriction gentle—strain indicates you're working too hard.",
+      "Stop if you feel lightheaded, dizzy, or short of breath.",
+      "Not recommended during acute throat infections or respiratory illness.",
+      "If you have high blood pressure, heart conditions, or respiratory disorders, consult your doctor before starting any breathing practice."
+    ],
+    quotes: [
+      {
+        text: "When the breath wanders, the mind is unsteady. But when the breath is calmed, the mind too will be still.",
+        attribution: "Hatha Yoga Pradipika"
+      }
+    ]
+  },
+  related: [
+    {
+      slug: "nadi-shodhana",
+      reason: "Another foundational pranayama technique, excellent to pair with ujjayi in yoga practice."
+    },
+    {
+      slug: "coherent",
+      reason: "Similar slow breathing rate (5-6 breaths/min) without the throat sound—good for those who find ujjayi challenging."
+    },
+    {
+      slug: "belly",
+      reason: "Foundation technique to master first—diaphragmatic breathing powers the ujjayi sound."
+    }
+  ],
+  relatedUseCases: [
+    {
+      slug: "meditation",
+      title: "Breathing for Meditation",
+      teaser: "Use ujjayi as a gateway to deeper meditation practice"
+    },
+    {
+      slug: "focus",
+      title: "Breathing for Focus",
+      teaser: "The ocean breath anchors attention for deep work"
+    },
+    {
+      slug: "pranayama",
+      title: "Pranayama Guide",
+      teaser: "Explore the full pranayama tradition of yogic breathing"
+    }
+  ],
+  keywords: [
+    "ujjayi breathing",
+    "ujjayi breath",
+    "ocean breath",
+    "victorious breath",
+    "yogic breathing",
+    "pranayama breathing",
+    "yoga breathing technique",
+    "throat breathing",
+    "ujjayi pranayama"
+  ],
+  synonyms: [
+    "ocean breath",
+    "victorious breath",
+    "ujjayi pranayama",
+    "yoga breath"
+  ],
+  frequency: "Daily during yoga practice, or 5-15 minutes as standalone practice"
+};
+
+// Belly Breathing page content (SEO expansion - not featured)
+const bellyPage: BreathingPageContent = {
+  slug: "belly",
+  mode: ModeName.Belly,
+  featured: false,
+  hero: {
+    title: "Belly Breathing: Diaphragmatic Breathing Exercises",
+    subtitle: "The foundation of all breathwork—learn to breathe from your diaphragm.",
+    intro: "Belly breathing (diaphragmatic breathing) is the most fundamental breathing technique and the foundation for all advanced breathwork. By engaging your diaphragm—the dome-shaped muscle below your lungs—you take deeper, more efficient breaths that activate your body's relaxation response."
+  },
+  meta: {
+    title: "Belly Breathing: Diaphragmatic Breathing Exercises (Free Visualizer)",
+    description: "Learn belly breathing (diaphragmatic breathing)—the foundation of all breathwork. Reduce stress, improve sleep, and breathe more efficiently. Free visualizer + guide.",
+    ogTitle: "Belly Breathing: The Foundation of All Breathwork",
+    ogDescription: "Learn diaphragmatic breathing—the technique that powers all other breathwork. Free visualizer + step-by-step guide.",
+    ogImage: "og/breathe-belly.png",
+    twitterTitle: "Belly Breathing: Diaphragmatic Breathing Exercises",
+    twitterDescription: "Learn the foundation of all breathwork. Free visualizer + complete guide.",
+    author: "Resonance Editorial Team",
+    reviewer: "",
+    datePublished: "2026-01-20",
+    dateModified: "2026-01-20"
+  },
+  body: [
+    {
+      heading: "What it is",
+      content: "Belly breathing means using your diaphragm—not your chest and shoulders—to drive respiration. When you inhale, your diaphragm contracts and moves downward, creating a vacuum that pulls air into your lungs. Your belly expands outward. When you exhale, the diaphragm relaxes, pushing air out as your belly falls. The timing is 4 seconds in, 6 seconds out, with no holds."
+    },
+    {
+      heading: "Why it matters",
+      content: "Most adults have shifted to shallow chest breathing—especially under stress. Chest breathing uses accessory muscles (shoulders, neck) inefficiently and can perpetuate anxiety. Diaphragmatic breathing is how you breathed as a baby and how you breathe during deep sleep. Relearning this pattern can reduce stress, improve oxygen efficiency, and support better sleep."
+    },
+    {
+      heading: "Benefits",
+      content: "Deep diaphragmatic breaths stimulate the vagus nerve, activating the parasympathetic 'rest and digest' response. Studies show regular practice can lower cortisol, reduce blood pressure, improve heart rate variability, and decrease anxiety. It's also the foundation for singing, public speaking, and athletic performance."
+    },
+    {
+      heading: "When to use",
+      content: "Anytime you want to calm down, before bed, during stress, or when learning any other breathing technique. This is the 'default' healthy breathing pattern—ideally, your normal breathing should look like gentle belly breathing."
+    },
+    {
+      heading: "When to skip",
+      content: "Belly breathing is safe for almost everyone. However, if you have a hiatal hernia, recent abdominal surgery, or severe respiratory conditions, consult your doctor first. Stop if you feel any pain or unusual discomfort."
+    },
+    {
+      heading: "Belly Breathing vs Chest Breathing",
+      content: "Most adults unknowingly breathe from their chest—shallow, rapid breaths that use shoulder and neck muscles. This pattern is inefficient and associated with chronic stress. Belly breathing (diaphragmatic breathing) uses your primary breathing muscle, is how you breathed as a baby, and is how you breathe during sleep. Quick test: place one hand on your chest, one on your belly. Breathe normally. If your chest hand rises more than your belly hand, you're chest breathing and could benefit from retraining. The goal isn't to force deep breaths—it's to let your belly do the work naturally."
+    }
+  ],
+  benefits: [
+    {
+      title: "Natural stress relief",
+      description: "Diaphragmatic breathing directly activates the vagus nerve, triggering the relaxation response within minutes."
+    },
+    {
+      title: "More efficient breathing",
+      description: "The diaphragm is designed to power breathing—using it properly requires less effort than shallow chest breathing."
+    },
+    {
+      title: "Foundation for all breathwork",
+      description: "Every advanced technique builds on diaphragmatic breathing. Master this and everything else becomes easier."
+    }
+  ],
+  practiceTips: [
+    {
+      title: "Hand placement helps",
+      description: "Place one hand on your chest, one on your belly. Only the belly hand should rise. The chest stays relatively still."
+    },
+    {
+      title: "Start lying down",
+      description: "It's easiest to feel your diaphragm when lying on your back. Gravity helps the belly rise naturally."
+    },
+    {
+      title: "Keep it gentle",
+      description: "Don't force a big belly expansion. The movement should be smooth and comfortable, not exaggerated."
+    }
+  ],
+  faqs: [
+    {
+      question: "What's the difference between belly breathing and diaphragmatic breathing?",
+      answer: "They're the same thing. 'Belly breathing' describes what you see (belly moving), while 'diaphragmatic breathing' describes what's happening anatomically (diaphragm contracting). Both terms refer to using your primary breathing muscle—the diaphragm—rather than accessory muscles in your chest and shoulders."
+    },
+    {
+      question: "How do I know if I'm breathing from my diaphragm?",
+      answer: "Place one hand on your chest and one on your belly. When you inhale, your belly should expand outward while your chest stays relatively still. If your shoulders rise and chest expands but belly doesn't move much, you're chest breathing. Most people need to consciously relearn belly breathing after years of shallow habits."
+    },
+    {
+      question: "Why is belly breathing better than chest breathing?",
+      answer: "The diaphragm is designed to power breathing efficiently. Chest breathing uses smaller accessory muscles (shoulders, neck, intercostals) that fatigue more easily and are associated with stress responses. Diaphragmatic breathing takes deeper breaths with less effort, stimulates the vagus nerve for relaxation, and is how humans naturally breathe when relaxed or sleeping."
+    },
+    {
+      question: "Can belly breathing help with anxiety?",
+      answer: "Yes, significantly. Deep diaphragmatic breaths stimulate the vagus nerve, which activates the parasympathetic nervous system—your body's 'brake pedal' that counters the fight-or-flight stress response. Studies show regular practice reduces cortisol levels and self-reported anxiety. It's often the first technique taught in anxiety management programs."
+    },
+    {
+      question: "How often should I practice belly breathing?",
+      answer: "Ideally, 5-10 minutes daily to retrain your default breathing pattern. Many people set reminders to do 1-2 minutes several times throughout the day. Over time, diaphragmatic breathing should become your natural default—you won't need to think about it."
+    },
+    {
+      question: "Is belly breathing good for sleep?",
+      answer: "Excellent for sleep. Practice for 5-10 minutes in bed before sleep to activate your relaxation response. The slow, rhythmic pattern (4 seconds in, 6 seconds out) naturally slows your heart rate and prepares your body for rest. Many people find they fall asleep before finishing their practice."
+    }
+  ],
+  howTo: {
+    totalTime: "5–10 minutes",
+    difficulty: "easy",
+    tools: [
+      "Comfortable surface to lie on (bed, yoga mat)",
+      "On-screen timer (optional)"
+    ],
+    supplies: [],
+    steps: [
+      {
+        name: "Get comfortable",
+        instruction: "Lie on your back with knees bent, or sit in a comfortable chair. Loosen any tight clothing around your waist.",
+        duration: "30 seconds"
+      },
+      {
+        name: "Place your hands",
+        instruction: "Put one hand on your upper chest and one on your belly, just below your ribcage. This helps you feel where the breath is going.",
+        duration: "10 seconds"
+      },
+      {
+        name: "Exhale completely",
+        instruction: "Before starting, exhale fully through your mouth to empty your lungs. Let your belly fall inward.",
+        duration: "3-4 seconds"
+      },
+      {
+        name: "Inhale into your belly",
+        instruction: "Breathe in slowly through your nose for 4 counts. Focus on pushing your belly hand upward while keeping your chest hand still. Imagine inflating a balloon in your abdomen.",
+        duration: "4 seconds"
+      },
+      {
+        name: "Exhale slowly",
+        instruction: "Breathe out through your nose (or pursed lips) for 6 counts. Feel your belly fall as the diaphragm relaxes. Keep the exhale smooth and controlled.",
+        duration: "6 seconds"
+      },
+      {
+        name: "Repeat and relax",
+        instruction: "Continue for 5-10 minutes, keeping the rhythm smooth. If your mind wanders, gently return attention to the belly rising and falling.",
+        duration: "5–10 minutes"
+      }
+    ]
+  },
+  useCases: [
+    {
+      name: "Stress relief",
+      description: "Use anytime you feel stressed or overwhelmed to quickly activate your relaxation response.",
+      dose: "2-5 minutes, several times daily"
+    },
+    {
+      name: "Sleep preparation",
+      description: "Practice in bed to calm your nervous system and prepare for sleep.",
+      dose: "5-10 minutes before sleep"
+    },
+    {
+      name: "Breathwork foundation",
+      description: "Master belly breathing before moving to other techniques—it's the base for everything.",
+      dose: "Daily practice until it becomes automatic"
+    }
+  ],
+  research: {
+    studies: [
+      {
+        title: "Diaphragmatic breathing reduces cortisol",
+        summary: "A 2017 study found 8 weeks of diaphragmatic breathing training significantly reduced cortisol levels and self-reported stress in healthy adults.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/28626434/"
+      },
+      {
+        title: "Effects on autonomic function",
+        summary: "Research shows diaphragmatic breathing shifts autonomic balance toward parasympathetic dominance, improving heart rate variability and reducing blood pressure.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/29923375/"
+      },
+      {
+        title: "Diaphragmatic breathing and anxiety",
+        summary: "Multiple studies demonstrate significant reductions in anxiety symptoms with regular diaphragmatic breathing practice, often comparable to medication effects.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/28506672/"
+      }
+    ],
+    safety: [
+      "Belly breathing is safe for most people—it's how you're designed to breathe.",
+      "If you have recent abdominal surgery, consult your doctor before deep breathing exercises.",
+      "Stop if you feel pain, dizziness, or unusual discomfort.",
+      "Those with severe respiratory conditions should consult a healthcare provider."
+    ],
+    quotes: [
+      {
+        text: "For breath is life, and if you breathe well you will live long on earth.",
+        attribution: "Sanskrit Proverb"
+      }
+    ]
+  },
+  related: [
+    {
+      slug: "box",
+      reason: "Once you've mastered belly breathing, box breathing adds structure with timed holds."
+    },
+    {
+      slug: "4-7-8",
+      reason: "The 4-7-8 technique builds on diaphragmatic breathing with a longer exhale for deeper relaxation."
+    },
+    {
+      slug: "coherent",
+      reason: "Coherent breathing uses the same diaphragmatic base at a specific pace for HRV optimization."
+    },
+    {
+      slug: "ujjayi",
+      reason: "Progress to ujjayi after mastering diaphragm—add the ocean sound for yoga practice."
+    },
+    {
+      slug: "buteyko",
+      reason: "Another nasal breathing technique focused on light, quiet breaths."
+    }
+  ],
+  relatedUseCases: [
+    {
+      slug: "anxiety",
+      title: "Breathing for Anxiety",
+      teaser: "Belly breathing is the foundation for anxiety relief"
+    },
+    {
+      slug: "sleep",
+      title: "Breathing for Sleep",
+      teaser: "Fall asleep faster with diaphragmatic breathing"
+    },
+    {
+      slug: "stress",
+      title: "Breathing for Stress",
+      teaser: "The simplest way to activate your relaxation response"
+    },
+    {
+      slug: "kids",
+      title: "Breathing for Kids",
+      teaser: "Teach belly breathing to children—it's the easiest technique for young ones"
+    }
+  ],
+  keywords: [
+    "belly breathing",
+    "diaphragmatic breathing",
+    "deep belly breathing",
+    "diaphragm breathing",
+    "abdominal breathing",
+    "belly breath",
+    "breathing from diaphragm",
+    "stomach breathing"
+  ],
+  synonyms: [
+    "diaphragmatic breathing",
+    "abdominal breathing",
+    "deep breathing",
+    "stomach breathing"
+  ],
+  frequency: "Daily, 5-10 minutes. Ideally becomes your default breathing pattern."
+};
+
+// Buteyko Breathing page content (SEO expansion - not featured)
+const buteykoPage: BreathingPageContent = {
+  slug: "buteyko",
+  mode: ModeName.Buteyko,
+  featured: false,
+  hero: {
+    title: "Buteyko Breathing: Light, Nasal Breathing Method",
+    subtitle: "The breath training technique developed for asthma and respiratory health.",
+    intro: "The Buteyko method teaches 'reduced breathing'—taking lighter, quieter breaths through your nose to normalize carbon dioxide levels. Developed by Ukrainian physician Konstantin Buteyko in the 1950s, this technique has been studied for asthma management and general respiratory health."
+  },
+  meta: {
+    title: "Buteyko Breathing Method: Nasal Breathing Exercises for Respiratory Health",
+    description: "Learn the Buteyko breathing method—light, nasal breathing exercises for asthma, respiratory health, and better sleep. Free visualizer + Control Pause guide.",
+    ogTitle: "Buteyko Breathing: The Light Nasal Breathing Method",
+    ogDescription: "Learn the Buteyko method for respiratory health. Nasal breathing exercises with free visualizer and Control Pause guide.",
+    ogImage: "og/breathe-buteyko.png",
+    twitterTitle: "Buteyko Breathing: Light Nasal Breathing for Respiratory Health",
+    twitterDescription: "The Buteyko method for asthma and respiratory health. Free visualizer + guide.",
+    author: "Resonance Editorial Team",
+    reviewer: "",
+    datePublished: "2026-01-20",
+    dateModified: "2026-01-20"
+  },
+  body: [
+    {
+      heading: "What it is",
+      content: "The Buteyko method trains you to breathe less—not more. By taking lighter, quieter, nasal breaths, you allow carbon dioxide (CO₂) levels to normalize. Buteyko theory proposes that chronic over-breathing (hyperventilation) depletes CO₂, which actually makes it harder for oxygen to reach your tissues (the Bohr effect). The timing is 3 seconds in, 3 seconds out, with a 3-second pause."
+    },
+    {
+      heading: "The Control Pause",
+      content: "The Control Pause (CP) is a key Buteyko concept: after a normal exhale, time how long you can comfortably hold before your first urge to breathe. A CP under 20 seconds suggests over-breathing tendencies; 40+ seconds indicates good CO₂ tolerance. The goal of Buteyko practice is to gradually increase your CP through reduced breathing exercises."
+    },
+    {
+      heading: "Benefits",
+      content: "Studies show Buteyko training can reduce asthma symptoms and medication use, though it doesn't improve lung function measurements. The method emphasizes nasal breathing, which filters, warms, and humidifies air while producing nitric oxide. Many practitioners report better sleep, reduced anxiety, and improved exercise tolerance."
+    },
+    {
+      heading: "When to use",
+      content: "For people with asthma, chronic over-breathing, mouth breathing habits, or sleep-disordered breathing. Also useful for athletes wanting to improve breath efficiency. Practice throughout the day—Buteyko is as much a lifestyle change as a technique."
+    },
+    {
+      heading: "Important disclaimer",
+      content: "The Buteyko method is NOT a replacement for medical treatment. If you have asthma or respiratory conditions, continue your prescribed medications and consult your doctor before starting Buteyko training. Never discontinue medication without medical supervision."
+    },
+    {
+      heading: "Buteyko vs Deep Breathing",
+      content: "Buteyko and traditional deep breathing exercises represent opposite approaches. Deep breathing (like 4-7-8 or belly breathing) emphasizes full, slow breaths to activate the relaxation response—great for acute stress relief. Buteyko, conversely, teaches lighter, reduced breathing to normalize carbon dioxide levels over time. Deep breathing says 'breathe more, breathe slower.' Buteyko says 'breathe less, breathe lighter.' Both have evidence behind them. Use deep breathing for immediate calm; use Buteyko if you're working on chronic over-breathing patterns, asthma management, or building long-term CO₂ tolerance."
+    }
+  ],
+  benefits: [
+    {
+      title: "Nasal breathing habit",
+      description: "Buteyko strongly emphasizes nose breathing, which filters air, produces nitric oxide, and improves oxygen uptake."
+    },
+    {
+      title: "CO₂ tolerance training",
+      description: "The method gradually increases your tolerance to carbon dioxide, which may reduce hyperventilation patterns."
+    },
+    {
+      title: "Asthma symptom support",
+      description: "Multiple studies show reduced asthma symptoms and reliever medication use with regular Buteyko practice."
+    }
+  ],
+  practiceTips: [
+    {
+      title: "Always breathe through your nose",
+      description: "Nasal breathing is fundamental to Buteyko. If you mouth-breathe at night, consider mouth tape (consult your doctor first)."
+    },
+    {
+      title: "Light is right",
+      description: "Breaths should be quiet and small—you should barely see your chest or belly move. No big, deep breaths."
+    },
+    {
+      title: "Feel slight air hunger",
+      description: "A gentle sense of 'wanting more air' is normal and desired during practice. If it becomes uncomfortable, ease up."
+    }
+  ],
+  faqs: [
+    {
+      question: "Does Buteyko breathing cure asthma?",
+      answer: "No. Buteyko does not cure asthma or improve measured lung function. However, multiple randomized controlled trials show it can reduce asthma symptoms, improve quality of life, and decrease reliever (rescue inhaler) use. It should be used alongside—not instead of—medical treatment. Always follow your doctor's guidance."
+    },
+    {
+      question: "What is the Control Pause?",
+      answer: "The Control Pause (CP) measures your tolerance to carbon dioxide. After a normal exhale (not forced), time how long until you feel the first definite urge to breathe. A healthy CP is 40+ seconds; under 20 suggests over-breathing patterns. Buteyko practice aims to gradually increase your CP. Always stop at the first urge—this isn't a breath-holding competition."
+    },
+    {
+      question: "How is Buteyko different from deep breathing?",
+      answer: "They're opposites. Most relaxation techniques teach deep, slow breathing to calm down. Buteyko teaches light, reduced breathing to normalize CO₂ levels. Buteyko practitioners argue that chronic over-breathing (even 'deep' breathing) can perpetuate respiratory issues. Both approaches have evidence; they serve different purposes."
+    },
+    {
+      question: "Can Buteyko help with anxiety?",
+      answer: "Possibly. Hyperventilation (over-breathing) is both a symptom and cause of anxiety symptoms. By training reduced breathing patterns, some people experience less anxiety. However, research on Buteyko specifically for anxiety is limited. Other breathing techniques like box breathing or 4-7-8 have more evidence for acute anxiety relief."
+    },
+    {
+      question: "Is it safe to tape my mouth at night?",
+      answer: "Mouth taping is a Buteyko practice to encourage nasal breathing during sleep. It's generally safe for healthy adults, but consult your doctor first—especially if you have nasal obstruction, sleep apnea, or breathing difficulties. Use medical-grade tape designed for skin, and start with just a few hours while awake to test tolerance."
+    },
+    {
+      question: "How long does it take to see results?",
+      answer: "Most people notice some changes within 1-2 weeks of consistent practice (2-3 sessions daily). Significant improvements in Control Pause and symptom reduction typically take 4-8 weeks. Buteyko is a skill that develops gradually—rushing or straining is counterproductive."
+    }
+  ],
+  howTo: {
+    totalTime: "10–20 minutes",
+    difficulty: "moderate",
+    tools: [
+      "Comfortable seated position",
+      "Timer for Control Pause measurement",
+      "On-screen visualizer (optional)"
+    ],
+    supplies: [],
+    steps: [
+      {
+        name: "Sit upright",
+        instruction: "Sit comfortably with good posture. Close your mouth—all breathing through the nose.",
+        duration: "30 seconds"
+      },
+      {
+        name: "Observe your breathing",
+        instruction: "Without changing anything, notice your natural breath pattern. Is it visible? Audible? Fast or slow?",
+        duration: "1 minute"
+      },
+      {
+        name: "Measure Control Pause",
+        instruction: "After a normal exhale, pinch your nose and time until you feel the first distinct urge to breathe. Note your CP time. Don't force it—stop at the first urge.",
+        duration: "20-60 seconds"
+      },
+      {
+        name: "Practice reduced breathing",
+        instruction: "Breathe lightly through your nose: 3 seconds in, 3 seconds out, 3-second pause. Keep breaths barely visible. Accept a slight sensation of air hunger—this is normal.",
+        duration: "5-10 minutes"
+      },
+      {
+        name: "Re-measure Control Pause",
+        instruction: "After reduced breathing practice, measure your CP again. It should be slightly higher than before.",
+        duration: "20-60 seconds"
+      },
+      {
+        name: "Return to normal",
+        instruction: "Continue breathing lightly through your nose. Carry this calm, reduced breathing pattern into your day.",
+        duration: "1 minute"
+      }
+    ]
+  },
+  useCases: [
+    {
+      name: "Asthma management",
+      description: "Supplement your prescribed treatment with Buteyko to potentially reduce symptoms and reliever medication use.",
+      dose: "2-3 sessions daily, 10-15 minutes each"
+    },
+    {
+      name: "Mouth breathing correction",
+      description: "Retrain yourself to breathe through your nose day and night.",
+      dose: "Constant awareness + dedicated practice"
+    },
+    {
+      name: "Athletic breathing",
+      description: "Improve breath efficiency during exercise through nasal breathing training.",
+      dose: "Pre-exercise reduced breathing + nasal breathing during low-intensity training"
+    }
+  ],
+  research: {
+    studies: [
+      {
+        title: "Cochrane Review: Breathing exercises for asthma",
+        summary: "A 2020 Cochrane systematic review found breathing exercises (including Buteyko) can improve quality of life and reduce asthma symptoms, but don't improve lung function. Evidence quality is moderate.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/32253754/"
+      },
+      {
+        title: "Buteyko vs conventional breathing exercises",
+        summary: "A randomized trial found Buteyko training reduced asthma symptoms and reliever use similarly to other breathing retraining methods, with both superior to no intervention.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/16942638/"
+      },
+      {
+        title: "Nasal breathing and nitric oxide",
+        summary: "Nasal breathing (central to Buteyko) increases nitric oxide in the airways, which improves oxygen uptake and has antimicrobial effects—benefits lost with mouth breathing.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/12119224/"
+      }
+    ],
+    safety: [
+      "NOT a replacement for asthma medication or medical treatment.",
+      "If you have asthma or respiratory conditions, consult your doctor before starting.",
+      "Never discontinue prescribed medications without medical supervision.",
+      "Stop if you feel significant discomfort, dizziness, or breathing difficulty.",
+      "The 'air hunger' sensation should be mild—if it's distressing, you're pushing too hard."
+    ],
+    quotes: [
+      {
+        text: "You must breathe less in order to breathe better.",
+        attribution: "Konstantin Buteyko, MD"
+      }
+    ]
+  },
+  related: [
+    {
+      slug: "pursed-lip",
+      reason: "Another technique for respiratory health, particularly useful for COPD."
+    },
+    {
+      slug: "coherent",
+      reason: "For those who find Buteyko too challenging, coherent breathing offers similar slow-rate benefits without the breath reduction focus."
+    },
+    {
+      slug: "belly",
+      reason: "Start with basic diaphragmatic breathing before progressing to Buteyko's reduced breathing."
+    }
+  ],
+  relatedUseCases: [
+    {
+      slug: "sleep",
+      title: "Breathing for Sleep",
+      teaser: "Nasal breathing improves sleep quality"
+    },
+    {
+      slug: "athletes",
+      title: "Breathing for Athletes",
+      teaser: "Improve breath efficiency during training"
+    }
+  ],
+  keywords: [
+    "buteyko breathing",
+    "buteyko method",
+    "nasal breathing exercises",
+    "buteyko technique",
+    "reduced breathing",
+    "control pause",
+    "light breathing",
+    "buteyko asthma"
+  ],
+  synonyms: [
+    "buteyko method",
+    "reduced breathing",
+    "buteyko technique",
+    "light nasal breathing"
+  ],
+  frequency: "2-3 sessions daily, 10-20 minutes each. Nasal breathing should be practiced 24/7."
+};
+
+// Add new pages to the array
+breathingPages.push(pursedLipPage);
+breathingPages.push(nadiShodhanaPage);
+breathingPages.push(ujjayiPage);
+breathingPages.push(bellyPage);
+breathingPages.push(buteykoPage);
+
 export const breathingPageMap: Record<string, BreathingPageContent> = Object.fromEntries(
   breathingPages.map((page) => [page.slug, page])
 ) as Record<string, BreathingPageContent>;
+
+/** Featured pages shown on homepage "Pick a mode" section */
+export const featuredBreathingPages = breathingPages.filter((page) => page.featured === true);
 
 export const modeToBreathingPage = breathingPages.reduce(
   (acc, page) => {
