@@ -1532,6 +1532,10 @@ const pursedLipPage: BreathingPageContent = {
   },
   related: [
     {
+      slug: "belly",
+      reason: "Master diaphragmatic breathing first—it's the foundation for pursed-lip and all breathing techniques."
+    },
+    {
       slug: "coherent",
       reason: "For general stress reduction and HRV training without the pursed lip exhale."
     },
@@ -1574,7 +1578,12 @@ const pursedLipPage: BreathingPageContent = {
     "puckered lip breathing",
     "straw breathing"
   ],
-  frequency: "As needed for breathlessness; optionally 4-5 times daily for 5 minutes to build the habit"
+  frequency: "As needed for breathlessness; optionally 4-5 times daily for 5 minutes to build the habit",
+  video: {
+    youtubeId: "7kpJ0QlRss4",
+    title: "Pursed Lip Breathing Technique - American Lung Association",
+    description: "The American Lung Association demonstrates proper pursed lip breathing technique for managing shortness of breath from COPD, asthma, and other lung conditions."
+  }
 };
 
 // Nadi Shodhana (Alternate Nostril Breathing) page
@@ -1619,6 +1628,10 @@ const nadiShodhanaPage: BreathingPageContent = {
     {
       heading: "When to Skip",
       content: "If you have a cold or nasal congestion, this technique may be difficult. Don't practice during acute illness with fever. If the breath hold feels uncomfortable, skip it and just alternate inhale/exhale. Stop if you feel dizzy."
+    },
+    {
+      heading: "Nadi Shodhana vs Box Breathing",
+      content: "Both techniques calm the nervous system, but they work differently. Box breathing uses a simple equal-ratio pattern (4-4-4-4) that's easy to remember and can be done anywhere—no hand positioning required. Nadi Shodhana requires Vishnu Mudra to alternate nostrils, making it more of a dedicated practice. Box breathing emphasizes breath holds for nervous system reset; Nadi Shodhana emphasizes nostril alternation to balance brain hemispheres. Choose box breathing for quick stress relief anywhere; choose Nadi Shodhana when you have time for focused pranayama, especially before meditation or yoga."
     }
   ],
   benefits: [
@@ -1830,7 +1843,12 @@ const nadiShodhanaPage: BreathingPageContent = {
     "channel cleansing breath",
     "nostril breathing"
   ],
-  frequency: "Daily, 5-15 minutes. Best before meditation, yoga, or creative work."
+  frequency: "Daily, 5-15 minutes. Best before meditation, yoga, or creative work.",
+  video: {
+    youtubeId: "l11qFpRqhIQ",
+    title: "Alternate Nostril Breathing (Nadi Shodhana) Tutorial",
+    description: "A clear, step-by-step guide to practicing Nadi Shodhana pranayama—the ancient yogic technique for balancing the nervous system and calming the mind."
+  }
 };
 
 // Ujjayi Breathing page content (SEO expansion - not featured)

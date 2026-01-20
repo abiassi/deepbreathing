@@ -2875,6 +2875,12 @@ const stressPage: UseCasePageContent = {
     }
   ],
 
+  video: {
+    youtubeId: "kSZKIupBUuc",
+    title: "Dr. Andrew Huberman Explains the Physiological Sigh",
+    description: "Stanford neuroscientist Dr. Andrew Huberman demonstrates the physiological sigh—the fastest way to reduce stress in real-time. This technique works in just 1-3 breaths."
+  },
+
   relatedTechnique: {
     slug: "physiological-sigh",
     callToAction: "Try the full physiological sigh technique with our guided visualizer"
@@ -2892,6 +2898,10 @@ const stressPage: UseCasePageContent = {
     {
       slug: "sleep",
       teaser: "Use the physiological sigh to wind down before bed, then switch to 4-7-8 for sleep"
+    },
+    {
+      slug: "kids",
+      teaser: "Teaching kids to manage stress? Simple breathing games they can use at school or home"
     }
   ],
 
@@ -2919,6 +2929,10 @@ const stressPage: UseCasePageContent = {
     {
       question: "What's the best time of day to practice stress-relief breathing?",
       answer: "Anytime stress arises. That said, many people find proactive practice helpful: first thing in the morning (before checking your phone), during lunch breaks, after meetings, and before bed. Building it into transitions (before/after activities) creates natural reminders."
+    },
+    {
+      question: "How does the physiological sigh compare to box breathing for stress?",
+      answer: "The physiological sigh is faster—it works in 1-3 breaths (about 30 seconds). Box breathing takes 2-5 minutes for full effect. Use the physiological sigh as a 'fire extinguisher' for acute, in-the-moment stress. Use box breathing as 'climate control' when you have time for a longer practice and want sustained calm. Both activate the parasympathetic nervous system, but through different mechanisms: the sigh uses a double-inhale to reinflate lung tissue, while box breathing uses breath holds to reset your autonomic rhythm."
     }
   ]
 };
