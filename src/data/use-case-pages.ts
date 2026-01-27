@@ -74,6 +74,14 @@ export interface UseCaseVideoEmbed {
   description: string;
 }
 
+/** Voice search optimization - question H2 with direct answer for featured snippets */
+export interface VoiceSearchQA {
+  /** The exact question users ask (becomes H2) */
+  question: string;
+  /** 40-50 word direct answer (snippet-optimized) */
+  answer: string;
+}
+
 export interface UseCasePageContent {
   slug: string;
   mode: ModeName;
@@ -99,6 +107,8 @@ export interface UseCasePageContent {
 
   relatedUseCases: RelatedUseCasePage[];
   faqs: UseCaseFaq[];
+  /** Voice search optimization - question H2s with direct answers */
+  voiceSearch?: VoiceSearchQA[];
 }
 
 export const useCasePages: UseCasePageContent[] = [
@@ -680,6 +690,12 @@ export const useCasePages: UseCasePageContent[] = [
         question: "Should I use this instead of sleep medication?",
         answer: "Breathing techniques are complementary to—not a replacement for—medical treatment. If you're taking sleep medication, continue as prescribed and talk to your doctor about your goals. Many people find that consistent breathing practice allows them to reduce sleep aids over time, but this should always be done with medical guidance."
       }
+    ],
+    voiceSearch: [
+      {
+        question: "What are the best breathing exercises for sleep?",
+        answer: "The best breathing exercise for sleep is the 4-7-8 technique: inhale for 4 seconds, hold for 7 seconds, exhale for 8 seconds. Dr. Andrew Weil calls it a 'natural tranquilizer for the nervous system.' Do 3-4 cycles before bed. The extended exhale activates your parasympathetic nervous system and slows your heart rate. Most people feel noticeably calmer within 1-2 minutes and fall asleep faster with regular practice."
+      }
     ]
   },
 
@@ -1085,6 +1101,12 @@ export const useCasePages: UseCasePageContent[] = [
       {
         question: "How long does it take to feel less anxious?",
         answer: "You may notice a subtle shift within the first 1-3 minutes of practice (lower heart rate, less chest tightness). However, the biggest benefits come from consistent daily practice over weeks. Studies show 4-8 weeks of regular slow breathing produces measurable reductions in anxiety symptoms, resting heart rate, and stress hormone levels. Think of it like strength training—one session helps a bit, but the real changes happen with sustained practice. Most people report noticeable anxiety reduction after 2-3 weeks of twice-daily practice."
+      }
+    ],
+    voiceSearch: [
+      {
+        question: "What is the best breathing technique for anxiety?",
+        answer: "The best breathing technique for anxiety is box breathing (also called tactical or square breathing). Inhale for 4 seconds, hold for 4 seconds, exhale for 4 seconds, hold for 4 seconds—then repeat for 1-3 minutes. This pattern activates your parasympathetic nervous system, lowers cortisol, and breaks the rumination loop that feeds anxiety. Navy SEALs use this technique before high-stress missions. For acute panic attacks, switch to the physiological sigh instead."
       }
     ]
   },

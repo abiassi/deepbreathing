@@ -1,5 +1,82 @@
 # Progress
 
+## 2026-01-27
+
+### SEO Experiments Implementation (PRD-SEO-JAN27.md Complete)
+
+Implemented all 5 SEO experiments from the PRD:
+
+**Experiment 1: Push Top 10 to Top 5 ✅**
+- Added "2026" to titles for freshness signals on 3 pages
+- Added comparison table to coherent-breathing-app
+- Updated dateModified schemas
+
+**Experiment 2: Programmatic Combination Pages (pSEO) ✅**
+Created 5 new long-tail pages:
+- `/4-7-8-breathing-for-insomnia`
+- `/box-breathing-before-presentation`
+- `/physiological-sigh-panic-attack`
+- `/breathing-exercises-before-surgery`
+- `/breathing-exercises-for-labor`
+
+**Experiment 3: E-E-A-T Enhancement ✅**
+- Created `/about/methodology` page (research standards, editorial process)
+- Created `ContentCredentials` component for author/date display
+- Updated `/about` page to link to methodology
+
+**Experiment 4: Voice Search Optimization ✅**
+- Added `VoiceSearchQA` type to data structures
+- Added voice search sections to pattern-page and use-case-page components
+- Added question H2s with 40-60 word answers to 6 target pages
+
+**Experiment 5: Meta Description CTAs ✅**
+- Updated 14 meta descriptions with "Free timer" CTA pattern
+- Pattern: "Free [technique] timer — [benefit]. Start your guided session now."
+
+**Files Created:**
+- `src/app/4-7-8-breathing-for-insomnia/page.tsx`
+- `src/app/box-breathing-before-presentation/page.tsx`
+- `src/app/physiological-sigh-panic-attack/page.tsx`
+- `src/app/breathing-exercises-before-surgery/page.tsx`
+- `src/app/breathing-exercises-for-labor/page.tsx`
+- `src/app/about/methodology/page.tsx`
+- `src/components/seo/content-credentials.tsx`
+
+**Files Modified:**
+- `src/data/breathing-pages.ts` - Added VoiceSearchQA type, voice search content
+- `src/data/use-case-pages.ts` - Added VoiceSearchQA type, voice search content
+- `src/app/breathe/pattern-page.tsx` - Added voice search section
+- `src/app/for/use-case-page.tsx` - Added voice search section
+- `src/app/coherent-breathing-app/page.tsx` - Freshness signals, comparison table
+- `src/app/4-7-8-breathing-timer/page.tsx` - Freshness signals
+- `src/app/box-breathing-app/page.tsx` - Freshness signals
+- `src/app/about/page.tsx` - Methodology link
+- `/docs/SEO-EXPERIMENTS.md` - All experiments marked implemented
+
+---
+
+### SEO Experiment Review (Earlier)
+
+**Measured 3 experiments (due today):**
+
+| Experiment | Result |
+|------------|--------|
+| Navy SEAL Content Expansion | ❌ Failed - positions unchanged at 60-70 |
+| FAQ H3 Headings for Snippets | ❌ Failed - no featured snippets captured |
+| Video Embeds for Rich Results | ❌ Failed - no video rich results |
+
+**Key Learnings:**
+- Content additions alone don't move competitive branded queries
+- Featured snippets require top 5 position first (99% come from page 1)
+- Embedded YouTube videos don't transfer video rich results to embedding page
+
+**Bright spots from Jan 20 pages:**
+- /for/stress: Position 8.6 (top 10 in 1 week!)
+- /for/kids: Position 9.7 (top 10 in 1 week!)
+- /breathe/nadi-shodhana: Position 10.8
+
+---
+
 ## 2026-01-20
 
 ### SEO Technique Expansion (PRD-SEO-TECHNIQUES.md Complete)

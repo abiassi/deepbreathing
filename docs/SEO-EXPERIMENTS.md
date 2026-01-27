@@ -17,7 +17,7 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 
 **Hypothesis:** Benefit-first titles increase CTR vs attribution-first titles
 
-**Baseline (from ~28 days pre-change):**
+**Baseline (Dec 1 - Jan 5):**
 - Overall: 1,887 impressions / 4 clicks = 0.21% CTR
 - Working pattern: 4-7-8 timer had 9.68% CTR (benefit-first title)
 
@@ -32,11 +32,20 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 | /box-breathing-app | "Box Breathing App (4-4-4-4 Timer) — Free, No Download" | "Box Breathing App: Navy SEAL Calm in 2 Minutes (Free Timer)" |
 | Homepage | "Deep Breathing Exercises – Free Breathing Visualizer" | "Free Breathing Visualizer: Calm Anxiety in 60 Seconds" |
 
-**Measure After:** 2026-01-20 (2 weeks)
+**Measured:** 2026-01-20
 
-**Result:** TBD
+**Result:** ✅ **6x click growth** (4 → 24 clicks)
 
-**Status:** Waiting
+| Page | Baseline | After | Change |
+|------|----------|-------|--------|
+| /4-7-8-breathing-timer | 32 imp, 3 clicks, pos 11.9 | 403 imp, 9 clicks, pos 8.7 | **12x imp, 3x clicks, +3 pos** |
+| /breathe/physiological-sigh | 767 imp, 0 clicks, pos 13.7 | 2173 imp, 3 clicks, pos 9.6 | **2.8x imp, first clicks, +4 pos** |
+| /breathe/box | 89 imp, 0 clicks, pos 42.8 | 834 imp, 0 clicks, pos 8.9 | **9x imp, +34 positions** |
+| /box-breathing-app | 22 imp, 0 clicks, pos 8.5 | 87 imp, 3 clicks, pos 10.4 | **4x imp, first clicks** |
+| /breathe/coherent | 285 imp, 0 clicks, pos 9.0 | 567 imp, 3 clicks, pos 8.6 | **2x imp, first clicks** |
+| /coherent-breathing-app | 89 imp, 0 clicks, pos 10.0 | 322 imp, 3 clicks, pos 7.6 | **3.6x imp, first clicks, +2 pos** |
+
+**Status:** Success ✅
 
 ---
 
@@ -53,11 +62,23 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 - Added FAQ: "Why do Navy SEALs use box breathing?"
 - Included Mark Divine attribution and BUD/S training context
 
-**Measure After:** 2026-01-27 (3 weeks - position changes take longer)
+**Measured:** 2026-01-27
 
-**Result:** TBD
+**Result:** ❌ **Failed** - No position improvement
 
-**Status:** Waiting
+| Query | Impressions | Position |
+|-------|-------------|----------|
+| box breathing navy seals | 19 | 66.4 |
+| navy seal breathing technique | 16 | 60.2 |
+| navy seal box breathing | 7 | 67.7 |
+| navy seal breathing | 3 | 67.3 |
+| navy seal breathing techniques | 3 | 58.7 |
+
+Positions remain at 60-70. Adding ~150 words wasn't enough to compete with high-authority sites (WebMD, Healthline, military blogs) that dominate these queries.
+
+**Learning:** Content additions alone don't move the needle for competitive branded queries. Need either (a) significantly more comprehensive content, (b) backlinks from authoritative sources, or (c) pivot to less competitive long-tail variants.
+
+**Status:** Failed
 
 ---
 
@@ -72,11 +93,15 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 - Use-case pages: Changed FAQ rendering from `<summary>` to `<h3>`
 - FAQs now display as flat Q&A sections
 
-**Measure After:** 2026-01-27 (featured snippets take 3+ weeks)
+**Measured:** 2026-01-27
 
-**Result:** TBD
+**Result:** ❌ **Failed** - No featured snippets captured
 
-**Status:** Waiting
+GSC searchAppearance data shows zero featured snippet appearances for any page. The structural change from accordions to H3 headings did not trigger featured snippet eligibility.
+
+**Learning:** Featured snippets require more than structural HTML changes. Google favors (a) direct question-answer format matching the query exactly, (b) concise 40-60 word answers, (c) pages already ranking in top 5. Our pages averaging position 8-10 may not be eligible yet.
+
+**Status:** Failed
 
 ---
 
@@ -92,11 +117,15 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 | /breathe/coherent | James Nestor "Perfect Breath" | Bestselling author |
 | /breathe/physiological-sigh | Already had Huberman video | Stanford neuroscientist |
 
-**Measure After:** 2026-01-27
+**Measured:** 2026-01-27
 
-**Result:** TBD
+**Result:** ❌ **Failed** - No video rich results in SERPs
 
-**Status:** Waiting
+GSC searchAppearance data shows zero video thumbnail appearances. Embedded YouTube videos with VideoObject schema did not generate video rich results.
+
+**Learning:** Video rich results typically go to YouTube directly or sites with self-hosted video. Embedding third-party YouTube videos doesn't transfer video rich result eligibility to the embedding page. Google shows the YouTube result instead.
+
+**Status:** Failed
 
 ---
 
@@ -104,9 +133,9 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 
 **Hypothesis:** Differentiating titles between /breathe/coherent (guide intent) and /coherent-breathing-app (tool intent) reduces cannibalization and improves CTR
 
-**Baseline:**
-- /breathe/coherent: 318 impressions, position 9.03, 0 clicks
-- /coherent-breathing-app: 110 impressions, position 9.64, 0 clicks
+**Baseline (Dec 1 - Jan 5):**
+- /breathe/coherent: 285 impressions, position 9.0, 0 clicks
+- /coherent-breathing-app: 89 impressions, position 10.0, 0 clicks
 - Both titles had similar "stress resilience" framing
 
 **Changes Made:**
@@ -115,11 +144,18 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 | /breathe/coherent | "Coherent Breathing: Build Lasting Calm in 5 Min/Day (Free Timer)" | "Coherent Breathing: The Science of 5 Breaths/Min (Free Trainer)" |
 | /coherent-breathing-app | "Coherent Breathing App: Train Stress Resilience in 5 Min (Free)" | "Coherent Breathing App (Free) — No Download, Start Instantly" |
 
-**Measure After:** 2026-01-23 (2 weeks)
+**Measured:** 2026-01-20
 
-**Result:** TBD
+**Result:** ✅ **Both pages got first clicks ever**
 
-**Status:** Waiting
+| Page | Baseline | After | Change |
+|------|----------|-------|--------|
+| /breathe/coherent | 285 imp, 0 clicks, pos 9.0 | 567 imp, 3 clicks, pos 8.6 | **2x imp, first clicks** |
+| /coherent-breathing-app | 89 imp, 0 clicks, pos 10.0 | 322 imp, 3 clicks, pos 7.6 | **3.6x imp, first clicks, +2 pos** |
+
+Combined: 374 imp → 889 imp, 0 → 6 clicks
+
+**Status:** Success ✅
 
 ---
 
@@ -127,19 +163,25 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 
 **Hypothesis:** Adding explicit sections for "panic attacks" and "anxiety" helps page rank for those queries and move from position ~13 to ≤10
 
-**Baseline:**
-- Position ~13, 989 impressions, 0 clicks
+**Baseline (Dec 1 - Jan 5):**
+- Position 13.7, 767 impressions, 0 clicks
 - Page had "Cyclic Sighing" section but no explicit panic/anxiety sections
 
 **Changes Made:**
 - Added "Physiological Sigh for Panic Attacks" section (~100 words)
 - Added "Physiological Sigh for Anxiety" section (~100 words)
 
-**Measure After:** 2026-01-30 (3 weeks - content changes take longer to index)
+**Measured:** 2026-01-20
 
-**Result:** TBD
+**Result:** ✅ **Position improved to top 10**
 
-**Status:** Waiting
+| Metric | Baseline | After | Change |
+|--------|----------|-------|--------|
+| Position | 13.7 | 9.6 | **+4.1 positions (now in top 10!)** |
+| Impressions | 767 | 2173 | **2.8x** |
+| Clicks | 0 | 3 | **First clicks** |
+
+**Status:** Success ✅
 
 ---
 
@@ -160,9 +202,11 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 
 **Measure After:** 2026-01-23 (2 weeks)
 
-**Result:** TBD
+**Measured:** 2026-01-24
 
-**Status:** Waiting
+**Result:** ⚪ **Inconclusive** - No direct way to measure snippet quality improvement. Would need manual SERP inspection for "Loading..." text in snippets.
+
+**Status:** Inconclusive
 
 ---
 
@@ -190,9 +234,18 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 
 **Measure After:** 2026-01-23 (2 weeks)
 
-**Result:** TBD
+**Measured:** 2026-01-24
 
-**Status:** Waiting
+**Result:** ⚪ **Inconclusive**
+
+| Page | Baseline | After (Jan 10-22) | Change |
+|------|----------|-------------------|--------|
+| /4-7-8-breathing-timer | 403 imp, 9 clicks, pos 8.7 | 429 imp, 11 clicks, pos 9.6 | +6% imp, +22% clicks, -0.9 pos |
+| /box-breathing-app | 87 imp, 3 clicks, pos 10.4 | 98 imp, 2 clicks, pos 12.2 | +13% imp, -33% clicks, -1.8 pos |
+
+Query-level: `4-7-8 breathing timer online` performing well (8% CTR, pos 6.6), but box breathing app dropped due to Navy SEAL content expansion affecting /breathe/box page.
+
+**Status:** Inconclusive (confounded by Navy SEAL experiment)
 
 ---
 
@@ -251,15 +304,477 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 
 **Measure After:** 2026-01-24 (2 weeks)
 
-**Result:** TBD
+**Measured:** 2026-01-24
 
-**Status:** Waiting
+**Result:** ❌ **Failed** - Not capturing target synonyms
+
+| Target Keyword | Impressions | Position |
+|----------------|-------------|----------|
+| "cyclical breathing" | 0 | - |
+| "sigh breathing technique" | 1 | 34 |
+
+The synonyms are not being indexed or ranked. May need more prominent placement or dedicated sections rather than just keyword array additions.
+
+**Status:** Failed
+
+---
+
+## GSC Snapshot (Jan 6-27, 2026)
+
+**Pulled:** 2026-01-27 via GSC API
+
+### Top Pages by Impressions
+| Page | Impressions | Clicks | CTR | Avg Position |
+|------|-------------|--------|-----|--------------|
+| /for/huberman | 3,722 | 0 | 0% | 8.9 |
+| /breathe/physiological-sigh | 2,977 | 3 | 0.1% | 10.1 |
+| /breathe/box | 971 | 0 | 0% | 11.3 |
+| /breathe/coherent | 690 | 3 | 0.4% | 8.8 |
+| /4-7-8-breathing-timer | 536 | 11 | 2.1% | 9.4 |
+| /coherent-breathing-app | 506 | 4 | 0.8% | 7.5 |
+| /for/running | 327 | 0 | 0% | 8.0 |
+| /breathe/4-7-8 | 153 | 1 | 0.7% | 19.8 |
+| /box-breathing-app | 152 | 3 | 2.0% | 11.9 |
+| /5-minute-breathing-exercise | 122 | 0 | 0% | 12.1 |
+
+### New Pages (Jan 20 Launch) - Early Indexing
+| Page | Impressions | Position | Status |
+|------|-------------|----------|--------|
+| /breathe/pursed-lip | 81 | 66.6 | Indexing |
+| /breathe/ujjayi | 56 | 43.3 | Indexing |
+| /for/stress | 28 | **8.6** | ✅ Top 10 |
+| /for/kids | 17 | **9.7** | ✅ Top 10 |
+| /breathe/nadi-shodhana | 12 | **10.8** | Almost top 10 |
+| /breathe/belly | 9 | 27.8 | Early |
+| /for/pranayama | 8 | 13.5 | Promising |
+
+### Key Changes from Jan 20
+- **Total clicks:** 24 → 29 (+21%)
+- **Physiological sigh:** Position 9.6 → 10.1 (slight regression)
+- **Coherent app:** Position 7.6 → 7.5 (stable, best position)
+- **New pages reaching top 10:** stress, kids (within 1 week!)
+
+---
+
+## GSC Snapshot (Jan 6-20, 2026)
+
+**Pulled:** 2026-01-20 via GSC API
+
+### Top Pages by Impressions
+| Page | Impressions | Clicks | CTR | Avg Position |
+|------|-------------|--------|-----|--------------|
+| /for/huberman | 2722 | 0 | 0% | 8.4 |
+| /breathe/physiological-sigh | 2173 | 3 | 0.14% | 9.6 |
+| /breathe/box | 834 | 0 | 0% | 8.9 |
+| /breathe/coherent | 567 | 3 | 0.53% | 8.6 |
+| /4-7-8-breathing-timer | 403 | 9 | 2.2% | 8.7 |
+| /coherent-breathing-app | 322 | 3 | 0.93% | 7.6 |
+| /for/running | 134 | 0 | 0% | 7.2 |
+| /breathe/4-7-8 | 123 | 1 | 0.8% | 14.9 |
+| /5-minute-breathing-exercise | 99 | 0 | 0% | 8.9 |
+| /box-breathing-app | 87 | 3 | 3.4% | 10.4 |
+
+### Key Changes from Baseline
+- **Total clicks:** 4 → 24 (6x growth)
+- **Physiological sigh:** Position 13.7 → 9.6 ✅
+- **Box breathing guide:** Position 42.8 → 8.9 ✅ (massive jump!)
+- **Coherent pages:** 0 → 6 clicks combined ✅
+
+### Anomaly: Huberman Page Spam
+- `/for/huberman` has 2,722 impressions but 0 clicks
+- All queries are quoted research strings like `"physiological sigh" "fastest" huberman`
+- Likely bot traffic or academic research queries, not real search demand
+- Action: Monitor but don't optimize for these queries
 
 ---
 
 ## Planned Experiments
 
-(Add planned experiments here before implementation)
+### 2026-01-20: Pursed Lip Breathing Page (NEW)
+
+**Hypothesis:** Low-competition keyword (difficulty 34) will rank quickly and capture respiratory health traffic
+
+**Keyword Data (Ahrefs):**
+- "pursed lip breathing": 6.7K volume, 34 difficulty
+- Traffic potential: 1,800/month
+
+**Target Audience:** Respiratory health, COPD patients, seniors, athletes (cardio recovery)
+
+**Implementation:**
+- Create `/breathe/pursed-lip` pattern page
+- Add PURSED_LIP to engine patterns (inhale:nose, exhale:pursed lips, 1:2 ratio)
+- Link from /for/high-blood-pressure, /breathe overview
+
+**Measure After:** 2026-02-03 (2 weeks)
+
+**Status:** Waiting
+
+---
+
+### 2026-01-20: Alternate Nostril Breathing Page (NEW)
+
+**Hypothesis:** Very low competition (difficulty 28) will rank within 1-2 weeks; yoga/meditation crossover appeal
+
+**Keyword Data (Ahrefs):**
+- "alternate nostril breathing": 3.3K volume, 28 difficulty (VERY LOW)
+- Traffic potential: 1,200/month
+
+**Target Audience:** Yoga practitioners, meditation beginners, focus/energy seekers
+
+**Implementation:**
+- Create `/breathe/nadi-shodhana` pattern page
+- Add NADI_SHODHANA to engine patterns (alternate nostril technique)
+- Link from /for/focus, /for/meditation content
+
+**Measure After:** 2026-02-03 (2 weeks)
+
+**Status:** Waiting
+
+---
+
+### 2026-01-20: Breathing for Stress Use-Case Page (NEW)
+
+**Hypothesis:** "Stress" is broader than "anxiety" and captures different intent; will increase coverage for stress-related queries
+
+**Keyword Data (Ahrefs):**
+- "breathing exercises for stress": 1K volume, 78 difficulty
+- Traffic potential: 800-1.2K/month
+
+**Target Audience:** General stress relief seekers (work stress, daily tension, overwhelm)
+
+**Implementation:**
+- Create `/for/stress` use-case page
+- Recommend physiological sigh (fastest) + box breathing (sustained calm)
+- Differentiate from /for/anxiety (clinical) with everyday stress positioning
+
+**Measure After:** 2026-02-03 (2 weeks)
+
+**Status:** Waiting
+
+---
+
+### 2026-01-20: SEO Technique Expansion - Ujjayi Breathing (NEW)
+
+**Hypothesis:** Very low difficulty (7) keyword will rank quickly, complements existing Nadi Shodhana for yoga practitioners
+
+**Keyword Data (Ahrefs):**
+- "ujjayi breathing": 2,700 volume, difficulty 7 (VERY LOW)
+- Secondary: "ocean breath", "victorious breath"
+- Traffic potential: 1,200/month
+
+**Target Audience:** Yoga practitioners, meditation enthusiasts, focus seekers
+
+**Implementation:**
+- Created `/breathe/ujjayi` pattern page
+- Pattern: 4-0-6-0 (ocean breath timing)
+- Color: Ocean blue (#0891b2)
+- Content: Ocean sound technique, yoga connection, throat constriction how-to
+- Featured: false (SEO page, not homepage picker)
+
+**Measure After:** 2026-02-03 (2 weeks)
+
+**Status:** Waiting
+
+---
+
+### 2026-01-20: SEO Technique Expansion - Breathing for Kids (NEW)
+
+**Hypothesis:** Underserved niche with very low difficulty (12) will capture parent/teacher traffic
+
+**Keyword Data (Ahrefs):**
+- "breathing exercises for kids": 1,800 volume, difficulty 12 (VERY LOW)
+- Secondary: "calm down breathing for children", "kids breathing techniques"
+- Traffic potential: 800/month
+
+**Target Audience:** Parents, teachers, child therapists
+
+**Implementation:**
+- Created `/for/kids` use-case page
+- Uses Box pattern with kid-friendly framing
+- "Smell the flower, blow out the candle" metaphors
+- Age-appropriate language for parents to relay
+
+**Measure After:** 2026-02-03 (2 weeks)
+
+**Status:** Waiting
+
+---
+
+### 2026-01-20: SEO Technique Expansion - Belly Breathing (NEW)
+
+**Hypothesis:** Highest volume keyword (5.6K) with low difficulty (32) captures "beginner breathwork" traffic
+
+**Keyword Data (Ahrefs):**
+- "belly breathing": 5,600 volume, difficulty 32 (LOW)
+- Secondary: "diaphragmatic breathing", "deep belly breathing"
+- Traffic potential: 2,000/month
+
+**Target Audience:** Beginners to breathwork, stress relief seekers, singers/speakers/athletes
+
+**Implementation:**
+- Created `/breathe/belly` pattern page
+- Pattern: 4-0-6-0 (diaphragmatic foundation)
+- Color: Warm amber (#f59e0b)
+- Content: Foundation of all breathwork, how to feel diaphragm, beginner-friendly
+- Featured: false (SEO page, not homepage picker)
+
+**Measure After:** 2026-02-03 (2 weeks)
+
+**Status:** Waiting
+
+---
+
+### 2026-01-20: SEO Technique Expansion - Buteyko Breathing (NEW)
+
+**Hypothesis:** Unique methodology differentiates from competitors, captures respiratory health audience
+
+**Keyword Data (Ahrefs):**
+- "buteyko breathing": 2,900 volume, difficulty 36 (LOW)
+- Secondary: "buteyko method", "nasal breathing exercises"
+- Traffic potential: 1,000/month
+
+**Target Audience:** People with asthma/respiratory issues, nasal breathing advocates, performance athletes
+
+**Implementation:**
+- Created `/breathe/buteyko` pattern page
+- Pattern: 3-0-3-3 (light breathing philosophy)
+- Color: Sky blue (#38bdf8)
+- Content: Light/nasal/quiet breathing, Control Pause concept, asthma research
+- Medical disclaimer included
+- Featured: false (SEO page, not homepage picker)
+
+**Measure After:** 2026-02-03 (2 weeks)
+
+**Status:** Waiting
+
+---
+
+### 2026-01-20: SEO Technique Expansion - Pranayama Hub (NEW)
+
+**Hypothesis:** Hub page captures yoga/spiritual seekers and creates internal linking for related techniques
+
+**Keyword Data (Ahrefs):**
+- "pranayama": 3,000 volume, difficulty 30 (LOW)
+- Secondary: "pranayama breathing", "yogic breathing"
+- Traffic potential: 1,500/month
+
+**Target Audience:** Yoga practitioners, spiritual seekers, Eastern practices explorers
+
+**Implementation:**
+- Created `/for/pranayama` hub page
+- Links to Nadi Shodhana, Ujjayi techniques
+- Content: Pranayama philosophy, history, different types overview
+- Differentiates from Western breathwork framing
+
+**Measure After:** 2026-02-03 (2 weeks)
+
+**Status:** Waiting
+
+---
+
+## Key Learnings (Jan 2026)
+
+### What Worked ✅
+1. **Benefit-first titles** - 6x click growth from rewriting titles to lead with benefits
+2. **Intent-targeted sections** - Adding explicit "for panic attacks" / "for anxiety" sections improved position by 4+ spots
+3. **Page differentiation** - Distinct titles for guide vs app pages reduced cannibalization
+4. **Low-difficulty keywords** - New pages (stress, kids, nadi-shodhana) reaching top 10 within 1 week
+
+### What Failed ❌
+1. **Content additions for competitive queries** - 150 words of Navy SEAL content didn't move position 60-70 queries
+2. **FAQ structural changes** - H3 headings didn't trigger featured snippets (need top 5 position first)
+3. **Embedded video schema** - YouTube embeds don't transfer video rich results to embedding page
+4. **Synonym keyword stuffing** - Adding synonyms to keyword arrays without dedicated sections didn't capture traffic
+
+### Strategic Insights
+- **Featured snippets require top 5 first** - 99% come from page 1, position 1 has 30.9% chance ([Backlinko](https://backlinko.com/hub/seo/featured-snippets))
+- **WebMD/Healthline lost 40%+ visibility** in Dec 2025 update - opportunity window ([PPC.land](https://ppc.land/health-sites-that-once-dominated-seo-just-got-crushed-by-google/))
+- **Programmatic SEO works for wellness** - Insight Timer's meditation type pages drove app installs ([Search Engine Land](https://searchengineland.com/guide/programmatic-seo))
+- **Target DR < 50 competitors** - If low-DR sites rank top 5, we can compete ([SEOProfy](https://seoprofy.com/blog/healthcare-seo/))
+- **Interactive tools differentiate** - Our visualizer is unique vs WebMD's text-only content
+
+---
+
+### 2026-01-27: Push Top 10 Pages to Top 5 (Position Consolidation)
+
+**Hypothesis:** Pages at position 7-10 can reach top 5 with title/content refinements, enabling featured snippet eligibility
+
+**Target Pages (currently position 7-10):**
+| Page | Current Position | Impressions |
+|------|------------------|-------------|
+| /coherent-breathing-app | 7.5 | 506 |
+| /for/running | 8.0 | 327 |
+| /breathe/coherent | 8.8 | 690 |
+| /for/huberman | 8.9 | 3,722 |
+| /4-7-8-breathing-timer | 9.4 | 536 |
+
+**Implemented:** 2026-01-27
+
+**Changes Made:**
+1. Added "2026" to title tags for freshness signals:
+   - `/coherent-breathing-app`: "Coherent Breathing App (Free, 2026) — No Download, Start Instantly"
+   - `/4-7-8-breathing-timer`: "Free Online 4-7-8 Breathing Timer (2026) — Fall Asleep in 2 Minutes"
+   - `/box-breathing-app`: "Free Online Box Breathing Timer (2026) — Navy SEAL Calm (No Download)"
+
+2. Added "Updated January 2026" visible date to coherent-breathing-app header
+
+3. Updated dateModified in schema for 4-7-8-breathing-timer to "2026-01-27"
+
+4. Added comparison table to coherent-breathing-app (Coherent vs Box vs 4-7-8 vs Physiological Sigh)
+
+5. 4-7-8-breathing-timer already had strong comparison table and internal linking
+
+**Measure After:** 2026-02-10 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
+### 2026-01-27: Programmatic Combination Pages (pSEO)
+
+**Hypothesis:** Creating specific technique + context pages captures long-tail queries competitors ignore
+
+**Pattern:** `[Technique] for [Specific Context]` pages
+
+**Implemented:** 2026-01-27
+
+**Files Created:**
+- `src/app/4-7-8-breathing-for-insomnia/page.tsx`
+- `src/app/box-breathing-before-presentation/page.tsx`
+- `src/app/physiological-sigh-panic-attack/page.tsx`
+- `src/app/breathing-exercises-before-surgery/page.tsx`
+- `src/app/breathing-exercises-for-labor/page.tsx`
+
+**Pages Created:**
+| URL | Target Query | Timer Mode | Word Count |
+|-----|--------------|------------|------------|
+| /4-7-8-breathing-for-insomnia | "4-7-8 breathing insomnia" | Relax (4-7-8) | ~600 |
+| /box-breathing-before-presentation | "breathing before presentation" | Box | ~550 |
+| /physiological-sigh-panic-attack | "breathing technique panic attack" | Sigh | ~600 |
+| /breathing-exercises-before-surgery | "breathing exercises before surgery" | Box | ~650 |
+| /breathing-exercises-for-labor | "breathing exercises labor" | Relax (4-7-8) | ~700 |
+
+**Each page includes:**
+- Full-screen breathing visualizer with appropriate mode
+- Unique intro paragraph (150+ words)
+- Step-by-step protocol for the specific context
+- FAQ section with FAQPage schema
+- Internal links to main technique page and related guides
+- BreadcrumbList and Article schema
+
+**Measure After:** 2026-02-17 (3 weeks for indexing)
+
+**Status:** Implemented ✅
+
+---
+
+### 2026-01-27: E-E-A-T Enhancement
+
+**Hypothesis:** Adding author credentials and research citations improves rankings for health queries (YMYL content)
+
+**Implemented:** 2026-01-27
+
+**Changes Made:**
+1. Created `/about/methodology` page explaining:
+   - Research standards (peer-reviewed, established protocols, clinical guidelines)
+   - Editorial process (4-step: research, creation, review, updates)
+   - What we include (citations, safety info, dates, evidence levels)
+   - What we don't do (medical advice, overstating claims)
+   - Team information
+
+2. Created `ContentCredentials` component (`src/components/seo/content-credentials.tsx`):
+   - Reusable component for displaying last updated, author, reviewer
+   - Links to methodology page
+   - Compact and full variants
+
+3. Updated `/about` page to link to methodology
+
+4. Added Article schema to methodology page with Organization author
+
+**Note:** The ContentCredentials component is available but not yet integrated into pattern/use-case pages. Next step would be adding it to the page templates.
+
+**Measure After:** 2026-02-17 (3 weeks)
+
+**Status:** Implemented ✅
+
+---
+
+### 2026-01-27: Voice Search / Conversational Query Optimization
+
+**Hypothesis:** Question-format headings capture voice search and AI overview citations
+
+**Target Queries:**
+- "how do I calm down quickly"
+- "what is the best breathing technique for anxiety"
+- "how do Navy SEALs breathe"
+- "does 4-7-8 breathing really work"
+- "how to stop a panic attack"
+- "breathing exercises for sleep"
+
+**Implemented:** 2026-01-27
+
+**Changes Made:**
+1. Added `VoiceSearchQA` interface to data types (breathing-pages.ts, use-case-pages.ts)
+2. Added voice search section to PatternPage component (src/app/breathe/pattern-page.tsx)
+3. Added voice search section to UseCasePage component (src/app/for/use-case-page.tsx)
+4. Added voiceSearch content to target pages:
+
+| Page | Question H2 | Answer Length |
+|------|-------------|---------------|
+| /breathe/box | "How do Navy SEALs breathe?" | 52 words |
+| /breathe/4-7-8 | "Does 4-7-8 breathing really work?" | 58 words |
+| /breathe/physiological-sigh | "How do I calm down quickly?" | 54 words |
+| /breathe/physiological-sigh | "How to stop a panic attack?" | 52 words |
+| /for/anxiety | "What is the best breathing technique for anxiety?" | 55 words |
+| /for/sleep | "What are the best breathing exercises for sleep?" | 55 words |
+
+**Format:** Each voice search Q&A appears prominently near top of content as:
+- H2 heading with exact-match question
+- 40-60 word direct answer paragraph immediately following
+- Styled in glow-card container for visual distinction
+
+**Measure After:** 2026-02-10 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
+### 2026-01-27: Interactive Tool CTAs in Meta Descriptions
+
+**Hypothesis:** Emphasizing "free interactive timer" in meta descriptions increases CTR vs text-only competitors
+
+**Current Pattern:** Benefit-focused descriptions
+**New Pattern:** "Free [technique] timer — [benefit]. Start your guided session now."
+
+**Implemented:** 2026-01-27
+
+**Files Modified:**
+- `src/data/breathing-pages.ts` (10 descriptions)
+- `src/app/4-7-8-breathing-timer/page.tsx`
+- `src/app/box-breathing-app/page.tsx`
+- `src/app/coherent-breathing-app/page.tsx`
+- `src/app/breathing-app/page.tsx`
+
+**New Meta Descriptions:**
+| Page | New Description |
+|------|-----------------|
+| /breathe/box | "Free box breathing timer — stop anxiety in 60 seconds with the Navy SEAL 4-4-4-4 technique. No download. Start your guided session now." |
+| /breathe/4-7-8 | "Free 4-7-8 breathing timer — fall asleep in 2 minutes with Dr. Weil's technique. No download. Start your guided session now." |
+| /breathe/coherent | "Free coherent breathing timer — train HRV and stress resilience in 5 minutes. 5-6 breaths/min pace. Start your guided session now." |
+| /breathe/physiological-sigh | "Free physiological sigh timer — calm down in 30 seconds with Stanford's double-inhale technique. Just 1-3 breaths. Start now." |
+| /breathe/pursed-lip | "Free pursed lip breathing timer — ease shortness of breath in seconds. Respiratory therapist-approved 2:4 ratio. Start your guided session now." |
+| /breathe/nadi-shodhana | "Free alternate nostril breathing timer — balance your nervous system in 5 minutes with Nadi Shodhana. Start your guided session now." |
+| /breathe/ujjayi | "Free ujjayi breathing timer — master the yoga 'ocean breath' for deep focus and calm. Step-by-step guide. Start your guided session now." |
+| /breathe/belly | "Free belly breathing timer — learn diaphragmatic breathing, the foundation of all breathwork. Reduce stress in minutes. Start your guided session now." |
+| /breathe/buteyko | "Free Buteyko breathing timer — light nasal breathing for asthma and respiratory health. Control Pause guide included. Start your session now." |
+| /4-7-8-breathing-timer | "Free 4-7-8 breathing timer — fall asleep in 2 minutes with Dr. Weil's technique. No download needed. Start your guided session now." |
+| /box-breathing-app | "Free box breathing timer — Navy SEAL 4-4-4-4 technique for focus and calm. No download needed. Start your guided session now." |
+| /coherent-breathing-app | "Free coherent breathing timer — train HRV with 5-6 breaths/min pacing. No download, no signup. Start your guided session now." |
+| /breathing-app | "Free breathing app — box breathing, 4-7-8, coherent breathing, and physiological sigh timers. No download, no signup. Start your session now." |
+
+**Measure After:** 2026-02-10 (2 weeks)
+
+**Status:** Implemented ✅
 
 ---
 

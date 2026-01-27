@@ -198,6 +198,18 @@ export function PatternPage({ slug }: { slug: string }) {
             Last updated: {new Date(page.meta.dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         )}
+        {/* Voice Search Q&A - prominently placed for featured snippets */}
+        {page.voiceSearch && page.voiceSearch.length > 0 && (
+          <section className="space-y-6">
+            {page.voiceSearch.map((qa) => (
+              <div key={qa.question} className="glow-card rounded-[32px] border border-border bg-card p-8 text-card-foreground">
+                <h2 className="text-2xl font-semibold text-card-foreground">{qa.question}</h2>
+                <p className="mt-4 text-lg text-muted-foreground">{qa.answer}</p>
+              </div>
+            ))}
+          </section>
+        )}
+
         {page.body.length ? (
           <section className="glow-card rounded-[32px] border border-border bg-card p-8 text-card-foreground">
             <p className="text-sm uppercase tracking-widest text-primary">Technique overview</p>

@@ -9,7 +9,7 @@ const canonicalUrl = `${siteUrl}/breathing-app`;
 export const metadata: Metadata = {
   title: "Free Breathing App (No Download) — Calm Anxiety, Sleep & Focus",
   description:
-    "A free breathing app that runs in your browser. Box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh. No signup. Start in seconds.",
+    "Free breathing app — box breathing, 4-7-8, coherent breathing, and physiological sigh timers. No download, no signup. Start your session now.",
   alternates: {
     canonical: canonicalUrl
   },

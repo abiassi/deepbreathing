@@ -8,9 +8,9 @@ const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/box-breathing-app`;
 
 export const metadata: Metadata = {
-  title: "Free Online Box Breathing Timer — Navy SEAL Calm (No Download)",
+  title: "Free Online Box Breathing Timer (2026) — Navy SEAL Calm (No Download)",
   description:
-    "Free online box breathing timer in your browser—no download needed. The Navy SEAL 4-4-4-4 breathing technique for focus and calm under pressure. Start now.",
+    "Free box breathing timer — Navy SEAL 4-4-4-4 technique for focus and calm. No download needed. Start your guided session now.",
   alternates: {
     canonical: canonicalUrl
   },

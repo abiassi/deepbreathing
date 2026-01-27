@@ -7,9 +7,9 @@ const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/coherent-breathing-app`;
 
 export const metadata: Metadata = {
-  title: "Coherent Breathing App (Free) — No Download, Start Instantly",
+  title: "Coherent Breathing App (Free, 2026) — No Download, Start Instantly",
   description:
-    "Free coherent breathing timer in your browser. No download, no signup. 5-6 breaths/min for HRV training. Used by 10,000+ people. Start now.",
+    "Free coherent breathing timer — train HRV with 5-6 breaths/min pacing. No download, no signup. Start your guided session now.",
   alternates: {
     canonical: canonicalUrl
   },
@@ -131,6 +131,7 @@ export default function CoherentBreathingAppMoneyPage() {
 
       <header className="space-y-4">
         <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
+        <p className="text-xs text-muted-foreground">Updated January 2026</p>
         <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">Coherent breathing app (HRV)</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
           A free coherent breathing timer for HRV-focused paced breathing. Use equal inhale/exhale around 5–6 breaths per
@@ -452,6 +453,49 @@ export default function CoherentBreathingAppMoneyPage() {
         <div className="glow-card rounded-[32px] border border-border bg-card p-6">
           <h2 className="text-xl font-semibold text-card-foreground">Training-friendly</h2>
           <p className="mt-2 text-sm text-muted-foreground">Great for 5–10 minute daily sessions. Short sets also work between tasks.</p>
+        </div>
+      </section>
+
+      <section className="mt-12 glow-card rounded-[32px] border border-border bg-card p-8">
+        <h2 className="text-2xl font-semibold text-card-foreground">Coherent breathing vs other techniques</h2>
+        <p className="mt-2 text-sm text-muted-foreground">Compare breathing patterns to choose the right one for your goals.</p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-border">
+                <th className="py-3 text-left font-semibold text-card-foreground">Technique</th>
+                <th className="py-3 text-left font-semibold text-card-foreground">Pattern</th>
+                <th className="py-3 text-left font-semibold text-card-foreground">Best For</th>
+                <th className="py-3 text-left font-semibold text-card-foreground">Duration</th>
+              </tr>
+            </thead>
+            <tbody className="text-muted-foreground">
+              <tr className="border-b border-border/50 bg-primary/5">
+                <td className="py-3 font-medium text-card-foreground">Coherent</td>
+                <td className="py-3">5.5s in / 5.5s out</td>
+                <td className="py-3">HRV training, long-term resilience</td>
+                <td className="py-3">10-20 min daily</td>
+              </tr>
+              <tr className="border-b border-border/50">
+                <td className="py-3 font-medium text-card-foreground">Box</td>
+                <td className="py-3">4-4-4-4</td>
+                <td className="py-3">Acute stress, focus, structure</td>
+                <td className="py-3">2-5 min as needed</td>
+              </tr>
+              <tr className="border-b border-border/50">
+                <td className="py-3 font-medium text-card-foreground">4-7-8</td>
+                <td className="py-3">4s in / 7s hold / 8s out</td>
+                <td className="py-3">Sleep, relaxation, anxiety</td>
+                <td className="py-3">3-4 cycles before bed</td>
+              </tr>
+              <tr>
+                <td className="py-3 font-medium text-card-foreground">Physiological Sigh</td>
+                <td className="py-3">Double inhale + long exhale</td>
+                <td className="py-3">Instant stress relief, panic</td>
+                <td className="py-3">1-3 breaths (30 sec)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 

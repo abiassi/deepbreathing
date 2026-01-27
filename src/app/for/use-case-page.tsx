@@ -238,6 +238,22 @@ export function UseCasePage({ slug }: { slug: string }) {
           <p className="text-xl leading-relaxed">{page.hero.intro}</p>
         </div>
 
+        {/* Voice Search Q&A - prominently placed for featured snippets */}
+        {page.voiceSearch && page.voiceSearch.length > 0 && (
+          <section className="space-y-6">
+            {page.voiceSearch.map((qa) => (
+              <div
+                key={qa.question}
+                className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
+                style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
+              >
+                <h2 className="text-2xl font-semibold text-card-foreground">{qa.question}</h2>
+                <p className="mt-4 text-lg text-muted-foreground">{qa.answer}</p>
+              </div>
+            ))}
+          </section>
+        )}
+
         {/* Medical Disclaimer (if present) */}
         {page.disclaimer && (
           <div className="rounded-2xl border-l-4 border-amber-500 bg-amber-500/10 p-6">

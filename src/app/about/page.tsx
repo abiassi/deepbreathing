@@ -79,6 +79,20 @@ export default function AboutPage() {
         </div>
 
         <div className="glow-card rounded-[32px] border border-border bg-card p-6">
+          <h2 className="text-2xl font-semibold text-card-foreground">Our methodology</h2>
+          <p className="mt-3">
+            Our content is evidence-informed, drawing from peer-reviewed research and established
+            breathing protocols. We cite sources, include safety information, and update content
+            as new research emerges.
+          </p>
+          <p className="mt-3">
+            <Link href="/about/methodology" className="font-semibold text-primary hover:underline">
+              Learn about our content methodology →
+            </Link>
+          </p>
+        </div>
+
+        <div className="glow-card rounded-[32px] border border-border bg-card p-6">
           <h2 className="text-2xl font-semibold text-card-foreground">Links</h2>
           <div className="mt-3 space-y-2 text-sm">
             <p>
@@ -89,6 +103,11 @@ export default function AboutPage() {
             <p>
               <Link href="/for" className="font-semibold text-primary hover:underline">
                 Guides by goal
+              </Link>
+            </p>
+            <p>
+              <Link href="/about/methodology" className="font-semibold text-primary hover:underline">
+                Content methodology
               </Link>
             </p>
             <p>

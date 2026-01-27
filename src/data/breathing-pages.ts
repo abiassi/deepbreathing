@@ -94,6 +94,14 @@ export interface VideoEmbed {
   description: string;
 }
 
+/** Voice search optimization - question H2 with direct answer for featured snippets */
+export interface VoiceSearchQA {
+  /** The exact question users ask (becomes H2) */
+  question: string;
+  /** 40-50 word direct answer (snippet-optimized) */
+  answer: string;
+}
+
 export interface BreathingPageContent {
   slug: string;
   mode: ModeName;
@@ -114,6 +122,8 @@ export interface BreathingPageContent {
   synonyms: string[];
   frequency: string;
   video?: VideoEmbed;
+  /** Voice search optimization - question H2s with direct answers */
+  voiceSearch?: VoiceSearchQA[];
 }
 
 export const breathingPages: BreathingPageContent[] = [
@@ -128,7 +138,7 @@ export const breathingPages: BreathingPageContent[] = [
     },
     meta: {
       title: "Box Breathing: Navy SEAL Technique to Stop Anxiety Fast (Free Tool)",
-      description: "The same breathing technique Navy SEALs use before combat. Stop panic attacks in 1 minute. Free visualizer + Stanford research. Try now.",
+      description: "Free box breathing timer — stop anxiety in 60 seconds with the Navy SEAL 4-4-4-4 technique. No download. Start your guided session now.",
       ogTitle: "Box Breathing: Navy SEAL Technique to Stop Anxiety Fast",
       ogDescription: "The same breathing technique Navy SEALs use before combat. Stop panic attacks in 1 minute. Free visualizer + research-backed method.",
       ogImage: "og/breathe-box.png",
@@ -357,7 +367,13 @@ export const breathingPages: BreathingPageContent[] = [
       youtubeId: "GZzhk9jEkkI",
       title: "Box Breathing with Mark Divine (Navy SEAL Commander)",
       description: "Former Navy SEAL Commander Mark Divine teaches the box breathing technique he introduced to BUD/S training—the same method SEALs use to stay calm under pressure."
-    }
+    },
+    voiceSearch: [
+      {
+        question: "How do Navy SEALs breathe?",
+        answer: "Navy SEALs use box breathing: inhale for 4 seconds, hold for 4 seconds, exhale for 4 seconds, hold for 4 seconds. This technique was introduced to BUD/S training by Commander Mark Divine. SEALs use it before missions, during stressful situations, and whenever they need to stay calm under pressure. The structured counting occupies the thinking brain while the slow rhythm activates the parasympathetic nervous system."
+      }
+    ]
   },
   {
     slug: "4-7-8",
@@ -370,7 +386,7 @@ export const breathingPages: BreathingPageContent[] = [
     },
     meta: {
       title: "4-7-8 Breathing: Fall Asleep in 2 Minutes (Dr. Weil's Method)",
-      description: "Dr. Andrew Weil's 'natural tranquilizer' breathing technique. Fall asleep faster and calm anxiety in minutes. Free guided visualizer. Try tonight.",
+      description: "Free 4-7-8 breathing timer — fall asleep in 2 minutes with Dr. Weil's technique. No download. Start your guided session now.",
       ogTitle: "4-7-8 Breathing: Fall Asleep in 2 Minutes (Dr. Weil's Method)",
       ogDescription: "Dr. Weil's 'natural tranquilizer' technique. Fall asleep faster and calm anxiety in minutes. Free visualizer with research-backed method.",
       ogImage: "og/breathe-4-7-8.png",
@@ -598,7 +614,13 @@ export const breathingPages: BreathingPageContent[] = [
       youtubeId: "YRPh_GaiL8s",
       title: "Dr. Andrew Weil Demonstrates the 4-7-8 Breathing Technique",
       description: "Dr. Andrew Weil, the Harvard-trained physician who popularized the 4-7-8 breath, demonstrates his 'natural tranquilizer for the nervous system' technique for sleep and anxiety relief."
-    }
+    },
+    voiceSearch: [
+      {
+        question: "Does 4-7-8 breathing really work?",
+        answer: "Yes, 4-7-8 breathing works. Research shows slow breathing with extended exhales activates the parasympathetic nervous system and reduces heart rate within minutes. Dr. Andrew Weil, who popularized the technique, calls it a 'natural tranquilizer for the nervous system.' Clinical studies have found it improves sleep onset, reduces anxiety symptoms, and lowers blood pressure. The key is consistent practice—benefits increase with regular use over weeks."
+      }
+    ]
   },
   {
     slug: "coherent",
@@ -611,7 +633,7 @@ export const breathingPages: BreathingPageContent[] = [
     },
     meta: {
       title: "Coherent Breathing: The Science of 5 Breaths/Min (Free Trainer)",
-      description: "Why 5-6 breaths per minute maximizes HRV and trains stress resilience. The science, research, and a free interactive trainer. Equal inhale/exhale, no holds.",
+      description: "Free coherent breathing timer — train HRV and stress resilience in 5 minutes. 5-6 breaths/min pace. Start your guided session now.",
       ogTitle: "Coherent Breathing: The Science of 5 Breaths/Min",
       ogDescription: "Learn why 5-6 breaths/min maximizes HRV. The research behind coherent breathing + free interactive trainer.",
       ogImage: "og/breathe-coherent.png",
@@ -843,7 +865,7 @@ export const breathingPages: BreathingPageContent[] = [
     },
     meta: {
       title: "Physiological Sigh Timer (Free) — Calm Down in 30 Seconds",
-      description: "Free physiological sigh timer in your browser (no download). Stop stress in 30 seconds with the Stanford-tested double-inhale technique. Works in just 1-3 breaths—try now.",
+      description: "Free physiological sigh timer — calm down in 30 seconds with Stanford's double-inhale technique. Just 1-3 breaths. Start now.",
       ogTitle: "Free Physiological Sigh Timer — Calm Down in 30 Seconds",
       ogDescription: "Stanford-tested breathing technique from Huberman Lab. Stop stress in 30 seconds with double-inhale method. Free timer.",
       ogImage: "og/breathe-physiological-sigh.png",
@@ -1125,7 +1147,17 @@ export const breathingPages: BreathingPageContent[] = [
       youtubeId: "kSZKIupBUuc",
       title: "Dr. Andrew Huberman Explains the Physiological Sigh",
       description: "Stanford neuroscientist Dr. Andrew Huberman demonstrates and explains the physiological sigh—the fastest way to reduce stress in real-time."
-    }
+    },
+    voiceSearch: [
+      {
+        question: "How do I calm down quickly?",
+        answer: "The fastest way to calm down is the physiological sigh: take two quick inhales through your nose (the second is a short 'top-up'), then one long, slow exhale through your mouth. This technique works in just 1-3 breaths—about 30 seconds. The double inhale reinflates collapsed lung tissue; the long exhale activates your vagus nerve and parasympathetic nervous system. Stanford research found it outperforms meditation for rapid stress relief."
+      },
+      {
+        question: "How to stop a panic attack?",
+        answer: "To stop a panic attack, use the physiological sigh: two quick inhales through your nose followed by one long exhale through your mouth. This works because it's simple enough to do mid-panic—no counting or complex timing. The double inhale forces your lungs open; the long exhale activates your vagus nerve. Most people feel relief after just 1-3 sighs. Keep repeating until your heart rate slows and your body relaxes."
+      }
+    ]
   },
   {
     slug: "wim-hof",
@@ -1364,7 +1396,7 @@ const pursedLipPage: BreathingPageContent = {
   },
   meta: {
     title: "Pursed Lip Breathing: Stop Shortness of Breath Fast (Free Timer)",
-    description: "Free pursed lip breathing timer. The respiratory therapist-approved technique for COPD, asthma, and shortness of breath. 2:4 ratio breathing—inhale 2s, exhale 4s through pursed lips. Try now.",
+    description: "Free pursed lip breathing timer — ease shortness of breath in seconds. Respiratory therapist-approved 2:4 ratio. Start your guided session now.",
     ogTitle: "Pursed Lip Breathing: Stop Shortness of Breath Fast",
     ogDescription: "Respiratory therapist-approved technique for COPD, asthma, and shortness of breath. Free timer with 2:4 ratio breathing.",
     ogImage: "og/breathe-pursed-lip.png",
@@ -1597,7 +1629,7 @@ const nadiShodhanaPage: BreathingPageContent = {
   },
   meta: {
     title: "Alternate Nostril Breathing: Balance & Calm in 5 Minutes (Free Timer)",
-    description: "Free alternate nostril breathing timer (Nadi Shodhana). The ancient yoga technique for mental clarity, stress relief, and nervous system balance. 4-4-4 rhythm. Try now.",
+    description: "Free alternate nostril breathing timer — balance your nervous system in 5 minutes with Nadi Shodhana. Start your guided session now.",
     ogTitle: "Alternate Nostril Breathing: Balance & Calm in 5 Minutes",
     ogDescription: "Free timer for Nadi Shodhana—the ancient yoga technique for mental clarity and stress relief. 4-4-4 rhythm.",
     ogImage: "og/breathe-nadi-shodhana.png",
@@ -1863,7 +1895,7 @@ const ujjayiPage: BreathingPageContent = {
   },
   meta: {
     title: "Ujjayi Breathing: Ocean Breath Technique for Yoga & Focus (Free Guide)",
-    description: "Learn ujjayi breathing, the 'ocean breath' used in yoga for 5,000+ years. Step-by-step guide with free visualizer. Master the throat constriction technique today.",
+    description: "Free ujjayi breathing timer — master the yoga 'ocean breath' for deep focus and calm. Step-by-step guide. Start your guided session now.",
     ogTitle: "Ujjayi Breathing: The Ocean Breath Technique",
     ogDescription: "Learn ujjayi breathing—the yogic 'ocean breath' that calms your nervous system in minutes. Free visualizer + step-by-step guide.",
     ogImage: "og/breathe-ujjayi.png",
@@ -2096,7 +2128,7 @@ const bellyPage: BreathingPageContent = {
   },
   meta: {
     title: "Belly Breathing: Diaphragmatic Breathing Exercises (Free Visualizer)",
-    description: "Learn belly breathing (diaphragmatic breathing)—the foundation of all breathwork. Reduce stress, improve sleep, and breathe more efficiently. Free visualizer + guide.",
+    description: "Free belly breathing timer — learn diaphragmatic breathing, the foundation of all breathwork. Reduce stress in minutes. Start your guided session now.",
     ogTitle: "Belly Breathing: The Foundation of All Breathwork",
     ogDescription: "Learn diaphragmatic breathing—the technique that powers all other breathwork. Free visualizer + step-by-step guide.",
     ogImage: "og/breathe-belly.png",
@@ -2351,7 +2383,7 @@ const buteykoPage: BreathingPageContent = {
   },
   meta: {
     title: "Buteyko Breathing Method: Nasal Breathing Exercises for Respiratory Health",
-    description: "Learn the Buteyko breathing method—light, nasal breathing exercises for asthma, respiratory health, and better sleep. Free visualizer + Control Pause guide.",
+    description: "Free Buteyko breathing timer — light nasal breathing for asthma and respiratory health. Control Pause guide included. Start your session now.",
     ogTitle: "Buteyko Breathing: The Light Nasal Breathing Method",
     ogDescription: "Learn the Buteyko method for respiratory health. Nasal breathing exercises with free visualizer and Control Pause guide.",
     ogImage: "og/breathe-buteyko.png",

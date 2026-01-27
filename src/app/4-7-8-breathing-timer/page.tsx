@@ -10,9 +10,9 @@ const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/4-7-8-breathing-timer`;
 
 export const metadata: Metadata = {
-  title: "Free Online 4-7-8 Breathing Timer — Fall Asleep in 2 Minutes",
+  title: "Free Online 4-7-8 Breathing Timer (2026) — Fall Asleep in 2 Minutes",
   description:
-    "Free online 4-7-8 breathing timer in your browser—no download. Dr. Weil's 'natural tranquilizer' technique for sleep and anxiety. Try tonight.",
+    "Free 4-7-8 breathing timer — fall asleep in 2 minutes with Dr. Weil's technique. No download needed. Start your guided session now.",
   alternates: {
     canonical: canonicalUrl
   },
@@ -91,7 +91,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
       name: "Deep Breathing Exercises"
     },
     datePublished: "2025-11-17",
-    dateModified: "2026-01-02",
+    dateModified: "2026-01-27",
     mainEntityOfPage: canonicalUrl
   };
 
@@ -247,7 +247,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
       </section>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl rounded-t-[48px] bg-background/95 px-4 pb-16 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
-        <p className="mb-6 text-xs text-muted-foreground">Last updated: January 2, 2026</p>
+        <p className="mb-6 text-xs text-muted-foreground">Last updated: January 27, 2026</p>
         <section className="grid gap-6 md:grid-cols-2">
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <h2 className="text-2xl font-semibold text-card-foreground">Start the timer</h2>
