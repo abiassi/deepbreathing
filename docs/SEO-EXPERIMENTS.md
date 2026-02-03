@@ -407,7 +407,9 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-03 (2 weeks)
 
-**Status:** Waiting
+**Measured:** 2026-02-03  
+**Result:** 205 impressions, 0 clicks, avg position 69.6 (early indexing; far from top 10)  
+**Status:** Inconclusive
 
 ---
 
@@ -428,7 +430,13 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-03 (2 weeks)
 
-**Status:** Waiting
+**Measured:** 2026-02-03  
+**Result:** 36 impressions, 2 clicks, avg position 10.6 (near top 10, early traction)  
+**Status:** Inconclusive
+
+**Tuning (2026-02-03):**
+- Tightened exact-match intro wording and added a 45-word answer block for snippet eligibility
+- Added a concise "Quick Steps" section near the top of the page
 
 ---
 
@@ -449,7 +457,12 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-03 (2 weeks)
 
-**Status:** Waiting
+**Measured:** 2026-02-03  
+**Result:** 33 impressions, 0 clicks, avg position 8.3 (top 10 but low impressions)  
+**Status:** Inconclusive
+
+**Tuning (2026-02-03):**
+- Updated exact-match intro wording and added a 40-60 word answer block for featured snippet eligibility
 
 ---
 
@@ -473,7 +486,9 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-03 (2 weeks)
 
-**Status:** Waiting
+**Measured:** 2026-02-03  
+**Result:** 119 impressions, 0 clicks, avg position 47.7 (early indexing; not competitive yet)  
+**Status:** Inconclusive
 
 ---
 
@@ -496,7 +511,9 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-03 (2 weeks)
 
-**Status:** Waiting
+**Measured:** 2026-02-03  
+**Result:** 22 impressions, 0 clicks, avg position 21.3 (early indexing; needs time)  
+**Status:** Inconclusive
 
 ---
 
@@ -520,7 +537,9 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-03 (2 weeks)
 
-**Status:** Waiting
+**Measured:** 2026-02-03  
+**Result:** 15 impressions, 0 clicks, avg position 41.6 (early indexing; not competitive yet)  
+**Status:** Inconclusive
 
 ---
 
@@ -545,7 +564,14 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-03 (2 weeks)
 
-**Status:** Waiting
+**Measured:** 2026-02-03  
+**Result:** No GSC data yet (likely not indexed or below reporting threshold)  
+**Status:** Inconclusive
+
+**Indexing update (2026-02-03):**
+- GSC index inspection returned "URL unknown to Google"
+- Added internal links from /breathe/box, /breathe/physiological-sigh, /coherent-breathing-app, /4-7-8-breathing-timer
+- Next: request indexing in GSC UI and recheck in 7-10 days
 
 ---
 
@@ -568,7 +594,12 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-03 (2 weeks)
 
-**Status:** Waiting
+**Measured:** 2026-02-03  
+**Result:** 10 impressions, 0 clicks, avg position 12.4 (near top 10, early traction)  
+**Status:** Inconclusive
+
+**Tuning (2026-02-03):**
+- Updated exact-match intro wording and added a concise answer block mentioning key pranayama techniques
 
 ---
 
@@ -625,6 +656,31 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 5. 4-7-8-breathing-timer already had strong comparison table and internal linking
 
 **Measure After:** 2026-02-10 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
+### 2026-02-03: Near-Top-10 Tuning Pass (Answer Blocks + Exact-Match Intros)
+
+**Hypothesis:** Short answer blocks + exact-match intro lines will lift CTR and improve featured snippet eligibility for pages sitting 8–13.
+
+**Changes Made:**
+1. Added 40–60 word "Quick answer" blocks:
+   - `/4-7-8-breathing-timer`
+   - `/box-breathing-app`
+   - `/2-minute-breathing-exercise`
+2. Added concise answer blocks + intro refresh:
+   - `/breathe/box` (voice search Q&A: “What is box breathing?”)
+   - `/breathe/physiological-sigh` (voice search Q&A: “What is the physiological sigh?” + title refresh)
+3. Running page tuning:
+   - `/for/running` intro refreshed + answer block for “stop a side stitch while running”
+4. Added targeted query-variant sections on mid‑pack technique pages:
+   - `/breathe/pursed-lip` (“for COPD and shortness of breath”)
+   - `/breathe/ujjayi` (“steps” quick guide)
+   - `/breathe/belly` (“belly vs diaphragmatic breathing”)
+
+**Measure After:** 2026-02-17 (2 weeks)
 
 **Status:** Implemented ✅
 

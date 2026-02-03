@@ -707,7 +707,7 @@ export const useCasePages: UseCasePageContent[] = [
     hero: {
       title: "Recover Faster and Stop Side Stitches",
       subtitle: "The physiological sigh technique for runners",
-      intro: "You've just finished a hard sprint and you're bent over, hands on knees, panting heavily—but your breathing isn't helping. Or you're mid-run and a sharp side stitch stops you in your tracks. The physiological sigh, a double-inhale-long-exhale pattern, rapidly resets your respiratory system and brings your heart rate down faster than regular breathing."
+      intro: "Breathing for running recovery and side stitches starts with the physiological sigh. You've just finished a hard sprint and you're bent over, hands on knees, panting heavily—but your breathing isn't helping. Or you're mid-run and a sharp side stitch stops you in your tracks. The physiological sigh, a double-inhale-long-exhale pattern, rapidly resets your respiratory system and brings your heart rate down faster than regular breathing."
     },
 
     meta: {
@@ -719,7 +719,7 @@ export const useCasePages: UseCasePageContent[] = [
       twitterDescription: "Stanford-tested physiological sigh stops side stitches instantly and speeds recovery 2x. Try now.",
       author: "Resonance Editorial Team",
       datePublished: "2025-12-02",
-      dateModified: "2026-01-06"
+      dateModified: "2026-02-03"
     },
 
     keywords: [
@@ -860,6 +860,12 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "sleep",
         teaser: "Better sleep aids recovery. Try 4-7-8 breathing before bed after training days"
+      }
+    ],
+    voiceSearch: [
+      {
+        question: "How do you stop a side stitch while running?",
+        answer: "To stop a side stitch while running, slow down and do 1-3 physiological sighs: two quick nasal inhales followed by a long, slow exhale. The double inhale reinflates the lungs and the long exhale relaxes the diaphragm. Most runners feel relief within 30-60 seconds."
       }
     ],
 
@@ -2769,21 +2775,21 @@ const stressPage: UseCasePageContent = {
   breathingPageSlug: "physiological-sigh",
 
   hero: {
-    title: "Breathing Exercises for Stress Relief",
-    subtitle: "Calm your nervous system in 30 seconds with the physiological sigh",
-    intro: "Deadlines piling up. Notifications buzzing. That constant low-grade tension that won't let go. Stress isn't just 'feeling busy'—it's your nervous system stuck in overdrive, draining your energy and clouding your thinking. The physiological sigh is the fastest way to break the stress response—just 1-3 breaths can shift your state in under 30 seconds."
+    title: "Breathing Exercises for Stress",
+    subtitle: "Calm down in 30 seconds with the physiological sigh",
+    intro: "Breathing exercises for stress can calm your nervous system in 30 seconds. Deadlines piling up. Notifications buzzing. That constant low-grade tension that won't let go. Stress isn't just 'feeling busy'—it's your nervous system stuck in overdrive, draining your energy and clouding your thinking. The physiological sigh is the fastest way to break the stress response—just 1-3 breaths can shift your state in under 30 seconds."
   },
 
   meta: {
-    title: "Breathing Exercises for Stress: Calm Down in 30 Seconds (Free Tool)",
+    title: "Breathing Exercises for Stress — Calm Down in 30 Seconds (Free Tool)",
     description: "The fastest breathing technique for stress relief—works in 30 seconds. The Stanford-tested physiological sigh is more effective than meditation for real-time stress reduction. Free guided tool.",
-    ogTitle: "Breathing Exercises for Stress: Calm Down in 30 Seconds",
+    ogTitle: "Breathing Exercises for Stress — Calm Down in 30 Seconds",
     ogDescription: "The Stanford-tested breathing technique that beats meditation for stress relief. Works in 30 seconds. Free tool.",
-    twitterTitle: "Breathing Exercises for Stress Relief - 30 Second Reset",
+    twitterTitle: "Breathing Exercises for Stress — 30 Second Reset",
     twitterDescription: "Stanford-tested breathing technique calms stress in 30 seconds. Free guided tool.",
     author: "Resonance Editorial Team",
     datePublished: "2026-01-20",
-    dateModified: "2026-01-20"
+    dateModified: "2026-02-03"
   },
 
   keywords: [
@@ -2924,6 +2930,12 @@ const stressPage: UseCasePageContent = {
     {
       slug: "kids",
       teaser: "Teaching kids to manage stress? Simple breathing games they can use at school or home"
+    }
+  ],
+  voiceSearch: [
+    {
+      question: "What are the best breathing exercises for stress?",
+      answer: "The best breathing exercises for stress are the physiological sigh (two quick inhales, long exhale) for immediate relief, box breathing for steady calm, and belly breathing for gentle downshifting. Start with 30-60 seconds of sighs, then 2-5 minutes of slow, easy breaths."
     }
   ],
 
@@ -3165,21 +3177,21 @@ const pranayamaPage: UseCasePageContent = {
   breathingPageSlug: "nadi-shodhana",
 
   hero: {
-    title: "Pranayama: The Complete Guide to Yogic Breathing",
+    title: "Pranayama Breathing: The Complete Guide to Yogic Breathing",
     subtitle: "Ancient breath practices for modern life",
-    intro: "Pranayama (प्राणायाम) is the yogic science of breath control—a 5,000-year-old practice that modern science is finally catching up with. Far more than simple deep breathing, pranayama offers specific techniques for energy, relaxation, focus, and spiritual practice. This guide introduces the most effective pranayama techniques and how to practice them safely."
+    intro: "Pranayama breathing is the yogic science of breath control—a 5,000-year-old practice that modern science is finally catching up with. Far more than simple deep breathing, pranayama offers specific techniques for energy, relaxation, focus, and spiritual practice. This guide introduces the most effective pranayama techniques and how to practice them safely."
   },
 
   meta: {
-    title: "Pranayama: Complete Guide to Yogic Breathing Techniques (2026)",
+    title: "Pranayama Breathing: Complete Guide to Yogic Breathing Techniques (2026)",
     description: "Learn pranayama breathing techniques: Nadi Shodhana, Ujjayi, Kapalabhati, and more. Ancient yogic practices with modern science. Free visualizers included.",
-    ogTitle: "Pranayama: Complete Guide to Yogic Breathing",
+    ogTitle: "Pranayama Breathing: Complete Guide to Yogic Breathing",
     ogDescription: "Learn pranayama—the yogic science of breath control. Nadi Shodhana, Ujjayi, and more. Free visualizers.",
-    twitterTitle: "Pranayama: The Complete Guide to Yogic Breathing",
+    twitterTitle: "Pranayama Breathing: The Complete Guide to Yogic Breathing",
     twitterDescription: "Ancient breath practices for modern life. Learn pranayama techniques with free visualizers.",
     author: "Resonance Editorial Team",
     datePublished: "2026-01-20",
-    dateModified: "2026-01-20"
+    dateModified: "2026-02-03"
   },
 
   keywords: [
@@ -3318,6 +3330,12 @@ const pranayamaPage: UseCasePageContent = {
     {
       slug: "focus",
       teaser: "Use pranayama techniques to sharpen concentration"
+    }
+  ],
+  voiceSearch: [
+    {
+      question: "What is pranayama breathing?",
+      answer: "Pranayama breathing is the yogic practice of controlling the breath to influence energy, mood, and focus. Common pranayama breathing techniques include Nadi Shodhana (alternate nostril), Ujjayi (ocean breath), and slow counted breathing. Practice gently for 5-10 minutes to calm the nervous system and prepare for meditation."
     }
   ],
 

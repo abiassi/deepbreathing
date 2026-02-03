@@ -91,7 +91,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
       name: "Deep Breathing Exercises"
     },
     datePublished: "2025-11-17",
-    dateModified: "2026-01-27",
+    dateModified: "2026-02-03",
     mainEntityOfPage: canonicalUrl
   };
 
@@ -239,15 +239,22 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
             <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
             <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">4-7-8 Breathing Timer: Fall Asleep Faster</h1>
             <p className="max-w-xl text-lg text-muted-foreground">
-              A free 4-7-8 breathing app (Dr. Andrew Weil&apos;s method) you can run right now in your browser. Press Start, follow
-              the visual pacing, and adjust the counts if you need a gentler version.
+              4-7-8 breathing is a calming pattern: inhale for 4, hold for 7, exhale for 8. This free timer (Dr. Andrew Weil&apos;s method)
+              lets you follow the pacing instantly in your browser and adjust the counts if you need a gentler version.
             </p>
           </div>
         </div>
       </section>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl rounded-t-[48px] bg-background/95 px-4 pb-16 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
-        <p className="mb-6 text-xs text-muted-foreground">Last updated: January 27, 2026</p>
+        <p className="mb-6 text-xs text-muted-foreground">Last updated: February 3, 2026</p>
+        <div className="mb-8 glow-card rounded-[32px] border border-border bg-card p-6">
+          <h2 className="text-2xl font-semibold text-card-foreground">Quick answer</h2>
+          <p className="mt-3 text-sm text-muted-foreground">
+            4-7-8 breathing is a relaxation technique: inhale for 4 counts, hold for 7, exhale for 8. The long exhale activates the
+            parasympathetic nervous system, helping with sleep and anxiety. Do 4-8 cycles at bedtime or anytime you need to calm down.
+          </p>
+        </div>
         <section className="grid gap-6 md:grid-cols-2">
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <h2 className="text-2xl font-semibold text-card-foreground">Start the timer</h2>
@@ -625,6 +632,32 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
               <p className="text-lg font-semibold text-card-foreground">Blood Pressure Support</p>
               <p className="mt-1 text-sm text-muted-foreground">Naturally support healthy blood pressure with slow breathing</p>
               <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Learn more →</span>
+            </Link>
+          </div>
+        </section>
+
+        <section className="mt-12 space-y-4">
+          <p className="text-sm uppercase tracking-widest text-primary">Explore more techniques</p>
+          <div className="grid gap-4 md:grid-cols-2">
+            <Link href="/breathe/belly" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+              <p className="text-lg font-semibold text-card-foreground">Belly Breathing</p>
+              <p className="mt-1 text-sm text-muted-foreground">Foundational diaphragmatic breathing for beginners.</p>
+              <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Practice →</span>
+            </Link>
+            <Link href="/breathe/pursed-lip" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+              <p className="text-lg font-semibold text-card-foreground">Pursed Lip Breathing</p>
+              <p className="mt-1 text-sm text-muted-foreground">Exhale-focused pacing to ease breathlessness and calm the body.</p>
+              <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Practice →</span>
+            </Link>
+            <Link href="/breathe/ujjayi" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+              <p className="text-lg font-semibold text-card-foreground">Ujjayi (Ocean Breath)</p>
+              <p className="mt-1 text-sm text-muted-foreground">Yoga-friendly breath for steady focus and calm.</p>
+              <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Practice →</span>
+            </Link>
+            <Link href="/breathe/buteyko" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+              <p className="text-lg font-semibold text-card-foreground">Buteyko Breathing</p>
+              <p className="mt-1 text-sm text-muted-foreground">Light nasal breathing to reduce over-breathing.</p>
+              <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Practice →</span>
             </Link>
           </div>
         </section>

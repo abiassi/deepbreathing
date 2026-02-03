@@ -134,7 +134,7 @@ export const breathingPages: BreathingPageContent[] = [
     hero: {
       title: "Box Breathing (4‑4‑4‑4) Visualizer",
       subtitle: "Equal counts to steady arousal and sharpen focus.",
-      intro: "Box (square) breathing uses four equal phases: inhale, hold, exhale, hold. The pattern slows respiration and stabilizes attention. Keep counts comfortable (e.g., 3–6 seconds each). If holds feel tight or dizzying, shorten them or remove holds and keep the rhythm even."
+      intro: "Box breathing uses four equal phases: inhale, hold, exhale, hold. The pattern slows respiration and stabilizes attention. Keep counts comfortable (e.g., 3–6 seconds each). If holds feel tight or dizzying, shorten them or remove holds and keep the rhythm even."
     },
     meta: {
       title: "Box Breathing: Navy SEAL Technique to Stop Anxiety Fast (Free Tool)",
@@ -147,7 +147,7 @@ export const breathingPages: BreathingPageContent[] = [
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2026-01-06"
+      dateModified: "2026-02-03"
     },
     body: [
       {
@@ -324,6 +324,14 @@ export const breathingPages: BreathingPageContent[] = [
         reason: "Fast downshift during spikes of stress; 1–3 cycles can relieve acute arousal quickly."
       },
       {
+        slug: "pursed-lip",
+        reason: "Exhale‑focused breathing that eases breathlessness and promotes calmer pacing."
+      },
+      {
+        slug: "ujjayi",
+        reason: "Ocean‑breath focus for yoga sessions and steady, mindful breathing."
+      },
+      {
         slug: "belly",
         reason: "Master belly breathing first as the foundation for all breathwork techniques."
       }
@@ -338,6 +346,11 @@ export const breathingPages: BreathingPageContent[] = [
         slug: "public-speaking",
         title: "Public Speaking & Stage Fright",
         teaser: "The Navy SEAL method to stop stage fright in 60 seconds"
+      },
+      {
+        slug: "kids",
+        title: "Breathing for Kids",
+        teaser: "Kid‑friendly calming exercises that build the same slow‑breathing habit"
       }
     ],
     keywords: [
@@ -369,6 +382,10 @@ export const breathingPages: BreathingPageContent[] = [
       description: "Former Navy SEAL Commander Mark Divine teaches the box breathing technique he introduced to BUD/S training—the same method SEALs use to stay calm under pressure."
     },
     voiceSearch: [
+      {
+        question: "What is box breathing?",
+        answer: "Box breathing is a simple four-count pattern: inhale 4, hold 4, exhale 4, hold 4. The equal timing slows your breath, steadies attention, and activates the parasympathetic nervous system. Practice 1–3 minutes for a quick reset, or longer for deeper calm."
+      },
       {
         question: "How do Navy SEALs breathe?",
         answer: "Navy SEALs use box breathing: inhale for 4 seconds, hold for 4 seconds, exhale for 4 seconds, hold for 4 seconds. This technique was introduced to BUD/S training by Commander Mark Divine. SEALs use it before missions, during stressful situations, and whenever they need to stay calm under pressure. The structured counting occupies the thinking brain while the slow rhythm activates the parasympathetic nervous system."
@@ -858,24 +875,24 @@ export const breathingPages: BreathingPageContent[] = [
     slug: "physiological-sigh",
     mode: ModeName.Sigh,
     featured: true,
-    hero: {
-      title: "Physiological Sigh: Instant Stress Relief",
-      subtitle: "Calm down in 30 seconds with the double-inhale technique.",
-      intro: "A physiological sigh is two quick inhales followed by a long, unforced exhale—the fastest way to reduce stress in real-time. Just 1-3 sighs (about 30 seconds) can lower your heart rate and cortisol. The second inhale re-expands collapsed lung tissue; the long exhale activates your vagus nerve. Use for instant relief or practice 2–5 minutes daily for mood benefits."
-    },
-    meta: {
-      title: "Physiological Sigh Timer (Free) — Calm Down in 30 Seconds",
-      description: "Free physiological sigh timer — calm down in 30 seconds with Stanford's double-inhale technique. Just 1-3 breaths. Start now.",
-      ogTitle: "Free Physiological Sigh Timer — Calm Down in 30 Seconds",
-      ogDescription: "Stanford-tested breathing technique from Huberman Lab. Stop stress in 30 seconds with double-inhale method. Free timer.",
-      ogImage: "og/breathe-physiological-sigh.png",
-      twitterTitle: "Free Physiological Sigh Timer — Calm Down in 30 Seconds",
-      twitterDescription: "Stop stress in 30 seconds with Stanford's double-inhale technique. Free timer—try now.",
-      author: "Resonance Editorial Team",
-      reviewer: "",
-      datePublished: "2025-11-17",
-      dateModified: "2026-01-10"
-    },
+  hero: {
+    title: "Physiological Sigh: Instant Stress Relief",
+    subtitle: "Calm down in 30 seconds with the double-inhale technique.",
+    intro: "A physiological sigh is two quick inhales followed by a long, unforced exhale—the fastest way to reduce stress in real-time. Just 1-3 sighs (about 30 seconds) can lower your heart rate and cortisol. The second inhale re-expands collapsed lung tissue; the long exhale activates your vagus nerve. Use for instant relief or practice 2–5 minutes daily for mood benefits."
+  },
+  meta: {
+    title: "Physiological Sigh Breathing Timer (Free) — Calm Down in 30 Seconds",
+    description: "Free physiological sigh timer — calm down in 30 seconds with Stanford's double-inhale technique. Just 1-3 breaths. Start now.",
+    ogTitle: "Physiological Sigh Breathing — Calm Down in 30 Seconds",
+    ogDescription: "Stanford-tested breathing technique from Huberman Lab. Stop stress in 30 seconds with double-inhale method. Free timer.",
+    ogImage: "og/breathe-physiological-sigh.png",
+    twitterTitle: "Physiological Sigh Breathing — Calm Down in 30 Seconds",
+    twitterDescription: "Stop stress in 30 seconds with Stanford's double-inhale technique. Free timer—try now.",
+    author: "Resonance Editorial Team",
+    reviewer: "",
+    datePublished: "2025-11-17",
+    dateModified: "2026-02-03"
+  },
     body: [
       {
         heading: "What Is a Physiological Sigh?",
@@ -909,12 +926,18 @@ export const breathingPages: BreathingPageContent[] = [
         heading: "Physiological Sigh for Panic Attacks",
         content: "When panic hits, your breathing goes haywire—fast, shallow, desperate. The physiological sigh works because it's simple enough to do mid-panic: just two quick inhales, then a long exhale. No counting, no complex timing. The double inhale forces your lungs open; the long exhale activates your vagus nerve. Many people report feeling relief after just 1-3 sighs. It won't cure a panic disorder, but it can interrupt the spiral and buy you time to ground yourself."
       },
-      {
-        heading: "Physiological Sigh for Anxiety",
-        content: "Unlike panic attacks (which are acute), anxiety often simmers in the background. The physiological sigh helps in two ways: (1) As an instant reset when anxiety spikes—1-3 sighs can break the tension. (2) As a daily practice—5 minutes of cyclic sighing per day can lower baseline anxiety over weeks. The 2023 Stanford study found cyclic sighing improved mood more than mindfulness meditation. For chronic anxiety, pair the sigh with other evidence-based approaches; it's a tool, not a cure."
-      }
-    ],
-    benefits: [
+    {
+      heading: "Physiological Sigh for Anxiety",
+      content: "Unlike panic attacks (which are acute), anxiety often simmers in the background. The physiological sigh helps in two ways: (1) As an instant reset when anxiety spikes—1-3 sighs can break the tension. (2) As a daily practice—5 minutes of cyclic sighing per day can lower baseline anxiety over weeks. The 2023 Stanford study found cyclic sighing improved mood more than mindfulness meditation. For chronic anxiety, pair the sigh with other evidence-based approaches; it's a tool, not a cure."
+    }
+  ],
+  voiceSearch: [
+    {
+      question: "What is the physiological sigh?",
+      answer: "Physiological sigh breathing is two quick nasal inhales followed by a long, relaxed exhale. The second inhale tops off the lungs, and the slow exhale activates the vagus nerve to calm the stress response. Do 1-3 sighs for instant relief or 2-5 minutes for mood."
+    }
+  ],
+  benefits: [
       {
         title: "Rapid calming",
         description: "1–3 cycles can ease acute arousal; 2–5 minutes offers a deeper shift."
@@ -1080,6 +1103,18 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "coherent",
         reason: "For HRV training, equal in/out at ~5–6 breaths/min provides strong physiological effects."
+      },
+      {
+        slug: "pursed-lip",
+        reason: "Exhale‑focused breathing that eases breathlessness and supports calmer pacing."
+      },
+      {
+        slug: "belly",
+        reason: "Diaphragmatic breathing builds a steady, low‑tension base between sigh sessions."
+      },
+      {
+        slug: "buteyko",
+        reason: "Light nasal breathing to reduce over‑breathing and improve CO₂ tolerance."
       }
     ],
     relatedUseCases: [
@@ -1405,7 +1440,7 @@ const pursedLipPage: BreathingPageContent = {
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2026-01-20",
-    dateModified: "2026-01-20"
+    dateModified: "2026-02-03"
   },
   body: [
     {
@@ -1415,6 +1450,10 @@ const pursedLipPage: BreathingPageContent = {
     {
       heading: "Who Benefits Most",
       content: "Originally developed for COPD and emphysema patients, pursed lip breathing helps anyone experiencing shortness of breath. It's particularly effective for: chronic lung conditions (COPD, emphysema, chronic bronchitis), asthma during mild episodes, exercise-induced breathlessness, anxiety-related breathing difficulty, recovery after physical exertion, and seniors wanting to maintain lung function."
+    },
+    {
+      heading: "Pursed Lip Breathing for COPD and Shortness of Breath",
+      content: "Pursed lip breathing for COPD works by keeping small airways open longer, helping trapped air escape and easing shortness of breath. Use it during flares, while walking, or when climbing stairs to reduce air hunger and make each breath feel more efficient."
     },
     {
       heading: "Benefits",
@@ -1625,20 +1664,20 @@ const nadiShodhanaPage: BreathingPageContent = {
   hero: {
     title: "Alternate Nostril Breathing (Nadi Shodhana)",
     subtitle: "Balance your nervous system with this ancient yoga technique.",
-    intro: "Nadi Shodhana, or alternate nostril breathing, is a yogic practice that balances the left and right hemispheres of your brain and calms the nervous system. Inhale through one nostril, hold, exhale through the other, then reverse. The timer guides your rhythm—you control which nostril to use."
+    intro: "Alternate nostril breathing (Nadi Shodhana) is a yogic practice that balances the left and right hemispheres of your brain and calms the nervous system. Inhale through one nostril, hold, exhale through the other, then reverse. The timer guides your rhythm—you control which nostril to use."
   },
   meta: {
-    title: "Alternate Nostril Breathing: Balance & Calm in 5 Minutes (Free Timer)",
+    title: "Alternate Nostril Breathing (Nadi Shodhana) — Balance & Calm in 5 Minutes",
     description: "Free alternate nostril breathing timer — balance your nervous system in 5 minutes with Nadi Shodhana. Start your guided session now.",
-    ogTitle: "Alternate Nostril Breathing: Balance & Calm in 5 Minutes",
+    ogTitle: "Alternate Nostril Breathing (Nadi Shodhana) — Balance & Calm in 5 Minutes",
     ogDescription: "Free timer for Nadi Shodhana—the ancient yoga technique for mental clarity and stress relief. 4-4-4 rhythm.",
     ogImage: "og/breathe-nadi-shodhana.png",
-    twitterTitle: "Alternate Nostril Breathing: Free Timer",
+    twitterTitle: "Alternate Nostril Breathing (Nadi Shodhana) — Free Timer",
     twitterDescription: "Balance your nervous system with the ancient yoga technique. Free timer.",
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2026-01-20",
-    dateModified: "2026-01-20"
+    dateModified: "2026-02-03"
   },
   body: [
     {
@@ -1648,6 +1687,10 @@ const nadiShodhanaPage: BreathingPageContent = {
     {
       heading: "How It Works",
       content: "Use your right hand in Vishnu Mudra: fold your index and middle fingers down, using your thumb to close your right nostril and your ring finger to close your left. The timer will guide the rhythm—you manually switch nostrils at each phase change. One complete round: inhale left → hold → exhale right → inhale right → hold → exhale left."
+    },
+    {
+      heading: "Quick Steps",
+      content: "Sit tall. Close your right nostril and inhale through the left, hold briefly, then exhale through the right. Inhale right, hold, exhale left. Repeat 5-10 rounds at a comfortable pace."
     },
     {
       heading: "Benefits",
@@ -1880,7 +1923,13 @@ const nadiShodhanaPage: BreathingPageContent = {
     youtubeId: "l11qFpRqhIQ",
     title: "Alternate Nostril Breathing (Nadi Shodhana) Tutorial",
     description: "A clear, step-by-step guide to practicing Nadi Shodhana pranayama—the ancient yogic technique for balancing the nervous system and calming the mind."
-  }
+  },
+  voiceSearch: [
+    {
+      question: "What is alternate nostril breathing?",
+      answer: "Alternate nostril breathing (Nadi Shodhana) is a yogic technique: close the right nostril and inhale left, hold briefly, exhale right; then inhale right, hold, exhale left. This slow, balanced rhythm calms the nervous system, improves focus, and prepares you for meditation. Practice 5-10 minutes."
+    }
+  ]
 };
 
 // Ujjayi Breathing page content (SEO expansion - not featured)
@@ -1904,7 +1953,7 @@ const ujjayiPage: BreathingPageContent = {
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2026-01-20",
-    dateModified: "2026-01-20"
+    dateModified: "2026-02-03"
   },
   body: [
     {
@@ -1914,6 +1963,10 @@ const ujjayiPage: BreathingPageContent = {
     {
       heading: "How to make the sound",
       content: "Imagine fogging a mirror with your breath, but with your mouth closed. Or think of Darth Vader's breathing, but softer and through the nose. The sound should be audible to you but not the person next to you in yoga class. The constriction happens at the back of your throat, not in your nose or chest."
+    },
+    {
+      heading: "Ujjayi Breathing Steps",
+      content: "Ujjayi breathing steps are simple: inhale through the nose for 4 counts with a gentle throat constriction, then exhale through the nose for 6 counts with the same soft ocean sound. Keep the mouth closed, shoulders relaxed, and repeat for 5-10 minutes."
     },
     {
       heading: "Benefits",
@@ -2137,12 +2190,16 @@ const bellyPage: BreathingPageContent = {
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2026-01-20",
-    dateModified: "2026-01-20"
+    dateModified: "2026-02-03"
   },
   body: [
     {
       heading: "What it is",
       content: "Belly breathing means using your diaphragm—not your chest and shoulders—to drive respiration. When you inhale, your diaphragm contracts and moves downward, creating a vacuum that pulls air into your lungs. Your belly expands outward. When you exhale, the diaphragm relaxes, pushing air out as your belly falls. The timing is 4 seconds in, 6 seconds out, with no holds."
+    },
+    {
+      heading: "Belly Breathing vs Diaphragmatic Breathing",
+      content: "Belly breathing and diaphragmatic breathing are the same technique. 'Belly breathing' describes the visible belly rise; 'diaphragmatic breathing' describes the muscle doing the work. If your belly expands while your chest stays quiet, you're doing it right."
     },
     {
       heading: "Why it matters",

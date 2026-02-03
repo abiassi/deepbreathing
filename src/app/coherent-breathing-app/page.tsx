@@ -131,7 +131,7 @@ export default function CoherentBreathingAppMoneyPage() {
 
       <header className="space-y-4">
         <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
-        <p className="text-xs text-muted-foreground">Updated January 2026</p>
+        <p className="text-xs text-muted-foreground">Updated February 2026</p>
         <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">Coherent breathing app (HRV)</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
           A free coherent breathing timer for HRV-focused paced breathing. Use equal inhale/exhale around 5–6 breaths per
@@ -496,6 +496,32 @@ export default function CoherentBreathingAppMoneyPage() {
               </tr>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section className="mt-12 space-y-4">
+        <p className="text-sm uppercase tracking-widest text-primary">Explore more techniques</p>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Link href="/breathe/pursed-lip" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+            <p className="text-lg font-semibold text-card-foreground">Pursed Lip Breathing</p>
+            <p className="mt-1 text-sm text-muted-foreground">Exhale-focused pacing to ease breathlessness and calm the body.</p>
+            <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Practice →</span>
+          </Link>
+          <Link href="/breathe/belly" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+            <p className="text-lg font-semibold text-card-foreground">Belly Breathing</p>
+            <p className="mt-1 text-sm text-muted-foreground">Foundational diaphragmatic breathing for beginners.</p>
+            <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Practice →</span>
+          </Link>
+          <Link href="/breathe/ujjayi" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+            <p className="text-lg font-semibold text-card-foreground">Ujjayi (Ocean Breath)</p>
+            <p className="mt-1 text-sm text-muted-foreground">Yoga-friendly breath for steady focus and calm.</p>
+            <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Practice →</span>
+          </Link>
+          <Link href="/breathe/buteyko" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+            <p className="text-lg font-semibold text-card-foreground">Buteyko Breathing</p>
+            <p className="mt-1 text-sm text-muted-foreground">Light nasal breathing to reduce over-breathing.</p>
+            <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Practice →</span>
+          </Link>
         </div>
       </section>
 

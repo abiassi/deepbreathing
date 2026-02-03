@@ -144,14 +144,21 @@ export default function BoxBreathingAppMoneyPage() {
             <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
             <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">Box breathing app</h1>
             <p className="max-w-xl text-lg text-muted-foreground">
-              A free box breathing timer (4-4-4-4) you can use instantly in your browser. Follow the visual guide, adjust the
-              counts, and start in seconds—no download and no signup.
+              Box breathing app and timer for the 4-4-4-4 pattern you can use instantly in your browser. Follow the visual guide,
+              adjust the counts, and start in seconds—no download and no signup.
             </p>
           </div>
         </div>
       </section>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl rounded-t-[48px] bg-background/95 px-4 pb-16 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
+        <div className="mb-8 glow-card rounded-[32px] border border-border bg-card p-6">
+          <h2 className="text-2xl font-semibold text-card-foreground">Quick answer</h2>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Box breathing is a four-count pattern: inhale 4, hold 4, exhale 4, hold 4. The equal rhythm slows breathing, steadies
+            focus, and activates the parasympathetic nervous system. Use 1-3 minutes for a reset or 5-10 minutes for deeper calm.
+          </p>
+        </div>
         <section className="grid gap-6 md:grid-cols-2">
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <h2 className="text-2xl font-semibold text-card-foreground">Start the timer</h2>

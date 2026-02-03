@@ -125,11 +125,20 @@ export default function TwoMinuteBreathingExercisePage() {
         <p className="text-xs uppercase tracking-[0.35em] text-primary">Quick Breathing Exercise</p>
         <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">2 minute breathing exercise</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          A short breathing exercise that fits between meetings, tasks, or any moment you need to reset. Two minutes
+          A 2 minute breathing exercise that fits between meetings, tasks, or any moment you need to reset. Two minutes
           is enough to shift your nervous system from stress to calm—choose box breathing or coherent breathing based
           on what you need.
         </p>
       </header>
+
+      <div className="mt-8 glow-card rounded-[32px] border border-border bg-card p-6">
+        <h2 className="text-2xl font-semibold text-card-foreground">Quick answer</h2>
+        <p className="mt-3 text-sm text-muted-foreground">
+          A 2 minute breathing exercise is a fast reset: do 8 cycles of 4-4-4-4 (box breathing) or 10-12 slow breaths at 5 seconds
+          in and 5 seconds out (coherent breathing). Two minutes is enough to slow your breath, calm the nervous system, and
+          improve focus.
+        </p>
+      </div>
 
       <section className="mt-10 grid gap-6 md:grid-cols-2">
         <div className="glow-card rounded-[32px] border border-border bg-card p-6">
