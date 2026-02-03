@@ -1,0 +1,10 @@
+apps/
+packages/
+resonance---breathing-visualizer/
+**/node_modules/
+**/.expo/
+**/.turbo/
+**/.next/
+**/dist/
+**/build/
+.DS_Store
