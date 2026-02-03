@@ -931,12 +931,6 @@ export const breathingPages: BreathingPageContent[] = [
       content: "Unlike panic attacks (which are acute), anxiety often simmers in the background. The physiological sigh helps in two ways: (1) As an instant reset when anxiety spikes—1-3 sighs can break the tension. (2) As a daily practice—5 minutes of cyclic sighing per day can lower baseline anxiety over weeks. The 2023 Stanford study found cyclic sighing improved mood more than mindfulness meditation. For chronic anxiety, pair the sigh with other evidence-based approaches; it's a tool, not a cure."
     }
   ],
-  voiceSearch: [
-    {
-      question: "What is the physiological sigh?",
-      answer: "Physiological sigh breathing is two quick nasal inhales followed by a long, relaxed exhale. The second inhale tops off the lungs, and the slow exhale activates the vagus nerve to calm the stress response. Do 1-3 sighs for instant relief or 2-5 minutes for mood."
-    }
-  ],
   benefits: [
       {
         title: "Rapid calming",
@@ -1184,6 +1178,10 @@ export const breathingPages: BreathingPageContent[] = [
       description: "Stanford neuroscientist Dr. Andrew Huberman demonstrates and explains the physiological sigh—the fastest way to reduce stress in real-time."
     },
     voiceSearch: [
+      {
+        question: "What is the physiological sigh?",
+        answer: "Physiological sigh breathing is two quick nasal inhales followed by a long, relaxed exhale. The second inhale tops off the lungs, and the slow exhale activates the vagus nerve to calm the stress response. Do 1-3 sighs for instant relief or 2-5 minutes for mood."
+      },
       {
         question: "How do I calm down quickly?",
         answer: "The fastest way to calm down is the physiological sigh: take two quick inhales through your nose (the second is a short 'top-up'), then one long, slow exhale through your mouth. This technique works in just 1-3 breaths—about 30 seconds. The double inhale reinflates collapsed lung tissue; the long exhale activates your vagus nerve and parasympathetic nervous system. Stanford research found it outperforms meditation for rapid stress relief."
