@@ -9,6 +9,13 @@ import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER, WIM_HOF_PROTOCOL } from '
 import { AudioService } from './services/audioService';
 import Visualizer from './components/Visualizer';
 
+// GA4 event helper — safe to call even if gtag isn't loaded
+function trackEvent(name: string, params?: Record<string, string | number | boolean>) {
+  if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+    (window as any).gtag('event', name, params);
+  }
+}
+
 // Lazy-load ParticleBackground to reduce initial bundle size
 const ParticleBackground = dynamic(
   () => import('./components/ParticleBackground'),
@@ -418,6 +425,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       }
 
       setIsRunning(true);
+      trackEvent('session_start', { mode: activeMode, duration: selectedDuration ?? 0 });
 
       // Check if this is Wim Hof (protocol mode)
       if (activeMode === ModeName.WimHof) {
@@ -470,12 +478,13 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setIsProtocolMode(false);
       setPhase(BreathingPhase.Idle);
       setInstruction("Paused");
+      trackEvent('session_pause', { mode: activeMode, seconds_elapsed: sessionSeconds });
       audio.stopDrone();
       audio.stopPinkNoise();
       audio.stopBinaural();
       setScale(0);
     }
-  }, [isRunning, activeMode, themeColor, getAudioService, isIOS, soundStatus]);
+  }, [isRunning, activeMode, themeColor, getAudioService, isIOS, soundStatus, sessionSeconds, selectedDuration]);
 
   const handleStop = () => {
     const audio = getAudioService();
@@ -490,6 +499,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       isUserControlledHold: false
     });
     setInstruction("Ready to start?");
+    trackEvent('session_stop', { mode: activeMode, seconds_elapsed: sessionSeconds });
 
     if (sessionSeconds > 0) {
       setTotalMinutes(prev => prev + Math.floor(sessionSeconds / 60));
@@ -504,6 +514,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   const handleModeSelect = useCallback(
     (mode: ModeName, options: { navigate?: boolean } = {}) => {
+      trackEvent('mode_switch', { from: activeMode, to: mode });
       setActiveMode(mode);
       setAiReasoning(null);
 
@@ -839,6 +850,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setIsRunning(false);
       setPhase(BreathingPhase.Idle);
       setInstruction('Session complete');
+      trackEvent('session_complete', { mode: activeMode, seconds_elapsed: sessionSeconds });
       // Stop all audio
       audio.stopDrone();
       audio.stopPinkNoise();

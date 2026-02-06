@@ -79,6 +79,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="resonance-theme-init" strategy="beforeInteractive">
           {`(function(){try{var storageKey='resonance_theme';var root=document.documentElement;var stored=localStorage.getItem(storageKey);var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=stored&&stored!=='system'?stored:(prefersDark?'dark':'light');if(theme==='dark'){root.classList.add('dark');}else{root.classList.remove('dark');}root.dataset.theme=theme;}catch(_e){}})();`}
         </Script>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-7GG9WVNBBP"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7GG9WVNBBP');`}
+        </Script>
         <SeasonalBanner />
         {children}
         <Analytics />
