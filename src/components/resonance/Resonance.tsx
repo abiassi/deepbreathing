@@ -1205,12 +1205,19 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                 <>
                   <div className="glass-panel flex flex-wrap justify-between gap-1 rounded-2xl p-2">
                     {Object.values(BREATHING_PATTERNS)
-                      .filter(m => m.name !== ModeName.WimHof || activeMode === ModeName.WimHof || defaultMode === ModeName.WimHof)
+                      .filter(m => {
+                        if (m.name === ModeName.WimHof) return activeMode === ModeName.WimHof || defaultMode === ModeName.WimHof;
+                        if (m.name === ModeName.Tummo) return activeMode === ModeName.Tummo || defaultMode === ModeName.Tummo;
+                        if (m.name === ModeName.BreathOfFire) return activeMode === ModeName.BreathOfFire || defaultMode === ModeName.BreathOfFire;
+                        return true;
+                      })
                       .map((m) => {
                         // Short labels for mode buttons
                         let label = m.name.split(' ')[0];
                         if (m.name === ModeName.Sigh) label = 'Sigh';
                         if (m.name === ModeName.WimHof) label = 'Wim Hof';
+                        if (m.name === ModeName.Tummo) label = 'Tummo';
+                        if (m.name === ModeName.BreathOfFire) label = 'Fire';
 
                         return (
                           <button

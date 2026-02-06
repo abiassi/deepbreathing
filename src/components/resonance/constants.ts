@@ -93,6 +93,24 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     exhale: 3,
     holdOut: 3,
     color: "#38bdf8" // Sky blue
+  },
+  [ModeName.Tummo]: {
+    name: ModeName.Tummo,
+    description: "Tibetan Inner Heat Breathing (2-0-1-0)",
+    inhale: 2,
+    holdIn: 0,
+    exhale: 1,
+    holdOut: 0,
+    color: "#dc2626" // Deep red
+  },
+  [ModeName.BreathOfFire]: {
+    name: ModeName.BreathOfFire,
+    description: "Rapid Rhythmic Breathing (0.75-0-0.75-0)",
+    inhale: 0.75,
+    holdIn: 0,
+    exhale: 0.75,
+    holdOut: 0,
+    color: "#ea580c" // Hot orange
   }
 };
 

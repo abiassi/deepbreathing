@@ -2662,12 +2662,582 @@ const buteykoPage: BreathingPageContent = {
   frequency: "2-3 sessions daily, 10-20 minutes each. Nasal breathing should be practiced 24/7."
 };
 
+const tummoPage: BreathingPageContent = {
+  slug: "tummo",
+  mode: ModeName.Tummo,
+  featured: false,
+  hero: {
+    title: "Tummo Breathing: Tibetan Inner Heat Technique",
+    subtitle:
+      "Harness a 1,000-year-old Tibetan practice to generate inner fire through breath.",
+    intro: "Tummo (Tibetan for \u2018inner fire\u2019) is a meditation technique from Vajrayana Buddhism that uses rhythmic breathing and visualization to raise core body temperature. This is the original practice that inspired modern techniques like Wim Hof breathing. Tummo uses longer, forceful inhales to fill the belly, paired with short, sharp exhales \u2014 generating heat from within.",
+  },
+  meta: {
+    title: "Tummo Breathing: Tibetan Inner Heat Technique (Free Timer)",
+    description:
+      "Practice tummo breathing \u2014 the ancient Tibetan inner fire technique. Free guided timer with visual pacer. Build inner heat and deepen your meditation.",
+    ogTitle: "Tummo Breathing: Tibetan Inner Heat Technique (Free Timer)",
+    ogDescription:
+      "Practice tummo breathing \u2014 the ancient Tibetan inner fire technique. Free guided timer with visual pacer. Build inner heat and deepen your meditation.",
+    ogImage: "og/breathe-tummo.png",
+    twitterTitle: "Tummo Breathing: Tibetan Inner Heat Technique (Free Timer)",
+    twitterDescription:
+      "Practice tummo breathing \u2014 the ancient Tibetan inner fire technique. Free guided timer with visual pacer.",
+    author: "Resonance Editorial Team",
+    reviewer: "",
+    datePublished: "2026-02-06",
+    dateModified: "2026-02-06",
+  },
+  body: [
+    {
+      heading: "What it is",
+      content:
+        "G-tummo is a Tibetan tantric meditation practice with over 1,000 years of history. Practitioners sit in cold temperatures and use breath combined with visualization to generate measurable body heat. The technique centers on deep, belly-filling inhales paired with shorter exhales, combined with visualization of an inner fire rising from the navel center. It is part of the Six Yogas of Naropa, a set of advanced Buddhist meditation practices transmitted through the Kagyu lineage.",
+    },
+    {
+      heading: "How it works",
+      content:
+        "The asymmetric breathing pattern (roughly 2 seconds inhale, 1 second exhale) with no holds creates continuous rhythmic breathing that increases metabolic heat production. The forceful diaphragmatic action combined with focused attention on the navel center stimulates thermogenesis. The deep belly inhales maximize oxygen intake while the sharp exhales maintain the energetic pumping rhythm. More advanced practitioners add breath retention (vase breathing or kumbhaka), where the breath is held at the belly to intensify the heat-generating effect.",
+    },
+    {
+      heading: "Tummo vs Wim Hof: Understanding the Difference",
+      content:
+        "Wim Hof has acknowledged drawing from the tummo tradition. Both techniques use hyperventilation-style breathing to create physiological changes. Key differences: tummo includes visualization of inner fire and is traditionally part of a spiritual practice within Tibetan Buddhism; Wim Hof adds a structured protocol with timed breath retention holds and deliberate cold exposure. The tummo breathing pattern is slower and more intentional than Wim Hof power breathing, which uses 30\u201340 rapid breaths per round. Tummo is a contemplative practice; Wim Hof is a performance protocol.",
+    },
+    {
+      heading: "When to use",
+      content:
+        "Advanced meditation practice, before cold exposure, energy cultivation, and spiritual practice. Tummo is not a beginner technique\u2014it requires comfort with breathwork fundamentals and the ability to maintain focused visualization for extended periods. It pairs well with a seated meditation routine and can serve as the core practice for those exploring Tibetan Buddhist methods.",
+    },
+    {
+      heading: "When to skip",
+      content:
+        "Beginners without breathwork experience should start with simpler techniques first. Avoid tummo if you have cardiovascular conditions, are pregnant, are currently ill, or have a history of seizures. The hyperventilation component can cause dizziness and lightheadedness. Always practice seated with support nearby, never in water or while driving.",
+    },
+  ],
+  benefits: [
+    {
+      title: "Thermoregulation",
+      description:
+        "Research shows practitioners can raise skin temperature by up to 8\u00b0C (17\u00b0F) in extremities. The technique activates brown adipose tissue and increases metabolic rate.",
+    },
+    {
+      title: "Meditation depth",
+      description:
+        "The intense focus required for tummo breathing creates deep meditative states. Practitioners report profound concentration and altered states of awareness.",
+    },
+    {
+      title: "Mental resilience",
+      description:
+        "Training with inner fire visualization builds capacity to maintain calm focus in challenging conditions, including cold exposure.",
+    },
+    {
+      title: "Cold tolerance",
+      description:
+        "Regular tummo practice significantly improves cold tolerance. Tibetan monks famously dry wet sheets on their bodies in freezing temperatures.",
+    },
+  ],
+  practiceTips: [
+    {
+      title: "Visualize the inner flame",
+      description:
+        "Picture a small, bright flame at your navel center. With each inhale, see it grow brighter and warmer. This visualization is central to authentic tummo practice.",
+    },
+    {
+      title: "Sit upright with a straight spine",
+      description:
+        "Traditional tummo is practiced in lotus or half-lotus position. The straight spine allows for maximum diaphragmatic expansion and energy flow.",
+    },
+    {
+      title: "Start with shorter sessions",
+      description:
+        "Begin with 3\u20135 minutes and gradually increase to 15\u201320 minutes over weeks. The intensity of the practice can cause dizziness in beginners.",
+    },
+    {
+      title: "Combine with cold exposure carefully",
+      description:
+        "Only add cold exposure after you can maintain inner heat visualization for 10+ minutes. Start with cool (not cold) temperatures.",
+    },
+  ],
+  faqs: [
+    {
+      question: "What is tummo breathing?",
+      answer:
+        "Tummo breathing is an ancient Tibetan meditation technique that uses rhythmic breathing and inner fire visualization to generate body heat. It is part of the Six Yogas of Naropa, a set of advanced practices in Vajrayana Buddhism.",
+    },
+    {
+      question: "Is tummo the same as Wim Hof breathing?",
+      answer:
+        "No. Wim Hof drew inspiration from tummo but created a different protocol. Tummo includes visualization, spiritual context, and a different breathing pattern. Wim Hof adds structured retention holds and a cold exposure protocol.",
+    },
+    {
+      question: "Is tummo breathing dangerous?",
+      answer:
+        "It can be if practiced incorrectly. Risks include hyperventilation, dizziness, and fainting. Always practice seated, never in water or while driving. Start slowly and consider learning from an experienced teacher.",
+    },
+    {
+      question: "How long does it take to learn tummo?",
+      answer:
+        "Basic tummo breathing can be learned in a few sessions, but generating measurable heat typically requires weeks to months of consistent practice. Traditional training takes years under a qualified teacher.",
+    },
+    {
+      question: "Can tummo really raise body temperature?",
+      answer:
+        "Yes. Harvard studies by Herbert Benson (1982) confirmed Tibetan monks could raise finger and toe temperatures by up to 8\u00b0C during tummo meditation. Kozhevnikov et al. (2013) showed core body temperature increases in practiced monks.",
+    },
+    {
+      question: "Do I need a teacher for tummo?",
+      answer:
+        "For basic tummo breathing, the guided timer here is a good starting point. For advanced practices involving vase breathing and energy channel work, seeking a qualified teacher in the Tibetan Buddhist tradition is recommended.",
+    },
+  ],
+  howTo: {
+    totalTime: "10\u201320 minutes",
+    difficulty: "advanced",
+    tools: ["Quiet, warm space to begin", "On-screen timer (optional)"],
+    supplies: [],
+    steps: [
+      {
+        name: "Sit in meditation posture",
+        instruction:
+          "Sit cross-legged or in a chair with your spine straight. Relax your shoulders and close your eyes. Place your hands on your knees or in your lap.",
+        duration: "30 seconds",
+      },
+      {
+        name: "Establish the visualization",
+        instruction:
+          "Picture a small, bright flame at your navel center, about 2 inches below your belly button. See it clearly \u2014 a tiny, intense fire the width of a hair.",
+        duration: "1 minute",
+      },
+      {
+        name: "Begin rhythmic breathing",
+        instruction:
+          "Inhale deeply through your nose for 2 seconds, filling your belly completely. Feel the breath stoking the inner flame. Exhale sharply through your nose for 1 second.",
+        duration: "2\u20133 seconds per cycle",
+      },
+      {
+        name: "Grow the flame",
+        instruction:
+          "With each breath, visualize the flame growing brighter and taller. Feel warmth spreading from your navel through your torso, arms, and legs.",
+        duration: "5\u201310 minutes",
+      },
+      {
+        name: "Rest and absorb",
+        instruction:
+          "After your breathing rounds, sit quietly for 2\u20133 minutes. Maintain awareness of the warmth. Let your breathing return to normal gradually.",
+        duration: "2\u20133 minutes",
+      },
+    ],
+  },
+  useCases: [
+    {
+      name: "Advanced meditation",
+      description:
+        "Deepen your meditation practice with this powerful Tibetan technique that demands total concentration.",
+      dose: "10\u201320 minutes, once daily",
+    },
+    {
+      name: "Cold exposure preparation",
+      description:
+        "Use tummo breathing to generate inner heat before cold showers, ice baths, or winter outdoor activities.",
+      dose: "5\u201310 minutes before cold exposure",
+    },
+    {
+      name: "Energy cultivation",
+      description:
+        "When you need sustained focus and mental energy, tummo activates your inner fire for alertness without caffeine.",
+      dose: "5\u201310 minutes as needed",
+    },
+  ],
+  research: {
+    studies: [
+      {
+        title:
+          "Body temperature changes during the practice of g-tummo meditation",
+        summary:
+          "Herbert Benson\u2019s Harvard team documented Tibetan monks raising peripheral body temperature by up to 8.3\u00b0C during tummo meditation, providing the first Western scientific evidence of voluntary thermoregulation.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/7043548/",
+      },
+      {
+        title:
+          "Neurocognitive and somatic components of temperature increases during g-tummo meditation",
+        summary:
+          "Kozhevnikov et al. found that g-tummo practitioners using \u2018forceful breath\u2019 plus visualization could raise core body temperature above normal range, distinguishing somatic and neurocognitive components of the practice.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/23576906/",
+      },
+      {
+        title: "Meditation and the neuroscience of consciousness",
+        summary:
+          "Review of meditation traditions including tummo, documenting measurable changes in brain activity, body temperature regulation, and metabolic processes during advanced meditation states.",
+      },
+    ],
+    safety: [
+      "Practice seated only \u2014 never while standing, driving, swimming, or in water",
+      "Stop immediately if you feel dizzy, lightheaded, or experience tingling in your extremities",
+      "Not recommended for beginners without prior breathwork experience",
+      "Avoid if you have cardiovascular conditions, epilepsy, or are pregnant",
+      "Start with 3\u20135 minutes and gradually increase duration over weeks",
+      "Consider learning from a qualified teacher for advanced practices",
+    ],
+    quotes: [
+      {
+        text: "The ability to raise body temperature through meditation alone represents one of the most striking examples of mind-body interaction documented by science.",
+        attribution: "Herbert Benson, Harvard Medical School",
+      },
+      {
+        text: "Tummo practitioners demonstrated significant increases in core body temperature, confirming that this ancient technique produces measurable physiological changes.",
+        attribution: "Kozhevnikov et al., 2013, PLoS ONE",
+      },
+    ],
+  },
+  related: [
+    {
+      slug: "wim-hof",
+      reason:
+        "Modern technique inspired by tummo \u2014 adds retention holds and cold exposure protocol.",
+    },
+    {
+      slug: "nadi-shodhana",
+      reason:
+        "Another traditional yogic technique that balances energy channels, good complement to tummo.",
+    },
+    {
+      slug: "ujjayi",
+      reason:
+        "Ocean breath creates internal heat and focus, a gentler warm-up for tummo practice.",
+    },
+  ],
+  relatedUseCases: [
+    {
+      slug: "meditation",
+      title: "Breathing for Meditation",
+      teaser: "Deepen your practice with breath-focused techniques",
+    },
+    {
+      slug: "athletes",
+      title: "Breathing for Athletes",
+      teaser: "Build cold tolerance and mental resilience",
+    },
+  ],
+  keywords: [
+    "tummo breathing",
+    "tummo meditation",
+    "inner fire breathing",
+    "tibetan breathing technique",
+    "g-tummo",
+    "tummo vs wim hof",
+    "inner heat meditation",
+    "tibetan tummo",
+  ],
+  synonyms: [
+    "tummo meditation",
+    "g-tummo",
+    "inner fire breathing",
+    "tibetan inner heat",
+    "chandali",
+  ],
+  frequency:
+    "1 session daily, 10\u201320 minutes. Start with 3\u20135 minutes and build gradually.",
+  voiceSearch: [
+    {
+      question: "What is tummo breathing?",
+      answer:
+        "Tummo breathing is a 1,000-year-old Tibetan meditation technique that uses rhythmic breathing and inner fire visualization to generate body heat. Practitioners inhale deeply into the belly and exhale sharply while visualizing a flame at the navel center. Harvard research confirmed monks can raise body temperature by up to 8\u00b0C using this technique.",
+    },
+  ],
+};
+
+const breathOfFirePage: BreathingPageContent = {
+  slug: "breath-of-fire",
+  mode: ModeName.BreathOfFire,
+  featured: false,
+  hero: {
+    title: "Breath of Fire: Kundalini Yoga Breathing Exercise",
+    subtitle: "Rapid rhythmic breathing for instant energy and mental clarity.",
+    intro: "Breath of Fire (Agni Prasana) is a core Kundalini yoga breathing technique involving rapid, rhythmic breaths with equal emphasis on forceful exhales and passive inhales. Known as Kapalabhati (\u2018skull-shining breath\u2019) in classical yoga, this technique energizes the body, clears the mind, and strengthens the core. Each breath cycle takes about 1.5 seconds \u2014 much faster than typical breathwork.",
+  },
+  meta: {
+    title: "Breath of Fire: Kundalini Breathing Exercise (Free Timer)",
+    description:
+      "Practice breath of fire (Kapalabhati) \u2014 the rapid Kundalini yoga breathing technique for energy and mental clarity. Free guided timer with visual pacer.",
+    ogTitle: "Breath of Fire: Kundalini Breathing Exercise (Free Timer)",
+    ogDescription:
+      "Practice breath of fire (Kapalabhati) \u2014 the rapid Kundalini yoga breathing technique for energy and mental clarity. Free guided timer with visual pacer.",
+    ogImage: "og/breathe-breath-of-fire.png",
+    twitterTitle: "Breath of Fire: Kundalini Breathing Exercise (Free Timer)",
+    twitterDescription:
+      "Practice breath of fire (Kapalabhati) \u2014 the rapid Kundalini yoga breathing technique for energy and mental clarity.",
+    author: "Resonance Editorial Team",
+    reviewer: "",
+    datePublished: "2026-02-06",
+    dateModified: "2026-02-06",
+  },
+  body: [
+    {
+      heading: "What it is",
+      content:
+        "Breath of Fire is rapid diaphragmatic pumping where the exhale is active (a sharp belly contraction inward) and the inhale is passive (the natural recoil of the diaphragm). The breathing is continuous, rhythmic, and always through the nose. It is a foundational technique in Kundalini yoga tradition and is also practiced as Kapalabhati in Hatha yoga. The pace ranges from 40\u201380 breaths per minute for beginners up to 120\u2013180 for advanced practitioners.",
+    },
+    {
+      heading: "How it works",
+      content:
+        "The rapid diaphragm contractions pump the abdomen, creating vigorous movement of air through the lungs. This increases oxygen delivery to the bloodstream, stimulates the sympathetic nervous system for alertness, and activates the abdominal muscles with each forceful exhale. The speed (roughly 40\u201380 breaths per minute for beginners, up to 120 for advanced) creates a unique energizing effect that is distinct from slower breathing techniques.",
+    },
+    {
+      heading: "Breath of Fire vs Kapalabhati",
+      content:
+        "These terms are often used interchangeably, and in practice the techniques are very similar. In classical yoga terminology, Kapalabhati emphasizes a forceful exhale with a completely passive inhale. Breath of Fire in Kundalini yoga uses more equal emphasis on both the inhale and exhale phases. Both produce similar physiological effects: increased alertness, core activation, and improved respiratory function.",
+    },
+    {
+      heading: "When to use",
+      content:
+        "Breath of Fire works best as a morning energizer, pre-workout activation, mid-afternoon energy boost, before creative work, or as part of a Kundalini yoga practice. It is best performed on an empty stomach. The technique is ideal when you need a fast, caffeine-free way to boost alertness and clear mental fog.",
+    },
+    {
+      heading: "When to skip",
+      content:
+        "Avoid breath of fire during pregnancy (any trimester), with uncontrolled high blood pressure, seizure disorders, or during menstruation (per traditional guidance). It is also contraindicated with acid reflux or GERD, after recent abdominal surgery, and during respiratory infections. Do not practice during meals or on a full stomach.",
+    },
+  ],
+  benefits: [
+    {
+      title: "Instant energy boost",
+      description:
+        "Breath of Fire rapidly increases oxygen delivery and stimulates your sympathetic nervous system, creating a natural energy surge without caffeine.",
+    },
+    {
+      title: "Mental clarity and focus",
+      description:
+        "The rhythmic pumping increases blood flow to the brain, clearing mental fog and sharpening concentration within minutes.",
+    },
+    {
+      title: "Core activation and strength",
+      description:
+        "Each exhale contracts your abdominal muscles, making breath of fire a breathing exercise and core workout in one.",
+    },
+    {
+      title: "Respiratory muscle conditioning",
+      description:
+        "The rapid diaphragmatic contractions strengthen your breathing muscles over time, improving overall respiratory efficiency.",
+    },
+  ],
+  practiceTips: [
+    {
+      title: "Start slow, build speed gradually",
+      description:
+        "Begin at 1 breath per second (our timer speed). Once comfortable, you can increase to 2\u20133 breaths per second over weeks of practice.",
+    },
+    {
+      title: "Focus on the exhale",
+      description:
+        "Let the inhale happen passively. The active part is the sharp, forceful exhale driven by contracting your belly inward. The inhale is just the natural release.",
+    },
+    {
+      title: "Keep everything else relaxed",
+      description:
+        "Your shoulders, chest, face, and hands should stay completely relaxed. All the movement comes from your belly. If your shoulders are bouncing, you\u2019re doing it wrong.",
+    },
+    {
+      title: "Practice on an empty stomach",
+      description:
+        "The vigorous abdominal pumping can cause nausea if you\u2019ve recently eaten. Wait at least 2 hours after a meal.",
+    },
+  ],
+  faqs: [
+    {
+      question: "What is breath of fire?",
+      answer:
+        "Breath of fire is a rapid, rhythmic breathing technique from Kundalini yoga. It involves continuous pumping breaths through the nose \u2014 a sharp exhale (belly contracts inward) followed by a passive inhale (belly releases). The pace is typically 1\u20133 breaths per second.",
+    },
+    {
+      question: "Is breath of fire the same as Kapalabhati?",
+      answer:
+        "They\u2019re extremely similar. Kapalabhati (from Hatha yoga) emphasizes a forceful exhale with completely passive inhale. Breath of Fire (from Kundalini yoga) uses more equal emphasis on both phases. In practice, the difference is subtle and both produce similar benefits.",
+    },
+    {
+      question: "Is breath of fire safe?",
+      answer:
+        "For healthy adults, yes \u2014 when practiced correctly and within your limits. However, it\u2019s contraindicated during pregnancy, with high blood pressure, seizure disorders, and several other conditions. Start with 30 breaths at slow pace and stop if you feel dizzy or lightheaded.",
+    },
+    {
+      question: "How fast should breath of fire be?",
+      answer:
+        "Beginners: 1 breath per second (60/minute). Intermediate: 2 breaths per second (120/minute). Advanced: up to 3 breaths per second (180/minute). Speed without control is counterproductive \u2014 build gradually.",
+    },
+    {
+      question: "Can breath of fire help with weight loss?",
+      answer:
+        "Breath of fire activates core muscles and may slightly increase metabolic rate temporarily, but it\u2019s not a weight loss exercise. Think of it as a breathing technique with a secondary core-strengthening benefit, not a calorie-burning workout.",
+    },
+    {
+      question: "How long should I do breath of fire?",
+      answer:
+        "Start with 1 round of 30 breaths (about 30 seconds). Build to 1\u20133 rounds of 60\u2013120 breaths with 30-second rest between rounds. Most practitioners do 1\u20133 minutes total.",
+    },
+  ],
+  howTo: {
+    totalTime: "1\u20135 minutes",
+    difficulty: "intermediate",
+    tools: ["Comfortable seated position", "On-screen timer (optional)"],
+    supplies: [],
+    steps: [
+      {
+        name: "Sit tall with spine straight",
+        instruction:
+          "Sit cross-legged on the floor or in a chair. Pull your shoulders back and down. Place your hands on your knees, palms up or down.",
+        duration: "15 seconds",
+      },
+      {
+        name: "Take a deep breath in",
+        instruction:
+          "Inhale fully through your nose, expanding your belly. This starting breath primes your lungs for the rapid breathing that follows.",
+        duration: "3\u20134 seconds",
+      },
+      {
+        name: "Begin rapid pumping",
+        instruction:
+          "Exhale sharply through your nose by snapping your belly inward. Let the inhale happen passively as your belly releases. Start at about 1 breath per second.",
+        duration: "30\u2013120 seconds",
+      },
+      {
+        name: "Find the rhythm",
+        instruction:
+          "Once you establish the pace, the breathing should feel almost automatic \u2014 like a bellows pumping. Your belly moves in and out while everything else stays still.",
+        duration: "Continue for desired duration",
+      },
+      {
+        name: "Finish with a deep breath",
+        instruction:
+          "After your last exhale, take one long, slow, deep breath in. Hold briefly at the top, then exhale slowly. Notice the tingling, warmth, and clarity.",
+        duration: "10\u201315 seconds",
+      },
+    ],
+  },
+  useCases: [
+    {
+      name: "Morning energizer",
+      description:
+        "Replace your first cup of coffee with 1\u20132 minutes of breath of fire. The oxygen surge and sympathetic activation create natural, sustained alertness.",
+      dose: "1\u20132 minutes upon waking",
+    },
+    {
+      name: "Pre-workout activation",
+      description:
+        "Use breath of fire to activate your core, increase oxygen delivery, and mentally prime yourself before exercise.",
+      dose: "30\u201360 seconds before training",
+    },
+    {
+      name: "Afternoon energy reset",
+      description:
+        "Beat the 3pm slump with a quick round of breath of fire. It clears mental fog and restores focus without caffeine.",
+      dose: "1 minute, mid-afternoon",
+    },
+  ],
+  research: {
+    studies: [
+      {
+        title:
+          "Effects of Kapalabhati on cardiovascular and respiratory function",
+        summary:
+          "Studies show Kapalabhati increases heart rate, blood pressure, and respiratory rate acutely, while regular practice improves overall cardiovascular efficiency and respiratory muscle strength.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/24685376/",
+      },
+      {
+        title: "Yoga breathing practices improve lung function",
+        summary:
+          "A systematic review found that pranayama techniques including Kapalabhati improve forced vital capacity (FVC) and forced expiratory volume (FEV1) with regular practice.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/29395560/",
+      },
+      {
+        title: "Acute effects of Kapalabhati on brain blood flow",
+        summary:
+          "Research demonstrates that Kapalabhati increases cerebral blood flow and brain oxygenation, supporting the subjective reports of increased mental clarity and alertness.",
+      },
+    ],
+    safety: [
+      "Absolutely contraindicated during pregnancy \u2014 the forceful abdominal contractions can be harmful",
+      "Do not practice with uncontrolled high blood pressure, heart disease, or seizure disorders",
+      "Stop immediately if you feel dizzy, lightheaded, or see spots \u2014 these are signs of hyperventilation",
+      "Practice on an empty stomach (wait 2+ hours after eating)",
+      "Never practice while driving, in water, or in any situation where fainting would be dangerous",
+      "If you have acid reflux or GERD, the abdominal pressure can worsen symptoms",
+    ],
+    quotes: [
+      {
+        text: "Kapalabhati cleanses the cranial sinuses and is one of the six purification techniques (shatkarmas) of Hatha yoga.",
+        attribution: "Hatha Yoga Pradipika, 15th century",
+      },
+      {
+        text: "Regular practice of Kapalabhati significantly improved forced vital capacity and peak expiratory flow rate in healthy volunteers.",
+        attribution: "International Journal of Yoga, 2014",
+      },
+    ],
+  },
+  related: [
+    {
+      slug: "tummo",
+      reason:
+        "Another heat-generating technique \u2014 tummo is the Tibetan tradition, breath of fire comes from Kundalini yoga.",
+    },
+    {
+      slug: "wim-hof",
+      reason:
+        "Wim Hof breathing also uses rapid breathing, but adds retention holds and a structured round protocol.",
+    },
+    {
+      slug: "ujjayi",
+      reason:
+        "A calming yoga breath that pairs well with breath of fire \u2014 use ujjayi to cool down after intense practice.",
+    },
+  ],
+  relatedUseCases: [
+    {
+      slug: "athletes",
+      title: "Breathing for Athletes",
+      teaser: "Pre-workout activation and respiratory conditioning",
+    },
+    {
+      slug: "focus",
+      title: "Breathing for Focus",
+      teaser: "Clear mental fog and sharpen concentration",
+    },
+  ],
+  keywords: [
+    "breath of fire",
+    "kapalabhati breathing",
+    "kundalini breathing",
+    "breath of fire technique",
+    "yoga breath of fire",
+    "rapid breathing exercise",
+    "kapalabhati pranayama",
+    "agni prasana",
+  ],
+  synonyms: [
+    "kapalabhati",
+    "skull-shining breath",
+    "kundalini breath of fire",
+    "agni prasana",
+    "rapid yogic breathing",
+  ],
+  frequency:
+    "1\u20133 rounds of 30\u2013120 breaths, 1\u20132x daily. Start with 30 breaths at slow pace.",
+  voiceSearch: [
+    {
+      question: "What is breath of fire breathing?",
+      answer:
+        "Breath of fire is a rapid, rhythmic breathing technique from Kundalini yoga where you pump your belly in and out through quick nose breaths \u2014 about 1\u20133 breaths per second. The exhale is forceful (belly contracts) and the inhale is passive (belly releases). It boosts energy, clears the mind, and strengthens your core in just 1\u20133 minutes.",
+    },
+  ],
+};
+
 // Add new pages to the array
 breathingPages.push(pursedLipPage);
 breathingPages.push(nadiShodhanaPage);
 breathingPages.push(ujjayiPage);
 breathingPages.push(bellyPage);
 breathingPages.push(buteykoPage);
+breathingPages.push(tummoPage);
+breathingPages.push(breathOfFirePage);
 
 export const breathingPageMap: Record<string, BreathingPageContent> = Object.fromEntries(
   breathingPages.map((page) => [page.slug, page])

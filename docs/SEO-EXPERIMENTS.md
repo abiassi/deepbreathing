@@ -915,6 +915,109 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 ---
 
+### 2026-02-06: Tummo Breathing Page (NEW)
+
+**Hypothesis:** A dedicated `/breathe/tummo` page targeting "tummo breathing" (500 vol, KD 5) will rank top 10 within 1-2 weeks. Tummo is a distinct technique from Wim Hof with low competition — most ranking pages are blog posts without interactive tools.
+
+**Keyword Data:**
+- "tummo breathing" — 500 volume, KD 5
+- Secondary: "tummo meditation", "inner fire breathing", "g-tummo", "tummo vs wim hof"
+
+**Cannibalization Prevention:**
+- /breathe/wim-hof targets "wim hof breathing" (different keyword cluster)
+- Tummo page explicitly differentiates from Wim Hof in body content and FAQ
+- Different breathing pattern (2-0-1-0 vs 1.5-0-1.5-0)
+
+**Implementation:**
+- Created `/breathe/tummo` pattern page with Tummo mode (2-0-1-0, deep red #dc2626)
+- Added ModeName.Tummo to engine + component types and patterns
+- Full content: g-tummo history, Benson/Kozhevnikov research, tummo vs Wim Hof differentiation
+- Hidden from mode picker (like Wim Hof — advanced technique, only visible on its own page)
+- Strong safety disclaimer for advanced technique
+
+**Measure After:** 2026-02-20 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
+### 2026-02-06: Breath of Fire Page (NEW)
+
+**Hypothesis:** A dedicated `/breathe/breath-of-fire` page targeting "breath of fire" (200 vol, KD 4) will rank top 10 within 1-2 weeks. Yoga practitioners actively search for this — competition is mostly static blog content without interactive tools.
+
+**Keyword Data:**
+- "breath of fire" — 200 volume, KD 4
+- Secondary: "kapalabhati breathing", "kundalini breathing", "breath of fire technique", "yoga breath of fire"
+
+**Cannibalization Prevention:**
+- No existing pages target Kapalabhati/Kundalini breathing keywords
+- Distinct from Wim Hof (different tradition, different pattern) and tummo (different speed/intensity)
+
+**Implementation:**
+- Created `/breathe/breath-of-fire` pattern page with BreathOfFire mode (0.75-0-0.75-0, hot orange #ea580c)
+- Added ModeName.BreathOfFire to engine + component types and patterns
+- Full content: Kapalabhati/Kundalini tradition, rapid rhythmic technique, yoga physiology research
+- Hidden from mode picker (rapid technique, only visible on its own page)
+- Strong safety disclaimer (pregnancy, high BP, seizure disorders)
+
+**Measure After:** 2026-02-20 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
+### 2026-02-06: Breathing Exercises for Singing Page (NEW)
+
+**Hypothesis:** A dedicated `/for/singing` page targeting "breathing exercises for singing" (550 vol, KD 1-2) will rank top 10 within 1 week. Extremely low KD with clear informational intent — singers searching for practical breathing exercises.
+
+**Keyword Data:**
+- "breathing exercises for singing" — 550 volume, KD 1-2
+- Secondary: "breath support for singers", "diaphragmatic breathing singing", "vocal breathing technique", "singing breath control"
+
+**Cannibalization Prevention:**
+- No existing pages target singing-related keywords
+- Uses Belly Breathing mode (same as /for/athletes uses its own mode) — different audience, different angle
+
+**Implementation:**
+- Created `/for/singing` use-case page with Belly Breathing mode
+- Content angle: diaphragmatic breath support for vocal technique (appoggio)
+- Science sections on subglottic pressure, vocal fold function, parasympathetic activation
+- Cross-linked: public-speaking, athletes, focus use cases + belly breathing technique page
+- Disclaimer directing to speech-language pathologist for voice disorders
+
+**Measure After:** 2026-02-20 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
+### 2026-02-06: Lung Capacity Exercises Page (NEW)
+
+**Hypothesis:** A dedicated `/for/lung-capacity` page targeting "lung capacity exercises" (2,800 vol, KD 5) will rank top 10 within 1-2 weeks. Highest volume opportunity in this batch — competition is mostly generic health articles without interactive tools.
+
+**Keyword Data:**
+- "lung capacity exercises" — 2,800 volume, KD 5
+- Secondary: "increase lung capacity", "breathing exercises for lung capacity", "lung expansion exercises", "how to increase lung capacity"
+
+**Cannibalization Prevention:**
+- No existing pages target lung capacity keywords
+- /breathe/pursed-lip targets "pursed lip breathing" (different cluster) — lung capacity page references pursed-lip as complementary
+- /for/athletes targets athletic performance, not respiratory health
+
+**Implementation:**
+- Created `/for/lung-capacity` use-case page with Belly Breathing mode
+- Content angle: rebuilding functional lung capacity through diaphragmatic strengthening
+- Science sections on tidal volume, inspiratory muscle training, gas exchange, residual volume
+- Progressive program: assess baseline → belly breathing → progressive loading → pursed-lip → walking
+- Cross-linked: athletes, running, singing use cases + belly breathing technique page
+- Medical disclaimer for respiratory conditions
+
+**Measure After:** 2026-02-20 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
 ## Completed Experiments
 
 (Move experiments here after measuring results)

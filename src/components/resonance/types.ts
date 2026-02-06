@@ -17,7 +17,9 @@ export enum ModeName {
   NadiShodhana = 'Nadi Shodhana',
   Ujjayi = 'Ujjayi Breathing',
   Belly = 'Belly Breathing',
-  Buteyko = 'Buteyko Breathing'
+  Buteyko = 'Buteyko Breathing',
+  Tummo = 'Tummo Breathing',
+  BreathOfFire = 'Breath of Fire'
 }
 
 // Protocol-based breathing (for multi-round techniques like Wim Hof)

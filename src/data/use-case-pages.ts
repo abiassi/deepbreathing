@@ -3412,6 +3412,371 @@ const pranayamaPage: UseCasePageContent = {
 useCasePages.push(kidsPage);
 useCasePages.push(pranayamaPage);
 
+const singingPage: UseCasePageContent = {
+  slug: "singing",
+  mode: ModeName.Belly,
+  breathingPageSlug: "belly",
+  hero: {
+    title: "Breathing Exercises for Singing",
+    subtitle: "Build the diaphragmatic breath support that powers every great voice",
+    intro: "Every vocal coach says the same thing: 'Support your breath.' But what does that actually mean? Breath support for singing starts with your diaphragm — the dome-shaped muscle beneath your lungs that controls airflow. Singers who breathe from their chest run out of air mid-phrase, strain their vocal cords, and lose control of pitch and dynamics. Diaphragmatic breathing gives you the steady, controlled airstream that makes the difference between struggling through a song and owning every note.",
+  },
+  meta: {
+    title: "Breathing Exercises for Singing: Build Vocal Breath Support (Free Timer)",
+    description: "Breathing exercises for singing that build diaphragmatic breath support and vocal stamina. Free guided timer to train the foundation of great singing.",
+    ogTitle: "Breathing Exercises for Singing: Build Vocal Breath Support",
+    ogDescription: "Train the diaphragmatic breathing that powers every great voice. Free guided timer for singers at all levels.",
+    twitterTitle: "Breathing Exercises for Singing — Build Breath Support",
+    twitterDescription: "Free breathing exercises for singers. Build diaphragmatic support, extend your phrases, and reduce vocal strain.",
+    author: "Resonance Editorial Team",
+    datePublished: "2026-02-06",
+    dateModified: "2026-02-06",
+  },
+  keywords: [
+    "breathing exercises for singing",
+    "breath support for singers",
+    "diaphragmatic breathing singing",
+    "vocal breathing technique",
+    "singing breath control",
+    "how to breathe for singing",
+    "singing breathing exercises",
+    "breath control singing",
+    "diaphragmatic support singing",
+    "vocal warm-up breathing",
+  ],
+  problem: {
+    heading: "Why Singers Struggle with Breath",
+    content: "Most people breathe with their chest — shoulders rise, rib cage expands, and the breath stays shallow. This works fine for daily life, but it's a disaster for singing. Chest breathing gives you a thin, unstable air supply that runs out quickly. Your vocal cords compensate by tensing up, leading to strain, pitch problems, and a tight, forced sound. The irony is that the 'effort' of chest breathing actually produces a weaker voice than relaxed diaphragmatic breathing.",
+    symptoms: [
+      "Running out of air before finishing phrases",
+      "Visible shoulder and chest movement while singing",
+      "Tight, strained sound especially on high notes",
+      "Inconsistent volume and dynamics",
+      "Vocal fatigue after short practice sessions",
+      "Pitch goes sharp or flat at the end of phrases",
+      "Breathy tone from poor air management",
+      "Difficulty with long sustained notes",
+    ],
+  },
+  solution: {
+    heading: "Diaphragmatic Breathing: The Singer's Foundation",
+    content: "Diaphragmatic breathing (belly breathing) engages your primary breathing muscle to create a deep, stable air supply. When you inhale, your diaphragm contracts downward, expanding your belly and sides. This draws air deep into your lungs, giving you 2-3 times more air than chest breathing. When you sing, the diaphragm controls the release — providing steady, controlled pressure (called 'appoggio' in classical technique) that keeps your vocal cords vibrating efficiently without strain.",
+    whyThisPattern: "The 4-second inhale, 6-second exhale pattern trains the exact muscle control singers need: a quick, deep breath in (you rarely have more than a beat or two to breathe between phrases) followed by a long, controlled exhale (the singing part). This ratio also activates the parasympathetic nervous system, reducing the performance anxiety that makes breath control even harder.",
+  },
+  science: {
+    heading: "The Science of Vocal Breath Support",
+    points: [
+      {
+        mechanism: "Subglottic Pressure Control",
+        explanation: "Your vocal cords vibrate when air pressure beneath them (subglottic pressure) is steady. Diaphragmatic breathing provides this consistent pressure, while chest breathing creates uneven bursts. Research shows trained singers maintain subglottic pressure 40-60% more consistently than untrained singers.",
+      },
+      {
+        mechanism: "Appoggio: The Breath-Voice Connection",
+        explanation: "The Italian vocal technique 'appoggio' (literally 'lean' or 'support') describes the coordinated engagement of the diaphragm, intercostals, and abdominal muscles during singing. This creates a balanced 'leaning' of the breathing mechanism that regulates airflow without tension.",
+      },
+      {
+        mechanism: "Reduced Laryngeal Tension",
+        explanation: "When singers lack breath support, the laryngeal muscles compensate by tensing to control airflow. This creates a tight, strained sound and risks vocal injury. Proper diaphragmatic support removes this burden from the throat — the diaphragm does the work, the throat stays relaxed.",
+      },
+      {
+        mechanism: "Parasympathetic Activation",
+        explanation: "The slow exhale pattern (longer exhale than inhale) activates the vagus nerve, reducing performance anxiety and muscle tension. Calmer singers breathe better, and better breathing creates calmer singers — a virtuous cycle.",
+      },
+    ],
+  },
+  howTo: {
+    steps: [
+      {
+        name: "Establish belly breathing",
+        instruction: "Lie on your back with a book on your stomach. Breathe so the book rises on inhale and falls on exhale. Your chest should barely move. Practice until this feels natural.",
+        timing: "5 minutes, lying down",
+      },
+      {
+        name: "Practice standing",
+        instruction: "Stand with one hand on your belly and one on your chest. Inhale through your nose — belly pushes out, chest stays still. Exhale through pursed lips, controlling the release. Use the belly breathing visualizer to guide your timing.",
+        timing: "3-5 minutes standing",
+      },
+      {
+        name: "Add sustained exhale",
+        instruction: "Inhale for 4 counts, then exhale on a steady 'sss' sound for as long as you can, keeping the airflow even. Time yourself — aim to increase your exhale duration each week.",
+        timing: "Start at 15-20 seconds, build to 30+",
+      },
+      {
+        name: "Sing with support",
+        instruction: "Choose a simple phrase or scale. Breathe into your belly, then sing while keeping your belly gently engaged (not rigid). Notice how the sound feels supported and full compared to chest breathing.",
+        timing: "5-10 minutes of singing",
+      },
+      {
+        name: "Quick breath practice",
+        instruction: "Singers often need to breathe quickly between phrases. Practice 'catch breaths' — sharp, quick belly inhales (1 second) followed by controlled singing. The diaphragm should snap down and expand your sides.",
+        timing: "2-3 minutes",
+      },
+      {
+        name: "Daily integration",
+        instruction: "Use the breathing visualizer daily for 5 minutes to reinforce the muscle memory. Over time, diaphragmatic breathing becomes automatic, and you won't need to think about 'supporting' — your body will do it naturally.",
+        timing: "5 minutes daily",
+      },
+    ],
+    tips: [
+      "Breathe into your sides and back, not just your belly — think of inflating a ring around your waist",
+      "Never lock or brace your abdominal muscles — support is about controlled release, not rigidity",
+      "Practice the breathing before adding voice — master the airflow first, then add sound",
+      "Record yourself singing before and after a month of practice to hear the difference",
+      "Warm up your breathing before warming up your voice — 2-3 minutes of belly breathing resets your system",
+      "Stay hydrated — dry vocal cords need more air pressure, which strains your breathing muscles",
+    ],
+  },
+  references: [
+    {
+      title: "Respiratory Function in Singing",
+      source: "Journal of Voice",
+      url: "https://pubmed.ncbi.nlm.nih.gov/14988280/",
+      summary: "Comprehensive review of respiratory mechanics during singing, confirming diaphragmatic breathing as the foundation of efficient vocal production.",
+    },
+    {
+      title: "Breathing Patterns in Professional Singers",
+      source: "Folia Phoniatrica et Logopaedica",
+      url: "https://pubmed.ncbi.nlm.nih.gov/12077503/",
+      summary: "Study comparing breathing patterns of professional vs amateur singers, showing professionals use significantly more diaphragmatic engagement.",
+    },
+    {
+      title: "The Effect of Breathing Exercises on Singing Voice Quality",
+      source: "Journal of Voice",
+      url: "https://pubmed.ncbi.nlm.nih.gov/30243885/",
+      summary: "Research demonstrating that targeted breathing exercises improve vocal quality measures including jitter, shimmer, and harmonic-to-noise ratio.",
+    },
+  ],
+  disclaimer: "This breathing tool supplements vocal training — it is not a replacement for a qualified vocal coach. If you experience persistent vocal pain, hoarseness lasting more than 2 weeks, or difficulty swallowing, consult a speech-language pathologist or ENT specialist.",
+  relatedTechnique: {
+    slug: "belly",
+    callToAction: "Master diaphragmatic breathing for better vocal support",
+  },
+  relatedUseCases: [
+    { slug: "public-speaking", teaser: "Breath support for projecting your voice with confidence" },
+    { slug: "athletes", teaser: "Build respiratory endurance for performance" },
+    { slug: "focus", teaser: "Use breathwork to sharpen concentration before performing" },
+  ],
+  faqs: [
+    {
+      question: "What is the best breathing technique for singing?",
+      answer: "Diaphragmatic (belly) breathing is universally recommended by vocal coaches. It engages your diaphragm to create a deep, stable air supply and provides the controlled airflow ('breath support') that produces a full, effortless sound. The key is breathing low into your belly and sides, not up into your chest and shoulders.",
+    },
+    {
+      question: "How do I know if I'm breathing correctly for singing?",
+      answer: "Place one hand on your chest and one on your belly. When you inhale, your belly should expand outward while your chest stays relatively still. Your shoulders should not rise. When singing, you should feel gentle engagement in your lower abs and sides — not tension, but a sense of controlled support.",
+    },
+    {
+      question: "Why do I run out of breath when singing?",
+      answer: "Usually because you're chest breathing (shallow) rather than belly breathing (deep). Chest breathing fills only the top third of your lungs. Also check: are you exhaling all your air before breathing in? A quick, full exhale followed by a deep belly inhale gives you maximum air for the next phrase.",
+    },
+    {
+      question: "How long should I practice breathing exercises for singing?",
+      answer: "5-10 minutes of dedicated breathing practice before each singing session makes a significant difference. Daily practice is ideal — the goal is to make diaphragmatic breathing automatic so you don't have to think about it while performing. Most singers see improvement within 2-4 weeks of consistent practice.",
+    },
+    {
+      question: "Does breathing practice really improve singing?",
+      answer: "Yes, dramatically. Breath support is considered the single most important technical foundation in singing. Professional singers spend years refining their breath control. Even a few weeks of focused diaphragmatic breathing practice can noticeably improve your tone quality, phrase length, pitch stability, and vocal endurance.",
+    },
+    {
+      question: "Can breathing exercises help with singing anxiety?",
+      answer: "Absolutely. The 4-second inhale, 6-second exhale pattern activates your parasympathetic nervous system, directly countering the fight-or-flight response that causes stage fright. Practice this pattern for 2-3 minutes before performing to calm your nerves and stabilize your breathing.",
+    },
+  ],
+  voiceSearch: [
+    {
+      question: "What breathing exercises help with singing?",
+      answer: "The best breathing exercise for singing is diaphragmatic (belly) breathing. Breathe in through your nose for 4 seconds, expanding your belly and sides. Exhale slowly for 6 seconds through pursed lips. This trains the controlled airflow that creates vocal 'breath support.' Practice 5 minutes daily — within weeks your tone, phrase length, and pitch stability will improve.",
+    },
+  ],
+};
+
+const lungCapacityPage: UseCasePageContent = {
+  slug: "lung-capacity",
+  mode: ModeName.Belly,
+  breathingPageSlug: "belly",
+  hero: {
+    title: "Lung Capacity Exercises",
+    subtitle: "Strengthen your diaphragm and expand your breathing power",
+    intro: "Your lungs can hold about 6 liters of air, but most people use only a fraction of that capacity. Shallow chest breathing, sedentary habits, poor posture, and aging all shrink your functional lung capacity over time. The good news: breathing exercises can reverse this decline. Diaphragmatic breathing strengthens your primary breathing muscle, increases the volume of air you move with each breath, and improves the efficiency of gas exchange in your lungs.",
+  },
+  meta: {
+    title: "Lung Capacity Exercises: Increase Your Breathing Power (Free Timer)",
+    description: "Build lung capacity with proven breathing exercises. Strengthen your diaphragm, increase tidal volume, and improve respiratory health. Free guided timer.",
+    ogTitle: "Lung Capacity Exercises: Increase Your Breathing Power",
+    ogDescription: "Proven breathing exercises to increase lung capacity and strengthen your diaphragm. Free guided timer — start building respiratory power today.",
+    twitterTitle: "Lung Capacity Exercises — Increase Your Breathing Power",
+    twitterDescription: "Build lung capacity with diaphragmatic breathing exercises. Free guided timer.",
+    author: "Resonance Editorial Team",
+    datePublished: "2026-02-06",
+    dateModified: "2026-02-06",
+  },
+  keywords: [
+    "lung capacity exercises",
+    "increase lung capacity",
+    "breathing exercises for lung capacity",
+    "lung expansion exercises",
+    "how to increase lung capacity",
+    "deep breathing for lung health",
+    "improve lung capacity",
+    "breathing exercises for lungs",
+    "lung strengthening exercises",
+    "respiratory exercises",
+  ],
+  problem: {
+    heading: "Why Your Lung Capacity Decreases",
+    content: "Starting in your mid-20s, lung capacity naturally declines by about 1-2% per year. But lifestyle factors accelerate this decline dramatically. Sitting hunched over a desk compresses your diaphragm. Chronic stress keeps you in shallow, rapid chest breathing mode. Lack of cardiovascular exercise means your respiratory muscles weaken from disuse. The result: even if your lungs are healthy, you may be using only 50-70% of your available capacity.",
+    symptoms: [
+      "Getting winded during moderate physical activity",
+      "Feeling like you can't take a full, deep breath",
+      "Shortness of breath climbing stairs",
+      "Low energy and fatigue throughout the day",
+      "Difficulty holding notes while singing or speaking",
+      "Poor exercise endurance and slow recovery",
+      "Shallow, rapid breathing pattern at rest",
+      "Yawning frequently (sign of low oxygen delivery)",
+    ],
+  },
+  solution: {
+    heading: "Diaphragmatic Breathing: Rebuild Your Respiratory Foundation",
+    content: "Your diaphragm is a dome-shaped muscle that sits below your lungs. When it contracts, it pulls downward, creating a vacuum that draws air deep into your lungs. Weak diaphragmatic engagement means shallow breaths that only fill the upper lungs. Training your diaphragm through belly breathing exercises increases tidal volume (the amount of air per breath), improves gas exchange efficiency, and strengthens the muscles that power every breath you take.",
+    whyThisPattern: "The 4-second inhale, 6-second exhale pattern is ideal for lung capacity training because the slow inhale encourages full diaphragmatic expansion (not just the quick sips of air from chest breathing), while the extended exhale trains your expiratory muscles and improves your ability to completely empty your lungs — which is just as important as filling them. Better emptying means more room for fresh air on the next breath.",
+  },
+  science: {
+    heading: "How Breathing Exercises Increase Lung Capacity",
+    points: [
+      {
+        mechanism: "Tidal Volume Improvement",
+        explanation: "Tidal volume is the amount of air you move in a normal breath. Most people's tidal volume is only 500ml — about 8% of total lung capacity. Diaphragmatic breathing training can increase tidal volume by 15-25%, meaning you get significantly more oxygen with each breath.",
+      },
+      {
+        mechanism: "Inspiratory Muscle Strengthening",
+        explanation: "The diaphragm is a muscle — and like any muscle, it gets stronger with training. Studies show that inspiratory muscle training increases diaphragmatic strength by 20-30% within 4-8 weeks, directly improving your ability to take deep breaths.",
+      },
+      {
+        mechanism: "Improved Gas Exchange",
+        explanation: "The lower lobes of your lungs have the richest blood supply and the most efficient gas exchange. Shallow breathing bypasses these areas. Deep diaphragmatic breathing directs air to the lower lobes, improving oxygen uptake and CO2 elimination per breath.",
+      },
+      {
+        mechanism: "Residual Volume Reduction",
+        explanation: "Residual volume is the air trapped in your lungs after a full exhale. With poor breathing habits, this stale air accumulates. Breathing exercises with emphasis on complete exhales (like pursed-lip breathing) help reduce residual volume, making more room for fresh, oxygen-rich air.",
+      },
+    ],
+  },
+  howTo: {
+    steps: [
+      {
+        name: "Assess your baseline",
+        instruction: "Take the deepest breath you can and exhale on a sustained 'sss' sound. Time how long you can maintain the sound with even airflow. This is your baseline exhale duration — aim to increase it by 5-10 seconds over the next month.",
+        timing: "1 minute to test",
+      },
+      {
+        name: "Start with belly breathing",
+        instruction: "Use the breathing visualizer with Belly Breathing mode. Inhale through your nose for 4 seconds, feeling your belly and sides expand. Exhale through your nose for 6 seconds, feeling everything deflate. Focus on making each breath as deep and full as possible.",
+        timing: "5 minutes, 2-3 times daily",
+      },
+      {
+        name: "Progressive breath loading",
+        instruction: "Once comfortable with 4-6 timing, try extending: inhale for 5 seconds, exhale for 7. Then 6-8. Each increase challenges your respiratory muscles to work harder and expand further.",
+        timing: "Build 1 second per week",
+      },
+      {
+        name: "Add pursed-lip exhales",
+        instruction: "Inhale deeply through your nose, then exhale through pursed lips (like blowing through a straw). This creates back-pressure that keeps airways open longer and improves air emptying from the lower lungs.",
+        timing: "5 minutes between belly breathing sets",
+      },
+      {
+        name: "Combine with movement",
+        instruction: "Once your breathing technique is solid, add walking. Breathe in for 4 steps, out for 6 steps. This trains your respiratory system under the mild stress of physical activity, building real-world lung capacity.",
+        timing: "10-15 minute walks, daily",
+      },
+      {
+        name: "Track your progress",
+        instruction: "Re-test your sustained exhale ('sss' sound) weekly. You should see measurable improvement within 2-3 weeks. A healthy goal is 25-40 seconds of sustained, even exhale.",
+        timing: "1 minute, weekly",
+      },
+    ],
+    tips: [
+      "Consistency beats intensity — 5 minutes twice daily is better than 20 minutes once a week",
+      "Focus on expanding your sides and back, not just your belly — this engages the full diaphragm",
+      "Good posture is essential — slouching compresses your diaphragm and limits expansion by up to 30%",
+      "Stay hydrated — dry airways are less elastic and reduce effective lung capacity",
+      "If you have a respiratory condition, pursed-lip breathing on exhale can significantly improve air emptying",
+      "Avoid holding your breath excessively — focus on flow and volume rather than holds",
+    ],
+  },
+  references: [
+    {
+      title: "Diaphragmatic Breathing Exercises and Lung Function",
+      source: "Journal of Physical Therapy Science",
+      url: "https://pubmed.ncbi.nlm.nih.gov/30154592/",
+      summary: "Study demonstrating that 4 weeks of diaphragmatic breathing exercises significantly improved pulmonary function parameters including FVC and FEV1.",
+    },
+    {
+      title: "Inspiratory Muscle Training and Lung Volumes",
+      source: "Respiratory Medicine",
+      url: "https://pubmed.ncbi.nlm.nih.gov/20932736/",
+      summary: "Research showing that targeted respiratory muscle training increases inspiratory muscle strength by 20-30% and improves exercise tolerance in both healthy adults and those with respiratory conditions.",
+    },
+    {
+      title: "Age-Related Decline in Lung Function",
+      source: "American Journal of Respiratory and Critical Care Medicine",
+      url: "https://pubmed.ncbi.nlm.nih.gov/10430755/",
+      summary: "Longitudinal study documenting age-related lung function decline and identifying modifiable factors including physical activity and respiratory muscle training that can slow the decline.",
+    },
+    {
+      title: "Pursed-Lip Breathing and Gas Exchange",
+      source: "Chest Journal",
+      url: "https://pubmed.ncbi.nlm.nih.gov/17505047/",
+      summary: "Research demonstrating that pursed-lip breathing improves gas exchange, increases tidal volume, and reduces respiratory rate in both healthy individuals and COPD patients.",
+    },
+  ],
+  disclaimer: "If you have a respiratory condition (COPD, asthma, pulmonary fibrosis, or other lung disease), consult your doctor before starting breathing exercises. These exercises complement but don't replace medical treatment. Seek immediate medical attention for sudden shortness of breath, chest pain, or persistent cough.",
+  relatedTechnique: {
+    slug: "belly",
+    callToAction: "Start with diaphragmatic breathing to build your lung capacity foundation",
+  },
+  relatedUseCases: [
+    { slug: "athletes", teaser: "Build the respiratory endurance that fuels athletic performance" },
+    { slug: "running", teaser: "Increase your breathing efficiency for longer, faster runs" },
+    { slug: "singing", teaser: "Expand your breath capacity for longer phrases and better tone" },
+  ],
+  faqs: [
+    {
+      question: "Can you actually increase your lung capacity?",
+      answer: "While you can't grow new lung tissue, you can significantly increase your functional lung capacity — the amount of air you actually use. Breathing exercises strengthen your diaphragm (allowing deeper breaths), improve lung elasticity, reduce residual volume (trapped stale air), and train your respiratory muscles to work more efficiently. Most people see measurable improvement within 2-4 weeks.",
+    },
+    {
+      question: "How long does it take to increase lung capacity?",
+      answer: "With consistent daily practice (5-10 minutes, twice daily), most people notice improved breath depth within 1-2 weeks and measurable gains in sustained exhale duration within 3-4 weeks. Significant improvements in exercise endurance typically appear within 4-8 weeks.",
+    },
+    {
+      question: "What is the best exercise to increase lung capacity?",
+      answer: "Diaphragmatic (belly) breathing is the foundation. It strengthens your primary breathing muscle and increases the volume of air per breath. For additional benefit, combine with pursed-lip exhales (improves air emptying), progressive breath loading (gradually extending inhale/exhale duration), and cardiovascular exercise (challenges your respiratory system under load).",
+    },
+    {
+      question: "Does lung capacity decrease with age?",
+      answer: "Yes, lung capacity naturally declines about 1-2% per year starting in your mid-20s. By age 50, you may have lost 15-25% of your peak capacity. However, breathing exercises and regular physical activity can significantly slow this decline and improve your functional capacity at any age.",
+    },
+    {
+      question: "Can breathing exercises help with COPD or asthma?",
+      answer: "Yes, breathing exercises — especially diaphragmatic breathing and pursed-lip breathing — are a core part of pulmonary rehabilitation for COPD and can help manage asthma. However, they complement medical treatment, not replace it. Always consult your doctor before starting a breathing program if you have a respiratory condition.",
+    },
+    {
+      question: "How do I measure my lung capacity at home?",
+      answer: "A simple test: take the deepest breath you can, then exhale on a sustained 'sss' sound (like a tire deflating). Time how long you can maintain an even, steady sound. Healthy adults typically sustain 25-40 seconds. Under 15 seconds may indicate weak respiratory muscles. Track this weekly to measure improvement.",
+    },
+  ],
+  voiceSearch: [
+    {
+      question: "How can I increase my lung capacity?",
+      answer: "Practice diaphragmatic breathing for 5-10 minutes twice daily. Breathe in slowly through your nose for 4 seconds, expanding your belly, then exhale for 6 seconds. Gradually increase these durations each week. Combine with pursed-lip exhales and regular walking. Most people see measurable improvement within 2-4 weeks of consistent practice.",
+    },
+  ],
+};
+
+useCasePages.push(singingPage);
+useCasePages.push(lungCapacityPage);
+
 export const useCasePageMap: Record<string, UseCasePageContent> = Object.fromEntries(
   useCasePages.map((page) => [page.slug, page])
 ) as Record<string, UseCasePageContent>;
