@@ -5,8 +5,9 @@ import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
 import { HomeHeroActions } from "@/components/home/home-hero-actions";
 import { JsonLd } from "@/components/seo/json-ld";
 import { cn } from "@/lib/utils";
-import { BREATHING_PATTERNS, ModeName } from "@/components/resonance/constants";
-import { modeToBreathingPage } from "@/data/breathing-pages";
+import { BREATHING_PATTERNS } from "@/components/resonance/constants";
+import { featuredBreathingPages, breathingPages } from "@/data/breathing-pages";
+import { useCasePages } from "@/data/use-case-pages";
 
 const baseUrl = "https://deepbreathingexercises.com";
 
@@ -150,21 +151,21 @@ export default function HomePage() {
             <h2 className="text-3xl font-semibold text-card-foreground">Pick a mode</h2>
           </div>
           <div className="mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto pt-4 pb-8 -mx-8 no-scrollbar md:mt-8 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:pt-0 md:pb-0 md:mx-0 md:px-0">
-            {Object.values(BREATHING_PATTERNS).map((pattern) => {
-              const slug = modeToBreathingPage[pattern.name]?.slug;
-              if (!slug) return null;
+            {featuredBreathingPages.map((page) => {
+              const pattern = BREATHING_PATTERNS[page.mode];
+              if (!pattern) return null;
 
               return (
                 <Link
-                  key={pattern.name}
-                  href={`/breathe/${slug}`}
+                  key={page.slug}
+                  href={`/breathe/${page.slug}`}
                   className="group relative min-w-[70vw] snap-center rounded-3xl border bg-card p-6 transition-all first:ml-8 last:mr-8 md:first:ml-0 md:last:mr-0 hover:scale-[1.02] sm:min-w-0"
                   style={{
                     borderColor: `${pattern.color}40`,
                   }}
                 >
                   <p className="text-xs font-medium uppercase tracking-[0.3em] opacity-80" style={{ color: pattern.color }}>
-                    /{slug}
+                    /{page.slug}
                   </p>
                   <h3 className="mt-3 text-2xl font-semibold text-card-foreground">{pattern.name}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{pattern.description}</p>
@@ -273,53 +274,130 @@ export default function HomePage() {
           </div>
         </section>
       </div>
-      <footer className="relative z-10 mx-auto w-full max-w-6xl px-4 py-8 text-center sm:px-6 lg:px-8">
-        <p className="mb-4 text-xs text-muted-foreground">
+      <footer className="relative z-10 mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+        <p className="mb-8 text-center text-xs text-muted-foreground">
           Stop if dizzy, tingly, or chest‑tight. Resume later with shorter, easier breaths. Skip prolonged holds during pregnancy or if advised by your clinician.
         </p>
-        <div className="mb-4 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
-          <Link href="/breathe" className="underline underline-offset-2 transition-colors hover:text-foreground">
-            Techniques
-          </Link>
-          <Link href="/for" className="underline underline-offset-2 transition-colors hover:text-foreground">
-            Guides
-          </Link>
-          <Link href="/holiday-breathing-exercises" className="underline underline-offset-2 transition-colors hover:text-foreground">
-            Holiday
-          </Link>
-          <Link href="/breathing-app" className="underline underline-offset-2 transition-colors hover:text-foreground">
-            App
-          </Link>
-          <Link href="/about" className="underline underline-offset-2 transition-colors hover:text-foreground">
-            About
-          </Link>
-          <Link href="/privacy" className="underline underline-offset-2 transition-colors hover:text-foreground">
-            Privacy
-          </Link>
+
+        <div className="mb-8 grid gap-8 text-left sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-foreground">Techniques</p>
+            <ul className="space-y-2 text-xs text-muted-foreground">
+              {breathingPages.map((page) => (
+                <li key={page.slug}>
+                  <Link href={`/breathe/${page.slug}`} className="underline underline-offset-2 transition-colors hover:text-foreground">
+                    {BREATHING_PATTERNS[page.mode]?.name || page.slug}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-foreground">Guides</p>
+            <ul className="space-y-2 text-xs text-muted-foreground">
+              {useCasePages.map((page) => (
+                <li key={page.slug}>
+                  <Link href={`/for/${page.slug}`} className="underline underline-offset-2 transition-colors hover:text-foreground">
+                    {page.hero.title.replace("Breathing Exercises for ", "").replace("Breathing Exercises to ", "")}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-foreground">Timers</p>
+            <ul className="space-y-2 text-xs text-muted-foreground">
+              <li>
+                <Link href="/1-minute-breathing-exercise" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  1 Minute
+                </Link>
+              </li>
+              <li>
+                <Link href="/2-minute-breathing-exercise" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  2 Minutes
+                </Link>
+              </li>
+              <li>
+                <Link href="/5-minute-breathing-exercise" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  5 Minutes
+                </Link>
+              </li>
+              <li>
+                <Link href="/4-7-8-breathing-timer" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  4-7-8 Timer
+                </Link>
+              </li>
+              <li>
+                <Link href="/coherent-breathing-app" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  Coherent Breathing App
+                </Link>
+              </li>
+              <li>
+                <Link href="/holiday-breathing-exercises" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  Holiday Exercises
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-foreground">Info</p>
+            <ul className="space-y-2 text-xs text-muted-foreground">
+              <li>
+                <Link href="/breathe" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  All Techniques
+                </Link>
+              </li>
+              <li>
+                <Link href="/for" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  All Guides
+                </Link>
+              </li>
+              <li>
+                <Link href="/breathing-app" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  App
+                </Link>
+              </li>
+              <li>
+                <Link href="/breathing-visualizer" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  Breathing Visualizer
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  Privacy
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-        <p className="text-xs text-muted-foreground">
+
+        <p className="text-center text-xs text-muted-foreground">
           Created by{" "}
-          <span className="underline">
-            <a
-              href="https://abiassi.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
-            >
-              Abiassi
-            </a>
-          </span>
+          <a
+            href="https://abiassi.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 transition-colors hover:text-foreground"
+          >
+            Abiassi
+          </a>
           {" + "}
-          <span className="underline">
-            <a
-              href="https://darkmatter.is/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
-            >
-              Darkmatter AI Labs
-            </a>
-          </span>
+          <a
+            href="https://darkmatter.is/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 transition-colors hover:text-foreground"
+          >
+            Darkmatter AI Labs
+          </a>
         </p>
       </footer>
     </main>

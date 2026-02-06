@@ -145,6 +145,18 @@ export default function BreathingAppPage() {
       </section>
 
       <section className="mt-12 glow-card rounded-[32px] border border-border bg-card p-6">
+        <h2 className="text-2xl font-semibold text-card-foreground">Breathing visualizer</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Want to see all 10 techniques with an interactive visual guide? Try the full breathing visualizer.
+        </p>
+        <div className="mt-4">
+          <Link href="/breathing-visualizer" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
+            Open breathing visualizer
+          </Link>
+        </div>
+      </section>
+
+      <section className="mt-12 glow-card rounded-[32px] border border-border bg-card p-6">
         <h2 className="text-2xl font-semibold text-card-foreground">Can I install this like an app?</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           You can add it to your home screen from your browser (look for “Add to Home Screen”). This will create an app

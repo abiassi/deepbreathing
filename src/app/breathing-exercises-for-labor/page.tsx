@@ -114,7 +114,7 @@ export default function BreathingExercisesForLaborPage() {
 
       <section className="relative isolate min-h-screen w-full text-foreground">
         <Resonance defaultMode={ModeName.Relax} className="min-h-screen" />
-        <div className="absolute inset-y-0 left-0 z-30 flex w-full max-w-xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
+        <div className="absolute inset-y-0 left-0 z-30 flex w-full max-w-xl flex-col justify-end sm:justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="space-y-4">
             <p className="text-xs uppercase tracking-[0.35em] text-primary">LABOR & CHILDBIRTH</p>
             <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">Breathing Exercises for Labor</h1>

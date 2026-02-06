@@ -204,7 +204,7 @@ export function UseCasePage({ slug }: { slug: string }) {
           forcedTheme={isHolidayPage ? "dark" : undefined}
           backgroundVariant={isHolidayPage ? "winter-blue" : "default"}
         />
-        <div className="absolute inset-y-0 left-0 z-30 flex w-full max-w-xl flex-col justify-center px-6 py-20 pointer-events-none">
+        <div className="absolute inset-y-0 left-0 z-30 flex w-full max-w-xl flex-col justify-end sm:justify-center px-6 py-20 pointer-events-none">
           <div className="pointer-events-auto">
             {heroHeader}
           </div>

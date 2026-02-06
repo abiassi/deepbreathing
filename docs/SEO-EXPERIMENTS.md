@@ -834,6 +834,65 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 ---
 
+### 2026-02-06: Disavow Spam Backlinks + Fix /app/ Route
+
+**Hypothesis:** Disavowing ~27 spam/scraper domains prevents any future negative SEO signal. Redirecting /app/ → /breathing-app captures referral traffic from ~10 backlinks (including runtothefinish.com DR 59).
+
+**Baseline:**
+- /app/ returns 404 (10 backlinks pointing to dead URL)
+- ~27 spam domains in backlink profile (most nofollow, preventive hygiene)
+
+**Changes Made:**
+1. **Redirect:** Added permanent 301 redirect `/app/:path*` → `/breathing-app` in `next.config.js`
+2. **Disavow file:** Created `docs/disavow.txt` with 27 domains in Google format:
+   - 8 SEO spam / link farms (rankyour.website, primeseo.xyz, etc.)
+   - 5 Chinese spam cluster (appeared Jan 2026)
+   - 14 SEO tool / scraper sites (site-stats.org, aapks.com, etc.)
+3. **Manual step required:** Upload `docs/disavow.txt` to [GSC Disavow Tool](https://search.google.com/search-console/disavow-links)
+
+**Notable backlinks to /app/:**
+- runtothefinish.com (DR 59, nofollow) — editorial link, anchor: "like this App"
+- site-stats.org (DR 51, nofollow)
+- yogavideo.us (DR 0, dofollow)
+
+**Measure After:** 2026-02-20 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
+### 2026-02-06: Breathing Visualizer Landing Page (NEW)
+
+**Hypothesis:** A dedicated `/breathing-visualizer` page targeting "breathing visualizer online" (beatable competition: xhalr.com, therapistaid.com, calm.com) will rank top 10 within 1 week, given the site's existing authority and proven pattern of new low-difficulty pages hitting top 10 quickly.
+
+**Keyword Data:**
+- "breathing visualizer online" — low competition, none of the top results combine education + interactive tool
+- Secondary: "breathing visualizer", "online breathing visualizer", "free breathing visualizer"
+
+**Cannibalization Prevention:**
+- Homepage title uses "breathing visualizer" as a descriptor (brand entry point)
+- New page leads with tool identity + differentiating features (tool-seeking intent)
+- Different intent = different content angle
+
+**Implementation:**
+- Created `/breathing-visualizer` standalone landing page
+- Full-screen Resonance hero with Box breathing default
+- Voice search answer block: "What is a breathing visualizer?"
+- 2×3 benefit grid (visual pacing, 10 techniques, adjustable speed, no download, any device, audio/haptic)
+- 10-technique grid linking to all `/breathe/[slug]` pages
+- 3-step HowTo section (Choose → Follow → Adjust)
+- 6 FAQs targeting long-tail "breathing visualizer" queries
+- Cross-links to `/box-breathing-app`, `/4-7-8-breathing-timer`, `/coherent-breathing-app`, `/breathing-app`
+- JSON-LD: BreadcrumbList, SoftwareApplication, FAQPage, HowTo
+- Added to sitemap (priority 0.9, weekly)
+- Cross-linked from homepage footer (Info column) and `/breathing-app` page
+
+**Measure After:** 2026-02-20 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
 ## Completed Experiments
 
 (Move experiments here after measuring results)
