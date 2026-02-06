@@ -1206,9 +1206,17 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                   <div className="glass-panel flex flex-wrap justify-between gap-1 rounded-2xl p-2">
                     {Object.values(BREATHING_PATTERNS)
                       .filter(m => {
-                        if (m.name === ModeName.WimHof) return activeMode === ModeName.WimHof || defaultMode === ModeName.WimHof;
-                        if (m.name === ModeName.Tummo) return activeMode === ModeName.Tummo || defaultMode === ModeName.Tummo;
-                        if (m.name === ModeName.BreathOfFire) return activeMode === ModeName.BreathOfFire || defaultMode === ModeName.BreathOfFire;
+                        const hideUnlessActive = [
+                          ModeName.WimHof,
+                          ModeName.Tummo,
+                          ModeName.BreathOfFire,
+                          ModeName.NadiShodhana,
+                          ModeName.Ujjayi,
+                          ModeName.Buteyko,
+                        ];
+                        if (hideUnlessActive.includes(m.name)) {
+                          return activeMode === m.name || defaultMode === m.name;
+                        }
                         return true;
                       })
                       .map((m) => {
