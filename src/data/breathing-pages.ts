@@ -884,7 +884,7 @@ export const breathingPages: BreathingPageContent[] = [
     title: "Physiological Sigh Breathing Timer (Free) — Calm Down in 30 Seconds",
     description: "Free physiological sigh timer — calm down in 30 seconds with Stanford's double-inhale technique. Just 1-3 breaths. Start now.",
     ogTitle: "Physiological Sigh Breathing — Calm Down in 30 Seconds",
-    ogDescription: "Stanford-tested breathing technique from Huberman Lab. Stop stress in 30 seconds with double-inhale method. Free timer.",
+    ogDescription: "Stanford-tested double-inhale breathing technique. Stop stress in 30 seconds. Free physiological sigh timer.",
     ogImage: "og/breathe-physiological-sigh.png",
     twitterTitle: "Physiological Sigh Breathing — Calm Down in 30 Seconds",
     twitterDescription: "Stop stress in 30 seconds with Stanford's double-inhale technique. Free timer—try now.",
@@ -896,7 +896,7 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What Is a Physiological Sigh?",
-        content: "A physiological sigh is your body's natural stress-relief mechanism—a double inhale followed by a long exhale. You do it instinctively when crying, yawning, or transitioning from sleep. Babies sigh about every 50 breaths to keep their lungs healthy. When done deliberately, this ancient reflex becomes a powerful tool: two quick inhales through the nose (the second a short 'top-up' to fill the upper lungs), then a slow, unforced exhale. Dr. Andrew Huberman popularized the controlled version on his podcast after Stanford research showed it outperforms meditation for rapid stress relief."
+        content: "A physiological sigh is your body's natural stress-relief mechanism—a double inhale followed by a long exhale. You do it instinctively when crying, yawning, or transitioning from sleep. Babies sigh about every 50 breaths to keep their lungs healthy. When done deliberately, this ancient reflex becomes a powerful tool: two quick inhales through the nose (the second a short 'top-up' to fill the upper lungs), then a slow, unforced exhale. Stanford researchers (Balban et al., 2023) studied the controlled version in a randomized trial that showed it outperforms meditation for rapid stress relief."
       },
       {
         heading: "The Science Behind Physiological Sighing",
@@ -912,7 +912,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         heading: "Cyclic Sighing: The Clinical Term",
-        content: "In research papers and clinical settings, repeated physiological sighs are called 'cyclic sighing' or 'cyclic physiological sighing.' Some people search for 'cyclical breathing' or 'sigh breathing technique'—these refer to the same pattern. The 2023 Stanford study by Balban et al. used 'cyclic sighing' when comparing breathwork protocols to mindfulness meditation. Whether you call it physiological sighing, cyclic sighing, cyclical breathing, or the Huberman sigh—it's the same technique: double inhale, long exhale, repeat. The word 'cyclic' simply means you're doing multiple sighs in a row (2-5 minutes) rather than a single sigh for acute relief."
+        content: "In research papers and clinical settings, repeated physiological sighs are called 'cyclic sighing' or 'cyclic physiological sighing.' Some people search for 'cyclical breathing' or 'sigh breathing technique'—these refer to the same pattern. The 2023 Stanford study by Balban et al. used 'cyclic sighing' when comparing breathwork protocols to mindfulness meditation. Whether you call it physiological sighing, cyclic sighing, cyclical breathing, or the double-inhale sigh—it's the same technique: double inhale, long exhale, repeat. The word 'cyclic' simply means you're doing multiple sighs in a row (2-5 minutes) rather than a single sigh for acute relief."
       },
       {
         heading: "When to use",
@@ -961,8 +961,8 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     faqs: [
       {
-        question: "What is the Huberman physiological sigh?",
-        answer: "The physiological sigh popularized by Dr. Andrew Huberman on the Huberman Lab podcast is a natural stress-relief mechanism your body already uses. It consists of a double inhale (first through the nose to fill the lungs, then a second short sniff to top off), followed by a long exhale. Dr. Huberman explains that this technique was studied at Stanford and shown to be the fastest way to reduce stress in real-time. The 2023 Stanford study (Balban et al.) found cyclic sighing outperformed mindfulness meditation for mood improvement."
+        question: "What is the physiological sigh from the Stanford study?",
+        answer: "The physiological sigh is a natural stress-relief mechanism your body already uses, validated by Stanford researchers in a 2023 randomized controlled trial (Balban et al., Cell Reports Medicine). It consists of a double inhale through the nose followed by a long exhale through the mouth. The study found that 5 minutes of daily cyclic sighing outperformed mindfulness meditation for mood improvement and anxiety reduction. The technique works because the double inhale reinflates collapsed lung alveoli while the extended exhale activates the parasympathetic nervous system."
       },
       {
         question: "What evidence supports the physiological sigh?",
@@ -1141,8 +1141,6 @@ export const breathingPages: BreathingPageContent[] = [
     keywords: [
       "physiological sigh",
       "what is a physiological sigh",
-      "Huberman physiological sigh",
-      "Huberman Lab breathing",
       "cyclic sighing",
       "cyclic sighing technique",
       "cyclic sighing Stanford",
@@ -1169,13 +1167,12 @@ export const breathingPages: BreathingPageContent[] = [
       "sigh breathing technique",
       "double‑inhale sigh",
       "sigh breath",
-      "Huberman sigh"
     ],
     frequency: "As needed for acute stress (1–3 cycles); optional 2–5 minutes daily for mood and breathing‑rate changes",
     video: {
       youtubeId: "kSZKIupBUuc",
-      title: "Dr. Andrew Huberman Explains the Physiological Sigh",
-      description: "Stanford neuroscientist Dr. Andrew Huberman demonstrates and explains the physiological sigh—the fastest way to reduce stress in real-time."
+      title: "The Physiological Sigh Explained: Stanford's Stress-Relief Technique",
+      description: "Stanford's double-inhale breathing technique that reduces stress faster than meditation. Learn the physiological sigh—how it works, why it works, and when to use it."
     },
     voiceSearch: [
       {

@@ -2577,21 +2577,21 @@ export const useCasePages: UseCasePageContent[] = [
     breathingPageSlug: "physiological-sigh",
 
     hero: {
-      title: "Huberman Lab Breathing Techniques",
-      subtitle: "The science-backed breathwork methods from Stanford neuroscientist Dr. Andrew Huberman",
-      intro: "Dr. Andrew Huberman, Stanford neuroscientist and host of the Huberman Lab podcast, has brought scientific rigor to breathwork. His top recommendation? The physiological sigh—a double-inhale followed by a long exhale that he calls 'the fastest way to reduce stress in real-time.' This page covers Huberman's breathing protocols and the research behind them."
+      title: "Huberman Lab Breathing Protocols",
+      subtitle: "Every breathing technique Dr. Huberman recommends, matched to your goal",
+      intro: "Dr. Andrew Huberman doesn't recommend one breathing technique — he recommends six, each targeting a different physiological state. The physiological sigh (double inhale, long exhale) is his go-to for instant stress relief, working in just 1-3 breaths. Box breathing (4-4-4-4 timing) creates the alert calm Navy SEALs rely on before high-stakes operations. Coherent breathing at 5-6 breaths per minute is his top pick for building long-term stress resilience through HRV optimization. For sleep, he points to exhale-dominant patterns like 4-7-8 breathing that activate deep parasympathetic relaxation. Cyclic hyperventilation (similar to Wim Hof) deliberately spikes alertness and energy when you need it. And underneath it all, nasal breathing is the daily default he calls the single most important change most people can make for their health. This page matches each protocol to the right goal so you can use Huberman's complete breathing toolkit — not just one piece of it."
     },
 
     meta: {
-      title: "Huberman Lab Breathing: Physiological Sigh & Protocols (Free Timer)",
-      description: "Dr. Andrew Huberman's breathing techniques from the Huberman Lab podcast. The physiological sigh, cyclic sighing, and nasal breathing protocols. Stanford research + free timer.",
-      ogTitle: "Huberman Lab Breathing Techniques & Protocols",
-      ogDescription: "Stanford neuroscientist Dr. Andrew Huberman's recommended breathing techniques. Physiological sigh, cyclic sighing, and more. Free timer.",
-      twitterTitle: "Huberman Lab Breathing: Physiological Sigh (Free Timer)",
-      twitterDescription: "Dr. Huberman's top breathing technique—the physiological sigh. Stanford research. Free timer.",
+      title: "Huberman Breathing Protocols: 6 Techniques for Stress, Sleep & Focus (Free Timers)",
+      description: "All 6 breathing techniques Dr. Andrew Huberman recommends — physiological sigh, box breathing, coherent breathing, and more. Match the right protocol to your goal. Free guided timers.",
+      ogTitle: "Huberman Lab Breathing Protocols: 6 Techniques Matched to Your Goal",
+      ogDescription: "Every breathing technique Dr. Huberman recommends, from physiological sigh to box breathing. Free guided timers for each protocol.",
+      twitterTitle: "Huberman Breathing Protocols: 6 Techniques (Free Timers)",
+      twitterDescription: "All 6 Huberman Lab breathing techniques matched to stress, sleep & focus goals. Free timers.",
       author: "Resonance Editorial Team",
       datePublished: "2026-01-06",
-      dateModified: "2026-01-06"
+      dateModified: "2026-02-06"
     },
 
     keywords: [
@@ -2605,45 +2605,54 @@ export const useCasePages: UseCasePageContent[] = [
       "cyclic sighing huberman",
       "huberman stress relief",
       "huberman breathwork",
-      "stanford breathing technique"
+      "stanford breathing technique",
+      "huberman breathing protocol",
+      "huberman box breathing",
+      "huberman coherent breathing",
+      "huberman nasal breathing",
+      "huberman breathing for sleep",
+      "huberman breathing for focus",
+      "what breathing does huberman recommend",
+      "huberman breathing exercises"
     ],
 
     problem: {
-      heading: "Why Most Breathing Advice Falls Short",
-      content: "The internet is full of breathing techniques, but few are backed by rigorous research. Dr. Huberman cuts through the noise by focusing on methods with peer-reviewed evidence. His key insight: different breathing patterns serve different purposes. The physiological sigh is for real-time stress relief (seconds), while other patterns like cyclic hyperventilation are for deliberate alertness. Matching the technique to your goal is crucial.",
+      heading: "Too Many Breathing Techniques, No Clear Guidance",
+      content: "Dr. Huberman has discussed breathing across dozens of podcast episodes, YouTube clips, and guest appearances — covering everything from physiological sighs to cyclic hyperventilation to nasal breathing during sleep. The sheer volume of information creates a paradox: the more you watch, the less clear it becomes which technique you should actually use. Conflicting YouTube summaries and out-of-context clips make it worse. The real question isn't whether breathing techniques work — the science is clear on that. The question is which technique should you use right now, for your specific goal, in this specific moment.",
       symptoms: [
-        "Confusion about which breathing technique to use when",
-        "Breathing exercises that don't seem to work",
-        "Wanting evidence-based protocols, not wellness trends",
-        "Looking for the fastest way to calm down",
-        "Stress that hits suddenly and needs immediate intervention"
+        "Confusion about which Huberman breathing technique matches which goal",
+        "Trying breathing exercises randomly without matching them to a specific purpose",
+        "Assuming all breathing techniques are basically the same",
+        "Not knowing whether to use the physiological sigh, box breathing, or coherent breathing",
+        "Wanting evidence-based protocols instead of guessing which technique to try",
+        "Hearing Huberman mention many techniques but not knowing where to start"
       ]
     },
 
     solution: {
-      heading: "The Physiological Sigh: Huberman's #1 Recommendation",
-      content: "Dr. Huberman consistently recommends the physiological sigh as the single most effective tool for real-time stress reduction. It's not a new technique—your body does it naturally when you sob or transition from sleep. What's new is the Stanford research proving it outperforms other methods, including meditation, for rapid stress relief.",
-      whyThisPattern: "The double-inhale reinflates collapsed alveoli in your lungs (tiny air sacs that deflate when you're stressed), maximizing oxygen uptake. The extended exhale activates the parasympathetic nervous system via the vagus nerve. This one-two punch—mechanical lung reset plus neural calming—explains why a single sigh can drop your heart rate faster than any other technique."
+      heading: "Huberman's Breathing Protocols: Matched to Your Goal",
+      content: "Dr. Huberman doesn't recommend one breathing technique — he recommends a system. Different physiological states call for different protocols, and the key is matching the right tool to the right moment. The physiological sigh is his #1 for acute stress because it works in 1-3 breaths, making it the fastest intervention available. But he's equally emphatic about box breathing for pre-performance focus, coherent breathing for long-term HRV training and stress resilience, exhale-dominant patterns for sleep, cyclic hyperventilation for deliberate energy, and nasal breathing as the foundation of daily respiratory health. Each protocol targets a different branch of your nervous system, which is why no single technique covers every situation.",
+      whyThisPattern: "The visualizer defaults to the physiological sigh because it's the most universal starting point — it works in 1-3 breaths for anyone, requires no practice, and delivers immediate results. But the full Huberman approach is about matching technique to goal, which is exactly what the protocol guide below covers. Each of the six techniques targets a different physiological mechanism: the sigh resets your lungs and activates the vagus nerve, box breathing balances sympathetic and parasympathetic branches, coherent breathing maximizes HRV, and so on. Explore each technique via the step-by-step protocols below, and use the guided timers linked throughout to practice with real-time pacing."
     },
 
     science: {
-      heading: "The Stanford Research",
+      heading: "The Research Behind Huberman's Protocols",
       points: [
         {
-          mechanism: "2023 Stanford Study (Balban et al.)",
-          explanation: "Published in Cell Reports Medicine, this randomized controlled trial compared cyclic sighing to mindfulness meditation. Result: 5 minutes of daily sighing improved mood and reduced anxiety more effectively than meditation. The physiological sigh group also showed greater reductions in respiratory rate throughout the day."
+          mechanism: "Stanford RCT: Cyclic Sighing (2023)",
+          explanation: "Balban et al., published in Cell Reports Medicine, conducted a randomized controlled trial comparing cyclic sighing to mindfulness meditation. Five minutes of daily cyclic sighing for 28 days outperformed meditation for mood improvement and respiratory rate reduction — establishing the physiological sigh as an evidence-based daily practice, not just an emergency tool."
         },
         {
-          mechanism: "Real-Time Stress Reduction",
-          explanation: "Unlike meditation, which requires time and practice, the physiological sigh works in 1-3 breaths. Huberman calls it 'the fastest way to reduce stress in real-time' because it directly manipulates your autonomic nervous system rather than relying on cognitive reframing."
+          mechanism: "Box Breathing: Autonomic Balance",
+          explanation: "Equal-phase breathing (4 seconds inhale, 4 seconds hold, 4 seconds exhale, 4 seconds hold) activates both sympathetic and parasympathetic branches simultaneously, creating a unique state of alert calm. Studied extensively in military performance contexts, box breathing is the protocol Navy SEALs use before high-stakes operations — and the one Huberman recommends for focus under pressure."
         },
         {
-          mechanism: "Alveoli Reinflation",
-          explanation: "Dr. Huberman explains that the double-inhale serves a mechanical purpose: stressed breathing causes lung alveoli to collapse, reducing CO₂ offload. The second 'sip' of air pops these sacs back open. This isn't just calming—it's restoring proper lung function."
+          mechanism: "Coherent Breathing: HRV Optimization",
+          explanation: "Breathing at 5-6 breaths per minute (approximately a 5-second inhale and 5-second exhale) maximizes heart rate variability — a key biomarker of stress resilience and autonomic flexibility. Huberman discusses coherent breathing as the best 'training' protocol for long-term nervous system health, with effects that compound over weeks of consistent practice."
         },
         {
-          mechanism: "Vagal Activation via Long Exhale",
-          explanation: "The extended exhale (longer than the inhale) is key. Exhalation activates the parasympathetic branch of your autonomic nervous system. The longer exhale in the physiological sigh maximizes this effect, slowing heart rate within seconds."
+          mechanism: "Nasal Breathing: Nitric Oxide Production",
+          explanation: "Nasal breathing produces nitric oxide, a vasodilator that improves oxygen delivery by 10-15% compared to mouth breathing. It also filters and humidifies air, engages the diaphragm more effectively, and maintains optimal CO₂ levels. Huberman calls nasal breathing 'the single most important thing you can do for health' outside of specific breathwork sessions."
         }
       ]
     },
@@ -2651,36 +2660,42 @@ export const useCasePages: UseCasePageContent[] = [
     howTo: {
       steps: [
         {
-          name: "First inhale through nose",
-          instruction: "Take a deep breath in through your nose, filling your lungs about 90%.",
-          timing: "2-3 seconds"
+          name: "For Instant Stress Relief → Physiological Sigh",
+          instruction: "Double inhale through nose, long exhale through mouth. Works in 1-3 breaths (30 seconds). Huberman's #1 recommendation for real-time stress. Use mid-conversation, before tests, during panic.",
+          timing: "30 seconds"
         },
         {
-          name: "Second inhale (the 'sip')",
-          instruction: "Without exhaling, take a second, shorter inhale through your nose to completely fill your lungs. This is the key step that reinflates collapsed alveoli.",
-          timing: "1 second"
+          name: "For Focus & Calm → Box Breathing",
+          instruction: "4-second inhale, 4-second hold, 4-second exhale, 4-second hold. Creates alert calm — focused but not anxious. Navy SEALs use this before high-stakes operations. Huberman recommends for pre-performance prep.",
+          timing: "2-5 minutes"
         },
         {
-          name: "Long exhale through mouth",
-          instruction: "Exhale slowly and completely through your mouth. Let it be passive and unforced—just release the air. This exhale should be longer than both inhales combined.",
-          timing: "4-6 seconds"
+          name: "For HRV & Stress Resilience → Coherent Breathing",
+          instruction: "Breathe at 5-6 breaths per minute (5-second inhale, 5-second exhale). Maximizes heart rate variability over time. Huberman discusses this as the best 'training' breath for long-term nervous system health.",
+          timing: "5-20 minutes"
         },
         {
-          name: "Repeat 1-3 times",
-          instruction: "For acute stress, 1-3 sighs is usually enough. You should feel calmer within 30 seconds.",
-          timing: "As needed"
+          name: "For Sleep → Exhale-Dominant Breathing (4-7-8)",
+          instruction: "Inhale 4 counts, hold 7 counts, exhale 8 counts. The extended exhale and hold activate deep parasympathetic relaxation. Huberman mentions exhale-dominant patterns as ideal for pre-sleep wind-down.",
+          timing: "2-5 minutes before bed"
         },
         {
-          name: "Optional: 5-minute daily practice",
-          instruction: "For mood and anxiety benefits shown in the Stanford study, practice cyclic sighing (repeated physiological sighs) for 5 minutes daily.",
-          timing: "5 minutes"
+          name: "For Energy & Alertness → Cyclic Hyperventilation",
+          instruction: "25-30 deep breaths followed by a breath hold. Similar to Wim Hof breathing. Deliberately activates the sympathetic nervous system. Huberman recommends for morning alertness or pre-workout energy. Caution: never near water or while driving.",
+          timing: "3-5 minutes"
+        },
+        {
+          name: "Daily Default → Nasal Breathing",
+          instruction: "Breathe through your nose during daily activities, exercise, and sleep. Huberman emphasizes nasal breathing as the foundation of respiratory health — filters air, produces nitric oxide, and engages the diaphragm. Mouth-tape at night if needed.",
+          timing: "All day"
         }
       ],
       tips: [
-        "The second inhale is what makes this different from a regular sigh—don't skip it",
-        "You can do this invisibly in meetings, on calls, or in public",
-        "Use it BEFORE stressful events, not just during them",
-        "If one sigh doesn't work, do 2-3 in a row"
+        "Start with the physiological sigh — it's the most universally useful and works in seconds",
+        "Stack protocols: use a sigh to break acute stress, then transition to box or coherent breathing for sustained calm",
+        "Match intensity to need: sigh for emergencies, box for moderate stress, coherent for daily training",
+        "Nasal breathing is the default — reserve mouth breathing for specific techniques like the sigh's exhale",
+        "Consistency beats intensity: 5 minutes daily of any protocol outperforms occasional long sessions"
       ]
     },
 
@@ -2726,43 +2741,66 @@ export const useCasePages: UseCasePageContent[] = [
 
     relatedUseCases: [
       {
-        slug: "anxiety",
-        teaser: "Use box breathing for sustained anxiety management beyond acute stress"
-      },
-      {
-        slug: "panic-attacks",
-        teaser: "The physiological sigh is ideal for stopping panic attacks fast"
+        slug: "stress",
+        teaser: "Use the physiological sigh and box breathing for comprehensive stress management"
       },
       {
         slug: "focus",
-        teaser: "Huberman also recommends coherent breathing for focus and cognitive performance"
+        teaser: "Box breathing and coherent breathing for sustained cognitive performance"
+      },
+      {
+        slug: "sleep",
+        teaser: "Exhale-dominant breathing patterns Huberman recommends for better sleep"
+      },
+      {
+        slug: "anxiety",
+        teaser: "The physiological sigh is Huberman's top recommendation for anxiety relief"
       }
     ],
 
     faqs: [
       {
-        question: "What is the Huberman physiological sigh?",
-        answer: "The Huberman physiological sigh (or 'Huberman sigh') is a breathing technique Dr. Andrew Huberman popularized on his podcast. It consists of two inhales through the nose followed by one long exhale through the mouth. Huberman calls it 'the fastest way to reduce stress in real-time' based on Stanford research showing it outperforms meditation for rapid stress relief."
+        question: "What breathing technique does Huberman recommend?",
+        answer: "Dr. Huberman recommends different techniques for different goals. His #1 for instant stress relief is the physiological sigh (double inhale, long exhale). For focus, he recommends box breathing (4-4-4-4). For long-term stress resilience, coherent breathing at 5-6 breaths per minute. For sleep, exhale-dominant patterns like 4-7-8. For energy, cyclic hyperventilation. And for daily health, nasal breathing as a default."
       },
       {
-        question: "How many physiological sighs should I do?",
-        answer: "For acute stress relief, Dr. Huberman recommends 1-3 physiological sighs—this is usually enough to feel noticeably calmer within 30 seconds. For daily mood benefits (as shown in the Stanford study), practice 'cyclic sighing' (repeated physiological sighs) for 5 minutes per day."
+        question: "What is the Huberman breathing protocol?",
+        answer: "The 'Huberman breathing protocol' isn't a single technique — it's a system of matched protocols. Huberman teaches that different physiological states require different breathing patterns. The key is matching the right tool to the right moment: physiological sigh for acute stress, box breathing for focus, coherent breathing for HRV training, and nasal breathing as your daily baseline."
       },
       {
-        question: "What's the difference between physiological sigh and cyclic sighing?",
-        answer: "They're the same technique—cyclic sighing just means doing multiple physiological sighs in a row as a daily practice. The Stanford study used 5 minutes of cyclic sighing daily. For in-the-moment stress relief, a few sighs is enough; for long-term mood benefits, the 5-minute daily practice is more effective."
+        question: "What is the difference between physiological sigh and cyclic sighing?",
+        answer: "They're the same technique at different durations. A physiological sigh is a single double-inhale followed by a long exhale — used for instant relief in 1-3 breaths. Cyclic sighing is repeating that pattern continuously for 2-5 minutes as a daily practice. The 2023 Stanford study used 5 minutes of cyclic sighing and found it outperformed meditation for mood improvement."
       },
       {
-        question: "Does Huberman recommend any other breathing techniques?",
-        answer: "Yes. For sustained calm and HRV training, he discusses coherent breathing (5-6 breaths per minute). For deliberate alertness, he mentions cyclic hyperventilation (like Wim Hof breathing). But for real-time stress reduction, the physiological sigh remains his top recommendation because it works in seconds rather than minutes."
+        question: "Is Huberman breathing the same as Wim Hof?",
+        answer: "No. Wim Hof breathing (cyclic hyperventilation) is just one of the techniques Huberman discusses, and he recommends it specifically for energy and alertness — not stress relief. Huberman's overall approach is broader: a toolkit of 6+ techniques matched to different goals. The physiological sigh (his top recommendation) is almost the opposite of Wim Hof — it calms you down rather than revving you up."
       },
       {
-        question: "Is the physiological sigh better than box breathing?",
-        answer: "For acute, in-the-moment stress, yes—the physiological sigh works faster (1-3 breaths vs 2-5 minutes). For sustained calm, focus, or a structured daily practice, box breathing has its place. Dr. Huberman suggests using the physiological sigh as a 'fire extinguisher' for acute stress, and techniques like box or coherent breathing as 'climate control' for ongoing regulation."
+        question: "What does Huberman say about box breathing?",
+        answer: "Huberman recommends box breathing (4-second inhale, hold, exhale, hold) for focus and calm before high-stakes situations. He notes it creates a unique state of 'alert calm' because the equal phases balance sympathetic and parasympathetic activation. It's the protocol Navy SEALs use, and Huberman suggests it as a pre-performance tool lasting 2-5 minutes."
       },
       {
-        question: "Why does Huberman emphasize nasal breathing?",
-        answer: "Dr. Huberman frequently discusses the benefits of nasal breathing: it filters and humidifies air, produces nitric oxide (a vasodilator), and engages the diaphragm more effectively. He recommends nasal breathing as a default during the day and sleep, reserving mouth exhales for techniques like the physiological sigh where a long, complete exhale is beneficial."
+        question: "How long should I do Huberman breathing exercises?",
+        answer: "It depends on the technique. The physiological sigh works in 1-3 breaths (30 seconds). Box breathing is most effective for 2-5 minutes. Coherent breathing builds HRV over 5-20 minute sessions. The Stanford study found 5 minutes daily of cyclic sighing was enough for significant mood improvements. Start with 5 minutes of any protocol and adjust based on how you respond."
+      },
+      {
+        question: "Does Huberman recommend breathing exercises for sleep?",
+        answer: "Yes. For sleep, Huberman recommends exhale-dominant breathing patterns — techniques where the exhale is longer than the inhale. The 4-7-8 technique (inhale 4, hold 7, exhale 8) is a classic example. He explains that extended exhales activate the parasympathetic nervous system, slowing heart rate and signaling your body it's safe to rest. He also emphasizes nasal breathing during sleep."
+      },
+      {
+        question: "Why does Huberman say to breathe through your nose?",
+        answer: "Huberman is emphatic about nasal breathing for several reasons: (1) it produces nitric oxide, a vasodilator that improves oxygen delivery by 10-15%, (2) it filters and humidifies air, protecting your lungs, (3) it engages the diaphragm more effectively, and (4) it maintains optimal CO\u2082 levels. He calls nasal breathing 'the single most important change' most people can make for health and recommends it during the day, exercise, and sleep."
+      }
+    ],
+
+    voiceSearch: [
+      {
+        question: "What breathing techniques does Huberman recommend?",
+        answer: "Dr. Huberman recommends 6 key breathing techniques: the physiological sigh for instant stress relief, box breathing for focus, coherent breathing for HRV training, 4-7-8 breathing for sleep, cyclic hyperventilation for energy, and nasal breathing as a daily default. Each protocol targets a different goal."
+      },
+      {
+        question: "What is the Huberman breathing method?",
+        answer: "The Huberman breathing method is a system of matched protocols — not a single technique. Dr. Huberman teaches matching the right breathing pattern to your current need: physiological sigh for acute stress (1-3 breaths), box breathing for focus (2-5 min), coherent breathing for long-term resilience (5-20 min), and nasal breathing as your daily foundation."
       }
     ]
   }

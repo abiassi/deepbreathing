@@ -834,6 +834,28 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 ---
 
+### 2026-02-06: Huberman / Physiological Sigh Cannibalization Fix
+
+**Hypothesis:** Radically differentiating `/for/huberman` (multi-protocol hub) from `/breathe/physiological-sigh` (single-technique deep-dive) will eliminate keyword cannibalization, increase CTR on both pages, and capture multi-technique Huberman queries the current page misses.
+
+**Baseline (Jan 6-27, 2026):**
+| Page | Impressions | Clicks | CTR | Avg Position |
+|------|-------------|--------|-----|--------------|
+| /for/huberman | 3,722 | 0 | 0% | 8.9 |
+| /breathe/physiological-sigh | 2,977 | 3 | 0.1% | 10.1 |
+
+**Problem:** Both pages target "physiological sigh" + Huberman — same technique, same video, overlapping keywords. The Huberman page's impressions are largely bot/academic queries, not real user demand.
+
+**Changes Made:**
+1. `/for/huberman` → Rewritten as multi-protocol hub covering 6 techniques (physiological sigh, box, coherent, cyclic hyperventilation, 4-7-8, nasal breathing). New title: "Huberman Breathing Protocols: 6 Techniques for Stress, Sleep & Focus (Free Timers)". Added 8 multi-protocol FAQs, voiceSearch, expanded keywords to ~19 Huberman-branded multi-technique terms.
+2. `/breathe/physiological-sigh` → Reduced Huberman branding: removed "Huberman physiological sigh" and "Huberman Lab breathing" from keywords, removed "Huberman sigh" from synonyms, rewrote ogDescription to focus on Stanford, changed FAQ[0] from "Huberman physiological sigh" to "Stanford study" framing, replaced Huberman mentions in body with Stanford research attribution.
+
+**Measure After:** 2026-02-20 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
 ### 2026-02-06: Disavow Spam Backlinks + Fix /app/ Route
 
 **Hypothesis:** Disavowing ~27 spam/scraper domains prevents any future negative SEO signal. Redirecting /app/ → /breathing-app captures referral traffic from ~10 backlinks (including runtothefinish.com DR 59).
