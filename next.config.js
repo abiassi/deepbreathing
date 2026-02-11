@@ -34,6 +34,21 @@ const nextConfig = {
         destination: '/breathe',
         permanent: true,
       },
+      {
+        source: '/app',
+        destination: '/breathing-app',
+        permanent: true,
+      },
+      {
+        source: '/app/',
+        destination: '/breathing-app',
+        permanent: true,
+      },
+      {
+        source: '/app/:path*',
+        destination: '/breathing-app',
+        permanent: true,
+      },
     ];
   },
 };
