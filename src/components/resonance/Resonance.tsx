@@ -8,6 +8,7 @@ import { BreathingPhase, ModeName, AIRecommendation, ProtocolPhase, ProtocolStat
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER, WIM_HOF_PROTOCOL } from './constants';
 import { AudioService } from './services/audioService';
 import Visualizer from './components/Visualizer';
+import { createRuntimePhraseResolver, detectRuntimeLocale, RuntimePhraseKey } from './runtime-phrases';
 
 // GA4 event helper — safe to call even if gtag isn't loaded
 function trackEvent(name: string, params?: Record<string, string | number | boolean>) {
@@ -110,6 +111,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   useEffect(() => {
     setMounted(true);
+    setRuntimeLocale(detectRuntimeLocale());
 
     const savedSettings = localStorage.getItem(STORAGE_KEYS.SETTINGS);
     if (savedSettings) {
@@ -194,7 +196,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   // Animation State
   const [scale, setScale] = useState(0);
-  const [instruction, setInstruction] = useState("Ready to start?");
+  const [runtimeLocale, setRuntimeLocale] = useState('en');
+  const runtimePhrases = useMemo(() => createRuntimePhraseResolver(runtimeLocale), [runtimeLocale]);
+  const [instruction, setInstruction] = useState(() => runtimePhrases.resolve('session.ready_to_start').text);
+  const [runtimeFallbackCount, setRuntimeFallbackCount] = useState(0);
   const [sessionSeconds, setSessionSeconds] = useState(0);
   const [aiReasoning, setAiReasoning] = useState<string | null>(null);
 
@@ -202,6 +207,9 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const audioServiceRef = useRef<AudioService | null>(null);
   const soundHintTimeoutRef = useRef<number | null>(null);
   const soundHintUnmountRef = useRef<number | null>(null);
+  const lastSafeRuntimeTextRef = useRef<Partial<Record<RuntimePhraseKey, string>>>({
+    'session.ready_to_start': runtimePhrases.resolve('session.ready_to_start').text
+  });
 
   const getAudioService = useCallback(() => {
     if (!audioServiceRef.current) {
@@ -227,6 +235,28 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
   }, []);
 
+  const resolvePhrase = useCallback((key: RuntimePhraseKey, vars?: Record<string, string | number>) => {
+    const resolved = runtimePhrases.resolve(key, vars);
+    if (resolved.source === 'fallback_en' && runtimePhrases.locale !== 'en') {
+      setRuntimeFallbackCount(prev => prev + 1);
+      trackEvent('runtime_translation_miss', { key, locale: runtimePhrases.locale });
+    }
+    return resolved;
+  }, [runtimePhrases]);
+
+  const getSafePhrase = useCallback((key: RuntimePhraseKey, vars?: Record<string, string | number>) => {
+    const resolved = resolvePhrase(key, vars);
+    if (resolved.source === 'fallback_en' && runtimePhrases.locale !== 'en') {
+      return lastSafeRuntimeTextRef.current[key] || runtimePhrases.neutral(key);
+    }
+    lastSafeRuntimeTextRef.current[key] = resolved.text;
+    return resolved.text;
+  }, [resolvePhrase, runtimePhrases]);
+
+  const setInstructionKey = useCallback((key: RuntimePhraseKey, vars?: Record<string, string | number>) => {
+    setInstruction(getSafePhrase(key, vars));
+  }, [getSafePhrase]);
+
   useEffect(() => {
     getAudioService().setThemeColor(themeColor);
   }, [getAudioService, themeColor]);
@@ -244,7 +274,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     const handleBackground = () => {
       if (!isRunning) return;
       setIsRunning(false);
-      setInstruction('Paused');
+      setInstructionKey('session.paused');
       void audio.fadeOutAndSuspend({ fadeSeconds: 0.25 });
     };
 
@@ -265,7 +295,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       document.removeEventListener('visibilitychange', handleVisibility);
       window.removeEventListener('pagehide', handlePageHide);
     };
-  }, [getAudioService, isRunning]);
+  }, [getAudioService, isRunning, setInstructionKey]);
 
   // Proactively unlock mobile audio on the first user interaction
   useEffect(() => {
@@ -420,7 +450,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       // Resume audio context first (critical for mobile)
       const resumed = await audio.resume();
       if (!resumed) {
-        setInstruction("Tap once to enable sound");
+        setInstructionKey('session.tap_enable_sound');
         return;
       }
 
@@ -438,7 +468,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           isUserControlledHold: false
         });
         protocolPhaseStartRef.current = performance.now();
-        setInstruction('Power breathe');
+        setInstructionKey('protocol.power_breathe');
 
         // Wim Hof uses energizing drone + beta waves
         await audio.startDrone(themeColor);
@@ -464,7 +494,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         }
 
         audio.playCue('inhale', themeColor);
-        setInstruction("Inhale slowly...");
+        setInstructionKey('instruction.inhale_slowly');
       }
 
       if (isIOS && soundStatus !== 'confirmed') {
@@ -477,14 +507,14 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setIsRunning(false);
       setIsProtocolMode(false);
       setPhase(BreathingPhase.Idle);
-      setInstruction("Paused");
+      setInstructionKey('session.paused');
       trackEvent('session_pause', { mode: activeMode, seconds_elapsed: sessionSeconds });
       audio.stopDrone();
       audio.stopPinkNoise();
       audio.stopBinaural();
       setScale(0);
     }
-  }, [isRunning, activeMode, themeColor, getAudioService, isIOS, soundStatus, sessionSeconds, selectedDuration]);
+  }, [isRunning, activeMode, themeColor, getAudioService, isIOS, soundStatus, sessionSeconds, selectedDuration, setInstructionKey]);
 
   const handleStop = () => {
     const audio = getAudioService();
@@ -498,7 +528,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       retentionTime: 0,
       isUserControlledHold: false
     });
-    setInstruction("Ready to start?");
+    setInstructionKey('session.ready_to_start');
     trackEvent('session_stop', { mode: activeMode, seconds_elapsed: sessionSeconds });
 
     if (sessionSeconds > 0) {
@@ -533,7 +563,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         }
       }
     },
-    [isRunning, pathname, router]
+    [activeMode, isRunning, pathname, router]
   );
 
   const handleAIRecommendation = (rec: AIRecommendation) => {
@@ -592,10 +622,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         // Check for Inhale 2 (Double Inhale)
         if (inhale2Dur > 0) {
           nextPhase = BreathingPhase.Inhale2;
-          setInstruction("Inhale again...");
+          setInstructionKey('instruction.inhale_again');
         } else {
           nextPhase = holdInDur > 0 ? BreathingPhase.HoldIn : BreathingPhase.Exhale;
-          setInstruction(holdInDur > 0 ? "" : "Exhale...");
+          setInstruction(holdInDur > 0 ? '' : getSafePhrase('instruction.exhale'));
           setScale(1);
         }
       }
@@ -608,7 +638,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
         nextPhase = holdInDur > 0 ? BreathingPhase.HoldIn : BreathingPhase.Exhale;
-        setInstruction(holdInDur > 0 ? "" : "Exhale fully...");
+        setInstruction(holdInDur > 0 ? '' : getSafePhrase('instruction.exhale_fully'));
         setScale(1);
       }
     }
@@ -619,7 +649,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
         nextPhase = BreathingPhase.Exhale;
-        setInstruction("Exhale...");
+        setInstructionKey('instruction.exhale');
       }
     } else if (phase === BreathingPhase.Exhale) {
       currentPhaseDuration = exhaleDur;
@@ -628,7 +658,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
         nextPhase = holdOutDur > 0 ? BreathingPhase.HoldOut : BreathingPhase.Inhale;
-        setInstruction(holdOutDur > 0 ? "" : "Inhale...");
+        setInstruction(holdOutDur > 0 ? '' : getSafePhrase('instruction.inhale'));
         setScale(0);
       }
     } else if (phase === BreathingPhase.HoldOut) {
@@ -638,7 +668,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
         nextPhase = BreathingPhase.Inhale;
-        setInstruction("Inhale...");
+        setInstructionKey('instruction.inhale');
       }
     }
 
@@ -652,7 +682,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
 
     requestRef.current = requestAnimationFrame(animate);
-  }, [activeMode, getAudioService, isRunning, phase, speedMultiplier, themeColor]);
+  }, [activeMode, getAudioService, getSafePhrase, isRunning, phase, setInstructionKey, speedMultiplier, themeColor]);
 
   // --- Wim Hof Protocol Animation ---
   const animateProtocol = useCallback((time: number) => {
@@ -686,7 +716,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           next.isUserControlledHold = true;
           retentionStartRef.current = time;
           protocolPhaseStartRef.current = time;
-          setInstruction('Hold your breath...');
+          setInstructionKey('instruction.hold_your_breath');
           audio.playCue('hold', themeColor);
           setScale(0); // Empty lungs
         } else {
@@ -715,7 +745,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         if (holdSeconds >= protocol.retentionHoldMax) {
           next.phase = ProtocolPhase.RecoveryInhale;
           protocolPhaseStartRef.current = time;
-          setInstruction('Deep breath in');
+          setInstructionKey('instruction.deep_breath_in');
           audio.playCue('inhale', themeColor);
         }
       }
@@ -726,7 +756,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         if (timeSincePhaseStart >= recoveryInhaleDur) {
           next.phase = ProtocolPhase.RecoveryHold;
           protocolPhaseStartRef.current = time;
-          setInstruction('Hold');
+          setInstructionKey('instruction.hold');
           audio.playCue('hold', themeColor);
         }
       }
@@ -741,12 +771,12 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
             next.currentBreathIndex = 0;
             next.phase = ProtocolPhase.RoundComplete;
             protocolPhaseStartRef.current = time;
-            setInstruction(`Round ${prev.currentRound} complete`);
+            setInstructionKey('protocol.round_complete', { round: prev.currentRound });
             setScale(0.5);
           } else {
             // Protocol complete
             next.phase = ProtocolPhase.ProtocolComplete;
-            setInstruction('Protocol complete!');
+            setInstructionKey('protocol.complete');
             setScale(0.5);
             // Stop the session
             setIsRunning(false);
@@ -796,7 +826,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     });
 
     requestRef.current = requestAnimationFrame(animateProtocol);
-  }, [isRunning, isProtocolMode, getAudioService, themeColor]);
+  }, [isRunning, isProtocolMode, getAudioService, phase, setInstructionKey, themeColor]);
 
   // End hold button handler for Wim Hof
   const handleEndHold = useCallback(() => {
@@ -809,9 +839,9 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       isUserControlledHold: false
     }));
     protocolPhaseStartRef.current = performance.now();
-    setInstruction('Deep breath in');
+    setInstructionKey('instruction.deep_breath_in');
     audio.playCue('inhale', themeColor);
-  }, [isProtocolMode, protocolState.phase, getAudioService, themeColor]);
+  }, [isProtocolMode, protocolState.phase, getAudioService, setInstructionKey, themeColor]);
 
   useEffect(() => {
     if (isRunning) {
@@ -849,14 +879,14 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       const audio = getAudioService();
       setIsRunning(false);
       setPhase(BreathingPhase.Idle);
-      setInstruction('Session complete');
+      setInstructionKey('session.complete');
       trackEvent('session_complete', { mode: activeMode, seconds_elapsed: sessionSeconds });
       // Stop all audio
       audio.stopDrone();
       audio.stopPinkNoise();
       audio.stopBinaural();
     }
-  }, [selectedDuration, isRunning, sessionSeconds, getAudioService]);
+  }, [activeMode, selectedDuration, isRunning, sessionSeconds, getAudioService, setInstructionKey]);
 
   useEffect(() => {
     if (!isRunning && !aiReasoning) {
@@ -888,6 +918,14 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    (window as any).__resonanceRuntimeTranslation = {
+      locale: runtimePhrases.locale,
+      fallbackCount: runtimeFallbackCount
+    };
+  }, [runtimeFallbackCount, runtimePhrases.locale]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
     const handleStartRequest = () => {
       if (!isRunning) {
         handleTogglePlay();
@@ -898,10 +936,12 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   }, [isRunning, handleTogglePlay]);
 
   const getPhaseLabel = (p: BreathingPhase) => {
-    if (p === BreathingPhase.Idle) return "Ready";
-    if (p === BreathingPhase.HoldIn || p === BreathingPhase.HoldOut) return "Hold";
-    if (p === BreathingPhase.Inhale2) return "Inhale Again";
-    return p;
+    if (p === BreathingPhase.Idle) return getSafePhrase('phase.ready');
+    if (p === BreathingPhase.HoldIn || p === BreathingPhase.HoldOut) return getSafePhrase('phase.hold');
+    if (p === BreathingPhase.Inhale2) return getSafePhrase('phase.inhale_again');
+    if (p === BreathingPhase.Inhale) return getSafePhrase('phase.inhale');
+    if (p === BreathingPhase.Exhale) return getSafePhrase('phase.exhale');
+    return getSafePhrase('phase.ready');
   };
 
   const durationSummary = selectedDuration === null
@@ -1012,6 +1052,8 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     <div
       className={`relative flex h-full w-full flex-col overflow-hidden ${backgroundVariant === 'winter-blue' ? '' : 'bg-background'} transition-colors duration-1000 ${className}`}
       style={{ backgroundColor: getBackgroundColor() }}
+      data-runtime-locale={runtimePhrases.locale}
+      data-runtime-fallback-count={runtimeFallbackCount}
     >
 
       {snowMode ? (
@@ -1038,11 +1080,11 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         {isProtocolMode && isRunning && (
           <div className="absolute top-8 left-0 right-0 z-20 flex flex-col items-center gap-2">
             <div className="rounded-full bg-card/80 px-4 py-2 text-sm font-medium text-card-foreground backdrop-blur">
-              Round {protocolState.currentRound} of {WIM_HOF_PROTOCOL.rounds}
+              {getSafePhrase('ui.round_of', { current: protocolState.currentRound, total: WIM_HOF_PROTOCOL.rounds })}
             </div>
             {protocolState.phase === ProtocolPhase.PowerBreathe && (
               <div className="text-xs text-muted-foreground">
-                Breath {protocolState.currentBreathIndex} of {WIM_HOF_PROTOCOL.powerBreathCount}
+                {getSafePhrase('ui.breath_of', { current: protocolState.currentBreathIndex, total: WIM_HOF_PROTOCOL.powerBreathCount })}
               </div>
             )}
           </div>
@@ -1059,7 +1101,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           }
           instructions={
             isProtocolMode && isRunning && protocolState.phase === ProtocolPhase.PowerBreathe
-              ? 'Power breath'
+              ? getSafePhrase('ui.power_breath')
               : ''
           }
           progress={0}
@@ -1074,7 +1116,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
             className="mt-6 rounded-full bg-card/90 px-6 py-3 text-sm font-semibold text-card-foreground shadow-lg backdrop-blur transition-all hover:bg-card hover:scale-105 active:scale-95"
             style={{ borderColor: themeColor, borderWidth: 2 }}
           >
-            End Hold → Recovery Breath
+            {getSafePhrase('ui.end_hold_recovery')}
           </button>
         )}
       </main>
@@ -1087,7 +1129,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           >
             <div className="flex items-center gap-2">
               <Volume2 size={18} className="shrink-0" style={{ color: themeColor }} />
-              <span>If you do not hear any sound, make sure your phone is not on silent.</span>
+              <span>{getSafePhrase('ui.sound_hint_no_audio')}</span>
             </div>
           </div>
         </div>
