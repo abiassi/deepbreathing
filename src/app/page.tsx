@@ -335,6 +335,11 @@ export default function HomePage() {
                 </Link>
               </li>
               <li>
+                <Link href="/box-breathing-app" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  Box Breathing App
+                </Link>
+              </li>
+              <li>
                 <Link href="/holiday-breathing-exercises" className="underline underline-offset-2 transition-colors hover:text-foreground">
                   Holiday Exercises
                 </Link>

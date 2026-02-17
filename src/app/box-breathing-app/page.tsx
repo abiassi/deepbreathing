@@ -8,24 +8,24 @@ const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/box-breathing-app`;
 
 export const metadata: Metadata = {
-  title: "Free Online Box Breathing Timer (2026) — Navy SEAL Calm (No Download)",
+  title: "Box Breathing App (Free Online 4-4-4-4 Timer) - No Download",
   description:
-    "Free box breathing timer — Navy SEAL 4-4-4-4 technique for focus and calm. No download needed. Start your guided session now.",
+    "Use a free box breathing app online. Guided 4-4-4-4 timer for stress, focus, and anxiety. Works on phone and desktop with no signup.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "Free Online Box Breathing Timer",
+    title: "Box Breathing App (Free Online 4-4-4-4 Timer)",
     description:
-      "The Navy SEAL breathing technique for focus and calm. Free 4-4-4-4 timer in your browser—no download.",
+      "Free online box breathing app with a guided 4-4-4-4 timer for calm and focus. No download needed.",
     url: canonicalUrl,
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Online Box Breathing Timer",
+    title: "Box Breathing App (Free Online 4-4-4-4 Timer)",
     description:
-      "The Navy SEAL breathing technique for calm under pressure. Free 4-4-4-4 timer—no download. Try now."
+      "Free online box breathing app with a guided 4-4-4-4 timer for calm and focus."
   }
 };
 
@@ -142,7 +142,7 @@ export default function BoxBreathingAppMoneyPage() {
         <div className="absolute inset-y-0 left-0 z-30 flex w-full max-w-xl flex-col justify-end sm:justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="space-y-4">
             <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
-            <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">Box breathing app</h1>
+            <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">Box breathing app (free online timer)</h1>
             <p className="max-w-xl text-lg text-muted-foreground">
               Box breathing app and timer for the 4-4-4-4 pattern you can use instantly in your browser. Follow the visual guide,
               adjust the counts, and start in seconds—no download and no signup.
@@ -434,6 +434,12 @@ export default function BoxBreathingAppMoneyPage() {
             </Link>
             <Link href="/coherent-breathing-app" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
               Coherent (HRV) breathing
+            </Link>
+            <Link href="/2-minute-breathing-exercise" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+              2 minute breathing exercise
+            </Link>
+            <Link href="/for/running" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+              Breathing for running
             </Link>
             <Link href="/breathe" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
               Browse techniques
