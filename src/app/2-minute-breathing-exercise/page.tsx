@@ -310,8 +310,17 @@ export default function TwoMinuteBreathingExercisePage() {
           <Link href="/5-minute-breathing-exercise" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
             5 minute exercise
           </Link>
+          <Link href="/4-7-8-breathing-timer" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+            4-7-8 timer
+          </Link>
+          <Link href="/box-breathing-app" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+            Box breathing app
+          </Link>
           <Link href="/for/anxiety" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
             For anxiety
+          </Link>
+          <Link href="/for/running" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+            For running recovery
           </Link>
           <Link href="/for/focus" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
             For focus

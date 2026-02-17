@@ -526,9 +526,9 @@ export default function CoherentBreathingAppMoneyPage() {
       </section>
 
       <section className="mt-12 glow-card rounded-[32px] border border-border bg-card p-6">
-        <h2 className="text-2xl font-semibold text-card-foreground">More breathing timers</h2>
+        <h2 className="text-2xl font-semibold text-card-foreground">More breathing tools</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Want something more structured or more sleep-oriented? Try box breathing or 4-7-8.
+          Want something structured, shorter, sleep-focused, or recovery-focused? Try these:
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <Link href="/box-breathing-app" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
@@ -536,6 +536,12 @@ export default function CoherentBreathingAppMoneyPage() {
           </Link>
           <Link href="/4-7-8-breathing-timer" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
             4-7-8 timer
+          </Link>
+          <Link href="/2-minute-breathing-exercise" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+            2 minute breathing exercise
+          </Link>
+          <Link href="/for/running" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+            Breathing for running
           </Link>
           <Link href="/breathe" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
             Browse techniques

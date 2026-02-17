@@ -1018,6 +1018,71 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 ---
 
+### 2026-02-17: GSC Checkpoint (Last 28d vs Previous 28d)
+
+**Date range:** 2026-01-20 → 2026-02-16 vs 2025-12-23 → 2026-01-19
+
+**Page metrics (imp / clicks / CTR / avg pos):**
+
+| Page | Last 28d | Prev 28d |
+|------|----------|----------|
+| /breathe/box | 311 / 2 / 0.64% / 22.38 | 925 / 0 / 0.00% / 11.97 |
+| /breathe/physiological-sigh | 1719 / 1 / 0.06% / 13.24 | 3003 / 3 / 0.10% / 10.75 |
+| /4-7-8-breathing-timer | 336 / 11 / 3.27% / 13.07 | 467 / 12 / 2.57% / 9.02 |
+| /box-breathing-app | 88 / 0 / 0.00% / 12.69 | 119 / 3 / 2.52% / 10.45 |
+| /2-minute-breathing-exercise | 57 / 0 / 0.00% / 10.35 | 78 / 0 / 0.00% / 8.91 |
+| /for/running | 218 / 0 / 0.00% / 10.12 | 269 / 0 / 0.00% / 7.36 |
+| /breathe/pursed-lip | 330 / 0 / 0.00% / 67.87 | no data | 
+| /breathe/ujjayi | 206 / 0 / 0.00% / 40.84 | no data |
+| /breathe/belly | 19 / 0 / 0.00% / 34.53 | no data |
+| /breathe/nadi-shodhana | 42 / 2 / 4.76% / 10.14 | no data |
+| /for/pranayama | 19 / 0 / 0.00% / 12.79 | no data |
+| /for/stress | 48 / 0 / 0.00% / 8.52 | no data |
+| /coherent-breathing-app | 448 / 4 / 0.89% / 8.26 | 405 / 3 / 0.74% / 7.62 |
+
+**Top-10 crossings:**
+- Dropped out of top 10: /4-7-8-breathing-timer (9.02 → 13.07), /box-breathing-app (10.45 → 12.69), /2-minute-breathing-exercise (8.91 → 10.35), /for/running (7.36 → 10.12)
+- Now in top 10 with new data: /for/stress (8.52)
+
+**CTR movers (>0.3pp):**
+- /breathe/box: +0.64pp (0.00% → 0.64%)
+- /4-7-8-breathing-timer: +0.70pp (2.57% → 3.27%)
+- /box-breathing-app: -2.52pp (2.52% → 0.00%)
+
+**Query highlights (near-top-10 pages):**
+- /coherent-breathing-app: "coherence breathwork app" (1 click, 1 imp, pos 11), "coherent breathing app" (1/24, pos 10.17), "coherent breathing app free" (1/14, pos 6.21)
+- /2-minute-breathing-exercise: "2 minute breathing exercise" (0/1, pos 29)
+- /for/running: "physiological sigh lower heart rate running" (0/14, pos 6.29)
+- /box-breathing-app: "box breathing app" (0/1, pos 41), "box breathing online" (0/3, pos 29.33), "box breathing timer" (0/1, pos 49), "box breathing timer app" (0/1, pos 6), "breathing timer online" (0/1, pos 93)
+- /for/stress, /breathe/nadi-shodhana: no query rows in period
+
+**Index status:** /breathe/buteyko is submitted and indexed (last crawl 2026-02-06).
+
+---
+
+### 2026-02-17: Checkpoint Follow-Up (Internal Links + Metadata Alignment)
+
+**Hypothesis:** Reinforcing internal links to pages that slipped and tightening title/description intent should help recover impressions and top-10 positions.
+
+**Pages targeted from checkpoint:** `/4-7-8-breathing-timer`, `/box-breathing-app`, `/2-minute-breathing-exercise`, `/for/running`
+
+**Changes Made:**
+- Updated metadata on `/4-7-8-breathing-timer` to prioritize exact "4-7-8 breathing timer" intent (title/description/OG/Twitter) and adjusted H1 to match.
+- Updated metadata on `/box-breathing-app` to prioritize exact "box breathing app / 4-4-4-4 timer" intent (title/description/OG/Twitter) and adjusted H1 to match.
+- Updated `/for/running` metadata copy in `use-case-pages.ts` to include explicit "breathing for running recovery" intent language.
+- Added contextual links to lagging pages from higher-visibility pages:
+  - `/coherent-breathing-app` "More breathing tools" now links to `/2-minute-breathing-exercise` and `/for/running`.
+  - `/4-7-8-breathing-timer` now links to `/for/running` in use-case cards and `/2-minute-breathing-exercise` in "More breathing apps".
+  - `/box-breathing-app` "More breathing timers" now links to `/2-minute-breathing-exercise` and `/for/running`.
+  - `/2-minute-breathing-exercise` "More options" now links to `/4-7-8-breathing-timer`, `/box-breathing-app`, and `/for/running`.
+  - Homepage timer list now includes `/box-breathing-app`.
+
+**Measure After:** 2026-03-03 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
 ## Completed Experiments
 
 (Move experiments here after measuring results)

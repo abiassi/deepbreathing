@@ -10,24 +10,24 @@ const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/4-7-8-breathing-timer`;
 
 export const metadata: Metadata = {
-  title: "Free Online 4-7-8 Breathing Timer (2026) — Fall Asleep in 2 Minutes",
+  title: "4-7-8 Breathing Timer (Free Online) - Dr. Weil Sleep Technique",
   description:
-    "Free 4-7-8 breathing timer — fall asleep in 2 minutes with Dr. Weil's technique. No download needed. Start your guided session now.",
+    "Use a free 4-7-8 breathing timer online. Follow Dr. Andrew Weil's 4-7-8 pattern for sleep and anxiety relief. No app, no signup.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "Free Online 4-7-8 Breathing Timer",
+    title: "4-7-8 Breathing Timer (Free Online)",
     description:
-      "Dr. Weil's 4-7-8 breathing timer. The 'natural tranquilizer' for sleep and anxiety. Free in your browser—try tonight.",
+      "Free 4-7-8 breathing timer online. Dr. Weil's sleep and anxiety breathing pattern with guided pacing in your browser.",
     url: canonicalUrl,
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Online 4-7-8 Breathing Timer",
+    title: "4-7-8 Breathing Timer (Free Online)",
     description:
-      "Dr. Weil's 4-7-8 breathing timer. The 'natural tranquilizer' for sleep and anxiety. Free in your browser—try tonight."
+      "Free 4-7-8 breathing timer online. Dr. Weil's sleep and anxiety breathing pattern with guided pacing."
   }
 };
 
@@ -237,7 +237,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
         <div className="absolute inset-y-0 left-0 z-30 flex w-full max-w-xl flex-col justify-end sm:justify-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="space-y-4">
             <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
-            <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">4-7-8 Breathing Timer: Fall Asleep Faster</h1>
+            <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">4-7-8 breathing timer (free online)</h1>
             <p className="max-w-xl text-lg text-muted-foreground">
               4-7-8 breathing is a calming pattern: inhale for 4, hold for 7, exhale for 8. This free timer (Dr. Andrew Weil&apos;s method)
               lets you follow the pacing instantly in your browser and adjust the counts if you need a gentler version.
@@ -617,7 +617,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
 
         <section className="mt-12 space-y-4">
           <p className="text-sm uppercase tracking-widest text-primary">Use case guides</p>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Link href="/for/sleep" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
               <p className="text-lg font-semibold text-card-foreground">Better Sleep</p>
               <p className="mt-1 text-sm text-muted-foreground">Fall asleep faster with the &apos;natural tranquilizer&apos; technique</p>
@@ -631,6 +631,11 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
             <Link href="/for/high-blood-pressure" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
               <p className="text-lg font-semibold text-card-foreground">Blood Pressure Support</p>
               <p className="mt-1 text-sm text-muted-foreground">Naturally support healthy blood pressure with slow breathing</p>
+              <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Learn more →</span>
+            </Link>
+            <Link href="/for/running" className="group glow-card rounded-[28px] border border-border bg-card p-5 transition hover:border-primary">
+              <p className="text-lg font-semibold text-card-foreground">Running Recovery</p>
+              <p className="mt-1 text-sm text-muted-foreground">Recover between efforts and stop side stitches with guided breathing</p>
               <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary">Learn more →</span>
             </Link>
           </div>
@@ -673,6 +678,9 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
             </Link>
             <Link href="/coherent-breathing-app" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
               Coherent (HRV) breathing
+            </Link>
+            <Link href="/2-minute-breathing-exercise" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+              2 minute breathing exercise
             </Link>
             <Link href="/breathe" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
               Browse techniques
