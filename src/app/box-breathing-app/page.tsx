@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 import { JsonLd } from "@/components/seo/json-ld";
 import { ModeName } from "@/components/resonance/types";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/box-breathing-app`;
+const ogImageUrl = createOgImagePath("Free Online Box Breathing Timer");
 
 export const metadata: Metadata = {
   title: "Box Breathing App (Free Online 4-4-4-4 Timer) - No Download",
@@ -19,17 +22,24 @@ export const metadata: Metadata = {
     description:
       "Free online box breathing app with a guided 4-4-4-4 timer for calm and focus. No download needed.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Free Online Box Breathing Timer"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Box Breathing App (Free Online 4-4-4-4 Timer)",
     description:
-      "Free online box breathing app with a guided 4-4-4-4 timer for calm and focus."
+      "The Navy SEAL breathing technique for calm under pressure. Free 4-4-4-4 timer—no download. Try now.",
+    images: [ogImageUrl]
   }
 };
-
-import dynamic from "next/dynamic";
 
 // Lazy-load Resonance
 const Resonance = dynamic(

@@ -6,12 +6,33 @@ import { ModeName } from '@/components/resonance/types';
 
 export const runtime = 'edge';
 
+const DEFAULT_TITLE = 'Interactive Breathing Visualizer';
+const DEFAULT_SUBTITLE = 'Deep Breathing Exercises';
+const DEFAULT_PATTERN = BREATHING_PATTERNS[ModeName.Box];
+
+function isHexColor(value?: string | null): value is string {
+  return Boolean(value && /^#?[0-9a-fA-F]{6}$/.test(value));
+}
+
+function normalizeHexColor(value: string) {
+  return value.startsWith('#') ? value : `#${value}`;
+}
+
+function clampText(value: string, maxLength: number) {
+  return value.length > maxLength ? `${value.slice(0, maxLength - 1)}…` : value;
+}
+
 export async function GET(request: NextRequest) {
   try {
-    // Default to Box Breathing for homepage
-    const pattern = BREATHING_PATTERNS[ModeName.Box];
-    const color = pattern.color;
-    const title = 'Interactive Breathing Visualizer';
+    const searchParams = request.nextUrl.searchParams;
+    const requestedTitle = searchParams.get('title')?.trim();
+    const requestedSubtitle = searchParams.get('subtitle')?.trim();
+    const requestedColor = searchParams.get('color')?.trim();
+
+    // Default to Box Breathing styling
+    const color = isHexColor(requestedColor) ? normalizeHexColor(requestedColor) : DEFAULT_PATTERN.color;
+    const title = clampText(requestedTitle || DEFAULT_TITLE, 72);
+    const subtitle = clampText(requestedSubtitle || DEFAULT_SUBTITLE, 56);
 
     // Convert hex to RGB for use in gradients
     const hexToRgb = (hex: string) => {
@@ -146,7 +167,7 @@ export async function GET(request: NextRequest) {
                 textShadow: '0 2px 8px rgba(0,0,0,0.3)',
               }}
             >
-              {title.split(' ').slice(0, 3).join(' ')}
+              {title}
             </div>
           </div>
 
@@ -163,7 +184,7 @@ export async function GET(request: NextRequest) {
               opacity: 0.9,
             }}
           >
-            Deep Breathing Exercises
+            {subtitle}
           </div>
         </div>
       ),
@@ -182,4 +203,3 @@ export async function GET(request: NextRequest) {
     });
   }
 }
-

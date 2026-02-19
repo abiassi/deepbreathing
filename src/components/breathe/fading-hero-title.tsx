@@ -8,12 +8,14 @@ interface FadingHeroTitleProps {
   label: string;
   title: string;
   subtitle: string;
+  headingLevel?: 1 | 2;
   className?: string;
   children?: React.ReactNode;
 }
 
-export function FadingHeroTitle({ label, title, subtitle, className, children }: FadingHeroTitleProps) {
+export function FadingHeroTitle({ label, title, subtitle, headingLevel = 1, className, children }: FadingHeroTitleProps) {
   const [running, setRunning] = useState(false);
+  const HeadingTag = headingLevel === 1 ? "h1" : "h2";
 
   useEffect(() => {
     const handleRunState = (event: Event) => {
@@ -35,7 +37,7 @@ export function FadingHeroTitle({ label, title, subtitle, className, children }:
     >
       <p className="text-xs uppercase tracking-[0.35em] text-primary">{label}</p>
       <div>
-        <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">{title}</h1>
+        <HeadingTag className="text-4xl font-semibold text-foreground sm:text-5xl">{title}</HeadingTag>
         <p className="mt-4 text-lg text-muted-foreground">{subtitle}</p>
       </div>
       {children}

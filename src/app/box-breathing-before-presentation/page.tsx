@@ -4,9 +4,11 @@ import dynamic from "next/dynamic";
 
 import { ModeName } from "@/components/resonance/types";
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/box-breathing-before-presentation`;
+const ogImageUrl = createOgImagePath("Box Breathing Before Presentation — Calm Nerves in 60 Seconds");
 
 export const metadata: Metadata = {
   title: "Box Breathing Before Presentation — Calm Nerves in 60 Seconds (Free Timer)",
@@ -20,13 +22,22 @@ export const metadata: Metadata = {
     description:
       "The Navy SEAL breathing technique to stop stage fright. Calm your nerves in 60 seconds before any presentation. Free timer.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Box Breathing Before Presentation — Calm Nerves in 60 Seconds"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Box Breathing Before Presentation — Stop Stage Fright",
     description:
-      "Navy SEAL technique to calm presentation nerves in 60 seconds. Free timer—try now."
+      "Navy SEAL technique to calm presentation nerves in 60 seconds. Free timer—try now.",
+    images: [ogImageUrl]
   }
 };
 

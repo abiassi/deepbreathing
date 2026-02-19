@@ -4,9 +4,11 @@ import dynamic from "next/dynamic";
 
 import { ModeName } from "@/components/resonance/types";
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/breathing-exercises-before-surgery`;
+const ogImageUrl = createOgImagePath("Breathing Exercises Before Surgery — Calm Pre-Op Anxiety");
 
 export const metadata: Metadata = {
   title: "Breathing Exercises Before Surgery — Calm Pre-Op Anxiety (Free Timer)",
@@ -20,13 +22,22 @@ export const metadata: Metadata = {
     description:
       "Calm pre-surgery anxiety with breathing exercises used in hospitals worldwide. Free timer to prepare for your procedure.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Breathing Exercises Before Surgery — Calm Pre-Op Anxiety"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Breathing Exercises Before Surgery — Calm Pre-Op Anxiety",
     description:
-      "Hospital-approved breathing exercises for pre-surgery nerves. Free timer—use in the waiting room."
+      "Hospital-approved breathing exercises for pre-surgery nerves. Free timer—use in the waiting room.",
+    images: [ogImageUrl]
   }
 };
 

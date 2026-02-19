@@ -7,6 +7,7 @@ import { BREATHING_PATTERNS } from "@/components/resonance/constants";
 import { breathingPages } from "@/data/breathing-pages";
 
 import dynamic from "next/dynamic";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const Resonance = dynamic(
   () => import("@/components/resonance/Resonance"),
@@ -22,6 +23,7 @@ const Resonance = dynamic(
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/breathing-visualizer`;
+const ogImageUrl = createOgImagePath("Free Online Breathing Visualizer — 10 Techniques, No Download");
 
 export const metadata: Metadata = {
   title: "Free Online Breathing Visualizer (2026) — 10 Techniques, No Download",
@@ -35,13 +37,22 @@ export const metadata: Metadata = {
     description:
       "Free breathing visualizer with 10 guided techniques. Adjustable pacing, works on any device. No download, no signup.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Free Online Breathing Visualizer — 10 Techniques, No Download"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Free Online Breathing Visualizer — 10 Techniques",
     description:
-      "Free breathing visualizer with 10 guided techniques — box breathing, 4-7-8, physiological sigh, and more. Start now."
+      "Free breathing visualizer with 10 guided techniques — box breathing, 4-7-8, physiological sigh, and more. Start now.",
+    images: [ogImageUrl]
   }
 };
 

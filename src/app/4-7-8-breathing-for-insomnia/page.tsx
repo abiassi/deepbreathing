@@ -4,9 +4,11 @@ import dynamic from "next/dynamic";
 
 import { ModeName } from "@/components/resonance/types";
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/4-7-8-breathing-for-insomnia`;
+const ogImageUrl = createOgImagePath("4-7-8 Breathing for Insomnia — Fall Asleep in Minutes");
 
 export const metadata: Metadata = {
   title: "4-7-8 Breathing for Insomnia — Fall Asleep in Minutes (Free Timer)",
@@ -20,13 +22,22 @@ export const metadata: Metadata = {
     description:
       "Dr. Weil's 'natural tranquilizer' for insomnia. Fall asleep in 2-5 minutes without pills. Free breathing timer.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "4-7-8 Breathing for Insomnia — Fall Asleep in Minutes"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "4-7-8 Breathing for Insomnia — Fall Asleep in Minutes",
     description:
-      "Dr. Weil's 'natural tranquilizer' for insomnia. Fall asleep in 2-5 minutes. Free timer—try tonight."
+      "Dr. Weil's 'natural tranquilizer' for insomnia. Fall asleep in 2-5 minutes. Free timer—try tonight.",
+    images: [ogImageUrl]
   }
 };
 

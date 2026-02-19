@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/coherent-breathing-app`;
+const ogImageUrl = createOgImagePath("Coherent Breathing App — Free Browser Timer");
 
 export const metadata: Metadata = {
   title: "Coherent Breathing App (Free, 2026) — No Download, Start Instantly",
@@ -18,13 +20,22 @@ export const metadata: Metadata = {
     description:
       "Free coherent breathing timer. No download, no signup. 5-6 breaths/min for HRV. Start instantly.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Coherent Breathing App — Free Browser Timer"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Coherent Breathing App — Free, No Download",
     description:
-      "Free coherent breathing timer in your browser. No signup. Start HRV training instantly."
+      "Free coherent breathing timer in your browser. No signup. Start HRV training instantly.",
+    images: [ogImageUrl]
   }
 };
 

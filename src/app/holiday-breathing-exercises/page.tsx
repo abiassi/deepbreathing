@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 
 import { JsonLd } from "@/components/seo/json-ld";
 import { cn } from "@/lib/utils";
+import { createOgImagePath } from "@/lib/seo/og-image";
 import { HolidayShareButton } from "./share-button";
 
 // Dynamic import for SnowBackground - loaded eagerly for faster render
@@ -18,6 +19,10 @@ const SnowBackground = dynamic(
 );
 
 const baseUrl = "https://deepbreathingexercises.com";
+const ogImageUrl = createOgImagePath("Holiday Breathing Exercises — Find Calm During the Season", {
+  subtitle: "Quick resets for gatherings and travel stress",
+  color: "#38bdf8",
+});
 
 export const metadata: Metadata = {
   title: "Holiday Breathing Exercises — Find Calm During the Season",
@@ -31,7 +36,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/og-image-holidays.png",
+        url: ogImageUrl,
         width: 1200,
         height: 630,
         alt: "Holiday Breathing Exercises - Find calm during the season"
@@ -43,7 +48,7 @@ export const metadata: Metadata = {
     title: "Holiday Breathing Exercises — Find Calm During the Season",
     description:
       "Quick breathing resets for holiday gatherings, travel stress, and seasonal overwhelm. Free visualizer.",
-    images: ["/og-image-holidays.png"]
+    images: [ogImageUrl]
   },
   alternates: {
     canonical: `${baseUrl}/holiday-breathing-exercises`,

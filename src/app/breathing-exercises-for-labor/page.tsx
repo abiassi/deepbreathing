@@ -4,9 +4,11 @@ import dynamic from "next/dynamic";
 
 import { ModeName } from "@/components/resonance/types";
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/breathing-exercises-for-labor`;
+const ogImageUrl = createOgImagePath("Breathing Exercises for Labor — Manage Contractions Naturally");
 
 export const metadata: Metadata = {
   title: "Breathing Exercises for Labor — Manage Contractions Naturally (Free Timer)",
@@ -20,13 +22,22 @@ export const metadata: Metadata = {
     description:
       "Midwife-approved breathing techniques for labor. Slow breathing helps manage contractions and stay calm. Free timer to practice now.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Breathing Exercises for Labor — Manage Contractions Naturally"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Breathing Exercises for Labor — Manage Contractions Naturally",
     description:
-      "Midwife-approved breathing for labor. Manage contractions and stay calm. Free timer—practice now."
+      "Midwife-approved breathing for labor. Manage contractions and stay calm. Free timer—practice now.",
+    images: [ogImageUrl]
   }
 };
 

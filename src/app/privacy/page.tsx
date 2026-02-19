@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/privacy`;
+const ogImageUrl = createOgImagePath("Privacy Policy");
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -18,12 +20,21 @@ export const metadata: Metadata = {
     description:
       "Privacy policy for Deep Breathing Exercises.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Privacy Policy"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy",
-    description: "Privacy policy for Deep Breathing Exercises."
+    description: "Privacy policy for Deep Breathing Exercises.",
+    images: [ogImageUrl]
   }
 };
 

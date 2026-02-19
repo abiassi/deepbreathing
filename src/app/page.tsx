@@ -97,6 +97,7 @@ export default function HomePage() {
         label="Free Breathing Visualizer"
         title="Deep Breathing Exercises"
         subtitle="Visual pacing that helps your body downshift. Calm on demand, anytime, anywhere."
+        headingLevel={2}
       />
       <HomeHeroActions />
     </div>
@@ -104,6 +105,7 @@ export default function HomePage() {
 
   return (
     <main className="bg-transparent pb-20">
+      <h1 className="sr-only">Deep Breathing Exercises</h1>
       <JsonLd data={[websiteSchema, faqSchema]} />
 
       <section className="relative isolate min-h-screen w-full text-foreground">

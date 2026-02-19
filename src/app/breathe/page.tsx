@@ -3,9 +3,11 @@ import Link from "next/link";
 
 import { breathingPages } from "@/data/breathing-pages";
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/breathe`;
+const ogImageUrl = createOgImagePath("Breathing Techniques (Free Guided Visualizers)");
 
 export const metadata: Metadata = {
   title: "Breathing Techniques: Box, 4-7-8, Coherent, Physiological Sigh, Wim Hof",
@@ -19,13 +21,22 @@ export const metadata: Metadata = {
     description:
       "Box breathing, 4-7-8, coherent breathing, physiological sigh, and Wim Hof method—free guided visualizers. No signup required.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Breathing Techniques (Free Guided Visualizers)"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Breathing Techniques (Free Guided Visualizers)",
     description:
-      "Box breathing, 4-7-8, coherent breathing, physiological sigh, and Wim Hof—free guided visualizers."
+      "Box breathing, 4-7-8, coherent breathing, physiological sigh, and Wim Hof—free guided visualizers.",
+    images: [ogImageUrl]
   }
 };
 

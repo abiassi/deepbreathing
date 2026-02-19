@@ -3,9 +3,11 @@ import Link from "next/link";
 
 import { useCasePages } from "@/data/use-case-pages";
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/for`;
+const ogImageUrl = createOgImagePath("Breathing Guides by Goal");
 
 export const metadata: Metadata = {
   title: "Breathing Guides by Goal: Sleep, Anxiety, Panic, Focus & Performance",
@@ -19,13 +21,22 @@ export const metadata: Metadata = {
     description:
       "Sleep, anxiety, panic, focus, athletic performance, public speaking and more—breathing guides paired with free interactive visualizers.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Breathing Guides by Goal"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Breathing Guides by Goal",
     description:
-      "Sleep, anxiety, panic, focus, athletic performance, public speaking and more—breathing guides paired with free interactive visualizers."
+      "Sleep, anxiety, panic, focus, athletic performance, public speaking and more—breathing guides paired with free interactive visualizers.",
+    images: [ogImageUrl]
   }
 };
 

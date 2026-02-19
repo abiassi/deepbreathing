@@ -5,9 +5,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import "./globals.css";
 import { SeasonalBanner } from "@/components/home/seasonal-banner";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const siteUrl = "https://deepbreathingexercises.com";
+const defaultOgImage = createOgImagePath("Free Breathing Visualizer: Calm Anxiety in 60 Seconds");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "Deep Breathing Exercises",
     images: [
       {
-        url: "/og-image.png",
+        url: defaultOgImage,
         width: 1200,
         height: 630,
         alt: "Interactive breathing orb expanding against a coral gradient"
@@ -60,7 +62,7 @@ export const metadata: Metadata = {
     description:
       "Calm anxiety in 60 seconds with our free breathing visualizer. Box breathing, 4-7-8, physiological sigh. Try now—no signup.",
     creator: "@deepbreathing",
-    images: ["/og-image.png"]
+    images: [defaultOgImage]
   },
   alternates: {
     canonical: siteUrl

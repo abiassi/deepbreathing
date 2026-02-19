@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-
-import { ModeName } from "@/components/resonance/types";
-import { JsonLd } from "@/components/seo/json-ld";
 import dynamic from "next/dynamic";
 
+import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
+import { ModeName } from "@/components/resonance/types";
+import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/4-7-8-breathing-timer`;
+const ogImageUrl = createOgImagePath("Free Online 4-7-8 Breathing Timer");
 
 export const metadata: Metadata = {
   title: "4-7-8 Breathing Timer (Free Online) - Dr. Weil Sleep Technique",
@@ -21,18 +23,24 @@ export const metadata: Metadata = {
     description:
       "Free 4-7-8 breathing timer online. Dr. Weil's sleep and anxiety breathing pattern with guided pacing in your browser.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Free Online 4-7-8 Breathing Timer"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "4-7-8 Breathing Timer (Free Online)",
     description:
-      "Free 4-7-8 breathing timer online. Dr. Weil's sleep and anxiety breathing pattern with guided pacing."
+      "Dr. Weil's 4-7-8 breathing timer. The 'natural tranquilizer' for sleep and anxiety. Free in your browser—try tonight.",
+    images: [ogImageUrl]
   }
 };
-
-
-import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
 
 // Lazy-load Resonance
 const Resonance = dynamic(

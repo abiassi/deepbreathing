@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/2-minute-breathing-exercise`;
+const ogImageUrl = createOgImagePath("2 Minute Breathing Exercise — Quick Reset");
 
 export const metadata: Metadata = {
   title: "2 Minute Breathing Exercise — Quick Reset, No Download",
@@ -18,13 +20,22 @@ export const metadata: Metadata = {
     description:
       "A free 2 minute breathing exercise for stress relief. Box breathing or coherent breathing. No download needed.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "2 Minute Breathing Exercise — Quick Reset"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "2 Minute Breathing Exercise — Quick Reset",
     description:
-      "A free 2 minute breathing exercise for stress relief. Box breathing or coherent breathing."
+      "A free 2 minute breathing exercise for stress relief. Box breathing or coherent breathing.",
+    images: [ogImageUrl]
   }
 };
 

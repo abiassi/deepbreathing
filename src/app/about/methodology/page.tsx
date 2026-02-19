@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/about/methodology`;
+const ogImageUrl = createOgImagePath("Our Content Methodology");
 
 export const metadata: Metadata = {
   title: "Our Content Methodology — Evidence-Based Breathing Guides",
@@ -18,13 +20,22 @@ export const metadata: Metadata = {
     description:
       "How we create evidence-based breathing guides. Our editorial process and research standards.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Our Content Methodology"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Our Content Methodology",
     description:
-      "How we create evidence-based breathing guides. Our editorial process and research standards."
+      "How we create evidence-based breathing guides. Our editorial process and research standards.",
+    images: [ogImageUrl]
   }
 };
 

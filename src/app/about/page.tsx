@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/about`;
+const ogImageUrl = createOgImagePath("About Deep Breathing Exercises");
 
 export const metadata: Metadata = {
   title: "About Deep Breathing Exercises",
@@ -18,13 +20,22 @@ export const metadata: Metadata = {
     description:
       "A free breathing visualizer and evidence-informed guides for calm, focus, and sleep.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "About Deep Breathing Exercises"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "About Deep Breathing Exercises",
     description:
-      "A free breathing visualizer and evidence-informed guides for calm, focus, and sleep."
+      "A free breathing visualizer and evidence-informed guides for calm, focus, and sleep.",
+    images: [ogImageUrl]
   }
 };
 

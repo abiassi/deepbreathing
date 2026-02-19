@@ -7,6 +7,7 @@ import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
 import { BREATHING_PATTERNS } from "@/components/resonance/constants";
 import { JsonLd } from "@/components/seo/json-ld";
 import { useCasePageMap, type UseCasePageContent } from "@/data/use-case-pages";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 // Dynamic import for client component
 const ShareButton = dynamic(
@@ -28,6 +29,7 @@ const Resonance = dynamic(
 );
 
 const baseUrl = "https://deepbreathingexercises.com";
+const DEFAULT_REVIEWER = "Resonance Editorial Review Team";
 
 export function createUseCaseMetadata(slug: string): Metadata {
   const page = useCasePageMap[slug];
@@ -35,8 +37,11 @@ export function createUseCaseMetadata(slug: string): Metadata {
 
   const pageContent: UseCasePageContent = page;
   const canonicalUrl = `${baseUrl}/for/${pageContent.slug}`;
-  const isHolidayPage = slug === "holiday-stress" || slug === "travel-anxiety";
-  const ogImage = isHolidayPage ? "/og-image-holidays.png" : "/og-image.png";
+  const pattern = BREATHING_PATTERNS[pageContent.mode];
+  const ogImage = createOgImagePath(pageContent.meta.ogTitle || pageContent.meta.title, {
+    subtitle: pageContent.hero.subtitle,
+    color: pattern?.color,
+  });
 
   return {
     metadataBase: new URL(baseUrl),
@@ -83,6 +88,7 @@ export function UseCasePage({ slug }: { slug: string }) {
   const isHolidayPage = slug === "holiday-stress" || slug === "travel-anxiety";
   const pattern = BREATHING_PATTERNS[page.mode];
   const canonicalUrl = `${baseUrl}/for/${page.slug}`;
+  const reviewerName = page.meta.reviewer || DEFAULT_REVIEWER;
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -121,6 +127,10 @@ export function UseCasePage({ slug }: { slug: string }) {
         name: page.meta.author
       }
       : undefined,
+    reviewedBy: {
+      "@type": "Person",
+      name: reviewerName
+    },
     datePublished: page.meta.datePublished,
     dateModified: page.meta.dateModified,
     mainEntityOfPage: canonicalUrl,
@@ -169,6 +179,7 @@ export function UseCasePage({ slug }: { slug: string }) {
       label="DEEP BREATHING EXERCISES"
       title={page.hero.title}
       subtitle={page.hero.subtitle}
+      headingLevel={2}
     >
       {isHolidayPage && (
         <div className="pt-2">
@@ -193,6 +204,7 @@ export function UseCasePage({ slug }: { slug: string }) {
       className={isHolidayPage ? "dark" : "bg-transparent"}
       style={isHolidayPage ? { backgroundColor: WINTER_BLUE } : undefined}
     >
+      <h1 className="sr-only">{page.hero.title}</h1>
       <JsonLd data={structuredData} />
 
       {/* Hero with Visualizer */}
@@ -234,6 +246,9 @@ export function UseCasePage({ slug }: { slug: string }) {
         )}
 
         {/* Intro */}
+        <p className="text-xs text-muted-foreground -mt-4">
+          Last updated: {new Date(page.meta.dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} • Reviewed by {reviewerName}
+        </p>
         <div className="prose prose-lg max-w-none text-muted-foreground">
           <p className="text-xl leading-relaxed">{page.hero.intro}</p>
         </div>

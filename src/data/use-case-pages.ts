@@ -14,6 +14,7 @@ export interface UseCaseMetaContent {
   twitterTitle: string;
   twitterDescription: string;
   author: string;
+  reviewer?: string;
   datePublished: string;
   dateModified: string;
 }

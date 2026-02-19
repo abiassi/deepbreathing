@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/breathing-app`;
+const ogImageUrl = createOgImagePath("Free Breathing App (No Download)");
 
 export const metadata: Metadata = {
   title: "Free Breathing App (No Download) — Calm Anxiety, Sleep & Focus",
@@ -18,13 +20,22 @@ export const metadata: Metadata = {
     description:
       "A free breathing app that runs in your browser: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh. No signup.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Free Breathing App (No Download)"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Free Breathing App (No Download)",
     description:
-      "A free breathing app that runs in your browser: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh."
+      "A free breathing app that runs in your browser: box breathing, 4-7-8, coherent breathing (HRV), and the physiological sigh.",
+    images: [ogImageUrl]
   }
 };
 

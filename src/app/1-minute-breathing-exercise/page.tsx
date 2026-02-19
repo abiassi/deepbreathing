@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/1-minute-breathing-exercise`;
+const ogImageUrl = createOgImagePath("1 Minute Breathing Exercise — Quick Calm");
 
 export const metadata: Metadata = {
   title: "1 Minute Breathing Exercise — Quick Calm, No App Needed",
@@ -18,13 +20,22 @@ export const metadata: Metadata = {
     description:
       "A free 1 minute breathing exercise for instant stress relief. Box breathing you can do anywhere. No download needed.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "1 Minute Breathing Exercise — Quick Calm"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "1 Minute Breathing Exercise — Quick Calm",
     description:
-      "A free 1 minute breathing exercise for instant stress relief. Box breathing you can do anywhere."
+      "A free 1 minute breathing exercise for instant stress relief. Box breathing you can do anywhere.",
+    images: [ogImageUrl]
   }
 };
 

@@ -4,9 +4,11 @@ import dynamic from "next/dynamic";
 
 import { ModeName } from "@/components/resonance/types";
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/physiological-sigh-panic-attack`;
+const ogImageUrl = createOgImagePath("Breathing Technique for Panic Attack — Stop Panic in 30 Seconds");
 
 export const metadata: Metadata = {
   title: "Breathing Technique for Panic Attack — Stop Panic in 30 Seconds (Free Timer)",
@@ -20,13 +22,22 @@ export const metadata: Metadata = {
     description:
       "The fastest breathing technique to stop a panic attack. Just 1-3 breaths (30 seconds). Stanford-tested. Free timer.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "Breathing Technique for Panic Attack — Stop Panic in 30 Seconds"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Stop Panic Attack in 30 Seconds — Physiological Sigh",
     description:
-      "Stanford's fastest breathing technique for panic attacks. Just 1-3 breaths. Free timer—use now."
+      "Stanford's fastest breathing technique for panic attacks. Just 1-3 breaths. Free timer—use now.",
+    images: [ogImageUrl]
   }
 };
 

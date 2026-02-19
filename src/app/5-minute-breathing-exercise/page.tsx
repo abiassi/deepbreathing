@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
+import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/5-minute-breathing-exercise`;
+const ogImageUrl = createOgImagePath("5 Minute Breathing Exercise — Deep Relaxation");
 
 export const metadata: Metadata = {
   title: "5 Minute Breathing Exercise — Deep Relaxation & HRV Training",
@@ -18,13 +20,22 @@ export const metadata: Metadata = {
     description:
       "A free 5 minute breathing exercise for deep relaxation and HRV training. Coherent breathing. No download needed.",
     url: canonicalUrl,
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "5 Minute Breathing Exercise — Deep Relaxation"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "5 Minute Breathing Exercise — Deep Relaxation",
     description:
-      "A free 5 minute breathing exercise for deep relaxation and HRV training. Coherent breathing."
+      "A free 5 minute breathing exercise for deep relaxation and HRV training. Coherent breathing.",
+    images: [ogImageUrl]
   }
 };
 

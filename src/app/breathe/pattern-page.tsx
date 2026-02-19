@@ -22,6 +22,7 @@ const Resonance = dynamic(
 );
 
 const baseUrl = "https://deepbreathingexercises.com";
+const DEFAULT_REVIEWER = "Resonance Editorial Review Team";
 
 export function createPatternMetadata(slug: string): Metadata {
   const page = breathingPageMap[slug];
@@ -71,6 +72,7 @@ export function PatternPage({ slug }: { slug: string }) {
     notFound();
   }
   const canonicalUrl = `${baseUrl}/breathe/${page.slug}`;
+  const reviewerName = page.meta.reviewer || DEFAULT_REVIEWER;
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -124,12 +126,10 @@ export function PatternPage({ slug }: { slug: string }) {
         name: page.meta.author
       }
       : undefined,
-    reviewedBy: page.meta.reviewer
-      ? {
-        "@type": "Person",
-        name: page.meta.reviewer
-      }
-      : undefined,
+    reviewedBy: {
+      "@type": "Person",
+      name: reviewerName
+    },
     datePublished: page.meta.datePublished,
     dateModified: page.meta.dateModified,
     mainEntityOfPage: canonicalUrl,
@@ -175,12 +175,18 @@ export function PatternPage({ slug }: { slug: string }) {
 
   const heroHeader = (
     <div className="space-y-4">
-      <FadingHeroTitle label="DEEP BREATHING EXERCISES" title={page.hero.title} subtitle={page.hero.subtitle} />
+      <FadingHeroTitle
+        label="DEEP BREATHING EXERCISES"
+        title={page.hero.title}
+        subtitle={page.hero.subtitle}
+        headingLevel={2}
+      />
     </div>
   );
 
   return (
     <main className="bg-transparent">
+      <h1 className="sr-only">{page.hero.title}</h1>
       <JsonLd data={structuredData} />
 
       <section className="relative isolate min-h-screen w-full text-foreground">
@@ -195,7 +201,7 @@ export function PatternPage({ slug }: { slug: string }) {
       <section className="relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] bg-background/95 px-4 pb-20 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
         {page.meta.dateModified && (
           <p className="text-xs text-muted-foreground -mt-6">
-            Last updated: {new Date(page.meta.dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            Last updated: {new Date(page.meta.dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} • Reviewed by {reviewerName}
           </p>
         )}
         {/* Voice Search Q&A - prominently placed for featured snippets */}
