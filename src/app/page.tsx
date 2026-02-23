@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { BreathingVisualizer } from "@/components/breathing-visualizer";
 import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
@@ -109,7 +110,9 @@ export default function HomePage() {
       <JsonLd data={[websiteSchema, faqSchema]} />
 
       <section className="relative isolate min-h-screen w-full text-foreground">
-        <BreathingVisualizer />
+        <Suspense fallback={<div className="min-h-screen w-full" aria-hidden="true" />}>
+          <BreathingVisualizer />
+        </Suspense>
         <div className="absolute inset-y-0 left-0 z-30 hidden w-full max-w-xl px-6 py-20 lg:flex lg:flex-col lg:justify-center">
           {heroHeader}
         </div>

@@ -3,14 +3,14 @@ import { MetadataRoute } from "next";
 
 import { breathingPages } from "@/data/breathing-pages";
 import { useCasePages } from "@/data/use-case-pages";
-import { buildSitemapEntries } from "@/lib/seo/sitemap-routes.mjs";
+import { buildSitemapEntries } from "@/lib/seo/sitemap-routes";
 
 const siteUrl = "https://deepbreathingexercises.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const appDir = path.join(process.cwd(), "src", "app");
 
-  return buildSitemapEntries({
+  const entries = buildSitemapEntries({
     appDir,
     siteUrl,
     breathingPageMeta: breathingPages.map((page) => ({
@@ -22,4 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       dateModified: page.meta.dateModified,
     })),
   });
+
+  return entries as MetadataRoute.Sitemap;
 }
