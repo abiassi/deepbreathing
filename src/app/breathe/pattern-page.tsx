@@ -115,17 +115,29 @@ export function PatternPage({ slug }: { slug: string }) {
       : undefined
   };
 
+  const ogImageUrl = page.meta.ogImage && !page.meta.ogImage.startsWith('og/')
+    ? new URL(page.meta.ogImage, baseUrl).toString()
+    : new URL(`/og/${page.slug}`, baseUrl).toString();
+
+  const siteOrganization = {
+    "@type": "Organization",
+    name: "Deep Breathing Exercises",
+    url: baseUrl
+  };
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: page.meta.title,
     description: page.meta.description,
+    image: ogImageUrl,
     author: page.meta.author
       ? {
         "@type": "Person",
         name: page.meta.author
       }
-      : undefined,
+      : siteOrganization,
+    publisher: siteOrganization,
     reviewedBy: {
       "@type": "Person",
       name: reviewerName

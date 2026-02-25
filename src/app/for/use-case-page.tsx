@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
@@ -30,6 +31,44 @@ const Resonance = dynamic(
 
 const baseUrl = "https://deepbreathingexercises.com";
 const DEFAULT_REVIEWER = "Resonance Editorial Review Team";
+
+// Internal link opportunities identified by Ahrefs — one link per keyword per page.
+// linkifyOnce finds the FIRST occurrence of a keyword in a string and wraps it in a Link.
+// Subsequent occurrences remain as plain text (tracked via the `linked` Set).
+const internalLinkMappings: Record<string, Array<{ keyword: string; href: string }>> = {
+  "public-speaking": [{ keyword: "physiological sigh", href: "/breathe/physiological-sigh" }],
+  "anxiety": [{ keyword: "the physiological sigh", href: "/breathe/physiological-sigh" }],
+  "travel-anxiety": [{ keyword: "the physiological sigh", href: "/breathe/physiological-sigh" }],
+  "lung-capacity": [{ keyword: "pursed-lip breathing", href: "/breathe/pursed-lip" }],
+};
+
+function linkifyOnce(
+  text: string,
+  mappings: Array<{ keyword: string; href: string }>,
+  linked: Set<string>
+): React.ReactNode {
+  for (const { keyword, href } of mappings) {
+    if (linked.has(keyword)) continue;
+    const lowerText = text.toLowerCase();
+    const lowerKeyword = keyword.toLowerCase();
+    const idx = lowerText.indexOf(lowerKeyword);
+    if (idx === -1) continue;
+    linked.add(keyword);
+    const before = text.slice(0, idx);
+    const match = text.slice(idx, idx + keyword.length);
+    const after = text.slice(idx + keyword.length);
+    return (
+      <>
+        {before}
+        <Link href={href} className="text-primary hover:underline">
+          {match}
+        </Link>
+        {after}
+      </>
+    );
+  }
+  return text;
+}
 
 export function createUseCaseMetadata(slug: string): Metadata {
   const page = useCasePageMap[slug];
@@ -90,6 +129,23 @@ export function UseCasePage({ slug }: { slug: string }) {
   const canonicalUrl = `${baseUrl}/for/${page.slug}`;
   const reviewerName = page.meta.reviewer || DEFAULT_REVIEWER;
 
+  // Internal link opportunity tracking — ensures each keyword is only linked once per page
+  const pageLinkMappings = internalLinkMappings[slug] ?? [];
+  const linkedKeywords = new Set<string>();
+  const linkify = (text: string) => linkifyOnce(text, pageLinkMappings, linkedKeywords);
+
+  const ogImagePath = createOgImagePath(page.meta.ogTitle || page.meta.title, {
+    subtitle: page.hero.subtitle,
+    color: pattern?.color,
+  });
+  const ogImageUrl = new URL(ogImagePath, baseUrl).toString();
+
+  const siteOrganization = {
+    "@type": "Organization",
+    name: "Deep Breathing Exercises",
+    url: baseUrl
+  };
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -121,12 +177,14 @@ export function UseCasePage({ slug }: { slug: string }) {
     "@type": "Article",
     headline: page.meta.title,
     description: page.meta.description,
+    image: ogImageUrl,
     author: page.meta.author
       ? {
         "@type": "Person",
         name: page.meta.author
       }
-      : undefined,
+      : siteOrganization,
+    publisher: siteOrganization,
     reviewedBy: {
       "@type": "Person",
       name: reviewerName
@@ -400,7 +458,7 @@ export function UseCasePage({ slug }: { slug: string }) {
                 {page.howTo.tips.map((tip) => (
                   <li key={tip} className="flex items-start gap-2 text-sm text-card-foreground">
                     <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                    {tip}
+                    {linkify(tip)}
                   </li>
                 ))}
               </ul>
@@ -483,7 +541,7 @@ export function UseCasePage({ slug }: { slug: string }) {
                 <h3 className="text-lg font-semibold text-card-foreground">
                   {faq.question}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">{faq.answer}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{linkify(faq.answer)}</p>
               </div>
             ))}
           </div>

@@ -126,7 +126,7 @@ export default function MethodologyPage() {
                 <span>
                   <strong className="text-card-foreground">Established protocols:</strong> We reference
                   techniques from recognized researchers like Dr. Andrew Weil (4-7-8 breathing), Dr. Andrew
-                  Huberman (physiological sigh), and Mark Divine (box breathing).
+                  Huberman (<Link href="/breathe/physiological-sigh" className="text-primary hover:underline">physiological sigh</Link>), and Mark Divine (box breathing).
                 </span>
               </li>
               <li className="flex gap-3">

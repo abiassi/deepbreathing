@@ -108,7 +108,7 @@ export default function BreathingAppPage() {
             <li>Box breathing (4-4-4-4) for stress + focus</li>
             <li>4-7-8 breathing for sleep + relaxation</li>
             <li>Coherent breathing (~5–6 breaths/min) for HRV training</li>
-            <li>Physiological sigh for rapid stress relief</li>
+            <li><Link href="/breathe/physiological-sigh" className="text-primary hover:underline">Physiological sigh</Link> for rapid stress relief</li>
           </ul>
           <div className="mt-5">
             <Link href="/for" className="text-sm font-semibold text-primary hover:underline">
