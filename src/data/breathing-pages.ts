@@ -159,11 +159,15 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What it is",
-        content: "Four equal phases: inhale (4s), hold (4s), exhale (4s), hold (4s). Adjust counts to 3–6 seconds for comfort. Breathe quietly through the nose, keep shoulders and jaw soft, let your belly lead. If holds feel uncomfortable or cause dizziness, drop them and maintain an even inhale/exhale instead."
+        content: "Box breathing is a four-phase breathing technique where you inhale, hold, exhale, and hold again for equal counts—typically 4 seconds each. Popularized by Navy SEAL Commander Mark Divine, it activates the parasympathetic nervous system to reduce stress in as little as 60 seconds. What makes it unique is the symmetrical structure: four equal sides, like a box, giving the mind a simple pattern to follow under pressure.\n\nAdjust counts to 3–6 seconds for comfort. Breathe quietly through the nose, keep shoulders and jaw soft, let your belly lead. If holds feel uncomfortable or cause dizziness, drop them and maintain an even inhale/exhale instead."
       },
       {
         heading: "Why Navy SEALs Use Box Breathing",
         content: "Box breathing became a cornerstone of Navy SEAL training through Mark Divine, a retired SEAL Commander who introduced it to BUD/S (Basic Underwater Demolition/SEAL) training in the early 2000s. SEALs use it before high-stakes missions, during underwater drownproofing exercises, and in any situation where panic could be fatal. The technique works because the structured counting occupies the prefrontal cortex—the thinking brain—while the slow rhythm activates the parasympathetic nervous system. This dual action interrupts the amygdala's fear response, allowing SEALs to stay calm and make clear decisions under fire. Divine calls it 'taking control of your physiology before your physiology takes control of you.' The same technique that helps operators stay composed during combat works just as well before your next presentation, difficult conversation, or sleepless night."
+      },
+      {
+        heading: "How to Do Box Breathing (Step by Step)",
+        content: "1. Sit upright with your shoulders soft, jaw relaxed, and mouth closed. Breathe through your nose.\n2. Inhale slowly through your nose for 4 seconds, letting your belly rise.\n3. Hold your breath gently for 4 seconds—no straining.\n4. Exhale quietly through your nose (or pursed lips) for 4 seconds, letting your belly fall.\n5. Hold again at the bottom for 4 seconds, staying relaxed.\n6. Repeat for 6–12 cycles (about 2–5 minutes). If holds feel uncomfortable, shorten the counts or remove holds entirely."
       },
       {
         heading: "Benefits",
@@ -436,7 +440,11 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What it is",
-        content: "Inhale (4s), hold gently (7s), exhale slowly (8s). The long exhale is what calms. Breathe quietly through the nose, keep shoulders and jaw soft. If the hold feels tense or triggers dizziness, shorten it or drop it—keep the exhale longer than the inhale."
+        content: "4-7-8 breathing is a relaxation technique where you inhale for 4 counts, hold for 7 counts, and exhale for 8 counts. Developed by Dr. Andrew Weil based on the yogic practice of pranayama, he calls it a \"natural tranquilizer for the nervous system.\" The extended exhale is what drives the calming effect—it activates the vagus nerve and shifts your body into rest-and-digest mode faster than equal-ratio breathing.\n\nBreathe quietly through the nose, keep shoulders and jaw soft. If the hold feels tense or triggers dizziness, shorten it or drop it—keep the exhale longer than the inhale."
+      },
+      {
+        heading: "How to Do 4-7-8 Breathing (Step by Step)",
+        content: "1. Sit or lie down comfortably. Relax your shoulders and jaw. Close your mouth.\n2. Inhale quietly through your nose for 4 counts, letting your belly rise.\n3. Hold your breath gently for 7 counts—keep it light, no straining.\n4. Exhale slowly through pursed lips (or your nose) for 8 counts with a controlled, steady release.\n5. Repeat for 3–6 cycles (about 1–3 minutes). If the 7-count hold feels too long, try 4-4-8 or 4-5-8 and work up gradually."
       },
       {
         heading: "Benefits",
@@ -703,7 +711,11 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What it is",
-        content: "Equal inhale and exhale at 5–6 breaths per minute (5s inhale, 5s exhale). Keep breaths quiet and small; let your belly lead. No holds. This pace aligns your heart rhythm and breath, maximizing HRV during the session."
+        content: "Coherent breathing is a slow breathing technique where you inhale and exhale for equal durations at a rate of about 5–6 breaths per minute (typically 5 seconds in, 5 seconds out). This specific pace targets the ~0.1 Hz resonance frequency where heart rate and blood pressure oscillations synchronize, producing the largest possible increase in heart rate variability (HRV). Unlike box breathing or 4-7-8, coherent breathing uses no breath holds—just smooth, continuous nasal breathing.\n\nKeep breaths quiet and small; let your belly lead. This pace aligns your heart rhythm and breath, maximizing HRV during the session."
+      },
+      {
+        heading: "How to Do Coherent Breathing (Step by Step)",
+        content: "1. Sit upright in a comfortable position. Relax your shoulders and jaw. Close your mouth and breathe through your nose.\n2. Choose your tempo: start with 5 seconds inhale, 5 seconds exhale (6 breaths per minute). Adjust to 5.5:5.5 or 6:6 if comfortable.\n3. Inhale gently through your nose, letting your low belly rise. Keep the breath quiet and small.\n4. Exhale smoothly through your nose (or pursed lips), letting your belly fall naturally.\n5. Continue for 5–10 minutes without pausing between breaths. Keep the rhythm steady and seamless.\n6. If you feel dizzy or air-hungry, make breaths smaller and softer—comfort always beats depth."
       },
       {
         heading: "Benefits",
@@ -943,11 +955,15 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What Is a Physiological Sigh?",
-        content: "A physiological sigh is your body's natural stress-relief mechanism—a double inhale followed by a long exhale. You do it instinctively when crying, yawning, or transitioning from sleep. Babies sigh about every 50 breaths to keep their lungs healthy. When done deliberately, this ancient reflex becomes a powerful tool: two quick inhales through the nose (the second a short 'top-up' to fill the upper lungs), then a slow, unforced exhale. Stanford researchers (Balban et al., 2023) studied the controlled version in a randomized trial that showed it outperforms meditation for rapid stress relief."
+        content: "A physiological sigh is a breathing pattern consisting of two quick nasal inhales followed by one long, slow exhale—the fastest evidence-based way to reduce stress in real time. Discovered as an involuntary reflex that occurs naturally during crying, yawning, and sleep, it was validated as a deliberate technique by Stanford researchers (Balban et al., 2023) who found it outperforms mindfulness meditation for mood improvement. What makes it unique is that just 1–3 sighs (about 30 seconds) can measurably lower heart rate and cortisol—no other breathing technique works this fast.\n\nYou do it instinctively when crying, yawning, or transitioning from sleep. Babies sigh about every 50 breaths to keep their lungs healthy. When done deliberately, this ancient reflex becomes a powerful tool: two quick inhales through the nose (the second a short 'top-up' to fill the upper lungs), then a slow, unforced exhale."
       },
       {
         heading: "The Science Behind Physiological Sighing",
         content: "When you breathe normally, some of your 500 million lung alveoli gradually collapse—reducing oxygen exchange and triggering stress signals. The double inhale of a physiological sigh reinflates these collapsed air sacs, maximizing lung surface area. Meanwhile, the extended exhale activates your vagus nerve, shifting your nervous system from fight-or-flight (sympathetic) to rest-and-digest (parasympathetic). This combination—mechanical lung reset plus neural calming—explains why one sigh can drop your heart rate and cortisol faster than any other breathing technique. The 2023 Stanford study (Balban et al.) found that just 5 minutes of daily cyclic sighing improved mood more than mindfulness meditation."
+      },
+      {
+        heading: "How to Do a Physiological Sigh (Step by Step)",
+        content: "1. Sit or stand comfortably. Relax your shoulders and jaw.\n2. Inhale smoothly through your nose until your lower ribs expand (about 3–4 seconds).\n3. Without exhaling, take a second short \"sip\" of air through your nose to top off your lungs (about 1–2 seconds).\n4. Exhale slowly and completely through your mouth (or nose) for 6–10 seconds. Let the exhale be long and unforced.\n5. For instant relief, repeat 1–3 times. For a longer practice with mood benefits, continue for 2–5 minutes."
       },
       {
         heading: "Benefits",
@@ -1268,7 +1284,11 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What it is",
-        content: "The Wim Hof Method breathing technique is a powerful 3-round protocol. Each round consists of 30 rhythmic 'power breaths' (deep inhale, relaxed exhale), followed by a breath retention on empty lungs for up to 90+ seconds, and finishing with a 15-second recovery breath. This controlled hyperventilation temporarily alters blood chemistry (respiratory alkalosis), often leading to tingling sensations, light-headedness, and a profound sense of calm."
+        content: "Wim Hof breathing is a controlled hyperventilation technique consisting of 30 rapid, deep breaths followed by a breath-hold on empty lungs, repeated for 3 rounds. Developed by Dutch extreme athlete Wim \"The Iceman\" Hof, it is backed by research showing voluntary activation of the sympathetic nervous system and modulation of the immune response (Kox et al., 2014, PNAS). What sets it apart from other breathwork is its intensity—the power breaths temporarily alter blood chemistry, producing tingling, light-headedness, and a surge of energy that practitioners describe as a natural high.\n\nEach round consists of 30 rhythmic 'power breaths' (deep inhale, relaxed exhale), followed by a breath retention on empty lungs for up to 90+ seconds, and finishing with a 15-second recovery breath."
+      },
+      {
+        heading: "How to Do Wim Hof Breathing (Step by Step)",
+        content: "1. Sit or lie down in a safe, comfortable position. Never practice standing, in water, or while driving.\n2. Take 30 deep, rhythmic breaths: inhale fully through your nose or mouth (belly and chest expand), then exhale relaxed—don't force the air out. Keep a steady rhythm.\n3. After the 30th exhale, stop breathing and hold on empty lungs. Relax your body completely. Hold as long as comfortable (30–90+ seconds).\n4. When you need to breathe, take one deep breath in and hold for 10–15 seconds with full lungs. Then exhale and relax.\n5. That completes one round. Rest for a few normal breaths, then repeat for a total of 3 rounds.\n6. After all 3 rounds, sit quietly and notice the tingling, warmth, and mental clarity."
       },
       {
         heading: "Benefits",
@@ -1506,7 +1526,11 @@ const pursedLipPage: BreathingPageContent = {
   body: [
     {
       heading: "What Is Pursed Lip Breathing?",
-      content: "Pursed lip breathing is a controlled breathing technique where you inhale slowly through your nose and exhale through tightly pursed lips—as if you're blowing through a straw or cooling hot soup. The exhale is typically twice as long as the inhale (2:4 ratio). This creates back-pressure in your airways, keeping them open longer and helping trapped air escape from your lungs."
+      content: "Pursed lip breathing is a respiratory technique where you inhale through your nose and exhale slowly through tightly pursed lips, using a 2:4 inhale-to-exhale ratio. It is one of the most widely recommended exercises in pulmonary rehabilitation, taught by respiratory therapists to manage COPD, asthma, and exercise-induced breathlessness. What makes it effective is the back-pressure created by the pursed lips—this keeps small airways open longer, prevents air trapping, and helps release stale air from the lungs.\n\nThe exhale feels like blowing through a straw or cooling hot soup. This creates back-pressure in your airways, keeping them open longer and helping trapped air escape from your lungs."
+    },
+    {
+      heading: "How to Do Pursed Lip Breathing (Step by Step)",
+      content: "1. Sit comfortably or stand upright. Drop your shoulders, relax your neck, and unclench your jaw.\n2. Close your mouth and inhale slowly through your nose for 2 counts. Let your belly rise.\n3. Pucker your lips as if you are about to whistle or blow out a candle.\n4. Exhale slowly and gently through your pursed lips for 4 counts. Do not force the air out.\n5. Repeat for 5–10 breaths or as long as needed. Use during any activity that causes breathlessness—walking, climbing stairs, or exercise recovery."
     },
     {
       heading: "Who Benefits Most",
@@ -1743,15 +1767,15 @@ const nadiShodhanaPage: BreathingPageContent = {
   body: [
     {
       heading: "What Is Nadi Shodhana?",
-      content: "Nadi Shodhana (pronounced NAH-dee show-DAH-nah) means 'channel cleansing' in Sanskrit. It's a pranayama technique where you alternate breathing through your left and right nostrils in a specific pattern. The practice is believed to balance the ida (left/lunar/cooling) and pingala (right/solar/warming) energy channels, leading to mental clarity and emotional balance."
+      content: "Alternate nostril breathing (Nadi Shodhana) is a yogic pranayama technique where you inhale through one nostril, hold briefly, and exhale through the other, alternating sides in a rhythmic pattern. The name means \"channel cleansing\" in Sanskrit, and the practice has been used for thousands of years to balance the nervous system and calm the mind. What distinguishes it from other breathing techniques is the nostril alternation itself—research shows it can lower blood pressure, reduce heart rate, and improve attention more than simple slow breathing alone.\n\nNadi Shodhana (pronounced NAH-dee show-DAH-nah) is believed to balance the ida (left/lunar/cooling) and pingala (right/solar/warming) energy channels, leading to mental clarity and emotional balance."
     },
     {
       heading: "How It Works",
       content: "Use your right hand in Vishnu Mudra: fold your index and middle fingers down, using your thumb to close your right nostril and your ring finger to close your left. The timer will guide the rhythm—you manually switch nostrils at each phase change. One complete round: inhale left → hold → exhale right → inhale right → hold → exhale left."
     },
     {
-      heading: "Quick Steps",
-      content: "Sit tall. Close your right nostril and inhale through the left, hold briefly, then exhale through the right. Inhale right, hold, exhale left. Repeat 5-10 rounds at a comfortable pace."
+      heading: "How to Do Alternate Nostril Breathing (Step by Step)",
+      content: "1. Sit comfortably with your spine tall and shoulders relaxed.\n2. Form Vishnu Mudra with your right hand: fold your index and middle fingers down, keeping your thumb, ring finger, and pinky extended.\n3. Close your right nostril with your thumb. Inhale slowly through your left nostril for 4 counts.\n4. Close both nostrils (thumb on right, ring finger on left). Hold gently for 4 counts.\n5. Release your thumb and exhale through your right nostril for 4 counts.\n6. Keep the left nostril closed. Inhale through your right nostril for 4 counts.\n7. Close both nostrils. Hold gently for 4 counts.\n8. Release your ring finger and exhale through your left nostril for 4 counts.\n9. That is one complete round. Continue for 5–10 rounds (about 5–15 minutes)."
     },
     {
       heading: "Benefits",
@@ -2027,15 +2051,15 @@ const ujjayiPage: BreathingPageContent = {
   body: [
     {
       heading: "What it is",
-      content: "Ujjayi (oo-JAH-yee) means 'victorious' in Sanskrit. You create the signature ocean sound by slightly narrowing the glottis—the opening at the back of your throat—while breathing through your nose. This creates a gentle resistance, slowing and smoothing your breath naturally. The timing is typically 4 seconds inhale, 6 seconds exhale, with no holds."
+      content: "Ujjayi breathing is a yogic pranayama technique where you breathe through your nose while gently constricting the back of your throat, creating a soft, ocean-like sound. Also called \"ocean breath\" or \"victorious breath\" (ujjayi means \"victorious\" in Sanskrit), it is the foundational breathing technique for vinyasa and ashtanga yoga. What makes it distinct from other slow-breathing methods is the audible throat constriction—this creates a natural resistance that slows respiration to the calming 5–6 breaths per minute range while giving your mind an auditory anchor for focus.\n\nThe timing is typically 4 seconds inhale, 6 seconds exhale, with no holds."
     },
     {
       heading: "How to make the sound",
       content: "Imagine fogging a mirror with your breath, but with your mouth closed. Or think of Darth Vader's breathing, but softer and through the nose. The sound should be audible to you but not the person next to you in yoga class. The constriction happens at the back of your throat, not in your nose or chest."
     },
     {
-      heading: "Ujjayi Breathing Steps",
-      content: "Ujjayi breathing steps are simple: inhale through the nose for 4 counts with a gentle throat constriction, then exhale through the nose for 6 counts with the same soft ocean sound. Keep the mouth closed, shoulders relaxed, and repeat for 5-10 minutes."
+      heading: "How to Do Ujjayi Breathing (Step by Step)",
+      content: "1. Sit comfortably or prepare for yoga practice. Spine tall, shoulders relaxed, jaw soft, mouth closed.\n2. Practice the throat position: open your mouth and exhale like you are fogging a mirror—\"haaaa.\" Notice the slight throat constriction.\n3. Close your mouth and recreate that same gentle constriction while breathing through your nose.\n4. Inhale through your nose for 4 counts, maintaining the throat constriction. You should hear a soft ocean-wave sound. Let your belly expand.\n5. Exhale through your nose for 6 counts, keeping the same throat position. The sound should be smooth and consistent.\n6. Continue for 5–15 minutes, letting the breath become automatic. During yoga, synchronize the breath with your movements."
     },
     {
       heading: "Benefits",
@@ -2272,7 +2296,11 @@ const bellyPage: BreathingPageContent = {
   body: [
     {
       heading: "What it is",
-      content: "Belly breathing means using your diaphragm—not your chest and shoulders—to drive respiration. When you inhale, your diaphragm contracts and moves downward, creating a vacuum that pulls air into your lungs. Your belly expands outward. When you exhale, the diaphragm relaxes, pushing air out as your belly falls. The timing is 4 seconds in, 6 seconds out, with no holds."
+      content: "Belly breathing (also called diaphragmatic breathing) is a technique where you engage your diaphragm—the dome-shaped muscle below your lungs—to take deeper, more efficient breaths that make your belly rise and fall rather than your chest. It is the most fundamental breathing technique in medicine and breathwork, forming the foundation for every other practice from box breathing to yoga pranayama. What makes it important is that most adults have shifted to shallow chest breathing under chronic stress, and relearning diaphragmatic breathing directly activates the vagus nerve to trigger the body's relaxation response.\n\nWhen you inhale, your diaphragm contracts and moves downward, creating a vacuum that pulls air into your lungs. Your belly expands outward. When you exhale, the diaphragm relaxes, pushing air out as your belly falls. The timing is 4 seconds in, 6 seconds out, with no holds."
+    },
+    {
+      heading: "How to Do Belly Breathing (Step by Step)",
+      content: "1. Lie on your back with knees bent, or sit in a comfortable chair. Loosen any tight clothing around your waist.\n2. Place one hand on your upper chest and one on your belly, just below your ribcage.\n3. Exhale fully through your mouth to empty your lungs. Let your belly fall inward.\n4. Inhale slowly through your nose for 4 counts. Focus on pushing your belly hand upward while keeping your chest hand still.\n5. Exhale slowly through your nose (or pursed lips) for 6 counts. Feel your belly fall as the diaphragm relaxes.\n6. Continue for 5–10 minutes, keeping the rhythm smooth. If your mind wanders, return attention to the belly rising and falling."
     },
     {
       heading: "Belly Breathing vs Diaphragmatic Breathing",
@@ -2531,7 +2559,11 @@ const buteykoPage: BreathingPageContent = {
   body: [
     {
       heading: "What it is",
-      content: "The Buteyko method trains you to breathe less—not more. By taking lighter, quieter, nasal breaths, you allow carbon dioxide (CO₂) levels to normalize. Buteyko theory proposes that chronic over-breathing (hyperventilation) depletes CO₂, which actually makes it harder for oxygen to reach your tissues (the Bohr effect). The timing is 3 seconds in, 3 seconds out, with a 3-second pause."
+      content: "Buteyko breathing is a method of \"reduced breathing\" that trains you to take lighter, quieter, nasal breaths in order to normalize carbon dioxide levels in the body. Developed by Ukrainian physician Dr. Konstantin Buteyko in the 1950s, it is one of the most studied breathing interventions for asthma, with randomized trials showing reduced symptoms and reliever medication use. What makes it fundamentally different from other breathwork is its counter-intuitive approach: instead of breathing more deeply, you deliberately breathe less, correcting chronic over-breathing patterns that Buteyko theory links to respiratory and anxiety disorders.\n\nThe timing is 3 seconds in, 3 seconds out, with a 3-second pause."
+    },
+    {
+      heading: "How to Do Buteyko Breathing (Step by Step)",
+      content: "1. Sit upright with good posture. Close your mouth—all breathing is through the nose.\n2. Observe your natural breathing for about 1 minute without changing it. Notice if it is visible, audible, or fast.\n3. Measure your Control Pause: after a normal exhale (not forced), pinch your nose and time until you feel the first distinct urge to breathe. Note this number.\n4. Begin reduced breathing: inhale lightly through your nose for 3 seconds, exhale gently for 3 seconds, then pause for 3 seconds. Keep breaths barely visible.\n5. Accept a slight sensation of air hunger—this is normal and indicates you are reducing your breathing volume correctly.\n6. Continue for 5–10 minutes, then re-measure your Control Pause. It should be slightly higher than before."
     },
     {
       heading: "The Control Pause",
@@ -2778,7 +2810,12 @@ const tummoPage: BreathingPageContent = {
     {
       heading: "What it is",
       content:
-        "G-tummo is a Tibetan tantric meditation practice with over 1,000 years of history. Practitioners sit in cold temperatures and use breath combined with visualization to generate measurable body heat. The technique centers on deep, belly-filling inhales paired with shorter exhales, combined with visualization of an inner fire rising from the navel center. It is part of the Six Yogas of Naropa, a set of advanced Buddhist meditation practices transmitted through the Kagyu lineage.",
+        "Tummo breathing is a Tibetan meditation technique that uses rhythmic breathing and inner-fire visualization to generate measurable increases in core body temperature. Part of the Six Yogas of Naropa in Vajrayana Buddhism, it has been practiced for over 1,000 years and was scientifically validated by Harvard researchers who documented monks raising their peripheral body temperature by up to 8\u00b0C (Benson et al., 1982). What makes tummo unique is the combination of forceful diaphragmatic breathing with focused visualization of a flame at the navel center—this is the original practice that inspired modern techniques like Wim Hof breathing.\n\nPractitioners sit in cold temperatures and use breath combined with visualization to generate measurable body heat. The technique centers on deep, belly-filling inhales paired with shorter exhales, combined with visualization of an inner fire rising from the navel center. It is part of the Six Yogas of Naropa, a set of advanced Buddhist meditation practices transmitted through the Kagyu lineage.",
+    },
+    {
+      heading: "How to Do Tummo Breathing (Step by Step)",
+      content:
+        "1. Sit cross-legged or in a chair with your spine straight. Relax your shoulders and close your eyes.\n2. Visualize a small, bright flame at your navel center, about 2 inches below your belly button—a tiny, intense fire the width of a hair.\n3. Inhale deeply through your nose for about 2 seconds, filling your belly completely. Feel the breath stoking the inner flame.\n4. Exhale sharply through your nose for about 1 second. With each breath, visualize the flame growing brighter and taller.\n5. Continue this rhythmic breathing (2 seconds in, 1 second out) for 5–10 minutes. Feel warmth spreading from your navel through your torso, arms, and legs.\n6. After your breathing rounds, sit quietly for 2–3 minutes. Maintain awareness of the warmth and let your breathing return to normal.",
     },
     {
       heading: "How it works",

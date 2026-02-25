@@ -3097,17 +3097,17 @@ const kidsPage: UseCasePageContent = {
   breathingPageSlug: "box",
 
   hero: {
-    title: "Breathing Exercises for Kids",
+    title: "Deep Breathing Exercises for Kids",
     subtitle: "Simple calming techniques children can use anywhere",
     intro: "Children experience stress and big emotions just like adults—but they often lack the tools to manage them. These kid-friendly breathing exercises are designed to be fun, easy to remember, and effective. Whether your child struggles with anxiety, anger, or just needs help winding down, these techniques can help them find calm in minutes."
   },
 
   meta: {
-    title: "Breathing Exercises for Kids: Calm Down Techniques",
+    title: "Deep Breathing Exercises for Kids: Calm Techniques",
     description: "Simple breathing exercises for kids that stop tantrums, ease anxiety, and help children fall asleep. Parent-tested with free visualizer. Ages 4+.",
-    ogTitle: "Breathing Exercises for Kids: Calm Down Techniques",
+    ogTitle: "Deep Breathing Exercises for Kids: Calm Techniques",
     ogDescription: "Simple breathing exercises kids can use anywhere. Stop tantrums, ease anxiety, improve sleep. Free visualizer.",
-    twitterTitle: "Breathing Exercises for Kids: Calm Down Techniques",
+    twitterTitle: "Deep Breathing Exercises for Kids: Calm Techniques",
     twitterDescription: "Simple breathing techniques kids love. Stop tantrums and ease anxiety in minutes.",
     author: "Resonance Editorial Team",
     datePublished: "2026-01-20",
