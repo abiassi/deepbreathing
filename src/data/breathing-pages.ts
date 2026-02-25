@@ -606,6 +606,14 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "belly",
         reason: "Diaphragmatic breathing is the base technique—master it before adding the long exhale."
+      },
+      {
+        slug: "pursed-lip",
+        reason: "Adds exhale resistance for those with shortness of breath or respiratory conditions."
+      },
+      {
+        slug: "box",
+        reason: "Prefer structured holds and equal-ratio counts for focus and stress resets."
       }
     ],
     relatedUseCases: [
@@ -862,6 +870,14 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "belly",
         reason: "Start here if you're new to breathwork—diaphragmatic breathing is the foundation."
+      },
+      {
+        slug: "physiological-sigh",
+        reason: "When stress spikes mid-session, one physiological sigh resets you faster than a full coherent cycle."
+      },
+      {
+        slug: "pursed-lip",
+        reason: "Adds exhale resistance for those managing breathlessness alongside HRV training."
       }
     ],
     relatedUseCases: [
@@ -1415,6 +1431,18 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "physiological-sigh",
         reason: "For quick stress relief in the moment, the physiological sigh provides fast results."
+      },
+      {
+        slug: "tummo",
+        reason: "The Tibetan tradition that inspired Wim Hof—similar heat generation and breathwork principles."
+      },
+      {
+        slug: "breath-of-fire",
+        reason: "Another high-energy rapid breathing technique from Kundalini yoga, good to compare."
+      },
+      {
+        slug: "pursed-lip",
+        reason: "After intense Wim Hof rounds, pursed-lip breathing helps restore calm respiratory rhythm."
       }
     ],
     relatedUseCases: [
@@ -1913,6 +1941,14 @@ const nadiShodhanaPage: BreathingPageContent = {
     {
       slug: "ujjayi",
       reason: "Another foundational pranayama, often practiced together in yoga."
+    },
+    {
+      slug: "physiological-sigh",
+      reason: "For fast acute stress relief between pranayama sessions—one breath resets the nervous system."
+    },
+    {
+      slug: "pursed-lip",
+      reason: "Adds gentle exhale resistance useful for those with respiratory issues who want a calming practice."
     }
   ],
   relatedUseCases: [
@@ -2163,6 +2199,14 @@ const ujjayiPage: BreathingPageContent = {
     {
       slug: "belly",
       reason: "Foundation technique to master first—diaphragmatic breathing powers the ujjayi sound."
+    },
+    {
+      slug: "physiological-sigh",
+      reason: "Use a physiological sigh to quickly release tension before settling into a sustained ujjayi practice."
+    },
+    {
+      slug: "pursed-lip",
+      reason: "Both techniques use controlled exhale resistance—pursed-lip is the accessible version for non-yogis."
     }
   ],
   relatedUseCases: [
@@ -2412,12 +2456,12 @@ const bellyPage: BreathingPageContent = {
       reason: "Coherent breathing uses the same diaphragmatic base at a specific pace for HRV optimization."
     },
     {
-      slug: "ujjayi",
-      reason: "Progress to ujjayi after mastering diaphragm—add the ocean sound for yoga practice."
+      slug: "physiological-sigh",
+      reason: "For fast stress relief, a physiological sigh works instantly while belly breathing builds long-term calm."
     },
     {
-      slug: "buteyko",
-      reason: "Another nasal breathing technique focused on light, quiet breaths."
+      slug: "pursed-lip",
+      reason: "Adds exhale resistance on top of diaphragmatic breathing—helpful for COPD and shortness of breath."
     }
   ],
   relatedUseCases: [
@@ -2667,6 +2711,10 @@ const buteykoPage: BreathingPageContent = {
     {
       slug: "belly",
       reason: "Start with basic diaphragmatic breathing before progressing to Buteyko's reduced breathing."
+    },
+    {
+      slug: "physiological-sigh",
+      reason: "When CO2 tolerance exercise feels stressful, a physiological sigh resets the nervous system fast."
     }
   ],
   relatedUseCases: [
@@ -2943,6 +2991,16 @@ const tummoPage: BreathingPageContent = {
       slug: "ujjayi",
       reason:
         "Ocean breath creates internal heat and focus, a gentler warm-up for tummo practice.",
+    },
+    {
+      slug: "physiological-sigh",
+      reason:
+        "After intense tummo retention holds, a physiological sigh quickly normalizes breathing and eases any anxiety.",
+    },
+    {
+      slug: "pursed-lip",
+      reason:
+        "For practitioners who experience breathlessness post-session, pursed-lip breathing aids recovery.",
     },
   ],
   relatedUseCases: [
@@ -3226,6 +3284,16 @@ const breathOfFirePage: BreathingPageContent = {
       slug: "ujjayi",
       reason:
         "A calming yoga breath that pairs well with breath of fire \u2014 use ujjayi to cool down after intense practice.",
+    },
+    {
+      slug: "physiological-sigh",
+      reason:
+        "After a rapid breath-of-fire session, one physiological sigh quickly calms the nervous system.",
+    },
+    {
+      slug: "pursed-lip",
+      reason:
+        "For those who find rapid breathing intense, pursed-lip is the slow, calming counterpart.",
     },
   ],
   relatedUseCases: [

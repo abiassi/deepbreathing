@@ -278,6 +278,14 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "sleep",
         teaser: "If pre-speech anxiety keeps you up the night before, try our 4-7-8 guide for better sleep"
+      },
+      {
+        slug: "anxiety",
+        teaser: "Chronic performance anxiety? Box breathing trains your nervous system for sustained calm"
+      },
+      {
+        slug: "huberman",
+        teaser: "The exact breathing protocols Huberman uses before high-stakes situations and deep work."
       }
     ],
     relatedGuides: [
@@ -681,6 +689,10 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "kids",
         teaser: "Kids having trouble sleeping? Bedtime breathing routines for children"
+      },
+      {
+        slug: "huberman",
+        teaser: "Huberman's sleep-specific breathing stack for winding down and falling asleep faster."
       }
     ],
     relatedGuides: [
@@ -882,6 +894,10 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "sleep",
         teaser: "Better sleep aids recovery. Try 4-7-8 breathing before bed after training days"
+      },
+      {
+        slug: "lung-capacity",
+        teaser: "Increase your lung capacity for longer, stronger runs."
       }
     ],
     voiceSearch: [
@@ -1102,6 +1118,10 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "kids",
         teaser: "Teaching kids to manage anxiety? Simple breathing exercises they can use anywhere"
+      },
+      {
+        slug: "huberman",
+        teaser: "Dr. Huberman's recommended protocols for anxiety, from physiological sigh to cyclic sighing."
       }
     ],
     relatedGuides: [
@@ -1536,6 +1556,10 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "anxiety",
         teaser: "Anxiety ruining your concentration? Try box breathing for acute stress relief"
+      },
+      {
+        slug: "huberman",
+        teaser: "The exact breathing protocols Huberman uses before deep work and sustained focus sessions."
       }
     ],
 
@@ -1962,6 +1986,14 @@ export const useCasePages: UseCasePageContent[] = [
       {
         slug: "pranayama",
         teaser: "Buteyko nasal breathing improves breath efficiency during training"
+      },
+      {
+        slug: "huberman",
+        teaser: "Huberman's recovery and performance breathing protocols for athletes."
+      },
+      {
+        slug: "lung-capacity",
+        teaser: "Build breathing power with targeted lung capacity exercises."
       }
     ],
 
@@ -3011,6 +3043,10 @@ const stressPage: UseCasePageContent = {
     {
       slug: "kids",
       teaser: "Teaching kids to manage stress? Simple breathing games they can use at school or home"
+    },
+    {
+      slug: "huberman",
+      teaser: "All 6 Huberman Lab breathing protocols matched to your stress type."
     }
   ],
   voiceSearch: [
@@ -3598,6 +3634,7 @@ const singingPage: UseCasePageContent = {
     { slug: "public-speaking", teaser: "Breath support for projecting your voice with confidence" },
     { slug: "athletes", teaser: "Build respiratory endurance for performance" },
     { slug: "focus", teaser: "Use breathwork to sharpen concentration before performing" },
+    { slug: "lung-capacity", teaser: "Expand your breath support with lung capacity training." },
   ],
   faqs: [
     {
