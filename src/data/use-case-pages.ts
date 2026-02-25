@@ -3111,7 +3111,7 @@ const kidsPage: UseCasePageContent = {
     twitterDescription: "Simple breathing techniques kids love. Stop tantrums and ease anxiety in minutes.",
     author: "Resonance Editorial Team",
     datePublished: "2026-01-20",
-    dateModified: "2026-01-20"
+    dateModified: "2026-02-25"
   },
 
   keywords: [

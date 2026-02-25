@@ -154,7 +154,7 @@ export const breathingPages: BreathingPageContent[] = [
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2026-02-03"
+      dateModified: "2026-02-25"
     },
     body: [
       {
@@ -435,7 +435,7 @@ export const breathingPages: BreathingPageContent[] = [
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2025-12-07"
+      dateModified: "2026-02-25"
     },
     body: [
       {
@@ -706,7 +706,7 @@ export const breathingPages: BreathingPageContent[] = [
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2026-01-09"
+      dateModified: "2026-02-25"
     },
     body: [
       {
@@ -950,7 +950,7 @@ export const breathingPages: BreathingPageContent[] = [
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2025-11-17",
-    dateModified: "2026-02-03"
+    dateModified: "2026-02-25"
   },
     body: [
       {
@@ -1279,7 +1279,7 @@ export const breathingPages: BreathingPageContent[] = [
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2026-01-02",
-      dateModified: "2026-01-02"
+      dateModified: "2026-02-25"
     },
     body: [
       {
@@ -1521,7 +1521,7 @@ const pursedLipPage: BreathingPageContent = {
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2026-01-20",
-    dateModified: "2026-02-03"
+    dateModified: "2026-02-25"
   },
   body: [
     {
@@ -1762,7 +1762,7 @@ const nadiShodhanaPage: BreathingPageContent = {
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2026-01-20",
-    dateModified: "2026-02-03"
+    dateModified: "2026-02-25"
   },
   body: [
     {
@@ -2046,7 +2046,7 @@ const ujjayiPage: BreathingPageContent = {
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2026-01-20",
-    dateModified: "2026-02-03"
+    dateModified: "2026-02-25"
   },
   body: [
     {
@@ -2291,7 +2291,7 @@ const bellyPage: BreathingPageContent = {
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2026-01-20",
-    dateModified: "2026-02-03"
+    dateModified: "2026-02-25"
   },
   body: [
     {
@@ -2554,7 +2554,7 @@ const buteykoPage: BreathingPageContent = {
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2026-01-20",
-    dateModified: "2026-01-20"
+    dateModified: "2026-02-25"
   },
   body: [
     {
