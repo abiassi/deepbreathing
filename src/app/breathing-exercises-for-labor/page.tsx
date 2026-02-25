@@ -11,9 +11,9 @@ const canonicalUrl = `${siteUrl}/breathing-exercises-for-labor`;
 const ogImageUrl = createOgImagePath("Breathing Exercises for Labor — Manage Contractions Naturally");
 
 export const metadata: Metadata = {
-  title: "Breathing Exercises for Labor — Manage Contractions Naturally (Free Timer)",
+  title: "Breathing for Labor — Manage Contractions (Free Timer)",
   description:
-    "Free breathing timer for labor and childbirth — slow breathing helps manage contractions and stay calm. Practice before your due date. Midwife-approved techniques.",
+    "Free breathing timer for labor — slow breathing helps manage contractions and stay calm. Practice before your due date. Midwife-approved techniques.",
   alternates: {
     canonical: canonicalUrl
   },

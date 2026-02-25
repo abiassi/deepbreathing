@@ -69,6 +69,12 @@ export interface RelatedUseCasePage {
   teaser: string;
 }
 
+export interface RelatedGuide {
+  href: string;
+  title: string;
+  teaser: string;
+}
+
 export interface UseCaseVideoEmbed {
   youtubeId: string;
   title: string;
@@ -107,6 +113,7 @@ export interface UseCasePageContent {
   };
 
   relatedUseCases: RelatedUseCasePage[];
+  relatedGuides?: RelatedGuide[];
   faqs: UseCaseFaq[];
   /** Voice search optimization - question H2s with direct answers */
   voiceSearch?: VoiceSearchQA[];
@@ -125,8 +132,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Breathing Exercises for Public Speaking — Stop Stage Fright in 60 Seconds",
-      description: "Breathing exercises for public speaking that stop stage fright in 60 seconds. The Navy SEAL box breathing method used before 100,000+ presentations. Free visualizer.",
+      title: "Breathing for Public Speaking — Stop Stage Fright",
+      description: "Breathing exercises for public speaking that stop stage fright in 60 seconds. Navy SEAL box breathing method. Free visualizer.",
       ogTitle: "Breathing Exercises for Public Speaking — Stop Stage Fright",
       ogDescription: "Breathing techniques for public speaking that Navy SEALs use before combat. Stop presentation anxiety in 60 seconds. Free visualizer.",
       twitterTitle: "Breathing Exercises for Public Speaking — Navy SEAL Method",
@@ -273,6 +280,13 @@ export const useCasePages: UseCasePageContent[] = [
         teaser: "If pre-speech anxiety keeps you up the night before, try our 4-7-8 guide for better sleep"
       }
     ],
+    relatedGuides: [
+      {
+        href: "/box-breathing-before-presentation",
+        title: "Box Breathing Before a Presentation",
+        teaser: "A step-by-step protocol for using box breathing in the minutes before you present — eliminate stage fright before it starts"
+      }
+    ],
 
     faqs: [
       {
@@ -310,8 +324,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Lower Blood Pressure Naturally: 4-7-8 Breathing Reduces BP by 10 Points",
-      description: "Reduce blood pressure by up to 10 points without medication. Dr. Weil's 4-7-8 breathing technique backed by Harvard research. Free guided visualizer. Start today.",
+      title: "Lower Blood Pressure Naturally: 4-7-8 Reduces BP by 10pts",
+      description: "Reduce blood pressure by up to 10 points without medication. Dr. Weil's 4-7-8 technique, backed by Harvard research. Free guided visualizer.",
       ogTitle: "Lower Blood Pressure Naturally: Reduce BP by 10 Points",
       ogDescription: "Harvard research: slow breathing can reduce blood pressure by up to 10 points. Dr. Weil's 4-7-8 technique. Free visualizer.",
       twitterTitle: "Lower Blood Pressure by 10 Points - 4-7-8 Breathing",
@@ -669,6 +683,13 @@ export const useCasePages: UseCasePageContent[] = [
         teaser: "Kids having trouble sleeping? Bedtime breathing routines for children"
       }
     ],
+    relatedGuides: [
+      {
+        href: "/4-7-8-breathing-for-insomnia",
+        title: "4-7-8 Breathing for Insomnia",
+        teaser: "A detailed guide on using 4-7-8 breathing to fall asleep faster, stay asleep, and break the cycle of chronic insomnia"
+      }
+    ],
 
     faqs: [
       {
@@ -712,8 +733,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Breathing for Running Recovery: Stop Side Stitches Fast (Free Timer)",
-      description: "Breathing for running recovery using the physiological sigh. Relieve side stitches, lower heart rate after intervals, and recover faster with a free guided timer.",
+      title: "Breathing for Running: Stop Side Stitches Fast (Free Timer)",
+      description: "Physiological sigh breathing for running recovery. Relieve side stitches, lower heart rate after intervals, and recover faster. Free guided timer.",
       ogTitle: "Breathing for Running Recovery: Stop Side Stitches Fast",
       ogDescription: "Use physiological sigh breathing to stop side stitches and recover faster after hard running efforts.",
       twitterTitle: "Breathing for Running Recovery (Free Timer)",
@@ -905,8 +926,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Stop Anxiety in 60 Seconds: Box Breathing Technique (Navy SEAL Method)",
-      description: "Chest tightness. Racing thoughts. Constant worry. Stop anxiety in 60 seconds with the Navy SEAL box breathing technique. Used by thousands daily. Free guided visualizer.",
+      title: "Stop Anxiety in 60s: Navy SEAL Box Breathing (Free)",
+      description: "Chest tightness. Racing thoughts. Stop anxiety in 60 seconds with Navy SEAL box breathing. Used by thousands daily. Free guided visualizer.",
       ogTitle: "Stop Anxiety in 60 Seconds - Navy SEAL Box Breathing",
       ogDescription: "The breathing technique Navy SEALs use for anxiety. Stop racing thoughts and chest tightness in 60 seconds. Free visualizer.",
       twitterTitle: "Stop Anxiety in 60 Seconds - Box Breathing Technique",
@@ -1083,6 +1104,13 @@ export const useCasePages: UseCasePageContent[] = [
         teaser: "Teaching kids to manage anxiety? Simple breathing exercises they can use anywhere"
       }
     ],
+    relatedGuides: [
+      {
+        href: "/breathing-exercises-before-surgery",
+        title: "Breathing Exercises Before Surgery",
+        teaser: "How to use breathing techniques to reduce pre-surgical anxiety, lower cortisol, and support a faster recovery"
+      }
+    ],
 
     faqs: [
       {
@@ -1129,8 +1157,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Stop a Panic Attack in 30 Seconds: Physiological Sigh Technique",
-      description: "Heart racing. Can't breathe. Feel like you're dying. Stop a panic attack in 30 seconds with the physiological sigh. Stanford-tested for acute panic. Free timer.",
+      title: "Stop a Panic Attack in 30 Seconds: Physiological Sigh",
+      description: "Heart racing. Feel like you're dying. Stop a panic attack in 30 seconds with the physiological sigh. Stanford-tested. Free timer.",
       ogTitle: "Stop a Panic Attack in 30 Seconds - Physiological Sigh",
       ogDescription: "Stanford-tested breathing technique stops panic attacks in 30 seconds. Used for acute hyperventilation and overwhelming fear. Free timer.",
       twitterTitle: "Stop Panic Attack in 30 Seconds - Physiological Sigh",
@@ -1294,6 +1322,13 @@ export const useCasePages: UseCasePageContent[] = [
         teaser: "Holiday gatherings triggering panic? This same technique works discreetly at the table"
       }
     ],
+    relatedGuides: [
+      {
+        href: "/physiological-sigh-panic-attack",
+        title: "Physiological Sigh for Panic Attacks",
+        teaser: "A Stanford-backed emergency protocol for stopping a panic attack in 30 seconds using the double-inhale exhale technique"
+      }
+    ],
 
     faqs: [
       {
@@ -1336,8 +1371,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Boost Focus by 40%: Coherent Breathing for Concentration (5 Min/Day)",
-      description: "Can't focus? Reread paragraphs? Distracted every 30 seconds? Boost focus by 40% with coherent breathing—the 5-minute technique top performers use before deep work. Free visualizer + Stanford research.",
+      title: "Boost Focus by 40%: Coherent Breathing (5 Min/Day)",
+      description: "Can't focus? Boost focus by 40% with coherent breathing — the 5-minute technique top performers use before deep work. Free visualizer + research.",
       ogTitle: "Boost Focus by 40%: Coherent Breathing for Concentration",
       ogDescription: "The 5-minute breathing technique top performers use before deep work. Boost focus by 40% with coherent breathing.",
       twitterTitle: "Boost Focus by 40%: Coherent Breathing for Concentration",
@@ -1545,8 +1580,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Can't Meditate? Start with Coherent Breathing (Meditation for Beginners)",
-      description: "Mind won't stop racing? Can't sit still? Start meditation with coherent breathing—the structured breathing pattern that makes mindfulness accessible. Free guided visualizer + research.",
+      title: "Can't Meditate? Start with Coherent Breathing (Free)",
+      description: "Mind racing? Start meditation with coherent breathing — the structured pattern that makes mindfulness accessible. Free guided visualizer + research.",
       ogTitle: "Can't Meditate? Start with Coherent Breathing",
       ogDescription: "The structured breathing pattern that makes meditation accessible for beginners. Free guided visualizer.",
       twitterTitle: "Can't Meditate? Start with Coherent Breathing",
@@ -1758,8 +1793,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Faster Athletic Recovery: Physiological Sigh Between Sets (Stanford Study)",
-      description: "Heart rate won't drop? Can't catch your breath between sets? The physiological sigh brings your HR down 2x faster than panting. Used by elite athletes. Free timer + Stanford research.",
+      title: "Faster Athletic Recovery: Physiological Sigh (Stanford)",
+      description: "Heart rate won't drop between sets? The physiological sigh brings your HR down 2x faster than panting. Used by elite athletes. Free timer.",
       ogTitle: "Faster Athletic Recovery: Physiological Sigh Between Sets",
       ogDescription: "The Stanford-tested breathing technique that brings your heart rate down 2x faster between sets. Used by elite athletes.",
       twitterTitle: "Faster Athletic Recovery: Physiological Sigh for Athletes",
@@ -1971,8 +2006,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Breathing Exercises During Pregnancy: Safe 4-7-8 Technique for Anxiety & Labor",
-      description: "Pregnancy anxiety? Can't take medication? The modified 4-7-8 breathing technique is safe for pregnancy, used in childbirth education, and calms anxiety naturally. Free guided timer + OB-approved research.",
+      title: "Safe Breathing for Pregnancy Anxiety & Labor (Free Timer)",
+      description: "Pregnancy anxiety? The modified 4-7-8 breathing technique is safe for pregnancy, used in childbirth education, and calms anxiety naturally. Free timer.",
       ogTitle: "Safe Breathing for Pregnancy Anxiety & Labor",
       ogDescription: "Modified 4-7-8 breathing: pregnancy-safe, used in childbirth education, and calms anxiety naturally.",
       twitterTitle: "Safe Breathing for Pregnancy Anxiety & Labor Prep",
@@ -2140,6 +2175,13 @@ export const useCasePages: UseCasePageContent[] = [
         teaser: "Pregnancy insomnia? The 4-7-8 technique helps you fall asleep faster when your mind is racing"
       }
     ],
+    relatedGuides: [
+      {
+        href: "/breathing-exercises-for-labor",
+        title: "Breathing Exercises for Labor",
+        teaser: "A comprehensive guide to breathing techniques for every stage of labor — from early contractions to active pushing"
+      }
+    ],
 
     faqs: [
       {
@@ -2182,8 +2224,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Holiday Stress Relief in 30 Seconds: Physiological Sigh Technique",
-      description: "Overwhelmed at holiday gatherings? Reset your nervous system in 30 seconds with the physiological sigh—the Stanford-tested technique for acute stress relief. Free visualizer.",
+      title: "Holiday Stress Relief in 30 Seconds: Physiological Sigh",
+      description: "Overwhelmed at holiday gatherings? Reset your nervous system in 30 seconds with the physiological sigh — Stanford-tested. Free visualizer.",
       ogTitle: "Holiday Stress Relief in 30 Seconds — Physiological Sigh",
       ogDescription: "The Stanford-tested breathing technique that stops holiday stress in 30 seconds. Works at the dinner table, in crowds, or hiding in the bathroom.",
       twitterTitle: "Holiday Stress Relief in 30 Seconds — Physiological Sigh",
@@ -2382,8 +2424,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Breathing Exercises for Travel Anxiety — Calm Flights & Crowds",
-      description: "Flight anxiety? Panic in crowds? Coherent breathing keeps you calm for hours—through takeoff, turbulence, delays, and crowded airports. Stanford research. Free visualizer.",
+      title: "Breathing for Travel Anxiety — Calm Flights & Crowds",
+      description: "Flight anxiety? Panic in crowds? Coherent breathing keeps you calm for hours — through takeoff, turbulence, delays, and crowded airports. Free visualizer.",
       ogTitle: "Breathing Exercises for Travel Anxiety — Stay Calm for Hours",
       ogDescription: "The breathing technique that keeps you calm through flights, delays, and crowds. Works for hours, not minutes. Free visualizer.",
       twitterTitle: "Breathing Exercises for Travel Anxiety — Calm Flights & Crowds",
@@ -2584,8 +2626,8 @@ export const useCasePages: UseCasePageContent[] = [
     },
 
     meta: {
-      title: "Huberman Breathing Protocols: 6 Techniques for Stress, Sleep & Focus (Free Timers)",
-      description: "All 6 breathing techniques Dr. Andrew Huberman recommends — physiological sigh, box breathing, coherent breathing, and more. Match the right protocol to your goal. Free guided timers.",
+      title: "Huberman Breathing Protocols: 6 Techniques (Free Timers)",
+      description: "All 6 breathing techniques Dr. Huberman recommends — physiological sigh, box breathing, coherent breathing, and more. Free guided timers.",
       ogTitle: "Huberman Lab Breathing Protocols: 6 Techniques Matched to Your Goal",
       ogDescription: "Every breathing technique Dr. Huberman recommends, from physiological sigh to box breathing. Free guided timers for each protocol.",
       twitterTitle: "Huberman Breathing Protocols: 6 Techniques (Free Timers)",
@@ -2820,8 +2862,8 @@ const stressPage: UseCasePageContent = {
   },
 
   meta: {
-    title: "Breathing Exercises for Stress — Calm Down in 30 Seconds (Free Tool)",
-    description: "The fastest breathing technique for stress relief—works in 30 seconds. The Stanford-tested physiological sigh is more effective than meditation for real-time stress reduction. Free guided tool.",
+    title: "Breathing for Stress — Calm Down in 30 Seconds (Free)",
+    description: "The fastest stress relief: Stanford-tested physiological sigh beats meditation. Works in 30 seconds. Free guided tool.",
     ogTitle: "Breathing Exercises for Stress — Calm Down in 30 Seconds",
     ogDescription: "The Stanford-tested breathing technique that beats meditation for stress relief. Works in 30 seconds. Free tool.",
     twitterTitle: "Breathing Exercises for Stress — 30 Second Reset",
@@ -3025,8 +3067,8 @@ const kidsPage: UseCasePageContent = {
   },
 
   meta: {
-    title: "Breathing Exercises for Kids: Calm Down Techniques That Actually Work",
-    description: "Simple breathing exercises for kids that stop tantrums, ease anxiety, and help children fall asleep. Parent-tested techniques with free visualizer. Ages 4+.",
+    title: "Breathing Exercises for Kids: Calm Down Techniques",
+    description: "Simple breathing exercises for kids that stop tantrums, ease anxiety, and help children fall asleep. Parent-tested with free visualizer. Ages 4+.",
     ogTitle: "Breathing Exercises for Kids: Calm Down Techniques",
     ogDescription: "Simple breathing exercises kids can use anywhere. Stop tantrums, ease anxiety, improve sleep. Free visualizer.",
     twitterTitle: "Breathing Exercises for Kids: Calm Down Techniques",
@@ -3222,7 +3264,7 @@ const pranayamaPage: UseCasePageContent = {
   },
 
   meta: {
-    title: "Pranayama Breathing: Complete Guide to Yogic Breathing Techniques (2026)",
+    title: "Pranayama: Complete Guide to Yogic Breathing (2026)",
     description: "Learn pranayama breathing techniques: Nadi Shodhana, Ujjayi, Kapalabhati, and more. Ancient yogic practices with modern science. Free visualizers included.",
     ogTitle: "Pranayama Breathing: Complete Guide to Yogic Breathing",
     ogDescription: "Learn pranayama—the yogic science of breath control. Nadi Shodhana, Ujjayi, and more. Free visualizers.",
@@ -3423,7 +3465,7 @@ const singingPage: UseCasePageContent = {
     intro: "Every vocal coach says the same thing: 'Support your breath.' But what does that actually mean? Breath support for singing starts with your diaphragm — the dome-shaped muscle beneath your lungs that controls airflow. Singers who breathe from their chest run out of air mid-phrase, strain their vocal cords, and lose control of pitch and dynamics. Diaphragmatic breathing gives you the steady, controlled airstream that makes the difference between struggling through a song and owning every note.",
   },
   meta: {
-    title: "Breathing Exercises for Singing: Build Vocal Breath Support (Free Timer)",
+    title: "Breathing for Singing: Build Vocal Breath Support (Free)",
     description: "Breathing exercises for singing that build diaphragmatic breath support and vocal stamina. Free guided timer to train the foundation of great singing.",
     ogTitle: "Breathing Exercises for Singing: Build Vocal Breath Support",
     ogDescription: "Train the diaphragmatic breathing that powers every great voice. Free guided timer for singers at all levels.",
@@ -3601,7 +3643,7 @@ const lungCapacityPage: UseCasePageContent = {
     intro: "Your lungs can hold about 6 liters of air, but most people use only a fraction of that capacity. Shallow chest breathing, sedentary habits, poor posture, and aging all shrink your functional lung capacity over time. The good news: breathing exercises can reverse this decline. Diaphragmatic breathing strengthens your primary breathing muscle, increases the volume of air you move with each breath, and improves the efficiency of gas exchange in your lungs.",
   },
   meta: {
-    title: "Lung Capacity Exercises: Increase Your Breathing Power (Free Timer)",
+    title: "Lung Capacity Exercises: Increase Breathing Power (Free)",
     description: "Build lung capacity with proven breathing exercises. Strengthen your diaphragm, increase tidal volume, and improve respiratory health. Free guided timer.",
     ogTitle: "Lung Capacity Exercises: Increase Your Breathing Power",
     ogDescription: "Proven breathing exercises to increase lung capacity and strengthen your diaphragm. Free guided timer — start building respiratory power today.",

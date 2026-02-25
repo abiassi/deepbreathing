@@ -9,7 +9,7 @@ const canonicalUrl = `${siteUrl}/coherent-breathing-app`;
 const ogImageUrl = createOgImagePath("Coherent Breathing App — Free Browser Timer");
 
 export const metadata: Metadata = {
-  title: "Coherent Breathing App (Free, 2026) — No Download, Start Instantly",
+  title: "Coherent Breathing App (Free) — No Download",
   description:
     "Free coherent breathing timer — train HRV with 5-6 breaths/min pacing. No download, no signup. Start your guided session now.",
   alternates: {

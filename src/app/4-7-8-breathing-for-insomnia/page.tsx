@@ -11,7 +11,7 @@ const canonicalUrl = `${siteUrl}/4-7-8-breathing-for-insomnia`;
 const ogImageUrl = createOgImagePath("4-7-8 Breathing for Insomnia — Fall Asleep in Minutes");
 
 export const metadata: Metadata = {
-  title: "4-7-8 Breathing for Insomnia — Fall Asleep in Minutes (Free Timer)",
+  title: "4-7-8 Breathing for Insomnia — Fall Asleep in Minutes",
   description:
     "Free 4-7-8 breathing timer for insomnia — Dr. Weil's 'natural tranquilizer' helps you fall asleep in 2-5 minutes. No pills, no download. Start tonight.",
   alternates: {

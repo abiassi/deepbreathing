@@ -11,7 +11,7 @@ const canonicalUrl = `${siteUrl}/box-breathing-before-presentation`;
 const ogImageUrl = createOgImagePath("Box Breathing Before Presentation — Calm Nerves in 60 Seconds");
 
 export const metadata: Metadata = {
-  title: "Box Breathing Before Presentation — Calm Nerves in 60 Seconds (Free Timer)",
+  title: "Box Breathing Before Presentation — Calm Nerves Fast",
   description:
     "Free box breathing timer for presentations — the Navy SEAL technique to stop stage fright in 60 seconds. Calm your nerves before you speak. Try now.",
   alternates: {

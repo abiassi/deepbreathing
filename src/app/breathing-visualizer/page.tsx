@@ -26,9 +26,9 @@ const canonicalUrl = `${siteUrl}/breathing-visualizer`;
 const ogImageUrl = createOgImagePath("Free Online Breathing Visualizer — 10 Techniques, No Download");
 
 export const metadata: Metadata = {
-  title: "Free Online Breathing Visualizer (2026) — 10 Techniques, No Download",
+  title: "Free Online Breathing Visualizer — 10 Techniques",
   description:
-    "Free breathing visualizer with 10 guided techniques — box breathing, 4-7-8, physiological sigh, and more. Adjustable pacing, no download, no signup. Start now.",
+    "Free breathing visualizer with 10 guided techniques — box breathing, 4-7-8, physiological sigh, and more. Adjustable pacing, no download, no signup.",
   alternates: {
     canonical: canonicalUrl
   },

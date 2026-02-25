@@ -525,6 +525,35 @@ export function UseCasePage({ slug }: { slug: string }) {
           </section>
         )}
 
+        {/* In-depth guides for specific situations */}
+        {page.relatedGuides && page.relatedGuides.length > 0 && (
+          <section className="space-y-4">
+            <p className="text-sm uppercase tracking-widest text-primary">In-Depth Guides</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {page.relatedGuides.map((guide) => (
+                <Link
+                  key={guide.href}
+                  href={guide.href}
+                  className="group rounded-[28px] border p-5 transition hover:border-primary"
+                  style={{
+                    borderColor: `${pattern.color}40`,
+                    backgroundColor: isHolidayPage ? WINTER_CARD : undefined
+                  }}
+                >
+                  <p className="text-lg font-semibold text-card-foreground">{guide.title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{guide.teaser}</p>
+                  <span
+                    className="mt-3 inline-flex items-center text-sm font-semibold text-primary"
+                    style={{ color: pattern.color }}
+                  >
+                    Read guide →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Ready to practice */}
         <section className="rounded-[32px] p-8 text-center" style={{ backgroundColor: `${pattern.color}10` }}>
           <p className="text-sm uppercase tracking-widest" style={{ color: pattern.color }}>

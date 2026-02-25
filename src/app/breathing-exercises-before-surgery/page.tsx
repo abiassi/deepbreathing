@@ -11,7 +11,7 @@ const canonicalUrl = `${siteUrl}/breathing-exercises-before-surgery`;
 const ogImageUrl = createOgImagePath("Breathing Exercises Before Surgery — Calm Pre-Op Anxiety");
 
 export const metadata: Metadata = {
-  title: "Breathing Exercises Before Surgery — Calm Pre-Op Anxiety (Free Timer)",
+  title: "Breathing Before Surgery — Calm Pre-Op Anxiety (Free)",
   description:
     "Free breathing exercises for pre-surgery anxiety — box breathing calms nerves in 2 minutes. Used in hospitals worldwide. Prepare for your procedure calmly.",
   alternates: {

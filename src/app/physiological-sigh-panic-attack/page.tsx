@@ -11,7 +11,7 @@ const canonicalUrl = `${siteUrl}/physiological-sigh-panic-attack`;
 const ogImageUrl = createOgImagePath("Breathing Technique for Panic Attack — Stop Panic in 30 Seconds");
 
 export const metadata: Metadata = {
-  title: "Breathing Technique for Panic Attack — Stop Panic in 30 Seconds (Free Timer)",
+  title: "Breathing for Panic Attack — Stop Panic in 30 Seconds",
   description:
     "Free panic attack breathing timer — the physiological sigh stops panic in just 1-3 breaths (30 seconds). Stanford-tested technique. Use it right now.",
   alternates: {

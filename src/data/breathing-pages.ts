@@ -88,6 +88,12 @@ export interface RelatedUseCase {
   teaser: string;
 }
 
+export interface RelatedGuide {
+  href: string;
+  title: string;
+  teaser: string;
+}
+
 export interface VideoEmbed {
   youtubeId: string;
   title: string;
@@ -118,6 +124,7 @@ export interface BreathingPageContent {
   research: ResearchContent;
   related: RelatedPattern[];
   relatedUseCases?: RelatedUseCase[];
+  relatedGuides?: RelatedGuide[];
   keywords: string[];
   synonyms: string[];
   frequency: string;
@@ -137,7 +144,7 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "Box breathing uses four equal phases: inhale, hold, exhale, hold. The pattern slows respiration and stabilizes attention. Keep counts comfortable (e.g., 3–6 seconds each). If holds feel tight or dizzying, shorten them or remove holds and keep the rhythm even."
     },
     meta: {
-      title: "Box Breathing: Navy SEAL Technique to Stop Anxiety Fast (Free Tool)",
+      title: "Box Breathing: Navy SEAL Technique — Stop Anxiety Fast",
       description: "Free box breathing timer — stop anxiety in 60 seconds with the Navy SEAL 4-4-4-4 technique. No download. Start your guided session now.",
       ogTitle: "Box Breathing: Navy SEAL Technique to Stop Anxiety Fast",
       ogDescription: "The same breathing technique Navy SEALs use before combat. Stop panic attacks in 1 minute. Free visualizer + research-backed method.",
@@ -353,6 +360,18 @@ export const breathingPages: BreathingPageContent[] = [
         teaser: "Kid‑friendly calming exercises that build the same slow‑breathing habit"
       }
     ],
+    relatedGuides: [
+      {
+        href: "/box-breathing-before-presentation",
+        title: "Box Breathing Before a Presentation",
+        teaser: "A practical protocol for using box breathing in the minutes before you speak — stop stage fright before it starts"
+      },
+      {
+        href: "/breathing-exercises-before-surgery",
+        title: "Breathing Exercises Before Surgery",
+        teaser: "How to use box breathing to calm pre-surgical anxiety and prepare your body for a faster recovery"
+      }
+    ],
     keywords: [
       "box breathing",
       "square breathing",
@@ -402,7 +421,7 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "Inhale for 4 counts, hold lightly for 7, exhale for 8. This exhale‑emphasized pattern slows breathing, often increases vagal markers, and helps many people settle into sleep or reduce acute tension. Keep holds gentle; shorten or skip them if uncomfortable."
     },
     meta: {
-      title: "4-7-8 Breathing: Fall Asleep in 2 Minutes (Dr. Weil's Method)",
+      title: "4-7-8 Breathing: Fall Asleep in 2 Minutes (Dr. Weil)",
       description: "Free 4-7-8 breathing timer — fall asleep in 2 minutes with Dr. Weil's technique. No download. Start your guided session now.",
       ogTitle: "4-7-8 Breathing: Fall Asleep in 2 Minutes (Dr. Weil's Method)",
       ogDescription: "Dr. Weil's 'natural tranquilizer' technique. Fall asleep faster and calm anxiety in minutes. Free visualizer with research-backed method.",
@@ -606,6 +625,18 @@ export const breathingPages: BreathingPageContent[] = [
         teaser: "Safe, modified 4-7-8 breathing for pregnancy anxiety and labor preparation"
       }
     ],
+    relatedGuides: [
+      {
+        href: "/4-7-8-breathing-for-insomnia",
+        title: "4-7-8 Breathing for Insomnia",
+        teaser: "A step-by-step guide to using 4-7-8 breathing specifically for falling asleep faster and breaking the insomnia cycle"
+      },
+      {
+        href: "/breathing-exercises-before-surgery",
+        title: "Breathing Exercises Before Surgery",
+        teaser: "How to use 4-7-8 breathing to reduce pre-operative anxiety and support faster post-surgical recovery"
+      }
+    ],
     keywords: [
       "4-7-8 breathing",
       "4 7 8 breathing",
@@ -649,7 +680,7 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "Breathe ~5–6 times per minute with equal inhales and exhales (e.g., 5–6 seconds each). This pace often maximizes respiratory–cardiovascular coupling and baroreflex engagement, acutely boosting HRV. Keep breaths small and quiet; comfort beats depth. If dizzy or air‑hungry, make breaths smaller or pause."
     },
     meta: {
-      title: "Coherent Breathing: The Science of 5 Breaths/Min (Free Trainer)",
+      title: "Coherent Breathing: 5 Breaths/Min for HRV (Free Trainer)",
       description: "Free coherent breathing timer — train HRV and stress resilience in 5 minutes. 5-6 breaths/min pace. Start your guided session now.",
       ogTitle: "Coherent Breathing: The Science of 5 Breaths/Min",
       ogDescription: "Learn why 5-6 breaths/min maximizes HRV. The research behind coherent breathing + free interactive trainer.",
@@ -881,7 +912,7 @@ export const breathingPages: BreathingPageContent[] = [
     intro: "A physiological sigh is two quick inhales followed by a long, unforced exhale—the fastest way to reduce stress in real-time. Just 1-3 sighs (about 30 seconds) can lower your heart rate and cortisol. The second inhale re-expands collapsed lung tissue; the long exhale activates your vagus nerve. Use for instant relief or practice 2–5 minutes daily for mood benefits."
   },
   meta: {
-    title: "Physiological Sigh Breathing Timer (Free) — Calm Down in 30 Seconds",
+    title: "Physiological Sigh Timer (Free) — Calm Down in 30 Seconds",
     description: "Free physiological sigh timer — calm down in 30 seconds with Stanford's double-inhale technique. Just 1-3 breaths. Start now.",
     ogTitle: "Physiological Sigh Breathing — Calm Down in 30 Seconds",
     ogDescription: "Stanford-tested double-inhale breathing technique. Stop stress in 30 seconds. Free physiological sigh timer.",
@@ -1138,6 +1169,13 @@ export const breathingPages: BreathingPageContent[] = [
         teaser: "Use the physiological sigh backstage to eliminate stage fright in seconds"
       }
     ],
+    relatedGuides: [
+      {
+        href: "/physiological-sigh-panic-attack",
+        title: "Physiological Sigh for Panic Attacks",
+        teaser: "How to use the double-inhale technique to abort a panic attack in 30 seconds — a Stanford-backed emergency breathing protocol"
+      }
+    ],
     keywords: [
       "physiological sigh",
       "what is a physiological sigh",
@@ -1199,8 +1237,8 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "The Wim Hof Method combines controlled hyperventilation with breath retention to boost energy, reduce stress, and potentially influence the immune system. Practice 3 rounds of 30 power breaths followed by a breath hold and recovery breath. Always practice in a safe environment—never in water or while driving."
     },
     meta: {
-      title: "Wim Hof Breathing: The Iceman's 3-Round Method (Free Guided Tool)",
-      description: "Master the Wim Hof breathing technique with our free guided tool. 30 power breaths × 3 rounds with retention holds. Boost energy, reduce stress, build cold tolerance. Try now.",
+      title: "Wim Hof Breathing: 3-Round Method (Free Guided Tool)",
+      description: "Master the Wim Hof technique: 30 power breaths × 3 rounds with retention holds. Boost energy, reduce stress, build cold tolerance. Free guided timer.",
       ogTitle: "Wim Hof Breathing: The Iceman's 3-Round Method",
       ogDescription: "Master the Wim Hof breathing technique with our free guided tool. 30 power breaths × 3 rounds. Boost energy and reduce stress.",
       ogImage: "og/breathe-wim-hof.png",
@@ -1425,7 +1463,7 @@ const pursedLipPage: BreathingPageContent = {
     intro: "Pursed lip breathing is a simple technique that slows your breathing and helps you get more air out of your lungs. Inhale slowly through your nose, then exhale through pursed lips (like blowing out a candle) for twice as long. Used by respiratory therapists worldwide for COPD, asthma, and exercise recovery."
   },
   meta: {
-    title: "Pursed Lip Breathing: Stop Shortness of Breath Fast (Free Timer)",
+    title: "Pursed Lip Breathing: Stop Shortness of Breath (Free Timer)",
     description: "Free pursed lip breathing timer — ease shortness of breath in seconds. Respiratory therapist-approved 2:4 ratio. Start your guided session now.",
     ogTitle: "Pursed Lip Breathing: Stop Shortness of Breath Fast",
     ogDescription: "Respiratory therapist-approved technique for COPD, asthma, and shortness of breath. Free timer with 2:4 ratio breathing.",
@@ -1662,7 +1700,7 @@ const nadiShodhanaPage: BreathingPageContent = {
     intro: "Alternate nostril breathing (Nadi Shodhana) is a yogic practice that balances the left and right hemispheres of your brain and calms the nervous system. Inhale through one nostril, hold, exhale through the other, then reverse. The timer guides your rhythm—you control which nostril to use."
   },
   meta: {
-    title: "Alternate Nostril Breathing (Nadi Shodhana) — Balance & Calm in 5 Minutes",
+    title: "Alternate Nostril Breathing (Nadi Shodhana) — Balance & Calm",
     description: "Free alternate nostril breathing timer — balance your nervous system in 5 minutes with Nadi Shodhana. Start your guided session now.",
     ogTitle: "Alternate Nostril Breathing (Nadi Shodhana) — Balance & Calm in 5 Minutes",
     ogDescription: "Free timer for Nadi Shodhana—the ancient yoga technique for mental clarity and stress relief. 4-4-4 rhythm.",
@@ -1938,7 +1976,7 @@ const ujjayiPage: BreathingPageContent = {
     intro: "Ujjayi breathing—also called 'ocean breath' or 'victorious breath'—creates a soft, rhythmic sound by gently constricting the back of your throat. This ancient pranayama technique is the foundation of most yoga practices, helping synchronize breath with movement while calming the nervous system."
   },
   meta: {
-    title: "Ujjayi Breathing: Ocean Breath Technique for Yoga & Focus (Free Guide)",
+    title: "Ujjayi Breathing: Ocean Breath for Yoga & Focus (Free Guide)",
     description: "Free ujjayi breathing timer — master the yoga 'ocean breath' for deep focus and calm. Step-by-step guide. Start your guided session now.",
     ogTitle: "Ujjayi Breathing: The Ocean Breath Technique",
     ogDescription: "Learn ujjayi breathing—the yogic 'ocean breath' that calms your nervous system in minutes. Free visualizer + step-by-step guide.",
@@ -2175,7 +2213,7 @@ const bellyPage: BreathingPageContent = {
     intro: "Belly breathing (diaphragmatic breathing) is the most fundamental breathing technique and the foundation for all advanced breathwork. By engaging your diaphragm—the dome-shaped muscle below your lungs—you take deeper, more efficient breaths that activate your body's relaxation response."
   },
   meta: {
-    title: "Belly Breathing: Diaphragmatic Breathing Exercises (Free Visualizer)",
+    title: "Belly Breathing: Diaphragmatic Exercises (Free Visualizer)",
     description: "Free belly breathing timer — learn diaphragmatic breathing, the foundation of all breathwork. Reduce stress in minutes. Start your guided session now.",
     ogTitle: "Belly Breathing: The Foundation of All Breathwork",
     ogDescription: "Learn diaphragmatic breathing—the technique that powers all other breathwork. Free visualizer + step-by-step guide.",
@@ -2434,7 +2472,7 @@ const buteykoPage: BreathingPageContent = {
     intro: "The Buteyko method teaches 'reduced breathing'—taking lighter, quieter breaths through your nose to normalize carbon dioxide levels. Developed by Ukrainian physician Konstantin Buteyko in the 1950s, this technique has been studied for asthma management and general respiratory health."
   },
   meta: {
-    title: "Buteyko Breathing Method: Nasal Breathing Exercises for Respiratory Health",
+    title: "Buteyko Breathing: Nasal Exercises for Respiratory Health",
     description: "Free Buteyko breathing timer — light nasal breathing for asthma and respiratory health. Control Pause guide included. Start your session now.",
     ogTitle: "Buteyko Breathing: The Light Nasal Breathing Method",
     ogDescription: "Learn the Buteyko method for respiratory health. Nasal breathing exercises with free visualizer and Control Pause guide.",

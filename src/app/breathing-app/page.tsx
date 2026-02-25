@@ -9,7 +9,7 @@ const canonicalUrl = `${siteUrl}/breathing-app`;
 const ogImageUrl = createOgImagePath("Free Breathing App (No Download)");
 
 export const metadata: Metadata = {
-  title: "Free Breathing App (No Download) — Calm Anxiety, Sleep & Focus",
+  title: "Free Breathing App (No Download) — Calm Anxiety & Focus",
   description:
     "Free breathing app — box breathing, 4-7-8, coherent breathing, and physiological sigh timers. No download, no signup. Start your session now.",
   alternates: {
