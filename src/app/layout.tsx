@@ -88,6 +88,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="ga4-init" strategy="afterInteractive">
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7GG9WVNBBP');`}
         </Script>
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="uzrT/cO760nX502p37kP0g"
+          strategy="afterInteractive"
+        />
         <SeasonalBanner />
         {children}
         <Analytics />
