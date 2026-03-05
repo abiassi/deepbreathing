@@ -739,70 +739,73 @@ export const useCasePages: UseCasePageContent[] = [
     breathingPageSlug: "physiological-sigh",
 
     hero: {
-      title: "Recover Faster and Stop Side Stitches",
-      subtitle: "The physiological sigh technique for runners",
-      intro: "Breathing for running recovery and side stitches starts with the physiological sigh. You've just finished a hard sprint and you're bent over, hands on knees, panting heavily—but your breathing isn't helping. Or you're mid-run and a sharp side stitch stops you in your tracks. The physiological sigh, a double-inhale-long-exhale pattern, rapidly resets your respiratory system and brings your heart rate down faster than regular breathing."
+      title: "Breathing for Running: How to Breathe Better and Recover Faster",
+      subtitle: "Simple running breathing techniques for easy pace, hard efforts, and side stitches",
+      intro: "Breathing for running changes with pace. On easy runs, low diaphragmatic breathing and a steady stride rhythm keep effort controlled. On hard efforts, mouth breathing is normal. When a side stitch hits or your heart rate stays high after an interval, the physiological sigh is the fastest reset. Use this page to learn how to breathe while running, how to recover after hard efforts, and what to do when your breathing falls apart."
     },
 
     meta: {
-      title: "Breathing for Running: Stop Side Stitches Fast (Free Timer)",
-      description: "Physiological sigh breathing for running recovery. Relieve side stitches, lower heart rate after intervals, and recover faster. Free guided timer.",
-      ogTitle: "Breathing for Running Recovery: Stop Side Stitches Fast",
-      ogDescription: "Use physiological sigh breathing to stop side stitches and recover faster after hard running efforts.",
-      twitterTitle: "Breathing for Running Recovery (Free Timer)",
-      twitterDescription: "Use physiological sigh breathing to stop side stitches and recover faster after hard running efforts.",
+      title: "Breathing for Running: How to Breathe Better and Recover Faster",
+      description: "Learn how to breathe while running, use a better running breathing pattern, and stop side stitches fast. Free guided recovery breathing for runners.",
+      ogTitle: "Breathing for Running: How to Breathe Better and Recover Faster",
+      ogDescription: "Learn how to breathe while running, recover faster after hard efforts, and stop side stitches with guided breathing for runners.",
+      twitterTitle: "Breathing for Running: Better Rhythm and Faster Recovery",
+      twitterDescription: "Learn how to breathe while running, recover faster, and stop side stitches with guided breathing for runners.",
       author: "Resonance Editorial Team",
       datePublished: "2025-12-02",
-      dateModified: "2026-02-03"
+      dateModified: "2026-03-05"
     },
 
     keywords: [
-      "breathing for side stitches",
+      "breathing for running",
+      "how to breathe while running",
+      "breathing techniques for running",
+      "proper breathing for running",
+      "breathing pattern for running",
+      "breathing exercises for running",
       "running recovery breathing",
-      "physiological sigh running",
       "stop side stitch while running",
-      "breathing technique after sprints",
       "lower heart rate after running",
-      "Huberman breathing technique",
-      "double inhale breathing exercise"
+      "physiological sigh running"
     ],
 
     problem: {
-      heading: "When Heavy Panting Doesn't Work",
-      content: "After intense effort, your instinct is to gasp for air with rapid, shallow breaths. But this often makes things worse—you're not efficiently exchanging gases, and the frantic breathing pattern keeps your stress response elevated. During runs, side stitches (technically called exercise-related transient abdominal pain) can strike suddenly, caused by diaphragm spasm or strain from the bouncing of internal organs.",
+      heading: "Why breathing falls apart on runs",
+      content: "Running exposes every weak breathing habit you have. If you breathe high into your chest, start every run too fast, or tense your upper body, your breath gets noisy and inefficient long before your legs give out. Side stitches can strike when your diaphragm is irritated, and post-interval panting can keep your heart rate elevated when you want to recover. The goal is not to breathe one way all the time. The goal is to match your breathing pattern to the pace, then use a faster reset when things break down.",
       symptoms: [
-        "Heavy panting that doesn't seem to bring relief",
+        "Breathing high into the chest instead of low into the belly",
+        "Heavy panting that doesn't settle after a hard effort",
         "Heart rate staying elevated long after stopping",
         "Sharp, stabbing side stitch pain during running",
-        "Feeling like you can't get a satisfying breath",
-        "Dizziness or light-headedness after intense effort"
+        "Feeling out of rhythm with your stride or cadence",
+        "Feeling like you can't get a satisfying breath"
       ]
     },
 
     solution: {
-      heading: "The Physiological Sigh",
-      content: "The physiological sigh is your body's natural reset mechanism—you do it involuntarily when you sob or when transitioning from sleep. The pattern is simple: two inhales through the nose (a big breath followed by a small 'top-up'), then one long exhale through the mouth. This technique, studied at Stanford by Dr. Andrew Huberman and colleagues, brings heart rate down faster than other breathing methods.",
-      whyThisPattern: "The double inhale serves a mechanical purpose: during hard exercise, tiny air sacs in your lungs (alveoli) can partially collapse, reducing oxygen uptake. The second 'sip' of air re-inflates these collapsed regions. The long exhale then activates the vagus nerve and shifts you out of the fight-or-flight state."
+      heading: "The best breathing for running depends on the moment",
+      content: "During easy running, aim for low diaphragmatic breathing and a relaxed rhythm that matches your stride. During tempo work or intervals, mouth breathing is fine — intensity changes the rules. For side stitches and post-run recovery, the physiological sigh is the fastest intervention because it quickly resets breathing mechanics and brings heart rate down. Think of running breathwork as a toolkit: efficient breathing while you run, then a targeted reset when you need one.",
+      whyThisPattern: "The double inhale serves a mechanical purpose: during hard exercise, tiny air sacs in your lungs (alveoli) can partially collapse, reducing oxygen uptake. The second 'sip' of air re-inflates these collapsed regions. The long exhale then activates the vagus nerve and shifts you out of the fight-or-flight state. That makes the physiological sigh especially useful for acute running problems like side stitches, panic breathing, and delayed recovery after intervals."
     },
 
     science: {
       heading: "The Respiratory Science",
       points: [
         {
-          mechanism: "Alveoli Re-inflation",
-          explanation: "During intense exercise, some of the 500 million tiny air sacs in your lungs collapse. The double inhale—especially the second 'top-up' breath—pops these alveoli open, immediately improving oxygen intake and CO₂ offload."
+          mechanism: "Diaphragmatic efficiency",
+          explanation: "Low belly breathing lets the diaphragm do more of the work and keeps your neck and shoulders from over-helping. That improves breathing economy and makes each breath more effective, especially on easy and moderate runs."
         },
         {
-          mechanism: "Rapid Heart Rate Reduction",
-          explanation: "Stanford research found that the physiological sigh brings heart rate down faster than box breathing or meditation. The long exhale is key—it activates the vagus nerve and triggers the parasympathetic 'rest and digest' response."
+          mechanism: "Stride-linked rhythm",
+          explanation: "Matching breath to stride gives your torso a repeatable pattern. Many runners settle into 3:3 breathing on easier runs and 2:2 breathing as pace rises. The exact ratio matters less than staying relaxed and avoiding chaotic, shallow breathing."
         },
         {
-          mechanism: "Diaphragm Reset",
-          explanation: "Side stitches are often caused by diaphragm spasm or strain. The controlled, deep breaths of the physiological sigh help relax and reset the diaphragm, relieving the cramping."
+          mechanism: "Mouth vs nose breathing",
+          explanation: "Nasal breathing can work well at easy intensity, but hard efforts demand more airflow. Mouth breathing is not failure — it is a normal response to higher carbon dioxide production and oxygen demand."
         },
         {
-          mechanism: "CO₂ Balance",
-          explanation: "Rapid panting after exercise can blow off too much CO₂, causing dizziness. The controlled exhale of the physiological sigh normalizes CO₂ levels while still allowing efficient oxygen uptake."
+          mechanism: "Rapid reset after hard efforts",
+          explanation: "Stanford research found that the physiological sigh brings heart rate down faster than box breathing or meditation. The double inhale re-expands alveoli and the long exhale relaxes the diaphragm, which is why it works so well for side stitches and post-sprint recovery."
         }
       ]
     },
@@ -810,41 +813,36 @@ export const useCasePages: UseCasePageContent[] = [
     howTo: {
       steps: [
         {
-          name: "Recognize the moment",
-          instruction: "Use this technique immediately after a hard effort (sprint finish, hill climb) or when you feel a side stitch developing mid-run.",
-          timing: "Immediately when needed"
+          name: "Start low and relaxed",
+          instruction: "On easy runs, breathe low into your belly instead of lifting your chest and shoulders. Think about expanding your lower ribs and keeping your jaw loose.",
+          timing: "First 5-10 minutes"
         },
         {
-          name: "Stop or slow down",
-          instruction: "For side stitches, slow to a walk. For post-run recovery, stop completely and stand or bend slightly with hands on hips—not on knees.",
-          timing: "As needed"
+          name: "Match breath to stride",
+          instruction: "Try a 3:3 rhythm on easy pace (inhale for 3 steps, exhale for 3) and a 2:2 rhythm as pace rises. If counting makes you tense, stop counting and focus on smooth, even breaths.",
+          timing: "During steady running"
         },
         {
-          name: "First inhale",
-          instruction: "Take a deep breath in through your nose, filling your lungs about 80-90%. Let your belly expand.",
-          timing: "~3 seconds"
+          name: "Open the mouth when pace rises",
+          instruction: "During intervals, hills, or race efforts, let mouth breathing happen naturally. The goal is enough airflow, not perfect nasal breathing under load.",
+          timing: "During hard efforts"
         },
         {
-          name: "Second 'top-up' inhale",
-          instruction: "Without exhaling, take a second, shorter sip of air through your nose. This pops open collapsed air sacs. Don't force it—just a gentle top-up.",
-          timing: "~1-2 seconds"
+          name: "Use the physiological sigh for side stitches",
+          instruction: "Slow to a walk or very easy jog. Take one deep nasal inhale, add a short top-up inhale, then exhale slowly through your mouth. Repeat 2-3 times until the stitch releases.",
+          timing: "30-60 seconds"
         },
         {
-          name: "Long exhale",
-          instruction: "Exhale slowly and completely through your mouth. Make it longer than both inhales combined. Feel your belly fall.",
-          timing: "~6-8 seconds"
-        },
-        {
-          name: "Repeat as needed",
-          instruction: "For acute relief (side stitch), 2-3 sighs may be enough. For post-run recovery, continue for 1-2 minutes until your breathing normalizes.",
-          timing: "2-3 cycles or 1-2 minutes"
+          name: "Recover with 60-120 seconds of guided breathing",
+          instruction: "After a hard effort, keep walking and use 3-5 physiological sighs or a minute of slow guided breathing until your heart rate and breathing settle.",
+          timing: "1-2 minutes post-effort"
         }
       ],
       tips: [
-        "Practice during easy runs so the technique is automatic when you need it",
+        "Practice low belly breathing during warm-ups so it feels automatic later",
         "For side stitches, try pressing on the painful spot while exhaling",
-        "Standing upright or with a slight forward lean helps—don't hunch over",
-        "The exhale is the most important part—make it slow and complete"
+        "Do not force nasal breathing during hard intervals if it makes you panic",
+        "Standing upright or with a slight forward lean helps — don't hunch over"
       ]
     },
 
@@ -902,31 +900,31 @@ export const useCasePages: UseCasePageContent[] = [
     ],
     voiceSearch: [
       {
-        question: "How do you stop a side stitch while running?",
-        answer: "To stop a side stitch while running, slow down and do 1-3 physiological sighs: two quick nasal inhales followed by a long, slow exhale. The double inhale reinflates the lungs and the long exhale relaxes the diaphragm. Most runners feel relief within 30-60 seconds."
+        question: "How do you breathe while running?",
+        answer: "Breathe low into your belly, match your breath to your stride, and let mouth breathing happen naturally as pace rises. Use a 3:3 or 2:2 rhythm during steady running, then switch to a physiological sigh if a side stitch or post-sprint breathlessness hits."
       }
     ],
 
     faqs: [
       {
-        question: "Can I do this while still running?",
-        answer: "Yes, for side stitches. Slow to an easy jog or walk, then do 2-3 physiological sighs. Many runners find the stitch releases within 30-60 seconds. For post-sprint recovery, it's better to stop completely for the full benefit."
+        question: "What is the best breathing technique for running?",
+        answer: "The best breathing technique for running depends on pace. For easy runs, low diaphragmatic breathing with a relaxed stride rhythm works best. For hard efforts, mouth breathing is normal. For side stitches or post-run recovery, the physiological sigh is the fastest reset because it quickly settles the diaphragm and heart rate."
       },
       {
-        question: "Why is standing upright better than bending over?",
-        answer: "Bending over with hands on knees compresses your diaphragm and lungs, making it harder to take deep breaths. Standing upright or with a slight forward lean (hands on hips) opens your chest and allows for fuller breaths and better recovery."
+        question: "How do you stop a side stitch while running?",
+        answer: "To stop a side stitch while running, slow down and do 1-3 physiological sighs: two quick nasal inhales followed by a long, slow exhale. The double inhale reinflates the lungs and the long exhale relaxes the diaphragm. Most runners feel relief within 30-60 seconds."
       },
       {
-        question: "How is this different from just taking deep breaths?",
-        answer: "The double inhale is the key difference. Regular deep breaths don't re-inflate collapsed alveoli the way the second 'sip' of air does. The physiological sigh is your body's natural mechanism—you do it involuntarily when you sob or yawn. We're just using it deliberately."
+        question: "What breathing pattern should I use while running?",
+        answer: "Many runners feel best with a 3:3 rhythm on easy runs and 2:2 as pace increases, meaning you inhale for 3 or 2 steps and exhale for the same number. The best pattern is the one that keeps your breathing smooth and your upper body relaxed."
       },
       {
         question: "Should I breathe through my nose or mouth while running?",
         answer: "During easy running, nasal breathing is ideal when possible—it filters air, produces nitric oxide, and promotes diaphragmatic breathing. During hard efforts, mouth breathing is natural and necessary. For the physiological sigh specifically, inhale through your nose and exhale through your mouth."
       },
       {
-        question: "Why do I get side stitches in the first place?",
-        answer: "The exact cause isn't fully understood, but the leading theories involve diaphragm spasm from the jarring of running, strain on ligaments connecting the diaphragm to internal organs, and reduced blood flow to the diaphragm during exercise. Warming up properly, avoiding large meals before running, and strengthening your core can all help prevent them."
+        question: "Can I train my breathing for running?",
+        answer: "Yes. Practice low belly breathing during warm-ups, use stride-linked breathing on easy runs, and do short guided recovery breathing after hard sessions. Over time your breathing becomes quieter, more efficient, and easier to control when fatigue hits."
       }
     ]
   },

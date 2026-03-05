@@ -277,6 +277,28 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+
+        <section className="glow-card rounded-[40px] border border-border bg-card p-8">
+          <h2 className="text-2xl font-semibold text-card-foreground">Where to go next</h2>
+          <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
+            Start with the page that matches your situation: a quick reset, an app-style timer, a running recovery guide, or an
+            advanced meditation technique.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/box-breathing-app" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+              Box breathing app
+            </Link>
+            <Link href="/2-minute-breathing-exercise" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+              2 minute reset
+            </Link>
+            <Link href="/for/running" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+              Breathing for running
+            </Link>
+            <Link href="/breathe/tummo" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
+              Tummo breathing
+            </Link>
+          </div>
+        </section>
       </div>
       <footer className="relative z-10 mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <p className="mb-8 text-center text-xs text-muted-foreground">

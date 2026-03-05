@@ -2785,30 +2785,30 @@ const tummoPage: BreathingPageContent = {
   mode: ModeName.Tummo,
   featured: false,
   hero: {
-    title: "Tummo Breathing: Tibetan Inner Heat Technique",
+    title: "Tummo Breathing: How to Do the Tibetan Inner Fire Technique",
     subtitle:
-      "Harness a 1,000-year-old Tibetan practice to generate inner fire through breath.",
-    intro: "Tummo (Tibetan for \u2018inner fire\u2019) is a meditation technique from Vajrayana Buddhism that uses rhythmic breathing and visualization to raise core body temperature. This is the original practice that inspired modern techniques like Wim Hof breathing. Tummo uses longer, forceful inhales to fill the belly, paired with short, sharp exhales \u2014 generating heat from within.",
+      "Learn the benefits, safety basics, and practice steps for this advanced Tibetan breathwork method.",
+    intro: "Tummo breathing (Tibetan for 'inner fire') is an advanced meditation technique from Vajrayana Buddhism that combines rhythmic breathing with visualization to generate heat from within. This is the original inner-fire practice that influenced modern methods like Wim Hof breathing. If you want to learn how to do tummo breathing safely, start with the guided timer here, then build gradually.",
   },
   meta: {
-    title: "Tummo Breathing: Tibetan Inner Heat Technique (Free Timer)",
+    title: "Tummo Breathing: How to Do the Tibetan Inner Fire Technique (Free Timer)",
     description:
-      "Practice tummo breathing \u2014 the ancient Tibetan inner fire technique. Free guided timer with visual pacer. Build inner heat and deepen your meditation.",
-    ogTitle: "Tummo Breathing: Tibetan Inner Heat Technique (Free Timer)",
+      "Learn how to do tummo breathing, the Tibetan inner fire technique. Free guided timer with steps, benefits, safety notes, and Wim Hof comparison.",
+    ogTitle: "Tummo Breathing: How to Do the Tibetan Inner Fire Technique (Free Timer)",
     ogDescription:
-      "Practice tummo breathing \u2014 the ancient Tibetan inner fire technique. Free guided timer with visual pacer. Build inner heat and deepen your meditation.",
+      "Learn how to do tummo breathing with a free guided timer, step-by-step instructions, safety notes, and Wim Hof comparison.",
     ogImage: "og/breathe-tummo.png",
-    twitterTitle: "Tummo Breathing: Tibetan Inner Heat Technique (Free Timer)",
+    twitterTitle: "Tummo Breathing: How to Do the Tibetan Inner Fire Technique (Free Timer)",
     twitterDescription:
-      "Practice tummo breathing \u2014 the ancient Tibetan inner fire technique. Free guided timer with visual pacer.",
+      "Learn how to do tummo breathing with a free guided timer, safety notes, and benefit overview.",
     author: "Resonance Editorial Team",
     reviewer: "",
     datePublished: "2026-02-06",
-    dateModified: "2026-02-06",
+    dateModified: "2026-03-05",
   },
   body: [
     {
-      heading: "What it is",
+      heading: "What is tummo breathing?",
       content:
         "Tummo breathing is a Tibetan meditation technique that uses rhythmic breathing and inner-fire visualization to generate measurable increases in core body temperature. Part of the Six Yogas of Naropa in Vajrayana Buddhism, it has been practiced for over 1,000 years and was scientifically validated by Harvard researchers who documented monks raising their peripheral body temperature by up to 8\u00b0C (Benson et al., 1982). What makes tummo unique is the combination of forceful diaphragmatic breathing with focused visualization of a flame at the navel center—this is the original practice that inspired modern techniques like Wim Hof breathing.\n\nPractitioners sit in cold temperatures and use breath combined with visualization to generate measurable body heat. The technique centers on deep, belly-filling inhales paired with shorter exhales, combined with visualization of an inner fire rising from the navel center. It is part of the Six Yogas of Naropa, a set of advanced Buddhist meditation practices transmitted through the Kagyu lineage.",
     },
@@ -2823,6 +2823,11 @@ const tummoPage: BreathingPageContent = {
         "The asymmetric breathing pattern (roughly 2 seconds inhale, 1 second exhale) with no holds creates continuous rhythmic breathing that increases metabolic heat production. The forceful diaphragmatic action combined with focused attention on the navel center stimulates thermogenesis. The deep belly inhales maximize oxygen intake while the sharp exhales maintain the energetic pumping rhythm. More advanced practitioners add breath retention (vase breathing or kumbhaka), where the breath is held at the belly to intensify the heat-generating effect.",
     },
     {
+      heading: "Tummo breathing benefits",
+      content:
+        "Tummo breathing is practiced for three main outcomes: generating inner heat, deepening meditation, and building calm under challenging conditions. Traditional practitioners use it to cultivate focus and resilience in cold environments. Modern readers usually care about tummo breathing benefits like improved cold tolerance, stronger concentration, and a vivid mind-body cue for dropping into meditation. The biggest practical benefit is not mystical — it is learning how breathing, attention, and body state can reinforce each other.",
+    },
+    {
       heading: "Tummo vs Wim Hof: Understanding the Difference",
       content:
         "Wim Hof has acknowledged drawing from the tummo tradition. Both techniques use hyperventilation-style breathing to create physiological changes. Key differences: tummo includes visualization of inner fire and is traditionally part of a spiritual practice within Tibetan Buddhism; Wim Hof adds a structured protocol with timed breath retention holds and deliberate cold exposure. The tummo breathing pattern is slower and more intentional than Wim Hof power breathing, which uses 30\u201340 rapid breaths per round. Tummo is a contemplative practice; Wim Hof is a performance protocol.",
@@ -2833,9 +2838,9 @@ const tummoPage: BreathingPageContent = {
         "Advanced meditation practice, before cold exposure, energy cultivation, and spiritual practice. Tummo is not a beginner technique\u2014it requires comfort with breathwork fundamentals and the ability to maintain focused visualization for extended periods. It pairs well with a seated meditation routine and can serve as the core practice for those exploring Tibetan Buddhist methods.",
     },
     {
-      heading: "When to skip",
+      heading: "Is tummo breathing dangerous?",
       content:
-        "Beginners without breathwork experience should start with simpler techniques first. Avoid tummo if you have cardiovascular conditions, are pregnant, are currently ill, or have a history of seizures. The hyperventilation component can cause dizziness and lightheadedness. Always practice seated with support nearby, never in water or while driving.",
+        "Tummo breathing can be dangerous if you practice it aggressively, pair it with cold exposure too early, or ignore dizziness. Beginners without breathwork experience should start with simpler techniques first. Avoid tummo if you have cardiovascular conditions, are pregnant, are currently ill, or have a history of seizures. The hyperventilation component can cause dizziness and lightheadedness, so always practice seated with support nearby, never in water or while driving.",
     },
   ],
   benefits: [
@@ -3054,6 +3059,12 @@ const tummoPage: BreathingPageContent = {
   ],
   keywords: [
     "tummo breathing",
+    "tumo breathing",
+    "tummo breathing technique",
+    "what is tummo breathing",
+    "how to do tummo breathing",
+    "tummo breathing benefits",
+    "is tummo breathing dangerous",
     "tummo meditation",
     "inner fire breathing",
     "tibetan breathing technique",
@@ -3063,6 +3074,7 @@ const tummoPage: BreathingPageContent = {
     "tibetan tummo",
   ],
   synonyms: [
+    "tumo breathing",
     "tummo meditation",
     "g-tummo",
     "inner fire breathing",

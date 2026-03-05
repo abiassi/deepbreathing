@@ -13,6 +13,57 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 
 ## Active Experiments
 
+## Active Experiment Schedule
+
+| Experiment | Launched | Follow-up due | Status |
+|------------|----------|---------------|--------|
+| Tool-Intent Alignment Refresh (Box, 2-Minute, Tummo) | 2026-03-05 | 2026-03-19 | Implemented ✅ |
+| Running Query Breadth Expansion | 2026-03-05 | 2026-03-26 | Implemented ✅ |
+
+### 2026-03-05: Tool-Intent Alignment Refresh (Box, 2-Minute, Tummo)
+
+**Hypothesis:** Pages already hovering near page one will gain clicks faster if titles, descriptions, H1s, and answer blocks align more tightly with the exact tool-intent query.
+
+**Baseline (GSC, 2026-02-20 → 2026-03-05):**
+- `/box-breathing-app`: 101 impressions, 1 click, position 9.8
+- `/2-minute-breathing-exercise`: 40 impressions, 0 clicks, position 9.2
+- `/breathe/tummo`: 832 impressions, 0 clicks, position 10.2
+
+**Ahrefs context:**
+- `/box-breathing-app`: KD 0, directly comparable low-DR competitor ranking on page one
+- `/2-minute-breathing-exercise`: exact-match URL but weak tool/snippet framing
+- `/breathe/tummo`: ranking pages cover "how to do it", benefits, and safety modifiers
+
+**Changes Made:**
+- `/box-breathing-app`: aligned title/description/H1/quick answer to exact "box breathing app" + "free online 4-4-4-4 timer" intent
+- `/2-minute-breathing-exercise`: aligned title/description/intro/quick answer to "free guided reset" intent
+- `/breathe/tummo`: expanded exact-match coverage for "what is", "how to do", benefits, safety, and the `tumo` spelling variant
+
+**Measure After:** 2026-03-19 (2 weeks)
+
+**Status:** Implemented ✅
+
+---
+
+### 2026-03-05: Running Query Breadth Expansion
+
+**Hypothesis:** `/for/running` is constrained by a side-stitch/recovery-only angle. Broadening the page to cover "how to breathe while running" and general running breathing patterns will improve relevance for the parent topic and lift rankings over time.
+
+**Baseline:**
+- GSC (2026-02-20 → 2026-03-05): 69 impressions, 0 clicks, position 7.9
+- Ahrefs: not ranking for the target head term, but parent topic `how to breathe while running` has 6.2K traffic potential
+
+**Changes Made:**
+- Reframed title, description, hero copy, and voice-search copy around broader running-breathing intent
+- Added broader keyword coverage for running breathing patterns, rhythm, and recovery
+- Expanded on-page guidance for easy runs, hard efforts, stride-linked breathing, and physiological sigh recovery
+
+**Measure After:** 2026-03-26 (3 weeks)
+
+**Status:** Implemented ✅
+
+---
+
 ### 2026-01-06: CTR Title Rewrites (Batch 1)
 
 **Hypothesis:** Benefit-first titles increase CTR vs attribution-first titles
@@ -852,7 +903,11 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-05
+
+**Result:** ⚪ **Inconclusive** - Cannibalization signal remains noisy. `/for/huberman` stayed essentially flat at 55 impressions, 0 clicks, position 8.1. `/breathe/physiological-sigh` improved from position 13.9 to 11.5 and impressions from 634 to 951, but clicks fell from 1 to 0. Query mix still contains research-style and low-intent physiological-sigh queries.
+
+**Status:** Inconclusive
 
 ---
 
@@ -879,7 +934,11 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-05
+
+**Result:** ⚪ **Inconclusive** - The redirect is working as intended, but the disavow portion is not measurable from current GSC data. URL inspection shows `/app` as a "Page with redirect" with canonical `https://deepbreathingexercises.com/breathing-app`, and `/breathing-app` is submitted and indexed.
+
+**Status:** Inconclusive
 
 ---
 
@@ -911,7 +970,11 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-05
+
+**Result:** ✅ **Success** - `/breathing-visualizer` improved from 54 impressions, 0 clicks, position 8.7 to 158 impressions, 3 clicks, position 6.5. The page is already on page one and earning first clicks despite very low direct search volume.
+
+**Status:** Success ✅
 
 ---
 
@@ -937,7 +1000,11 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-05
+
+**Result:** ⚪ **Inconclusive** - Positive ranking movement, but not yet clicks. `/breathe/tummo` improved from 233 impressions, position 13.8 to 832 impressions, position 10.2, with 0 clicks in both windows. This looks like a page-one push opportunity rather than a failure.
+
+**Status:** Inconclusive
 
 ---
 
@@ -962,7 +1029,11 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-05
+
+**Result:** ⚪ **Inconclusive** - `/breathe/breath-of-fire` stayed broadly flat around position 12.2 with 377 impressions and 1 click. The page is visible, but not yet breaking into a strong page-one CTR zone.
+
+**Status:** Inconclusive
 
 ---
 
@@ -987,7 +1058,11 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-05
+
+**Result:** ⚪ **Inconclusive** - `/for/singing` improved from position 26.5 to 13.4 and impressions from 28 to 71, but remains clickless. The page is climbing and should age a bit longer before another rewrite.
+
+**Status:** Inconclusive
 
 ---
 
@@ -1014,7 +1089,11 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-05
+
+**Result:** ⚪ **Inconclusive** - `/for/lung-capacity` improved from position 53.8 to 23.9 and impressions from 10 to 33, but is still far from page one and has no clicks yet.
+
+**Status:** Inconclusive
 
 ---
 
@@ -1079,11 +1158,28 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-03-03 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-05
+
+**Result:** ✅ **Success** - All four checkpoint pages improved meaningfully in rankings. `/4-7-8-breathing-timer` moved from position 12.7 to 8.6, `/box-breathing-app` from 11.8 to 9.8, `/2-minute-breathing-exercise` from 13.7 to 9.2, and `/for/running` from 13.6 to 7.9. CTR is still weak on several pages, but the recovery objective worked.
+
+**Status:** Success ✅
 
 ---
 
 ## Completed Experiments
+
+## Recent Follow-Up Log
+
+| Experiment | Launched | Follow-up due | Measured | Outcome |
+|------------|----------|---------------|----------|---------|
+| Checkpoint Follow-Up (Internal Links + Metadata Alignment) | 2026-02-17 | 2026-03-03 | 2026-03-05 | Success ✅ |
+| Huberman / Physiological Sigh Cannibalization Fix | 2026-02-06 | 2026-02-20 | 2026-03-05 | Inconclusive |
+| Disavow Spam Backlinks + Fix /app/ Route | 2026-02-06 | 2026-02-20 | 2026-03-05 | Inconclusive |
+| Breathing Visualizer Landing Page (NEW) | 2026-02-06 | 2026-02-20 | 2026-03-05 | Success ✅ |
+| Tummo Breathing Page (NEW) | 2026-02-06 | 2026-02-20 | 2026-03-05 | Inconclusive |
+| Breath of Fire Page (NEW) | 2026-02-06 | 2026-02-20 | 2026-03-05 | Inconclusive |
+| Breathing Exercises for Singing Page (NEW) | 2026-02-06 | 2026-02-20 | 2026-03-05 | Inconclusive |
+| Lung Capacity Exercises Page (NEW) | 2026-02-06 | 2026-02-20 | 2026-03-05 | Inconclusive |
 
 (Move experiments here after measuring results)
 
