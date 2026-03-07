@@ -5,6 +5,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import "./globals.css";
 import { SeasonalBanner } from "@/components/home/seasonal-banner";
+import {
+  GOOGLE_ANALYTICS_INLINE_INIT_SCRIPT,
+  GOOGLE_ANALYTICS_SCRIPT_SRC
+} from "@/lib/analytics/google-analytics";
 import { createOgImagePath } from "@/lib/seo/og-image";
 
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -81,12 +85,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="resonance-theme-init" strategy="beforeInteractive">
           {`(function(){try{var storageKey='resonance_theme';var root=document.documentElement;var stored=localStorage.getItem(storageKey);var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=stored&&stored!=='system'?stored:(prefersDark?'dark':'light');if(theme==='dark'){root.classList.add('dark');}else{root.classList.remove('dark');}root.dataset.theme=theme;}catch(_e){}})();`}
         </Script>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-7GG9WVNBBP"
-          strategy="afterInteractive"
-        />
+        <Script src={GOOGLE_ANALYTICS_SCRIPT_SRC} strategy="afterInteractive" />
         <Script id="ga4-init" strategy="afterInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7GG9WVNBBP');`}
+          {GOOGLE_ANALYTICS_INLINE_INIT_SCRIPT}
         </Script>
         <SeasonalBanner />
         {children}
