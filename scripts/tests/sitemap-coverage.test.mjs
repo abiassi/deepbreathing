@@ -6,6 +6,7 @@ import {
   buildSitemapEntries,
   discoverPageRoutes,
   DEFAULT_EXCLUDED_ROUTES,
+  EDGE_PROXY_LOCALE_PREFIXES,
 } from '../../src/lib/seo/sitemap-routes.mjs';
 
 const ROOT = process.cwd();
@@ -18,6 +19,7 @@ function getEntries() {
     appDir: APP_DIR,
     siteUrl: SITE_URL,
     excludedRoutes: DEFAULT_EXCLUDED_ROUTES,
+    localePrefixes: EDGE_PROXY_LOCALE_PREFIXES,
     now: FIXED_NOW,
   });
 }
@@ -38,4 +40,19 @@ test('sitemap has no duplicate URLs', () => {
 
   const urls = entries.map((entry) => entry.url);
   assert.equal(new Set(urls).size, urls.length, 'sitemap contains duplicate URLs');
+});
+
+test('sitemap includes translated locale-prefixed URLs when configured', () => {
+  const entries = getEntries();
+  const actualPathnames = new Set(entries.map((entry) => new URL(entry.url).pathname));
+
+  assert.ok(actualPathnames.has('/es'), 'missing translated home route in sitemap: /es');
+  assert.ok(
+    actualPathnames.has('/es/breathe/box'),
+    'missing translated breathing route in sitemap: /es/breathe/box'
+  );
+  assert.ok(
+    actualPathnames.has('/es/for/anxiety'),
+    'missing translated guide route in sitemap: /es/for/anxiety'
+  );
 });
