@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export const DEFAULT_EXCLUDED_ROUTES = [];
+export const DEFAULT_LOCALE_PREFIXES = [];
+export const EDGE_PROXY_LOCALE_PREFIXES = ['es'];
 
 function isRouteGroup(segment) {
   return segment.startsWith('(') && segment.endsWith(')');
@@ -26,6 +28,31 @@ function isNonRoutableSegment(segment) {
 function normalizeRoute(routeSegments) {
   if (routeSegments.length === 0) return '/';
   return `/${routeSegments.join('/')}`;
+}
+
+function normalizeLocalePrefix(prefix) {
+  return prefix.replace(/^\/+|\/+$/g, '');
+}
+
+function createLocalizedRoute(route, prefix) {
+  const localePath = `/${prefix}`;
+  return route === '/' ? localePath : `${localePath}${route}`;
+}
+
+function stripLocalePrefix(route, localePrefixes) {
+  for (const prefix of localePrefixes) {
+    const localePath = `/${prefix}`;
+
+    if (route === localePath) {
+      return '/';
+    }
+
+    if (route.startsWith(`${localePath}/`)) {
+      return route.slice(localePath.length);
+    }
+  }
+
+  return route;
 }
 
 export function discoverPageRoutes(appDir, excludedRoutes = DEFAULT_EXCLUDED_ROUTES) {
@@ -84,18 +111,32 @@ export function buildSitemapEntries({
   appDir,
   siteUrl,
   excludedRoutes = DEFAULT_EXCLUDED_ROUTES,
+  localePrefixes = DEFAULT_LOCALE_PREFIXES,
   breathingPageMeta = [],
   useCasePageMeta = [],
   now = new Date(),
 }) {
   const routes = discoverPageRoutes(appDir, excludedRoutes);
+  const normalizedLocalePrefixes = Array.from(
+    new Set(localePrefixes.map(normalizeLocalePrefix).filter(Boolean))
+  );
   const breathingMetaBySlug = createMetaMap(breathingPageMeta);
   const useCaseMetaBySlug = createMetaMap(useCasePageMeta);
+  const sitemapRoutes = Array.from(
+    new Set(
+      routes.flatMap((route) => [
+        route,
+        ...normalizedLocalePrefixes.map((prefix) => createLocalizedRoute(route, prefix)),
+      ])
+    )
+  );
 
-  return routes.map((route) => {
-    if (route === '/') {
+  return sitemapRoutes.map((route) => {
+    const canonicalRoute = stripLocalePrefix(route, normalizedLocalePrefixes);
+
+    if (canonicalRoute === '/') {
       return {
-        url: siteUrl,
+        url: `${siteUrl}${route === '/' ? '' : route}`,
         lastModified: now,
         changeFrequency: 'weekly',
         priority: 1,
@@ -104,7 +145,7 @@ export function buildSitemapEntries({
 
     const url = `${siteUrl}${route}`;
 
-    if (route === '/breathe' || route === '/for') {
+    if (canonicalRoute === '/breathe' || canonicalRoute === '/for') {
       return {
         url,
         lastModified: now,
@@ -113,8 +154,8 @@ export function buildSitemapEntries({
       };
     }
 
-    if (route.startsWith('/breathe/')) {
-      const slug = route.slice('/breathe/'.length);
+    if (canonicalRoute.startsWith('/breathe/')) {
+      const slug = canonicalRoute.slice('/breathe/'.length);
       return {
         url,
         lastModified: breathingMetaBySlug.get(slug) ?? now,
@@ -123,8 +164,8 @@ export function buildSitemapEntries({
       };
     }
 
-    if (route.startsWith('/for/')) {
-      const slug = route.slice('/for/'.length);
+    if (canonicalRoute.startsWith('/for/')) {
+      const slug = canonicalRoute.slice('/for/'.length);
       return {
         url,
         lastModified: useCaseMetaBySlug.get(slug) ?? now,
