@@ -8,6 +8,7 @@ import { BREATHING_PATTERNS } from "@/components/resonance/constants";
 import { JsonLd } from "@/components/seo/json-ld";
 import { useCasePageMap, type UseCasePageContent } from "@/data/use-case-pages";
 import { LocalizedDate } from "@/components/seo/localized-date";
+import { LanguageSwitcherFooter } from "@/components/language-switcher";
 import { createOgImagePath } from "@/lib/seo/og-image";
 
 // Dynamic import for client component
@@ -685,6 +686,9 @@ export function UseCasePage({ slug }: { slug: string }) {
             <Link href="/privacy" className="underline underline-offset-2 transition-colors hover:text-foreground">
               Privacy
             </Link>
+          </div>
+          <div className="mt-4">
+            <LanguageSwitcherFooter />
           </div>
         </footer>
       </section>

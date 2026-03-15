@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { BREATHING_PATTERNS } from "@/components/resonance/constants";
 import { featuredBreathingPages, breathingPages } from "@/data/breathing-pages";
 import { useCasePages } from "@/data/use-case-pages";
+import { LanguageSwitcherFooter } from "@/components/language-switcher";
 
 const baseUrl = "https://deepbreathingexercises.com";
 
@@ -409,6 +410,9 @@ export default function HomePage() {
             Darkmatter AI Labs
           </a>
         </p>
+        <div className="mt-6">
+          <LanguageSwitcherFooter />
+        </div>
       </footer>
     </main>
   );
