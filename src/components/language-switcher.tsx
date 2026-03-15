@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface MTConfig {
   supportedLocales: string[];
@@ -16,13 +16,16 @@ declare global {
   }
 }
 
-const LOCALE_LABELS: Record<string, string> = {
+const SUPPORTED_LOCALES = ["es-es", "pt-br", "fr-fr"];
+
+const LOCALE_SHORT: Record<string, string> = {
+  en: "EN",
   "es-es": "ES",
   "pt-br": "PT",
   "fr-fr": "FR",
 };
 
-const LOCALE_FULL_LABELS: Record<string, string> = {
+const LOCALE_FULL: Record<string, string> = {
   en: "English",
   "es-es": "Español",
   "pt-br": "Português",
@@ -33,95 +36,181 @@ function getPrefix(locale: string): string {
   return locale.split("-")[0];
 }
 
-/** Compact language switcher for the Resonance header (next to Settings). */
+function getCurrentLocaleAndPath(): { currentLocale: string; basePath: string } {
+  if (typeof window === "undefined") return { currentLocale: "en", basePath: "/" };
+
+  const config = window.__MT_CONFIG__;
+  if (config) {
+    return { currentLocale: config.lang, basePath: config.path };
+  }
+
+  // On English pages, detect from URL
+  const pathname = window.location.pathname;
+  for (const loc of SUPPORTED_LOCALES) {
+    const prefix = `/${getPrefix(loc)}`;
+    if (pathname.startsWith(prefix + "/") || pathname === prefix) {
+      return {
+        currentLocale: loc,
+        basePath: pathname.slice(prefix.length) || "/",
+      };
+    }
+  }
+  return { currentLocale: "en", basePath: pathname };
+}
+
+function GlobeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+      <path d="M2 12h20" />
+    </svg>
+  );
+}
+
+/**
+ * Compact language switcher for the Resonance header.
+ * Minimized: globe + current locale code. Expands on click.
+ */
 export function LanguageSwitcherCompact() {
-  const [config, setConfig] = useState<MTConfig | null>(null);
+  const [open, setOpen] = useState(false);
+  const [info, setInfo] = useState<{ currentLocale: string; basePath: string } | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // __MT_CONFIG__ is injected by the edge proxy on translated pages
-    if (window.__MT_CONFIG__) {
-      setConfig(window.__MT_CONFIG__);
-    }
+    setInfo(getCurrentLocaleAndPath());
   }, []);
 
-  if (!config) return null;
+  useEffect(() => {
+    if (!open) return;
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [open]);
 
-  const currentPrefix = getPrefix(config.lang);
+  if (!info) return null;
+
+  const currentShort = LOCALE_SHORT[info.currentLocale] || "EN";
+  const locales = SUPPORTED_LOCALES;
 
   return (
-    <div className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-card/80 px-2 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground shadow-sm backdrop-blur dark:border-border/40 dark:bg-card/40">
-      <a
-        href={config.path}
-        className={`rounded-full px-2 py-0.5 transition-colors ${
-          config.lang === config.defaultLang
-            ? "bg-primary/15 text-foreground"
-            : "hover:text-foreground"
-        }`}
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/80 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
+        aria-label="Change language"
       >
-        EN
-      </a>
-      {config.supportedLocales.map((loc) => {
-        const prefix = getPrefix(loc);
-        const isActive = prefix === currentPrefix;
-        return (
+        <GlobeIcon />
+        {currentShort}
+      </button>
+
+      {open && (
+        <div className="absolute right-0 top-full mt-1.5 z-50 min-w-[120px] rounded-xl border border-border/60 bg-card/95 py-1 shadow-lg backdrop-blur-md dark:border-border/40 dark:bg-card/80">
           <a
-            key={loc}
-            href={`/${prefix}${config.path}`}
-            className={`rounded-full px-2 py-0.5 transition-colors ${
-              isActive
-                ? "bg-primary/15 text-foreground"
-                : "hover:text-foreground"
+            href={info.basePath}
+            className={`block px-4 py-2 text-xs transition-colors ${
+              info.currentLocale === "en"
+                ? "font-semibold text-foreground"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
             }`}
+            onClick={() => setOpen(false)}
           >
-            {LOCALE_LABELS[loc] || prefix.toUpperCase()}
+            English
           </a>
-        );
-      })}
+          {locales.map((loc) => {
+            const prefix = getPrefix(loc);
+            const isActive = info.currentLocale === loc || getPrefix(info.currentLocale) === prefix;
+            return (
+              <a
+                key={loc}
+                href={`/${prefix}${info.basePath}`}
+                className={`block px-4 py-2 text-xs transition-colors ${
+                  isActive
+                    ? "font-semibold text-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                {LOCALE_FULL[loc]}
+              </a>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
 
-/** Footer-style language switcher with full language names. */
+/**
+ * Footer-style language switcher — inline links.
+ * Minimized: globe that expands to show all locales.
+ */
 export function LanguageSwitcherFooter() {
-  const [config, setConfig] = useState<MTConfig | null>(null);
+  const [open, setOpen] = useState(false);
+  const [info, setInfo] = useState<{ currentLocale: string; basePath: string } | null>(null);
 
   useEffect(() => {
-    if (window.__MT_CONFIG__) {
-      setConfig(window.__MT_CONFIG__);
-    }
+    setInfo(getCurrentLocaleAndPath());
   }, []);
 
-  if (!config) return null;
+  if (!info) return null;
 
-  const currentPrefix = getPrefix(config.lang);
+  const currentLabel = LOCALE_FULL[info.currentLocale] || "English";
+  const locales = SUPPORTED_LOCALES;
+
+  if (!open) {
+    return (
+      <button
+        onClick={() => setOpen(true)}
+        className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+        aria-label="Change language"
+      >
+        <GlobeIcon />
+        <span>{currentLabel}</span>
+      </button>
+    );
+  }
 
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
-      <span className="text-[10px] uppercase tracking-wider opacity-60">🌐</span>
+      <GlobeIcon className="opacity-60" />
       <a
-        href={config.path}
+        href={info.basePath}
         className={`transition-colors ${
-          config.lang === config.defaultLang
+          info.currentLocale === "en"
             ? "font-medium text-foreground"
             : "underline underline-offset-2 hover:text-foreground"
         }`}
       >
-        {LOCALE_FULL_LABELS.en}
+        English
       </a>
-      {config.supportedLocales.map((loc) => {
+      {locales.map((loc) => {
         const prefix = getPrefix(loc);
-        const isActive = prefix === currentPrefix;
+        const isActive = info.currentLocale === loc || getPrefix(info.currentLocale) === prefix;
         return (
           <a
             key={loc}
-            href={`/${prefix}${config.path}`}
+            href={`/${prefix}${info.basePath}`}
             className={`transition-colors ${
               isActive
                 ? "font-medium text-foreground"
                 : "underline underline-offset-2 hover:text-foreground"
             }`}
           >
-            {LOCALE_FULL_LABELS[loc] || loc}
+            {LOCALE_FULL[loc]}
           </a>
         );
       })}
