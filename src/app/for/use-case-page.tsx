@@ -7,6 +7,7 @@ import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
 import { BREATHING_PATTERNS } from "@/components/resonance/constants";
 import { JsonLd } from "@/components/seo/json-ld";
 import { useCasePageMap, type UseCasePageContent } from "@/data/use-case-pages";
+import { LocalizedDate } from "@/components/seo/localized-date";
 import { createOgImagePath } from "@/lib/seo/og-image";
 
 // Dynamic import for client component
@@ -246,8 +247,8 @@ export function UseCasePage({ slug }: { slug: string }) {
         )}
 
         {/* Intro */}
-        <p className="text-xs text-muted-foreground -mt-4">
-          Last updated: {new Date(page.meta.dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} • Reviewed by {reviewerName}
+        <p className="text-xs text-muted-foreground -mt-4" data-i18n="credentials">
+          <LocalizedDate date={page.meta.dateModified} reviewerName={reviewerName} />
         </p>
         <div className="prose prose-lg max-w-none text-muted-foreground">
           <p className="text-xl leading-relaxed">{page.hero.intro}</p>

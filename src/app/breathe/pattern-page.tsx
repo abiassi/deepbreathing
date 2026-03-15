@@ -7,6 +7,7 @@ import { FadingHeroTitle } from "@/components/breathe/fading-hero-title";
 import { BREATHING_PATTERNS } from "@/components/resonance/constants";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breathingPageMap, type BreathingPageContent } from "@/data/breathing-pages";
+import { LocalizedDate } from "@/components/seo/localized-date";
 
 // Lazy-load Resonance to improve initial page load
 const Resonance = dynamic(
@@ -200,8 +201,8 @@ export function PatternPage({ slug }: { slug: string }) {
 
       <section className="relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] bg-background/95 px-4 pb-20 pt-16 backdrop-blur-sm sm:px-6 lg:px-8">
         {page.meta.dateModified && (
-          <p className="text-xs text-muted-foreground -mt-6">
-            Last updated: {new Date(page.meta.dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} • Reviewed by {reviewerName}
+          <p className="text-xs text-muted-foreground -mt-6" data-i18n="credentials">
+            <LocalizedDate date={page.meta.dateModified} reviewerName={reviewerName} />
           </p>
         )}
         {/* Voice Search Q&A - prominently placed for featured snippets */}

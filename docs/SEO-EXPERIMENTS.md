@@ -911,7 +911,13 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-13 (Feb 20 – Mar 12 data)
+- "breathing visualizer" — 9 impressions, 0 clicks, pos 10.2
+- "breathing simulator online" — 1 impression, pos 10
+- Very few impressions overall (11 total across 3 queries)
+- Right on the edge of top 10 for target keyword but not breaking through
+
+**Status:** Inconclusive ⚠️ — Position ~10 for target query but minimal impressions. Needs more time or link support.
 
 ---
 
@@ -937,7 +943,14 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-13 (Feb 20 – Mar 12 data)
+- "tummo breathing" — 49 imp, 1 click, pos 27.7 (target was top 10)
+- "tummo meditation" — 18 imp, 0 clicks, pos 33.8
+- 25 query variants indexed, 127 total impressions
+- Best positions: "tomo breathing" pos 4, "tibetan vase breathing tummo" pos 6, "tibetan monks drying wet sheets tummo" pos 8
+- Main keyword stuck at pos ~28, not near top 10 yet
+
+**Status:** Inconclusive ⚠️ — Indexed broadly across long-tails but main keyword at pos 28. May need backlinks or content strengthening to break top 10.
 
 ---
 
@@ -962,7 +975,15 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-13 (Feb 20 – Mar 12 data)
+- "breath of fire yoga" — 13 imp, 0 clicks, pos 39.5
+- "fire breathing yoga" — 7 imp, 0 clicks, pos 37.3
+- "breath of fire kundalini" — 5 imp, 0 clicks, pos 18.8
+- 25 query variants, 96 total impressions, 0 clicks
+- One bright spot: "breath of fire contraindications" pos 1 (2 imp) — but niche
+- Core keywords all at pos 35-83, nowhere near top 10
+
+**Status:** Failed ❌ — Despite KD 4, positions 35-83 for core queries. Competition is stronger than KD suggested. Would need significant backlinks to move.
 
 ---
 
@@ -987,7 +1008,14 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-13 (Feb 20 – Mar 12 data)
+- "breathwork for singers" — 2 imp, pos 77
+- "diaphragmatic breathing singing exercises" — 4 imp, pos 25.5
+- "diaphragmatic breathing exercises for singing" — 1 imp, pos 26
+- 5 query variants only, 11 total impressions, 0 clicks
+- All positions 26-85 — not competitive despite KD 1-2
+
+**Status:** Failed ❌ — Barely indexed, minimal impressions. KD 1-2 did not translate to easy ranking. Competition from established vocal coaching sites is much stronger than Ahrefs KD indicated.
 
 ---
 
@@ -1014,7 +1042,15 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-02-20 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-13 (Feb 20 – Mar 12 data)
+- "lung capacity exercises" — 3 imp, 0 clicks, pos 68
+- "breathing exercises to improve lung capacity" — 4 imp, pos 67.8
+- "breathing exercises to increase lung capacity" — 3 imp, pos 73.7
+- 13 query variants, 24 total impressions, 0 clicks
+- All positions 34-89 — not remotely competitive despite KD 5
+- Highest volume target (2,800) but DR 0.2 site can't compete with health authority sites
+
+**Status:** Failed ❌ — Positions 34-89 across all queries. High-volume keywords require domain authority we don't have yet.
 
 ---
 
@@ -1079,7 +1115,16 @@ The synonyms are not being indexed or ranked. May need more prominent placement 
 
 **Measure After:** 2026-03-03 (2 weeks)
 
-**Status:** Implemented ✅
+**Measured:** 2026-03-13 (Mar 3 – Mar 12 data vs Jan 20 – Feb 16 baseline)
+
+| Page | Before (imp/clicks/pos) | After (imp/clicks/pos) | Change |
+|------|------------------------|------------------------|--------|
+| `/4-7-8-breathing-timer` | 336 / 11 / 13.1 | 126 / 7 / 9.0 | ✅ Recovered to top 10, CTR up (3.3% → 5.6%) |
+| `/box-breathing-app` | 88 / 0 / 12.7 | 29 / 1 / 12.7 | ⚠️ Got a click but position unchanged |
+| `/2-minute-breathing-exercise` | 57 / 0 / 10.4 | 1 / 0 / 10 | ❌ Impressions collapsed |
+| `/for/running` | 218 / 0 / 10.1 | 0 / 0 / — | ❌ Dropped out entirely |
+
+**Status:** Mixed — `/4-7-8-breathing-timer` recovered well (Success ✅). Other three pages did not improve (Failed ❌). Internal links alone aren't enough without backlinks for lower-authority pages.
 
 ---
 

@@ -2,6 +2,26 @@
 
 import Link from "next/link";
 
+const LABELS: Record<string, {
+  lastUpdated: string;
+  writtenBy: string;
+  reviewedBy: string;
+  methodology: string;
+  methodologyLink: string;
+}> = {
+  en: { lastUpdated: "Last updated", writtenBy: "Written by", reviewedBy: "Reviewed by", methodology: "Our content follows evidence-based guidelines.", methodologyLink: "Learn about our methodology →" },
+  es: { lastUpdated: "Última actualización", writtenBy: "Escrito por", reviewedBy: "Revisado por", methodology: "Nuestro contenido sigue pautas basadas en evidencia.", methodologyLink: "Conozca nuestra metodología →" },
+  pt: { lastUpdated: "Última atualização", writtenBy: "Escrito por", reviewedBy: "Revisado por", methodology: "Nosso conteúdo segue diretrizes baseadas em evidências.", methodologyLink: "Conheça nossa metodologia →" },
+  fr: { lastUpdated: "Dernière mise à jour", writtenBy: "Écrit par", reviewedBy: "Révisé par", methodology: "Notre contenu suit des directives fondées sur des preuves.", methodologyLink: "Découvrez notre méthodologie →" },
+};
+
+function getLang(): string {
+  if (typeof document !== "undefined") {
+    return (document.documentElement.lang || "en").split("-")[0];
+  }
+  return "en";
+}
+
 interface ContentCredentialsProps {
   lastUpdated: string;
   author?: string;
@@ -19,21 +39,24 @@ export function ContentCredentials({
   reviewedBy,
   compact = false
 }: ContentCredentialsProps) {
+  const lang = getLang();
+  const l = LABELS[lang] || LABELS.en;
+
   if (compact) {
     return (
       <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-        <span>Updated: {lastUpdated}</span>
+        <span>{l.lastUpdated}: {lastUpdated}</span>
         <span className="text-border">•</span>
-        <span>By {author}</span>
+        <span>{l.writtenBy} {author}</span>
         {reviewedBy && (
           <>
             <span className="text-border">•</span>
-            <span>Reviewed by {reviewedBy}</span>
+            <span>{l.reviewedBy} {reviewedBy}</span>
           </>
         )}
         <span className="text-border">•</span>
         <Link href="/about/methodology" className="text-primary hover:underline">
-          Our methodology
+          {l.methodologyLink}
         </Link>
       </div>
     );
@@ -43,21 +66,21 @@ export function ContentCredentials({
     <div className="rounded-xl border border-border bg-card/50 p-4 text-sm">
       <div className="flex flex-wrap gap-x-6 gap-y-2 text-muted-foreground">
         <div>
-          <span className="font-medium text-card-foreground">Last updated:</span> {lastUpdated}
+          <span className="font-medium text-card-foreground">{l.lastUpdated}:</span> {lastUpdated}
         </div>
         <div>
-          <span className="font-medium text-card-foreground">Written by:</span> {author}
+          <span className="font-medium text-card-foreground">{l.writtenBy}:</span> {author}
         </div>
         {reviewedBy && (
           <div>
-            <span className="font-medium text-card-foreground">Reviewed by:</span> {reviewedBy}
+            <span className="font-medium text-card-foreground">{l.reviewedBy}:</span> {reviewedBy}
           </div>
         )}
       </div>
       <p className="mt-2 text-xs text-muted-foreground">
-        Our content follows evidence-based guidelines.{" "}
+        {l.methodology}{" "}
         <Link href="/about/methodology" className="text-primary hover:underline">
-          Learn about our methodology →
+          {l.methodologyLink}
         </Link>
       </p>
     </div>
