@@ -36,26 +36,45 @@ function getPrefix(locale: string): string {
   return locale.split("-")[0];
 }
 
+/** Strip all known locale prefixes from a path to get the English base path. */
+function stripLocalePrefix(pathname: string): string {
+  for (const loc of SUPPORTED_LOCALES) {
+    const prefix = `/${getPrefix(loc)}`;
+    if (pathname.startsWith(prefix + "/")) {
+      return stripLocalePrefix(pathname.slice(prefix.length));
+    }
+    if (pathname === prefix) {
+      return "/";
+    }
+  }
+  return pathname;
+}
+
 function getCurrentLocaleAndPath(): { currentLocale: string; basePath: string } {
   if (typeof window === "undefined") return { currentLocale: "en", basePath: "/" };
 
   const config = window.__MT_CONFIG__;
   if (config) {
-    return { currentLocale: config.lang, basePath: config.path };
+    // Ensure config.path has no locale prefix (defensive)
+    return { currentLocale: config.lang, basePath: stripLocalePrefix(config.path) };
   }
 
-  // On English pages, detect from URL
+  // Detect from URL
   const pathname = window.location.pathname;
-  for (const loc of SUPPORTED_LOCALES) {
-    const prefix = `/${getPrefix(loc)}`;
-    if (pathname.startsWith(prefix + "/") || pathname === prefix) {
-      return {
-        currentLocale: loc,
-        basePath: pathname.slice(prefix.length) || "/",
-      };
+  const basePath = stripLocalePrefix(pathname);
+
+  // If basePath differs from pathname, we had a locale prefix
+  if (basePath !== pathname) {
+    // Find which locale it was
+    for (const loc of SUPPORTED_LOCALES) {
+      const prefix = `/${getPrefix(loc)}`;
+      if (pathname.startsWith(prefix + "/") || pathname === prefix) {
+        return { currentLocale: loc, basePath };
+      }
     }
   }
-  return { currentLocale: "en", basePath: pathname };
+
+  return { currentLocale: "en", basePath };
 }
 
 function GlobeIcon({ className }: { className?: string }) {
