@@ -32,6 +32,11 @@ const SnowBackground = dynamic(
 );
 import { modeToBreathingPage } from '@/data/breathing-pages';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet';
+import { useAuth } from '@/components/auth/auth-provider';
+import { useConversionTriggers } from '@/lib/conversion/use-conversion-triggers';
+import { SessionCompletePrompt } from '@/components/auth/session-complete-prompt';
+import { ConversionNudge } from '@/components/auth/conversion-nudge';
+import { SignInSheet } from '@/components/auth/sign-in-sheet';
 
 const STORAGE_KEYS = {
   STATS: 'resonance_stats',
@@ -106,6 +111,20 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     () => (typeof navigator !== 'undefined' ? /iP(hone|od|ad)/i.test(navigator.userAgent) : false),
     []
   );
+
+  // Auth + conversion triggers
+  const { isAuthenticated, syncSettings, syncStats } = useAuth();
+  const {
+    showSessionPrompt,
+    showSettingsNudge,
+    onSessionComplete,
+    onSettingsChange,
+    dismissSession,
+    dismissSettings,
+    markConverted,
+    setShowSessionPrompt,
+  } = useConversionTriggers(isAuthenticated);
+  const [showSignInSheet, setShowSignInSheet] = useState(false);
 
   // Client-side hydration check
   const [mounted, setMounted] = useState(false);
@@ -343,6 +362,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   }, []);
 
   // --- Persistence Effects ---
+  const settingsChangeCountRef = useRef(0);
   useEffect(() => {
     if (!mounted) return;
     localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify({
@@ -351,7 +371,13 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       color: themeColor,
       duration: selectedDuration
     }));
-  }, [activeMode, speedMultiplier, themeColor, selectedDuration, mounted]);
+    // Track settings changes for conversion trigger (skip initial mount)
+    settingsChangeCountRef.current++;
+    if (settingsChangeCountRef.current > 1) {
+      onSettingsChange();
+      syncSettings({ mode: activeMode, speed: speedMultiplier, duration: selectedDuration });
+    }
+  }, [activeMode, speedMultiplier, themeColor, selectedDuration, mounted, onSettingsChange, syncSettings]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -534,6 +560,8 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
     if (sessionSeconds > 0) {
       setTotalMinutes(prev => prev + Math.floor(sessionSeconds / 60));
+      onSessionComplete(sessionSeconds);
+      syncStats(totalMinutes + Math.floor(sessionSeconds / 60));
     }
 
     setSessionSeconds(0);
@@ -1332,11 +1360,36 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                 </div>
               )}
 
+              {showSettingsNudge && !isAuthenticated && (
+                <ConversionNudge
+                  onSignIn={() => {
+                    dismissSettings();
+                    setShowSignInSheet(true);
+                  }}
+                  onDismiss={dismissSettings}
+                />
+              )}
+
               {renderStats()}
             </div>
           </div>
         </SheetContent>
       </Sheet>
+
+      <SessionCompletePrompt
+        open={showSessionPrompt}
+        onOpenChange={setShowSessionPrompt}
+        onDismiss={dismissSession}
+        onSuccess={markConverted}
+        totalMinutes={totalMinutes}
+        sessionSeconds={sessionSeconds}
+      />
+
+      <SignInSheet
+        open={showSignInSheet}
+        onOpenChange={setShowSignInSheet}
+        onSuccess={markConverted}
+      />
     </div>
   );
 };

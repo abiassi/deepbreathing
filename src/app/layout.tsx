@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import "./globals.css";
 import { SeasonalBanner } from "@/components/home/seasonal-banner";
+import { AuthProvider } from "@/components/auth/auth-provider";
 import {
   GOOGLE_ANALYTICS_INLINE_INIT_SCRIPT,
   GOOGLE_ANALYTICS_SCRIPT_SRC
@@ -94,8 +95,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           data-key="uzrT/cO760nX502p37kP0g"
           strategy="afterInteractive"
         />
-        <SeasonalBanner />
-        {children}
+        <AuthProvider>
+          <SeasonalBanner />
+          {children}
+        </AuthProvider>
         <Analytics />
         <SpeedInsights />
       </body>

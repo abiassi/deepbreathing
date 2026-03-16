@@ -1,0 +1,113 @@
+"use client";
+
+import { useCallback, useRef } from "react";
+
+const STORAGE_KEYS = {
+  SETTINGS: "resonance_settings",
+  STATS: "resonance_stats",
+};
+
+export function useSync(isAuthenticated: boolean) {
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+
+  const mergeGuestData = useCallback(async () => {
+    if (!isAuthenticated) return;
+
+    const settings = localStorage.getItem(STORAGE_KEYS.SETTINGS);
+    const stats = localStorage.getItem(STORAGE_KEYS.STATS);
+
+    try {
+      await fetch("/api/v1/sync/merge", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          settings: settings ? JSON.parse(settings) : null,
+          stats: stats ? JSON.parse(stats) : null,
+        }),
+      });
+    } catch {
+      // Silent fail — data stays in localStorage
+    }
+  }, [isAuthenticated]);
+
+  const hydrateFromServer = useCallback(async () => {
+    if (!isAuthenticated) return;
+
+    try {
+      const res = await fetch("/api/v1/sync/bootstrap");
+      if (!res.ok) return;
+
+      const data = await res.json();
+
+      if (data.settings) {
+        localStorage.setItem(
+          STORAGE_KEYS.SETTINGS,
+          JSON.stringify({
+            mode: data.settings.mode,
+            speed: data.settings.speedMultiplier,
+            duration: data.settings.selectedDuration,
+          })
+        );
+      }
+
+      if (data.stats) {
+        const localStats = localStorage.getItem(STORAGE_KEYS.STATS);
+        const localMinutes = localStats
+          ? JSON.parse(localStats).totalMinutes ?? 0
+          : 0;
+        // Server wins only if it has more minutes (monotonic)
+        if (data.stats.totalMinutes >= localMinutes) {
+          localStorage.setItem(
+            STORAGE_KEYS.STATS,
+            JSON.stringify({ totalMinutes: data.stats.totalMinutes })
+          );
+        }
+      }
+    } catch {
+      // Silent fail
+    }
+  }, [isAuthenticated]);
+
+  const syncSettings = useCallback(
+    (settings: { mode: string; speed: number; duration: number | null }) => {
+      if (!isAuthenticated) return;
+
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+      debounceRef.current = setTimeout(async () => {
+        try {
+          await fetch("/api/v1/sync/settings", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              mode: settings.mode,
+              speedMultiplier: settings.speed,
+              selectedDuration: settings.duration,
+            }),
+          });
+        } catch {
+          // Silent fail
+        }
+      }, 2000);
+    },
+    [isAuthenticated]
+  );
+
+  const syncStats = useCallback(
+    (totalMinutes: number) => {
+      if (!isAuthenticated) return;
+
+      try {
+        fetch("/api/v1/sync/stats", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ totalMinutes }),
+        });
+      } catch {
+        // Silent fail
+      }
+    },
+    [isAuthenticated]
+  );
+
+  return { mergeGuestData, hydrateFromServer, syncSettings, syncStats };
+}
