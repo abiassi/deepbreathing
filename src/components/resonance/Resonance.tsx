@@ -1098,6 +1098,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       )}
 
       <header className="relative z-20 flex items-center justify-end gap-2 p-6">
+        <LanguageSwitcherInline />
         {isAuthenticated && user ? (
           <div className="relative">
             <button
@@ -1106,15 +1107,15 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
               aria-label="Account menu"
             >
               {user.image ? (
-                <img src={user.image} alt="" className="h-9 w-9 rounded-full" />
+                <img src={user.image} alt="" className="h-7 w-7 rounded-full" />
               ) : (
-                <span className="flex h-9 w-9 items-center justify-center text-sm font-medium text-card-foreground">
+                <span className="flex h-7 w-7 items-center justify-center text-xs font-medium text-card-foreground">
                   {(user.name || user.email)?.[0]?.toUpperCase() || '?'}
                 </span>
               )}
             </button>
             {showUserMenu && (
-              <div className="absolute right-0 top-12 z-50 min-w-[200px] rounded-2xl border border-border/70 bg-background/95 p-3 shadow-lg backdrop-blur-2xl">
+              <div className="absolute right-0 top-10 z-50 min-w-[200px] rounded-2xl border border-border/70 bg-background/95 p-3 shadow-lg backdrop-blur-2xl">
                 <p className="truncate px-2 text-sm font-medium text-card-foreground">{user.name || 'Account'}</p>
                 <p className="truncate px-2 text-xs text-muted-foreground">{user.email}</p>
                 <div className="my-2 h-px bg-border/60" />
@@ -1137,7 +1138,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
             <User size={16} />
           </button>
         )}
-        <LanguageSwitcherInline />
         <button
           onClick={() => setControlsOpen(true)}
           className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 p-2.5 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
