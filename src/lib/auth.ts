@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth";
 import { magicLink } from "better-auth/plugins";
-import { nextCookies } from "better-auth/next-js";
+// nextCookies removed — causes 500 when behind Cloudflare proxy
 import { Pool } from "pg";
 import { Resend } from "resend";
 
@@ -74,6 +74,5 @@ export const auth = betterAuth({
       },
       expiresIn: 300,
     }),
-    nextCookies(),
   ],
 });
