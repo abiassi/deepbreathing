@@ -54,6 +54,11 @@ function stripLocalePrefix(pathname: string): string {
   return pathname;
 }
 
+function getOrigin(): string {
+  if (typeof window !== "undefined") return window.location.origin;
+  return "https://deepbreathingexercises.com";
+}
+
 function getCurrentLocaleAndPath(): { currentLocale: string; basePath: string } {
   if (typeof window === "undefined") return { currentLocale: "en", basePath: "/" };
 
@@ -142,7 +147,7 @@ export function LanguageSwitcherInline() {
       {open && (
         <div className="absolute right-0 top-full mt-1.5 z-50 min-w-[120px] rounded-xl border border-border/60 bg-card/95 py-1 shadow-lg backdrop-blur-md dark:border-border/40 dark:bg-card/80">
           <a
-            href={info.basePath}
+            href={`${getOrigin()}${info.basePath}`}
             className={`block px-4 py-2 text-xs transition-colors ${
               info.currentLocale === "en"
                 ? "font-semibold text-foreground"
@@ -158,7 +163,7 @@ export function LanguageSwitcherInline() {
             return (
               <a
                 key={loc}
-                href={`/${prefix}${info.basePath}`}
+                href={`${getOrigin()}/${prefix}${info.basePath}`}
                 className={`block px-4 py-2 text-xs transition-colors ${
                   isActive
                     ? "font-semibold text-foreground"
@@ -210,7 +215,7 @@ export function LanguageSwitcherFooter() {
     <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
       <GlobeIcon className="opacity-60" />
       <a
-        href={info.basePath}
+        href={`${getOrigin()}${info.basePath}`}
         className={`transition-colors ${
           info.currentLocale === "en"
             ? "font-medium text-foreground"
@@ -225,7 +230,7 @@ export function LanguageSwitcherFooter() {
         return (
           <a
             key={loc}
-            href={`/${prefix}${info.basePath}`}
+            href={`${getOrigin()}/${prefix}${info.basePath}`}
             className={`transition-colors ${
               isActive
                 ? "font-medium text-foreground"
