@@ -174,12 +174,41 @@ const PT: LocaleTable = {
   'ui.sound_hint_no_audio': 'Se voce nao ouvir som, confira se o telefone nao esta no silencioso.'
 };
 
+const JA: LocaleTable = {
+  'session.ready_to_start': '始めますか？',
+  'session.paused': '一時停止',
+  'session.tap_enable_sound': 'タップして音を有効にする',
+  'session.complete': 'セッション完了',
+  'instruction.inhale_slowly': 'ゆっくり吸って...',
+  'instruction.inhale_again': 'もう一度吸って...',
+  'instruction.exhale': '吐いて...',
+  'instruction.exhale_fully': '完全に吐いて...',
+  'instruction.inhale': '吸って...',
+  'instruction.hold_your_breath': '息を止めて...',
+  'instruction.deep_breath_in': '深く吸って',
+  'instruction.hold': '止める',
+  'phase.ready': '準備',
+  'phase.hold': '止める',
+  'phase.inhale_again': 'もう一度吸う',
+  'phase.inhale': '吸う',
+  'phase.exhale': '吐く',
+  'protocol.power_breathe': 'パワーブレス',
+  'protocol.round_complete': 'ラウンド{round}完了',
+  'protocol.complete': 'プロトコル完了！',
+  'ui.power_breath': 'パワーブレス',
+  'ui.round_of': 'ラウンド{current}/{total}',
+  'ui.breath_of': '呼吸{current}/{total}',
+  'ui.end_hold_recovery': '保持終了 → 回復呼吸',
+  'ui.sound_hint_no_audio': '音が聞こえない場合は、スマートフォンがサイレントモードになっていないか確認してください。'
+};
+
 const CATALOG: Record<string, LocaleTable> = {
   en: EN,
   es: ES,
   fr: FR,
   de: DE,
-  pt: PT
+  pt: PT,
+  ja: JA
 };
 
 const NEUTRAL_FALLBACKS: Record<RuntimePhraseKey, string> = {
