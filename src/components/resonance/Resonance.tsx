@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X } from 'lucide-react';
+import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X, Settings as SettingsIcon } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation, ProtocolPhase, ProtocolState } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER, WIM_HOF_PROTOCOL } from './constants';
 import { AudioService } from './services/audioService';
@@ -1071,9 +1071,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         <LanguageSwitcherInline />
         <button
           onClick={() => setControlsOpen(true)}
-          className="inline-flex items-center rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
+          className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 p-2.5 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
+          aria-label="Settings"
         >
-          Settings
+          <SettingsIcon size={16} />
         </button>
       </header>
 

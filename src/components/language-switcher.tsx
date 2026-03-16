@@ -146,7 +146,7 @@ export function LanguageSwitcherInline() {
             }`}
             onClick={() => setOpen(false)}
           >
-            EN — English
+            English
           </a>
           {SUPPORTED_LOCALES.map((loc) => {
             const prefix = getPrefix(loc);
@@ -162,7 +162,7 @@ export function LanguageSwitcherInline() {
                 }`}
                 onClick={() => setOpen(false)}
               >
-                {LOCALE_SHORT[loc]} — {LOCALE_FULL[loc]}
+                {LOCALE_FULL[loc]}
               </a>
             );
           })}
