@@ -126,6 +126,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     setShowSessionPrompt,
   } = useConversionTriggers(isAuthenticated);
   const [showSignInSheet, setShowSignInSheet] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
 
   // Client-side hydration check
   const [mounted, setMounted] = useState(false);
@@ -1098,20 +1099,35 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
       <header className="relative z-20 flex items-center justify-end gap-2 p-6">
         {isAuthenticated && user ? (
-          <button
-            onClick={() => signOut()}
-            className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 overflow-hidden"
-            aria-label="Sign out"
-            title={user.email}
-          >
-            {user.image ? (
-              <img src={user.image} alt="" className="h-9 w-9 rounded-full" />
-            ) : (
-              <span className="flex h-9 w-9 items-center justify-center text-sm font-medium text-card-foreground">
-                {(user.name || user.email)?.[0]?.toUpperCase() || '?'}
-              </span>
+          <div className="relative">
+            <button
+              onClick={() => setShowUserMenu(prev => !prev)}
+              className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 overflow-hidden"
+              aria-label="Account menu"
+            >
+              {user.image ? (
+                <img src={user.image} alt="" className="h-9 w-9 rounded-full" />
+              ) : (
+                <span className="flex h-9 w-9 items-center justify-center text-sm font-medium text-card-foreground">
+                  {(user.name || user.email)?.[0]?.toUpperCase() || '?'}
+                </span>
+              )}
+            </button>
+            {showUserMenu && (
+              <div className="absolute right-0 top-12 z-50 min-w-[200px] rounded-2xl border border-border/70 bg-background/95 p-3 shadow-lg backdrop-blur-2xl">
+                <p className="truncate px-2 text-sm font-medium text-card-foreground">{user.name || 'Account'}</p>
+                <p className="truncate px-2 text-xs text-muted-foreground">{user.email}</p>
+                <div className="my-2 h-px bg-border/60" />
+                <button
+                  onClick={() => { setShowUserMenu(false); signOut(); }}
+                  className="flex w-full items-center gap-2 rounded-xl px-2 py-2 text-sm text-muted-foreground transition-colors hover:bg-card hover:text-card-foreground"
+                >
+                  <LogOut size={14} />
+                  Sign out
+                </button>
+              </div>
             )}
-          </button>
+          </div>
         ) : (
           <button
             onClick={() => setShowSignInSheet(true)}
