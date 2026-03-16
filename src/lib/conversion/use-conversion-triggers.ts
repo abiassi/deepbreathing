@@ -2,6 +2,12 @@
 
 import { useState, useCallback, useEffect } from "react";
 
+function trackEvent(name: string, params?: Record<string, string | number | boolean>) {
+  if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+    (window as any).gtag("event", name, params);
+  }
+}
+
 const STORAGE_KEY = "resonance_conversion";
 
 interface ConversionState {
@@ -72,6 +78,7 @@ export function useConversionTriggers(isAuthenticated: boolean) {
           : !prev.dismissed.session && next.sessionsOver60s % 3 === 0;
 
         if (shouldShow) {
+          trackEvent("conversion_prompt_shown", { trigger: "session_complete", session_seconds: sessionSeconds, session_count: next.sessionsOver60s });
           setTimeout(() => setShowSessionPrompt(true), 1500);
         }
 
@@ -92,11 +99,12 @@ export function useConversionTriggers(isAuthenticated: boolean) {
       saveState(next);
 
       if (
-        next.settingsChanges >= 2 &&
+        next.settingsChanges >= 1 &&
         !prev.dismissed.settings &&
         prev.convertedAt === null &&
         !showSessionPrompt // don't show both at once
       ) {
+        trackEvent("conversion_prompt_shown", { trigger: "settings_change", change_count: next.settingsChanges });
         setShowSettingsNudge(true);
       }
 
@@ -105,6 +113,7 @@ export function useConversionTriggers(isAuthenticated: boolean) {
   }, [isAuthenticated, showSessionPrompt]);
 
   const dismissSession = useCallback(() => {
+    trackEvent("conversion_prompt_dismissed", { trigger: "session_complete" });
     setShowSessionPrompt(false);
     setState((prev) => {
       const next = { ...prev, dismissed: { ...prev.dismissed, session: true } };
@@ -114,6 +123,7 @@ export function useConversionTriggers(isAuthenticated: boolean) {
   }, []);
 
   const dismissSettings = useCallback(() => {
+    trackEvent("conversion_prompt_dismissed", { trigger: "settings_change" });
     setShowSettingsNudge(false);
     setState((prev) => {
       const next = { ...prev, dismissed: { ...prev.dismissed, settings: true } };
@@ -123,6 +133,7 @@ export function useConversionTriggers(isAuthenticated: boolean) {
   }, []);
 
   const markConverted = useCallback(() => {
+    trackEvent("conversion_signup_completed", {});
     setShowSessionPrompt(false);
     setShowSettingsNudge(false);
     setState((prev) => {

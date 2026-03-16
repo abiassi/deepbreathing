@@ -3,7 +3,13 @@
 import React, { useState } from "react";
 import { X, Mail, Loader2 } from "lucide-react";
 import { signIn } from "@/lib/auth-client";
-import { Sheet, SheetContent, SheetOverlay } from "@/components/ui/sheet";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
+
+function trackEvent(name: string, params?: Record<string, string | number | boolean>) {
+  if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+    (window as any).gtag("event", name, params);
+  }
+}
 
 interface SignInSheetProps {
   open: boolean;
@@ -30,6 +36,7 @@ export function SignInSheet({
     if (!email.trim()) return;
 
     setStatus("sending");
+    trackEvent("signin_magic_link_sent", {});
     try {
       await signIn.magicLink({ email, callbackURL: "/" });
       setStatus("sent");
@@ -40,6 +47,7 @@ export function SignInSheet({
   };
 
   const handleGoogle = async () => {
+    trackEvent("signin_google_clicked", {});
     try {
       await signIn.social({ provider: "google", callbackURL: "/" });
       onSuccess?.();
@@ -61,9 +69,9 @@ export function SignInSheet({
     <Sheet open={open} onOpenChange={handleClose}>
       <SheetContent
         side="bottom"
-        className="border-0 bg-transparent p-0 shadow-none outline-none"
+        className="inset-0 flex items-center justify-center border-0 bg-transparent p-4 shadow-none outline-none"
       >
-        <div className="mx-auto mb-4 w-full max-w-md rounded-[28px] border border-border/70 bg-background/95 p-6 shadow-[0_-20px_60px_rgba(15,23,42,0.2)] backdrop-blur-2xl sm:mb-8">
+        <div className="w-full max-w-md rounded-[28px] border border-border/70 bg-background/95 p-6 shadow-[0_25px_80px_rgba(15,23,42,0.25)] backdrop-blur-2xl">
           <div className="mb-5 flex items-start justify-between">
             <div>
               <h2 className="text-lg font-semibold text-card-foreground">
