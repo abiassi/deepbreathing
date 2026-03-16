@@ -9,6 +9,7 @@ import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER, WIM_HOF_PROTOCOL } from '
 import { AudioService } from './services/audioService';
 import Visualizer from './components/Visualizer';
 import { createRuntimePhraseResolver, detectRuntimeLocale, RuntimePhraseKey } from './runtime-phrases';
+import { LanguageSwitcherInline } from '@/components/language-switcher';
 
 // GA4 event helper — safe to call even if gtag isn't loaded
 function trackEvent(name: string, params?: Record<string, string | number | boolean>) {
@@ -1067,6 +1068,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       )}
 
       <header className="relative z-20 flex items-center justify-end gap-2 p-6">
+        <LanguageSwitcherInline />
         <button
           onClick={() => setControlsOpen(true)}
           className="inline-flex items-center rounded-full border border-border/60 bg-card/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"

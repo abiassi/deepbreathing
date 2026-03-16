@@ -99,10 +99,11 @@ function GlobeIcon({ className }: { className?: string }) {
 }
 
 /**
- * Compact language switcher for the Resonance header.
- * Minimized: globe + current locale code. Expands on click.
+ * Inline language switcher for the Resonance header.
+ * Shows just "PT" (or current locale) left of Settings — no extra chrome.
+ * Click opens a dropdown with all languages.
  */
-export function LanguageSwitcherCompact() {
+export function LanguageSwitcherInline() {
   const [open, setOpen] = useState(false);
   const [info, setInfo] = useState<{ currentLocale: string; basePath: string } | null>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -123,16 +124,14 @@ export function LanguageSwitcherCompact() {
   if (!info) return null;
 
   const currentShort = LOCALE_SHORT[info.currentLocale] || "EN";
-  const locales = SUPPORTED_LOCALES;
 
   return (
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/80 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
+        className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-card/80 px-3 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
         aria-label="Change language"
       >
-        <GlobeIcon />
         {currentShort}
       </button>
 
@@ -147,9 +146,9 @@ export function LanguageSwitcherCompact() {
             }`}
             onClick={() => setOpen(false)}
           >
-            English
+            EN — English
           </a>
-          {locales.map((loc) => {
+          {SUPPORTED_LOCALES.map((loc) => {
             const prefix = getPrefix(loc);
             const isActive = info.currentLocale === loc || getPrefix(info.currentLocale) === prefix;
             return (
@@ -163,7 +162,7 @@ export function LanguageSwitcherCompact() {
                 }`}
                 onClick={() => setOpen(false)}
               >
-                {LOCALE_FULL[loc]}
+                {LOCALE_SHORT[loc]} — {LOCALE_FULL[loc]}
               </a>
             );
           })}
