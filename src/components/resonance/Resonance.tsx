@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X, Settings as SettingsIcon } from 'lucide-react';
+import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X, Settings as SettingsIcon, User, LogOut } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation, ProtocolPhase, ProtocolState } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER, WIM_HOF_PROTOCOL } from './constants';
 import { AudioService } from './services/audioService';
@@ -33,6 +33,7 @@ const SnowBackground = dynamic(
 import { modeToBreathingPage } from '@/data/breathing-pages';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet';
 import { useAuth } from '@/components/auth/auth-provider';
+import { signOut } from '@/lib/auth-client';
 import { useConversionTriggers } from '@/lib/conversion/use-conversion-triggers';
 import { SessionCompletePrompt } from '@/components/auth/session-complete-prompt';
 import { ConversionNudge } from '@/components/auth/conversion-nudge';
@@ -113,7 +114,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   );
 
   // Auth + conversion triggers
-  const { isAuthenticated, syncSettings, syncStats } = useAuth();
+  const { isAuthenticated, user, syncSettings, syncStats } = useAuth();
   const {
     showSessionPrompt,
     showSettingsNudge,
@@ -1096,6 +1097,30 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       )}
 
       <header className="relative z-20 flex items-center justify-end gap-2 p-6">
+        {isAuthenticated && user ? (
+          <button
+            onClick={() => signOut()}
+            className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 overflow-hidden"
+            aria-label="Sign out"
+            title={user.email}
+          >
+            {user.image ? (
+              <img src={user.image} alt="" className="h-9 w-9 rounded-full" />
+            ) : (
+              <span className="flex h-9 w-9 items-center justify-center text-sm font-medium text-card-foreground">
+                {(user.name || user.email)?.[0]?.toUpperCase() || '?'}
+              </span>
+            )}
+          </button>
+        ) : (
+          <button
+            onClick={() => setShowSignInSheet(true)}
+            className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 p-2.5 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
+            aria-label="Sign in"
+          >
+            <User size={16} />
+          </button>
+        )}
         <LanguageSwitcherInline />
         <button
           onClick={() => setControlsOpen(true)}
