@@ -146,33 +146,31 @@ export function LanguageSwitcherInline() {
 
       {open && (
         <div className="absolute right-0 top-full mt-1.5 z-50 min-w-[120px] rounded-xl border border-border/60 bg-card/95 py-1 shadow-lg backdrop-blur-md dark:border-border/40 dark:bg-card/80">
-          <a
-            href={`${getOrigin()}${info.basePath}`}
-            className={`block px-4 py-2 text-xs transition-colors ${
+          <button
+            className={`block w-full text-left px-4 py-2 text-xs transition-colors ${
               info.currentLocale === "en"
                 ? "font-semibold text-foreground"
                 : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
             }`}
-            onClick={() => setOpen(false)}
+            onClick={() => { window.location.assign(`${getOrigin()}${info.basePath}`); }}
           >
             English
-          </a>
+          </button>
           {SUPPORTED_LOCALES.map((loc) => {
             const prefix = getPrefix(loc);
             const isActive = info.currentLocale === loc || getPrefix(info.currentLocale) === prefix;
             return (
-              <a
+              <button
                 key={loc}
-                href={`${getOrigin()}/${prefix}${info.basePath}`}
-                className={`block px-4 py-2 text-xs transition-colors ${
+                className={`block w-full text-left px-4 py-2 text-xs transition-colors ${
                   isActive
                     ? "font-semibold text-foreground"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
-                onClick={() => setOpen(false)}
+                onClick={() => { window.location.assign(`${getOrigin()}/${prefix}${info.basePath}`); }}
               >
                 {LOCALE_FULL[loc]}
-              </a>
+              </button>
             );
           })}
         </div>
@@ -214,8 +212,8 @@ export function LanguageSwitcherFooter() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
       <GlobeIcon className="opacity-60" />
-      <a
-        href={`${getOrigin()}${info.basePath}`}
+      <button
+        onClick={() => { window.location.assign(`${getOrigin()}${info.basePath}`); }}
         className={`transition-colors ${
           info.currentLocale === "en"
             ? "font-medium text-foreground"
@@ -223,14 +221,14 @@ export function LanguageSwitcherFooter() {
         }`}
       >
         English
-      </a>
+      </button>
       {locales.map((loc) => {
         const prefix = getPrefix(loc);
         const isActive = info.currentLocale === loc || getPrefix(info.currentLocale) === prefix;
         return (
-          <a
+          <button
             key={loc}
-            href={`${getOrigin()}/${prefix}${info.basePath}`}
+            onClick={() => { window.location.assign(`${getOrigin()}/${prefix}${info.basePath}`); }}
             className={`transition-colors ${
               isActive
                 ? "font-medium text-foreground"
@@ -238,7 +236,7 @@ export function LanguageSwitcherFooter() {
             }`}
           >
             {LOCALE_FULL[loc]}
-          </a>
+          </button>
         );
       })}
     </div>
