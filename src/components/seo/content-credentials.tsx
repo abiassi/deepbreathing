@@ -13,6 +13,8 @@ const LABELS: Record<string, {
   es: { lastUpdated: "Última actualización", writtenBy: "Escrito por", reviewedBy: "Revisado por", methodology: "Nuestro contenido sigue pautas basadas en evidencia.", methodologyLink: "Conozca nuestra metodología →" },
   pt: { lastUpdated: "Última atualização", writtenBy: "Escrito por", reviewedBy: "Revisado por", methodology: "Nosso conteúdo segue diretrizes baseadas em evidências.", methodologyLink: "Conheça nossa metodologia →" },
   fr: { lastUpdated: "Dernière mise à jour", writtenBy: "Écrit par", reviewedBy: "Révisé par", methodology: "Notre contenu suit des directives fondées sur des preuves.", methodologyLink: "Découvrez notre méthodologie →" },
+  de: { lastUpdated: "Zuletzt aktualisiert", writtenBy: "Geschrieben von", reviewedBy: "Überprüft von", methodology: "Unsere Inhalte folgen evidenzbasierten Richtlinien.", methodologyLink: "Erfahren Sie mehr über unsere Methodik →" },
+  ja: { lastUpdated: "最終更新", writtenBy: "執筆", reviewedBy: "レビュー担当", methodology: "当サイトのコンテンツはエビデンスに基づくガイドラインに従っています。", methodologyLink: "メソドロジーについて →" },
 };
 
 function getLang(): string {

@@ -16,13 +16,15 @@ declare global {
   }
 }
 
-const SUPPORTED_LOCALES = ["es-es", "pt-br", "fr-fr"];
+const SUPPORTED_LOCALES = ["es-es", "pt-br", "fr-fr", "de-de", "ja-jp"];
 
 const LOCALE_SHORT: Record<string, string> = {
   en: "EN",
   "es-es": "ES",
   "pt-br": "PT",
   "fr-fr": "FR",
+  "de-de": "DE",
+  "ja-jp": "JA",
 };
 
 const LOCALE_FULL: Record<string, string> = {
@@ -30,6 +32,8 @@ const LOCALE_FULL: Record<string, string> = {
   "es-es": "Español",
   "pt-br": "Português",
   "fr-fr": "Français",
+  "de-de": "Deutsch",
+  "ja-jp": "日本語",
 };
 
 function getPrefix(locale: string): string {

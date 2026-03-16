@@ -3,7 +3,7 @@ import path from 'node:path';
 
 export const DEFAULT_EXCLUDED_ROUTES = [];
 export const DEFAULT_LOCALE_PREFIXES = [];
-export const EDGE_PROXY_LOCALE_PREFIXES = ['es'];
+export const EDGE_PROXY_LOCALE_PREFIXES = ['es', 'pt', 'fr', 'de', 'ja'];
 
 function isRouteGroup(segment) {
   return segment.startsWith('(') && segment.endsWith(')');

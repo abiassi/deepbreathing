@@ -5,6 +5,8 @@ const LABELS: Record<string, { lastUpdated: string; reviewedBy: string }> = {
   es: { lastUpdated: "Última actualización", reviewedBy: "Revisado por" },
   pt: { lastUpdated: "Última atualização", reviewedBy: "Revisado por" },
   fr: { lastUpdated: "Dernière mise à jour", reviewedBy: "Révisé par" },
+  de: { lastUpdated: "Zuletzt aktualisiert", reviewedBy: "Überprüft von" },
+  ja: { lastUpdated: "最終更新", reviewedBy: "レビュー担当" },
 };
 
 function getLocale(): string {
@@ -20,6 +22,8 @@ function getDateLocale(lang: string): string {
     es: "es-ES",
     pt: "pt-BR",
     fr: "fr-FR",
+    de: "de-DE",
+    ja: "ja-JP",
   };
   return map[lang] || "en-US";
 }
