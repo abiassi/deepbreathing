@@ -27,6 +27,32 @@ export const auth = betterAuth({
       maxAge: 300, // 5 min client-side cache
     },
   },
+  databaseHooks: {
+    user: {
+      create: {
+        after: async (user) => {
+          // Send personal welcome email from Abi
+          try {
+            await resend.emails.send({
+              from: "Abi from Deep Breathing Exercises <abi@deepbreathingexercises.com>",
+              to: user.email,
+              subject: "Welcome — glad you're here",
+              replyTo: "abi@deepbreathingexercises.com",
+              html: `<div style="font-family: system-ui, -apple-system, sans-serif; max-width: 480px; margin: 0 auto; padding: 40px 20px; color: #333;">
+  <p style="font-size: 16px; line-height: 1.7;">Hey${user.name ? ` ${user.name.split(" ")[0]}` : ""} 👋</p>
+  <p style="font-size: 16px; line-height: 1.7;">I'm Abi — I built Deep Breathing Exercises to help me manage my own anxiety. What started as a personal tool turned into something that now helps thousands of people every month, and I'm really glad you've signed up.</p>
+  <p style="font-size: 16px; line-height: 1.7;">Your settings and progress are now saved and will sync across your devices.</p>
+  <p style="font-size: 16px; line-height: 1.7;">I have one quick question for you: <strong>what's one feature you'd love to see built?</strong> Just hit reply — I read every response.</p>
+  <p style="font-size: 16px; line-height: 1.7;">Breathe easy,<br/>Abi</p>
+</div>`,
+            });
+          } catch {
+            // Don't block signup if welcome email fails
+          }
+        },
+      },
+    },
+  },
   plugins: [
     magicLink({
       sendMagicLink: async ({ email, url }) => {
