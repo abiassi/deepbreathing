@@ -31,6 +31,12 @@ export const auth = betterAuth({
       maxAge: 300, // 5 min client-side cache
     },
   },
+  advanced: {
+    crossSubDomainCookies: {
+      enabled: true,
+      domain: ".deepbreathingexercises.com",
+    },
+  },
   databaseHooks: {
     user: {
       create: {
