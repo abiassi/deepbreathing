@@ -138,7 +138,7 @@ export function LanguageSwitcherInline() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-card/80 px-2.5 py-2 text-xs font-semibold uppercase text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
+        className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-card/80 px-2.5 py-2.5 text-xs font-semibold uppercase text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
         aria-label="Change language"
       >
         {currentShort}
