@@ -70,11 +70,10 @@ export const auth = betterAuth({
           from: "Deep Breathing Exercises <noreply@deepbreathingexercises.com>",
           to: email,
           subject: "Your sign-in link",
-          html: `<div style="font-family: system-ui, -apple-system, sans-serif; max-width: 400px; margin: 0 auto; padding: 40px 20px;">
-  <h2 style="font-weight: 600; font-size: 20px; color: #1a1a1a;">Sign in to Deep Breathing Exercises</h2>
-  <p style="color: #666; line-height: 1.6;">Click below to sign in and save your breathing progress.</p>
-  <a href="${url}" style="display: inline-block; background: hsl(18, 90%, 60%); color: white; padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 600; margin: 16px 0;">Sign in</a>
-  <p style="color: #999; font-size: 13px;">This link expires in 5 minutes. If you didn't request this, ignore this email.</p>
+          html: `<div style="font-family: system-ui, -apple-system, sans-serif; max-width: 400px; margin: 0 auto; padding: 40px 20px; color: #333;">
+  <p style="font-size: 16px; line-height: 1.7;">Here's your link to sign in:</p>
+  <a href="${url}" style="display: inline-block; background: hsl(18, 90%, 60%); color: white; padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 600; margin: 12px 0;">Sign in to Deep Breathing Exercises</a>
+  <p style="font-size: 13px; color: #999; margin-top: 20px;">This link expires in 5 minutes. If you didn't request it, just ignore this.</p>
 </div>`,
         });
       },
