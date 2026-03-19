@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 import { JsonLd } from "@/components/seo/json-ld";
 import { createOgImagePath } from "@/lib/seo/og-image";
+
+const ShareButton = dynamic(
+  () => import("@/components/ui/share-button").then(mod => ({ default: mod.ShareButton })),
+  { ssr: false }
+);
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/2-minute-breathing-exercise`;
@@ -161,6 +167,13 @@ export default function TwoMinuteBreathingExercisePage() {
             <Link href="/breathe/box?duration=120" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
               Start box breathing
             </Link>
+            <ShareButton
+              url={canonicalUrl}
+              title="2 Minute Breathing Exercise"
+              text="Try this 2-minute box breathing exercise — a quick reset that actually works."
+              buttonText="Share this exercise"
+              embedSlug="box"
+            />
           </div>
         </div>
 
@@ -173,6 +186,13 @@ export default function TwoMinuteBreathingExercisePage() {
             <Link href="/breathe/coherent?duration=120" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
               Start coherent breathing
             </Link>
+            <ShareButton
+              url={canonicalUrl}
+              title="2 Minute Breathing Exercise"
+              text="Try this 2-minute coherent breathing exercise — a gentle reset that works."
+              buttonText="Share this exercise"
+              embedSlug="coherent"
+            />
           </div>
         </div>
       </section>
@@ -339,6 +359,21 @@ export default function TwoMinuteBreathingExercisePage() {
           <Link href="/breathe" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
             Browse all techniques
           </Link>
+        </div>
+      </section>
+
+      <section className="mt-12 rounded-[32px] bg-primary/5 p-8 text-center">
+        <h2 className="text-2xl font-semibold text-card-foreground">Share with someone who needs a reset</h2>
+        <p className="mx-auto mt-2 max-w-lg text-sm text-muted-foreground">
+          Know someone who could use a quick 2-minute breather? Send them this page.
+        </p>
+        <div className="mt-4 flex justify-center">
+          <ShareButton
+            url={canonicalUrl}
+            title="2 Minute Breathing Exercise"
+            text="Try this 2-minute breathing exercise — it's a quick reset that actually works."
+            buttonText="Share this exercise"
+          />
         </div>
       </section>
 

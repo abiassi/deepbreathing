@@ -54,6 +54,7 @@ interface ResonanceProps {
   snowMode?: boolean;
   forcedTheme?: 'light' | 'dark';
   backgroundVariant?: 'default' | 'winter-blue';
+  embedMode?: boolean;
 }
 
 // Valid duration values in seconds (clamped to prevent abuse)
@@ -87,7 +88,7 @@ const toRgba = (hex: string, alpha: number) => {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 };
 
-const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMode, immersive, snowMode = false, forcedTheme, backgroundVariant = 'default' }) => {
+const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMode, immersive, snowMode = false, forcedTheme, backgroundVariant = 'default', embedMode = false }) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -1099,52 +1100,56 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
       <header className="relative z-20 flex items-center justify-end gap-2 p-6">
         <LanguageSwitcherInline />
-        {isAuthenticated && user ? (
-          <div className="relative">
-            <button
-              onClick={() => setShowUserMenu(prev => !prev)}
-              className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 overflow-hidden"
-              aria-label="Account menu"
-            >
-              {user.image ? (
-                <img src={user.image} alt="" className="h-7 w-7 rounded-full" />
-              ) : (
-                <span className="flex h-7 w-7 items-center justify-center text-xs font-medium text-card-foreground">
-                  {(user.name || user.email)?.[0]?.toUpperCase() || '?'}
-                </span>
-              )}
-            </button>
-            {showUserMenu && (
-              <div className="absolute right-0 top-10 z-50 min-w-[200px] rounded-2xl border border-border/70 bg-background/95 p-3 shadow-lg backdrop-blur-2xl">
-                <p className="truncate px-2 text-sm font-medium text-card-foreground">{user.name || 'Account'}</p>
-                <p className="truncate px-2 text-xs text-muted-foreground">{user.email}</p>
-                <div className="my-2 h-px bg-border/60" />
+        {!embedMode && (
+          <>
+            {isAuthenticated && user ? (
+              <div className="relative">
                 <button
-                  onClick={() => { setShowUserMenu(false); signOut(); }}
-                  className="flex w-full items-center gap-2 rounded-xl px-2 py-2 text-sm text-muted-foreground transition-colors hover:bg-card hover:text-card-foreground"
+                  onClick={() => setShowUserMenu(prev => !prev)}
+                  className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 overflow-hidden"
+                  aria-label="Account menu"
                 >
-                  <LogOut size={14} />
-                  Sign out
+                  {user.image ? (
+                    <img src={user.image} alt="" className="h-7 w-7 rounded-full" />
+                  ) : (
+                    <span className="flex h-7 w-7 items-center justify-center text-xs font-medium text-card-foreground">
+                      {(user.name || user.email)?.[0]?.toUpperCase() || '?'}
+                    </span>
+                  )}
                 </button>
+                {showUserMenu && (
+                  <div className="absolute right-0 top-10 z-50 min-w-[200px] rounded-2xl border border-border/70 bg-background/95 p-3 shadow-lg backdrop-blur-2xl">
+                    <p className="truncate px-2 text-sm font-medium text-card-foreground">{user.name || 'Account'}</p>
+                    <p className="truncate px-2 text-xs text-muted-foreground">{user.email}</p>
+                    <div className="my-2 h-px bg-border/60" />
+                    <button
+                      onClick={() => { setShowUserMenu(false); signOut(); }}
+                      className="flex w-full items-center gap-2 rounded-xl px-2 py-2 text-sm text-muted-foreground transition-colors hover:bg-card hover:text-card-foreground"
+                    >
+                      <LogOut size={14} />
+                      Sign out
+                    </button>
+                  </div>
+                )}
               </div>
+            ) : (
+              <button
+                onClick={() => setShowSignInSheet(true)}
+                className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 p-2.5 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
+                aria-label="Sign in"
+              >
+                <User size={16} />
+              </button>
             )}
-          </div>
-        ) : (
-          <button
-            onClick={() => setShowSignInSheet(true)}
-            className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 p-2.5 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
-            aria-label="Sign in"
-          >
-            <User size={16} />
-          </button>
+            <button
+              onClick={() => setControlsOpen(true)}
+              className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 p-2.5 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
+              aria-label="Settings"
+            >
+              <SettingsIcon size={16} />
+            </button>
+          </>
         )}
-        <button
-          onClick={() => setControlsOpen(true)}
-          className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 p-2.5 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
-          aria-label="Settings"
-        >
-          <SettingsIcon size={16} />
-        </button>
       </header>
 
       <main className="relative z-10 flex flex-1 flex-col items-center justify-center pb-32 sm:pb-0">

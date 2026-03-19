@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 import { JsonLd } from "@/components/seo/json-ld";
 import { createOgImagePath } from "@/lib/seo/og-image";
+
+const ShareButton = dynamic(
+  () => import("@/components/ui/share-button").then(mod => ({ default: mod.ShareButton })),
+  { ssr: false }
+);
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/5-minute-breathing-exercise`;
@@ -152,9 +158,13 @@ export default function FiveMinuteBreathingExercisePage() {
             <Link href="/breathe/coherent?duration=300" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
               Start 5-minute session
             </Link>
-            <Link href="/" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
-              Try the full visualizer
-            </Link>
+            <ShareButton
+              url={canonicalUrl}
+              title="5 Minute Breathing Exercise"
+              text="Try this 5-minute breathing exercise — great for deep relaxation and HRV training."
+              buttonText="Share this exercise"
+              embedSlug="coherent"
+            />
           </div>
         </div>
 
@@ -383,6 +393,21 @@ export default function FiveMinuteBreathingExercisePage() {
           <Link href="/breathe" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
             Browse all techniques
           </Link>
+        </div>
+      </section>
+
+      <section className="mt-12 rounded-[32px] bg-primary/5 p-8 text-center">
+        <h2 className="text-2xl font-semibold text-card-foreground">Share with someone who needs deep relaxation</h2>
+        <p className="mx-auto mt-2 max-w-lg text-sm text-muted-foreground">
+          Know someone who could benefit from 5 minutes of calm? Send them this page.
+        </p>
+        <div className="mt-4 flex justify-center">
+          <ShareButton
+            url={canonicalUrl}
+            title="5 Minute Breathing Exercise"
+            text="Try this 5-minute breathing exercise — it's great for deep relaxation and HRV training."
+            buttonText="Share this exercise"
+          />
         </div>
       </section>
 

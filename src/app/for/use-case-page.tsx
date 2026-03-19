@@ -13,7 +13,7 @@ import { createOgImagePath } from "@/lib/seo/og-image";
 
 // Dynamic import for client component
 const ShareButton = dynamic(
-  () => import("./share-button").then(mod => ({ default: mod.ShareButton })),
+  () => import("@/components/ui/share-button").then(mod => ({ default: mod.ShareButton })),
   { ssr: false }
 );
 
@@ -183,21 +183,17 @@ export function UseCasePage({ slug }: { slug: string }) {
       subtitle={page.hero.subtitle}
       headingLevel={2}
     >
-      {isHolidayPage && (
-        <div className="pt-2">
-          <ShareButton
-            url={canonicalUrl}
-            title={page.hero.title}
-            text={slug === "holiday-stress"
-              ? "Holiday stress? This 30-second breathing technique helps instantly."
-              : "Travel anxiety? This breathing technique keeps you calm through flights and delays."
-            }
-            buttonText="Share with someone"
-            size="large"
-            variant="winter"
-          />
-        </div>
-      )}
+      <div className="pt-2">
+        <ShareButton
+          url={canonicalUrl}
+          title={page.hero.title}
+          text={`Try this guided breathing exercise for ${page.hero.title.toLowerCase().replace(/^breathing (exercises? )?for /, '')}.`}
+          buttonText="Share with someone"
+          variant={isHolidayPage ? "default" : "accent"}
+          accentColor={pattern.color}
+          embedSlug={page.breathingPageSlug}
+        />
+      </div>
     </FadingHeroTitle>
   );
 
@@ -336,7 +332,7 @@ export function UseCasePage({ slug }: { slug: string }) {
               className="inline-flex items-center gap-2 text-sm font-medium transition hover:underline"
               style={{ color: pattern.color }}
             >
-              Learn more about {pattern.name} Breathing →
+              Learn more about {pattern.name} →
             </Link>
           </div>
         </section>
@@ -547,26 +543,23 @@ export function UseCasePage({ slug }: { slug: string }) {
               >
                 Go to visualizer →
               </a>
-              {isHolidayPage && (
-                <ShareButton
-                  url={canonicalUrl}
-                  title={page.hero.title}
-                  text={slug === "holiday-stress"
-                    ? "Holiday stress? This 30-second breathing technique helps instantly."
-                    : "Travel anxiety? This breathing technique keeps you calm through flights and delays."
-                  }
-                  buttonText="Share"
-                  size="large"
-                  variant="winter"
-                />
-              )}
+              <ShareButton
+                url={canonicalUrl}
+                title={page.hero.title}
+                text={`Try this guided breathing exercise for ${page.hero.title.toLowerCase().replace(/^breathing (exercises? )?for /, '')}.`}
+                buttonText="Share this exercise"
+                size="large"
+                variant={isHolidayPage ? "default" : "accent"}
+                accentColor={pattern.color}
+                embedSlug={page.breathingPageSlug}
+              />
             </div>
             <Link
               href={`/breathe/${page.relatedTechnique.slug}`}
               className="inline-flex items-center gap-2 text-sm font-medium transition hover:underline"
               style={{ color: pattern.color }}
             >
-              Learn more about {pattern.name} Breathing →
+              Learn more about {pattern.name} →
             </Link>
           </div>
         </section>

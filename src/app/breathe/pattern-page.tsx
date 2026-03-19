@@ -10,6 +10,11 @@ import { breathingPageMap, type BreathingPageContent } from "@/data/breathing-pa
 import { LocalizedDate } from "@/components/seo/localized-date";
 import { LanguageSwitcherFooter } from "@/components/language-switcher";
 
+const ShareButton = dynamic(
+  () => import("@/components/ui/share-button").then(mod => ({ default: mod.ShareButton })),
+  { ssr: false }
+);
+
 // Lazy-load Resonance to improve initial page load
 const Resonance = dynamic(
   () => import("@/components/resonance/Resonance"),
@@ -176,14 +181,23 @@ export function PatternPage({ slug }: { slug: string }) {
   const structuredData = [faqSchema, howToSchema, articleSchema, breadcrumbSchema, ...(videoSchema ? [videoSchema] : [])];
 
   const heroHeader = (
-    <div className="space-y-4">
-      <FadingHeroTitle
-        label="DEEP BREATHING EXERCISES"
-        title={page.hero.title}
-        subtitle={page.hero.subtitle}
-        headingLevel={2}
-      />
-    </div>
+    <FadingHeroTitle
+      label="DEEP BREATHING EXERCISES"
+      title={page.hero.title}
+      subtitle={page.hero.subtitle}
+      headingLevel={2}
+    >
+      <div className="pt-2">
+        <ShareButton
+          url={canonicalUrl}
+          title={page.hero.title}
+          text={`Try this guided ${page.hero.title.toLowerCase()} exercise — it really helps.`}
+          buttonText="Share this exercise"
+          variant="accent"
+          accentColor={BREATHING_PATTERNS[page.mode].color}
+        />
+      </div>
+    </FadingHeroTitle>
   );
 
   return (
@@ -539,6 +553,24 @@ export function PatternPage({ slug }: { slug: string }) {
             )}
           </section>
         )}
+
+        <section className="rounded-[32px] p-8 text-center" style={{ backgroundColor: `${BREATHING_PATTERNS[page.mode].color}10` }}>
+          <h2 className="text-2xl font-semibold text-card-foreground">Share this technique</h2>
+          <p className="mx-auto mt-2 max-w-lg text-sm text-muted-foreground">
+            Know someone who could benefit from {page.hero.title.toLowerCase()}? Send them a direct link.
+          </p>
+          <div className="mt-4 flex justify-center">
+            <ShareButton
+              url={canonicalUrl}
+              title={page.hero.title}
+              text={`Try this guided ${page.hero.title.toLowerCase()} exercise — it really helps.`}
+              buttonText="Share this exercise"
+              variant="accent"
+              accentColor={BREATHING_PATTERNS[page.mode].color}
+              embedSlug={page.slug}
+            />
+          </div>
+        </section>
 
         <footer className="rounded-[32px] border border-border bg-card p-6 text-center">
           <p className="text-xs text-muted-foreground">

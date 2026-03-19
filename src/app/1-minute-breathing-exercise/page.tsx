@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 import { JsonLd } from "@/components/seo/json-ld";
 import { createOgImagePath } from "@/lib/seo/og-image";
+
+const ShareButton = dynamic(
+  () => import("@/components/ui/share-button").then(mod => ({ default: mod.ShareButton })),
+  { ssr: false }
+);
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/1-minute-breathing-exercise`;
@@ -151,9 +157,13 @@ export default function OneMinuteBreathingExercisePage() {
             <Link href="/breathe/box?duration=60" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
               Start 1-minute session
             </Link>
-            <Link href="/" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
-              Try the full visualizer
-            </Link>
+            <ShareButton
+              url={canonicalUrl}
+              title="1 Minute Breathing Exercise"
+              text="Try this 1-minute breathing exercise — it's the fastest way to calm down."
+              buttonText="Share this exercise"
+              embedSlug="box"
+            />
           </div>
         </div>
 
@@ -329,6 +339,21 @@ export default function OneMinuteBreathingExercisePage() {
           <Link href="/breathe" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-card-foreground">
             Browse all techniques
           </Link>
+        </div>
+      </section>
+
+      <section className="mt-12 rounded-[32px] bg-primary/5 p-8 text-center">
+        <h2 className="text-2xl font-semibold text-card-foreground">Share with someone who needs a quick reset</h2>
+        <p className="mx-auto mt-2 max-w-lg text-sm text-muted-foreground">
+          Know someone who could use a 1-minute breather? Send them this page.
+        </p>
+        <div className="mt-4 flex justify-center">
+          <ShareButton
+            url={canonicalUrl}
+            title="1 Minute Breathing Exercise"
+            text="Try this 1-minute breathing exercise — it's the fastest way to calm down."
+            buttonText="Share this exercise"
+          />
         </div>
       </section>
 
