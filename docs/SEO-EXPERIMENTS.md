@@ -13,6 +13,37 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 
 ## Active Experiments
 
+### 2026-03-19: Embed Widget Page + Share Popover + llms.txt
+
+**Hypothesis:** An embeddable widget page (`/embed`) will attract backlinks from wellness bloggers and practitioners embedding exercises on their sites. Share popover with embed snippet increases distribution. `llms.txt` improves AI citation rate.
+
+**Baseline (Mar 19):**
+- DR: 0.2 — link building is #1 bottleneck
+- 0 referring domains linking to /embed (new page)
+- No llms.txt existed previously
+
+**Changes Made:**
+- New `/embed` landing page — pattern picker, theme toggle, live preview, copy snippet
+- New `/embed/[slug]` route — clean embeddable visualizer (noindex, iframe-friendly headers)
+- Share button redesigned: click → auto-copy URL + popover with link & embed snippet
+- Share buttons added to all pattern, use-case, and timed exercise pages (hero + footer)
+- `llms.txt` created with all 12 patterns, timed sessions, use-case guides, embed docs
+- "Embed" link added to all page footers
+- Fixed "Breathing Breathing" duplication in use-case CTA links
+- Fixed JSON-LD runtime error (array → separate script tags)
+
+**Target keywords:** "breathing exercise widget", "embed breathing exercise"
+
+**Measure after 3 weeks (Apr 9):**
+- [ ] /embed page indexed in Google + Bing
+- [ ] Any new referring domains from embed usage
+- [ ] AI citation rate change (check Brand Radar)
+- [ ] Impressions/clicks for embed-related queries
+
+**Status:** `Waiting`
+
+---
+
 ### 2026-01-06: CTR Title Rewrites (Batch 1)
 
 **Hypothesis:** Benefit-first titles increase CTR vs attribution-first titles

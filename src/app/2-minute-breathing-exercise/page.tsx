@@ -394,6 +394,9 @@ export default function TwoMinuteBreathingExercisePage() {
           <Link href="/about" className="underline underline-offset-2 transition-colors hover:text-foreground">
             About
           </Link>
+          <Link href="/embed" className="underline underline-offset-2 transition-colors hover:text-foreground">
+            Embed
+          </Link>
           <Link href="/privacy" className="underline underline-offset-2 transition-colors hover:text-foreground">
             Privacy
           </Link>
