@@ -485,7 +485,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       }
 
       setIsRunning(true);
-      trackEvent('session_start', { mode: activeMode, duration: selectedDuration ?? 0 });
+      trackEvent('breathing_session_start', { mode: activeMode, duration: selectedDuration ?? 0 });
 
       // Check if this is Wim Hof (protocol mode)
       if (activeMode === ModeName.WimHof) {
@@ -538,7 +538,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setIsProtocolMode(false);
       setPhase(BreathingPhase.Idle);
       setInstructionKey('session.paused');
-      trackEvent('session_pause', { mode: activeMode, seconds_elapsed: sessionSeconds });
+      trackEvent('breathing_session_pause', { mode: activeMode, seconds_elapsed: sessionSeconds });
       audio.stopDrone();
       audio.stopPinkNoise();
       audio.stopBinaural();
@@ -559,7 +559,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       isUserControlledHold: false
     });
     setInstructionKey('session.ready_to_start');
-    trackEvent('session_stop', { mode: activeMode, seconds_elapsed: sessionSeconds });
+    trackEvent('breathing_session_stop', { mode: activeMode, seconds_elapsed: sessionSeconds });
 
     if (sessionSeconds > 0) {
       setTotalMinutes(prev => prev + Math.floor(sessionSeconds / 60));
@@ -912,7 +912,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setIsRunning(false);
       setPhase(BreathingPhase.Idle);
       setInstructionKey('session.complete');
-      trackEvent('session_complete', { mode: activeMode, seconds_elapsed: sessionSeconds });
+      trackEvent('breathing_session_complete', { mode: activeMode, seconds_elapsed: sessionSeconds });
       // Stop all audio
       audio.stopDrone();
       audio.stopPinkNoise();
