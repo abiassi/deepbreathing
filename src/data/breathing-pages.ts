@@ -132,7 +132,7 @@ export const breathingPages: BreathingPageContent[] = [
     mode: ModeName.Box,
     featured: true,
     hero: {
-      title: "Box Breathing (4‑4‑4‑4) Visualizer",
+      title: "Box Breathing (4-4-4-4) Visualizer",
       subtitle: "Equal counts to steady arousal and sharpen focus.",
       intro: "Box breathing uses four equal phases: inhale, hold, exhale, hold. The pattern slows respiration and stabilizes attention. Keep counts comfortable (e.g., 3–6 seconds each). If holds feel tight or dizzying, shorten them or remove holds and keep the rhythm even."
     },
@@ -178,7 +178,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         title: "Portable structure",
-        description: "Memorable 4‑step rhythm you can use at your desk, during transit, or on the sidelines."
+        description: "Memorable 4-step rhythm you can use at your desk, during transit, or on the sidelines."
       },
       {
         title: "Flexible dosing",
@@ -188,7 +188,7 @@ export const breathingPages: BreathingPageContent[] = [
     practiceTips: [
       {
         title: "Comfort over intensity",
-        description: "Start at 3–4‑second sides. If you feel air hunger or dizziness, shorten holds or skip them and keep breaths light and quiet."
+        description: "Start at 3–4-second sides. If you feel air hunger or dizziness, shorten holds or skip them and keep breaths light and quiet."
       },
       {
         title: "Nasal, quiet, low",
@@ -202,23 +202,23 @@ export const breathingPages: BreathingPageContent[] = [
     faqs: [
       {
         question: "Does box breathing increase HRV as well as other patterns?",
-        answer: "Slow breathing generally increases vagally mediated HRV. A 2025 comparative study found 6 breaths/min (with equal or slightly longer exhales) increased HRV more than square (box) or 4‑7‑8 in healthy young adults, with a small risk of over‑breathing at 6 bpm. Practically: box breathing is still effective for many users and may be easier to adhere to; if your goal is maximal HRV amplitude, try equal in/out at ~5–6 breaths/min with minimal or no holds."
+        answer: "Slow breathing generally increases vagally mediated HRV. A 2025 comparative study found 6 breaths/min (with equal or slightly longer exhales) increased HRV more than square (box) or 4-7-8 in healthy young adults, with a small risk of over-breathing at 6 bpm. Practically: box breathing is still effective for many users and may be easier to adhere to; if your goal is maximal HRV amplitude, try equal in/out at ~5–6 breaths/min with minimal or no holds."
       },
       {
         question: "How many cycles and how often should I practice?",
-        answer: "For quick resets, use 1–3 minutes (about 4–10 cycles at 4‑4‑4‑4). For deeper effects, stack 5–10 minutes of slow, comfortable breathing daily. Reviews of breathing interventions suggest sessions ≥5 minutes and repeated practice over weeks outperform one‑off, very short sessions for stress reduction."
+        answer: "For quick resets, use 1–3 minutes (about 4–10 cycles at 4-4-4-4). For deeper effects, stack 5–10 minutes of slow, comfortable breathing daily. Reviews of breathing interventions suggest sessions ≥5 minutes and repeated practice over weeks outperform one-off, very short sessions for stress reduction."
       },
       {
         question: "Are the holds necessary?",
-        answer: "No. Benefits mainly come from slow, smooth pacing. Holds can help some people focus but may feel uncomfortable or air‑hungry for others. If holds feel strained, especially during pregnancy or with cardiac/pulmonary conditions, shorten them or omit holds. Keep an even inhale/exhale at a comfortable rate."
+        answer: "No. Benefits mainly come from slow, smooth pacing. Holds can help some people focus but may feel uncomfortable or air-hungry for others. If holds feel strained, especially during pregnancy or with cardiac/pulmonary conditions, shorten them or omit holds. Keep an even inhale/exhale at a comfortable rate."
       },
       {
         question: "Is box breathing safe in pregnancy?",
         answer: "Gentle, continuous breathing is generally recommended; many prenatal guidelines advise avoiding prolonged or forceful breath holding. If you’re pregnant, favor short, easy counts and skip holds. Stop if you feel dizzy or breathless and consult your clinician for personalized advice."
       },
       {
-        question: "I felt light‑headed. What went wrong?",
-        answer: "Likely over‑breathing (exhaling more CO₂ than you produce). Fixes: make breaths smaller and quieter, shorten holds, switch to equal in/out without holds, or pause and resume later. Capnometry studies in HRV training monitor this risk; you can self‑monitor by prioritizing comfort over depth."
+        question: "I felt light-headed. What went wrong?",
+        answer: "Likely over-breathing (exhaling more CO₂ than you produce). Fixes: make breaths smaller and quieter, shorten holds, switch to equal in/out without holds, or pause and resume later. Capnometry studies in HRV training monitor this risk; you can self-monitor by prioritizing comfort over depth."
       },
       {
         question: "Why do Navy SEALs use box breathing?",
@@ -230,7 +230,7 @@ export const breathingPages: BreathingPageContent[] = [
       difficulty: "easy",
       tools: [
         "Chair or comfortable seat",
-        "On‑screen timer or haptics (optional)"
+        "On-screen timer or haptics (optional)"
       ],
       supplies: [],
       steps: [
@@ -268,7 +268,7 @@ export const breathingPages: BreathingPageContent[] = [
     },
     useCases: [
       {
-        name: "Pre‑meeting composure",
+        name: "Pre-meeting composure",
         description: "One minute to reduce arousal and clear attention before you speak.",
         dose: "60–90 seconds at 3–4 s per side"
       },
@@ -278,7 +278,7 @@ export const breathingPages: BreathingPageContent[] = [
         dose: "2 minutes at 4–5 s per side"
       },
       {
-        name: "Wind‑down before bed",
+        name: "Wind-down before bed",
         description: "Ease into relaxation; remove holds if they feel edgy at night.",
         dose: "3 minutes at 3–4 s per side, holds optional"
       }
@@ -286,23 +286,23 @@ export const breathingPages: BreathingPageContent[] = [
     research: {
       studies: [
         {
-          title: "Laborde et al., 2022 meta‑analysis (VSB → vmHRV)",
-          summary: "Systematic review/meta‑analysis found voluntary slow breathing increases vagally mediated HRV during sessions, acutely after a session, and after multi‑session training.",
+          title: "Laborde et al., 2022 meta-analysis (VSB → vmHRV)",
+          summary: "Systematic review/meta-analysis found voluntary slow breathing increases vagally mediated HRV during sessions, acutely after a session, and after multi-session training.",
           url: "https://pubmed.ncbi.nlm.nih.gov/35623448/"
         },
         {
           title: "Marchant et al., 2025 comparative trial",
-          summary: "In 84 adults, 6 breaths/min increased HRV more than square (box) or 4‑7‑8; no meaningful BP or mood changes; mild over‑breathing occurred at 6 bpm.",
+          summary: "In 84 adults, 6 breaths/min increased HRV more than square (box) or 4-7-8; no meaningful BP or mood changes; mild over-breathing occurred at 6 bpm.",
           url: "https://pubmed.ncbi.nlm.nih.gov/39864026/"
         },
         {
           title: "Steffen et al., 2017 RCT (resonance vs +1 vs control)",
-          summary: "Resonance‑frequency breathing improved HRV and reduced blood‑pressure reactivity to a stressor vs control; mood improved post‑practice.",
+          summary: "Resonance-frequency breathing improved HRV and reduced blood-pressure reactivity to a stressor vs control; mood improved post-practice.",
           url: "https://pubmed.ncbi.nlm.nih.gov/28890890/"
         },
         {
-          title: "Fincham et al., 2023 meta‑analysis (breathwork & stress)",
-          summary: "Across RCTs, breathwork produced small‑to‑moderate reductions in subjective stress, anxiety, and depressive symptoms vs non‑breathwork controls.",
+          title: "Fincham et al., 2023 meta-analysis (breathwork & stress)",
+          summary: "Across RCTs, breathwork produced small-to-moderate reductions in subjective stress, anxiety, and depressive symptoms vs non-breathwork controls.",
           url: "https://pubmed.ncbi.nlm.nih.gov/36624160/"
         }
       ],
@@ -310,7 +310,7 @@ export const breathingPages: BreathingPageContent[] = [
         "Prioritize comfort: smaller, quieter breaths; avoid straining on holds.",
         "Pregnancy: avoid prolonged/forceful breath holding; favor gentle continuous breathing.",
         "Cardiopulmonary disease, uncontrolled hypertension, syncope history: avoid strong holds; practice seated and consult a clinician.",
-        "Stop if dizzy, tingly, or chest‑tight; resume with shorter counts or remove holds."
+        "Stop if dizzy, tingly, or chest-tight; resume with shorter counts or remove holds."
       ],
       quotes: []
     },
@@ -325,11 +325,11 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         slug: "pursed-lip",
-        reason: "Exhale‑focused breathing that eases breathlessness and promotes calmer pacing."
+        reason: "Exhale-focused breathing that eases breathlessness and promotes calmer pacing."
       },
       {
         slug: "ujjayi",
-        reason: "Ocean‑breath focus for yoga sessions and steady, mindful breathing."
+        reason: "Ocean-breath focus for yoga sessions and steady, mindful breathing."
       },
       {
         slug: "belly",
@@ -350,14 +350,14 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "kids",
         title: "Breathing for Kids",
-        teaser: "Kid‑friendly calming exercises that build the same slow‑breathing habit"
+        teaser: "Kid-friendly calming exercises that build the same slow-breathing habit"
       }
     ],
     keywords: [
       "box breathing",
       "square breathing",
-      "4‑4‑4‑4 breathing",
-      "four‑square breathing",
+      "4-4-4-4 breathing",
+      "four-square breathing",
       "equal breathing",
       "tactical breathing",
       "paced breathing",
@@ -369,9 +369,9 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     synonyms: [
       "square breathing",
-      "four‑square",
+      "four-square",
       "4×4 breathing",
-      "4‑4‑4‑4",
+      "4-4-4-4",
       "equal breathing",
       "sama vritti pranayama"
     ],
@@ -397,9 +397,9 @@ export const breathingPages: BreathingPageContent[] = [
     mode: ModeName.Relax,
     featured: true,
     hero: {
-      title: "4‑7‑8 Breathing Visualizer",
-      subtitle: "Long‑exhale cadence to downshift quickly.",
-      intro: "Inhale for 4 counts, hold lightly for 7, exhale for 8. This exhale‑emphasized pattern slows breathing, often increases vagal markers, and helps many people settle into sleep or reduce acute tension. Keep holds gentle; shorten or skip them if uncomfortable."
+      title: "4-7-8 Breathing Visualizer",
+      subtitle: "Long-exhale cadence to downshift quickly.",
+      intro: "Inhale for 4 counts, hold lightly for 7, exhale for 8. This exhale-emphasized pattern slows breathing, often increases vagal markers, and helps many people settle into sleep or reduce acute tension. Keep holds gentle; shorten or skip them if uncomfortable."
     },
     meta: {
       title: "4-7-8 Breathing: Fall Asleep in 2 Minutes (Dr. Weil's Method)",
@@ -434,30 +434,30 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     benefits: [
       {
-        title: "Exhale‑led calming",
+        title: "Exhale-led calming",
         description: "Long exhales slow respiration and often increase parasympathetic markers during practice."
       },
       {
-        title: "Sleep wind‑down",
-        description: "A few rounds at bedtime can reduce pre‑sleep arousal and help some sleepers settle."
+        title: "Sleep wind-down",
+        description: "A few rounds at bedtime can reduce pre-sleep arousal and help some sleepers settle."
       },
       {
         title: "Simple & portable",
-        description: "Memorable 4‑7‑8 count you can do seated, in bed, or in transit. No gear needed."
+        description: "Memorable 4-7-8 count you can do seated, in bed, or in transit. No gear needed."
       }
     ],
     practiceTips: [
       {
         title: "Make holds gentle",
-        description: "The 7‑count pause should feel light. If edgy, use 4‑4‑8 or 4‑6‑8 for a week, then progress."
+        description: "The 7-count pause should feel light. If edgy, use 4-4-8 or 4-6-8 for a week, then progress."
       },
       {
         title: "Smaller, quieter breaths",
-        description: "Avoid big gulps of air. Keep tidal volume modest to prevent dizziness from over‑breathing."
+        description: "Avoid big gulps of air. Keep tidal volume modest to prevent dizziness from over-breathing."
       },
       {
         title: "Comfort pacing",
-        description: "Counts are flexible. Start with 3‑5‑6 or 4‑4‑6; extend only if it stays effortless."
+        description: "Counts are flexible. Start with 3-5-6 or 4-4-6; extend only if it stays effortless."
       }
     ],
     faqs: [
@@ -466,24 +466,24 @@ export const breathingPages: BreathingPageContent[] = [
         answer: "Both '4 7 8 breathing' and '4-7-8 breathing' refer to the same technique—the numbers represent the count for each phase: inhale for 4 counts, hold for 7 counts, exhale for 8 counts. Whether written with spaces (4 7 8) or hyphens (4-7-8), the breathing timer works the same way. This technique is also called the 'relaxing breath' or Dr. Weil's breathing method."
       },
       {
-        question: "Is there direct evidence for 4‑7‑8?",
-        answer: "Direct trials are limited but growing. A randomized clinical trial in post‑bariatric patients reported lower post‑test state anxiety in a 4‑7‑8 group compared with deep‑breathing and usual‑care groups. In healthy adults, a controlled study found 4‑7‑8 increased high‑frequency HRV and lowered heart rate and systolic blood pressure within a session, though between‑group differences were small. Larger comparisons often favor ~5–6 breaths/min equal in/out for maximal HRV amplitude, but 4‑7‑8 remains useful for exhale‑led calming."
+        question: "Is there direct evidence for 4-7-8?",
+        answer: "Direct trials are limited but growing. A randomized clinical trial in post-bariatric patients reported lower post-test state anxiety in a 4-7-8 group compared with deep-breathing and usual-care groups. In healthy adults, a controlled study found 4-7-8 increased high-frequency HRV and lowered heart rate and systolic blood pressure within a session, though between-group differences were small. Larger comparisons often favor ~5–6 breaths/min equal in/out for maximal HRV amplitude, but 4-7-8 remains useful for exhale-led calming."
       },
       {
         question: "How many rounds and how often?",
-        answer: "For a quick reset, run 3–4 cycles. For wind‑down, 1–3 minutes works for many; stop if you feel light‑headed. Reviews suggest sessions ≥5 minutes and repeated practice deliver more reliable stress reduction than very brief, one‑off sessions. You can mix shorter 4‑7‑8 sets during the day with a longer slow‑breathing session elsewhere."
+        answer: "For a quick reset, run 3–4 cycles. For wind-down, 1–3 minutes works for many; stop if you feel light-headed. Reviews suggest sessions ≥5 minutes and repeated practice deliver more reliable stress reduction than very brief, one-off sessions. You can mix shorter 4-7-8 sets during the day with a longer slow-breathing session elsewhere."
       },
       {
-        question: "Do I need the 7‑second hold?",
-        answer: "No. Benefits mainly come from slow, smooth, exhale‑emphasized breathing. If holds feel uncomfortable or trigger air hunger, shorten them or remove holds entirely (e.g., 4‑6 or 4‑8). The exhale should be longer than the inhale and unforced."
+        question: "Do I need the 7-second hold?",
+        answer: "No. Benefits mainly come from slow, smooth, exhale-emphasized breathing. If holds feel uncomfortable or trigger air hunger, shorten them or remove holds entirely (e.g., 4-6 or 4-8). The exhale should be longer than the inhale and unforced."
       },
       {
         question: "What are the best 4-7-8 settings for sleep?",
         answer: "For sleep, use 3-4 cycles of 4-7-8 breathing lying in bed with lights off. Start with the 1x speed multiplier and slow down to 0.8x if comfortable. If the 7-second hold feels too long, try 4-5-8 or 4-4-8 instead. Combine with other sleep hygiene: consistent bedtime, no screens 30 minutes prior, and a cool, dark room. Many find it works best as the last thing before sleep."
       },
       {
-        question: "Is 4‑7‑8 safe in pregnancy?",
-        answer: "Gentle, continuous breathing is preferred during pregnancy; many guidelines advise avoiding prolonged or forceful breath holding. If you are pregnant, skip the 7‑count hold, keep breaths easy, and stop if you feel dizzy or breathless. Consult your clinician for personalized guidance."
+        question: "Is 4-7-8 safe in pregnancy?",
+        answer: "Gentle, continuous breathing is preferred during pregnancy; many guidelines advise avoiding prolonged or forceful breath holding. If you are pregnant, skip the 7-count hold, keep breaths easy, and stop if you feel dizzy or breathless. Consult your clinician for personalized guidance."
       }
     ],
     howTo: {
@@ -491,7 +491,7 @@ export const breathingPages: BreathingPageContent[] = [
       difficulty: "easy",
       tools: [
         "Chair or bed",
-        "On‑screen timer or haptics (optional)"
+        "On-screen timer or haptics (optional)"
       ],
       supplies: [],
       steps: [
@@ -525,7 +525,7 @@ export const breathingPages: BreathingPageContent[] = [
     useCases: [
       {
         name: "Sleep onset",
-        description: "Reduce pre‑sleep arousal and lengthen exhales before lights out.",
+        description: "Reduce pre-sleep arousal and lengthen exhales before lights out.",
         dose: "3–4 cycles; repeat once if needed"
       },
       {
@@ -534,36 +534,36 @@ export const breathingPages: BreathingPageContent[] = [
         dose: "1–2 minutes; use seated"
       },
       {
-        name: "Middle‑of‑the‑night wake",
-        description: "Quiet, exhale‑focused cycles without bright screens to avoid re‑arousal.",
+        name: "Middle-of-the-night wake",
+        description: "Quiet, exhale-focused cycles without bright screens to avoid re-arousal.",
         dose: "1–3 minutes; skip holds if edgy"
       }
     ],
     research: {
       studies: [
         {
-          title: "Aktaş & İlgin 2023 (RCT, post‑bariatric)",
-          summary: "4‑7‑8 group showed lower post‑test state anxiety vs deep‑breathing and usual‑care; QoL improved in deep‑breathing group.",
+          title: "Aktaş & İlgin 2023 (RCT, post-bariatric)",
+          summary: "4-7-8 group showed lower post-test state anxiety vs deep-breathing and usual-care; QoL improved in deep-breathing group.",
           url: "https://pubmed.ncbi.nlm.nih.gov/36480101/"
         },
         {
           title: "Vierra et al. 2022 (controlled, healthy adults)",
-          summary: "4‑7‑8 increased HF‑HRV and lowered HR/SBP within a session; between‑group differences small.",
+          summary: "4-7-8 increased HF-HRV and lowered HR/SBP within a session; between-group differences small.",
           url: "https://pubmed.ncbi.nlm.nih.gov/35822447/"
         },
         {
-          title: "Laborde et al. 2022 (systematic review/meta‑analysis)",
-          summary: "Voluntary slow breathing increased vagally mediated HRV during and after sessions and after multi‑session training.",
+          title: "Laborde et al. 2022 (systematic review/meta-analysis)",
+          summary: "Voluntary slow breathing increased vagally mediated HRV during and after sessions and after multi-session training.",
           url: "https://pubmed.ncbi.nlm.nih.gov/35623448/"
         },
         {
-          title: "Shao et al. 2024 (systematic review/meta‑analysis)",
-          summary: "Slow‑paced breathing showed reliable short‑term cardiovascular effects and modest reductions in negative emotions.",
+          title: "Shao et al. 2024 (systematic review/meta-analysis)",
+          summary: "Slow-paced breathing showed reliable short-term cardiovascular effects and modest reductions in negative emotions.",
           url: "https://link.springer.com/article/10.1007/s12671-023-02294-2"
         },
         {
           title: "Tsai et al. 2015; Kuula et al. 2020 (sleep)",
-          summary: "Pre‑bed slow breathing improved sleep metrics in small trials (reduced awakenings, better efficiency) in insomniac samples.",
+          summary: "Pre-bed slow breathing improved sleep metrics in small trials (reduced awakenings, better efficiency) in insomniac samples.",
           url: "https://pubmed.ncbi.nlm.nih.gov/25234581/"
         }
       ],
@@ -622,9 +622,9 @@ export const breathingPages: BreathingPageContent[] = [
       "slow breathing technique"
     ],
     synonyms: [
-      "4‑7‑8 technique",
+      "4-7-8 technique",
       "relaxing breath",
-      "pranayama‑inspired breathing"
+      "pranayama-inspired breathing"
     ],
     frequency: "Nightly 3–4 cycles before bed; optional 1–3 minutes during daytime stress",
     video: {
@@ -646,7 +646,7 @@ export const breathingPages: BreathingPageContent[] = [
     hero: {
       title: "Coherent Breathing Trainer",
       subtitle: "Equal inhale/exhale near 0.1 Hz to amplify HRV.",
-      intro: "Breathe ~5–6 times per minute with equal inhales and exhales (e.g., 5–6 seconds each). This pace often maximizes respiratory–cardiovascular coupling and baroreflex engagement, acutely boosting HRV. Keep breaths small and quiet; comfort beats depth. If dizzy or air‑hungry, make breaths smaller or pause."
+      intro: "Breathe ~5–6 times per minute with equal inhales and exhales (e.g., 5–6 seconds each). This pace often maximizes respiratory–cardiovascular coupling and baroreflex engagement, acutely boosting HRV. Keep breaths small and quiet; comfort beats depth. If dizzy or air-hungry, make breaths smaller or pause."
     },
     meta: {
       title: "Coherent Breathing: The Science of 5 Breaths/Min (Free Trainer)",
@@ -686,7 +686,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         title: "Steadier stress response",
-        description: "Can reduce blood‑pressure reactivity to stressors in lab settings."
+        description: "Can reduce blood-pressure reactivity to stressors in lab settings."
       },
       {
         title: "Focus friendly",
@@ -696,7 +696,7 @@ export const breathingPages: BreathingPageContent[] = [
     practiceTips: [
       {
         title: "Smooth, not deep",
-        description: "Keep breaths small/quiet to avoid over‑breathing. If light‑headed, make inhales gentler or shorten the session."
+        description: "Keep breaths small/quiet to avoid over-breathing. If light-headed, make inhales gentler or shorten the session."
       },
       {
         title: "Pick a starter tempo",
@@ -709,24 +709,24 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     faqs: [
       {
-        question: "What makes coherent breathing different from other slow‑breathing patterns?",
-        answer: "Coherent breathing deliberately targets ~0.1 Hz, where heart‑rate and blood‑pressure oscillations resonate. This often yields the largest HRV amplitude and stronger baroreflex engagement than other rates. Reviews and lab studies show immediate increases in HRV and baroreflex markers at ~5–6 breaths/min. Individual optima vary (roughly 4.5–6.5 breaths/min), so slight adjustments (e.g., 5.0 vs 5.5 s) can matter. If you just want calm, any comfortable slow pace helps; for maximal HRV amplitude, coherent is a strong default."
+        question: "What makes coherent breathing different from other slow-breathing patterns?",
+        answer: "Coherent breathing deliberately targets ~0.1 Hz, where heart-rate and blood-pressure oscillations resonate. This often yields the largest HRV amplitude and stronger baroreflex engagement than other rates. Reviews and lab studies show immediate increases in HRV and baroreflex markers at ~5–6 breaths/min. Individual optima vary (roughly 4.5–6.5 breaths/min), so slight adjustments (e.g., 5.0 vs 5.5 s) can matter. If you just want calm, any comfortable slow pace helps; for maximal HRV amplitude, coherent is a strong default."
       },
       {
         question: "Does coherent breathing improve mental health outcomes?",
-        answer: "A large randomized, placebo‑controlled trial found coherent breathing (~5.5 breaths/min, ~10 min/day for 4 weeks) did not outperform a well‑designed paced‑breathing placebo (12 breaths/min) on mental‑health and wellbeing outcomes, though both groups improved from baseline. Meta‑analyses of HRV biofeedback and breathwork more broadly show small‑to‑moderate benefits on stress, anxiety, and depressive symptoms with practice. Expect modest subjective gains; the physiological HRV boost is robust during sessions."
+        answer: "A large randomized, placebo-controlled trial found coherent breathing (~5.5 breaths/min, ~10 min/day for 4 weeks) did not outperform a well-designed paced-breathing placebo (12 breaths/min) on mental-health and wellbeing outcomes, though both groups improved from baseline. Meta-analyses of HRV biofeedback and breathwork more broadly show small-to-moderate benefits on stress, anxiety, and depressive symptoms with practice. Expect modest subjective gains; the physiological HRV boost is robust during sessions."
       },
       {
         question: "How do I find my best rate?",
-        answer: "Most people sit between 4.5–6.5 breaths/min. Start at 5:5 or 5.5:5.5 seconds. If it feels strained, drop to 5:5 or 4.5:4.5; if it feels too easy, try 6:6. In clinics, practitioners assess resonance by testing several rates while monitoring HRV and heart‑breath phase synchrony. Resonance can drift across days, so treat the number as a range, not a fixed target."
+        answer: "Most people sit between 4.5–6.5 breaths/min. Start at 5:5 or 5.5:5.5 seconds. If it feels strained, drop to 5:5 or 4.5:4.5; if it feels too easy, try 6:6. In clinics, practitioners assess resonance by testing several rates while monitoring HRV and heart-breath phase synchrony. Resonance can drift across days, so treat the number as a range, not a fixed target."
       },
       {
-        question: "Is there a risk of over‑breathing or low CO₂?",
-        answer: "Yes. Novices sometimes ventilate too much when breathing slowly. Signs: dizziness, tingling, chest tightness. Fixes: smaller, quieter breaths; keep jaw/shoulders relaxed; shorten sessions. Brief anti‑hyperventilation instructions or capnometry (if available) help maintain normal CO₂. If symptoms persist, switch to shorter sessions or another pattern."
+        question: "Is there a risk of over-breathing or low CO₂?",
+        answer: "Yes. Novices sometimes ventilate too much when breathing slowly. Signs: dizziness, tingling, chest tightness. Fixes: smaller, quieter breaths; keep jaw/shoulders relaxed; shorten sessions. Brief anti-hyperventilation instructions or capnometry (if available) help maintain normal CO₂. If symptoms persist, switch to shorter sessions or another pattern."
       },
       {
         question: "How long and how often should I practice?",
-        answer: "For performance/focus, 5 minutes pre‑task works well. For training effects (resting HRV, baroreflex markers), aim for 5–10 minutes most days for several weeks. Evidence suggests repeated practice outperforms occasional, very short sessions. Combine coherent breathing with good sleep, activity, and light exposure for best results."
+        answer: "For performance/focus, 5 minutes pre-task works well. For training effects (resting HRV, baroreflex markers), aim for 5–10 minutes most days for several weeks. Evidence suggests repeated practice outperforms occasional, very short sessions. Combine coherent breathing with good sleep, activity, and light exposure for best results."
       }
     ],
     howTo: {
@@ -734,8 +734,8 @@ export const breathingPages: BreathingPageContent[] = [
       difficulty: "easy",
       tools: [
         "Chair or comfortable seat",
-        "On‑screen timer or haptics",
-        "Optional heart‑rate sensor"
+        "On-screen timer or haptics",
+        "Optional heart-rate sensor"
       ],
       supplies: [],
       steps: [
@@ -773,17 +773,17 @@ export const breathingPages: BreathingPageContent[] = [
     },
     useCases: [
       {
-        name: "Pre‑deep‑work priming",
-        description: "Synchronize breath and heart for a calm‑alert state before demanding tasks.",
+        name: "Pre-deep-work priming",
+        description: "Synchronize breath and heart for a calm-alert state before demanding tasks.",
         dose: "5 minutes at 5–6 bpm"
       },
       {
-        name: "Between‑blocks reset",
+        name: "Between-blocks reset",
         description: "Clear residual stress and steady attention between meetings or sprints.",
         dose: "2–5 minutes at a comfortable rate"
       },
       {
-        name: "Pre‑performance",
+        name: "Pre-performance",
         description: "Lower jitters without getting sleepy before speaking, training, or competition.",
         dose: "2–3 minutes at 5–6 bpm"
       }
@@ -792,7 +792,7 @@ export const breathingPages: BreathingPageContent[] = [
       studies: [
         {
           title: "Lehrer et al., 2003 (Psychosomatic Medicine)",
-          summary: "10 sessions of HRV biofeedback increased resting baroreflex gain and improved pulmonary function vs control in healthy adults; large within‑session baroreflex gains observed.",
+          summary: "10 sessions of HRV biofeedback increased resting baroreflex gain and improved pulmonary function vs control in healthy adults; large within-session baroreflex gains observed.",
           url: "https://pubmed.ncbi.nlm.nih.gov/14508023/"
         },
         {
@@ -807,15 +807,15 @@ export const breathingPages: BreathingPageContent[] = [
         },
         {
           title: "Fincham et al., 2023 (Scientific Reports)",
-          summary: "4‑week RCT: coherent breathing (~5.5 bpm, 10 min/day) did not outperform a 12‑bpm placebo on mental‑health outcomes; both arms improved from baseline.",
+          summary: "4-week RCT: coherent breathing (~5.5 bpm, 10 min/day) did not outperform a 12-bpm placebo on mental-health outcomes; both arms improved from baseline.",
           url: "https://pubmed.ncbi.nlm.nih.gov/38092805/"
         }
       ],
       safety: [
-        "Stop if dizzy, tingly, or chest‑tight; resume with smaller/softer breaths or shorter sessions.",
+        "Stop if dizzy, tingly, or chest-tight; resume with smaller/softer breaths or shorter sessions.",
         "Pregnancy: avoid straining; gentle, continuous breathing only.",
         "Cardiopulmonary disease, uncontrolled hypertension, syncope history: practice seated; keep volume low; consider clinician guidance.",
-        "Anti‑hyperventilation cue helps: breathe quietly and shallowly; avoid big gulps of air."
+        "Anti-hyperventilation cue helps: breathe quietly and shallowly; avoid big gulps of air."
       ],
       quotes: []
     },
@@ -826,7 +826,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         slug: "4-7-8",
-        reason: "If exhale‑emphasis feels more calming for sleep or anxiety spikes."
+        reason: "If exhale-emphasis feels more calming for sleep or anxiety spikes."
       },
       {
         slug: "belly",
@@ -938,7 +938,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         title: "Supports mechanics",
-        description: "Sighing re‑expands alveoli and helps restore lung compliance."
+        description: "Sighing re-expands alveoli and helps restore lung compliance."
       },
       {
         title: "Simple anywhere",
@@ -947,7 +947,7 @@ export const breathingPages: BreathingPageContent[] = [
     ],
     practiceTips: [
       {
-        title: "Make the top‑up small",
+        title: "Make the top-up small",
         description: "Let the second inhale gently fill the upper lungs without lifting the shoulders."
       },
       {
@@ -966,23 +966,23 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         question: "What evidence supports the physiological sigh?",
-        answer: "A month‑long randomized study comparing three breathwork protocols to mindfulness found breathwork improved mood and reduced respiratory rate more, with the exhale‑focused cyclic sighing showing the largest gains. A pilot RCT in an orthopedic clinic waiting room found a 4‑minute cyclic‑sighing audio reduced pain intensity and unpleasantness vs. a time‑matched control. Together these suggest quick, modest benefits for mood and acute symptoms with brief daily practice."
+        answer: "A month-long randomized study comparing three breathwork protocols to mindfulness found breathwork improved mood and reduced respiratory rate more, with the exhale-focused cyclic sighing showing the largest gains. A pilot RCT in an orthopedic clinic waiting room found a 4-minute cyclic-sighing audio reduced pain intensity and unpleasantness vs. a time-matched control. Together these suggest quick, modest benefits for mood and acute symptoms with brief daily practice."
       },
       {
         question: "How does a sigh help the lungs?",
-        answer: "Sighs are deeper‑than‑normal breaths that periodically reinflate under‑ventilated lung regions, which helps prevent alveolar collapse and restores lung compliance. Neurophysiology studies identify a dedicated brainstem circuit (RTN/pFRG → preBötzinger complex) that can trigger sighs. That explains how they arise and why they increase under stress or hypoxia."
+        answer: "Sighs are deeper-than-normal breaths that periodically reinflate under-ventilated lung regions, which helps prevent alveolar collapse and restores lung compliance. Neurophysiology studies identify a dedicated brainstem circuit (RTN/pFRG → preBötzinger complex) that can trigger sighs. That explains how they arise and why they increase under stress or hypoxia."
       },
       {
         question: "How many repetitions and how often?",
-        answer: "For an in‑the‑moment reset, do 1–3 physiological sighs. For training effects, use 2–5 minutes of cyclic sighing most days. In the RCT, 5 minutes daily produced the clearest changes in mood and respiratory rate; a clinic pilot showed 4 minutes reduced pain. Start small and increase only if it stays comfortable."
+        answer: "For an in-the-moment reset, do 1–3 physiological sighs. For training effects, use 2–5 minutes of cyclic sighing most days. In the RCT, 5 minutes daily produced the clearest changes in mood and respiratory rate; a clinic pilot showed 4 minutes reduced pain. Start small and increase only if it stays comfortable."
       },
       {
         question: "Is it safe for everyone?",
-        answer: "It's generally safe when done gently. Practice seated if you're prone to dizziness. People who are pregnant or have cardiopulmonary disease or syncope history should avoid straining and keep breaths small. Any light‑headedness likely reflects over‑breathing. Shrink the inhale and slow the exhale or stop and resume later."
+        answer: "It's generally safe when done gently. Practice seated if you're prone to dizziness. People who are pregnant or have cardiopulmonary disease or syncope history should avoid straining and keep breaths small. Any light-headedness likely reflects over-breathing. Shrink the inhale and slow the exhale or stop and resume later."
       },
       {
         question: "Is the physiological sigh better than box breathing?",
-        answer: "They're tools for different aims. The RCT found exhale‑focused cyclic sighing yielded the largest mood and respiration‑rate improvements vs. mindfulness, with box breathing also helpful. For rapid relief in a few breaths, many prefer sighing; for structured pacing or longer sessions, box breathing or coherent breathing may suit better."
+        answer: "They're tools for different aims. The RCT found exhale-focused cyclic sighing yielded the largest mood and respiration-rate improvements vs. mindfulness, with box breathing also helpful. For rapid relief in a few breaths, many prefer sighing; for structured pacing or longer sessions, box breathing or coherent breathing may suit better."
       },
       {
         question: "How many physiological sighs should I do?",
@@ -1006,7 +1006,7 @@ export const breathingPages: BreathingPageContent[] = [
       difficulty: "easy",
       tools: [
         "Chair or comfortable seat",
-        "Optional on‑screen timer or haptics"
+        "Optional on-screen timer or haptics"
       ],
       supplies: [],
       steps: [
@@ -1021,7 +1021,7 @@ export const breathingPages: BreathingPageContent[] = [
           duration: "~3–4 seconds"
         },
         {
-          name: "Top‑up inhale",
+          name: "Top-up inhale",
           instruction: "Take a small second sip of air to gently fill the upper chest without shrugging.",
           duration: "~1–2 seconds"
         },
@@ -1044,12 +1044,12 @@ export const breathingPages: BreathingPageContent[] = [
         dose: "3 cycles, seated"
       },
       {
-        name: "Between‑meeting calm",
-        description: "Clear sympathetic carry‑over before a high‑stakes call.",
+        name: "Between-meeting calm",
+        description: "Clear sympathetic carry-over before a high-stakes call.",
         dose: "60–120 seconds continuous sighing"
       },
       {
-        name: "Pre‑sleep settle",
+        name: "Pre-sleep settle",
         description: "Downshift before lights out; keep breaths small and effortless.",
         dose: "2–3 minutes"
       }
@@ -1058,12 +1058,12 @@ export const breathingPages: BreathingPageContent[] = [
       studies: [
         {
           title: "Balban et al., 2023 - Cell Reports Medicine (RCT)",
-          summary: "Remote 4‑arm randomized study (5 min/day for 28 days): breathwork > mindfulness on mood and respiratory‑rate change; exhale‑focused cyclic sighing largest gains.",
+          summary: "Remote 4-arm randomized study (5 min/day for 28 days): breathwork > mindfulness on mood and respiratory-rate change; exhale-focused cyclic sighing largest gains.",
           url: "https://pubmed.ncbi.nlm.nih.gov/36630953/"
         },
         {
           title: "Hanley et al., 2025 - Journal of Behavioral Medicine (pilot RCT)",
-          summary: "4‑minute cyclic‑sighing audio in an orthopedic clinic waiting room reduced pain intensity and unpleasantness vs. control.",
+          summary: "4-minute cyclic-sighing audio in an orthopedic clinic waiting room reduced pain intensity and unpleasantness vs. control.",
           url: "https://pubmed.ncbi.nlm.nih.gov/39904867/"
         },
         {
@@ -1073,13 +1073,13 @@ export const breathingPages: BreathingPageContent[] = [
         },
         {
           title: "Li et al., 2016 - Nature (Mechanism)",
-          summary: "Identified peptidergic RTN/pFRG → preBötzinger circuit controlling sigh generation; sighs re‑inflate alveoli and may preserve lung integrity.",
+          summary: "Identified peptidergic RTN/pFRG → preBötzinger circuit controlling sigh generation; sighs re-inflate alveoli and may preserve lung integrity.",
           url: "https://pubmed.ncbi.nlm.nih.gov/26855425/"
         }
       ],
       safety: [
-        "Stop if dizzy, tingly, or chest‑tight; resume later with smaller breaths.",
-        "Practice seated if prone to light‑headedness or syncope.",
+        "Stop if dizzy, tingly, or chest-tight; resume later with smaller breaths.",
+        "Practice seated if prone to light-headedness or syncope.",
         "Pregnancy: avoid straining; no prolonged breath holds required.",
         "Cardiopulmonary disease or uncontrolled hypertension: gentle pacing; consult a clinician if unsure."
       ],
@@ -1100,15 +1100,15 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         slug: "pursed-lip",
-        reason: "Exhale‑focused breathing that eases breathlessness and supports calmer pacing."
+        reason: "Exhale-focused breathing that eases breathlessness and supports calmer pacing."
       },
       {
         slug: "belly",
-        reason: "Diaphragmatic breathing builds a steady, low‑tension base between sigh sessions."
+        reason: "Diaphragmatic breathing builds a steady, low-tension base between sigh sessions."
       },
       {
         slug: "buteyko",
-        reason: "Light nasal breathing to reduce over‑breathing and improve CO₂ tolerance."
+        reason: "Light nasal breathing to reduce over-breathing and improve CO₂ tolerance."
       }
     ],
     relatedUseCases: [
@@ -1165,10 +1165,10 @@ export const breathingPages: BreathingPageContent[] = [
       "cyclic sighing",
       "cyclical breathing",
       "sigh breathing technique",
-      "double‑inhale sigh",
+      "double-inhale sigh",
       "sigh breath",
     ],
-    frequency: "As needed for acute stress (1–3 cycles); optional 2–5 minutes daily for mood and breathing‑rate changes",
+    frequency: "As needed for acute stress (1–3 cycles); optional 2–5 minutes daily for mood and breathing-rate changes",
     video: {
       youtubeId: "kSZKIupBUuc",
       title: "The Physiological Sigh Explained: Stanford's Stress-Relief Technique",

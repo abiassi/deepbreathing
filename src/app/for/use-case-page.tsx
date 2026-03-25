@@ -661,7 +661,7 @@ export function UseCasePage({ slug }: { slug: string }) {
           style={isHolidayPage ? { backgroundColor: WINTER_CARD, borderColor: 'rgba(255,255,255,0.1)' } : undefined}
         >
           <p className="text-xs text-muted-foreground">
-            Stop if dizzy, tingly, or chest‑tight. Resume later with shorter, easier breaths.
+            Stop if dizzy, tingly, or chest-tight. Resume later with shorter, easier breaths.
           </p>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
             <Link href="/breathe" className="underline underline-offset-2 transition-colors hover:text-foreground">

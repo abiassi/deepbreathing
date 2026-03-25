@@ -16,7 +16,7 @@ const baseUrl = "https://deepbreathingexercises.com";
 const faqs = [
   {
     question: "How long should I practice?",
-    answer: "Start with 60–120 s. If it's still easy and helpful, extend to 3–5 min. For HRV‑focused training, 5–10 min most days."
+    answer: "Start with 60–120 s. If it's still easy and helpful, extend to 3–5 min. For HRV-focused training, 5–10 min most days."
   },
   {
     question: "When's the best time?",
@@ -27,12 +27,12 @@ const faqs = [
     answer: "Yes. That's the point. Use 3–8 s per phase. If holds feel uncomfortable, remove them and keep an even inhale/exhale."
   },
   {
-    question: "What if I feel light‑headed?",
-    answer: "You're likely over‑breathing. Make breaths smaller and quieter, shorten phases, or pause and breathe normally."
+    question: "What if I feel light-headed?",
+    answer: "You're likely over-breathing. Make breaths smaller and quieter, shorten phases, or pause and breathe normally."
   },
   {
     question: "Is this medical treatment?",
-    answer: "No. It's a self‑regulation tool. If you have a cardiopulmonary condition, are pregnant, or have fainting history, avoid long holds and keep everything gentle."
+    answer: "No. It's a self-regulation tool. If you have a cardiopulmonary condition, are pregnant, or have fainting history, avoid long holds and keep everything gentle."
   }
 ];
 
@@ -141,7 +141,7 @@ export default function HomePage() {
           <div className="min-w-[85vw] snap-center glow-card rounded-[32px] border border-border bg-card p-6 sm:min-w-[400px] lg:min-w-0">
             <p className="text-sm uppercase tracking-wider text-primary">Built for real life</p>
             <p className="mt-3 text-muted-foreground">
-              Short sets (1–5 min) before meetings, between tasks, or at lights‑out.
+              Short sets (1–5 min) before meetings, between tasks, or at lights-out.
             </p>
           </div>
           <div className="min-w-[85vw] snap-center glow-card rounded-[32px] border border-border bg-card p-6 sm:min-w-[400px] lg:min-w-0">
@@ -282,7 +282,7 @@ export default function HomePage() {
       </div>
       <footer className="relative z-10 mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <p className="mb-8 text-center text-xs text-muted-foreground">
-          Stop if dizzy, tingly, or chest‑tight. Resume later with shorter, easier breaths. Skip prolonged holds during pregnancy or if advised by your clinician.
+          Stop if dizzy, tingly, or chest-tight. Resume later with shorter, easier breaths. Skip prolonged holds during pregnancy or if advised by your clinician.
         </p>
 
         <div className="mb-8 grid gap-8 text-left sm:grid-cols-2 lg:grid-cols-4">
