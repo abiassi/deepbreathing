@@ -23,6 +23,10 @@ export type BuildSitemapEntriesInput = {
   now?: Date;
 };
 
+export type SitemapEntry = MetadataRoute.Sitemap[number] & {
+  alternates?: { languages: Record<string, string> };
+};
+
 export const DEFAULT_EXCLUDED_ROUTES = rawDefaultExcludedRoutes as string[];
 export const DEFAULT_LOCALE_PREFIXES = rawDefaultLocalePrefixes as string[];
 export const EDGE_PROXY_LOCALE_PREFIXES = rawEdgeProxyLocalePrefixes as string[];
@@ -31,6 +35,6 @@ export function discoverPageRoutes(appDir: string, excludedRoutes = DEFAULT_EXCL
   return rawDiscoverPageRoutes(appDir, excludedRoutes) as string[];
 }
 
-export function buildSitemapEntries(input: BuildSitemapEntriesInput): MetadataRoute.Sitemap {
-  return rawBuildSitemapEntries(input as any) as MetadataRoute.Sitemap;
+export function buildSitemapEntries(input: BuildSitemapEntriesInput): SitemapEntry[] {
+  return rawBuildSitemapEntries(input as any) as SitemapEntry[];
 }
