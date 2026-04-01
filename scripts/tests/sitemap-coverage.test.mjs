@@ -56,3 +56,39 @@ test('sitemap includes translated locale-prefixed URLs when configured', () => {
     'missing translated guide route in sitemap: /es/for/anxiety'
   );
 });
+
+test('sitemap entries include hreflang alternates for all languages', () => {
+  const entries = getEntries();
+
+  const enHome = entries.find((e) => e.url === `${SITE_URL}`);
+  assert.ok(enHome, 'English homepage entry missing');
+  assert.ok(enHome.alternates, 'English homepage missing alternates');
+  assert.ok(enHome.alternates.languages, 'English homepage missing alternates.languages');
+
+  const langs = enHome.alternates.languages;
+  assert.equal(langs['en-US'], `${SITE_URL}`, 'en-US hreflang should point to root');
+  assert.equal(langs['x-default'], `${SITE_URL}`, 'x-default should point to root');
+  assert.equal(langs['es-ES'], `${SITE_URL}/es`, 'es-ES hreflang should point to /es');
+  assert.equal(langs['pt-BR'], `${SITE_URL}/pt`, 'pt-BR hreflang should point to /pt');
+  assert.equal(langs['fr-FR'], `${SITE_URL}/fr`, 'fr-FR hreflang should point to /fr');
+  assert.equal(langs['de-DE'], `${SITE_URL}/de`, 'de-DE hreflang should point to /de');
+  assert.equal(langs['ja-JP'], `${SITE_URL}/ja`, 'ja-JP hreflang should point to /ja');
+
+  // Translated entry should have identical alternates
+  const esBox = entries.find((e) => e.url === `${SITE_URL}/es/breathe/box`);
+  assert.ok(esBox.alternates, '/es/breathe/box missing alternates');
+  assert.equal(
+    esBox.alternates.languages['en-US'],
+    `${SITE_URL}/breathe/box`,
+    'es entry en-US alternate should point to English canonical'
+  );
+  assert.equal(
+    esBox.alternates.languages['ja-JP'],
+    `${SITE_URL}/ja/breathe/box`,
+    'es entry ja-JP alternate should point to /ja/breathe/box'
+  );
+
+  // Every entry should have alternates
+  const withoutAlternates = entries.filter((e) => !e.alternates);
+  assert.equal(withoutAlternates.length, 0, `${withoutAlternates.length} entries missing alternates`);
+});

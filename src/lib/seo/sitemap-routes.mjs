@@ -5,6 +5,14 @@ export const DEFAULT_EXCLUDED_ROUTES = [];
 export const DEFAULT_LOCALE_PREFIXES = [];
 export const EDGE_PROXY_LOCALE_PREFIXES = ['es', 'pt', 'fr', 'de', 'ja'];
 
+const LOCALE_PREFIX_TO_HREFLANG = {
+  es: 'es-ES',
+  pt: 'pt-BR',
+  fr: 'fr-FR',
+  de: 'de-DE',
+  ja: 'ja-JP',
+};
+
 function isRouteGroup(segment) {
   return segment.startsWith('(') && segment.endsWith(')');
 }
@@ -131,8 +139,22 @@ export function buildSitemapEntries({
     )
   );
 
+  function buildAlternates(canonicalRoute) {
+    if (normalizedLocalePrefixes.length === 0) return undefined;
+    const languages = {
+      'en-US': `${siteUrl}${canonicalRoute === '/' ? '' : canonicalRoute}`,
+      'x-default': `${siteUrl}${canonicalRoute === '/' ? '' : canonicalRoute}`,
+    };
+    for (const prefix of normalizedLocalePrefixes) {
+      const hreflang = LOCALE_PREFIX_TO_HREFLANG[prefix] || prefix;
+      languages[hreflang] = `${siteUrl}${createLocalizedRoute(canonicalRoute, prefix)}`;
+    }
+    return { languages };
+  }
+
   return sitemapRoutes.map((route) => {
     const canonicalRoute = stripLocalePrefix(route, normalizedLocalePrefixes);
+    const alternates = buildAlternates(canonicalRoute);
 
     if (canonicalRoute === '/') {
       return {
@@ -140,6 +162,7 @@ export function buildSitemapEntries({
         lastModified: now,
         changeFrequency: 'weekly',
         priority: 1,
+        alternates,
       };
     }
 
@@ -151,6 +174,7 @@ export function buildSitemapEntries({
         lastModified: now,
         changeFrequency: 'weekly',
         priority: 0.9,
+        alternates,
       };
     }
 
@@ -161,6 +185,7 @@ export function buildSitemapEntries({
         lastModified: breathingMetaBySlug.get(slug) ?? now,
         changeFrequency: 'monthly',
         priority: 0.8,
+        alternates,
       };
     }
 
@@ -171,6 +196,7 @@ export function buildSitemapEntries({
         lastModified: useCaseMetaBySlug.get(slug) ?? now,
         changeFrequency: 'monthly',
         priority: 0.7,
+        alternates,
       };
     }
 
@@ -179,6 +205,7 @@ export function buildSitemapEntries({
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.8,
+      alternates,
     };
   });
 }
