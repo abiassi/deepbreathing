@@ -88,7 +88,12 @@ test('sitemap entries include hreflang alternates for all languages', () => {
     'es entry ja-JP alternate should point to /ja/breathe/box'
   );
 
-  // Every entry should have alternates
-  const withoutAlternates = entries.filter((e) => !e.alternates);
+  // Every entry should have alternates except explicit EN-only routes
+  // (/languages is a crawl-discovery hub that must not be served through the
+  // mass-translate proxy — otherwise its cross-locale anchors would mangle).
+  const EN_ONLY_URLS = new Set([`${SITE_URL}/languages`]);
+  const withoutAlternates = entries.filter(
+    (e) => !e.alternates && !EN_ONLY_URLS.has(e.url)
+  );
   assert.equal(withoutAlternates.length, 0, `${withoutAlternates.length} entries missing alternates`);
 });

@@ -413,6 +413,14 @@ export default function HomePage() {
         <div className="mt-6">
           <LanguageSwitcherFooter />
         </div>
+        <p className="mt-4 text-xs text-muted-foreground">
+          <a
+            href="/languages"
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            Available in Español, Português, Français, Deutsch, 日本語 →
+          </a>
+        </p>
       </footer>
     </main>
   );

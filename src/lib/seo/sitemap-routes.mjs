@@ -4,6 +4,10 @@ import path from 'node:path';
 export const DEFAULT_EXCLUDED_ROUTES = [];
 export const DEFAULT_LOCALE_PREFIXES = [];
 export const EDGE_PROXY_LOCALE_PREFIXES = ['es', 'pt', 'fr', 'de', 'ja'];
+// Routes that should only exist in English. The mass-translate proxy
+// rewrites anchor hrefs on localized paths, which would mangle the
+// cross-locale anchors on /languages into broken /de/es/... paths.
+const EN_ONLY_ROUTES = new Set(['/languages']);
 
 const LOCALE_PREFIX_TO_HREFLANG = {
   es: 'es-ES',
@@ -132,15 +136,19 @@ export function buildSitemapEntries({
   const useCaseMetaBySlug = createMetaMap(useCasePageMeta);
   const sitemapRoutes = Array.from(
     new Set(
-      routes.flatMap((route) => [
-        route,
-        ...normalizedLocalePrefixes.map((prefix) => createLocalizedRoute(route, prefix)),
-      ])
+      routes.flatMap((route) => {
+        if (EN_ONLY_ROUTES.has(route)) return [route];
+        return [
+          route,
+          ...normalizedLocalePrefixes.map((prefix) => createLocalizedRoute(route, prefix)),
+        ];
+      })
     )
   );
 
   function buildAlternates(canonicalRoute) {
     if (normalizedLocalePrefixes.length === 0) return undefined;
+    if (EN_ONLY_ROUTES.has(canonicalRoute)) return undefined;
     const languages = {
       'en-US': `${siteUrl}${canonicalRoute === '/' ? '' : canonicalRoute}`,
       'x-default': `${siteUrl}${canonicalRoute === '/' ? '' : canonicalRoute}`,
