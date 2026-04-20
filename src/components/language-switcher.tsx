@@ -54,11 +54,6 @@ function stripLocalePrefix(pathname: string): string {
   return pathname;
 }
 
-function getOrigin(): string {
-  if (typeof window !== "undefined") return window.location.origin;
-  return "https://deepbreathingexercises.com";
-}
-
 function getCurrentLocaleAndPath(): { currentLocale: string; basePath: string } {
   if (typeof window === "undefined") return { currentLocale: "en", basePath: "/" };
 
@@ -146,36 +141,67 @@ export function LanguageSwitcherInline() {
 
       {open && (
         <div className="absolute right-0 top-full mt-1.5 z-50 min-w-[120px] rounded-xl border border-border/60 bg-card/95 py-1 shadow-lg backdrop-blur-md dark:border-border/40 dark:bg-card/80">
-          <button
+          <a
+            href={info.basePath}
             className={`block w-full text-left px-4 py-2 text-xs transition-colors ${
               info.currentLocale === "en"
                 ? "font-semibold text-foreground"
                 : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
             }`}
-            onClick={() => { window.location.assign(`${getOrigin()}${info.basePath}`); }}
           >
             English
-          </button>
+          </a>
           {SUPPORTED_LOCALES.map((loc) => {
             const prefix = getPrefix(loc);
             const isActive = info.currentLocale === loc || getPrefix(info.currentLocale) === prefix;
             return (
-              <button
+              <a
                 key={loc}
+                href={`/${prefix}${info.basePath}`}
                 className={`block w-full text-left px-4 py-2 text-xs transition-colors ${
                   isActive
                     ? "font-semibold text-foreground"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
-                onClick={() => { window.location.assign(`${getOrigin()}/${prefix}${info.basePath}`); }}
               >
                 {LOCALE_FULL[loc]}
-              </button>
+              </a>
             );
           })}
         </div>
       )}
     </div>
+  );
+}
+
+/**
+ * SSR-safe static fallback rendered until client-side hydration resolves the
+ * current locale. Emits real crawlable anchors to each language root so
+ * Googlebot can discover translated content from every page.
+ */
+function LanguageSwitcherSSRFallback() {
+  return (
+    <nav
+      aria-label="Language"
+      className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground"
+    >
+      <GlobeIcon className="opacity-60" />
+      <a href="/" className="underline underline-offset-2 hover:text-foreground">
+        English
+      </a>
+      {SUPPORTED_LOCALES.map((loc) => {
+        const prefix = getPrefix(loc);
+        return (
+          <a
+            key={loc}
+            href={`/${prefix}`}
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            {LOCALE_FULL[loc]}
+          </a>
+        );
+      })}
+    </nav>
   );
 }
 
@@ -191,7 +217,7 @@ export function LanguageSwitcherFooter() {
     setInfo(getCurrentLocaleAndPath());
   }, []);
 
-  if (!info) return null;
+  if (!info) return <LanguageSwitcherSSRFallback />;
 
   const currentLabel = LOCALE_FULL[info.currentLocale] || "English";
   const locales = SUPPORTED_LOCALES;
@@ -212,8 +238,8 @@ export function LanguageSwitcherFooter() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
       <GlobeIcon className="opacity-60" />
-      <button
-        onClick={() => { window.location.assign(`${getOrigin()}${info.basePath}`); }}
+      <a
+        href={info.basePath}
         className={`transition-colors ${
           info.currentLocale === "en"
             ? "font-medium text-foreground"
@@ -221,14 +247,14 @@ export function LanguageSwitcherFooter() {
         }`}
       >
         English
-      </button>
+      </a>
       {locales.map((loc) => {
         const prefix = getPrefix(loc);
         const isActive = info.currentLocale === loc || getPrefix(info.currentLocale) === prefix;
         return (
-          <button
+          <a
             key={loc}
-            onClick={() => { window.location.assign(`${getOrigin()}/${prefix}${info.basePath}`); }}
+            href={`/${prefix}${info.basePath}`}
             className={`transition-colors ${
               isActive
                 ? "font-medium text-foreground"
@@ -236,7 +262,7 @@ export function LanguageSwitcherFooter() {
             }`}
           >
             {LOCALE_FULL[loc]}
-          </button>
+          </a>
         );
       })}
     </div>
