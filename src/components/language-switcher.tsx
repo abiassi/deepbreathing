@@ -174,10 +174,14 @@ export function LanguageSwitcherInline() {
   );
 }
 
+const CANONICAL_ORIGIN = "https://deepbreathingexercises.com";
+
 /**
  * SSR-safe static fallback rendered until client-side hydration resolves the
  * current locale. Emits real crawlable anchors to each language root so
- * Googlebot can discover translated content from every page.
+ * Googlebot can discover translated content from every page. Uses absolute
+ * URLs so the mass-translate reverse proxy does not rewrite the hrefs when
+ * serving translated pages.
  */
 function LanguageSwitcherSSRFallback() {
   return (
@@ -186,7 +190,7 @@ function LanguageSwitcherSSRFallback() {
       className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground"
     >
       <GlobeIcon className="opacity-60" />
-      <a href="/" className="underline underline-offset-2 hover:text-foreground">
+      <a href={`${CANONICAL_ORIGIN}/`} className="underline underline-offset-2 hover:text-foreground">
         English
       </a>
       {SUPPORTED_LOCALES.map((loc) => {
@@ -194,7 +198,7 @@ function LanguageSwitcherSSRFallback() {
         return (
           <a
             key={loc}
-            href={`/${prefix}`}
+            href={`${CANONICAL_ORIGIN}/${prefix}`}
             className="underline underline-offset-2 hover:text-foreground"
           >
             {LOCALE_FULL[loc]}
