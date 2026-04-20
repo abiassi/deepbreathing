@@ -1,122 +1,138 @@
 ---
 name: daily-indexing
-description: Submit pending translated pages to Google Search Console and Bing Webmaster Tools for indexing. Reads docs/indexing-queue.md, picks the next pending URLs by priority, submits them via agent-browser against the user's logged-in Chrome, and writes submission dates back to the queue. Run daily while the translated-page indexing backlog clears (~25 days).
+description: Submit pending translated pages to Google Search Console and Bing Webmaster Tools for indexing. Reads docs/indexing-queue.md, skips URLs already indexed, picks the next pending URLs by priority, submits via the mass-translate MCP API (preferred) or agent-browser UI (fallback), writes submission dates back, and commits the updated queue. Run daily until the queue drains.
 ---
 
 # Daily indexing submission
 
-This skill submits pending URLs from `docs/indexing-queue.md` to Google Search Console and Bing Webmaster Tools using the user's logged-in Chrome via `agent-browser --auto-connect`.
+Submits pending URLs from `docs/indexing-queue.md` to Google + Bing and tracks state.
 
 ## Context
 
-- The domain has ~260 translated pages that indexed slowly after a mid-March rollout because the reverse-proxy architecture gives translated URLs only hreflang signal (no internal link signal).
-- `/languages` is a new SSR discovery hub that accelerates passive crawling, but manual submission still helps.
-- GSC URL Inspection → Request Indexing has a silent ~10-20/day cap. Bing URL Submission has a 10,000/day quota.
-- Strategy: submit all pending to Bing in one batch on first run (easy), drip 10/day to GSC paced by priority.
+- The site has ~260 translated pages that indexed slowly after the mid-March rollout. `/languages` is now a crawl hub that accelerates passive indexing, but active submission still helps.
+- The queue file has an **Indexed** column (`✓` = already indexed per GSC). NEVER submit a row with `✓` — skip it.
+- Two submission channels:
+  - **MCP API** (`mass-translate-backend`) — fast, batch. Preferred when OAuth is connected.
+  - **agent-browser UI** — fallback. Works today, slower, UI-throttled on GSC side.
 
-## Prerequisites
+## Daily flow
 
-- User's main Chrome must be running and authenticated in GSC + Bing Webmaster Tools (check with `agent-browser --auto-connect get url`).
-- Must be run from the `/Users/abi/Sites/deepbreathing` working directory so relative paths to `docs/indexing-queue.md` resolve.
+### 1. Check prerequisites
 
-## Daily operation
-
-### 1. Read state
-
-```bash
-grep -c "^| [1-5] |" docs/indexing-queue.md
+```
+mcp__mass-translate-backend__get_site_config
 ```
 
-Parse the queue. Rows have format `| P | URL | GSC | Bing |`. Empty GSC or Bing column = pending for that engine.
+Look at `gsc_connected` and `bing_connected`:
+- Both true → use MCP API for this run (fast path)
+- GSC true, Bing false → MCP for GSC, UI for Bing
+- Either false + token refresh failing → UI fallback for both, and note that OAuth re-auth is needed (don't attempt to re-auth automatically; surface this to the user with the URL from `start_gsc_oauth` / `start_bing_oauth`).
 
-### 2. Pick batches
+### 2. Read queue
 
-- **GSC batch**: next 10 rows where GSC column is empty, sorted by priority ascending. Be conservative — Google throttles silently past ~15/day.
-- **Bing batch**: all rows where Bing column is empty (up to 500 at a time if many). Bing's 10K quota makes this easy.
+Parse `docs/indexing-queue.md` table rows. Each row is `| P | URL | Indexed | GSC | Bing |`.
 
-### 3. Submit to Bing (bulk, first)
+Filter to **pending** rows per channel:
+- GSC pending = `Indexed` empty AND `GSC` empty
+- Bing pending = `Indexed` empty AND `Bing` empty
 
-Navigate once, paste many URLs:
+Sort ascending by priority, then URL. Pick the next batch:
+- **MCP path**: GSC batch = 50 URLs (Indexing API is generous); Bing batch = 200 URLs (submit in groups of 10 per call, since `submit_urls_bing` caps at 10/call).
+- **UI fallback**: GSC = 10; Bing = 50.
 
-```bash
-agent-browser close 2>&1
-agent-browser --auto-connect open "https://www.bing.com/webmasters/submiturl?siteUrl=https://deepbreathingexercises.com/" 2>&1 | tail -2
+### 3. Submit — MCP API path (preferred)
+
+**Google (one URL per call):**
+```
+for url in gsc_batch:
+  mcp__mass-translate-backend__request_indexing(url=url)
+```
+Treat `success: true` as submitted. On `Google OAuth access token refresh failed` or similar, stop — ask the user to re-auth (`start_gsc_oauth` → visit URL → `complete_gsc_oauth`). Do NOT mark those URLs submitted.
+
+**Bing (up to 10 per call):**
+```
+for chunk_of_10 in bing_batch:
+  mcp__mass-translate-backend__submit_urls_bing(urls=chunk_of_10)
+```
+On success, mark all URLs in the chunk submitted.
+
+### 4. Submit — agent-browser UI fallback
+
+**Bing** (bulk):
+```
+agent-browser close
+agent-browser --auto-connect open "https://www.bing.com/webmasters/submiturl?siteUrl=https://deepbreathingexercises.com/"
 agent-browser --auto-connect wait --load networkidle
 agent-browser --auto-connect wait 3000
-```
-
-Then snapshot to find the Submit URLs button, click it, fill the textarea with newline-separated URLs, click Submit.
-
-```bash
-agent-browser --auto-connect snapshot -i 2>&1 | grep -iE "Submit URLs|textbox"
-# Click the "Submit URLs" button (opens dialog)
-agent-browser --auto-connect click @e<N>
+agent-browser --auto-connect snapshot -i | grep -iE "Submit URLs"
+# click Submit URLs button → opens dialog with textarea
+agent-browser --auto-connect click @e<button>
 agent-browser --auto-connect wait 2000
-# Fill the textarea — use fill (not type) for multi-URL paste
-agent-browser --auto-connect fill @e<textarea-ref> "$(cat /tmp/bing-batch.txt)"
-# Click the Submit button inside the dialog
-agent-browser --auto-connect click @e<submit-ref>
+agent-browser --auto-connect snapshot -i | grep -iE "textbox|Submit"
+agent-browser --auto-connect fill @e<textarea> "$(printf '%s\n' <URLs>)"
+agent-browser --auto-connect click @e<submit-button>
 agent-browser --auto-connect wait 5000
 agent-browser --auto-connect screenshot /tmp/bing-result.png
+# verify "Success: URL submitted Successfully" appears before marking submitted
 ```
 
-Verify "Success: URL submitted Successfully" in the screenshot before marking submitted.
-
-### 4. Submit to GSC (one-by-one)
-
-GSC URL Inspection doesn't have a bulk mode. Loop through the 10 URLs:
-
-```bash
+**GSC** (one URL at a time):
+```
 agent-browser --auto-connect open "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Adeepbreathingexercises.com"
 agent-browser --auto-connect wait --load networkidle
-agent-browser --auto-connect wait 3000
+# for each URL in gsc_batch:
+agent-browser --auto-connect snapshot -i | grep -iE "Inspect any URL"
+agent-browser --auto-connect fill @e<inspect-combobox> "<URL>"
+agent-browser --auto-connect press Enter
+agent-browser --auto-connect wait 10000
+agent-browser --auto-connect snapshot -i | grep -iE "Request indexing"
+agent-browser --auto-connect click @e<request-indexing-button>
+agent-browser --auto-connect wait 20000
+agent-browser --auto-connect screenshot /tmp/gsc-<N>.png
+# confirm "Indexing requested" in screenshot, then dismiss
+agent-browser --auto-connect find text "Dismiss" click
+# re-snapshot to refresh refs for next URL
 ```
 
-For each URL:
+If GSC shows "Quota exceeded" or the request-indexing dialog doesn't appear: stop GSC loop, do NOT mark those URLs submitted, resume tomorrow.
 
-1. `agent-browser --auto-connect snapshot -i 2>&1 | grep -iE "Inspect any URL"` — find the combobox ref
-2. `agent-browser --auto-connect fill @e<combobox-ref> "<URL>"`
-3. `agent-browser --auto-connect press Enter`
-4. `agent-browser --auto-connect wait 10000` — inspection takes time
-5. `agent-browser --auto-connect snapshot -i 2>&1 | grep -iE "Request indexing"` — find the button
-6. `agent-browser --auto-connect click @e<request-indexing-ref>`
-7. `agent-browser --auto-connect wait 20000` — live-URL test takes ~15s
-8. `agent-browser --auto-connect screenshot /tmp/gsc-<N>.png` and confirm "Indexing requested" appears
-9. Dismiss dialog: `agent-browser --auto-connect find text "Dismiss" click`
-10. Re-snapshot to get fresh refs for next URL
+### 5. Update the queue
 
-**If GSC shows "Quota exceeded"** — stop the GSC loop immediately. Do NOT mark those URLs as submitted. Resume tomorrow.
+For each URL successfully submitted, edit its row in `docs/indexing-queue.md` to write today's date (YYYY-MM-DD) in the appropriate column. Use the Edit tool with the unique full row string.
 
-### 5. Update the queue file
+### 6. Weekly: refresh the Indexed column
 
-For each URL successfully submitted, update its row in `docs/indexing-queue.md` by writing today's ISO date (YYYY-MM-DD) into the appropriate column. Use Edit tool with `replace_all: false` and unique row context (the URL is unique, so the full row string is unique).
+Once a week, re-pull the GSC indexed list so the `Indexed` column reflects reality (pages Google has now indexed should be marked `✓` and no longer submitted):
 
-### 6. Commit the change
+```
+agent-browser --auto-connect open "https://search.google.com/search-console/index?resource_id=sc-domain%3Adeepbreathingexercises.com"
+# click "View data about indexed pages"
+# eval to extract all rows, filter URLs, strip PUA icon chars
+```
 
-```bash
+Then update the `Indexed` column for any URL newly present in the indexed list.
+
+### 7. Commit
+
+```
 git add docs/indexing-queue.md
 git commit -m "Indexing queue: submitted N URLs to GSC, M to Bing ($(date +%Y-%m-%d))"
 ```
 
-Do NOT push automatically — the user reviews and pushes when appropriate.
+Do not push — the user reviews and pushes.
 
-### 7. Report
+### 8. Report back (≤5 lines)
 
-Summarize in 5 lines max:
-- GSC submitted count + screenshot of last confirmation
-- Bing submitted count + screenshot of confirmation
-- How many pending remain per priority bucket
-- Any failures and their cause
-- Next run time
+- GSC submitted today (N) + any failures
+- Bing submitted today (M) + any failures
+- Pending by priority remaining
+- Next run time / blockers (e.g., "Bing OAuth needs re-auth")
 
-## Failure modes to watch for
+## Expected runtime
 
-- **Browser session lost / CDP 403** — run `agent-browser close` then retry `--auto-connect`. If still failing, ask the user to restart Chrome.
-- **Tab drift** — `agent-browser --auto-connect` sometimes attaches to the wrong tab. Always verify the current URL with `get url` before pasting into forms.
-- **GSC quota silent hit** — manifests as the request-indexing dialog not appearing OR as "Quota exceeded" text. Stop and do not mark those URLs submitted.
-- **Mass-translate proxy serving translated variant** — the submission should use the canonical translated URL exactly as listed in the queue. Don't let agent-browser auto-rewrite.
-- **URL already indexed** — GSC shows "URL is on Google". Still valid to click Request Indexing; mark as submitted.
+- Via MCP API: ~30 seconds for 50 GSC + 200 Bing.
+- Via UI fallback: ~5-8 minutes for 10 GSC + 50 Bing.
 
-## Completion
+## Completion signal
 
-Once the queue has no pending Bing rows and no pending GSC rows, the skill is done. Update `docs/indexing-queue.md` with a closing note at the top ("Drained YYYY-MM-DD") and stop scheduling. Indexing verification happens separately via GSC Coverage report.
+Queue drains when all non-indexed rows have a date in both GSC and Bing columns. At that point, stop daily runs; switch to weekly Indexed-column refresh only. Verify impact via GSC Coverage indexed count trend.
