@@ -15,6 +15,9 @@ submission date back.
   - Priority 3 (other translated): 93
   - Priority 5 (English): 1
 
+**GSC run 2026-04-20**: 110/126 submitted via MCP API. 16 rate-limited (pt/for/* family + /embed) — retry tomorrow.
+**Bing**: needs API key (OAuth connected with Read scope only — `submit_urls_bing` requires a separate Bing Content API key from BWT Settings → API Access).
+
 ## Columns
 
 - **P** — Priority 1 (highest) to 5 (lowest). Work the lowest-numbered pending rows first.
@@ -25,8 +28,8 @@ submission date back.
 ## Submission channels (preferred order)
 
 1. **mass-translate MCP API** — fast, batch-friendly, no UI automation.
-   - `mcp__mass-translate-backend__request_indexing` — Google Indexing API (one URL per call). **Blocker today**: GSC OAuth token refresh failed (needs re-auth via `start_gsc_oauth` / `complete_gsc_oauth`).
-   - `mcp__mass-translate-backend__submit_urls_bing` — up to 10 URLs per call. **Blocker today**: Bing OAuth not yet connected (needs `start_bing_oauth`).
+   - `mcp__mass-translate-backend__request_indexing` — Google Indexing API (one URL per call).
+   - `mcp__mass-translate-backend__submit_urls_bing` — up to 10 URLs per call. **Blocker**: needs Bing Content API key from BWT Settings → API Access → connect via backend.
 2. **agent-browser UI** — fallback, slower but works without MCP auth.
    - GSC URL Inspection — one URL at a time, ~10-20/day silent cap
    - Bing Webmaster URL Submission — paste batch into dialog, 10K/day quota
@@ -47,29 +50,29 @@ submission date back.
 | 1 | https://deepbreathingexercises.com | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/1-minute-breathing-exercise | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/2-minute-breathing-exercise | ✓ |  |  |
-| 1 | https://deepbreathingexercises.com/es/4-7-8-breathing-for-insomnia |  |  |  |
+| 1 | https://deepbreathingexercises.com/es/4-7-8-breathing-for-insomnia |  | 2026-04-20 |  |
 | 1 | https://deepbreathingexercises.com/es/4-7-8-breathing-timer | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/5-minute-breathing-exercise | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/breathe/4-7-8 | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/breathe/belly | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/breathe/box | ✓ |  |  |
-| 1 | https://deepbreathingexercises.com/es/breathe/breath-of-fire |  |  |  |
+| 1 | https://deepbreathingexercises.com/es/breathe/breath-of-fire |  | 2026-04-20 |  |
 | 1 | https://deepbreathingexercises.com/es/breathe/buteyko | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/breathe/coherent | ✓ |  |  |
-| 1 | https://deepbreathingexercises.com/es/breathe/nadi-shodhana |  |  |  |
-| 1 | https://deepbreathingexercises.com/es/breathe/physiological-sigh |  |  |  |
-| 1 | https://deepbreathingexercises.com/es/breathe/pursed-lip |  |  |  |
+| 1 | https://deepbreathingexercises.com/es/breathe/nadi-shodhana |  | 2026-04-20 |  |
+| 1 | https://deepbreathingexercises.com/es/breathe/physiological-sigh |  | 2026-04-20 |  |
+| 1 | https://deepbreathingexercises.com/es/breathe/pursed-lip |  | 2026-04-20 |  |
 | 1 | https://deepbreathingexercises.com/es/breathe/tummo | ✓ |  |  |
-| 1 | https://deepbreathingexercises.com/es/breathe/ujjayi |  |  |  |
+| 1 | https://deepbreathingexercises.com/es/breathe/ujjayi |  | 2026-04-20 |  |
 | 1 | https://deepbreathingexercises.com/es/breathe/wim-hof | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/breathing-app | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/breathing-exercises-before-surgery | ✓ |  |  |
-| 1 | https://deepbreathingexercises.com/es/breathing-exercises-for-labor |  |  |  |
+| 1 | https://deepbreathingexercises.com/es/breathing-exercises-for-labor |  | 2026-04-20 |  |
 | 1 | https://deepbreathingexercises.com/es/breathing-visualizer | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/for/anxiety | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/for/panic-attacks | ✓ |  |  |
 | 1 | https://deepbreathingexercises.com/es/for/sleep | ✓ |  |  |
-| 1 | https://deepbreathingexercises.com/es/for/stress |  |  |  |
+| 1 | https://deepbreathingexercises.com/es/for/stress |  | 2026-04-20 |  |
 | 1 | https://deepbreathingexercises.com/languages |  | 2026-04-20 | 2026-04-20 |
 | 2 | https://deepbreathingexercises.com/breathe/buteyko | ✓ |  |  |
 | 2 | https://deepbreathingexercises.com/breathe/physiological-sigh | ✓ |  |  |
@@ -77,213 +80,213 @@ submission date back.
 | 2 | https://deepbreathingexercises.com/breathe/ujjayi | ✓ |  |  |
 | 2 | https://deepbreathingexercises.com/breathe/wim-hof | ✓ |  |  |
 | 2 | https://deepbreathingexercises.com/de/breathe/buteyko | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/de/breathe/physiological-sigh |  |  |  |
+| 2 | https://deepbreathingexercises.com/de/breathe/physiological-sigh |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/de/breathe/tummo | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/de/breathe/ujjayi |  |  |  |
+| 2 | https://deepbreathingexercises.com/de/breathe/ujjayi |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/de/breathe/wim-hof | ✓ |  |  |
 | 2 | https://deepbreathingexercises.com/es | ✓ |  |  |
 | 2 | https://deepbreathingexercises.com/es/about | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/es/about/methodology |  |  |  |
+| 2 | https://deepbreathingexercises.com/es/about/methodology |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/es/box-breathing-app | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/es/box-breathing-before-presentation |  |  |  |
+| 2 | https://deepbreathingexercises.com/es/box-breathing-before-presentation |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/es/breathe | ✓ |  |  |
 | 2 | https://deepbreathingexercises.com/es/coherent-breathing-app | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/es/embed |  |  |  |
+| 2 | https://deepbreathingexercises.com/es/embed |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/es/for | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/es/for/athletes |  |  |  |
-| 2 | https://deepbreathingexercises.com/es/for/focus |  |  |  |
-| 2 | https://deepbreathingexercises.com/es/for/high-blood-pressure |  |  |  |
-| 2 | https://deepbreathingexercises.com/es/for/holiday-stress |  |  |  |
-| 2 | https://deepbreathingexercises.com/es/for/huberman |  |  |  |
-| 2 | https://deepbreathingexercises.com/es/for/kids |  |  |  |
+| 2 | https://deepbreathingexercises.com/es/for/athletes |  | 2026-04-20 |  |
+| 2 | https://deepbreathingexercises.com/es/for/focus |  | 2026-04-20 |  |
+| 2 | https://deepbreathingexercises.com/es/for/high-blood-pressure |  | 2026-04-20 |  |
+| 2 | https://deepbreathingexercises.com/es/for/holiday-stress |  | 2026-04-20 |  |
+| 2 | https://deepbreathingexercises.com/es/for/huberman |  | 2026-04-20 |  |
+| 2 | https://deepbreathingexercises.com/es/for/kids |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/es/for/lung-capacity | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/es/for/meditation |  |  |  |
+| 2 | https://deepbreathingexercises.com/es/for/meditation |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/es/for/pranayama | ✓ |  |  |
 | 2 | https://deepbreathingexercises.com/es/for/pregnancy | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/es/for/public-speaking |  |  |  |
-| 2 | https://deepbreathingexercises.com/es/for/running |  |  |  |
-| 2 | https://deepbreathingexercises.com/es/for/singing |  |  |  |
+| 2 | https://deepbreathingexercises.com/es/for/public-speaking |  | 2026-04-20 |  |
+| 2 | https://deepbreathingexercises.com/es/for/running |  | 2026-04-20 |  |
+| 2 | https://deepbreathingexercises.com/es/for/singing |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/es/for/travel-anxiety | ✓ |  |  |
 | 2 | https://deepbreathingexercises.com/es/holiday-breathing-exercises | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/es/physiological-sigh-panic-attack |  |  |  |
+| 2 | https://deepbreathingexercises.com/es/physiological-sigh-panic-attack |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/es/privacy | ✓ |  |  |
 | 2 | https://deepbreathingexercises.com/fr/breathe/buteyko | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/fr/breathe/physiological-sigh |  |  |  |
+| 2 | https://deepbreathingexercises.com/fr/breathe/physiological-sigh |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/fr/breathe/tummo | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/fr/breathe/ujjayi |  |  |  |
+| 2 | https://deepbreathingexercises.com/fr/breathe/ujjayi |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/fr/breathe/wim-hof | ✓ |  |  |
 | 2 | https://deepbreathingexercises.com/ja/breathe/buteyko | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/ja/breathe/physiological-sigh |  |  |  |
+| 2 | https://deepbreathingexercises.com/ja/breathe/physiological-sigh |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/ja/breathe/tummo | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/ja/breathe/ujjayi |  |  |  |
-| 2 | https://deepbreathingexercises.com/ja/breathe/wim-hof |  |  |  |
+| 2 | https://deepbreathingexercises.com/ja/breathe/ujjayi |  | 2026-04-20 |  |
+| 2 | https://deepbreathingexercises.com/ja/breathe/wim-hof |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/pt/breathe/buteyko | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/pt/breathe/physiological-sigh |  |  |  |
+| 2 | https://deepbreathingexercises.com/pt/breathe/physiological-sigh |  | 2026-04-20 |  |
 | 2 | https://deepbreathingexercises.com/pt/breathe/tummo | ✓ |  |  |
-| 2 | https://deepbreathingexercises.com/pt/breathe/ujjayi |  |  |  |
-| 2 | https://deepbreathingexercises.com/pt/breathe/wim-hof |  |  |  |
+| 2 | https://deepbreathingexercises.com/pt/breathe/ujjayi |  | 2026-04-20 |  |
+| 2 | https://deepbreathingexercises.com/pt/breathe/wim-hof |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/de/1-minute-breathing-exercise | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/de/2-minute-breathing-exercise | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/4-7-8-breathing-for-insomnia |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/4-7-8-breathing-for-insomnia |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/4-7-8-breathing-timer | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/de/5-minute-breathing-exercise | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/de/about | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/about/methodology |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/about/methodology |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/box-breathing-app | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/box-breathing-before-presentation |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/box-breathing-before-presentation |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/breathe | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/breathe/4-7-8 |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/breathe/4-7-8 |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/breathe/belly | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/de/breathe/box | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/breathe/breath-of-fire |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/breathe/breath-of-fire |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/breathe/coherent | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/breathe/nadi-shodhana |  |  |  |
-| 3 | https://deepbreathingexercises.com/de/breathe/pursed-lip |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/breathe/nadi-shodhana |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/de/breathe/pursed-lip |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/breathing-app | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/de/breathing-exercises-before-surgery | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/breathing-exercises-for-labor |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/breathing-exercises-for-labor |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/breathing-visualizer | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/de/coherent-breathing-app | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/embed |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/embed |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/for | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/de/for/anxiety | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/athletes |  |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/focus |  |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/high-blood-pressure |  |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/holiday-stress |  |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/huberman |  |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/kids |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/for/athletes |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/de/for/focus |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/de/for/high-blood-pressure |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/de/for/holiday-stress |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/de/for/huberman |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/de/for/kids |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/for/lung-capacity | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/meditation |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/for/meditation |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/for/panic-attacks | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/de/for/pranayama | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/pregnancy |  |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/public-speaking |  |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/running |  |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/singing |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/for/pregnancy |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/de/for/public-speaking |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/de/for/running |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/de/for/singing |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/for/sleep | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/for/stress |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/for/stress |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/for/travel-anxiety | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/de/holiday-breathing-exercises | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/de/physiological-sigh-panic-attack |  |  |  |
+| 3 | https://deepbreathingexercises.com/de/physiological-sigh-panic-attack |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/de/privacy | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr/1-minute-breathing-exercise | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr/2-minute-breathing-exercise | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/4-7-8-breathing-for-insomnia |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/4-7-8-breathing-for-insomnia |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/4-7-8-breathing-timer | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr/5-minute-breathing-exercise | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr/about | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/about/methodology |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/about/methodology |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/box-breathing-app | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/box-breathing-before-presentation |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/box-breathing-before-presentation |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/breathe | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/breathe/4-7-8 |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/breathe/4-7-8 |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/breathe/belly | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr/breathe/box | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/breathe/breath-of-fire |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/breathe/breath-of-fire |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/breathe/coherent | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr/breathe/nadi-shodhana | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/breathe/pursed-lip |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/breathe/pursed-lip |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/breathing-app | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr/breathing-exercises-before-surgery | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/breathing-exercises-for-labor |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/breathing-exercises-for-labor |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/breathing-visualizer | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr/coherent-breathing-app | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/embed |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/embed |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/for | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/anxiety |  |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/athletes |  |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/focus |  |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/high-blood-pressure |  |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/holiday-stress |  |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/huberman |  |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/kids |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/for/anxiety |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/fr/for/athletes |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/fr/for/focus |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/fr/for/high-blood-pressure |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/fr/for/holiday-stress |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/fr/for/huberman |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/fr/for/kids |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/for/lung-capacity | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/meditation |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/for/meditation |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/for/panic-attacks | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr/for/pranayama | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/pregnancy |  |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/public-speaking |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/for/pregnancy |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/fr/for/public-speaking |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/for/running | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/singing |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/for/singing |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/for/sleep | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/for/stress |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/for/stress |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/for/travel-anxiety | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/fr/holiday-breathing-exercises | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/fr/physiological-sigh-panic-attack |  |  |  |
+| 3 | https://deepbreathingexercises.com/fr/physiological-sigh-panic-attack |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/fr/privacy | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/ja | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/ja/1-minute-breathing-exercise | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/ja/2-minute-breathing-exercise | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/4-7-8-breathing-for-insomnia |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/4-7-8-breathing-for-insomnia |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/4-7-8-breathing-timer | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/ja/5-minute-breathing-exercise | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/ja/about | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/about/methodology |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/about/methodology |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/box-breathing-app | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/box-breathing-before-presentation |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/box-breathing-before-presentation |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/breathe | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/breathe/4-7-8 |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/breathe/belly |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/breathe/4-7-8 |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/breathe/belly |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/breathe/box | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/breathe/breath-of-fire |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/breathe/breath-of-fire |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/breathe/coherent | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/breathe/nadi-shodhana |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/breathe/pursed-lip |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/breathe/nadi-shodhana |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/breathe/pursed-lip |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/breathing-app | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/ja/breathing-exercises-before-surgery | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/breathing-exercises-for-labor |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/breathing-exercises-for-labor |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/breathing-visualizer | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/ja/coherent-breathing-app | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/embed |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/embed |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/for | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/anxiety |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/athletes |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/focus |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/high-blood-pressure |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/holiday-stress |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/huberman |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/kids |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/for/anxiety |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/for/athletes |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/for/focus |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/for/high-blood-pressure |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/for/holiday-stress |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/for/huberman |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/for/kids |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/for/lung-capacity | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/meditation |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/for/meditation |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/for/panic-attacks | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/ja/for/pranayama | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/pregnancy |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/public-speaking |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/running |  |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/singing |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/for/pregnancy |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/for/public-speaking |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/for/running |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/ja/for/singing |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/for/sleep | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/for/stress |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/for/stress |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/for/travel-anxiety | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/ja/holiday-breathing-exercises | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/ja/physiological-sigh-panic-attack |  |  |  |
+| 3 | https://deepbreathingexercises.com/ja/physiological-sigh-panic-attack |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/ja/privacy | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/pt | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/pt/1-minute-breathing-exercise | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/pt/2-minute-breathing-exercise | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/4-7-8-breathing-for-insomnia |  |  |  |
+| 3 | https://deepbreathingexercises.com/pt/4-7-8-breathing-for-insomnia |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/pt/4-7-8-breathing-timer | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/pt/5-minute-breathing-exercise | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/about |  |  |  |
-| 3 | https://deepbreathingexercises.com/pt/about/methodology |  |  |  |
+| 3 | https://deepbreathingexercises.com/pt/about |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/pt/about/methodology |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/pt/box-breathing-app | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/box-breathing-before-presentation |  |  |  |
+| 3 | https://deepbreathingexercises.com/pt/box-breathing-before-presentation |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/pt/breathe | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/breathe/4-7-8 |  |  |  |
-| 3 | https://deepbreathingexercises.com/pt/breathe/belly |  |  |  |
+| 3 | https://deepbreathingexercises.com/pt/breathe/4-7-8 |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/pt/breathe/belly |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/pt/breathe/box | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/breathe/breath-of-fire |  |  |  |
+| 3 | https://deepbreathingexercises.com/pt/breathe/breath-of-fire |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/pt/breathe/coherent | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/breathe/nadi-shodhana |  |  |  |
-| 3 | https://deepbreathingexercises.com/pt/breathe/pursed-lip |  |  |  |
+| 3 | https://deepbreathingexercises.com/pt/breathe/nadi-shodhana |  | 2026-04-20 |  |
+| 3 | https://deepbreathingexercises.com/pt/breathe/pursed-lip |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/pt/breathing-app | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/pt/breathing-exercises-before-surgery | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/breathing-exercises-for-labor |  |  |  |
+| 3 | https://deepbreathingexercises.com/pt/breathing-exercises-for-labor |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/pt/breathing-visualizer | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/pt/coherent-breathing-app | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/embed |  |  |  |
+| 3 | https://deepbreathingexercises.com/pt/embed |  | 2026-04-20 |  |
 | 3 | https://deepbreathingexercises.com/pt/for | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/pt/for/anxiety |  |  |  |
 | 3 | https://deepbreathingexercises.com/pt/for/athletes |  |  |  |
