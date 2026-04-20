@@ -15,7 +15,7 @@ submission date back.
   - Priority 3 (other translated): 93
   - Priority 5 (English): 1
 
-**GSC run 2026-04-20**: 110/126 submitted via MCP API. 16 rate-limited (pt/for/* family + /embed) — retry tomorrow.
+**GSC run 2026-04-20**: 126/126 submitted via MCP API (110 on first pass, 16 pt/for/* + /embed on second pass).
 **Bing run 2026-04-20**: 126/126 submitted via agent-browser UI (OAuth Read scope only; API key not stored — used BWT URL Submission UI).
 
 ## Columns
@@ -288,26 +288,26 @@ submission date back.
 | 3 | https://deepbreathingexercises.com/pt/coherent-breathing-app | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/pt/embed |  | 2026-04-20 | 2026-04-20 |
 | 3 | https://deepbreathingexercises.com/pt/for | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/for/anxiety |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/athletes |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/focus |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/high-blood-pressure |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/holiday-stress |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/huberman |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/kids |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/lung-capacity |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/meditation |  |  | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/anxiety |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/athletes |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/focus |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/high-blood-pressure |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/holiday-stress |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/huberman |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/kids |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/lung-capacity |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/meditation |  | 2026-04-20 | 2026-04-20 |
 | 3 | https://deepbreathingexercises.com/pt/for/panic-attacks | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/pt/for/pranayama | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/for/pregnancy |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/public-speaking |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/running |  |  | 2026-04-20 |
-| 3 | https://deepbreathingexercises.com/pt/for/singing |  |  | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/pregnancy |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/public-speaking |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/running |  | 2026-04-20 | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/singing |  | 2026-04-20 | 2026-04-20 |
 | 3 | https://deepbreathingexercises.com/pt/for/sleep | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/for/stress |  |  | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/for/stress |  | 2026-04-20 | 2026-04-20 |
 | 3 | https://deepbreathingexercises.com/pt/for/travel-anxiety | ✓ |  |  |
 | 3 | https://deepbreathingexercises.com/pt/holiday-breathing-exercises | ✓ |  |  |
-| 3 | https://deepbreathingexercises.com/pt/physiological-sigh-panic-attack |  |  | 2026-04-20 |
+| 3 | https://deepbreathingexercises.com/pt/physiological-sigh-panic-attack |  | 2026-04-20 | 2026-04-20 |
 | 3 | https://deepbreathingexercises.com/pt/privacy | ✓ |  |  |
 | 5 | https://deepbreathingexercises.com/1-minute-breathing-exercise | ✓ |  |  |
 | 5 | https://deepbreathingexercises.com/2-minute-breathing-exercise | ✓ |  |  |
@@ -331,7 +331,7 @@ submission date back.
 | 5 | https://deepbreathingexercises.com/breathing-exercises-for-labor | ✓ |  |  |
 | 5 | https://deepbreathingexercises.com/breathing-visualizer | ✓ |  |  |
 | 5 | https://deepbreathingexercises.com/coherent-breathing-app | ✓ |  |  |
-| 5 | https://deepbreathingexercises.com/embed |  |  | 2026-04-20 |
+| 5 | https://deepbreathingexercises.com/embed |  | 2026-04-20 | 2026-04-20 |
 | 5 | https://deepbreathingexercises.com/for | ✓ |  |  |
 | 5 | https://deepbreathingexercises.com/for/anxiety | ✓ |  |  |
 | 5 | https://deepbreathingexercises.com/for/athletes | ✓ |  |  |
