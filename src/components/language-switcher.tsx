@@ -174,44 +174,18 @@ export function LanguageSwitcherInline() {
   );
 }
 
-const CANONICAL_ORIGIN = "https://deepbreathingexercises.com";
-
-/**
- * SSR-safe static fallback rendered until client-side hydration resolves the
- * current locale. Emits real crawlable anchors to each language root so
- * Googlebot can discover translated content from every page. Uses absolute
- * URLs so the mass-translate reverse proxy does not rewrite the hrefs when
- * serving translated pages.
- */
-function LanguageSwitcherSSRFallback() {
-  return (
-    <nav
-      aria-label="Language"
-      className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground"
-    >
-      <GlobeIcon className="opacity-60" />
-      <a href={`${CANONICAL_ORIGIN}/`} className="underline underline-offset-2 hover:text-foreground">
-        English
-      </a>
-      {SUPPORTED_LOCALES.map((loc) => {
-        const prefix = getPrefix(loc);
-        return (
-          <a
-            key={loc}
-            href={`${CANONICAL_ORIGIN}/${prefix}`}
-            className="underline underline-offset-2 hover:text-foreground"
-          >
-            {LOCALE_FULL[loc]}
-          </a>
-        );
-      })}
-    </nav>
-  );
-}
-
 /**
  * Footer-style language switcher — inline links.
  * Minimized: globe that expands to show all locales.
+ *
+ * Note: the mass-translate reverse proxy rewrites anchor hrefs (both
+ * relative and absolute on the canonical host) to prefix the current
+ * locale. Server-rendering anchors here leaks broken paths like
+ * /de/es into translated pages, which would generate crawler 404s.
+ * We therefore gate the whole switcher on client-side hydration; for
+ * crawl-discovery of translated pages, rely on hreflang metadata and
+ * any server-rendered anchors added in page-level components where
+ * the build pathway is proxy-safe.
  */
 export function LanguageSwitcherFooter() {
   const [open, setOpen] = useState(false);
@@ -221,7 +195,7 @@ export function LanguageSwitcherFooter() {
     setInfo(getCurrentLocaleAndPath());
   }, []);
 
-  if (!info) return <LanguageSwitcherSSRFallback />;
+  if (!info) return null;
 
   const currentLabel = LOCALE_FULL[info.currentLocale] || "English";
   const locales = SUPPORTED_LOCALES;
