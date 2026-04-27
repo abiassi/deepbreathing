@@ -58,8 +58,9 @@ interface ResonanceProps {
 }
 
 // Valid duration values in seconds (clamped to prevent abuse)
-const VALID_DURATIONS = [60, 120, 300, 600] as const;
+const VALID_DURATIONS = [30, 60, 180, 300, 600] as const;
 const MAX_DURATION = 600; // 10 minutes max
+const DEFAULT_DURATION = 60; // 1 min default for new users
 
 function parseAndClampDuration(value: string | null): number | undefined {
   if (!value) return undefined;
@@ -69,12 +70,16 @@ function parseAndClampDuration(value: string | null): number | undefined {
   return Math.min(parsed, MAX_DURATION);
 }
 
+function durationLabel(seconds: number): string {
+  return seconds < 60 ? `${seconds}s` : `${seconds / 60} min`;
+}
+
 type ThemePreference = 'system' | 'light' | 'dark';
 
 const DURATION_OPTIONS: Array<{ label: string; value: number | null }> = [
   { label: 'Open', value: null },
   ...VALID_DURATIONS.map((duration) => ({
-    label: `${duration / 60} min`,
+    label: durationLabel(duration),
     value: duration
   }))
 ];
@@ -101,7 +106,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   // --- State ---
   const initialMode = defaultMode ?? ModeName.Box;
-  const [selectedDuration, setSelectedDuration] = useState<number | null>(() => durationFromUrl ?? null);
+  const [selectedDuration, setSelectedDuration] = useState<number | null>(() => durationFromUrl ?? DEFAULT_DURATION);
   const [activeMode, setActiveMode] = useState<ModeName>(initialMode);
   const [speedMultiplier, setSpeedMultiplier] = useState(DEFAULT_SPEED_MULTIPLIER);
   const [themeColor, setThemeColor] = useState(BREATHING_PATTERNS[initialMode].color);
@@ -1200,6 +1205,28 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           isRunning={isRunning}
           onClick={handleTogglePlay}
         />
+
+        {/* Duration chips — visible before session starts */}
+        {!isRunning && (
+          <div className="mt-5 flex items-center gap-1.5">
+            {DURATION_OPTIONS.filter(o => o.value !== null).map((option) => {
+              const isSelected = selectedDuration === option.value;
+              return (
+                <button
+                  key={option.label}
+                  onClick={() => handleDurationSelect(option.value)}
+                  className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${
+                    isSelected
+                      ? 'bg-card/80 text-card-foreground shadow-sm backdrop-blur'
+                      : 'text-muted-foreground hover:text-card-foreground'
+                  }`}
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         {/* End Hold button for Wim Hof retention phase */}
         {isProtocolMode && protocolState.phase === ProtocolPhase.RetentionHold && protocolState.retentionTime >= WIM_HOF_PROTOCOL.retentionHoldMin && (
