@@ -1113,7 +1113,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         <ParticleBackground phase={phase} color={themeColor} speedMultiplier={speedMultiplier} />
       )}
 
-      <header className="relative z-20 flex items-center justify-end gap-2 p-6">
+      <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-end gap-2 p-6">
         <LanguageSwitcherInline />
         {!embedMode && (
           <>

@@ -110,17 +110,17 @@ export default function HomePage() {
       <h1 className="sr-only">Deep Breathing Exercises</h1>
       <JsonLd data={[websiteSchema, faqSchema]} />
 
-      <section className="relative isolate min-h-screen w-full text-foreground">
-        <Suspense fallback={<div className="min-h-screen w-full" aria-hidden="true" />}>
+      <section className="px-6 pt-24 pb-2 sm:px-8 sm:pt-28 lg:hidden">
+        {heroHeader}
+      </section>
+
+      <section className="relative isolate w-full text-foreground lg:min-h-screen">
+        <Suspense fallback={<div className="min-h-[60vh] w-full lg:min-h-screen" aria-hidden="true" />}>
           <BreathingVisualizer />
         </Suspense>
         <div className="absolute inset-y-0 left-0 z-30 hidden w-full max-w-xl px-6 py-20 lg:flex lg:flex-col lg:justify-center">
           {heroHeader}
         </div>
-      </section>
-
-      <section className="px-4 py-10 sm:px-6 lg:px-8">
-        <div className="lg:hidden">{heroHeader}</div>
       </section>
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 py-16 sm:px-6 lg:px-8">

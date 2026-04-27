@@ -56,7 +56,7 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
   );
 
   return (
-    <div className="relative z-10 flex h-80 w-80 flex-col items-center justify-center md:h-96 md:w-96">
+    <div className="relative z-10 flex h-64 w-64 flex-col items-center justify-center sm:h-80 sm:w-80 md:h-96 md:w-96">
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
         <span className="block rounded-full" aria-hidden style={glowStyle} />
       </div>
