@@ -8,7 +8,7 @@ interface AuthContextValue {
   isAuthenticated: boolean;
   user: { id: string; name: string; email: string; image?: string | null } | null;
   syncSettings: (settings: { mode: string; speed: number; duration: number | null }) => void;
-  syncStats: (totalMinutes: number) => void;
+  syncStats: (totalMinutes: number, sessionsCompleted: number) => void;
 }
 
 const AuthContext = createContext<AuthContextValue>({

@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X, Settings as SettingsIcon, User, LogOut } from 'lucide-react';
+import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X, Settings as SettingsIcon, LogOut } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation, ProtocolPhase, ProtocolState } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER, WIM_HOF_PROTOCOL } from './constants';
 import { AudioService } from './services/audioService';
@@ -106,6 +106,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const [speedMultiplier, setSpeedMultiplier] = useState(DEFAULT_SPEED_MULTIPLIER);
   const [themeColor, setThemeColor] = useState(BREATHING_PATTERNS[initialMode].color);
   const [totalMinutes, setTotalMinutes] = useState(0);
+  const [sessionsCompleted, setSessionsCompleted] = useState(0);
   const [themePreference, setThemePreference] = useState<ThemePreference>('system');
   const [systemPrefersDark, setSystemPrefersDark] = useState(false);
   const [themeReady, setThemeReady] = useState(false);
@@ -562,9 +563,12 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     trackEvent('breathing_session_stop', { mode: activeMode, seconds_elapsed: sessionSeconds });
 
     if (sessionSeconds > 0) {
-      setTotalMinutes(prev => prev + Math.floor(sessionSeconds / 60));
+      const newMinutes = totalMinutes + Math.floor(sessionSeconds / 60);
+      const newSessions = sessionsCompleted + 1;
+      setTotalMinutes(newMinutes);
+      setSessionsCompleted(newSessions);
       onSessionComplete(sessionSeconds);
-      syncStats(totalMinutes + Math.floor(sessionSeconds / 60));
+      syncStats(newMinutes, newSessions);
     }
 
     setSessionSeconds(0);
@@ -913,12 +917,18 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setPhase(BreathingPhase.Idle);
       setInstructionKey('session.complete');
       trackEvent('breathing_session_complete', { mode: activeMode, seconds_elapsed: sessionSeconds });
+      const newMinutes = totalMinutes + Math.floor(sessionSeconds / 60);
+      const newSessions = sessionsCompleted + 1;
+      setTotalMinutes(newMinutes);
+      setSessionsCompleted(newSessions);
+      onSessionComplete(sessionSeconds);
+      syncStats(newMinutes, newSessions);
       // Stop all audio
       audio.stopDrone();
       audio.stopPinkNoise();
       audio.stopBinaural();
     }
-  }, [activeMode, selectedDuration, isRunning, sessionSeconds, getAudioService, setInstructionKey]);
+  }, [activeMode, selectedDuration, isRunning, sessionSeconds, getAudioService, setInstructionKey, totalMinutes, sessionsCompleted, onSessionComplete, syncStats]);
 
   useEffect(() => {
     if (!isRunning && !aiReasoning) {
@@ -955,6 +965,11 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       fallbackCount: runtimeFallbackCount
     };
   }, [runtimeFallbackCount, runtimePhrases.locale]);
+
+  useEffect(() => {
+    trackEvent('page_viewed_breathing', { mode: activeMode, page: pathname });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -1106,13 +1121,13 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
               <div className="relative">
                 <button
                   onClick={() => setShowUserMenu(prev => !prev)}
-                  className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 overflow-hidden"
+                  className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-border/60 bg-card/80 shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40"
                   aria-label="Account menu"
                 >
                   {user.image ? (
-                    <img src={user.image} alt="" className="h-7 w-7 rounded-full" />
+                    <img src={user.image} alt="" className="h-[calc(100%-8px)] w-[calc(100%-8px)] rounded-full object-cover" />
                   ) : (
-                    <span className="flex h-7 w-7 items-center justify-center text-xs font-medium text-card-foreground">
+                    <span className="flex h-[calc(100%-8px)] w-[calc(100%-8px)] items-center justify-center rounded-full text-xs font-medium text-card-foreground">
                       {(user.name || user.email)?.[0]?.toUpperCase() || '?'}
                     </span>
                   )}
@@ -1135,10 +1150,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
             ) : (
               <button
                 onClick={() => setShowSignInSheet(true)}
-                className="inline-flex items-center justify-center rounded-full border border-border/60 bg-card/80 p-2.5 text-muted-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40 dark:text-card-foreground"
-                aria-label="Sign in"
+                className="inline-flex h-10 items-center justify-center rounded-full border border-border/60 bg-card/80 px-4 text-sm font-medium text-card-foreground shadow-sm backdrop-blur transition-colors hover:bg-card dark:border-border/40 dark:bg-card/40"
+                aria-label="Sign up"
               >
-                <User size={16} />
+                Sign up
               </button>
             )}
             <button

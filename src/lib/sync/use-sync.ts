@@ -93,14 +93,14 @@ export function useSync(isAuthenticated: boolean) {
   );
 
   const syncStats = useCallback(
-    (totalMinutes: number) => {
+    (totalMinutes: number, sessionsCompleted: number) => {
       if (!isAuthenticated) return;
 
       try {
         fetch("/api/v1/sync/stats", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ totalMinutes }),
+          body: JSON.stringify({ totalMinutes, sessionsCompleted }),
         });
       } catch {
         // Silent fail
