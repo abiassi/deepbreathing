@@ -71,24 +71,73 @@ The query returns:
 
 ---
 
-## Step 3 — GSC + Bing performance pull
+## Step 3 — Search engine performance (Google + Bing)
 
-For weekly trend, focus on the **active SEO experiments** (currently /breathe/coherent rewrite). Full audits are monthly, not weekly.
+Both engines pulled every refresh. Bing matters disproportionately for this site — Bing + DuckDuckGo + Yahoo combined ≈ 6× Google traffic per the project memory. Never report Google numbers without the matching Bing pull alongside.
 
-```bash
-# GSC sync (re-auth via mcp__mass-translate-backend__start_gsc_oauth if expired)
-# Replace dates with the last 7 days
-mcp__mass-translate-backend__sync_gsc_performance \
-  site_url=https://deepbreathingexercises.com/ \
+### 3a. Google Search Console
+
+```
+# Re-auth via mcp__mass-translate-backend__start_gsc_oauth if expired
+mcp__mass-translate-backend__sync_gsc_performance
+  site_url=https://deepbreathingexercises.com/
   start_date=YYYY-MM-DD end_date=YYYY-MM-DD
 
-# Then query for /breathe/coherent specifically:
-mcp__mass-translate-backend__get_search_performance \
-  page_url=https://deepbreathingexercises.com/breathe/coherent \
+# Read totals + daily + top pages
+mcp__mass-translate-backend__get_search_performance
   start_date=YYYY-MM-DD end_date=YYYY-MM-DD
 ```
 
-**For per-query data on a specific page:** `mcp__gsc__*` analytics endpoints return 403; use Chrome MCP to navigate GSC Performance UI directly with `?page=!URL` URL param. See `tools-and-data-sources.md` for the URL pattern.
+For an active experiment page (e.g. /breathe/coherent), pass `page_url`:
+
+```
+mcp__mass-translate-backend__get_search_performance
+  page_url=https://deepbreathingexercises.com/breathe/coherent
+  start_date=YYYY-MM-DD end_date=YYYY-MM-DD
+```
+
+**Per-query data:** `mcp__gsc__*` analytics endpoints return 403; use Chrome MCP to navigate GSC Performance UI directly with `?page=!URL` URL param. See `tools-and-data-sources.md` for the URL pattern.
+
+### 3b. Bing Webmaster Tools
+
+```
+# Re-auth via mcp__mass-translate-backend__start_bing_oauth if 401
+mcp__mass-translate-backend__sync_bing_performance
+  site_url=https://deepbreathingexercises.com/
+  start_date=YYYY-MM-DD end_date=YYYY-MM-DD
+
+mcp__mass-translate-backend__get_bing_search_performance
+  start_date=YYYY-MM-DD end_date=YYYY-MM-DD
+```
+
+Capture for the dashboard:
+- **Totals:** clicks, impressions, CTR, avg position
+- **Top 5 pages by clicks** (with imp/CTR/pos)
+- **Translated-page presence** (count of /es/, /pt/, /fr/, /de/, /ja/ pages in top 20) — Bing has historically indexed translated content much slower than Google; close monitoring matters
+
+### 3c. Cross-engine sanity checks
+
+After both pulls, verify in the dashboard:
+- Active SEO experiments visible on **both** engines (a Google-only result may be SERP-feature noise; a Bing-confirmed signal is more robust).
+- Translated-page traffic delta — if Bing-translated impressions are still 0 after 2+ weeks of an indexing remediation, escalate.
+- Position differences — if a page is top-3 on Bing but pos 15+ on Google, that's a SERP-feature problem on Google, not a ranking problem.
+
+### 3d. Bing-specific actions
+
+If a fresh URL needs to be indexed on Bing fast:
+
+```
+mcp__mass-translate-backend__submit_urls_bing
+  site_url=https://deepbreathingexercises.com/
+  urls=["url1", "url2", ...]
+
+# Or sitemap:
+mcp__mass-translate-backend__submit_sitemap_bing
+  site_url=https://deepbreathingexercises.com/
+  sitemap_url=https://deepbreathingexercises.com/sitemap.xml
+```
+
+**Gotcha:** Bing OAuth was bricked once (May 5) and re-authed. If 401 errors appear, run `mcp__mass-translate-backend__start_bing_oauth`.
 
 ---
 

@@ -49,6 +49,45 @@ Top 3 engaged users: eugene (168 min), megan (40 min), matt (37 min). Eugene's 1
 
 ---
 
+## Search engine traffic — last 28 days (Apr 7 – May 4, 2026)
+
+Both engines tracked together because Bing + DuckDuckGo + Yahoo combined ≈ 6× Google traffic for this site (per memory; recheck quarterly). Don't optimize for Google in isolation.
+
+### Bing Webmaster Tools
+
+| Metric | Value |
+|---|---:|
+| Clicks | 126 |
+| Impressions | 4,590 |
+| CTR | 2.7% |
+| Avg position | 5.3 |
+
+**Top 5 Bing pages by clicks:**
+
+| Page | Clicks | Imp | CTR | Pos |
+|---|---:|---:|---:|---:|
+| /breathing-visualizer | 37 | 1,527 | 2.4% | 5.5 |
+| /breathe/4-7-8 | 15 | 845 | 1.8% | 5.0 |
+| /for/high-blood-pressure | 14 | 462 | 3.0% | 5.8 |
+| /breathe/box | 11 | 410 | 2.7% | 4.3 |
+| /for/huberman | 7 | 122 | 5.7% | 4.3 |
+
+**Notable Bing observations:**
+- `/4-7-8-breathing-timer` has 21.2% CTR (7 clicks / 33 imp at pos 3.5) — small volume but ranks well.
+- `/fr/breathing-visualizer` has 50% CTR (6/12 at pos 3.2) — only translated page in Bing top 20; French content has unrealized headroom.
+- `/breathe/wim-hof` has 232 imp / 1 click (0.4% CTR at pos 4) — head-term impressions but no click-through; investigate title/snippet.
+
+### Google Search Console
+
+Refresh on next pull from `mcp__mass-translate-backend__get_search_performance`. See [docs/seo-audit-2026-05-05.md](seo-audit-2026-05-05.md) for the May 5 GSC snapshot. Per memory: ~445 March clicks, 111K March impressions, avg position 11.5 — Bing converts at higher position (5.3) but lower volume.
+
+### Cross-engine comparisons to watch
+
+- **Translated-page indexing**: Bing has near-zero translated pages indexed (per memory + this snapshot). GSC gets ~10% impressions from translated. If we close that gap, Bing has more upside than Google because Bing indexes faster on signal.
+- **CTR by engine**: Bing CTR 2.7% vs Google CTR ~0.5% (May 5 audit) — Bing positions are better and SERP layout has fewer click-killers (no Top Stories carousel, fewer YouTube embeds).
+
+---
+
 ## Trends since 2026-04-27 baseline
 
 | Metric | Apr 27 (30d) | May 5 (28d) | Δ |
