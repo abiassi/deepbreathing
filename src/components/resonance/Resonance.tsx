@@ -552,6 +552,17 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
   }, [isRunning, activeMode, themeColor, getAudioService, isIOS, soundStatus, sessionSeconds, selectedDuration, setInstructionKey]);
 
+  const commitSession = useCallback((seconds: number) => {
+    if (seconds === 0) return;
+    const newMinutes = totalMinutes + Math.floor(seconds / 60);
+    const newSessions = sessionsCompleted + 1;
+    setTotalMinutes(newMinutes);
+    setSessionsCompleted(newSessions);
+    onSessionComplete(seconds);
+    syncStats(newMinutes, newSessions);
+    setSessionSeconds(0);
+  }, [totalMinutes, sessionsCompleted, onSessionComplete, syncStats]);
+
   const handleStop = () => {
     const audio = getAudioService();
     setIsRunning(false);
@@ -566,17 +577,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     });
     setInstructionKey('session.ready_to_start');
     trackEvent('breathing_session_stop', { mode: activeMode, seconds_elapsed: sessionSeconds });
-
-    if (sessionSeconds > 0) {
-      const newMinutes = totalMinutes + Math.floor(sessionSeconds / 60);
-      const newSessions = sessionsCompleted + 1;
-      setTotalMinutes(newMinutes);
-      setSessionsCompleted(newSessions);
-      onSessionComplete(sessionSeconds);
-      syncStats(newMinutes, newSessions);
-    }
-
-    setSessionSeconds(0);
+    commitSession(sessionSeconds);
     setScale(0);
     audio.stopDrone();
     audio.stopPinkNoise();
@@ -903,12 +904,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     let interval: ReturnType<typeof setInterval>;
     if (isRunning) {
       interval = setInterval(() => {
-        setSessionSeconds(s => {
-          if ((s + 1) % 60 === 0) {
-            setTotalMinutes(tm => tm + 1);
-          }
-          return s + 1;
-        });
+        setSessionSeconds(s => s + 1);
       }, 1000);
     }
     return () => clearInterval(interval);
@@ -922,18 +918,13 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setPhase(BreathingPhase.Idle);
       setInstructionKey('session.complete');
       trackEvent('breathing_session_complete', { mode: activeMode, seconds_elapsed: sessionSeconds });
-      const newMinutes = totalMinutes + Math.floor(sessionSeconds / 60);
-      const newSessions = sessionsCompleted + 1;
-      setTotalMinutes(newMinutes);
-      setSessionsCompleted(newSessions);
-      onSessionComplete(sessionSeconds);
-      syncStats(newMinutes, newSessions);
+      commitSession(sessionSeconds);
       // Stop all audio
       audio.stopDrone();
       audio.stopPinkNoise();
       audio.stopBinaural();
     }
-  }, [activeMode, selectedDuration, isRunning, sessionSeconds, getAudioService, setInstructionKey, totalMinutes, sessionsCompleted, onSessionComplete, syncStats]);
+  }, [activeMode, selectedDuration, isRunning, sessionSeconds, getAudioService, setInstructionKey, commitSession]);
 
   useEffect(() => {
     if (!isRunning && !aiReasoning) {
@@ -1172,7 +1163,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         )}
       </header>
 
-      <main className="relative z-10 flex flex-1 flex-col items-center justify-center pb-32 sm:pb-0">
+      <main className="relative z-10 flex flex-1 flex-col items-center justify-center pb-44 sm:pb-0">
         {/* Protocol UI: Round and breath counter */}
         {isProtocolMode && isRunning && (
           <div className="absolute top-8 left-0 right-0 z-20 flex flex-col items-center gap-2">
