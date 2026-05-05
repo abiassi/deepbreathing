@@ -103,18 +103,20 @@ See also: [Key Learnings (Jan 2026)](#key-learnings-jan-2026) — synthesis of w
 - 3 doubly-prefixed locale URLs: `/de/es/breathe/wim-hof`, `/de/ja/breathe/breath-of-fire`, `/ja/de/box-breathing-app`
 - 2 wildcard sub-path patterns: `/breathing-app/*`, `/4-7-8-breathing-timer/*`
 
-**Change** (next.config.js redirects):
-1. `/:outer(es|pt|fr|de|ja)/:inner(es|pt|fr|de|ja)/:rest*` → `/:inner/:rest*` — strips proxy-injected outer locale, keeps user-intended inner locale
+**Change** (next.config.js redirects, after one prod-failed iteration — see Diagnostic learning below):
+1. `/:locale(es|pt|fr|de|ja)/:rest+` → `/:rest+` — strips a single locale prefix; relies on the proxy already having stripped one (see learning below)
 2. `/breathing-app/:path+` → `/breathing-app`
 3. `/4-7-8-breathing-timer/:path+` → `/4-7-8-breathing-timer`
 
-Tested locally with curl — all 5 patterns return 308 (permanent redirect) to canonical destinations; root pages still return 200 (no infinite-redirect loop, `:path+` excludes empty).
+**Diagnostic learning — first version of rule #1 was wrong:** Initially shipped `/:outer(es|pt|fr|de|ja)/:inner(es|pt|fr|de|ja)/:rest*` → `/:inner/:rest*`, hypothesizing that Next.js would see the URL the user typed (`/de/es/breathe/wim-hof`). Tested locally — passed. Deployed to prod — **all 3 locale URLs still 404'd**. Reason: the mass-translate proxy strips one locale prefix before forwarding to Next.js, so by the time Next.js evaluates redirects, the URL has only ONE locale (`/es/breathe/wim-hof`) and the double-prefix pattern doesn't match. Corrected rule operates on the post-strip form. **Takeaway:** when adding redirect rules for proxy-served sites, write the rule against the URL Next.js actually sees, not the URL the user typed. To verify: deploy + curl prod, don't trust local-only tests for proxy-fronted paths.
 
-**Next steps after deploy:**
-- Click "Validate fix" in GSC Not found (404) drilldown for each URL
-- Recheck count after 2 weeks
+Tested locally with curl — all 5 patterns return 308 (permanent redirect) to canonical destinations; root pages and legitimate proxy-served URLs (`/es/breathe/wim-hof`, `/de`) still return 200. In prod, the proxy preserves the user's outermost locale on the Location header, so `/de/es/breathe/wim-hof` lands on `/de/breathe/wim-hof` (not bare `/breathe/wim-hof`) — net effect: stale 404 → German page.
 
-**Status:** 🔄 Implemented (not yet measured)
+**Steps taken on May 5 after deploy:**
+- 3 doubly-prefixed URLs submitted as `URL_DELETED` via Indexing API
+- "Validate fix" clicked in GSC Not found (404) drilldown — Google returned "Validation started: 5/5/26"
+
+**Status:** 🔄 Implemented (not yet measured) · validation in progress
 
 ---
 
