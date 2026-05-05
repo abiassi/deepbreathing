@@ -61,12 +61,15 @@ const nextConfig = {
         destination: '/breathing-app',
         permanent: true,
       },
-      // Strip mass-translate-injected outer locale on cross-locale links
-      // (e.g. /de/es/breathe/wim-hof → /es/breathe/wim-hof). Keeps user-intended
-      // inner locale; eliminates 404s flagged in GSC for stale doubly-prefixed URLs.
+      // Strip locale prefix on URLs that reach Next.js with one — the mass-translate
+      // proxy normally strips locales before forwarding, so Next.js seeing /es/...
+      // means the original URL was doubly-prefixed (/de/es/...) and the proxy
+      // stripped the outer one. Redirect to the canonical (un-prefixed) path; the
+      // proxy will re-add the user-facing locale on the response. Eliminates 404s
+      // flagged in GSC for stale doubly-prefixed crawls.
       {
-        source: '/:outer(es|pt|fr|de|ja)/:inner(es|pt|fr|de|ja)/:rest*',
-        destination: '/:inner/:rest*',
+        source: '/:locale(es|pt|fr|de|ja)/:rest+',
+        destination: '/:rest+',
         permanent: true,
       },
       // Single-page routes with no nested children — collapse stray sub-paths to root.
