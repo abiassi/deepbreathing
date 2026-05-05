@@ -91,6 +91,10 @@ export function UseCasePage({ slug }: { slug: string }) {
   const pattern = BREATHING_PATTERNS[page.mode];
   const canonicalUrl = `${baseUrl}/for/${page.slug}`;
   const reviewerName = page.meta.reviewer || DEFAULT_REVIEWER;
+  const ogImage = createOgImagePath(page.meta.ogTitle || page.meta.title, {
+    subtitle: page.hero.subtitle,
+    color: pattern?.color,
+  });
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -123,6 +127,7 @@ export function UseCasePage({ slug }: { slug: string }) {
     "@type": "Article",
     headline: page.meta.title,
     description: page.meta.description,
+    image: ogImage,
     author: page.meta.author
       ? {
         "@type": "Person",

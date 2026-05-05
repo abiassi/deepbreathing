@@ -80,6 +80,9 @@ export function PatternPage({ slug }: { slug: string }) {
   }
   const canonicalUrl = `${baseUrl}/breathe/${page.slug}`;
   const reviewerName = page.meta.reviewer || DEFAULT_REVIEWER;
+  const ogImageUrl = page.meta.ogImage && !page.meta.ogImage.startsWith('og/')
+    ? new URL(page.meta.ogImage, baseUrl).toString()
+    : new URL(`/og/${page.slug}`, baseUrl).toString();
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -99,14 +102,11 @@ export function PatternPage({ slug }: { slug: string }) {
     "@type": "HowTo",
     name: page.hero.title,
     description: page.hero.intro || page.hero.subtitle,
-    totalTime: page.howTo.totalTime,
-    difficulty: page.howTo.difficulty,
     step: page.howTo.steps.map((step) => ({
       "@type": "HowToStep",
       name: step.name,
       text: step.instruction,
-      url: `${canonicalUrl}#how-to`,
-      performTime: step.duration
+      url: `${canonicalUrl}#how-to`
     })),
     tool: page.howTo.tools.length
       ? page.howTo.tools.map((tool) => ({
@@ -127,6 +127,7 @@ export function PatternPage({ slug }: { slug: string }) {
     "@type": "Article",
     headline: page.meta.title,
     description: page.meta.description,
+    image: ogImageUrl,
     author: page.meta.author
       ? {
         "@type": "Person",
@@ -207,7 +208,7 @@ export function PatternPage({ slug }: { slug: string }) {
 
       <section className="relative isolate min-h-screen w-full text-foreground">
         <Resonance defaultMode={page.mode} className="min-h-screen" />
-        <div className="absolute inset-y-0 left-0 z-30 flex w-full max-w-xl flex-col justify-end px-6 py-20 pointer-events-none sm:justify-center">
+        <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-center px-6 pb-6 text-center pointer-events-none sm:inset-y-0 sm:left-0 sm:max-w-xl sm:items-start sm:justify-center sm:py-20 sm:text-left">
           <div className="pointer-events-auto">
             {heroHeader}
           </div>
