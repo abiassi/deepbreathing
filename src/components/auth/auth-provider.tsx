@@ -22,6 +22,12 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
+function gtagSafe(...args: unknown[]) {
+  if (typeof window === "undefined") return;
+  const fn = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
+  if (typeof fn === "function") fn(...args);
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const { data: session } = useSession();
   const isAuthenticated = !!session?.user;
@@ -39,6 +45,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       await hydrateFromServer();
     })();
   }, [isAuthenticated, mergeGuestData, hydrateFromServer]);
+
+  // Identify the user to GA4 so events stitch across devices and signed-up
+  // users are segmentable in reports. Send only the non-PII user UUID — never
+  // email or name. Fires the one-shot signup_user_identified marker the first
+  // time GA4 sees this user_id in this browser, so we can split pre/post
+  // identification analytics later.
+  const userId = session?.user?.id ?? null;
+  useEffect(() => {
+    if (!userId) {
+      // On logout, detach so subsequent events aren't attributed to the prior user.
+      gtagSafe("set", "user_id", null);
+      return;
+    }
+
+    gtagSafe("set", "user_id", userId);
+    gtagSafe("set", "user_properties", { signed_up: true });
+
+    if (typeof window === "undefined") return;
+    const flagKey = `ga_user_identified_${userId}`;
+    if (!localStorage.getItem(flagKey)) {
+      localStorage.setItem(flagKey, "1");
+      gtagSafe("event", "signup_user_identified", { user_id_set: true });
+    }
+  }, [userId]);
 
   return (
     <AuthContext.Provider
