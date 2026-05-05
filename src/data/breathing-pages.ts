@@ -649,17 +649,17 @@ export const breathingPages: BreathingPageContent[] = [
       intro: "Breathe ~5–6 times per minute with equal inhales and exhales (e.g., 5–6 seconds each). This pace often maximizes respiratory–cardiovascular coupling and baroreflex engagement, acutely boosting HRV. Keep breaths small and quiet; comfort beats depth. If dizzy or air-hungry, make breaths smaller or pause."
     },
     meta: {
-      title: "Coherent Breathing: The Science of 5 Breaths/Min (Free Trainer)",
+      title: "Coherent Breathing Timer: 5-6 Breaths Per Minute for HRV (Free)",
       description: "Free coherent breathing timer — train HRV and stress resilience in 5 minutes. 5-6 breaths/min pace. Start your guided session now.",
-      ogTitle: "Coherent Breathing: The Science of 5 Breaths/Min",
-      ogDescription: "Learn why 5-6 breaths/min maximizes HRV. The research behind coherent breathing + free interactive trainer.",
+      ogTitle: "Coherent Breathing Timer: 5-6 Breaths Per Minute for HRV",
+      ogDescription: "Free 5-6 breaths/min coherent breathing timer. Train HRV in 5 minutes. No download.",
       ogImage: "og/breathe-coherent.png",
-      twitterTitle: "Coherent Breathing: Science + Free Trainer",
-      twitterDescription: "Why 5-6 breaths/min maximizes HRV. The research + free interactive trainer.",
+      twitterTitle: "Coherent Breathing Timer: 5-6 BPM for HRV (Free)",
+      twitterDescription: "Free 5-6 breaths/min coherent breathing timer. Train HRV in 5 minutes. No download.",
       author: "Resonance Editorial Team",
       reviewer: "",
       datePublished: "2025-11-17",
-      dateModified: "2026-01-09"
+      dateModified: "2026-05-05"
     },
     body: [
       {

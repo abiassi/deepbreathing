@@ -61,6 +61,25 @@ const nextConfig = {
         destination: '/breathing-app',
         permanent: true,
       },
+      // Strip mass-translate-injected outer locale on cross-locale links
+      // (e.g. /de/es/breathe/wim-hof → /es/breathe/wim-hof). Keeps user-intended
+      // inner locale; eliminates 404s flagged in GSC for stale doubly-prefixed URLs.
+      {
+        source: '/:outer(es|pt|fr|de|ja)/:inner(es|pt|fr|de|ja)/:rest*',
+        destination: '/:inner/:rest*',
+        permanent: true,
+      },
+      // Single-page routes with no nested children — collapse stray sub-paths to root.
+      {
+        source: '/breathing-app/:path+',
+        destination: '/breathing-app',
+        permanent: true,
+      },
+      {
+        source: '/4-7-8-breathing-timer/:path+',
+        destination: '/4-7-8-breathing-timer',
+        permanent: true,
+      },
     ];
   },
 };

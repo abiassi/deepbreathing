@@ -8,10 +8,168 @@ Track SEO changes with hypotheses, baselines, and results. Check this before mak
 2. **When making changes:** Log them here with hypothesis and baseline metrics
 3. **After 2-3 weeks:** Update with results from GSC data
 4. **Status values:** `Waiting` → `Measured` → `Success`/`Failed`/`Inconclusive`
+5. **When adding entries:** also add a row to the Index below.
+
+---
+
+## Index
+
+Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 🟡 Mixed · ⏳ Waiting · 🔄 Implemented (not yet measured) · 📊 Snapshot/Checkpoint.
+
+| Date | Entry | Status |
+|------|-------|--------|
+| 2026-05-05 | [Coherent Page Title Rewrite — Timer Intent Match](#2026-05-05-coherent-page-title-rewrite--timer-intent-match) | 🔄 Implemented |
+| 2026-05-05 | [Fix 5 GSC 404s — Double-locale + Sub-path Redirects](#2026-05-05-fix-5-gsc-404s--double-locale--sub-path-redirects) | 🔄 Implemented |
+| 2026-05-05 | [CTR Investigation — 4 High-Impression Pages (Diagnostic)](#2026-05-05-ctr-investigation--4-high-impression-pages-diagnostic) | 📊 Snapshot |
+| 2026-04-20 | [Indexing Remediation — Bulk URL Resubmission to GSC + Bing](#2026-04-20-indexing-remediation--bulk-url-resubmission-to-gsc--bing) | 🔄 Implemented |
+| 2026-04-01 | [Sitemap Conversion (route.ts) — Caused ~41% De-indexing](#2026-04-01-sitemap-conversion-routets--caused-41-de-indexing) | ❌ Failed |
+| 2026-03-19 | [Embed Widget Page + Share Popover + llms.txt](#2026-03-19-embed-widget-page--share-popover--llmstxt) | ⏳ Waiting |
+| 2026-02-17 | [Checkpoint Follow-Up — Internal Links + Metadata Alignment](#2026-02-17-checkpoint-follow-up-internal-links--metadata-alignment) | 🟡 Mixed |
+| 2026-02-17 | [GSC Checkpoint (Last 28d vs Previous 28d)](#2026-02-17-gsc-checkpoint-last-28d-vs-previous-28d) | 📊 Snapshot |
+| 2026-02-06 | [Lung Capacity Exercises Page (NEW)](#2026-02-06-lung-capacity-exercises-page-new) | ❌ Failed |
+| 2026-02-06 | [Breathing Exercises for Singing Page (NEW)](#2026-02-06-breathing-exercises-for-singing-page-new) | ❌ Failed |
+| 2026-02-06 | [Breath of Fire Page (NEW)](#2026-02-06-breath-of-fire-page-new) | ❌ Failed |
+| 2026-02-06 | [Tummo Breathing Page (NEW)](#2026-02-06-tummo-breathing-page-new) | ⚪ Inconclusive |
+| 2026-02-06 | [Breathing Visualizer Landing Page (NEW)](#2026-02-06-breathing-visualizer-landing-page-new) | ⚪ Inconclusive |
+| 2026-02-06 | [Disavow Spam Backlinks + Fix /app/ Route](#2026-02-06-disavow-spam-backlinks--fix-app-route) | 🔄 Implemented |
+| 2026-02-06 | [Huberman / Physiological Sigh Cannibalization Fix](#2026-02-06-huberman--physiological-sigh-cannibalization-fix) | 🔄 Implemented |
+| 2026-02-03 | [Near-Top-10 Tuning Pass — Answer Blocks + Exact-Match Intros](#2026-02-03-near-top-10-tuning-pass-answer-blocks--exact-match-intros) | 🔄 Implemented |
+| 2026-01-27 | [Interactive Tool CTAs in Meta Descriptions](#2026-01-27-interactive-tool-ctas-in-meta-descriptions) | 🔄 Implemented |
+| 2026-01-27 | [Voice Search / Conversational Query Optimization](#2026-01-27-voice-search--conversational-query-optimization) | 🔄 Implemented |
+| 2026-01-27 | [E-E-A-T Enhancement](#2026-01-27-e-e-a-t-enhancement) | 🔄 Implemented |
+| 2026-01-27 | [Programmatic Combination Pages (pSEO)](#2026-01-27-programmatic-combination-pages-pseo) | 🔄 Implemented |
+| 2026-01-27 | [Push Top 10 Pages to Top 5 (Position Consolidation)](#2026-01-27-push-top-10-pages-to-top-5-position-consolidation) | 🔄 Implemented |
+| 2026-01-27 | [GSC Snapshot (Jan 6-27, 2026)](#gsc-snapshot-jan-6-27-2026) | 📊 Snapshot |
+| 2026-01-20 | [Pranayama Hub (NEW)](#2026-01-20-seo-technique-expansion---pranayama-hub-new) | ⚪ Inconclusive |
+| 2026-01-20 | [Buteyko Breathing (NEW)](#2026-01-20-seo-technique-expansion---buteyko-breathing-new) | ⚪ Inconclusive |
+| 2026-01-20 | [Belly Breathing (NEW)](#2026-01-20-seo-technique-expansion---belly-breathing-new) | ⚪ Inconclusive |
+| 2026-01-20 | [Breathing for Kids (NEW)](#2026-01-20-seo-technique-expansion---breathing-for-kids-new) | ⚪ Inconclusive |
+| 2026-01-20 | [Ujjayi Breathing (NEW)](#2026-01-20-seo-technique-expansion---ujjayi-breathing-new) | ⚪ Inconclusive |
+| 2026-01-20 | [Breathing for Stress Use-Case Page (NEW)](#2026-01-20-breathing-for-stress-use-case-page-new) | ⚪ Inconclusive |
+| 2026-01-20 | [Alternate Nostril Breathing Page (NEW)](#2026-01-20-alternate-nostril-breathing-page-new) | ⚪ Inconclusive |
+| 2026-01-20 | [Pursed Lip Breathing Page (NEW)](#2026-01-20-pursed-lip-breathing-page-new) | ⚪ Inconclusive |
+| 2026-01-20 | [GSC Snapshot (Jan 6-20, 2026)](#gsc-snapshot-jan-6-20-2026) | 📊 Snapshot |
+| 2026-01-10 | [Synonym Capture for Physiological Sigh](#2026-01-10-synonym-capture-for-physiological-sigh) | ❌ Failed |
+| 2026-01-10 | [GSC Baseline Snapshot (Dec 1, 2025 - Jan 7, 2026)](#gsc-baseline-snapshot-dec-1-2025---jan-7-2026) | 📊 Snapshot |
+| 2026-01-09 | ["Free Online Timer" Title Format Test (Batch)](#2026-01-09-free-online-timer-title-format-test-batch) | ⚪ Inconclusive |
+| 2026-01-09 | [Remove "Loading..." SSR Text](#2026-01-09-remove-loading-ssr-text) | ⚪ Inconclusive |
+| 2026-01-09 | [Physiological Sigh Intent-Targeted Sections](#2026-01-09-physiological-sigh-intent-targeted-sections) | ✅ Success |
+| 2026-01-09 | [Coherent Page Differentiation](#2026-01-09-coherent-page-differentiation) | ✅ Success |
+| 2026-01-06 | [Video Embeds for Rich Results](#2026-01-06-video-embeds-for-rich-results) | ❌ Failed |
+| 2026-01-06 | [FAQ H3 Headings for Featured Snippets](#2026-01-06-faq-h3-headings-for-featured-snippets) | ❌ Failed |
+| 2026-01-06 | [Navy SEAL Content Expansion](#2026-01-06-navy-seal-content-expansion) | ❌ Failed |
+| 2026-01-06 | [CTR Title Rewrites (Batch 1)](#2026-01-06-ctr-title-rewrites-batch-1) | ✅ Success |
+
+**Roll-up by status (41 entries):** ✅ 4 Success · ❌ 8 Failed · ⚪ 11 Inconclusive · 🟡 1 Mixed · ⏳ 1 Waiting · 🔄 11 Implemented · 📊 5 Snapshot.
+
+See also: [Key Learnings (Jan 2026)](#key-learnings-jan-2026) — synthesis of what worked / failed / strategic insights from the first month of experiments.
 
 ---
 
 ## Active Experiments
+
+### 2026-05-05: Coherent Page Title Rewrite — Timer Intent Match
+
+**Hypothesis:** /breathe/coherent ranks pos 5 for "coherent breathing breaths per minute" (84 imp / 0 clicks at baseline) but gets 0% CTR because the title leads with "The Science of 5 Breaths/Min" — academic framing while users searching with timer/configuration intent (every top-10 query is "X breaths per minute" or "5 sec inhale 5 sec exhale"). YouTube timer videos own pos 1, 2 and there's an Answer Box above. Reframing the title around the tool ("Coherent Breathing Timer: 5-6 Breaths Per Minute for HRV (Free)") should match user intent and lift CTR on the queries we already rank for.
+
+**Baseline (May 5, 2026, last 90d):**
+- Page-level: ~3K impressions, pos ~7, CTR <0.1%
+- Top query "coherent breathing breaths per minute": pos 5, 84 imp, **0 clicks, 0% CTR**
+- Top 10 queries combined: 296 imp = 3.5% of page total (95% long-tail)
+- SERP for top query: Answer Box (SIU Med) + 2 YouTube timer videos (pos 1, 2) above us at pos 5
+
+**Change:**
+- Title: `Coherent Breathing: The Science of 5 Breaths/Min (Free Trainer)` → `Coherent Breathing Timer: 5-6 Breaths Per Minute for HRV (Free)`
+- ogTitle / twitterTitle / descriptions aligned to same framing
+- Description left as-is (already strong: "Free coherent breathing timer — train HRV...")
+- File: `src/data/breathing-pages.ts` (slug "coherent")
+
+**Expected impact:** Top-3 timer-intent queries (pos 5–6) lift from 0% → 1–3% CTR. Page-level CTR lift modest (long-tail dilution). Pattern matches the 2026-01-06 batch winner ("Free Online [X] Timer" structure).
+
+**Diagnostic doc:** [docs/ctr-investigation-2026-05-05.md](ctr-investigation-2026-05-05.md) — full per-query data and SERP analysis for all 4 candidate pages.
+
+**Measurement date:** 2026-05-19 (2 weeks) checkpoint scheduled. Full 4-week eval ~2026-06-02.
+
+**Status:** 🔄 Implemented (not yet measured)
+
+---
+
+### 2026-05-05: Fix 5 GSC 404s — Double-locale + Sub-path Redirects
+
+**Hypothesis:** 5 URLs in GSC's "Not found (404)" indexed bucket are stale crawls from before two specific cleanups: (a) the mass-translate proxy used to mangle cross-locale anchor hrefs (e.g., German page link to `/es/breathe/wim-hof` got rewritten to `/de/es/breathe/wim-hof`), now mitigated by client-side switcher gating + `EN_ONLY_ROUTES` for /languages — but Google still has these URLs indexed as 404; (b) `/breathing-app/*` and `/4-7-8-breathing-timer/*` sub-paths don't exist (these routes are leaf pages, no nested children). Adding 3 redirect rules in next.config.js converts these stale crawls to 301s, which Google honors and clears.
+
+**Baseline (May 5, 2026):**
+- GSC Page indexing → "Not found (404)": 5 affected pages (first detected 2026-03-21 to 2026-04-24)
+- 3 doubly-prefixed locale URLs: `/de/es/breathe/wim-hof`, `/de/ja/breathe/breath-of-fire`, `/ja/de/box-breathing-app`
+- 2 wildcard sub-path patterns: `/breathing-app/*`, `/4-7-8-breathing-timer/*`
+
+**Change** (next.config.js redirects):
+1. `/:outer(es|pt|fr|de|ja)/:inner(es|pt|fr|de|ja)/:rest*` → `/:inner/:rest*` — strips proxy-injected outer locale, keeps user-intended inner locale
+2. `/breathing-app/:path+` → `/breathing-app`
+3. `/4-7-8-breathing-timer/:path+` → `/4-7-8-breathing-timer`
+
+Tested locally with curl — all 5 patterns return 308 (permanent redirect) to canonical destinations; root pages still return 200 (no infinite-redirect loop, `:path+` excludes empty).
+
+**Next steps after deploy:**
+- Click "Validate fix" in GSC Not found (404) drilldown for each URL
+- Recheck count after 2 weeks
+
+**Status:** 🔄 Implemented (not yet measured)
+
+---
+
+### 2026-05-05: CTR Investigation — 4 High-Impression Pages (Diagnostic)
+
+**What:** 90-day per-query GSC pull + SerpApi SERP capture for the 4 highest-impression-but-low-CTR pages: /breathe/physiological-sigh, /breathe/coherent, /breathe/box, /for/athletes. Goal was to determine whether each page's bleed is title-fixable, ranking-limited, or SERP-feature-blocked.
+
+**Findings:**
+- **/breathe/physiological-sigh** (8.25K imp, 0.06% CTR, pos 10.1): Top Stories carousel + PAA + YouTube + Huberman/Stanford/NIH dominate. **SERP-feature problem.** Skip rewrite.
+- **/breathe/coherent** (~3K imp, low CTR, pos ~7): pos 5 organically; Answer Box + 2 YT timer videos above; title is academic-framed but queries are timer-intent. **Title-rewrite candidate** → executed (see 2026-05-05 entry above).
+- **/breathe/box** (~5K imp, low CTR, pos ~8): **Pos 3 with 3% CTR for top query "mark divine box breathing"** behind 2 YT videos of Mark Divine himself. Page-level CTR is dragged down by ~94% long-tail impressions where we likely rank pos 20+. **Performing as expected** — not rewritable.
+- **/for/athletes** (~3K imp, low CTR, pos ~6): Pos 9 surrounded by NIH, Stanford, Huberman, Oura. **Authority-limited.** Title is strong already ("Faster Athletic Recovery: Physiological Sigh Between Sets"). Will recover as DR rebuilds.
+
+**Key insight for future audits:** When a page's top-10 visible queries account for <10% of its impressions, page-level CTR is largely a function of long-tail ranking position, not titles. Three of the four "CTR bleeders" had this pattern.
+
+**Status:** 📊 Snapshot — informs the coherent rewrite (executed) and the strategic choice to *not* rewrite the other three.
+
+**Doc:** [docs/ctr-investigation-2026-05-05.md](ctr-investigation-2026-05-05.md)
+
+---
+
+### 2026-04-20: Indexing Remediation — Bulk URL Resubmission to GSC + Bing
+
+**Hypothesis:** The April 1 sitemap conversion (commits c6826f2 + 361994d switched `src/app/sitemap.ts` → `src/app/sitemap.xml/route.ts`) caused ~41% of URLs to drop out of Google's index, manifesting as a Mar→Apr -53% impression collapse on both Google AND Bing. Bulk resubmission of the affected URLs through GSC's URL Inspection / Indexing API and Bing's submit_urls endpoint should accelerate re-discovery.
+
+**Baseline (Apr 20):** 180 / 307 URLs indexed (per docs/indexing-queue.md).
+
+**Action:**
+- 110 URLs resubmitted to GSC via Indexing API
+- 126 URLs resubmitted to Bing via submit_urls_bing MCP
+
+**Status (May 5, 15 days later):** 🔄 Implemented
+- Indexed: 200 (+20 in 15 days)
+- Not indexed: 147
+- Discovered - currently not indexed: 113
+
+**Next checkpoint:** 2026-05-19 (scheduled task created). Expect "Discovered not indexed" to drop below 50 if Google is processing normally.
+
+---
+
+### 2026-04-01: Sitemap Conversion (route.ts) — Caused ~41% De-indexing
+
+**What happened:** Commits c6826f2 + 361994d converted the sitemap from Next.js' `src/app/sitemap.ts` (auto-generated) to a hand-rolled `src/app/sitemap.xml/route.ts` route handler. The new handler emits the same URLs but the route move appears to have broken Google's existing tracking. Within 7 days, ~41% of indexed URLs dropped out of the index.
+
+**Effect:** Mar→Apr-May impressions: −53% on Google AND Bing simultaneously. Position and CTR flat (so not a ranking issue — fewer URLs in the index = fewer chances to be shown).
+
+**Why it broke:** Google was tracking `/sitemap.xml` previously emitted by the legacy handler. The route handler introduced minor structural differences that triggered re-evaluation of every sitemap entry, with the worst-performing ~41% getting deprioritized during recrawl.
+
+**Mitigation:** April 20 bulk resubmission (above). May 5 redirect fix for 5 URL patterns flagged 404 (above).
+
+**Status:** ❌ Failed (caused indexing collapse) — but mitigation is in flight; tracking recovery via 2026-05-19 checkpoint.
+
+**Lesson:** Avoid sitemap pathway changes without staging an Indexing API resubmission immediately after. Future sitemap refactors must be paired with explicit GSC re-validation.
+
+---
 
 ### 2026-03-19: Embed Widget Page + Share Popover + llms.txt
 

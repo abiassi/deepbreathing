@@ -5,18 +5,21 @@ The `daily-indexing` skill reads this file, picks the next URLs whose **Indexed*
 column is empty AND whose GSC/Bing column is empty, submits them, and writes the
 submission date back.
 
-## Current state (as of 2026-04-20)
+## Current state (as of 2026-05-05)
 
 - **Total URLs in sitemap**: 307
-- **Already indexed by Google**: 180 (per GSC Page Indexing report)
-- **Pending submission**: 127
-  - Priority 1 (Spanish high-demand + hub): 9
-  - Priority 2 (remaining `/es/*` + buteyko/tummo family): 24
-  - Priority 3 (other translated): 93
-  - Priority 5 (English): 1
+- **Indexed by Google**: 200 (per GSC Page Indexing report — was 180 on Apr 20, +20 in 15 days)
+- **Not indexed**: 147 (6 reasons; biggest bucket is "Discovered - currently not indexed" at 113)
+- **404 patterns flagged & fixed today**: 5 — all addressed via 3 redirect rules in next.config.js (see SEO-EXPERIMENTS.md 2026-05-05 entry):
+  - `/de/es/breathe/wim-hof`, `/de/ja/breathe/breath-of-fire`, `/ja/de/box-breathing-app` → handled by double-locale stripping rule
+  - `/breathing-app/*`, `/4-7-8-breathing-timer/*` → handled by sub-path collapse rules
+- **Next checkpoint**: 2026-05-19 (scheduled task). Expect "Discovered not indexed" <50 if processing normally.
 
-**GSC run 2026-04-20**: 126/126 submitted via MCP API (110 on first pass, 16 pt/for/* + /embed on second pass).
-**Bing run 2026-04-20**: 126/126 submitted via agent-browser UI (OAuth Read scope only; API key not stored — used BWT URL Submission UI).
+## Historical state (as of 2026-04-20)
+
+- 180 / 307 indexed, 127 pending.
+- **GSC run 2026-04-20**: 126/126 submitted via MCP API (110 on first pass, 16 pt/for/* + /embed on second pass).
+- **Bing run 2026-04-20**: 126/126 submitted via agent-browser UI (OAuth Read scope only; API key not stored — used BWT URL Submission UI).
 
 ## Columns
 
