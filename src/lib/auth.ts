@@ -1,10 +1,19 @@
 import { betterAuth } from "better-auth";
 import { magicLink } from "better-auth/plugins";
-// nextCookies removed — causes 500 when behind Cloudflare proxy
+// nextCookies removed - causes 500 when behind Cloudflare proxy
 import { Pool } from "pg";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+
+async function isSuppressed(email: string): Promise<boolean> {
+  const { rows } = await pool.query(
+    "SELECT 1 FROM email_suppressions WHERE email = $1",
+    [email.toLowerCase()]
+  );
+  return rows.length > 0;
+}
 
 export const auth = betterAuth({
   baseURL: process.env.BETTER_AUTH_URL,
@@ -41,23 +50,23 @@ export const auth = betterAuth({
     user: {
       create: {
         after: async (user) => {
-          // Send personal welcome email from Abi
           try {
+            if (await isSuppressed(user.email)) return;
             await resend.emails.send({
               from: "Abi from Deep Breathing Exercises <abi@deepbreathingexercises.com>",
               to: user.email,
-              subject: "Welcome — glad you're here",
+              subject: "Welcome, glad you're here",
               replyTo: "abi@deepbreathingexercises.com",
               html: `<div style="font-family: system-ui, -apple-system, sans-serif; max-width: 480px; margin: 0 auto; padding: 40px 20px; color: #333;">
   <p style="font-size: 16px; line-height: 1.7;">Hey${user.name ? ` ${user.name.split(" ")[0]}` : ""},</p>
   <p style="font-size: 16px; line-height: 1.7;">Abi here. I made this breathing app a while back because I was dealing with anxiety and needed something simple that actually worked. Somehow it turned into a thing that thousands of people use every month, which still kind of blows my mind.</p>
-  <p style="font-size: 16px; line-height: 1.7;">Anyway — your stuff is saved now. Settings, progress, all of it syncs if you use it on another device.</p>
+  <p style="font-size: 16px; line-height: 1.7;">Anyway, your stuff is saved now. Settings, progress, all of it syncs if you use it on another device.</p>
   <p style="font-size: 16px; line-height: 1.7;">One thing I'd genuinely love to know: <strong>is there something you wish this app did that it doesn't?</strong> Hit reply, it goes straight to me.</p>
   <p style="font-size: 16px; line-height: 1.7;">Thanks for being here,<br/>Abi</p>
 </div>`,
             });
           } catch {
-            // Don't block signup if welcome email fails
+            // don't block signup if welcome email fails
           }
         },
       },
@@ -66,6 +75,7 @@ export const auth = betterAuth({
   plugins: [
     magicLink({
       sendMagicLink: async ({ email, url }) => {
+        if (await isSuppressed(email)) return;
         await resend.emails.send({
           from: "Deep Breathing Exercises <noreply@deepbreathingexercises.com>",
           to: email,
