@@ -374,6 +374,9 @@ export default function OneMinuteBreathingExercisePage() {
           <Link href="/about" className="underline underline-offset-2 transition-colors hover:text-foreground">
             About
           </Link>
+          <Link href="/about/abi" className="underline underline-offset-2 transition-colors hover:text-foreground">
+            About Abi
+          </Link>
           <Link href="/embed" className="underline underline-offset-2 transition-colors hover:text-foreground">
             Embed
           </Link>

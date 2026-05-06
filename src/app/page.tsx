@@ -382,6 +382,16 @@ export default function HomePage() {
                 </Link>
               </li>
               <li>
+                <Link href="/about/abi" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  About Abi
+                </Link>
+              </li>
+              <li>
+                <Link href="/about/editorial-policy" className="underline underline-offset-2 transition-colors hover:text-foreground">
+                  Editorial Policy
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy" className="underline underline-offset-2 transition-colors hover:text-foreground">
                   Privacy
                 </Link>

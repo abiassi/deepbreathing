@@ -314,6 +314,9 @@ export default function FourSevenEightInsomniaPage() {
             <Link href="/about" className="underline underline-offset-2 transition-colors hover:text-foreground">
               About
             </Link>
+            <Link href="/about/abi" className="underline underline-offset-2 transition-colors hover:text-foreground">
+              About Abi
+            </Link>
           </div>
         </footer>
       </div>
