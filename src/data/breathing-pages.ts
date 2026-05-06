@@ -3258,8 +3258,8 @@ const ninthDimensionPage: BreathingPageContent = {
   mode: ModeName.WimHof,
   lineage: "9D Breathwork was created by Brian Kelly in the early 2020s as a guided audio format combining a single breath protocol — conscious connected breathing — with a stack of nine audio production layers (binaural beats, solfeggio frequencies, spatial sound, NLP-style guidance). The breath itself is not new: conscious connected breathing traces back through Wim Hof's activating phase, Stanislav Grof's Holotropic Breathwork (1970s), and earlier rebirthing practices. *9dbreathwork.com* operates the official network of 1,300+ certified facilitators across 50+ countries.",
   hero: {
-    title: "What Is 9D Breathwork? A Plain-English Guide",
-    subtitle: "The breath part is conscious connected breathing — and you can try it free, right here.",
+    title: "9D Breathwork Explained",
+    subtitle: "The breath is free. Try it now, then learn what makes a session 9D.",
     intro: "9D Breathwork pairs a single breath technique (conscious connected breathing, no pause between inhale and exhale) with a nine-layer audio soundtrack. A typical session runs 60 to 120 minutes, with about 45 minutes of active breathing in the middle. Below: what the nine layers actually are, what a session feels like, who shouldn't do it, and how it compares to Wim Hof and 4-7-8."
   },
   meta: {
@@ -3477,8 +3477,8 @@ const hopeCartelPage: BreathingPageContent = {
   mode: ModeName.WimHof,
   lineage: "Hope Cartel is an Australian breathwork community founded by Garry \"Gaz\" Wright, growing rapidly on TikTok in 2024-2026. Wright runs in-person group sessions at \"Hope HQ\" in Melton, Victoria, plus private 1:1s, online group sessions, and interstate touring events. Hope Cartel delivers the 9D Breathwork format created by Brian Kelly — they are not the protocol owner, but one of the most visible delivery brands in the English-speaking breathwork scene.",
   hero: {
-    title: "Hope Cartel 9D Breathwork: What It Is and Where to Try It",
-    subtitle: "The Aussie breathwork community delivering the 9D format — what to expect, what it costs, and the breath part you can try free.",
+    title: "Hope Cartel 9D Breathwork",
+    subtitle: "Australia's biggest 9D delivery brand. Sessions, pricing, and what to expect.",
     intro: "Hope Cartel is one of the largest delivery brands for 9D Breathwork — the audio-layered guided breathing format created by Brian Kelly. Based in Melton, Victoria, they run group sessions at their dedicated venue, private 1:1s, online sessions, and touring events across Australia. Below: who they are, what a Hope Cartel session actually looks like, what it costs, and how the underlying breath protocol works (which you can try right now, free)."
   },
   meta: {
