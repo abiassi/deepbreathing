@@ -18,6 +18,8 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
+| 2026-05-06 | [9D Breathwork Cluster — 2 Pages Riding the Breakout Trend](#2026-05-06-9d-breathwork-cluster--2-pages-riding-the-breakout-trend) | 🔄 Implemented |
+| 2026-05-06 | [Wim Hof Bing CTR — SERP Feature Structural Ceiling (Finding)](#2026-05-06-wim-hof-bing-ctr--serp-feature-structural-ceiling) | 📊 Snapshot |
 | 2026-05-06 | [E-E-A-T Wellness-Class Overhaul — Founder Byline + Lineage + Light Citations](#2026-05-06-e-e-a-t-wellness-class-overhaul--founder-byline--lineage--light-citations) | 🔄 Implemented |
 | 2026-05-05 | [Bing Translated-Page Indexing Push — URL + Content Submission](#2026-05-05-bing-translated-page-indexing-push--url--content-submission) | 🔄 Implemented |
 | 2026-05-05 | [Coherent Page Title Rewrite — Timer Intent Match](#2026-05-05-coherent-page-title-rewrite--timer-intent-match) | 🔄 Implemented |
@@ -62,13 +64,77 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 | 2026-01-06 | [Navy SEAL Content Expansion](#2026-01-06-navy-seal-content-expansion) | ❌ Failed |
 | 2026-01-06 | [CTR Title Rewrites (Batch 1)](#2026-01-06-ctr-title-rewrites-batch-1) | ✅ Success |
 
-**Roll-up by status (42 entries):** ✅ 4 Success · ❌ 8 Failed · ⚪ 11 Inconclusive · 🟡 1 Mixed · ⏳ 1 Waiting · 🔄 12 Implemented · 📊 5 Snapshot.
+**Roll-up by status (43 entries):** ✅ 4 Success · ❌ 8 Failed · ⚪ 11 Inconclusive · 🟡 1 Mixed · ⏳ 1 Waiting · 🔄 12 Implemented · 📊 6 Snapshot.
 
 See also: [Key Learnings (Jan 2026)](#key-learnings-jan-2026) — synthesis of what worked / failed / strategic insights from the first month of experiments.
 
 ---
 
 ## Active Experiments
+
+### 2026-05-06: 9D Breathwork Cluster — 2 Pages Riding the Breakout Trend
+
+**Hypothesis:** Google Trends shows "9D breathwork" as a breakout-level rising query (driven by Brian Kelly's 9dbreathwork.com brand + Hope Cartel's TikTok growth + Gary Brecka–adjacent biohacker hype). The category vocabulary is brand-new, so KD across the cluster is 0–5 — competition is dominated by facilitator landing pages and 2 editorial competitors (1883 Magazine ~2,100 words, Kora Wellness ~3,000 words). At our DR 0.2, two well-built editorial pages can reach top-5 within weeks. The wedge no one has: **the breath protocol underneath 9D is conscious connected breathing — that's free; the audio production stack is what you pay for.** Our free pacer delivers the breath part honestly. Decision is to write 2 pages, not the 10-page cluster the original brief sketched, because Ahrefs verification (May 6) showed the comparison/at-home/app sub-queries have only 0–10 monthly volume each — folding them as H2s on the head page captures the same intent without thin-page risk.
+
+**Reference dossier:** [docs/research/9d-breathwork-content-brief.md](research/9d-breathwork-content-brief.md) — full editorial brief, SERP analysis, honesty notes.
+
+**Baseline (May 6, 2026, US, Ahrefs Keywords Explorer):**
+
+| Keyword | Vol | KD | Page targeted |
+|---|---:|---:|---|
+| 9d breathwork | 1.7K | 0–5 | `/breathe/9d-breathwork` |
+| what is 9d breathwork | 350 | low | `/breathe/9d-breathwork` (H2 + featured snippet) |
+| 9d breathwork cost | 200 | low | `/breathe/9d-breathwork` (H2) |
+| conscious connected breathing | 150 | low | `/breathe/9d-breathwork` (H2) |
+| gary brecka breathwork | 100 | low | `/breathe/9d-breathwork` (H2 — Wim Hof comparison) |
+| hope cartel 9d breathwork | 800 | 0–5 | `/breathe/hope-cartel-9d-breathwork` |
+| hope cartel | 50 | low | `/breathe/hope-cartel-9d-breathwork` |
+| hope cartel breathwork | 20 | low | `/breathe/hope-cartel-9d-breathwork` |
+
+Total addressable cluster volume: **~3.3K monthly searches** in US. Currently zero rankings — neither slug exists.
+
+**What's NOT being targeted (and why):**
+- `9d breathwork near me` (1.8K) — local intent, will go to facilitator/venue pages, can't capture digitally.
+- `9d breathwork at home` (10), `9d breathwork app` (10), `9d vs wim hof` (0–10), `binaural beats breathwork` (0) — original brief estimates were 200–600 each; Ahrefs reality is single-digit volume. Folded as H2s, no dedicated page.
+- `witality` (60) — branded competitor with very small volume; not worth a page.
+
+**What's shipping:**
+1. `/breathe/9d-breathwork` — head page, 2,000+ words, structured per dossier (8 H2s incl. snippet-optimized "what is 9d breathwork" answer block, breath protocol explainer with our pacer embedded, session walkthrough, at-home options, vs Wim Hof / Brecka comparison, who shouldn't do it, brand rundown, FAQ). Mode: `Wim Hof Breathing` (the closest analog to conscious connected breathing).
+2. `/breathe/hope-cartel-9d-breathwork` — explainer page, ~1,200 words (what Hope Cartel is, format/pricing/locations, where they fit relative to the broader 9D format, honest pointer to our free pacer for the breath itself, FAQ). Same mode.
+3. Both pages: English only — small scoped experiment, no translations until we see whether the head term ranks.
+
+**Pre-committed success criteria (measure 2026-06-17, ~6 weeks):**
+- ✅ **Success**: `/breathe/9d-breathwork` reaches top-5 on Google US for `9d breathwork` AND `/breathe/hope-cartel-9d-breathwork` reaches top-5 for `hope cartel 9d breathwork`. Combined cluster delivers ≥30 organic clicks/month from these two pages.
+- 🟡 **Mixed**: One page reaches top-5 on its head term, the other lands top 6–15. Combined ≥10 clicks/month.
+- ⚪ **Inconclusive**: Either page lands position 11–30 without trend signal. Plausible "needs more time" — re-measure at 12 weeks before calling.
+- ❌ **Failed**: Both pages stuck position 30+ at 6 weeks AND no trend toward improvement. Validates that even at KD 0–5, our DR 0.2 can't carry editorial-only pages on this niche.
+
+**Honesty positioning** (per dossier, deliberate):
+- Don't endorse 432 Hz / solfeggio / "rewires nervous system" / "years of therapy in one session" claims.
+- Frame: "the breath part is studied; the audio production is novel and not independently tested."
+- Page CTA is our free pacer for the breath; for the full audio experience, we name 9D Breathwork (the brand), Hope Cartel, Witality as the places to find it.
+
+**Risks to watch:**
+- Trend is influencer-driven (Gary Brecka peaks → declines on Trends). If 9D fades by Q3 2026, the pages remain useful as honest editorial but won't compound.
+- E-E-A-T concern: SERP is currently dominated by facilitator pages selling sessions. We're the only "free tool with editorial honesty" angle — if Google rewards seller-pages over editorial, we lose.
+
+**Status:** 🔄 Implemented (not yet measured)
+
+---
+
+### 2026-05-06: Wim Hof Bing CTR — SERP Feature Structural Ceiling
+
+**Type:** Finding (not an experiment — no change made).
+
+**Observation:** `/breathe/wim-hof` sits at Bing pos 4 (en-gb, last 28d) with 232 impressions and 0.4% CTR. Expected CTR at pos 4 is ~8%.
+
+**Root cause confirmed via SERP inspection:** "wim hof breathing" on Bing (en-GB) triggers a celebrity Knowledge Panel (Wim Hof as "Dutch motivational speaker"), a 4-video YouTube carousel, a mid-results YouTube embed with thumbnail, a People Also Ask box, and a "Deep dive" related-searches panel — all before organic results. Organic pos 1 (wimhofmethod.com, with sitelinks) is below the fold after 2+ scrolls. Deepbreathingexercises.com does not appear on page 1 for the head term; the pos 4 is across long-tail query variants.
+
+**Conclusion:** The snippet/title is not the problem. This is a structural ceiling — Wim Hof is a celebrity entity and Bing will always serve video + Knowledge Panel for the head term. No snippet tweak recovers CTR here.
+
+**What to do instead:** Target long-tail variants without entity panels ("wim hof breathing timer", "wim hof 30 breaths step by step", "wim hof breathing technique beginners") where a tool-intent text result can win. The current title already has `(Free Guided Tool)` — correct framing, wrong query.
+
+---
 
 ### 2026-05-06: E-E-A-T Wellness-Class Overhaul — Founder Byline + Lineage + Light Citations
 

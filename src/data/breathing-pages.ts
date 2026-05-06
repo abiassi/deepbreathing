@@ -3249,6 +3249,438 @@ const breathOfFirePage: BreathingPageContent = {
   ],
 };
 
+// 9D Breathwork explainer page (head term: "9d breathwork", 1.7K/mo US, KD 0–5)
+// Honest editorial: the breath protocol underneath 9D is conscious connected breathing
+// (Wim Hof activating phase). The "9D" is the audio production stack, not the breath.
+// See docs/research/9d-breathwork-content-brief.md.
+const ninthDimensionPage: BreathingPageContent = {
+  slug: "9d-breathwork",
+  mode: ModeName.WimHof,
+  lineage: "9D Breathwork was created by Brian Kelly in the early 2020s as a guided audio format combining a single breath protocol — conscious connected breathing — with a stack of nine audio production layers (binaural beats, solfeggio frequencies, spatial sound, NLP-style guidance). The breath itself is not new: conscious connected breathing traces back through Wim Hof's activating phase, Stanislav Grof's Holotropic Breathwork (1970s), and earlier rebirthing practices. *9dbreathwork.com* operates the official network of 1,300+ certified facilitators across 50+ countries.",
+  hero: {
+    title: "What Is 9D Breathwork? A Plain-English Guide",
+    subtitle: "The breath part is conscious connected breathing — and you can try it free, right here.",
+    intro: "9D Breathwork pairs a single breath technique (conscious connected breathing, no pause between inhale and exhale) with a nine-layer audio soundtrack. A typical session runs 60 to 120 minutes, with about 45 minutes of active breathing in the middle. Below: what the nine layers actually are, what a session feels like, who shouldn't do it, and how it compares to Wim Hof and 4-7-8."
+  },
+  meta: {
+    title: "9D Breathwork Explained: The Breath, the Audio, the Cost (Free Pacer)",
+    description: "What 9D breathwork actually is — the breath protocol, the nine audio layers, session length, cost, and how it compares to Wim Hof. Try the breath part free with our guided pacer.",
+    ogTitle: "9D Breathwork Explained: The Breath, the Audio, the Cost",
+    ogDescription: "Honest plain-English guide. The breath underneath 9D is free — try it now. The nine-layer audio soundtrack is what 9D Breathwork (the brand) sells.",
+    ogImage: "og/breathe-9d-breathwork.png",
+    twitterTitle: "9D Breathwork Explained (Free Breath Pacer)",
+    twitterDescription: "What 9D breathwork actually is, what a session feels like, what it costs, and a free pacer for the breath part.",
+    author: "Abi Abiassi",
+    reviewer: "",
+    datePublished: "2026-05-06",
+    dateModified: "2026-05-06"
+  },
+  body: [
+    {
+      heading: "What 9D breathwork actually is",
+      content: "A 9D breathwork session is a guided breathing journey set to a layered soundtrack. The breath protocol is conscious connected breathing: a continuous in-and-out cycle through the mouth with no pause at the top or bottom of the breath, into the belly first then the chest. The \"9D\" refers to the audio stack — nine production layers including spatial multi-directional sound, binaural brain entrainment (different frequencies in each ear), solfeggio frequencies (e.g. 528 Hz), isochronic tones, 432 Hz harmonic tuning, somatic pacing cues, NLP-style vocal coaching, and bioacoustic effects. Headphones are required because the binaural and spatial layers don't work over speakers."
+    },
+    {
+      heading: "The breath protocol, free",
+      content: "Conscious connected breathing has been practiced for fifty years under different names — rebirthing, holotropic breathwork, the activating phase of the [Wim Hof Method](/breathe/wim-hof). It is the same breath in each tradition: continuous, mouth-in / mouth-out, no pause. You can practice it right now using our guided pacer (set to the Wim Hof rhythm — the closest pre-built analog). Two to five minutes is plenty for a first try; the full 45-minute active phase belongs in a guided 9D session, not solo."
+    },
+    {
+      heading: "What a session is actually like",
+      content: "A typical paid 9D session runs 60 to 120 minutes total. It opens with intention-setting and a body scan (~10 minutes), moves into the active breath phase set to the nine-layer soundtrack (~45 minutes), then closes with integration in silence (~15 minutes). Emotional release — crying, shaking, laughing — is common and considered part of the experience. Most sessions are run by certified 9D facilitators in person ($25-60 group, $150-250 private) or via the official app at home."
+    },
+    {
+      heading: "Can you do 9D breathwork at home?",
+      content: "Yes for the breath, partially for the audio. The conscious connected breath itself is free and right here. The official app from [9dbreathwork.com](https://9dbreathwork.com) sells full audio sessions, and a few free guided 9D sessions live on YouTube. What you can't replicate at home alone is the live facilitator presence — many people find the held container of an in-person session is what makes the difference. If it's your first time with intense breathwork, a live session is safer than going solo."
+    },
+    {
+      heading: "What it costs",
+      content: "Group 9D sessions typically run $25-60 per attendee; private 1:1 sessions $150-250. The official app is subscription-based (~$15/month at time of writing). Hope Cartel ($AUD pricing, varies by venue) and Witality ($19.99 in-person tickets, plus an online course) are major delivery brands; pricing isn't always public until you start a booking flow. The breath protocol itself — the actual physiological work — is free."
+    }
+  ],
+  benefits: [
+    {
+      title: "Strong physiological effects",
+      description: "Conscious connected breathing reliably triggers respiratory alkalosis, tetany (tingling), and altered states of consciousness. These are mechanistic, not mystical — and well-documented across the [broader breathwork literature](https://www.nature.com/articles/s41598-022-27247-y)."
+    },
+    {
+      title: "Held container",
+      description: "The audio stack and the facilitator's vocal guidance give beginners structure for an intense practice. Many people find the soundtrack alone is what makes a 45-minute breath session feel possible vs overwhelming."
+    },
+    {
+      title: "Reported emotional release",
+      description: "Many practitioners report cathartic emotional release during sessions. Frame it honestly: this is widely reported, less rigorously studied for the 9D format specifically. The underlying connected-breath protocol has supportive evidence via the broader breathwork literature."
+    }
+  ],
+  practiceTips: [
+    {
+      title: "Start with two minutes",
+      description: "Conscious connected breathing is intense even at low volume. Two to five minutes with our pacer first gives you a sense of the sensation before committing to a 45-minute session."
+    },
+    {
+      title: "Lie down, not sit",
+      description: "Tetany (involuntary muscle tightening in hands and face) and dizziness are common with this breath. Lying down keeps you safe."
+    },
+    {
+      title: "Don't go solo your first time",
+      description: "If you're trying the full 45-minute active phase rather than a short pacer session, do it with a facilitator, an app, or at minimum a friend nearby. This is not the breath to learn alone."
+    }
+  ],
+  faqs: [
+    {
+      question: "What is 9D breathwork?",
+      answer: "9D breathwork is a guided breathing session that pairs conscious connected breathing — a continuous, no-pause inhale and exhale through the mouth — with a nine-layer audio soundtrack (binaural beats, solfeggio frequencies, spatial sound, vocal guidance). Created by Brian Kelly in the early 2020s, sessions run 60-120 minutes total with ~45 minutes of active breathing. The breath protocol itself isn't new; the differentiator is the audio production stack."
+    },
+    {
+      question: "Is 9D breathwork the same as Wim Hof?",
+      answer: "The breath protocol is essentially the same — conscious connected breathing without pauses, similar to Wim Hof's activating phase. The differences are format and intention. Wim Hof Method is structured: 30 power breaths + retention hold, repeated 3 rounds, ~10 minutes total. 9D Breathwork is a continuous 45-minute session set to a nine-layer audio soundtrack. Gary Brecka's protocol, despite the biohacker hype, is the simpler Wim Hof version, not 9D."
+    },
+    {
+      question: "How long is a 9D breathwork session?",
+      answer: "Total session length is typically 60-120 minutes: ~10 minutes of intention-setting and body scan, ~45 minutes of active breath set to the soundtrack, then ~15 minutes of integration in silence. Some shorter app sessions run 20-45 minutes. The short \"try it now\" version on our free pacer is 2-5 minutes — enough to feel the breath, not enough to enter the journey state."
+    },
+    {
+      question: "Do you need headphones for 9D breathwork?",
+      answer: "Yes. The audio stack relies on binaural brain entrainment (different frequencies in each ear) and spatial multi-directional sound — neither works over speakers. Any standard pair of stereo headphones works; you don't need anything fancy. The free breath pacer here doesn't need headphones — it's just the visual breath rhythm."
+    },
+    {
+      question: "Is 9D breathwork safe?",
+      answer: "For most healthy adults, the breath itself is safe — the same conscious connected breathing has been practiced for 50+ years across rebirthing and holotropic traditions. But it's intense: tetany (tingling and involuntary muscle tightening), dizziness, and emotional release are common. It's contraindicated in pregnancy, epilepsy, cardiac conditions, glaucoma, recent surgery, and unmanaged asthma. Always practice lying down, never in water or while driving, and ideally with a facilitator the first time."
+    },
+    {
+      question: "How much does 9D breathwork cost?",
+      answer: "In-person group sessions typically run $25-60 per attendee. Private 1:1 sessions with certified facilitators run $150-250. The official 9D Breathwork app is subscription-based (~$15/month at time of writing). The breath protocol itself — the physiological technique — is free, and you can try a short version with our guided pacer above."
+    },
+    {
+      question: "What does a 9D breathwork session feel like?",
+      answer: "Most people experience strong physical sensations within the first 5-10 minutes: tingling in the hands and face (tetany), warmth, sometimes dizziness or a floating feeling. Emotional release is common — crying, laughing, shaking — and is considered part of the experience. The state is sometimes described as similar to a light psychedelic experience, though entirely sober. Sessions typically end with a calm, integrated feeling that lasts hours to days."
+    }
+  ],
+  howTo: {
+    totalTime: "Try the breath: 2–5 min. Full session: 60–120 min.",
+    difficulty: "intermediate",
+    tools: [
+      "Headphones (for full 9D audio sessions, not for our free pacer)",
+      "Lying-down space with no sharp edges nearby",
+      "Optional: facilitator, app, or friend present"
+    ],
+    supplies: [],
+    steps: [
+      {
+        name: "Set up safely",
+        instruction: "Lie down on a yoga mat or bed. No water nearby, no driving, nobody who needs you for the next hour. Headphones on if you're using a 9D audio session.",
+        duration: "1 minute"
+      },
+      {
+        name: "Set an intention",
+        instruction: "Before starting, name what you're working with — anxiety, grief, a stuck decision, or just curiosity. The intention shapes what surfaces during the breath. Don't skip this step in a full session.",
+        duration: "2–5 minutes"
+      },
+      {
+        name: "Begin conscious connected breathing",
+        instruction: "Mouth open. Inhale into the belly first, then up into the chest. Exhale through the mouth without pause — the moment the inhale tops out, the exhale begins. No holding at top or bottom. Keep it continuous. Aim for fuller, slightly faster than normal breaths.",
+        duration: "2–5 min beginner / 45 min full session"
+      },
+      {
+        name: "Stay with what comes up",
+        instruction: "Tetany, dizziness, emotional waves, body twitching — all expected. The audio guidance in a 9D session helps you stay with it. If you're solo on our pacer for 2-5 min, just keep breathing through the sensations until your timer ends.",
+        duration: "Throughout the session"
+      },
+      {
+        name: "Close in silence",
+        instruction: "Stop the active breath. Let breathing return to normal. Lie still for 10-15 minutes. This integration phase is when the nervous system reorganizes — don't skip it and jump straight back to your phone.",
+        duration: "10–15 minutes"
+      }
+    ]
+  },
+  useCases: [
+    {
+      name: "Curious about the trend",
+      description: "You've seen 9D Breathwork on TikTok or Instagram and want to understand what it actually is before paying for a session. The free breath pacer above gives you the physiological component honestly.",
+      dose: "2–5 minute pacer session"
+    },
+    {
+      name: "Pre-paid session preparation",
+      description: "Booked a 9D session and want to acclimate to conscious connected breathing first so the full 45-minute active phase doesn't catch you off guard. Practice 5-10 minutes daily for a week before.",
+      dose: "5–10 min daily for 1 week"
+    },
+    {
+      name: "Cheaper alternative when budget is tight",
+      description: "You can't justify $25-250 per session right now. A free YouTube 9D session plus our breath pacer for the protocol delivers most of the experience minus the in-person container.",
+      dose: "Full sessions on YouTube + this pacer"
+    }
+  ],
+  research: {
+    studies: [
+      {
+        title: "Fincham et al., 2023 — Scientific Reports (breathwork meta-analysis)",
+        summary: "Meta-analysis of 12 randomized controlled trials found breathwork practices produced significant reductions in stress, anxiety, and depressive symptoms compared to control conditions. Underlying conscious-connected breath protocols are studied; the 9D audio format specifically has no peer-reviewed studies.",
+        url: "https://www.nature.com/articles/s41598-022-27247-y"
+      },
+      {
+        title: "Almahayni & Hammond, 2024 — Wim Hof Method systematic review",
+        summary: "Systematic review of WHM trials confirmed measurable physiological effects (sympathetic nervous system activation, immune response modulation) from the breath protocol most similar to 9D's active phase.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10936795/"
+      },
+      {
+        title: "On 9D-specific evidence",
+        summary: "We could not find peer-reviewed clinical evidence for 9D Breathwork as a distinct format. The breath protocol underneath has supportive evidence (above); the layered audio production stack (binaural beats, solfeggio frequencies) has not been independently studied as part of 9D specifically."
+      }
+    ],
+    safety: [
+      "NEVER practice in water, while driving, or standing — fainting risk is real with conscious connected breathing.",
+      "Lie down on a soft surface with no sharp edges nearby.",
+      "Tetany (tingling and involuntary muscle tightening), dizziness, and emotional release are normal — slow the breath if overwhelming.",
+      "Contraindicated in pregnancy, epilepsy, cardiac conditions, glaucoma, recent surgery, and unmanaged asthma.",
+      "If trying the full 45-minute active phase, do it with a facilitator or app guidance — not solo on your first time."
+    ],
+    quotes: []
+  },
+  related: [
+    {
+      slug: "wim-hof",
+      reason: "The Wim Hof Method's activating phase is the closest pre-built analog to conscious connected breathing — and the protocol Gary Brecka actually pushes."
+    },
+    {
+      slug: "4-7-8",
+      reason: "If conscious connected breathing feels too intense, the calming 4-7-8 pattern is the gentler alternative for downshifting."
+    },
+    {
+      slug: "physiological-sigh",
+      reason: "When you want a 60-second nervous-system reset rather than a 45-minute journey, the physiological sigh is the right tool."
+    }
+  ],
+  keywords: [
+    "9d breathwork",
+    "what is 9d breathwork",
+    "9d breathwork at home",
+    "9d breathwork app",
+    "9d breathwork cost",
+    "9d breathwork vs wim hof",
+    "conscious connected breathing",
+    "gary brecka breathwork",
+    "brian kelly breathwork",
+    "9d breathwork explained",
+    "9d breathwork review",
+    "9d breathwork safety"
+  ],
+  synonyms: [
+    "9 dimensional breathwork",
+    "nine dimensional breathwork",
+    "conscious connected breathing"
+  ],
+  frequency: "Most practitioners do a full session weekly. The breath itself can be practiced briefly (2-5 min) more often as a pacer-only nervous-system primer."
+};
+
+// Hope Cartel 9D Breathwork delivery brand explainer (long-tail: "hope cartel 9d breathwork", 800/mo US, KD 0–5)
+const hopeCartelPage: BreathingPageContent = {
+  slug: "hope-cartel-9d-breathwork",
+  mode: ModeName.WimHof,
+  lineage: "Hope Cartel is an Australian breathwork community founded by Garry \"Gaz\" Wright, growing rapidly on TikTok in 2024-2026. Wright runs in-person group sessions at \"Hope HQ\" in Melton, Victoria, plus private 1:1s, online group sessions, and interstate touring events. Hope Cartel delivers the 9D Breathwork format created by Brian Kelly — they are not the protocol owner, but one of the most visible delivery brands in the English-speaking breathwork scene.",
+  hero: {
+    title: "Hope Cartel 9D Breathwork: What It Is and Where to Try It",
+    subtitle: "The Aussie breathwork community delivering the 9D format — what to expect, what it costs, and the breath part you can try free.",
+    intro: "Hope Cartel is one of the largest delivery brands for 9D Breathwork — the audio-layered guided breathing format created by Brian Kelly. Based in Melton, Victoria, they run group sessions at their dedicated venue, private 1:1s, online sessions, and touring events across Australia. Below: who they are, what a Hope Cartel session actually looks like, what it costs, and how the underlying breath protocol works (which you can try right now, free)."
+  },
+  meta: {
+    title: "Hope Cartel 9D Breathwork: Sessions, Pricing, What to Expect",
+    description: "Hope Cartel is one of the biggest 9D breathwork delivery brands. What a session looks like, where to find them, what it costs, and how the underlying breath works — try it free here.",
+    ogTitle: "Hope Cartel 9D Breathwork: Sessions, Pricing, What to Expect",
+    ogDescription: "Honest plain-English guide to Hope Cartel — Australian 9D breathwork community founded by Garry Wright. Plus a free pacer for the breath protocol itself.",
+    ogImage: "og/breathe-hope-cartel-9d-breathwork.png",
+    twitterTitle: "Hope Cartel 9D Breathwork Explained",
+    twitterDescription: "What Hope Cartel is, what a session looks like, what it costs, and the free breath pacer for the protocol underneath.",
+    author: "Abi Abiassi",
+    reviewer: "",
+    datePublished: "2026-05-06",
+    dateModified: "2026-05-06"
+  },
+  body: [
+    {
+      heading: "Who Hope Cartel is",
+      content: "Hope Cartel is an Australian breathwork community founded by Garry \"Gaz\" Wright. The brand grew rapidly on TikTok and Instagram in 2024-2026 around Wright's recovery story and group sessions. They operate out of \"Hope HQ\" in Melton, Victoria, plus run private 1:1 sessions, online group sessions, and touring events across Australia. They sell physical merchandise and a \"Breathe Bundle\" audio package alongside the live sessions. Hope Cartel does not own the 9D Breathwork format — that's [Brian Kelly's licensed system](/breathe/9d-breathwork) — but they are one of the most visible English-speaking delivery brands."
+    },
+    {
+      heading: "What a Hope Cartel session looks like",
+      content: "Like any 9D Breathwork session, the format runs 60 to 120 minutes total. It opens with grounding and intention-setting (~10 minutes), moves into the active breath phase set to the nine-layer audio soundtrack (~45 minutes), and closes with integration in silence (~15 minutes). The breath protocol is conscious connected breathing — continuous, no pauses, mouth-in / mouth-out. Hope Cartel sessions are typically held in dimmed rooms with mats, eye masks, and headphones for the binaural audio layers. Group sessions can run 20-100+ people; private sessions are one-on-one with Wright or a certified facilitator."
+    },
+    {
+      heading: "Pricing and where to find them",
+      content: "Hope Cartel's pricing isn't always published publicly — most listings are gated behind a booking flow at [hopecartel.com.au](https://hopecartel.com.au). Industry-standard 9D pricing in Australia runs roughly AUD $40-80 for group sessions, AUD $150-300 for private 1:1s. Their physical venue is in Melton, Victoria; touring schedules cover Sydney, Brisbane, Perth, and other major cities throughout the year. They also sell digital audio packages (the \"Breathe Bundle\") for at-home practice. International audiences typically can't attend live but can buy the audio."
+    },
+    {
+      heading: "How the breath underneath works",
+      content: "The breath itself — what makes a Hope Cartel session physiologically effective — is conscious connected breathing. It's not new: same protocol as the [Wim Hof Method](/breathe/wim-hof) activating phase, similar to Stanislav Grof's Holotropic Breathwork from the 1970s, similar to rebirthing traditions. Continuous mouth breathing, no pause at top or bottom, into the belly first then the chest. Triggers respiratory alkalosis, tetany (tingling), and altered states. The nine-layer audio stack on top is what 9D Breathwork as a format adds — the breath itself is universal and free."
+    },
+    {
+      heading: "Try the breath now (free)",
+      content: "If you're curious about the physiological experience before paying for a Hope Cartel session, you can practice the underlying conscious connected breath right here using our guided pacer (set to the Wim Hof rhythm — the closest pre-built analog). Two to five minutes is plenty for a first try. The full 45-minute active phase belongs in a guided session, not solo — but the short version gives you a real sense of the sensation."
+    }
+  ],
+  benefits: [
+    {
+      title: "Strong community container",
+      description: "Hope Cartel's group sessions emphasize a held space with shared experience — many attendees report this is what makes a 45-minute breath session feel possible vs overwhelming compared to going solo."
+    },
+    {
+      title: "Live facilitator presence",
+      description: "Garry Wright and Hope Cartel's certified facilitators guide the room through the active breath phase. The vocal cues during difficult moments are what differentiate a live session from a recorded app session."
+    },
+    {
+      title: "Touring access",
+      description: "Hope Cartel runs events across Australian capital cities, so you don't have to travel to Melton VIC to attend. Check their booking page for current dates."
+    }
+  ],
+  practiceTips: [
+    {
+      title: "Eat lightly beforehand",
+      description: "Most 9D facilitators recommend a light meal 2-3 hours before a session, not immediately before. Conscious connected breathing on a full stomach is uncomfortable."
+    },
+    {
+      title: "Bring an eye mask",
+      description: "If Hope Cartel doesn't provide one, bring your own. Closing the visual field deepens the inward focus during the active breath phase."
+    },
+    {
+      title: "Plan for integration",
+      description: "Don't schedule anything cognitive immediately after a 9D session. Many people feel emotionally tender or spaced out for hours afterward — leave the rest of the day open."
+    }
+  ],
+  faqs: [
+    {
+      question: "What is Hope Cartel 9D breathwork?",
+      answer: "Hope Cartel is an Australian breathwork community delivering the 9D Breathwork format. Founded by Garry \"Gaz\" Wright, they run in-person group sessions at \"Hope HQ\" in Melton VIC, plus private 1:1s, online sessions, and touring events. The format is a 60-120 minute guided session combining conscious connected breathing with a nine-layer audio soundtrack. They are not the protocol owner — that's Brian Kelly's licensed 9D system — but they're one of the largest English-speaking delivery brands."
+    },
+    {
+      question: "Where is Hope Cartel based?",
+      answer: "Their physical venue \"Hope HQ\" is in Melton, Victoria, Australia. They also run touring events across Sydney, Brisbane, Perth, Adelaide, and other Australian cities. Online group sessions are available globally, and they sell digital audio packages for at-home practice."
+    },
+    {
+      question: "How much does a Hope Cartel session cost?",
+      answer: "Hope Cartel doesn't publish pricing publicly — most listings are behind a booking flow. Industry-standard 9D pricing in Australia runs roughly AUD $40-80 for group sessions and AUD $150-300 for private 1:1s. Their digital \"Breathe Bundle\" audio package is sold separately for at-home practice."
+    },
+    {
+      question: "Is Hope Cartel the same as 9D Breathwork the brand?",
+      answer: "No. 9D Breathwork is a licensed format created by Brian Kelly (9dbreathwork.com), with 1,300+ certified facilitators worldwide. Hope Cartel is one of those delivery brands — they run the format but don't own it. Other 9D delivery brands exist globally; Hope Cartel is one of the largest in the English-speaking market."
+    },
+    {
+      question: "Can I do Hope Cartel breathwork at home?",
+      answer: "Their digital \"Breathe Bundle\" audio package is designed for at-home practice. The breath protocol itself — conscious connected breathing — is universal and free; you can practice it right now with our guided pacer above. What you can't replicate at home is the live facilitator presence and group container of an in-person session."
+    },
+    {
+      question: "Is Hope Cartel breathwork safe?",
+      answer: "The breath protocol is the same conscious connected breathing practiced for 50+ years across rebirthing and holotropic traditions — broadly safe for healthy adults but intense (tetany, dizziness, emotional release are common). Contraindicated in pregnancy, epilepsy, cardiac conditions, glaucoma, recent surgery, and unmanaged asthma. Hope Cartel facilitators screen attendees before sessions; mention any of these conditions when booking."
+    }
+  ],
+  howTo: {
+    totalTime: "Hope Cartel session: 60–120 min. Free breath pacer: 2–5 min.",
+    difficulty: "intermediate",
+    tools: [
+      "Comfortable clothing",
+      "Eye mask (often provided, bring your own to be safe)",
+      "Yoga mat (provided at venue)",
+      "Headphones for the audio stack (provided at live events)"
+    ],
+    supplies: [],
+    steps: [
+      {
+        name: "Book a session",
+        instruction: "Hope Cartel's booking is at hopecartel.com.au. Group sessions are listed by location and date; private 1:1s are scheduled separately. International attendees can book online group sessions.",
+        duration: "Pre-session"
+      },
+      {
+        name: "Eat lightly 2–3 hours before",
+        instruction: "Conscious connected breathing on a full stomach is uncomfortable. A light meal a few hours before is ideal. Hydrate, but not excessively right before.",
+        duration: "Day of session"
+      },
+      {
+        name: "Arrive early, set intention",
+        instruction: "Get to the venue 15-20 min before start so you can settle, put on the eye mask, and set an intention for the session. The intention shapes what surfaces during the breath.",
+        duration: "15–20 minutes"
+      },
+      {
+        name: "Active breath phase (~45 min)",
+        instruction: "Lie on the mat. Begin conscious connected breathing — mouth-in, mouth-out, no pause, into the belly first then the chest. The nine-layer soundtrack and the facilitator's vocal guidance carry you through. Stay with whatever comes up.",
+        duration: "~45 minutes"
+      },
+      {
+        name: "Integration in silence (~15 min)",
+        instruction: "Stop the active breath. Lie still while the room reintegrates. This is when the nervous system reorganizes — don't rush out. The facilitator usually closes with brief reflection.",
+        duration: "10–15 minutes"
+      }
+    ]
+  },
+  useCases: [
+    {
+      name: "Looking for a live group session in Australia",
+      description: "Hope Cartel's main offering is in-person group sessions, with regular touring across Australian capitals. Best for people who want the held container and don't already have a regular breathwork practice.",
+      dose: "1 group session, repeat as desired"
+    },
+    {
+      name: "Want to try 9D before committing to the full app",
+      description: "If you've seen the 9D Breathwork brand on social media and want to try the format with a known live facilitator before subscribing to the official app, Hope Cartel is one path in.",
+      dose: "Single session"
+    },
+    {
+      name: "Curious about Garry Wright's recovery work",
+      description: "A meaningful chunk of Hope Cartel's audience comes through Wright's personal recovery story on TikTok. If that's what brought you here, the live sessions emphasize community and shared experience.",
+      dose: "Group session preferred over private"
+    }
+  ],
+  research: {
+    studies: [
+      {
+        title: "Fincham et al., 2023 — Scientific Reports (breathwork meta-analysis)",
+        summary: "Meta-analysis of 12 randomized controlled trials found breathwork practices reduced stress, anxiety, and depressive symptoms compared to control conditions. The conscious connected breath protocol Hope Cartel uses is part of this broader literature.",
+        url: "https://www.nature.com/articles/s41598-022-27247-y"
+      },
+      {
+        title: "Almahayni & Hammond, 2024 — Wim Hof Method systematic review",
+        summary: "Systematic review confirmed measurable physiological effects (sympathetic nervous system activation, immune response modulation) from the breath protocol most similar to what Hope Cartel runs in their active 45-min phase.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10936795/"
+      }
+    ],
+    safety: [
+      "NEVER practice in water, while driving, or standing — fainting risk is real with conscious connected breathing.",
+      "Lie on a mat with no sharp edges nearby. Live sessions are set up safely; at-home practice needs the same discipline.",
+      "Tetany (tingling and involuntary tightening of hands and face), dizziness, and emotional release are normal. Hope Cartel facilitators are trained for this.",
+      "Contraindicated in pregnancy, epilepsy, cardiac conditions, glaucoma, recent surgery, and unmanaged asthma. Disclose these when booking.",
+      "If trying conscious connected breathing alone for the first time before a Hope Cartel session, keep it short (2–5 min) and use our pacer above."
+    ],
+    quotes: []
+  },
+  related: [
+    {
+      slug: "9d-breathwork",
+      reason: "The full plain-English explainer of 9D Breathwork as a format — what the nine audio layers are, who created it, how it compares to Wim Hof."
+    },
+    {
+      slug: "wim-hof",
+      reason: "Wim Hof's activating phase is essentially the same conscious connected breath Hope Cartel runs in the active 45-minute phase — practice it with our guided pacer."
+    },
+    {
+      slug: "4-7-8",
+      reason: "If conscious connected breathing feels too intense, 4-7-8 is the gentler downshifting alternative."
+    }
+  ],
+  keywords: [
+    "hope cartel 9d breathwork",
+    "hope cartel",
+    "hope cartel breathwork",
+    "hope cartel sessions",
+    "hope cartel pricing",
+    "hope cartel melton",
+    "garry wright breathwork",
+    "9d breathwork australia",
+    "9d breathwork melbourne",
+    "hope cartel reviews"
+  ],
+  synonyms: [
+    "hope cartel breathwork",
+    "9d breathwork australia",
+    "hope cartel 9d sessions"
+  ],
+  frequency: "Most attendees do 1 group session every 2-4 weeks. Combine with daily 2-5 minute pacer-only practice between sessions to maintain familiarity with the breath."
+};
+
 // Add new pages to the array
 breathingPages.push(pursedLipPage);
 breathingPages.push(nadiShodhanaPage);
@@ -3257,6 +3689,8 @@ breathingPages.push(bellyPage);
 breathingPages.push(buteykoPage);
 breathingPages.push(tummoPage);
 breathingPages.push(breathOfFirePage);
+breathingPages.push(ninthDimensionPage);
+breathingPages.push(hopeCartelPage);
 
 export const breathingPageMap: Record<string, BreathingPageContent> = Object.fromEntries(
   breathingPages.map((page) => [page.slug, page])
