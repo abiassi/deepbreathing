@@ -219,8 +219,8 @@ export default function EditorialPolicyPage() {
               Every technique page shows a &ldquo;Last updated&rdquo; date. We re-review pages when
               new research lands or when readers flag a problem. If you spot an error, please send
               a note to{" "}
-              <a href="mailto:hello@darkmatter.is" className="text-primary hover:underline">
-                hello@darkmatter.is
+              <a href="mailto:hi@abiassi.com" className="text-primary hover:underline">
+                hi@abiassi.com
               </a>
               . Corrections go straight to Abi.
             </p>

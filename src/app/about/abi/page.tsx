@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
@@ -7,6 +8,7 @@ import { createOgImagePath } from "@/lib/seo/og-image";
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/about/abi`;
 const ogImageUrl = createOgImagePath("About Abi Abiassi");
+const headshotUrl = `${siteUrl}/abi.jpg`;
 
 export const metadata: Metadata = {
   title: "About Abi Abiassi, Founder of Deep Breathing Exercises",
@@ -73,6 +75,7 @@ export default function AbiAboutPage() {
     "@id": `${canonicalUrl}#person`,
     name: "Abi Abiassi",
     url: canonicalUrl,
+    image: headshotUrl,
     jobTitle: "Founder, Deep Breathing Exercises",
     description:
       "Founder of Deep Breathing Exercises. Photographer. Built the site as a free visualizer for the breathing techniques he uses daily.",
@@ -103,12 +106,22 @@ export default function AbiAboutPage() {
     <main className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
       <JsonLd data={[breadcrumbSchema, personSchema]} />
 
-      <header className="space-y-4">
-        <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
-        <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">About Abi</h1>
-        <p className="text-lg text-muted-foreground">
-          Founder. Photographer. Built this site for the breathing techniques I use every day.
-        </p>
+      <header className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+        <Image
+          src="/abi.jpg"
+          alt="Abi Abiassi"
+          width={128}
+          height={128}
+          priority
+          className="h-32 w-32 flex-shrink-0 rounded-full border border-border object-cover shadow-md"
+        />
+        <div className="space-y-4">
+          <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
+          <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">About Abi</h1>
+          <p className="text-lg text-muted-foreground">
+            Founder. Photographer. Built this site for the breathing techniques I use every day.
+          </p>
+        </div>
       </header>
 
       <section className="mt-10 space-y-6 text-muted-foreground">
@@ -139,7 +152,7 @@ export default function AbiAboutPage() {
                 rel="noopener noreferrer"
                 className="font-semibold text-primary hover:underline"
               >
-                abiassi.com (photography &amp; personal site) →
+                abiassi.com (my personal site, separate from this project) →
               </a>
             </li>
             <li>
@@ -166,16 +179,75 @@ export default function AbiAboutPage() {
         </div>
 
         <div className="glow-card rounded-[32px] border border-border bg-card p-8">
-          <h2 className="text-2xl font-semibold text-card-foreground">How this site is made</h2>
+          <h2 className="text-2xl font-semibold text-card-foreground">Methodology</h2>
           <p className="mt-3 text-sm">
-            Each technique page names the practitioner or tradition it comes from, and links out
-            to the peer-reviewed research that informs the claims. I&apos;m not a clinician. If you
-            have a medical condition, please talk to your doctor before adopting a new breathing
-            practice.
+            Every technique on the site goes through the same research pass, in this order.
+          </p>
+          <ol className="mt-6 space-y-5 text-sm">
+            <li className="flex gap-4">
+              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">1</span>
+              <div>
+                <strong className="text-card-foreground">Pick what to cover.</strong> The
+                techniques people actually search for and practice. Box, 4-7-8, coherent breathing,
+                the physiological sigh, Wim Hof, the pranayama variants, the COPD-rooted ones like
+                pursed-lip and Buteyko. Plus the use cases they show up against: anxiety, sleep,
+                focus, blood pressure.
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">2</span>
+              <div>
+                <strong className="text-card-foreground">Source the lineage.</strong> Who actually
+                came up with this. Mark Divine for box. Andrew Weil for 4-7-8. Wim Hof for WHM.
+                Konstantin Buteyko for his method. For the older yoga practices, the earliest text
+                we can point to (the 15th-century <em>Hatha Yoga Pradipika</em> for Nadi Shodhana
+                and Kapalabhati). Where there&apos;s no single originator (pursed-lip, belly), say so.
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">3</span>
+              <div>
+                <strong className="text-card-foreground">Find the research.</strong> PubMed, DOI
+                registries, Cochrane. Systematic reviews and RCTs beat single studies. Mechanism
+                work, especially mouse studies, gets called out as such so it doesn&apos;t get
+                mistaken for clinical evidence.
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">4</span>
+              <div>
+                <strong className="text-card-foreground">Verify everything.</strong> Every citation
+                URL gets fetched and confirmed before it ships. Where a study is paywalled, the
+                link goes to the free PubMed Central version.
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">5</span>
+              <div>
+                <strong className="text-card-foreground">Match language to evidence.</strong> Strong
+                evidence gets stated directly. Smaller studies get a &ldquo;research suggests.&rdquo;
+                Weak, contested, or null findings get said out loud. The Wim Hof Method works no
+                better than slow breathing for mood. Ujjayi&apos;s throat constriction doesn&apos;t
+                actually outperform plain slow breathing on baroreflex.
+              </div>
+            </li>
+            <li className="flex gap-4">
+              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">6</span>
+              <div>
+                <strong className="text-card-foreground">Place sources where you can use them.</strong>
+                {" "}One to three peer-reviewed links per page, hyperlinked on the specific claim. No
+                numbered footnotes. No end-of-article reference lists. Click a phrase, land on the
+                study.
+              </div>
+            </li>
+          </ol>
+          <p className="mt-6 text-sm">
+            I&apos;m not a clinician. If you have a medical condition, please talk to your doctor
+            before adopting a new breathing practice.
           </p>
           <p className="mt-3 text-sm">
             <Link href="/about/editorial-policy" className="font-semibold text-primary hover:underline">
-              Read our editorial policy →
+              Read the full editorial policy →
             </Link>
           </p>
         </div>
@@ -184,8 +256,8 @@ export default function AbiAboutPage() {
           <h2 className="text-2xl font-semibold text-card-foreground">Get in touch</h2>
           <p className="mt-3 text-sm">
             Found an error? Have a feature request? Send me a note at{" "}
-            <a href="mailto:hello@darkmatter.is" className="text-primary hover:underline">
-              hello@darkmatter.is
+            <a href="mailto:hi@abiassi.com" className="text-primary hover:underline">
+              hi@abiassi.com
             </a>
             . It goes straight to me.
           </p>
