@@ -229,6 +229,11 @@ export function PatternPage({ slug }: { slug: string }) {
             <LocalizedDate date={page.meta.dateModified} reviewerName={reviewerName} />
           </p>
         )}
+        {page.hero.intro && (
+          <div className="prose prose-lg max-w-none text-muted-foreground -mt-8" data-i18n="intro">
+            <p className="text-xl leading-relaxed">{page.hero.intro}</p>
+          </div>
+        )}
         {page.lineage && (
           <p className="text-sm text-muted-foreground italic -mt-8 max-w-3xl" data-i18n="lineage">
             {page.lineage.split(/(\*[^*]+\*)/g).map((part, i) =>
