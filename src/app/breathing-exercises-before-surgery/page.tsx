@@ -8,17 +8,17 @@ import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/breathing-exercises-before-surgery`;
-const ogImageUrl = createOgImagePath("Breathing Exercises Before Surgery — Calm Pre-Op Anxiety");
+const ogImageUrl = createOgImagePath("Breathing Exercises Before Surgery, Calm Pre-Op Anxiety");
 
 export const metadata: Metadata = {
-  title: "Breathing Exercises Before Surgery — Calm Pre-Op Anxiety (Free Timer)",
+  title: "Breathing Exercises Before Surgery: Calm Pre-Op Anxiety (Free Timer)",
   description:
-    "Free breathing exercises for pre-surgery anxiety — box breathing calms nerves in 2 minutes. Used in hospitals worldwide. Prepare for your procedure calmly.",
+    "Free breathing exercises for pre-surgery anxiety, box breathing calms nerves in 2 minutes. Used in hospitals worldwide. Prepare for your procedure calmly.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "Breathing Exercises Before Surgery — Calm Pre-Op Anxiety",
+    title: "Breathing Exercises Before Surgery: Calm Pre-Op Anxiety",
     description:
       "Calm pre-surgery anxiety with breathing exercises used in hospitals worldwide. Free timer to prepare for your procedure.",
     url: canonicalUrl,
@@ -28,15 +28,15 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "Breathing Exercises Before Surgery — Calm Pre-Op Anxiety"
+        alt: "Breathing Exercises Before Surgery, Calm Pre-Op Anxiety"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Breathing Exercises Before Surgery — Calm Pre-Op Anxiety",
+    title: "Breathing Exercises Before Surgery: Calm Pre-Op Anxiety",
     description:
-      "Hospital-approved breathing exercises for pre-surgery nerves. Free timer—use in the waiting room.",
+      "Hospital-approved breathing exercises for pre-surgery nerves. Free timer. Use in the waiting room.",
     images: [ogImageUrl]
   }
 };
@@ -119,7 +119,7 @@ export default function BreathingExercisesBeforeSurgeryPage() {
         name: "Can I do breathing exercises in the pre-op room?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes! Tell your nurse you'd like to do some breathing exercises—they'll likely encourage it. You can practice while lying on the gurney or sitting in a chair. Keep it gentle and quiet. If you have an IV, keep that arm still and focus on belly breathing."
+          text: "Yes! Tell your nurse you'd like to do some breathing exercises. They'll likely encourage it. You can practice while lying on the gurney or sitting in a chair. Keep it gentle and quiet. If you have an IV, keep that arm still and focus on belly breathing."
         }
       }
     ]
@@ -150,7 +150,7 @@ export default function BreathingExercisesBeforeSurgeryPage() {
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <h2 className="text-2xl font-semibold text-card-foreground">Pre-surgery breathing timer</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Box breathing calms anxiety without making you drowsy—perfect before a procedure.
+              Box breathing calms anxiety without making you drowsy, perfect before a procedure.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href="/breathe/box" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
@@ -178,7 +178,7 @@ export default function BreathingExercisesBeforeSurgeryPage() {
             <h2 className="text-2xl font-semibold text-card-foreground">Why breathing exercises help before surgery</h2>
             <div className="mt-4 space-y-4 text-muted-foreground">
               <p>
-                Pre-surgery anxiety is completely normal—studies show 60-80% of patients experience significant anxiety before
+                Pre-surgery anxiety is completely normal, studies show 60-80% of patients experience significant anxiety before
                 procedures. Your nervous system perceives surgery as a threat, triggering the same fight-or-flight response
                 that helped your ancestors survive dangerous situations.
               </p>
@@ -207,7 +207,7 @@ export default function BreathingExercisesBeforeSurgeryPage() {
               <div className="rounded-2xl bg-muted/50 p-4">
                 <h3 className="font-semibold text-card-foreground">Surgery day morning</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Do 5-10 minutes of box breathing at home before leaving. Take your time getting ready—rushing increases anxiety.
+                  Do 5-10 minutes of box breathing at home before leaving. Take your time getting ready, rushing increases anxiety.
                 </p>
               </div>
               <div className="rounded-2xl bg-muted/50 p-4">
@@ -220,7 +220,7 @@ export default function BreathingExercisesBeforeSurgeryPage() {
               <div className="rounded-2xl bg-muted/50 p-4">
                 <h3 className="font-semibold text-card-foreground">In pre-op</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Tell your nurse you&apos;d like to do breathing exercises—they&apos;ll appreciate that you&apos;re managing your anxiety.
+                  Tell your nurse you&apos;d like to do breathing exercises. They&apos;ll appreciate that you&apos;re managing your anxiety.
                   Continue gentle breathing until they&apos;re ready for you.
                 </p>
               </div>
@@ -248,7 +248,7 @@ export default function BreathingExercisesBeforeSurgeryPage() {
                 <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">3</span>
                 <div>
                   <strong className="text-card-foreground">Hold for 4 counts</strong>
-                  <p className="mt-1 text-sm">Stay relaxed—don&apos;t tense up. If 4 counts feels long, try 3.</p>
+                  <p className="mt-1 text-sm">Stay relaxed. Don&apos;t tense up. If 4 counts feels long, try 3.</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -296,7 +296,7 @@ export default function BreathingExercisesBeforeSurgeryPage() {
               <div>
                 <h3 className="text-lg font-semibold text-card-foreground">Can I do breathing exercises in the pre-op room?</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Yes! Tell your nurse you&apos;d like to do some breathing exercises—they&apos;ll likely encourage it. You can practice
+                  Yes! Tell your nurse you&apos;d like to do some breathing exercises. They&apos;ll likely encourage it. You can practice
                   while lying on the gurney or sitting in a chair. Keep it gentle and quiet.
                 </p>
               </div>

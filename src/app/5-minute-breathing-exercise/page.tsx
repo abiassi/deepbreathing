@@ -12,17 +12,17 @@ const ShareButton = dynamic(
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/5-minute-breathing-exercise`;
-const ogImageUrl = createOgImagePath("5 Minute Breathing Exercise — Deep Relaxation");
+const ogImageUrl = createOgImagePath("5 Minute Breathing Exercise, Deep Relaxation");
 
 export const metadata: Metadata = {
-  title: "5 Minute Breathing Exercise — Deep Relaxation & HRV Training",
+  title: "5 Minute Breathing Exercise: Deep Relaxation & HRV Training",
   description:
-    "A free 5 minute breathing exercise for deep relaxation and HRV training. Coherent breathing at your resonance frequency. Start now—no download, no signup.",
+    "A free 5 minute breathing exercise for deep relaxation and HRV training. Coherent breathing at your resonance frequency. Start now, no download, no signup.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "5 Minute Breathing Exercise — Deep Relaxation",
+    title: "5 Minute Breathing Exercise: Deep Relaxation",
     description:
       "A free 5 minute breathing exercise for deep relaxation and HRV training. Coherent breathing. No download needed.",
     url: canonicalUrl,
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "5 Minute Breathing Exercise — Deep Relaxation"
+        alt: "5 Minute Breathing Exercise, Deep Relaxation"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "5 Minute Breathing Exercise — Deep Relaxation",
+    title: "5 Minute Breathing Exercise: Deep Relaxation",
     description:
       "A free 5 minute breathing exercise for deep relaxation and HRV training. Coherent breathing.",
     images: [ogImageUrl]
@@ -120,7 +120,7 @@ export default function FiveMinuteBreathingExercisePage() {
         name: "Should I use coherent breathing or 4-7-8 for 5 minutes?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Coherent breathing is better for 5-minute sessions because it's easier to sustain—no breath holds that can become tiring. 4-7-8 is more intense and works better for shorter sessions (1-2 minutes) or specifically for sleep. For general stress relief and HRV training, coherent breathing is the better choice."
+          text: "Coherent breathing is better for 5-minute sessions because it's easier to sustain, no breath holds that can become tiring. 4-7-8 is more intense and works better for shorter sessions (1-2 minutes) or specifically for sleep. For general stress relief and HRV training, coherent breathing is the better choice."
         }
       },
       {
@@ -128,7 +128,7 @@ export default function FiveMinuteBreathingExercisePage() {
         name: "Can I do 5 minute breathing exercises daily?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Absolutely—daily practice is where the real benefits emerge. Research shows that consistent daily practice of coherent breathing produces cumulative improvements in baseline stress resilience, emotional regulation, and HRV that persist even when you're not actively practicing."
+          text: "Absolutely, daily practice is where the real benefits emerge. Research shows that consistent daily practice of coherent breathing produces cumulative improvements in baseline stress resilience, emotional regulation, and HRV that persist even when you're not actively practicing."
         }
       }
     ]
@@ -161,7 +161,7 @@ export default function FiveMinuteBreathingExercisePage() {
             <ShareButton
               url={canonicalUrl}
               title="5 Minute Breathing Exercise"
-              text="Try this 5-minute breathing exercise — great for deep relaxation and HRV training."
+              text="Try this 5-minute breathing exercise, great for deep relaxation and HRV training."
               buttonText="Share this exercise"
               embedSlug="coherent"
             />
@@ -174,7 +174,7 @@ export default function FiveMinuteBreathingExercisePage() {
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li>Inhale for 5 seconds (through nose)</li>
             <li>Exhale for 5 seconds (through nose or mouth)</li>
-            <li>No holds—continuous flow</li>
+            <li>No holds, continuous flow</li>
             <li>6 breaths per minute = ~30 breaths in 5 minutes</li>
             <li>Adjust to 4-6 seconds if 5 feels too long/short</li>
           </ul>
@@ -192,8 +192,8 @@ export default function FiveMinuteBreathingExercisePage() {
               <li className="flex gap-3">
                 <span className="text-primary">•</span>
                 <span>
-                  <strong className="text-card-foreground">Heart rate variability increases:</strong> HRV—the
-                  variation between heartbeats—rises significantly. Higher HRV indicates a more flexible, resilient
+                  <strong className="text-card-foreground">Heart rate variability increases:</strong> HRV (the
+                  variation between heartbeats) rises significantly. Higher HRV indicates a more flexible, resilient
                   nervous system.
                 </span>
               </li>
@@ -238,7 +238,7 @@ export default function FiveMinuteBreathingExercisePage() {
               for 5, 10, or even 20 minutes without fatigue or discomfort.
             </p>
             <p>
-              This breathing rate—around 0.1 Hz—happens to match the natural resonance frequency of your cardiovascular
+              This breathing rate, around 0.1 Hz, happens to match the natural resonance frequency of your cardiovascular
               system. When you breathe at this rate, your heart rate, blood pressure, and breathing rhythms synchronize,
               creating a state of &ldquo;coherence&rdquo; that maximizes the benefits of the practice.
             </p>
@@ -265,7 +265,7 @@ export default function FiveMinuteBreathingExercisePage() {
                 <span className="text-primary">•</span>
                 <span>
                   <strong className="text-card-foreground">Pre-performance:</strong> Before important meetings,
-                  presentations, or challenging conversations—5 minutes to arrive centered.
+                  presentations, or challenging conversations, 5 minutes to arrive centered.
                 </span>
               </li>
               <li className="flex gap-3">
@@ -324,7 +324,7 @@ export default function FiveMinuteBreathingExercisePage() {
             <div>
               <h3 className="text-lg font-semibold text-card-foreground">Should I use coherent breathing or 4-7-8?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Coherent breathing is better for 5-minute sessions because it&apos;s easier to sustain—no breath holds
+                Coherent breathing is better for 5-minute sessions because it&apos;s easier to sustain, no breath holds
                 that can become tiring. 4-7-8 is more intense and works better for shorter sessions (1-2 minutes)
                 or specifically for sleep. For general stress relief and HRV training, coherent breathing is the
                 better choice.
@@ -333,7 +333,7 @@ export default function FiveMinuteBreathingExercisePage() {
             <div>
               <h3 className="text-lg font-semibold text-card-foreground">Can I do 5 minute breathing exercises daily?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Absolutely—daily practice is where the real benefits emerge. Research shows that consistent daily
+                Absolutely, daily practice is where the real benefits emerge. Research shows that consistent daily
                 practice of coherent breathing produces cumulative improvements in baseline stress resilience,
                 emotional regulation, and HRV that persist even when you&apos;re not actively practicing.
               </p>
@@ -361,7 +361,7 @@ export default function FiveMinuteBreathingExercisePage() {
         </div>
         <div className="glow-card rounded-[32px] border border-border bg-card p-6">
           <h2 className="text-xl font-semibold text-card-foreground">Sustainable</h2>
-          <p className="mt-2 text-sm text-muted-foreground">Coherent breathing with no holds—easy to maintain for 5+ minutes.</p>
+          <p className="mt-2 text-sm text-muted-foreground">Coherent breathing with no holds, easy to maintain for 5+ minutes.</p>
         </div>
         <div className="glow-card rounded-[32px] border border-border bg-card p-6">
           <h2 className="text-xl font-semibold text-card-foreground">Daily practice</h2>
@@ -405,7 +405,7 @@ export default function FiveMinuteBreathingExercisePage() {
           <ShareButton
             url={canonicalUrl}
             title="5 Minute Breathing Exercise"
-            text="Try this 5-minute breathing exercise — it's great for deep relaxation and HRV training."
+            text="Try this 5-minute breathing exercise. It's great for deep relaxation and HRV training."
             buttonText="Share this exercise"
           />
         </div>

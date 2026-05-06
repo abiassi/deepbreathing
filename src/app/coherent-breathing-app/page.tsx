@@ -6,17 +6,17 @@ import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/coherent-breathing-app`;
-const ogImageUrl = createOgImagePath("Coherent Breathing App — Free Browser Timer");
+const ogImageUrl = createOgImagePath("Coherent Breathing App, Free Browser Timer");
 
 export const metadata: Metadata = {
-  title: "Coherent Breathing App (Free, 2026) — No Download, Start Instantly",
+  title: "Coherent Breathing App (Free, 2026): No Download, Start Instantly",
   description:
-    "Free coherent breathing timer — train HRV with 5-6 breaths/min pacing. No download, no signup. Start your guided session now.",
+    "Free coherent breathing timer, train HRV with 5-6 breaths/min pacing. No download, no signup. Start your guided session now.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "Coherent Breathing App — Free Browser Timer",
+    title: "Coherent Breathing App: Free Browser Timer",
     description:
       "Free coherent breathing timer. No download, no signup. 5-6 breaths/min for HRV. Start instantly.",
     url: canonicalUrl,
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "Coherent Breathing App — Free Browser Timer"
+        alt: "Coherent Breathing App, Free Browser Timer"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Coherent Breathing App — Free, No Download",
+    title: "Coherent Breathing App: Free, No Download",
     description:
       "Free coherent breathing timer in your browser. No signup. Start HRV training instantly.",
     images: [ogImageUrl]
@@ -82,7 +82,7 @@ export default function CoherentBreathingAppMoneyPage() {
         name: "What is coherent breathing?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Coherent breathing is a technique where you breathe at a specific pace—typically around 5-6 breaths per minute—with equal inhale and exhale durations. This rate, often called the resonance frequency, maximizes heart rate variability (HRV) and promotes optimal balance in the autonomic nervous system."
+          text: "Coherent breathing is a technique where you breathe at a specific pace (typically around 5-6 breaths per minute) with equal inhale and exhale durations. This rate, often called the resonance frequency, maximizes heart rate variability (HRV) and promotes optimal balance in the autonomic nervous system."
         }
       },
       {
@@ -90,7 +90,7 @@ export default function CoherentBreathingAppMoneyPage() {
         name: "What is HRV breathing?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "HRV breathing refers to breathing techniques designed to increase heart rate variability—the variation in time between heartbeats. Higher HRV indicates a flexible, resilient nervous system and is associated with better stress resilience, cardiovascular health, and emotional regulation. Coherent breathing is one of the most effective HRV training methods."
+          text: "HRV breathing refers to breathing techniques designed to increase heart rate variability, the variation in time between heartbeats. Higher HRV indicates a flexible, resilient nervous system and is associated with better stress resilience, cardiovascular health, and emotional regulation. Coherent breathing is one of the most effective HRV training methods."
         }
       },
       {
@@ -168,7 +168,7 @@ export default function CoherentBreathingAppMoneyPage() {
 
         <div className="glow-card rounded-[32px] border border-border bg-card p-6">
           <h2 className="text-2xl font-semibold text-card-foreground">Suggested settings</h2>
-          <p className="mt-2 text-sm text-muted-foreground">Most people land in a range—treat the number as flexible.</p>
+          <p className="mt-2 text-sm text-muted-foreground">Most people land in a range, treat the number as flexible.</p>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li>Starter: 5s in / 5s out (6 breaths/min)</li>
             <li>Common: 5.5s in / 5.5s out (~5.5 breaths/min)</li>
@@ -189,7 +189,7 @@ export default function CoherentBreathingAppMoneyPage() {
           <div className="mt-4 space-y-4 text-muted-foreground">
             <p>
               Coherent breathing is a paced breathing technique where you breathe at approximately 5-6 breaths per minute with
-              equal inhale and exhale durations. This specific breathing rate—around 10-12 seconds per breath cycle—aligns your
+              equal inhale and exhale durations. This specific breathing rate (around 10-12 seconds per breath cycle) aligns your
               breathing with your cardiovascular rhythms, creating a state of &ldquo;coherence&rdquo; in your autonomic nervous system.
             </p>
             <p>
@@ -201,7 +201,7 @@ export default function CoherentBreathingAppMoneyPage() {
             <p>
               Unlike techniques with breath holds (like box breathing or 4-7-8), coherent breathing uses continuous, smooth
               breathing with no pauses. This makes it ideal for longer practice sessions of 10-20 minutes, which is where the
-              most significant benefits emerge. The simplicity of the pattern—just equal in and out breathing—allows you to
+              most significant benefits emerge. The simplicity of the pattern (just equal in and out breathing) allows you to
               sustain the practice without strain or discomfort.
             </p>
             <p>
@@ -281,17 +281,17 @@ export default function CoherentBreathingAppMoneyPage() {
           <h2 className="text-2xl font-semibold text-card-foreground">How coherent breathing works</h2>
           <div className="mt-4 space-y-4 text-muted-foreground">
             <p>
-              Coherent breathing works by synchronizing multiple physiological rhythms in your body—primarily your breathing,
+              Coherent breathing works by synchronizing multiple physiological rhythms in your body: primarily your breathing,
               heart rate, and blood pressure. This synchronization occurs at what&apos;s called your &ldquo;resonance frequency,&rdquo; typically
               around 5-6 breaths per minute for most adults.
             </p>
             <p>
               When you breathe, your heart rate naturally speeds up slightly on the inhale and slows down on the exhale. This is
               called respiratory sinus arrhythmia (RSA), and it&apos;s a sign of healthy autonomic function. At your resonance
-              frequency, this heart rate oscillation reaches its maximum amplitude—your HRV is at its peak.
+              frequency, this heart rate oscillation reaches its maximum amplitude. Your HRV is at its peak.
             </p>
             <p>
-              This maximized HRV isn&apos;t just a number—it reflects optimal coordination between your sympathetic (activation) and
+              This maximized HRV isn&apos;t just a number. It reflects optimal coordination between your sympathetic (activation) and
               parasympathetic (relaxation) nervous systems. Instead of one dominating the other or fighting for control, they
               work together in a balanced, flexible rhythm. Think of it like tuning an instrument: when you hit the right
               frequency, everything resonates together perfectly.
@@ -388,15 +388,15 @@ export default function CoherentBreathingAppMoneyPage() {
             <div>
               <h3 className="text-lg font-semibold text-card-foreground">What is coherent breathing?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Coherent breathing is a technique where you breathe at a specific pace—typically around 5-6 breaths per
-                minute—with equal inhale and exhale durations. This rate, often called the resonance frequency, maximizes heart
+                Coherent breathing is a technique where you breathe at a specific pace (typically around 5-6 breaths per
+                minute) with equal inhale and exhale durations. This rate, often called the resonance frequency, maximizes heart
                 rate variability (HRV) and promotes optimal balance in the autonomic nervous system.
               </p>
             </div>
             <div>
               <h3 className="text-lg font-semibold text-card-foreground">What is HRV breathing?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                HRV breathing refers to breathing techniques designed to increase heart rate variability—the variation in time
+                HRV breathing refers to breathing techniques designed to increase heart rate variability, the variation in time
                 between heartbeats. Higher HRV indicates a flexible, resilient nervous system and is associated with better
                 stress resilience, cardiovascular health, and emotional regulation. Coherent breathing is one of the most
                 effective HRV training methods.
@@ -459,7 +459,7 @@ export default function CoherentBreathingAppMoneyPage() {
         </div>
         <div className="glow-card rounded-[32px] border border-border bg-card p-6">
           <h2 className="text-xl font-semibold text-card-foreground">No breath holds</h2>
-          <p className="mt-2 text-sm text-muted-foreground">Equal inhale/exhale pacing with no holds—simple and sustainable.</p>
+          <p className="mt-2 text-sm text-muted-foreground">Equal inhale/exhale pacing with no holds, simple and sustainable.</p>
         </div>
         <div className="glow-card rounded-[32px] border border-border bg-card p-6">
           <h2 className="text-xl font-semibold text-card-foreground">Training-friendly</h2>

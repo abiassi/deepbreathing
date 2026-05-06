@@ -42,7 +42,7 @@ const websiteSchema = {
   name: "Deep Breathing Exercises",
   url: baseUrl,
   description:
-    "Guided breathing visualizer with adjustable pacing. Visual pacing that helps your body downshift—anytime, anywhere.",
+    "Guided breathing visualizer with adjustable pacing. Visual pacing that helps your body downshift, anytime, anywhere.",
   potentialAction: {
     "@type": "SearchAction",
     target: `${baseUrl}/?q={search_term_string}`,
@@ -65,7 +65,7 @@ const faqSchema = {
 
 const practiceCues = [
   "Breathe nasal and quiet; feel low belly rise.",
-  "Exhale ends softly—don't squeeze empty.",
+  "Exhale ends softly. Don't squeeze empty.",
   "Shoulders stay down; jaw unclenched."
 ];
 
@@ -200,7 +200,7 @@ export default function HomePage() {
             <ul className="mt-6 space-y-3 text-base text-muted-foreground [&>li]:leading-relaxed">
               <li>• Keep it easy. If dizzy, shorten phases or pause.</li>
               <li>• Breathe nasal and quiet; feel the low belly rise.</li>
-              <li>• Exhale ends softly—don&apos;t squeeze empty.</li>
+              <li>• Exhale ends softly. Don&apos;t squeeze empty.</li>
             </ul>
             <p className="mt-5 text-sm text-muted-foreground">
               Dial in a smooth cadence, then keep breathing. Small, steady breaths trump deep gasps.

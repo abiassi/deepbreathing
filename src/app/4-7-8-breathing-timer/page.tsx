@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "4-7-8 Breathing Timer (Free Online)",
     description:
-      "Dr. Weil's 4-7-8 breathing timer. The 'natural tranquilizer' for sleep and anxiety. Free in your browser—try tonight.",
+      "Dr. Weil's 4-7-8 breathing timer. The 'natural tranquilizer' for sleep and anxiety. Free in your browser. Try tonight.",
     images: [ogImageUrl]
   }
 };
@@ -93,7 +93,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes",
-    description: "Dr. Weil's 4-7-8 breathing timer for sleep. The 'natural tranquilizer' technique—fall asleep faster, calm anxiety in minutes.",
+    description: "Dr. Weil's 4-7-8 breathing timer for sleep. The 'natural tranquilizer' technique: fall asleep faster, calm anxiety in minutes.",
     author: {
       "@type": "Person",
       name: "Abi Abiassi",
@@ -196,7 +196,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
         name: "What if I can't hold my breath for 7 counts?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "If holding for 7 counts feels uncomfortable, modify the pattern while keeping the ratio similar. Try 2-3.5-4 or 3-5.25-6 (half or three-quarters of the original). The key is maintaining the exhale-emphasis pattern. Comfort should always come first—never strain."
+          text: "If holding for 7 counts feels uncomfortable, modify the pattern while keeping the ratio similar. Try 2-3.5-4 or 3-5.25-6 (half or three-quarters of the original). The key is maintaining the exhale-emphasis pattern. Comfort should always come first. Never strain."
         }
       },
       {
@@ -212,7 +212,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
         name: "Is it 4-7-8 or 7-8-4 breathing?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The correct order is 4-7-8: inhale for 4 counts, hold for 7 counts, exhale for 8 counts. The numbers describe the sequence of the breath cycle. '7-8-4' is a common mix-up, but the technique starts with the 4-count inhale and ends with the 8-count exhale—the extended exhale is what activates the relaxation response."
+          text: "The correct order is 4-7-8: inhale for 4 counts, hold for 7 counts, exhale for 8 counts. The numbers describe the sequence of the breath cycle. '7-8-4' is a common mix-up, but the technique starts with the 4-count inhale and ends with the 8-count exhale. The extended exhale is what activates the relaxation response."
         }
       },
       {
@@ -228,7 +228,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
         name: "Can I do 4-7-8 breathing lying down?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, 4-7-8 breathing works great lying down—in fact, that's the most common position for using it as a sleep aid. Lie on your back with your hands resting comfortably. The technique works in any position: sitting, lying down, or even standing. For sleep specifically, lying down allows you to transition directly into sleep without changing positions."
+          text: "Yes, 4-7-8 breathing works great lying down. In fact, that's the most common position for using it as a sleep aid. Lie on your back with your hands resting comfortably. The technique works in any position: sitting, lying down, or even standing. For sleep specifically, lying down allows you to transition directly into sleep without changing positions."
         }
       },
       {
@@ -315,7 +315,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
               </p>
               <p>
                 What makes 4-7-8 breathing unique is its emphasis on the exhale. The 8-count exhale is twice as long as the
-                inhale, creating an exhale-dominant pattern that actively engages the parasympathetic nervous system—your body&apos;s
+                inhale, creating an exhale-dominant pattern that actively engages the parasympathetic nervous system. Your body&apos;s
                 built-in relaxation mechanism. This makes it particularly effective for sleep and anxiety relief.
               </p>
               <p>
@@ -369,7 +369,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
               </div>
               <p className="mt-4">
                 <strong className="text-card-foreground">Bottom line:</strong> Use 4-7-8 when you need to wind down for sleep or calm anxiety.
-                The extended exhale is key—it activates your parasympathetic nervous system more powerfully than equal-phase techniques like box breathing.
+                The extended exhale is key. It activates your parasympathetic nervous system more powerfully than equal-phase techniques like box breathing.
                 For instant relief in just 1-3 breaths, try the <Link href="/breathe/physiological-sigh" className="text-primary hover:underline">physiological sigh</Link>.
               </p>
             </div>
@@ -434,7 +434,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
             <div className="mt-4 space-y-4 text-muted-foreground">
               <p>
                 4-7-8 breathing works through several interconnected physiological mechanisms. The most important is the
-                activation of your vagus nerve—the main nerve of your parasympathetic nervous system. The vagus nerve runs from
+                activation of your vagus nerve, the main nerve of your parasympathetic nervous system. The vagus nerve runs from
                 your brainstem down through your chest and abdomen, and it acts like a brake pedal for your stress response.
               </p>
               <p>
@@ -446,7 +446,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
                 The 7-count breath hold also plays an important role. Holding your breath after inhaling allows oxygen to fully
                 saturate your blood and reach your tissues. More importantly, the hold causes a slight buildup of carbon dioxide
                 (CO₂) in your bloodstream. While we typically think of CO₂ as waste, moderate increases actually have a calming
-                effect on the nervous system and improve oxygen delivery to your cells—a phenomenon called the Bohr effect.
+                effect on the nervous system and improve oxygen delivery to your cells, a phenomenon called the Bohr effect.
               </p>
               <p>
                 The counting itself provides a cognitive anchor. When you&apos;re anxious, stressed, or unable to sleep, your mind is
@@ -566,7 +566,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
                 <p className="mt-2 text-sm text-muted-foreground">
                   If holding for 7 counts feels uncomfortable, modify the pattern while keeping the ratio similar. Try 2-3.5-4 or
                   3-5.25-6 (half or three-quarters of the original). The key is maintaining the exhale-emphasis pattern. Comfort
-                  should always come first—never strain.
+                  should always come first, never strain.
                 </p>
               </div>
               <div>
@@ -582,7 +582,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
                 <p className="mt-2 text-sm text-muted-foreground">
                   The correct order is 4-7-8: inhale for 4 counts, hold for 7 counts, exhale for 8 counts. The numbers describe
                   the sequence of the breath cycle. &quot;7-8-4&quot; is a common mix-up, but the technique starts with the 4-count inhale
-                  and ends with the 8-count exhale—the extended exhale is what activates the relaxation response.
+                  and ends with the 8-count exhale. The extended exhale is what activates the relaxation response.
                 </p>
               </div>
               <div>
@@ -596,7 +596,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
               <div>
                 <h3 className="text-lg font-semibold text-card-foreground">Can I do 4-7-8 breathing lying down?</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Yes, 4-7-8 breathing works great lying down—in fact, that&apos;s the most common position for using it as a sleep
+                  Yes, 4-7-8 breathing works great lying down. In fact, that&apos;s the most common position for using it as a sleep
                   aid. Lie on your back with your hands resting comfortably. The technique works in any position: sitting, lying
                   down, or even standing. For sleep specifically, lying down allows you to transition directly into sleep without
                   changing positions.
@@ -621,7 +621,7 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
           </div>
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <h2 className="text-xl font-semibold text-card-foreground">Adjustable</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Treat the counts as a starting point—comfort comes first.</p>
+            <p className="mt-2 text-sm text-muted-foreground">Treat the counts as a starting point. Comfort comes first.</p>
           </div>
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <h2 className="text-xl font-semibold text-card-foreground">No download</h2>

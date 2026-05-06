@@ -9,9 +9,9 @@ const canonicalUrl = `${siteUrl}/breathing-app`;
 const ogImageUrl = createOgImagePath("Free Breathing App (No Download)");
 
 export const metadata: Metadata = {
-  title: "Free Breathing App (No Download) — Calm Anxiety, Sleep & Focus",
+  title: "Free Breathing App (No Download): Calm Anxiety, Sleep & Focus",
   description:
-    "Free breathing app — box breathing, 4-7-8, coherent breathing, and physiological sigh timers. No download, no signup. Start your session now.",
+    "Free breathing app: box breathing, 4-7-8, coherent breathing, and physiological sigh timers. No download, no signup. Start your session now.",
   alternates: {
     canonical: canonicalUrl
   },
@@ -81,7 +81,7 @@ export default function BreathingAppPage() {
         <p className="text-xs uppercase tracking-[0.35em] text-primary">DEEP BREATHING EXERCISES</p>
         <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">Free breathing app</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          A simple breathing app that runs in your browser—no download and no signup. Use it for calm, focus, sleep, or
+          A simple breathing app that runs in your browser, no download and no signup. Use it for calm, focus, sleep, or
           a quick stress reset.
         </p>
       </header>

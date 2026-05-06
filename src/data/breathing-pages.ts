@@ -146,7 +146,7 @@ export const breathingPages: BreathingPageContent[] = [
     },
     meta: {
       title: "Box Breathing: Navy SEAL Technique to Stop Anxiety Fast (Free Tool)",
-      description: "Free box breathing timer — stop anxiety in 60 seconds with the Navy SEAL 4-4-4-4 technique. No download. Start your guided session now.",
+      description: "Free box breathing timer: stop anxiety in 60 seconds with the Navy SEAL 4-4-4-4 technique. No download. Start your guided session now.",
       ogTitle: "Box Breathing: Navy SEAL Technique to Stop Anxiety Fast",
       ogDescription: "The same breathing technique Navy SEALs use before combat. Stop panic attacks in 1 minute. Free visualizer + research-backed method.",
       ogImage: "og/breathe-box.png",
@@ -164,7 +164,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         heading: "Why Navy SEALs Use Box Breathing",
-        content: "Box breathing became a cornerstone of Navy SEAL training through Mark Divine, a retired SEAL Commander who introduced it to BUD/S (Basic Underwater Demolition/SEAL) training in the early 2000s. SEALs use it before high-stakes missions, during underwater drownproofing exercises, and in any situation where panic could be fatal. The technique works because the structured counting occupies the prefrontal cortex—the thinking brain—while the slow rhythm activates the parasympathetic nervous system. This dual action interrupts the amygdala's fear response, allowing SEALs to stay calm and make clear decisions under fire. Divine calls it 'taking control of your physiology before your physiology takes control of you.' The same technique that helps operators stay composed during combat works just as well before your next presentation, difficult conversation, or sleepless night."
+        content: "Box breathing became a cornerstone of Navy SEAL training through Mark Divine, a retired SEAL Commander who introduced it to BUD/S (Basic Underwater Demolition/SEAL) training in the early 2000s. SEALs use it before high-stakes missions, during underwater drownproofing exercises, and in any situation where panic could be fatal. The technique works because the structured counting occupies the prefrontal cortex (the thinking brain) while the slow rhythm activates the parasympathetic nervous system. This dual action interrupts the amygdala's fear response, allowing SEALs to stay calm and make clear decisions under fire. Divine calls it 'taking control of your physiology before your physiology takes control of you.' The same technique that helps operators stay composed during combat works just as well before your next presentation, difficult conversation, or sleepless night."
       },
       {
         heading: "Benefits",
@@ -387,7 +387,7 @@ export const breathingPages: BreathingPageContent[] = [
     video: {
       youtubeId: "GZzhk9jEkkI",
       title: "Box Breathing with Mark Divine (Navy SEAL Commander)",
-      description: "Former Navy SEAL Commander Mark Divine teaches the box breathing technique he introduced to BUD/S training—the same method SEALs use to stay calm under pressure."
+      description: "Former Navy SEAL Commander Mark Divine teaches the box breathing technique he introduced to BUD/S training: the same method SEALs use to stay calm under pressure."
     },
     voiceSearch: [
       {
@@ -412,7 +412,7 @@ export const breathingPages: BreathingPageContent[] = [
     },
     meta: {
       title: "4-7-8 Breathing: Fall Asleep in 2 Minutes (Dr. Weil's Method)",
-      description: "Free 4-7-8 breathing timer — fall asleep in 2 minutes with Dr. Weil's technique. No download. Start your guided session now.",
+      description: "Free 4-7-8 breathing timer: fall asleep in 2 minutes with Dr. Weil's technique. No download. Start your guided session now.",
       ogTitle: "4-7-8 Breathing: Fall Asleep in 2 Minutes (Dr. Weil's Method)",
       ogDescription: "Dr. Weil's 'natural tranquilizer' technique. Fall asleep faster and calm anxiety in minutes. Free visualizer with research-backed method.",
       ogImage: "og/breathe-4-7-8.png",
@@ -426,7 +426,7 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What it is",
-        content: "Inhale (4s), hold gently (7s), exhale slowly (8s). The long exhale is what calms. Breathe quietly through the nose, keep shoulders and jaw soft. If the hold feels tense or triggers dizziness, shorten it or drop it—keep the exhale longer than the inhale."
+        content: "Inhale (4s), hold gently (7s), exhale slowly (8s). The long exhale is what calms. Breathe quietly through the nose, keep shoulders and jaw soft. If the hold feels tense or triggers dizziness, shorten it or drop it, keep the exhale longer than the inhale."
       },
       {
         heading: "Benefits",
@@ -472,7 +472,7 @@ export const breathingPages: BreathingPageContent[] = [
     faqs: [
       {
         question: "Is it '4 7 8' or '4-7-8' breathing?",
-        answer: "Both '4 7 8 breathing' and '4-7-8 breathing' refer to the same technique—the numbers represent the count for each phase: inhale for 4 counts, hold for 7 counts, exhale for 8 counts. Whether written with spaces (4 7 8) or hyphens (4-7-8), the breathing timer works the same way. This technique is also called the 'relaxing breath' or Dr. Weil's breathing method."
+        answer: "Both '4 7 8 breathing' and '4-7-8 breathing' refer to the same technique. The numbers represent the count for each phase: inhale for 4 counts, hold for 7 counts, exhale for 8 counts. Whether written with spaces (4 7 8) or hyphens (4-7-8), the breathing timer works the same way. This technique is also called the 'relaxing breath' or Dr. Weil's breathing method."
       },
       {
         question: "Is there direct evidence for 4-7-8?",
@@ -595,7 +595,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         slug: "belly",
-        reason: "Diaphragmatic breathing is the base technique—master it before adding the long exhale."
+        reason: "Diaphragmatic breathing is the base technique. Master it before adding the long exhale."
       }
     ],
     relatedUseCases: [
@@ -644,7 +644,7 @@ export const breathingPages: BreathingPageContent[] = [
     voiceSearch: [
       {
         question: "Does 4-7-8 breathing really work?",
-        answer: "Yes, 4-7-8 breathing works. Research shows slow breathing with extended exhales activates the parasympathetic nervous system and reduces heart rate within minutes. Dr. Andrew Weil, who popularized the technique, calls it a 'natural tranquilizer for the nervous system.' Clinical studies have found it improves sleep onset, reduces anxiety symptoms, and lowers blood pressure. The key is consistent practice—benefits increase with regular use over weeks."
+        answer: "Yes, 4-7-8 breathing works. Research shows slow breathing with extended exhales activates the parasympathetic nervous system and reduces heart rate within minutes. Dr. Andrew Weil, who popularized the technique, calls it a 'natural tranquilizer for the nervous system.' Clinical studies have found it improves sleep onset, reduces anxiety symptoms, and lowers blood pressure. The key is consistent practice, benefits increase with regular use over weeks."
       }
     ]
   },
@@ -660,7 +660,7 @@ export const breathingPages: BreathingPageContent[] = [
     },
     meta: {
       title: "Coherent Breathing Timer: 5-6 Breaths Per Minute for HRV (Free)",
-      description: "Free coherent breathing timer — train HRV and stress resilience in 5 minutes. 5-6 breaths/min pace. Start your guided session now.",
+      description: "Free coherent breathing timer: train HRV and stress resilience in 5 minutes. 5-6 breaths/min pace. Start your guided session now.",
       ogTitle: "Coherent Breathing Timer: 5-6 Breaths Per Minute for HRV",
       ogDescription: "Free 5-6 breaths/min coherent breathing timer. Train HRV in 5 minutes. No download.",
       ogImage: "og/breathe-coherent.png",
@@ -840,7 +840,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         slug: "belly",
-        reason: "Start here if you're new to breathwork—diaphragmatic breathing is the foundation."
+        reason: "Start here if you're new to breathwork, diaphragmatic breathing is the foundation."
       }
     ],
     relatedUseCases: [
@@ -852,7 +852,7 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "meditation",
         title: "Meditation for Beginners",
-        teaser: "Can't meditate? Start with coherent breathing—meditation with training wheels"
+        teaser: "Can't meditate? Start with coherent breathing, meditation with training wheels"
       }
     ],
     keywords: [
@@ -878,7 +878,7 @@ export const breathingPages: BreathingPageContent[] = [
     video: {
       youtubeId: "CMsFIEyITPc",
       title: "James Nestor on the Perfect Breath",
-      description: "Bestselling author James Nestor (Breath: The New Science of a Lost Art) explains the ideal breathing pattern: 5.5 seconds in, 5.5 seconds out—the foundation of coherent breathing."
+      description: "Bestselling author James Nestor (Breath: The New Science of a Lost Art) explains the ideal breathing pattern: 5.5 seconds in, 5.5 seconds out: the foundation of coherent breathing."
     }
   },
   {
@@ -889,16 +889,16 @@ export const breathingPages: BreathingPageContent[] = [
   hero: {
     title: "Physiological Sigh: Instant Stress Relief",
     subtitle: "Calm down in 30 seconds with the double-inhale technique.",
-    intro: "A physiological sigh is two quick inhales followed by a long, unforced exhale—the fastest way to reduce stress in real-time. Just 1-3 sighs (about 30 seconds) can lower your heart rate and cortisol. The second inhale re-expands collapsed lung tissue; the long exhale activates your vagus nerve. Use for instant relief or practice 2–5 minutes daily for mood benefits."
+    intro: "A physiological sigh is two quick inhales followed by a long, unforced exhale, a structured way to reduce stress on demand. Just 1-3 sighs (about 30 seconds) can lower your heart rate and cortisol. The second inhale re-expands collapsed lung tissue; the long exhale activates your vagus nerve. Use for relief in the moment or practice 2–5 minutes daily for mood benefits."
   },
   meta: {
-    title: "Physiological Sigh Breathing Timer (Free) — Calm Down in 30 Seconds",
-    description: "Free physiological sigh timer — calm down in 30 seconds with Stanford's double-inhale technique. Just 1-3 breaths. Start now.",
-    ogTitle: "Physiological Sigh Breathing — Calm Down in 30 Seconds",
+    title: "Physiological Sigh Breathing Timer (Free): Calm Down in 30 Seconds",
+    description: "Free physiological sigh timer: calm down in 30 seconds with Stanford's double-inhale technique. Just 1-3 breaths. Start now.",
+    ogTitle: "Physiological Sigh Breathing: Calm Down in 30 Seconds",
     ogDescription: "Stanford-tested double-inhale breathing technique. Stop stress in 30 seconds. Free physiological sigh timer.",
     ogImage: "og/breathe-physiological-sigh.png",
-    twitterTitle: "Physiological Sigh Breathing — Calm Down in 30 Seconds",
-    twitterDescription: "Stop stress in 30 seconds with Stanford's double-inhale technique. Free timer—try now.",
+    twitterTitle: "Physiological Sigh Breathing: Calm Down in 30 Seconds",
+    twitterDescription: "Stop stress in 30 seconds with Stanford's double-inhale technique. Free timer: try now.",
     author: "Abi Abiassi",
     reviewer: "",
     datePublished: "2025-11-17",
@@ -907,11 +907,11 @@ export const breathingPages: BreathingPageContent[] = [
     body: [
       {
         heading: "What Is a Physiological Sigh?",
-        content: "A physiological sigh is your body's natural stress-relief mechanism—a double inhale followed by a long exhale. You do it instinctively when crying, yawning, or transitioning from sleep. Babies sigh about every 50 breaths to keep their lungs healthy. When done deliberately, this ancient reflex becomes a powerful tool: two quick inhales through the nose (the second a short 'top-up' to fill the upper lungs), then a slow, unforced exhale. Stanford researchers (Balban et al., 2023) studied the controlled version in a randomized trial that showed it outperforms meditation for rapid stress relief."
+        content: "A physiological sigh is your body's natural stress-relief mechanism, a double inhale followed by a long exhale. You do it instinctively when crying, yawning, or transitioning from sleep. Babies sigh about every 50 breaths to keep their lungs healthy. When done deliberately, this ancient reflex becomes a powerful tool: two quick inhales through the nose (the second a short 'top-up' to fill the upper lungs), then a slow, unforced exhale. Stanford researchers (Balban et al., 2023) studied the controlled version in a randomized trial that showed it outperforms meditation for rapid stress relief."
       },
       {
         heading: "The Science Behind Physiological Sighing",
-        content: "When you breathe normally, some of your 500 million lung alveoli gradually collapse—reducing oxygen exchange and triggering stress signals. The double inhale of a physiological sigh reinflates these collapsed air sacs, maximizing lung surface area. Meanwhile, the extended exhale activates your vagus nerve, shifting your nervous system from fight-or-flight (sympathetic) to rest-and-digest (parasympathetic). This combination—mechanical lung reset plus neural calming—explains why one sigh can drop your heart rate and cortisol faster than any other breathing technique. The 2023 Stanford study (Balban et al.) found that just 5 minutes of daily cyclic sighing improved mood more than mindfulness meditation."
+        content: "When you breathe normally, some of your 500 million lung alveoli gradually collapse, reducing oxygen exchange and triggering stress signals. The double inhale of a physiological sigh reinflates these collapsed air sacs, maximizing lung surface area. Meanwhile, the extended exhale activates your vagus nerve, shifting your nervous system from fight-or-flight (sympathetic) to rest-and-digest (parasympathetic). This combination (mechanical lung reset plus neural calming) explains why one sigh can drop your heart rate and cortisol faster than any other breathing technique. The 2023 Stanford study (Balban et al.) found that just 5 minutes of daily cyclic sighing improved mood more than mindfulness meditation."
       },
       {
         heading: "Benefits",
@@ -919,15 +919,15 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         heading: "Physiological Sigh vs Box Breathing",
-        content: "Choose the physiological sigh when you need instant relief in 1-3 breaths—panic spikes, sudden anxiety, or stress that hits mid-conversation. It's invisible and takes only seconds. Choose box breathing when you have 2-5 minutes and want sustained focus or a structured practice—before presentations, during breaks, or as a daily routine. The sigh is a fire extinguisher; box breathing is climate control. For deepest calm, some practitioners start with 3 sighs to break acute stress, then transition to box breathing for extended downregulation."
+        content: "Choose the physiological sigh when you need instant relief in 1-3 breaths: panic spikes, sudden anxiety, or stress that hits mid-conversation. It's invisible and takes only seconds. Choose box breathing when you have 2-5 minutes and want sustained focus or a structured practice: before presentations, during breaks, or as a daily routine. The sigh is a fire extinguisher; box breathing is climate control. For deepest calm, some practitioners start with 3 sighs to break acute stress, then transition to box breathing for extended downregulation."
       },
       {
         heading: "Cyclic Sighing: The Clinical Term",
-        content: "In research papers and clinical settings, repeated physiological sighs are called 'cyclic sighing' or 'cyclic physiological sighing.' Some people search for 'cyclical breathing' or 'sigh breathing technique'—these refer to the same pattern. The 2023 Stanford study by Balban et al. used 'cyclic sighing' when comparing breathwork protocols to mindfulness meditation. Whether you call it physiological sighing, cyclic sighing, cyclical breathing, or the double-inhale sigh—it's the same technique: double inhale, long exhale, repeat. The word 'cyclic' simply means you're doing multiple sighs in a row (2-5 minutes) rather than a single sigh for acute relief."
+        content: "In research papers and clinical settings, repeated physiological sighs are called 'cyclic sighing' or 'cyclic physiological sighing.' Some people search for 'cyclical breathing' or 'sigh breathing technique'. These refer to the same pattern. The 2023 Stanford study by Balban et al. used 'cyclic sighing' when comparing breathwork protocols to mindfulness meditation. Whether you call it physiological sighing, cyclic sighing, cyclical breathing, or the double-inhale sigh. It's the same technique: double inhale, long exhale, repeat. The word 'cyclic' simply means you're doing multiple sighs in a row (2-5 minutes) rather than a single sigh for acute relief."
       },
       {
         heading: "When to use",
-        content: "Stress spikes, before hard conversations, after startles. Or 2–5 minutes daily for mood. Fast, subtle, works anywhere—even in meetings."
+        content: "Stress spikes, before hard conversations, after startles. Or 2–5 minutes daily for mood. Fast, subtle, works anywhere, even in meetings."
       },
       {
         heading: "When to skip",
@@ -935,11 +935,11 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         heading: "Physiological Sigh for Panic Attacks",
-        content: "When panic hits, your breathing goes haywire—fast, shallow, desperate. The physiological sigh works because it's simple enough to do mid-panic: just two quick inhales, then a long exhale. No counting, no complex timing. The double inhale forces your lungs open; the long exhale activates your vagus nerve. Many people report feeling relief after just 1-3 sighs. It won't cure a panic disorder, but it can interrupt the spiral and buy you time to ground yourself."
+        content: "When panic hits, your breathing goes haywire: fast, shallow, desperate. The physiological sigh works because it's simple enough to do mid-panic: just two quick inhales, then a long exhale. No counting, no complex timing. The double inhale forces your lungs open; the long exhale activates your vagus nerve. Many people report feeling relief after just 1-3 sighs. It won't cure a panic disorder, but it can interrupt the spiral and buy you time to ground yourself."
       },
     {
       heading: "Physiological Sigh for Anxiety",
-      content: "Unlike panic attacks (which are acute), anxiety often simmers in the background. The physiological sigh helps in two ways: (1) As an instant reset when anxiety spikes—1-3 sighs can break the tension. (2) As a daily practice—5 minutes of cyclic sighing per day can lower baseline anxiety over weeks. The 2023 Stanford study found cyclic sighing improved mood more than mindfulness meditation. For chronic anxiety, pair the sigh with other evidence-based approaches; it's a tool, not a cure."
+      content: "Unlike panic attacks (which are acute), anxiety often simmers in the background. The physiological sigh helps in two ways: (1) As an instant reset when anxiety spikes, 1-3 sighs can break the tension. (2) As a daily practice, 5 minutes of cyclic sighing per day can lower baseline anxiety over weeks. The 2023 Stanford study found cyclic sighing improved mood more than mindfulness meditation. For chronic anxiety, pair the sigh with other evidence-based approaches; it's a tool, not a cure."
     }
   ],
   benefits: [
@@ -997,19 +997,19 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         question: "How many physiological sighs should I do?",
-        answer: "For an immediate reset during acute stress, 1-3 physiological sighs is usually enough—many people feel relief after just one. For a more sustained practice with training effects on mood and stress resilience, do continuous cyclic sighing for 2-5 minutes. The Stanford study used 5 minutes daily. Start with fewer repetitions and increase only if it feels comfortable."
+        answer: "For an immediate reset during acute stress, 1-3 physiological sighs is usually enough, many people feel relief after just one. For a more sustained practice with training effects on mood and stress resilience, do continuous cyclic sighing for 2-5 minutes. The Stanford study used 5 minutes daily. Start with fewer repetitions and increase only if it feels comfortable."
       },
       {
         question: "Can I do a physiological sigh through my mouth?",
-        answer: "Nasal breathing is preferred for both inhales because it filters, warms, and humidifies the air, and may enhance nitric oxide production. However, the technique still works with mouth breathing if nasal congestion makes nose breathing difficult. The exhale can be through pursed lips (like sighing 'ahh') or through the nose—whichever feels more natural and allows a longer, slower release."
+        answer: "Nasal breathing is preferred for both inhales because it filters, warms, and humidifies the air, and may enhance nitric oxide production. However, the technique still works with mouth breathing if nasal congestion makes nose breathing difficult. The exhale can be through pursed lips (like sighing 'ahh') or through the nose, whichever feels more natural and allows a longer, slower release."
       },
       {
         question: "Is cyclic sighing the same as physiological sigh?",
-        answer: "Yes—cyclic sighing is the research term for repeatedly performing physiological sighs in sequence. A single physiological sigh is one double-inhale followed by a long exhale. Cyclic sighing strings these together for 2-5+ minutes as a structured practice. The Stanford study that compared breathwork to meditation used 'cyclic physiological sighing' as the formal name for this continuous practice."
+        answer: "Yes, cyclic sighing is the research term for repeatedly performing physiological sighs in sequence. A single physiological sigh is one double-inhale followed by a long exhale. Cyclic sighing strings these together for 2-5+ minutes as a structured practice. The Stanford study that compared breathwork to meditation used 'cyclic physiological sighing' as the formal name for this continuous practice."
       },
       {
         question: "What's the difference between a sigh and a physiological sigh?",
-        answer: "A regular sigh is a single deep breath—typically one inhale followed by an exhale. A physiological sigh specifically involves TWO inhales: a full inhale followed by a short 'top-up' breath before the long exhale. This double inhale is what makes it physiological—it reinflates collapsed lung alveoli and triggers a stronger parasympathetic (calming) response than a regular sigh. Your body does this naturally about every 5 minutes, but doing it deliberately amplifies the stress-relief effect."
+        answer: "A regular sigh is a single deep breath, typically one inhale followed by an exhale. A physiological sigh specifically involves TWO inhales: a full inhale followed by a short 'top-up' breath before the long exhale. This double inhale is what makes it physiological. It reinflates collapsed lung alveoli and triggers a stronger parasympathetic (calming) response than a regular sigh. Your body does this naturally about every 5 minutes, but doing it deliberately amplifies the stress-relief effect."
       }
     ],
     howTo: {
@@ -1131,7 +1131,7 @@ export const breathingPages: BreathingPageContent[] = [
       {
         slug: "anxiety",
         title: "Anxiety Relief",
-        teaser: "The fastest breathing technique to calm anxiety—works in 1-3 breaths"
+        teaser: "A research-backed breathing technique that calms anxiety in 1-3 breaths"
       },
       {
         slug: "running",
@@ -1183,7 +1183,7 @@ export const breathingPages: BreathingPageContent[] = [
     video: {
       youtubeId: "kSZKIupBUuc",
       title: "The Physiological Sigh Explained: Stanford's Stress-Relief Technique",
-      description: "Stanford's double-inhale breathing technique that reduces stress faster than meditation. Learn the physiological sigh—how it works, why it works, and when to use it."
+      description: "Stanford's double-inhale breathing technique that reduces stress faster than meditation. Learn the physiological sigh: how it works, why it works, and when to use it."
     },
     voiceSearch: [
       {
@@ -1192,11 +1192,11 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         question: "How do I calm down quickly?",
-        answer: "The fastest way to calm down is the physiological sigh: take two quick inhales through your nose (the second is a short 'top-up'), then one long, slow exhale through your mouth. This technique works in just 1-3 breaths—about 30 seconds. The double inhale reinflates collapsed lung tissue; the long exhale activates your vagus nerve and parasympathetic nervous system. Stanford research found it outperforms meditation for rapid stress relief."
+        answer: "A particularly effective way to calm down is the physiological sigh: take two quick inhales through your nose (the second is a short 'top-up'), then one long, slow exhale through your mouth. The technique works in just 1-3 breaths, about 30 seconds. The double inhale reinflates collapsed lung tissue; the long exhale activates your vagus nerve and parasympathetic nervous system. Stanford research found it outperforms meditation for daily mood improvement."
       },
       {
         question: "How to stop a panic attack?",
-        answer: "To stop a panic attack, use the physiological sigh: two quick inhales through your nose followed by one long exhale through your mouth. This works because it's simple enough to do mid-panic—no counting or complex timing. The double inhale forces your lungs open; the long exhale activates your vagus nerve. Most people feel relief after just 1-3 sighs. Keep repeating until your heart rate slows and your body relaxes."
+        answer: "To stop a panic attack, use the physiological sigh: two quick inhales through your nose followed by one long exhale through your mouth. This works because it's simple enough to do mid-panic, no counting or complex timing. The double inhale forces your lungs open; the long exhale activates your vagus nerve. Most people feel relief after just 1-3 sighs. Keep repeating until your heart rate slows and your body relaxes."
       }
     ]
   },
@@ -1208,7 +1208,7 @@ export const breathingPages: BreathingPageContent[] = [
     hero: {
       title: "Wim Hof Breathing Method",
       subtitle: "The Iceman's technique for energy, focus, and resilience.",
-      intro: "The Wim Hof Method combines controlled hyperventilation with breath retention to boost energy, reduce stress, and potentially influence the immune system. Practice 3 rounds of 30 power breaths followed by a breath hold and recovery breath. Always practice in a safe environment—never in water or while driving."
+      intro: "The Wim Hof Method combines controlled hyperventilation with breath retention to boost energy, reduce stress, and potentially influence the immune system. Practice 3 rounds of 30 power breaths followed by a breath hold and recovery breath. Always practice in a safe environment, never in water or while driving."
     },
     meta: {
       title: "Wim Hof Breathing: The Iceman's 3-Round Method (Free Guided Tool)",
@@ -1234,11 +1234,11 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         heading: "When to use",
-        content: "Best practiced on an empty stomach, ideally in the morning. Use before cold showers, workouts, or when you need an energy boost. The full protocol takes 10-15 minutes. Not suitable for quick stress relief—use physiological sigh or box breathing instead for acute calm."
+        content: "Best practiced on an empty stomach, ideally in the morning. Use before cold showers, workouts, or when you need an energy boost. The full protocol takes 10-15 minutes. Not suitable for quick stress relief. Use physiological sigh or box breathing instead for acute calm."
       },
       {
         heading: "When to skip",
-        content: "NEVER practice in water, while driving, or standing. Avoid if pregnant, have epilepsy, cardiac issues, or respiratory conditions. Stop if you experience severe discomfort, persistent dizziness, or unusual symptoms. The breath holds may cause temporary tingling or light-headedness—this is normal but practice seated."
+        content: "NEVER practice in water, while driving, or standing. Avoid if pregnant, have epilepsy, cardiac issues, or respiratory conditions. Stop if you experience severe discomfort, persistent dizziness, or unusual symptoms. The breath holds may cause temporary tingling or light-headedness. This is normal but practice seated."
       }
     ],
     benefits: [
@@ -1266,7 +1266,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         title: "Don't force the retention",
-        description: "Hold only as long as comfortable. The hold time naturally increases with practice—no need to push."
+        description: "Hold only as long as comfortable. The hold time naturally increases with practice: no need to push."
       }
     ],
     faqs: [
@@ -1276,7 +1276,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         question: "How long should I hold my breath?",
-        answer: "Hold only as long as comfortable—there's no competition. Beginners might hold 30-60 seconds; experienced practitioners often reach 2-3 minutes. The hold time naturally increases with practice as your CO2 tolerance improves. Listen to your body and never force it."
+        answer: "Hold only as long as comfortable. There's no competition. Beginners might hold 30-60 seconds; experienced practitioners often reach 2-3 minutes. The hold time naturally increases with practice as your CO2 tolerance improves. Listen to your body and never force it."
       },
       {
         question: "What does Wim Hof breathing do to your body?",
@@ -1284,11 +1284,11 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         question: "Can I do Wim Hof breathing before cold exposure?",
-        answer: "Yes, this is the traditional way. Many practitioners do 2-3 rounds of breathing before a cold shower or ice bath. The breathing prepares your body and mind for the cold stress. However, NEVER do breathing exercises in the cold water itself—always complete the breathing before entering."
+        answer: "Yes, this is the traditional way. Many practitioners do 2-3 rounds of breathing before a cold shower or ice bath. The breathing prepares your body and mind for the cold stress. However, NEVER do breathing exercises in the cold water itself, always complete the breathing before entering."
       },
       {
         question: "How often should I practice?",
-        answer: "Most practitioners do 1 session daily, typically in the morning. Each session is 3 rounds, taking about 10-15 minutes. Some do 2 sessions (morning and afternoon). Consistency matters more than frequency—daily practice for several weeks builds the strongest effects."
+        answer: "Most practitioners do 1 session daily, typically in the morning. Each session is 3 rounds, taking about 10-15 minutes. Some do 2 sessions (morning and afternoon). Consistency matters more than frequency, daily practice for several weeks builds the strongest effects."
       }
     ],
     howTo: {
@@ -1307,12 +1307,12 @@ export const breathingPages: BreathingPageContent[] = [
         },
         {
           name: "Power breathing (30 breaths)",
-          instruction: "Take 30 deep, rhythmic breaths. Inhale fully through nose or mouth, letting belly and chest expand. Exhale relaxed—don't force it out. Maintain a steady rhythm.",
+          instruction: "Take 30 deep, rhythmic breaths. Inhale fully through nose or mouth, letting belly and chest expand. Exhale relaxed. Don't force it out. Maintain a steady rhythm.",
           duration: "~90 seconds"
         },
         {
           name: "Retention hold",
-          instruction: "After the 30th exhale, stop breathing and hold on empty lungs. Relax completely. Hold as long as comfortable—don't force it.",
+          instruction: "After the 30th exhale, stop breathing and hold on empty lungs. Relax completely. Hold as long as comfortable. Don't force it.",
           duration: "30–90+ seconds"
         },
         {
@@ -1368,10 +1368,10 @@ export const breathingPages: BreathingPageContent[] = [
         }
       ],
       safety: [
-        "NEVER practice in water, while driving, or standing—fainting risk exists.",
+        "NEVER practice in water, while driving, or standing, fainting risk exists.",
         "Sit or lie down in a safe environment with no sharp edges nearby.",
         "Stop if you experience severe discomfort, vision changes, or unusual symptoms.",
-        "Tingling, light-headedness, and emotional release are normal—trust the process.",
+        "Tingling, light-headedness, and emotional release are normal. Trust the process.",
         "Contraindicated for pregnancy, epilepsy, cardiac conditions, and severe respiratory issues."
       ],
       quotes: [
@@ -1439,7 +1439,7 @@ const pursedLipPage: BreathingPageContent = {
   },
   meta: {
     title: "Pursed Lip Breathing: Stop Shortness of Breath Fast (Free Timer)",
-    description: "Free pursed lip breathing timer — ease shortness of breath in seconds. Respiratory therapist-approved 2:4 ratio. Start your guided session now.",
+    description: "Free pursed lip breathing timer: ease shortness of breath in seconds. Respiratory therapist-approved 2:4 ratio. Start your guided session now.",
     ogTitle: "Pursed Lip Breathing: Stop Shortness of Breath Fast",
     ogDescription: "Respiratory therapist-approved technique for COPD, asthma, and shortness of breath. Free timer with 2:4 ratio breathing.",
     ogImage: "og/breathe-pursed-lip.png",
@@ -1453,7 +1453,7 @@ const pursedLipPage: BreathingPageContent = {
   body: [
     {
       heading: "What Is Pursed Lip Breathing?",
-      content: "Pursed lip breathing is a controlled breathing technique where you inhale slowly through your nose and exhale through tightly pursed lips—as if you're blowing through a straw or cooling hot soup. The exhale is typically twice as long as the inhale (2:4 ratio). This creates back-pressure in your airways, keeping them open longer and helping trapped air escape from your lungs."
+      content: "Pursed lip breathing is a controlled breathing technique where you inhale slowly through your nose and exhale through tightly pursed lips, as if you're blowing through a straw or cooling hot soup. The exhale is typically twice as long as the inhale (2:4 ratio). This creates back-pressure in your airways, keeping them open longer and helping trapped air escape from your lungs."
     },
     {
       heading: "Who Benefits Most",
@@ -1473,7 +1473,7 @@ const pursedLipPage: BreathingPageContent = {
     },
     {
       heading: "When to Skip",
-      content: "Pursed lip breathing is very safe. However, stop if you feel dizzy or faint. If you have severe respiratory distress, seek medical attention—this technique helps mild-moderate breathlessness but isn't a substitute for emergency care."
+      content: "Pursed lip breathing is very safe. However, stop if you feel dizzy or faint. If you have severe respiratory distress, seek medical attention. This technique helps mild-moderate breathlessness but isn't a substitute for emergency care."
     }
   ],
   benefits: [
@@ -1507,11 +1507,11 @@ const pursedLipPage: BreathingPageContent = {
   faqs: [
     {
       question: "How long should I do pursed lip breathing?",
-      answer: "For immediate relief, 5-10 breaths (about 30-60 seconds) is often enough. For building the habit, practice 4-5 times daily for 5 minutes each. During activities that cause breathlessness (walking, stairs), use it continuously. There's no maximum—it's safe to use as long as needed."
+      answer: "For immediate relief, 5-10 breaths (about 30-60 seconds) is often enough. For building the habit, practice 4-5 times daily for 5 minutes each. During activities that cause breathlessness (walking, stairs), use it continuously. There's no maximum. It's safe to use as long as needed."
     },
     {
       question: "What's the correct ratio for pursed lip breathing?",
-      answer: "The standard ratio is 2:4—inhale for 2 seconds through your nose, exhale for 4 seconds through pursed lips. Some people prefer 2:6 or 3:6 for a longer exhale. The key is that the exhale should be at least twice as long as the inhale. Adjust to whatever feels comfortable and sustainable."
+      answer: "The standard ratio is 2:4. Inhale for 2 seconds through your nose, exhale for 4 seconds through pursed lips. Some people prefer 2:6 or 3:6 for a longer exhale. The key is that the exhale should be at least twice as long as the inhale. Adjust to whatever feels comfortable and sustainable."
     },
     {
       question: "Does pursed lip breathing help with anxiety?",
@@ -1519,7 +1519,7 @@ const pursedLipPage: BreathingPageContent = {
     },
     {
       question: "Can I use pursed lip breathing during exercise?",
-      answer: "Absolutely—this is one of its best uses. Use it before exercise to prepare your lungs, during exercise when you feel breathless, and after exercise for recovery. Many respiratory therapists teach it specifically for maintaining activity levels with lung conditions."
+      answer: "Absolutely. This is one of its best uses. Use it before exercise to prepare your lungs, during exercise when you feel breathless, and after exercise for recovery. Many respiratory therapists teach it specifically for maintaining activity levels with lung conditions."
     },
     {
       question: "Is pursed lip breathing good for COPD?",
@@ -1527,7 +1527,7 @@ const pursedLipPage: BreathingPageContent = {
     },
     {
       question: "What's the difference between pursed lip breathing and other techniques?",
-      answer: "Pursed lip breathing focuses specifically on the exhale mechanics—the pursed lips create back-pressure that keeps airways open. Box breathing and 4-7-8 use breath holds for relaxation. Diaphragmatic breathing focuses on belly vs. chest movement. Pursed lip breathing can be combined with diaphragmatic breathing for maximum benefit."
+      answer: "Pursed lip breathing focuses specifically on the exhale mechanics, the pursed lips create back-pressure that keeps airways open. Box breathing and 4-7-8 use breath holds for relaxation. Diaphragmatic breathing focuses on belly vs. chest movement. Pursed lip breathing can be combined with diaphragmatic breathing for maximum benefit."
     }
   ],
   howTo: {
@@ -1612,7 +1612,7 @@ const pursedLipPage: BreathingPageContent = {
   related: [
     {
       slug: "belly",
-      reason: "Master diaphragmatic breathing first—it's the foundation for pursed-lip and all breathing techniques."
+      reason: "Master diaphragmatic breathing first. It's the foundation for pursed-lip and all breathing techniques."
     },
     {
       slug: "coherent",
@@ -1673,15 +1673,15 @@ const nadiShodhanaPage: BreathingPageContent = {
   hero: {
     title: "Alternate Nostril Breathing (Nadi Shodhana)",
     subtitle: "Balance your nervous system with this ancient yoga technique.",
-    intro: "Alternate nostril breathing (Nadi Shodhana) is a yogic practice that balances the left and right hemispheres of your brain and calms the nervous system. Inhale through one nostril, hold, exhale through the other, then reverse. The timer guides your rhythm—you control which nostril to use."
+    intro: "Alternate nostril breathing (Nadi Shodhana) is a yogic practice that balances the left and right hemispheres of your brain and calms the nervous system. Inhale through one nostril, hold, exhale through the other, then reverse. The timer guides your rhythm. You control which nostril to use."
   },
   meta: {
-    title: "Alternate Nostril Breathing (Nadi Shodhana) — Balance & Calm in 5 Minutes",
-    description: "Free alternate nostril breathing timer — balance your nervous system in 5 minutes with Nadi Shodhana. Start your guided session now.",
-    ogTitle: "Alternate Nostril Breathing (Nadi Shodhana) — Balance & Calm in 5 Minutes",
-    ogDescription: "Free timer for Nadi Shodhana—the ancient yoga technique for mental clarity and stress relief. 4-4-4 rhythm.",
+    title: "Alternate Nostril Breathing (Nadi Shodhana): Balance & Calm in 5 Minutes",
+    description: "Free alternate nostril breathing timer: balance your nervous system in 5 minutes with Nadi Shodhana. Start your guided session now.",
+    ogTitle: "Alternate Nostril Breathing (Nadi Shodhana): Balance & Calm in 5 Minutes",
+    ogDescription: "Free timer for Nadi Shodhana: the ancient yoga technique for mental clarity and stress relief. 4-4-4 rhythm.",
     ogImage: "og/breathe-nadi-shodhana.png",
-    twitterTitle: "Alternate Nostril Breathing (Nadi Shodhana) — Free Timer",
+    twitterTitle: "Alternate Nostril Breathing (Nadi Shodhana): Free Timer",
     twitterDescription: "Balance your nervous system with the ancient yoga technique. Free timer.",
     author: "Abi Abiassi",
     reviewer: "",
@@ -1695,7 +1695,7 @@ const nadiShodhanaPage: BreathingPageContent = {
     },
     {
       heading: "How It Works",
-      content: "Use your right hand in Vishnu Mudra: fold your index and middle fingers down, using your thumb to close your right nostril and your ring finger to close your left. The timer will guide the rhythm—you manually switch nostrils at each phase change. One complete round: inhale left → hold → exhale right → inhale right → hold → exhale left."
+      content: "Use your right hand in Vishnu Mudra: fold your index and middle fingers down, using your thumb to close your right nostril and your ring finger to close your left. The timer will guide the rhythm. You manually switch nostrils at each phase change. One complete round: inhale left → hold → exhale right → inhale right → hold → exhale left."
     },
     {
       heading: "Quick Steps",
@@ -1715,7 +1715,7 @@ const nadiShodhanaPage: BreathingPageContent = {
     },
     {
       heading: "Nadi Shodhana vs Box Breathing",
-      content: "Both techniques calm the nervous system, but they work differently. Box breathing uses a simple equal-ratio pattern (4-4-4-4) that's easy to remember and can be done anywhere—no hand positioning required. Nadi Shodhana requires Vishnu Mudra to alternate nostrils, making it more of a dedicated practice. Box breathing emphasizes breath holds for nervous system reset; Nadi Shodhana emphasizes nostril alternation to balance brain hemispheres. Choose box breathing for quick stress relief anywhere; choose Nadi Shodhana when you have time for focused pranayama, especially before meditation or yoga."
+      content: "Both techniques calm the nervous system, but they work differently. Box breathing uses a simple equal-ratio pattern (4-4-4-4) that's easy to remember and can be done anywhere, no hand positioning required. Nadi Shodhana requires Vishnu Mudra to alternate nostrils, making it more of a dedicated practice. Box breathing emphasizes breath holds for nervous system reset; Nadi Shodhana emphasizes nostril alternation to balance brain hemispheres. Choose box breathing for quick stress relief anywhere; choose Nadi Shodhana when you have time for focused pranayama, especially before meditation or yoga."
     }
   ],
   benefits: [
@@ -1753,11 +1753,11 @@ const nadiShodhanaPage: BreathingPageContent = {
     },
     {
       question: "How long should I practice?",
-      answer: "Start with 5 minutes (about 5-6 complete rounds). You can extend to 10-15 minutes as you become comfortable. Even 3 minutes provides noticeable calming effects. Quality matters more than quantity—stay relaxed throughout."
+      answer: "Start with 5 minutes (about 5-6 complete rounds). You can extend to 10-15 minutes as you become comfortable. Even 3 minutes provides noticeable calming effects. Quality matters more than quantity, stay relaxed throughout."
     },
     {
       question: "What if I can't breathe through one nostril?",
-      answer: "It's normal for one nostril to be more open than the other—this naturally alternates throughout the day (the nasal cycle). If one side is completely blocked, try the practice anyway as it may help open it, or wait until congestion clears."
+      answer: "It's normal for one nostril to be more open than the other. This naturally alternates throughout the day (the nasal cycle). If one side is completely blocked, try the practice anyway as it may help open it, or wait until congestion clears."
     },
     {
       question: "Can I do alternate nostril breathing lying down?",
@@ -1765,7 +1765,7 @@ const nadiShodhanaPage: BreathingPageContent = {
     },
     {
       question: "Is this the same as pranayama?",
-      answer: "Nadi Shodhana is one type of pranayama—the yogic science of breath control. Other pranayama techniques include Kapalabhati (skull shining breath), Ujjayi (ocean breath), and Bhastrika (bellows breath). Nadi Shodhana is one of the gentlest and most accessible for beginners."
+      answer: "Nadi Shodhana is one type of pranayama, the yogic science of breath control. Other pranayama techniques include Kapalabhati (skull shining breath), Ujjayi (ocean breath), and Bhastrika (bellows breath). Nadi Shodhana is one of the gentlest and most accessible for beginners."
     },
     {
       question: "What does science say about alternate nostril breathing?",
@@ -1873,7 +1873,7 @@ const nadiShodhanaPage: BreathingPageContent = {
       "Skip breath holds if they cause anxiety or strain.",
       "Not recommended during acute illness with fever.",
       "If severely congested, wait until nasal passages clear.",
-      "Practice seated—not while driving or in water."
+      "Practice seated, not while driving or in water."
     ],
     quotes: []
   },
@@ -1931,7 +1931,7 @@ const nadiShodhanaPage: BreathingPageContent = {
   video: {
     youtubeId: "l11qFpRqhIQ",
     title: "Alternate Nostril Breathing (Nadi Shodhana) Tutorial",
-    description: "A clear, step-by-step guide to practicing Nadi Shodhana pranayama—the ancient yogic technique for balancing the nervous system and calming the mind."
+    description: "A clear, step-by-step guide to practicing Nadi Shodhana pranayama: the ancient yogic technique for balancing the nervous system and calming the mind."
   },
   voiceSearch: [
     {
@@ -1950,13 +1950,13 @@ const ujjayiPage: BreathingPageContent = {
   hero: {
     title: "Ujjayi Breathing: The Ocean Breath Technique",
     subtitle: "The yogic breath that sounds like ocean waves for deep focus and calm.",
-    intro: "Ujjayi breathing—also called 'ocean breath' or 'victorious breath'—creates a soft, rhythmic sound by gently constricting the back of your throat. This ancient pranayama technique is the foundation of most yoga practices, helping synchronize breath with movement while calming the nervous system."
+    intro: "Ujjayi breathing, also called 'ocean breath' or 'victorious breath', creates a soft, rhythmic sound by gently constricting the back of your throat. This ancient pranayama technique is the foundation of most yoga practices, helping synchronize breath with movement while calming the nervous system."
   },
   meta: {
     title: "Ujjayi Breathing: Ocean Breath Technique for Yoga & Focus (Free Guide)",
-    description: "Free ujjayi breathing timer — master the yoga 'ocean breath' for deep focus and calm. Step-by-step guide. Start your guided session now.",
+    description: "Free ujjayi breathing timer: master the yoga 'ocean breath' for deep focus and calm. Step-by-step guide. Start your guided session now.",
     ogTitle: "Ujjayi Breathing: The Ocean Breath Technique",
-    ogDescription: "Learn ujjayi breathing—the yogic 'ocean breath' that calms your nervous system in minutes. Free visualizer + step-by-step guide.",
+    ogDescription: "Learn ujjayi breathing: the yogic 'ocean breath' that calms your nervous system in minutes. Free visualizer + step-by-step guide.",
     ogImage: "og/breathe-ujjayi.png",
     twitterTitle: "Ujjayi Breathing: Ocean Breath Technique for Yoga & Focus",
     twitterDescription: "Learn the yogic 'ocean breath' that calms your nervous system. Free visualizer + guide.",
@@ -1968,7 +1968,7 @@ const ujjayiPage: BreathingPageContent = {
   body: [
     {
       heading: "What it is",
-      content: "Ujjayi (oo-JAH-yee) means 'victorious' in Sanskrit. You create the signature ocean sound by slightly narrowing the glottis—the opening at the back of your throat—while breathing through your nose. This creates a gentle resistance, slowing and smoothing your breath naturally. The timing is typically 4 seconds inhale, 6 seconds exhale, with no holds."
+      content: "Ujjayi (oo-JAH-yee) means 'victorious' in Sanskrit. You create the signature ocean sound by slightly narrowing the glottis (the opening at the back of your throat) while breathing through your nose. This creates a gentle resistance, slowing and smoothing your breath naturally. The timing is typically 4 seconds inhale, 6 seconds exhale, with no holds."
     },
     {
       heading: "How to make the sound",
@@ -1988,11 +1988,11 @@ const ujjayiPage: BreathingPageContent = {
     },
     {
       heading: "When to skip",
-      content: "If you have a sore throat, respiratory infection, or any throat condition that makes the constriction uncomfortable. Don't strain—if the sound feels forced, lighten the constriction or practice without it until you build strength."
+      content: "If you have a sore throat, respiratory infection, or any throat condition that makes the constriction uncomfortable. Don't strain. If the sound feels forced, lighten the constriction or practice without it until you build strength."
     },
     {
       heading: "Ujjayi vs Box Breathing",
-      content: "Both ujjayi and box breathing calm the nervous system, but they serve different purposes. Ujjayi uses throat constriction to create an audible anchor—ideal for yoga flow, meditation, and sustained focus during movement. Box breathing uses equal counts (4-4-4-4) with holds—ideal for acute stress, quick resets, and structured calming without the sound component. Choose ujjayi when you want a flowing, yoga-compatible breath; choose box breathing when you need a simple, portable technique for immediate stress relief."
+      content: "Both ujjayi and box breathing calm the nervous system, but they serve different purposes. Ujjayi uses throat constriction to create an audible anchor: ideal for yoga flow, meditation, and sustained focus during movement. Box breathing uses equal counts (4-4-4-4) with holds, ideal for acute stress, quick resets, and structured calming without the sound component. Choose ujjayi when you want a flowing, yoga-compatible breath; choose box breathing when you need a simple, portable technique for immediate stress relief."
     }
   ],
   benefits: [
@@ -2006,7 +2006,7 @@ const ujjayiPage: BreathingPageContent = {
     },
     {
       title: "Internal heat",
-      description: "Traditional yoga texts describe ujjayi as generating 'tapas'—internal heat that purifies and energizes."
+      description: "Traditional yoga texts describe ujjayi as generating 'tapas': internal heat that purifies and energizes."
     }
   ],
   practiceTips: [
@@ -2038,7 +2038,7 @@ const ujjayiPage: BreathingPageContent = {
     },
     {
       question: "Is ujjayi the same as Darth Vader breathing?",
-      answer: "The comparison helps people understand the throat constriction, but ujjayi should be much softer. Darth Vader's breathing is loud and mechanical; ujjayi is a gentle whisper, barely audible to others. Think of it as 'Darth Vader breathing lite'—same mechanism, 10% of the intensity."
+      answer: "The comparison helps people understand the throat constriction, but ujjayi should be much softer. Darth Vader's breathing is loud and mechanical; ujjayi is a gentle whisper, barely audible to others. Think of it as 'Darth Vader breathing lite', same mechanism, 10% of the intensity."
     },
     {
       question: "Why does ujjayi use a longer exhale?",
@@ -2065,7 +2065,7 @@ const ujjayiPage: BreathingPageContent = {
       },
       {
         name: "Practice the throat position",
-        instruction: "Open your mouth and exhale like you're fogging a mirror—'haaaa.' Notice the slight throat constriction. Now close your mouth and make that same constriction while breathing through your nose.",
+        instruction: "Open your mouth and exhale like you're fogging a mirror, 'haaaa.' Notice the slight throat constriction. Now close your mouth and make that same constriction while breathing through your nose.",
         duration: "1 minute"
       },
       {
@@ -2116,7 +2116,7 @@ const ujjayiPage: BreathingPageContent = {
       }
     ],
     safety: [
-      "Keep the throat constriction gentle—strain indicates you're working too hard.",
+      "Keep the throat constriction gentle, strain indicates you're working too hard.",
       "Stop if you feel lightheaded, dizzy, or short of breath.",
       "Not recommended during acute throat infections or respiratory illness.",
       "If you have high blood pressure, heart conditions, or respiratory disorders, consult your doctor before starting any breathing practice."
@@ -2135,11 +2135,11 @@ const ujjayiPage: BreathingPageContent = {
     },
     {
       slug: "coherent",
-      reason: "Similar slow breathing rate (5-6 breaths/min) without the throat sound—good for those who find ujjayi challenging."
+      reason: "Similar slow breathing rate (5-6 breaths/min) without the throat sound, good for those who find ujjayi challenging."
     },
     {
       slug: "belly",
-      reason: "Foundation technique to master first—diaphragmatic breathing powers the ujjayi sound."
+      reason: "Foundation technique to master first, diaphragmatic breathing powers the ujjayi sound."
     }
   ],
   relatedUseCases: [
@@ -2187,14 +2187,14 @@ const bellyPage: BreathingPageContent = {
   featured: false,
   hero: {
     title: "Belly Breathing: Diaphragmatic Breathing Exercises",
-    subtitle: "The foundation of all breathwork—learn to breathe from your diaphragm.",
-    intro: "Belly breathing (diaphragmatic breathing) is the most fundamental breathing technique and the foundation for all advanced breathwork. By engaging your diaphragm—the dome-shaped muscle below your lungs—you take deeper, more efficient breaths that activate your body's relaxation response."
+    subtitle: "The foundation of all breathwork: learn to breathe from your diaphragm.",
+    intro: "Belly breathing (diaphragmatic breathing) is the most fundamental breathing technique and the foundation for all advanced breathwork. By engaging your diaphragm (the dome-shaped muscle below your lungs) you take deeper, more efficient breaths that activate your body's relaxation response."
   },
   meta: {
     title: "Belly Breathing: Diaphragmatic Breathing Exercises (Free Visualizer)",
-    description: "Free belly breathing timer — learn diaphragmatic breathing, the foundation of all breathwork. Reduce stress in minutes. Start your guided session now.",
+    description: "Free belly breathing timer: learn diaphragmatic breathing, the foundation of all breathwork. Reduce stress in minutes. Start your guided session now.",
     ogTitle: "Belly Breathing: The Foundation of All Breathwork",
-    ogDescription: "Learn diaphragmatic breathing—the technique that powers all other breathwork. Free visualizer + step-by-step guide.",
+    ogDescription: "Learn diaphragmatic breathing: the technique that powers all other breathwork. Free visualizer + step-by-step guide.",
     ogImage: "og/breathe-belly.png",
     twitterTitle: "Belly Breathing: Diaphragmatic Breathing Exercises",
     twitterDescription: "Learn the foundation of all breathwork. Free visualizer + complete guide.",
@@ -2206,7 +2206,7 @@ const bellyPage: BreathingPageContent = {
   body: [
     {
       heading: "What it is",
-      content: "Belly breathing means using your diaphragm—not your chest and shoulders—to drive respiration. When you inhale, your diaphragm contracts and moves downward, creating a vacuum that pulls air into your lungs. Your belly expands outward. When you exhale, the diaphragm relaxes, pushing air out as your belly falls. The timing is 4 seconds in, 6 seconds out, with no holds."
+      content: "Belly breathing means using your diaphragm (not your chest and shoulders) to drive respiration. When you inhale, your diaphragm contracts and moves downward, creating a vacuum that pulls air into your lungs. Your belly expands outward. When you exhale, the diaphragm relaxes, pushing air out as your belly falls. The timing is 4 seconds in, 6 seconds out, with no holds."
     },
     {
       heading: "Belly Breathing vs Diaphragmatic Breathing",
@@ -2214,7 +2214,7 @@ const bellyPage: BreathingPageContent = {
     },
     {
       heading: "Why it matters",
-      content: "Most adults have shifted to shallow chest breathing—especially under stress. Chest breathing uses accessory muscles (shoulders, neck) inefficiently and can perpetuate anxiety. Diaphragmatic breathing is how you breathed as a baby and how you breathe during deep sleep. Relearning this pattern can reduce stress, improve oxygen efficiency, and support better sleep."
+      content: "Most adults have shifted to shallow chest breathing, especially under stress. Chest breathing uses accessory muscles (shoulders, neck) inefficiently and can perpetuate anxiety. Diaphragmatic breathing is how you breathed as a baby and how you breathe during deep sleep. Relearning this pattern can reduce stress, improve oxygen efficiency, and support better sleep."
     },
     {
       heading: "Benefits",
@@ -2222,7 +2222,7 @@ const bellyPage: BreathingPageContent = {
     },
     {
       heading: "When to use",
-      content: "Anytime you want to calm down, before bed, during stress, or when learning any other breathing technique. This is the 'default' healthy breathing pattern—ideally, your normal breathing should look like gentle belly breathing."
+      content: "Anytime you want to calm down, before bed, during stress, or when learning any other breathing technique. This is the 'default' healthy breathing pattern, ideally, your normal breathing should look like gentle belly breathing."
     },
     {
       heading: "When to skip",
@@ -2230,7 +2230,7 @@ const bellyPage: BreathingPageContent = {
     },
     {
       heading: "Belly Breathing vs Chest Breathing",
-      content: "Most adults unknowingly breathe from their chest—shallow, rapid breaths that use shoulder and neck muscles. This pattern is inefficient and associated with chronic stress. Belly breathing (diaphragmatic breathing) uses your primary breathing muscle, is how you breathed as a baby, and is how you breathe during sleep. Quick test: place one hand on your chest, one on your belly. Breathe normally. If your chest hand rises more than your belly hand, you're chest breathing and could benefit from retraining. The goal isn't to force deep breaths—it's to let your belly do the work naturally."
+      content: "Most adults unknowingly breathe from their chest, shallow, rapid breaths that use shoulder and neck muscles. This pattern is inefficient and associated with chronic stress. Belly breathing (diaphragmatic breathing) uses your primary breathing muscle, is how you breathed as a baby, and is how you breathe during sleep. Quick test: place one hand on your chest, one on your belly. Breathe normally. If your chest hand rises more than your belly hand, you're chest breathing and could benefit from retraining. The goal isn't to force deep breaths. It's to let your belly do the work naturally."
     }
   ],
   benefits: [
@@ -2240,7 +2240,7 @@ const bellyPage: BreathingPageContent = {
     },
     {
       title: "More efficient breathing",
-      description: "The diaphragm is designed to power breathing—using it properly requires less effort than shallow chest breathing."
+      description: "The diaphragm is designed to power breathing: using it properly requires less effort than shallow chest breathing."
     },
     {
       title: "Foundation for all breathwork",
@@ -2264,7 +2264,7 @@ const bellyPage: BreathingPageContent = {
   faqs: [
     {
       question: "What's the difference between belly breathing and diaphragmatic breathing?",
-      answer: "They're the same thing. 'Belly breathing' describes what you see (belly moving), while 'diaphragmatic breathing' describes what's happening anatomically (diaphragm contracting). Both terms refer to using your primary breathing muscle—the diaphragm—rather than accessory muscles in your chest and shoulders."
+      answer: "They're the same thing. 'Belly breathing' describes what you see (belly moving), while 'diaphragmatic breathing' describes what's happening anatomically (diaphragm contracting). Both terms refer to using your primary breathing muscle (the diaphragm) rather than accessory muscles in your chest and shoulders."
     },
     {
       question: "How do I know if I'm breathing from my diaphragm?",
@@ -2276,11 +2276,11 @@ const bellyPage: BreathingPageContent = {
     },
     {
       question: "Can belly breathing help with anxiety?",
-      answer: "Yes, significantly. Deep diaphragmatic breaths stimulate the vagus nerve, which activates the parasympathetic nervous system—your body's 'brake pedal' that counters the fight-or-flight stress response. Studies show regular practice reduces cortisol levels and self-reported anxiety. It's often the first technique taught in anxiety management programs."
+      answer: "Yes, significantly. Deep diaphragmatic breaths stimulate the vagus nerve, which activates the parasympathetic nervous system. Your body's 'brake pedal' that counters the fight-or-flight stress response. Studies show regular practice reduces cortisol levels and self-reported anxiety. It's often the first technique taught in anxiety management programs."
     },
     {
       question: "How often should I practice belly breathing?",
-      answer: "Ideally, 5-10 minutes daily to retrain your default breathing pattern. Many people set reminders to do 1-2 minutes several times throughout the day. Over time, diaphragmatic breathing should become your natural default—you won't need to think about it."
+      answer: "Ideally, 5-10 minutes daily to retrain your default breathing pattern. Many people set reminders to do 1-2 minutes several times throughout the day. Over time, diaphragmatic breathing should become your natural default. You won't need to think about it."
     },
     {
       question: "Is belly breathing good for sleep?",
@@ -2341,7 +2341,7 @@ const bellyPage: BreathingPageContent = {
     },
     {
       name: "Breathwork foundation",
-      description: "Master belly breathing before moving to other techniques—it's the base for everything.",
+      description: "Master belly breathing before moving to other techniques: it's the base for everything.",
       dose: "Daily practice until it becomes automatic"
     }
   ],
@@ -2364,7 +2364,7 @@ const bellyPage: BreathingPageContent = {
       }
     ],
     safety: [
-      "Belly breathing is safe for most people—it's how you're designed to breathe.",
+      "Belly breathing is safe for most people. It's how you're designed to breathe.",
       "If you have recent abdominal surgery, consult your doctor before deep breathing exercises.",
       "Stop if you feel pain, dizziness, or unusual discomfort.",
       "Those with severe respiratory conditions should consult a healthcare provider."
@@ -2391,7 +2391,7 @@ const bellyPage: BreathingPageContent = {
     },
     {
       slug: "ujjayi",
-      reason: "Progress to ujjayi after mastering diaphragm—add the ocean sound for yoga practice."
+      reason: "Progress to ujjayi after mastering diaphragm, add the ocean sound for yoga practice."
     },
     {
       slug: "buteyko",
@@ -2417,7 +2417,7 @@ const bellyPage: BreathingPageContent = {
     {
       slug: "kids",
       title: "Breathing for Kids",
-      teaser: "Teach belly breathing to children—it's the easiest technique for young ones"
+      teaser: "Teach belly breathing to children. It's the easiest technique for young ones"
     }
   ],
   keywords: [
@@ -2448,11 +2448,11 @@ const buteykoPage: BreathingPageContent = {
   hero: {
     title: "Buteyko Breathing: Light, Nasal Breathing Method",
     subtitle: "The breath training technique developed for asthma and respiratory health.",
-    intro: "The Buteyko method teaches 'reduced breathing'—taking lighter, quieter breaths through your nose to normalize carbon dioxide levels. Developed by Ukrainian physician Konstantin Buteyko in the 1950s, this technique has been studied for asthma management and general respiratory health."
+    intro: "The Buteyko method teaches 'reduced breathing', taking lighter, quieter breaths through your nose to normalize carbon dioxide levels. Developed by Ukrainian physician Konstantin Buteyko in the 1950s, this technique has been studied for asthma management and general respiratory health."
   },
   meta: {
     title: "Buteyko Breathing Method: Nasal Breathing Exercises for Respiratory Health",
-    description: "Free Buteyko breathing timer — light nasal breathing for asthma and respiratory health. Control Pause guide included. Start your session now.",
+    description: "Free Buteyko breathing timer: light nasal breathing for asthma and respiratory health. Control Pause guide included. Start your session now.",
     ogTitle: "Buteyko Breathing: The Light Nasal Breathing Method",
     ogDescription: "Learn the Buteyko method for respiratory health. Nasal breathing exercises with free visualizer and Control Pause guide.",
     ogImage: "og/breathe-buteyko.png",
@@ -2466,7 +2466,7 @@ const buteykoPage: BreathingPageContent = {
   body: [
     {
       heading: "What it is",
-      content: "The Buteyko method trains you to breathe less—not more. By taking lighter, quieter, nasal breaths, you allow carbon dioxide (CO₂) levels to normalize. Buteyko theory proposes that chronic over-breathing (hyperventilation) depletes CO₂, which actually makes it harder for oxygen to reach your tissues (the Bohr effect). The timing is 3 seconds in, 3 seconds out, with a 3-second pause."
+      content: "The Buteyko method trains you to breathe less, not more. By taking lighter, quieter, nasal breaths, you allow carbon dioxide (CO₂) levels to normalize. Buteyko theory proposes that chronic over-breathing (hyperventilation) depletes CO₂, which actually makes it harder for oxygen to reach your tissues (the Bohr effect). The timing is 3 seconds in, 3 seconds out, with a 3-second pause."
     },
     {
       heading: "The Control Pause",
@@ -2478,7 +2478,7 @@ const buteykoPage: BreathingPageContent = {
     },
     {
       heading: "When to use",
-      content: "For people with asthma, chronic over-breathing, mouth breathing habits, or sleep-disordered breathing. Also useful for athletes wanting to improve breath efficiency. Practice throughout the day—Buteyko is as much a lifestyle change as a technique."
+      content: "For people with asthma, chronic over-breathing, or mouth-breathing habits. Also useful for athletes wanting to improve breath efficiency. Practice throughout the day, Buteyko is as much a lifestyle change as a technique."
     },
     {
       heading: "Important disclaimer",
@@ -2486,7 +2486,7 @@ const buteykoPage: BreathingPageContent = {
     },
     {
       heading: "Buteyko vs Deep Breathing",
-      content: "Buteyko and traditional deep breathing exercises represent opposite approaches. Deep breathing (like 4-7-8 or belly breathing) emphasizes full, slow breaths to activate the relaxation response—great for acute stress relief. Buteyko, conversely, teaches lighter, reduced breathing to normalize carbon dioxide levels over time. Deep breathing says 'breathe more, breathe slower.' Buteyko says 'breathe less, breathe lighter.' Both have evidence behind them. Use deep breathing for immediate calm; use Buteyko if you're working on chronic over-breathing patterns, asthma management, or building long-term CO₂ tolerance."
+      content: "Buteyko and traditional deep breathing exercises represent opposite approaches. Deep breathing (like 4-7-8 or belly breathing) emphasizes full, slow breaths to activate the relaxation response, great for acute stress relief. Buteyko, conversely, teaches lighter, reduced breathing to normalize carbon dioxide levels over time. Deep breathing says 'breathe more, breathe slower.' Buteyko says 'breathe less, breathe lighter.' Both have evidence behind them. Use deep breathing for immediate calm; use Buteyko if you're working on chronic over-breathing patterns, asthma management, or building long-term CO₂ tolerance."
     }
   ],
   benefits: [
@@ -2510,7 +2510,7 @@ const buteykoPage: BreathingPageContent = {
     },
     {
       title: "Light is right",
-      description: "Breaths should be quiet and small—you should barely see your chest or belly move. No big, deep breaths."
+      description: "Breaths should be quiet and small: you should barely see your chest or belly move. No big, deep breaths."
     },
     {
       title: "Feel slight air hunger",
@@ -2520,11 +2520,11 @@ const buteykoPage: BreathingPageContent = {
   faqs: [
     {
       question: "Does Buteyko breathing cure asthma?",
-      answer: "No. Buteyko does not cure asthma or improve measured lung function. However, multiple randomized controlled trials show it can reduce asthma symptoms, improve quality of life, and decrease reliever (rescue inhaler) use. It should be used alongside—not instead of—medical treatment. Always follow your doctor's guidance."
+      answer: "No. Buteyko does not cure asthma or improve measured lung function. However, multiple randomized controlled trials show it can reduce asthma symptoms, improve quality of life, and decrease reliever (rescue inhaler) use. It should be used alongside (not instead of) medical treatment. Always follow your doctor's guidance."
     },
     {
       question: "What is the Control Pause?",
-      answer: "The Control Pause (CP) measures your tolerance to carbon dioxide. After a normal exhale (not forced), time how long until you feel the first definite urge to breathe. A healthy CP is 40+ seconds; under 20 suggests over-breathing patterns. Buteyko practice aims to gradually increase your CP. Always stop at the first urge—this isn't a breath-holding competition."
+      answer: "The Control Pause (CP) measures your tolerance to carbon dioxide. After a normal exhale (not forced), time how long until you feel the first definite urge to breathe. A healthy CP is 40+ seconds; under 20 suggests over-breathing patterns. Buteyko practice aims to gradually increase your CP. Always stop at the first urge. This isn't a breath-holding competition."
     },
     {
       question: "How is Buteyko different from deep breathing?",
@@ -2536,11 +2536,11 @@ const buteykoPage: BreathingPageContent = {
     },
     {
       question: "Is it safe to tape my mouth at night?",
-      answer: "Mouth taping is a Buteyko practice to encourage nasal breathing during sleep. It's generally safe for healthy adults, but consult your doctor first—especially if you have nasal obstruction, sleep apnea, or breathing difficulties. Use medical-grade tape designed for skin, and start with just a few hours while awake to test tolerance."
+      answer: "Mouth taping is a Buteyko practice to encourage nasal breathing during sleep. It's generally safe for healthy adults, but consult your doctor first, especially if you have nasal obstruction, sleep apnea, or breathing difficulties. Use medical-grade tape designed for skin, and start with just a few hours while awake to test tolerance."
     },
     {
       question: "How long does it take to see results?",
-      answer: "Most people notice some changes within 1-2 weeks of consistent practice (2-3 sessions daily). Significant improvements in Control Pause and symptom reduction typically take 4-8 weeks. Buteyko is a skill that develops gradually—rushing or straining is counterproductive."
+      answer: "Most people notice some changes within 1-2 weeks of consistent practice (2-3 sessions daily). Significant improvements in Control Pause and symptom reduction typically take 4-8 weeks. Buteyko is a skill that develops gradually, rushing or straining is counterproductive."
     }
   ],
   howTo: {
@@ -2555,7 +2555,7 @@ const buteykoPage: BreathingPageContent = {
     steps: [
       {
         name: "Sit upright",
-        instruction: "Sit comfortably with good posture. Close your mouth—all breathing through the nose.",
+        instruction: "Sit comfortably with good posture. Close your mouth, all breathing through the nose.",
         duration: "30 seconds"
       },
       {
@@ -2565,12 +2565,12 @@ const buteykoPage: BreathingPageContent = {
       },
       {
         name: "Measure Control Pause",
-        instruction: "After a normal exhale, pinch your nose and time until you feel the first distinct urge to breathe. Note your CP time. Don't force it—stop at the first urge.",
+        instruction: "After a normal exhale, pinch your nose and time until you feel the first distinct urge to breathe. Note your CP time. Don't force it. Stop at the first urge.",
         duration: "20-60 seconds"
       },
       {
         name: "Practice reduced breathing",
-        instruction: "Breathe lightly through your nose: 3 seconds in, 3 seconds out, 3-second pause. Keep breaths barely visible. Accept a slight sensation of air hunger—this is normal.",
+        instruction: "Breathe lightly through your nose: 3 seconds in, 3 seconds out, 3-second pause. Keep breaths barely visible. Accept a slight sensation of air hunger. This is normal.",
         duration: "5-10 minutes"
       },
       {
@@ -2616,7 +2616,7 @@ const buteykoPage: BreathingPageContent = {
       },
       {
         title: "Nasal breathing and nitric oxide",
-        summary: "Nasal breathing (central to Buteyko) increases nitric oxide in the airways, which improves oxygen uptake and has antimicrobial effects—benefits lost with mouth breathing.",
+        summary: "Nasal breathing (central to Buteyko) increases nitric oxide in the airways, which improves oxygen uptake and has antimicrobial effects, benefits lost with mouth breathing.",
         url: "https://pubmed.ncbi.nlm.nih.gov/12119224/"
       }
     ],
@@ -2625,7 +2625,7 @@ const buteykoPage: BreathingPageContent = {
       "If you have asthma or respiratory conditions, consult your doctor before starting.",
       "Never discontinue prescribed medications without medical supervision.",
       "Stop if you feel significant discomfort, dizziness, or breathing difficulty.",
-      "The 'air hunger' sensation should be mild—if it's distressing, you're pushing too hard."
+      "The 'air hunger' sensation should be mild. If it's distressing, you're pushing too hard."
     ],
     quotes: [
       {

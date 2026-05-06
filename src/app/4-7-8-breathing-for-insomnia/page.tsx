@@ -8,17 +8,17 @@ import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/4-7-8-breathing-for-insomnia`;
-const ogImageUrl = createOgImagePath("4-7-8 Breathing for Insomnia — Fall Asleep in Minutes");
+const ogImageUrl = createOgImagePath("4-7-8 Breathing for Insomnia, Fall Asleep in Minutes");
 
 export const metadata: Metadata = {
-  title: "4-7-8 Breathing for Insomnia — Fall Asleep in Minutes (Free Timer)",
+  title: "4-7-8 Breathing for Insomnia: Fall Asleep in Minutes (Free Timer)",
   description:
-    "Free 4-7-8 breathing timer for insomnia — Dr. Weil's 'natural tranquilizer' helps you fall asleep in 2-5 minutes. No pills, no download. Start tonight.",
+    "Free 4-7-8 breathing timer for insomnia, Dr. Weil's 'natural tranquilizer' helps you fall asleep in 2-5 minutes. No pills, no download. Start tonight.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "4-7-8 Breathing for Insomnia — Fall Asleep in Minutes",
+    title: "4-7-8 Breathing for Insomnia: Fall Asleep in Minutes",
     description:
       "Dr. Weil's 'natural tranquilizer' for insomnia. Fall asleep in 2-5 minutes without pills. Free breathing timer.",
     url: canonicalUrl,
@@ -28,15 +28,15 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "4-7-8 Breathing for Insomnia — Fall Asleep in Minutes"
+        alt: "4-7-8 Breathing for Insomnia, Fall Asleep in Minutes"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "4-7-8 Breathing for Insomnia — Fall Asleep in Minutes",
+    title: "4-7-8 Breathing for Insomnia: Fall Asleep in Minutes",
     description:
-      "Dr. Weil's 'natural tranquilizer' for insomnia. Fall asleep in 2-5 minutes. Free timer—try tonight.",
+      "Dr. Weil's 'natural tranquilizer' for insomnia. Fall asleep in 2-5 minutes. Free timer. Try tonight.",
     images: [ogImageUrl]
   }
 };
@@ -179,13 +179,13 @@ export default function FourSevenEightInsomniaPage() {
             <div className="mt-4 space-y-4 text-muted-foreground">
               <p>
                 If you&apos;ve ever lain awake at 2 AM with a racing mind, you know how frustrating insomnia can be. Your body is
-                tired but your nervous system is stuck in &ldquo;alert mode&rdquo;—the sympathetic fight-or-flight state that evolved
+                tired but your nervous system is stuck in &ldquo;alert mode&rdquo;, the sympathetic fight-or-flight state that evolved
                 to keep our ancestors safe from predators.
               </p>
               <p>
                 4-7-8 breathing is uniquely effective for insomnia because of its <strong className="text-card-foreground">exhale-dominant pattern</strong>.
                 The 8-count exhale is twice as long as the 4-count inhale. This ratio activates your vagus nerve, which acts like a
-                &ldquo;brake pedal&rdquo; for your nervous system—slowing your heart rate, lowering blood pressure, and signaling
+                &ldquo;brake pedal&rdquo; for your nervous system, slowing your heart rate, lowering blood pressure, and signaling
                 your body that it&apos;s safe to rest.
               </p>
               <p>
@@ -224,7 +224,7 @@ export default function FourSevenEightInsomniaPage() {
                 <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">4</span>
                 <div>
                   <strong className="text-card-foreground">Hold your breath for 7 counts</strong>
-                  <p className="mt-1 text-sm">Stay relaxed—this shouldn&apos;t feel strained.</p>
+                  <p className="mt-1 text-sm">Stay relaxed. This shouldn&apos;t feel strained.</p>
                 </div>
               </li>
               <li className="flex gap-4">

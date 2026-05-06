@@ -12,17 +12,17 @@ const ShareButton = dynamic(
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/2-minute-breathing-exercise`;
-const ogImageUrl = createOgImagePath("2 Minute Breathing Exercise — Quick Reset");
+const ogImageUrl = createOgImagePath("2 Minute Breathing Exercise, Quick Reset");
 
 export const metadata: Metadata = {
-  title: "2 Minute Breathing Exercise — Quick Reset, No Download",
+  title: "2 Minute Breathing Exercise: Quick Reset, No Download",
   description:
-    "A free 2 minute breathing exercise for stress relief and focus. Box breathing or coherent breathing—your choice. Start now in your browser.",
+    "A free 2 minute breathing exercise for stress relief and focus. Box breathing or coherent breathing. Your choice. Start now in your browser.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "2 Minute Breathing Exercise — Quick Reset",
+    title: "2 Minute Breathing Exercise: Quick Reset",
     description:
       "A free 2 minute breathing exercise for stress relief. Box breathing or coherent breathing. No download needed.",
     url: canonicalUrl,
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "2 Minute Breathing Exercise — Quick Reset"
+        alt: "2 Minute Breathing Exercise, Quick Reset"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "2 Minute Breathing Exercise — Quick Reset",
+    title: "2 Minute Breathing Exercise: Quick Reset",
     description:
       "A free 2 minute breathing exercise for stress relief. Box breathing or coherent breathing.",
     images: [ogImageUrl]
@@ -88,7 +88,7 @@ export default function TwoMinuteBreathingExercisePage() {
         name: "What's the best 2 minute breathing exercise?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "For quick stress relief with structure, use box breathing: 8 cycles of 4-4-4-4 takes about 2 minutes. For a gentler, no-hold approach, try coherent breathing: 10-12 breaths at 5 seconds in, 5 seconds out. Both work well—box breathing is better for acute stress, coherent breathing for a softer reset."
+          text: "For quick stress relief with structure, use box breathing: 8 cycles of 4-4-4-4 takes about 2 minutes. For a gentler, no-hold approach, try coherent breathing: 10-12 breaths at 5 seconds in, 5 seconds out. Both work well, box breathing is better for acute stress, coherent breathing for a softer reset."
         }
       },
       {
@@ -112,7 +112,7 @@ export default function TwoMinuteBreathingExercisePage() {
         name: "Should I use box breathing or coherent breathing for 2 minutes?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Use box breathing (with holds) when you need to actively calm down from stress or anxiety—the holds help interrupt racing thoughts. Use coherent breathing (no holds) when you want a gentler practice that's easier to sustain, or when breath holds feel uncomfortable. Both produce calming effects."
+          text: "Use box breathing (with holds) when you need to actively calm down from stress or anxiety, the holds help interrupt racing thoughts. Use coherent breathing (no holds) when you want a gentler practice that's easier to sustain, or when breath holds feel uncomfortable. Both produce calming effects."
         }
       },
       {
@@ -143,7 +143,7 @@ export default function TwoMinuteBreathingExercisePage() {
         <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">2 minute breathing exercise</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
           A 2 minute breathing exercise that fits between meetings, tasks, or any moment you need to reset. Two minutes
-          is enough to shift your nervous system from stress to calm—choose box breathing or coherent breathing based
+          is enough to shift your nervous system from stress to calm. Choose box breathing or coherent breathing based
           on what you need.
         </p>
       </header>
@@ -170,7 +170,7 @@ export default function TwoMinuteBreathingExercisePage() {
             <ShareButton
               url={canonicalUrl}
               title="2 Minute Breathing Exercise"
-              text="Try this 2-minute box breathing exercise — a quick reset that actually works."
+              text="Try this 2-minute box breathing exercise, a quick reset that actually works."
               buttonText="Share this exercise"
               embedSlug="box"
             />
@@ -180,7 +180,7 @@ export default function TwoMinuteBreathingExercisePage() {
         <div className="glow-card rounded-[32px] border border-border bg-card p-6">
           <h2 className="text-2xl font-semibold text-card-foreground">Coherent breathing (gentle)</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            10-12 breaths at 5s in, 5s out. No holds—easier to sustain. Best for a softer reset.
+            10-12 breaths at 5s in, 5s out. No holds, easier to sustain. Best for a softer reset.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Link href="/breathe/coherent?duration=120" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
@@ -189,7 +189,7 @@ export default function TwoMinuteBreathingExercisePage() {
             <ShareButton
               url={canonicalUrl}
               title="2 Minute Breathing Exercise"
-              text="Try this 2-minute coherent breathing exercise — a gentle reset that works."
+              text="Try this 2-minute coherent breathing exercise, a gentle reset that works."
               buttonText="Share this exercise"
               embedSlug="coherent"
             />
@@ -203,12 +203,12 @@ export default function TwoMinuteBreathingExercisePage() {
           <div className="mt-4 space-y-4 text-muted-foreground">
             <p>
               Two minutes of controlled breathing is the sweet spot between a quick reset and a proper session. It&apos;s
-              long enough for your body to register the shift—your heart rate starts to drop, blood pressure decreases,
+              long enough for your body to register the shift. Your heart rate starts to drop, blood pressure decreases,
               and the stress hormone cortisol begins to clear.
             </p>
             <p>
               Research on heart rate variability (HRV) shows that significant changes in autonomic nervous system balance
-              can occur within 90-120 seconds of slow breathing. You&apos;re not just feeling calmer—your physiology is
+              can occur within 90-120 seconds of slow breathing. You&apos;re not just feeling calmer. Your physiology is
               measurably different.
             </p>
             <p>
@@ -269,7 +269,7 @@ export default function TwoMinuteBreathingExercisePage() {
               <p className="mt-2 text-sm text-muted-foreground">
                 For quick stress relief with structure, use box breathing: 8 cycles of 4-4-4-4 takes about 2 minutes.
                 For a gentler, no-hold approach, try coherent breathing: 10-12 breaths at 5 seconds in, 5 seconds out.
-                Both work well—box breathing is better for acute stress, coherent breathing for a softer reset.
+                Both work well, box breathing is better for acute stress, coherent breathing for a softer reset.
               </p>
             </div>
             <div>
@@ -283,7 +283,7 @@ export default function TwoMinuteBreathingExercisePage() {
             <div>
               <h3 className="text-lg font-semibold text-card-foreground">Should I use box breathing or coherent breathing?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Use box breathing (with holds) when you need to actively calm down from stress or anxiety—the holds
+                Use box breathing (with holds) when you need to actively calm down from stress or anxiety, the holds
                 help interrupt racing thoughts. Use coherent breathing (no holds) when you want a gentler practice
                 that&apos;s easier to sustain, or when breath holds feel uncomfortable. Both produce calming effects.
               </p>
@@ -371,7 +371,7 @@ export default function TwoMinuteBreathingExercisePage() {
           <ShareButton
             url={canonicalUrl}
             title="2 Minute Breathing Exercise"
-            text="Try this 2-minute breathing exercise — it's a quick reset that actually works."
+            text="Try this 2-minute breathing exercise. It's a quick reset that actually works."
             buttonText="Share this exercise"
           />
         </div>

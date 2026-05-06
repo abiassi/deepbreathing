@@ -19,17 +19,17 @@ const SnowBackground = dynamic(
 );
 
 const baseUrl = "https://deepbreathingexercises.com";
-const ogImageUrl = createOgImagePath("Holiday Breathing Exercises — Find Calm During the Season", {
+const ogImageUrl = createOgImagePath("Holiday Breathing Exercises, Find Calm During the Season", {
   subtitle: "Quick resets for gatherings and travel stress",
   color: "#38bdf8",
 });
 
 export const metadata: Metadata = {
-  title: "Holiday Breathing Exercises — Find Calm During the Season",
+  title: "Holiday Breathing Exercises: Find Calm During the Season",
   description:
     "Holiday stress relief breathing exercises. Quick resets for gatherings, travel, and overwhelm. 60-second to 3-minute techniques that work. Free visualizer with snow effect.",
   openGraph: {
-    title: "Holiday Breathing Exercises — Find Calm During the Season",
+    title: "Holiday Breathing Exercises: Find Calm During the Season",
     description:
       "Quick breathing resets for holiday gatherings, travel stress, and seasonal overwhelm. 60-second techniques that actually work.",
     url: `${baseUrl}/holiday-breathing-exercises`,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Holiday Breathing Exercises — Find Calm During the Season",
+    title: "Holiday Breathing Exercises: Find Calm During the Season",
     description:
       "Quick breathing resets for holiday gatherings, travel stress, and seasonal overwhelm. Free visualizer.",
     images: [ogImageUrl]
@@ -79,7 +79,7 @@ const holidayExperiences = [
 const quickStarts = [
   {
     title: "Acute Stress Reset",
-    description: "Instant relief when tensions rise—works in 1-3 breaths",
+    description: "Instant relief when tensions rise: works in 1-3 breaths",
     href: "/breathe/physiological-sigh?duration=60",
     timing: "30 seconds",
     color: "#38bdf8",
@@ -173,7 +173,7 @@ const dayPlans = [
 const whyItWorks = [
   {
     title: "Exhale Emphasis",
-    description: "Long exhales activate your parasympathetic nervous system—the 'rest and digest' mode that counters stress.",
+    description: "Long exhales activate your parasympathetic nervous system: the 'rest and digest' mode that counters stress.",
   },
   {
     title: "Optimal Rate",
@@ -181,14 +181,14 @@ const whyItWorks = [
   },
   {
     title: "Attention Anchor",
-    description: "Counting breath phases interrupts rumination and catastrophic thinking—you can't panic and count simultaneously.",
+    description: "Counting breath phases interrupts rumination and catastrophic thinking: you can't panic and count simultaneously.",
   },
 ];
 
 const safetyTips = [
-  "Find a quiet spot when possible—even 30 seconds alone helps",
-  "Don't force deep breaths—smaller, smoother breaths work better",
-  "Start with just 1 minute—that's often enough",
+  "Find a quiet spot when possible, even 30 seconds alone helps",
+  "Don't force deep breaths, smaller, smoother breaths work better",
+  "Start with just 1 minute. That's often enough",
   "Skip breath holds if they feel uncomfortable",
   "If you feel dizzy or tingly, return to normal breathing",
 ];
@@ -202,12 +202,12 @@ const faqs = [
   {
     question: "Can I do this at the dinner table without looking weird?",
     answer:
-      "Absolutely. The physiological sigh can be disguised as a natural tired sigh—people sigh all the time. For longer techniques, excuse yourself briefly.",
+      "Absolutely. The physiological sigh can be disguised as a natural tired sigh, people sigh all the time. For longer techniques, excuse yourself briefly.",
   },
   {
     question: "What if I'm too stressed to focus on breathing?",
     answer:
-      "Use the visual guide on your phone—watching the animation is easier than counting. Start with just one physiological sigh to take the edge off.",
+      "Use the visual guide on your phone, watching the animation is easier than counting. Start with just one physiological sigh to take the edge off.",
   },
   {
     question: "Which technique is best for holiday stress?",
@@ -229,7 +229,7 @@ const faqs = [
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Holiday Breathing Exercises — Find Calm During the Season",
+  headline: "Holiday Breathing Exercises, Find Calm During the Season",
   description:
     "Holiday stress relief breathing exercises. Quick resets for gatherings, travel, and overwhelm.",
   author: {

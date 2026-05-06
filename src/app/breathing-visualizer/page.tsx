@@ -23,17 +23,17 @@ const Resonance = dynamic(
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/breathing-visualizer`;
-const ogImageUrl = createOgImagePath("Free Online Breathing Visualizer — 10 Techniques, No Download");
+const ogImageUrl = createOgImagePath("Free Online Breathing Visualizer, 10 Techniques, No Download");
 
 export const metadata: Metadata = {
-  title: "Free Online Breathing Visualizer (2026) — 10 Techniques, No Download",
+  title: "Free Online Breathing Visualizer (2026): 10 Techniques, No Download",
   description:
-    "Free breathing visualizer with 10 guided techniques — box breathing, 4-7-8, physiological sigh, and more. Adjustable pacing, no download, no signup. Start now.",
+    "Free breathing visualizer with 10 guided techniques: box breathing, 4-7-8, physiological sigh, and more. Adjustable pacing, no download, no signup. Start now.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "Free Online Breathing Visualizer — 10 Techniques, No Download",
+    title: "Free Online Breathing Visualizer: 10 Techniques, No Download",
     description:
       "Free breathing visualizer with 10 guided techniques. Adjustable pacing, works on any device. No download, no signup.",
     url: canonicalUrl,
@@ -43,15 +43,15 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "Free Online Breathing Visualizer — 10 Techniques, No Download"
+        alt: "Free Online Breathing Visualizer, 10 Techniques, No Download"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Online Breathing Visualizer — 10 Techniques",
+    title: "Free Online Breathing Visualizer: 10 Techniques",
     description:
-      "Free breathing visualizer with 10 guided techniques — box breathing, 4-7-8, physiological sigh, and more. Start now.",
+      "Free breathing visualizer with 10 guided techniques: box breathing, 4-7-8, physiological sigh, and more. Start now.",
     images: [ogImageUrl]
   }
 };
@@ -60,7 +60,7 @@ const faqs = [
   {
     question: "Is this breathing visualizer really free?",
     answer:
-      "Yes, completely free — no account, no download, no hidden costs. Open the page and start breathing. The tool runs in your browser on any device."
+      "Yes, completely free: no account, no download, no hidden costs. Open the page and start breathing. The tool runs in your browser on any device."
   },
   {
     question: "What breathing technique should I start with?",
@@ -75,7 +75,7 @@ const faqs = [
   {
     question: "Can I use this on my phone?",
     answer:
-      "Yes. The visualizer is fully responsive and works on phones, tablets, and desktops. You can add it to your home screen for an app-like experience — no App Store download needed."
+      "Yes. The visualizer is fully responsive and works on phones, tablets, and desktops. You can add it to your home screen for an app-like experience, no App Store download needed."
   },
   {
     question: "How does a breathing visualizer help with anxiety?",
@@ -85,7 +85,7 @@ const faqs = [
   {
     question: "Do breathing visualizers actually work?",
     answer:
-      "Yes. Research shows that slow, paced breathing increases heart rate variability (HRV) and reduces cortisol. A visual guide helps you maintain the correct rhythm without counting — making the practice easier to sustain and more effective than unguided breathing."
+      "Yes. Research shows that slow, paced breathing increases heart rate variability (HRV) and reduces cortisol. A visual guide helps you maintain the correct rhythm without counting, making the practice easier to sustain and more effective than unguided breathing."
   }
 ];
 
@@ -96,7 +96,7 @@ const benefits = [
   },
   {
     title: "10 science-backed techniques",
-    description: "Box breathing, 4-7-8, physiological sigh, coherent breathing, Wim Hof, and more — each with adjustable timing."
+    description: "Box breathing, 4-7-8, physiological sigh, coherent breathing, Wim Hof, and more: each with adjustable timing."
   },
   {
     title: "Adjustable speed and timing",
@@ -112,7 +112,7 @@ const benefits = [
   },
   {
     title: "Optional audio + haptic cues",
-    description: "Turn on sound or vibration feedback for eyes-free practice. Or keep it silent — your choice."
+    description: "Turn on sound or vibration feedback for eyes-free practice. Or keep it silent: your choice."
   }
 ];
 
@@ -186,7 +186,7 @@ export default function BreathingVisualizerPage() {
         "@type": "HowToStep",
         position: 1,
         name: "Choose a technique",
-        text: "Pick from 10 breathing patterns — box breathing, 4-7-8, physiological sigh, coherent breathing, and more. Each suits a different goal."
+        text: "Pick from 10 breathing patterns: box breathing, 4-7-8, physiological sigh, coherent breathing, and more. Each suits a different goal."
       },
       {
         "@type": "HowToStep",
@@ -216,7 +216,7 @@ export default function BreathingVisualizerPage() {
             <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">Online Breathing Visualizer</h1>
             <p className="max-w-xl text-lg text-muted-foreground">
               A free interactive breathing visualizer with 10 guided techniques. Follow the visual pacer to calm your
-              nervous system — no download, no signup, works on any device.
+              nervous system: no download, no signup, works on any device.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <Link href="/breathe/box" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
@@ -237,13 +237,13 @@ export default function BreathingVisualizerPage() {
           <h2 className="text-2xl font-semibold text-card-foreground">What is a breathing visualizer?</h2>
           <p className="mt-3 text-sm text-muted-foreground">
             A breathing visualizer is an interactive tool that guides your breathing with animation.
-            You follow an expanding and contracting shape — inhaling as it grows, exhaling as it
+            You follow an expanding and contracting shape, inhaling as it grows, exhaling as it
             shrinks. The visual pacing replaces manual counting, helps you maintain a steady rhythm,
             and activates your parasympathetic nervous system for calm, focus, or sleep.
           </p>
         </div>
 
-        {/* Why use a breathing visualizer — 2×3 grid */}
+        {/* Why use a breathing visualizer, 2×3 grid */}
         <section className="mb-12">
           <h2 className="text-3xl font-semibold text-card-foreground text-center mb-8">Why use a breathing visualizer</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -302,7 +302,7 @@ export default function BreathingVisualizerPage() {
               <p className="text-sm uppercase tracking-wider text-primary">Step 1</p>
               <h3 className="mt-2 text-lg font-semibold text-card-foreground">Choose a technique</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Pick from 10 breathing patterns — box breathing, 4-7-8, physiological sigh, coherent breathing,
+                Pick from 10 breathing patterns: box breathing, 4-7-8, physiological sigh, coherent breathing,
                 and more. Each suits a different goal.
               </p>
             </div>

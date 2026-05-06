@@ -8,17 +8,17 @@ import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/box-breathing-before-presentation`;
-const ogImageUrl = createOgImagePath("Box Breathing Before Presentation — Calm Nerves in 60 Seconds");
+const ogImageUrl = createOgImagePath("Box Breathing Before Presentation, Calm Nerves in 60 Seconds");
 
 export const metadata: Metadata = {
-  title: "Box Breathing Before Presentation — Calm Nerves in 60 Seconds (Free Timer)",
+  title: "Box Breathing Before Presentation: Calm Nerves in 60 Seconds (Free Timer)",
   description:
-    "Free box breathing timer for presentations — the Navy SEAL technique to stop stage fright in 60 seconds. Calm your nerves before you speak. Try now.",
+    "Free box breathing timer for presentations, the Navy SEAL technique to stop stage fright in 60 seconds. Calm your nerves before you speak. Try now.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "Box Breathing Before Presentation — Calm Nerves in 60 Seconds",
+    title: "Box Breathing Before Presentation: Calm Nerves in 60 Seconds",
     description:
       "The Navy SEAL breathing technique to stop stage fright. Calm your nerves in 60 seconds before any presentation. Free timer.",
     url: canonicalUrl,
@@ -28,15 +28,15 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "Box Breathing Before Presentation — Calm Nerves in 60 Seconds"
+        alt: "Box Breathing Before Presentation, Calm Nerves in 60 Seconds"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Box Breathing Before Presentation — Stop Stage Fright",
+    title: "Box Breathing Before Presentation: Stop Stage Fright",
     description:
-      "Navy SEAL technique to calm presentation nerves in 60 seconds. Free timer—try now.",
+      "Navy SEAL technique to calm presentation nerves in 60 seconds. Free timer. Try now.",
     images: [ogImageUrl]
   }
 };
@@ -78,7 +78,7 @@ export default function BoxBreathingPresentationPage() {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: "Box Breathing Before Presentation: Calm Nerves in 60 Seconds",
-    description: "How Navy SEALs use box breathing to stay calm under pressure—and how you can use it before your next presentation.",
+    description: "How Navy SEALs use box breathing to stay calm under pressure: and how you can use it before your next presentation.",
     author: {
       "@type": "Person",
       name: "Abi Abiassi",
@@ -103,7 +103,7 @@ export default function BoxBreathingPresentationPage() {
         name: "How long before a presentation should I do box breathing?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Start 5-10 minutes before your presentation for best results. Do 4-6 cycles (about 90 seconds) in a quiet spot—a bathroom stall, your car, or a hallway works fine. If you feel nerves rising while waiting, do another quick set of 2-3 cycles. The effects last 15-30 minutes."
+          text: "Start 5-10 minutes before your presentation for best results. Do 4-6 cycles (about 90 seconds) in a quiet spot: a bathroom stall, your car, or a hallway works fine. If you feel nerves rising while waiting, do another quick set of 2-3 cycles. The effects last 15-30 minutes."
         }
       },
       {
@@ -111,7 +111,7 @@ export default function BoxBreathingPresentationPage() {
         name: "Why do Navy SEALs use box breathing?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Navy SEALs use box breathing because it reliably activates the parasympathetic nervous system within 60-90 seconds. Mark Divine, a retired SEAL Commander, introduced it to BUD/S training. The structured 4-count rhythm gives the mind something to focus on while the slow pace physiologically lowers heart rate and cortisol—exactly what you need before high-stakes situations."
+          text: "Navy SEALs use box breathing because it reliably activates the parasympathetic nervous system within 60-90 seconds. Mark Divine, a retired SEAL Commander, introduced it to BUD/S training. The structured 4-count rhythm gives the mind something to focus on while the slow pace physiologically lowers heart rate and cortisol, exactly what you need before high-stakes situations."
         }
       },
       {
@@ -150,7 +150,7 @@ export default function BoxBreathingPresentationPage() {
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <h2 className="text-2xl font-semibold text-card-foreground">Quick pre-presentation calm</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Do 4-6 cycles 5-10 minutes before you present. Find a quiet spot—bathroom, hallway, or your car.
+              Do 4-6 cycles 5-10 minutes before you present. Find a quiet spot: bathroom, hallway, or your car.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link href="/breathe/box" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
@@ -180,12 +180,12 @@ export default function BoxBreathingPresentationPage() {
               <p>
                 When you&apos;re about to present, your brain can&apos;t distinguish between a boardroom and a life-threatening situation.
                 It triggers the same ancient alarm system: adrenaline floods your bloodstream, your heart races, blood diverts from
-                your brain to your muscles. This was useful for outrunning predators—not so helpful for explaining Q3 results.
+                your brain to your muscles. This was useful for outrunning predators, not so helpful for explaining Q3 results.
               </p>
               <p>
                 Box breathing works because it <strong className="text-card-foreground">interrupts this panic response</strong> through
                 two mechanisms. First, the structured 4-4-4-4 counting occupies your prefrontal cortex (thinking brain), preventing
-                it from spinning worst-case scenarios. Second, the slow, even rhythm activates your parasympathetic nervous system—the
+                it from spinning worst-case scenarios. Second, the slow, even rhythm activates your parasympathetic nervous system, the
                 &ldquo;rest and digest&rdquo; mode that tells your body the threat has passed.
               </p>
               <p>
@@ -224,7 +224,7 @@ export default function BoxBreathingPresentationPage() {
                 <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">4</span>
                 <div>
                   <strong className="text-card-foreground">Hold for 4 counts</strong>
-                  <p className="mt-1 text-sm">Stay relaxed—this shouldn&apos;t feel strained.</p>
+                  <p className="mt-1 text-sm">Stay relaxed. This shouldn&apos;t feel strained.</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -259,7 +259,7 @@ export default function BoxBreathingPresentationPage() {
                 <p className="mt-2 text-sm text-muted-foreground">
                   Navy SEALs use box breathing because it reliably activates the parasympathetic nervous system within 60-90 seconds.
                   The structured 4-count rhythm gives the mind something to focus on while the slow pace physiologically lowers heart
-                  rate and cortisol—exactly what you need before high-stakes situations.
+                  rate and cortisol, exactly what you need before high-stakes situations.
                 </p>
               </div>
               <div>

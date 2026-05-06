@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Box Breathing App (Free Online 4-4-4-4 Timer)",
     description:
-      "The Navy SEAL breathing technique for calm under pressure. Free 4-4-4-4 timer—no download. Try now.",
+      "The Navy SEAL breathing technique for calm under pressure. Free 4-4-4-4 timer, no download. Try now.",
     images: [ogImageUrl]
   }
 };
@@ -121,7 +121,7 @@ export default function BoxBreathingAppMoneyPage() {
         name: "Can beginners do box breathing?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, box breathing is beginner-friendly. If the 4-4-4-4 pattern feels challenging, start with 3-3-3-3 or even remove the holds entirely. The key is comfort—you should never feel breathless or strained."
+          text: "Yes, box breathing is beginner-friendly. If the 4-4-4-4 pattern feels challenging, start with 3-3-3-3 or even remove the holds entirely. The key is comfort. You should never feel breathless or strained."
         }
       },
       {
@@ -155,7 +155,7 @@ export default function BoxBreathingAppMoneyPage() {
             <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">Box breathing app (free online timer)</h1>
             <p className="max-w-xl text-lg text-muted-foreground">
               Box breathing app and timer for the 4-4-4-4 pattern you can use instantly in your browser. Follow the visual guide,
-              adjust the counts, and start in seconds—no download and no signup.
+              adjust the counts, and start in seconds, no download and no signup.
             </p>
           </div>
         </div>
@@ -280,7 +280,7 @@ export default function BoxBreathingAppMoneyPage() {
             <h2 className="text-2xl font-semibold text-card-foreground">How box breathing works</h2>
             <div className="mt-4 space-y-4 text-muted-foreground">
               <p>
-                Box breathing works by engaging your autonomic nervous system—the unconscious system that controls functions like
+                Box breathing works by engaging your autonomic nervous system, the unconscious system that controls functions like
                 heart rate, digestion, and stress response. When you&apos;re anxious or stressed, your sympathetic nervous system
                 (fight-or-flight) dominates. Box breathing activates the opposing parasympathetic nervous system (rest-and-digest).
               </p>
@@ -391,7 +391,7 @@ export default function BoxBreathingAppMoneyPage() {
                 <h3 className="text-lg font-semibold text-card-foreground">Can beginners do box breathing?</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Yes, box breathing is beginner-friendly. If the 4-4-4-4 pattern feels challenging, start with 3-3-3-3 or even
-                  remove the holds entirely. The key is comfort—you should never feel breathless or strained.
+                  remove the holds entirely. The key is comfort. You should never feel breathless or strained.
                 </p>
               </div>
               <div>
@@ -424,7 +424,7 @@ export default function BoxBreathingAppMoneyPage() {
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">
             <h2 className="text-xl font-semibold text-card-foreground">Adjustable pacing</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Shorten or remove holds if they feel uncomfortable—comfort beats intensity.
+              Shorten or remove holds if they feel uncomfortable, comfort beats intensity.
             </p>
           </div>
           <div className="glow-card rounded-[32px] border border-border bg-card p-6">

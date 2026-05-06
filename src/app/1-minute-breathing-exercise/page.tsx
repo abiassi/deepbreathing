@@ -12,17 +12,17 @@ const ShareButton = dynamic(
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/1-minute-breathing-exercise`;
-const ogImageUrl = createOgImagePath("1 Minute Breathing Exercise — Quick Calm");
+const ogImageUrl = createOgImagePath("1 Minute Breathing Exercise, Quick Calm");
 
 export const metadata: Metadata = {
-  title: "1 Minute Breathing Exercise — Quick Calm, No App Needed",
+  title: "1 Minute Breathing Exercise: Quick Calm, No App Needed",
   description:
-    "A free 1 minute breathing exercise you can do anywhere. Box breathing (4-4-4-4) for instant stress relief. Start now—no download, no signup.",
+    "A free 1 minute breathing exercise you can do anywhere. Box breathing (4-4-4-4) for instant stress relief. Start now, no download, no signup.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "1 Minute Breathing Exercise — Quick Calm",
+    title: "1 Minute Breathing Exercise: Quick Calm",
     description:
       "A free 1 minute breathing exercise for instant stress relief. Box breathing you can do anywhere. No download needed.",
     url: canonicalUrl,
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "1 Minute Breathing Exercise — Quick Calm"
+        alt: "1 Minute Breathing Exercise, Quick Calm"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "1 Minute Breathing Exercise — Quick Calm",
+    title: "1 Minute Breathing Exercise: Quick Calm",
     description:
       "A free 1 minute breathing exercise for instant stress relief. Box breathing you can do anywhere.",
     images: [ogImageUrl]
@@ -88,7 +88,7 @@ export default function OneMinuteBreathingExercisePage() {
         name: "Can you really calm down in 1 minute?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Research shows that even 60 seconds of slow, controlled breathing can activate the parasympathetic nervous system and reduce heart rate. You won't reach deep relaxation, but you can interrupt stress and regain composure—often enough to handle the next moment better."
+          text: "Yes. Research shows that even 60 seconds of slow, controlled breathing can activate the parasympathetic nervous system and reduce heart rate. You won't reach deep relaxation, but you can interrupt stress and regain composure, often enough to handle the next moment better."
         }
       },
       {
@@ -112,7 +112,7 @@ export default function OneMinuteBreathingExercisePage() {
         name: "Is 1 minute of breathing enough to help anxiety?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "One minute won't eliminate anxiety, but it can take the edge off and prevent escalation. Think of it as a circuit breaker—it stops the stress spiral so you can think more clearly. For deeper anxiety relief, longer sessions (5-10 minutes) work better."
+          text: "One minute won't eliminate anxiety, but it can take the edge off and prevent escalation. Think of it as a circuit breaker. It stops the stress spiral so you can think more clearly. For deeper anxiety relief, longer sessions (5-10 minutes) work better."
         }
       },
       {
@@ -142,7 +142,7 @@ export default function OneMinuteBreathingExercisePage() {
         <p className="text-xs uppercase tracking-[0.35em] text-primary">Quick Breathing Exercise</p>
         <h1 className="text-4xl font-semibold text-foreground sm:text-5xl">1 minute breathing exercise</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          A quick breathing exercise you can do anywhere—no app download needed. Four cycles of box breathing (4-4-4-4)
+          A quick breathing exercise you can do anywhere, no app download needed. Four cycles of box breathing (4-4-4-4)
           take about 60 seconds and can help you reset before a meeting, calm nerves, or regain focus.
         </p>
       </header>
@@ -160,7 +160,7 @@ export default function OneMinuteBreathingExercisePage() {
             <ShareButton
               url={canonicalUrl}
               title="1 Minute Breathing Exercise"
-              text="Try this 1-minute breathing exercise — it's the fastest way to calm down."
+              text="Try this 1-minute breathing exercise. It's the fastest way to calm down."
               buttonText="Share this exercise"
               embedSlug="box"
             />
@@ -185,13 +185,13 @@ export default function OneMinuteBreathingExercisePage() {
           <h2 className="text-2xl font-semibold text-card-foreground">How it works</h2>
           <div className="mt-4 space-y-4 text-muted-foreground">
             <p>
-              One minute of controlled breathing is enough to activate your parasympathetic nervous system—the
+              One minute of controlled breathing is enough to activate your parasympathetic nervous system, the
               &ldquo;rest and digest&rdquo; mode that counteracts stress. The equal phases of box breathing create a
               rhythmic pattern that interrupts racing thoughts and gives your nervous system a clear signal to calm down.
             </p>
             <p>
               The breath holds are what make this technique so effective for quick resets. Holding your breath briefly
-              allows CO₂ to build up slightly, which paradoxically signals safety to your brain—you wouldn&apos;t hold your
+              allows CO₂ to build up slightly, which paradoxically signals safety to your brain. You wouldn&apos;t hold your
               breath if you were actually in danger. This interrupts the fight-or-flight response.
             </p>
             <p>
@@ -253,7 +253,7 @@ export default function OneMinuteBreathingExercisePage() {
               <p className="mt-2 text-sm text-muted-foreground">
                 Yes. Research shows that even 60 seconds of slow, controlled breathing can activate the parasympathetic
                 nervous system and reduce heart rate. You won&apos;t reach deep relaxation, but you can interrupt stress
-                and regain composure—often enough to handle the next moment better.
+                and regain composure, often enough to handle the next moment better.
               </p>
             </div>
             <div>
@@ -276,7 +276,7 @@ export default function OneMinuteBreathingExercisePage() {
               <h3 className="text-lg font-semibold text-card-foreground">Is 1 minute of breathing enough to help anxiety?</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 One minute won&apos;t eliminate anxiety, but it can take the edge off and prevent escalation. Think of it
-                as a circuit breaker—it stops the stress spiral so you can think more clearly. For deeper anxiety
+                as a circuit breaker. It stops the stress spiral so you can think more clearly. For deeper anxiety
                 relief, longer sessions (5-10 minutes) work better.
               </p>
             </div>
@@ -351,7 +351,7 @@ export default function OneMinuteBreathingExercisePage() {
           <ShareButton
             url={canonicalUrl}
             title="1 Minute Breathing Exercise"
-            text="Try this 1-minute breathing exercise — it's the fastest way to calm down."
+            text="Try this 1-minute breathing exercise. It's the fastest way to calm down."
             buttonText="Share this exercise"
           />
         </div>

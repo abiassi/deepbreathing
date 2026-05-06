@@ -8,17 +8,17 @@ import { createOgImagePath } from "@/lib/seo/og-image";
 
 const siteUrl = "https://deepbreathingexercises.com";
 const canonicalUrl = `${siteUrl}/breathing-exercises-for-labor`;
-const ogImageUrl = createOgImagePath("Breathing Exercises for Labor — Manage Contractions Naturally");
+const ogImageUrl = createOgImagePath("Breathing Exercises for Labor, Manage Contractions Naturally");
 
 export const metadata: Metadata = {
-  title: "Breathing Exercises for Labor — Manage Contractions Naturally (Free Timer)",
+  title: "Breathing Exercises for Labor: Manage Contractions Naturally (Free Timer)",
   description:
-    "Free breathing timer for labor and childbirth — slow breathing helps manage contractions and stay calm. Practice before your due date. Midwife-approved techniques.",
+    "Free breathing timer for labor and childbirth, slow breathing helps manage contractions and stay calm. Practice before your due date. Midwife-approved techniques.",
   alternates: {
     canonical: canonicalUrl
   },
   openGraph: {
-    title: "Breathing Exercises for Labor — Manage Contractions Naturally",
+    title: "Breathing Exercises for Labor: Manage Contractions Naturally",
     description:
       "Midwife-approved breathing techniques for labor. Slow breathing helps manage contractions and stay calm. Free timer to practice now.",
     url: canonicalUrl,
@@ -28,15 +28,15 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "Breathing Exercises for Labor — Manage Contractions Naturally"
+        alt: "Breathing Exercises for Labor, Manage Contractions Naturally"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Breathing Exercises for Labor — Manage Contractions Naturally",
+    title: "Breathing Exercises for Labor: Manage Contractions Naturally",
     description:
-      "Midwife-approved breathing for labor. Manage contractions and stay calm. Free timer—practice now.",
+      "Midwife-approved breathing for labor. Manage contractions and stay calm. Free timer. Practice now.",
     images: [ogImageUrl]
   }
 };
@@ -111,7 +111,7 @@ export default function BreathingExercisesForLaborPage() {
         name: "When should I start practicing breathing for labor?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Start practicing at least 4-6 weeks before your due date. Practice for 5-10 minutes daily so the breathing pattern becomes automatic. This way, when labor begins, you won't have to think about the technique—your body will know what to do."
+          text: "Start practicing at least 4-6 weeks before your due date. Practice for 5-10 minutes daily so the breathing pattern becomes automatic. This way, when labor begins, you won't have to think about the technique. Your body will know what to do."
         }
       },
       {
@@ -188,13 +188,13 @@ export default function BreathingExercisesForLaborPage() {
             <div className="mt-4 space-y-4 text-muted-foreground">
               <p>
                 During labor, your body is working incredibly hard. Contractions are intense, and your natural response
-                might be to tense up, hold your breath, or breathe rapidly. But this actually makes labor harder—tension
+                might be to tense up, hold your breath, or breathe rapidly. But this actually makes labor harder, tension
                 works against your body&apos;s natural processes.
               </p>
               <p>
                 Slow, controlled breathing does the opposite. It <strong className="text-card-foreground">activates your
                 parasympathetic nervous system</strong>, which relaxes your muscles, lowers stress hormones, and helps
-                your body work with contractions rather than against them. The extended exhale is particularly important—it
+                your body work with contractions rather than against them. The extended exhale is particularly important. It
                 triggers your vagus nerve, promoting calm and reducing pain perception.
               </p>
               <p>
@@ -212,14 +212,14 @@ export default function BreathingExercisesForLaborPage() {
                 <h3 className="font-semibold text-card-foreground">Early labor (contractions 5+ minutes apart)</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Use slow, relaxed breathing: inhale through your nose for 4 seconds, exhale through your mouth for 6-8 seconds.
-                  Between contractions, breathe normally and rest. This stage can last hours—conserve your energy.
+                  Between contractions, breathe normally and rest. This stage can last hours, conserve your energy.
                 </p>
               </div>
               <div className="rounded-2xl bg-muted/50 p-4">
                 <h3 className="font-semibold text-card-foreground">Active labor (contractions 3-5 minutes apart)</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Continue slow breathing during contractions. As intensity increases, you may naturally want to vocalize
-                  on the exhale (moaning or humming)—this is normal and helps. Keep your jaw relaxed and shoulders down.
+                  on the exhale (moaning or humming). This is normal and helps. Keep your jaw relaxed and shoulders down.
                 </p>
               </div>
               <div className="rounded-2xl bg-muted/50 p-4">
@@ -254,14 +254,14 @@ export default function BreathingExercisesForLaborPage() {
                 <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">2</span>
                 <div>
                   <strong className="text-card-foreground">Find a comfortable position</strong>
-                  <p className="mt-1 text-sm">Sit, lie on your side, or use a birthing ball—whatever feels good.</p>
+                  <p className="mt-1 text-sm">Sit, lie on your side, or use a birthing ball, whatever feels good.</p>
                 </div>
               </li>
               <li className="flex gap-4">
                 <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">3</span>
                 <div>
                   <strong className="text-card-foreground">Inhale through your nose for 4-6 seconds</strong>
-                  <p className="mt-1 text-sm">Let your belly expand gently. Don&apos;t force it—keep it comfortable.</p>
+                  <p className="mt-1 text-sm">Let your belly expand gently. Don&apos;t force it, keep it comfortable.</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -297,7 +297,7 @@ export default function BreathingExercisesForLaborPage() {
                 <p className="mt-2 text-sm text-muted-foreground">
                   Start practicing at least 4-6 weeks before your due date. Practice for 5-10 minutes daily so the
                   breathing pattern becomes automatic. When labor begins, you won&apos;t have to think about the
-                  technique—your body will know what to do.
+                  technique. Your body will know what to do.
                 </p>
               </div>
               <div>
