@@ -95,8 +95,14 @@ export default function FourSevenEightBreathingTimerMoneyPage() {
     headline: "4-7-8 Breathing Timer: Fall Asleep in 2 Minutes",
     description: "Dr. Weil's 4-7-8 breathing timer for sleep. The 'natural tranquilizer' technique—fall asleep faster, calm anxiety in minutes.",
     author: {
+      "@type": "Person",
+      name: "Abi Abiassi",
+      url: `${siteUrl}/about/abi`
+    },
+    publisher: {
       "@type": "Organization",
-      name: "Deep Breathing Exercises"
+      name: "Deep Breathing Exercises",
+      url: siteUrl
     },
     datePublished: "2025-11-17",
     dateModified: "2026-02-03",

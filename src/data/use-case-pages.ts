@@ -131,7 +131,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "Breathing techniques for public speaking that Navy SEALs use before combat. Stop presentation anxiety in 60 seconds. Free visualizer.",
       twitterTitle: "Breathing Exercises for Public Speaking — Navy SEAL Method",
       twitterDescription: "Breathing exercises for public speaking that stop stage fright instantly. Free visualizer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-02",
       dateModified: "2025-12-07"
     },
@@ -316,7 +316,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "Harvard research: slow breathing can reduce blood pressure by up to 10 points. Dr. Weil's 4-7-8 technique. Free visualizer.",
       twitterTitle: "Lower Blood Pressure by 10 Points - 4-7-8 Breathing",
       twitterDescription: "Harvard research: Dr. Weil's 4-7-8 breathing can reduce BP by up to 10 points. Free visualizer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-02",
       dateModified: "2025-12-07"
     },
@@ -511,7 +511,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "4-7-8 breathing for sleep: Dr. Weil's 'natural tranquilizer' helps you fall asleep in minutes. Free visualizer.",
       twitterTitle: "4-7-8 Breathing for Sleep — Fall Asleep Fast",
       twitterDescription: "4-7-8 breathing for sleep: Dr. Weil's 'natural tranquilizer'. Fall asleep in minutes without medication. Free visualizer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-02",
       dateModified: "2025-12-07"
     },
@@ -718,7 +718,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "Use physiological sigh breathing to stop side stitches and recover faster after hard running efforts.",
       twitterTitle: "Breathing for Running Recovery (Free Timer)",
       twitterDescription: "Use physiological sigh breathing to stop side stitches and recover faster after hard running efforts.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-02",
       dateModified: "2026-02-03"
     },
@@ -911,7 +911,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "The breathing technique Navy SEALs use for anxiety. Stop racing thoughts and chest tightness in 60 seconds. Free visualizer.",
       twitterTitle: "Stop Anxiety in 60 Seconds - Box Breathing Technique",
       twitterDescription: "Navy SEAL breathing technique stops anxiety in 60 seconds. Free guided visualizer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-07",
       dateModified: "2025-12-07"
     },
@@ -1135,7 +1135,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "Stanford-tested breathing technique stops panic attacks in 30 seconds. Used for acute hyperventilation and overwhelming fear. Free timer.",
       twitterTitle: "Stop Panic Attack in 30 Seconds - Physiological Sigh",
       twitterDescription: "Stanford-tested double-inhale technique stops panic attacks in seconds. Free timer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-07",
       dateModified: "2025-12-07"
     },
@@ -1342,7 +1342,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "The 5-minute breathing technique top performers use before deep work. Boost focus by 40% with coherent breathing.",
       twitterTitle: "Boost Focus by 40%: Coherent Breathing for Concentration",
       twitterDescription: "The 5-minute breathing technique top performers use before deep work. Free visualizer + research.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-07",
       dateModified: "2025-12-07"
     },
@@ -1551,7 +1551,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "The structured breathing pattern that makes meditation accessible for beginners. Free guided visualizer.",
       twitterTitle: "Can't Meditate? Start with Coherent Breathing",
       twitterDescription: "The structured breathing pattern that makes meditation accessible for beginners. Free guided visualizer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-07",
       dateModified: "2025-12-07"
     },
@@ -1764,7 +1764,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "The Stanford-tested breathing technique that brings your heart rate down 2x faster between sets. Used by elite athletes.",
       twitterTitle: "Faster Athletic Recovery: Physiological Sigh for Athletes",
       twitterDescription: "The Stanford-tested breathing technique that brings your heart rate down 2x faster between sets. Free timer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-07",
       dateModified: "2025-12-07"
     },
@@ -1977,7 +1977,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "Modified 4-7-8 breathing: pregnancy-safe, used in childbirth education, and calms anxiety naturally.",
       twitterTitle: "Safe Breathing for Pregnancy Anxiety & Labor Prep",
       twitterDescription: "Modified 4-7-8 breathing: pregnancy-safe, used in childbirth education. Free guided timer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-07",
       dateModified: "2025-12-07"
     },
@@ -2188,7 +2188,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "The Stanford-tested breathing technique that stops holiday stress in 30 seconds. Works at the dinner table, in crowds, or hiding in the bathroom.",
       twitterTitle: "Holiday Stress Relief in 30 Seconds — Physiological Sigh",
       twitterDescription: "Stanford-tested breathing technique for holiday stress. Works in 30 seconds. Free visualizer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-19",
       dateModified: "2025-12-19"
     },
@@ -2388,7 +2388,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "The breathing technique that keeps you calm through flights, delays, and crowds. Works for hours, not minutes. Free visualizer.",
       twitterTitle: "Breathing Exercises for Travel Anxiety — Calm Flights & Crowds",
       twitterDescription: "Stay calm through flights, turbulence, delays, and crowds. Coherent breathing works for hours. Free visualizer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2025-12-19",
       dateModified: "2025-12-19"
     },
@@ -2590,7 +2590,7 @@ export const useCasePages: UseCasePageContent[] = [
       ogDescription: "Every breathing technique Dr. Huberman recommends, from physiological sigh to box breathing. Free guided timers for each protocol.",
       twitterTitle: "Huberman Breathing Protocols: 6 Techniques (Free Timers)",
       twitterDescription: "All 6 Huberman Lab breathing techniques matched to stress, sleep & focus goals. Free timers.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       datePublished: "2026-01-06",
       dateModified: "2026-02-06"
     },
@@ -2826,7 +2826,7 @@ const stressPage: UseCasePageContent = {
     ogDescription: "The Stanford-tested breathing technique that beats meditation for stress relief. Works in 30 seconds. Free tool.",
     twitterTitle: "Breathing Exercises for Stress — 30 Second Reset",
     twitterDescription: "Stanford-tested breathing technique calms stress in 30 seconds. Free guided tool.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     datePublished: "2026-01-20",
     dateModified: "2026-02-03"
   },
@@ -3031,7 +3031,7 @@ const kidsPage: UseCasePageContent = {
     ogDescription: "Simple breathing exercises kids can use anywhere. Stop tantrums, ease anxiety, improve sleep. Free visualizer.",
     twitterTitle: "Breathing Exercises for Kids: Calm Down Techniques",
     twitterDescription: "Simple breathing techniques kids love. Stop tantrums and ease anxiety in minutes.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     datePublished: "2026-01-20",
     dateModified: "2026-01-20"
   },
@@ -3228,7 +3228,7 @@ const pranayamaPage: UseCasePageContent = {
     ogDescription: "Learn pranayama—the yogic science of breath control. Nadi Shodhana, Ujjayi, and more. Free visualizers.",
     twitterTitle: "Pranayama Breathing: The Complete Guide to Yogic Breathing",
     twitterDescription: "Ancient breath practices for modern life. Learn pranayama techniques with free visualizers.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     datePublished: "2026-01-20",
     dateModified: "2026-02-03"
   },
@@ -3429,7 +3429,7 @@ const singingPage: UseCasePageContent = {
     ogDescription: "Train the diaphragmatic breathing that powers every great voice. Free guided timer for singers at all levels.",
     twitterTitle: "Breathing Exercises for Singing — Build Breath Support",
     twitterDescription: "Free breathing exercises for singers. Build diaphragmatic support, extend your phrases, and reduce vocal strain.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     datePublished: "2026-02-06",
     dateModified: "2026-02-06",
   },
@@ -3607,7 +3607,7 @@ const lungCapacityPage: UseCasePageContent = {
     ogDescription: "Proven breathing exercises to increase lung capacity and strengthen your diaphragm. Free guided timer — start building respiratory power today.",
     twitterTitle: "Lung Capacity Exercises — Increase Your Breathing Power",
     twitterDescription: "Build lung capacity with diaphragmatic breathing exercises. Free guided timer.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     datePublished: "2026-02-06",
     dateModified: "2026-02-06",
   },

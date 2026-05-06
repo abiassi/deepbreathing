@@ -80,8 +80,14 @@ export default function BreathingExercisesBeforeSurgeryPage() {
     headline: "Breathing Exercises Before Surgery: Calm Pre-Op Anxiety",
     description: "Hospital-approved breathing exercises to calm pre-surgery anxiety. Box breathing helps you arrive at your procedure relaxed and prepared.",
     author: {
+      "@type": "Person",
+      name: "Abi Abiassi",
+      url: `${siteUrl}/about/abi`
+    },
+    publisher: {
       "@type": "Organization",
-      name: "Deep Breathing Exercises"
+      name: "Deep Breathing Exercises",
+      url: siteUrl
     },
     datePublished: "2026-01-27",
     dateModified: "2026-01-27",

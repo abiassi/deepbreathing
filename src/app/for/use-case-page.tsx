@@ -31,7 +31,6 @@ const Resonance = dynamic(
 );
 
 const baseUrl = "https://deepbreathingexercises.com";
-const DEFAULT_REVIEWER = "Resonance Editorial Review Team";
 
 export function createUseCaseMetadata(slug: string): Metadata {
   const page = useCasePageMap[slug];
@@ -90,7 +89,7 @@ export function UseCasePage({ slug }: { slug: string }) {
   const isHolidayPage = slug === "holiday-stress" || slug === "travel-anxiety";
   const pattern = BREATHING_PATTERNS[page.mode];
   const canonicalUrl = `${baseUrl}/for/${page.slug}`;
-  const reviewerName = page.meta.reviewer || DEFAULT_REVIEWER;
+  const reviewerName = page.meta.reviewer || null;
   const ogImage = createOgImagePath(page.meta.ogTitle || page.meta.title, {
     subtitle: page.hero.subtitle,
     color: pattern?.color,
@@ -131,13 +130,21 @@ export function UseCasePage({ slug }: { slug: string }) {
     author: page.meta.author
       ? {
         "@type": "Person",
-        name: page.meta.author
+        name: page.meta.author,
+        url: `${baseUrl}/about/abi`
       }
       : undefined,
-    reviewedBy: {
-      "@type": "Person",
-      name: reviewerName
+    publisher: {
+      "@type": "Organization",
+      name: "Deep Breathing Exercises",
+      url: baseUrl
     },
+    ...(reviewerName ? {
+      reviewedBy: {
+        "@type": "Person",
+        name: reviewerName
+      }
+    } : {}),
     datePublished: page.meta.datePublished,
     dateModified: page.meta.dateModified,
     mainEntityOfPage: canonicalUrl,

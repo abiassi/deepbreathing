@@ -33,7 +33,7 @@ export function LocalizedDate({
   reviewerName,
 }: {
   date: string;
-  reviewerName: string;
+  reviewerName?: string | null;
 }) {
   const lang = getLocale().split("-")[0];
   const labels = LABELS[lang] || LABELS.en;
@@ -46,7 +46,8 @@ export function LocalizedDate({
 
   return (
     <>
-      {labels.lastUpdated}: {formatted} • {labels.reviewedBy} {reviewerName}
+      {labels.lastUpdated}: {formatted}
+      {reviewerName ? <> • {labels.reviewedBy} {reviewerName}</> : null}
     </>
   );
 }

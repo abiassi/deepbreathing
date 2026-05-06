@@ -80,8 +80,14 @@ export default function BreathingExercisesForLaborPage() {
     headline: "Breathing Exercises for Labor: Manage Contractions Naturally",
     description: "Midwife-approved breathing techniques for labor and childbirth. Slow breathing helps manage contractions and promotes calm.",
     author: {
+      "@type": "Person",
+      name: "Abi Abiassi",
+      url: `${siteUrl}/about/abi`
+    },
+    publisher: {
       "@type": "Organization",
-      name: "Deep Breathing Exercises"
+      name: "Deep Breathing Exercises",
+      url: siteUrl
     },
     datePublished: "2026-01-27",
     dateModified: "2026-01-27",

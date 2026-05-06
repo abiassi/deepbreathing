@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: "Free Breathing Visualizer: Calm Anxiety in 60 Seconds",
     description:
       "Calm anxiety in 60 seconds with our free breathing visualizer. Box breathing, 4-7-8, physiological sigh. Try now—no signup.",
-    creator: "@deepbreathing",
+    creator: "@abiassi_",
     images: [defaultOgImage]
   },
   alternates: {

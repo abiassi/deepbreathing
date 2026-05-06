@@ -233,8 +233,9 @@ const articleSchema = {
   description:
     "Holiday stress relief breathing exercises. Quick resets for gatherings, travel, and overwhelm.",
   author: {
-    "@type": "Organization",
-    name: "Resonance Editorial Team",
+    "@type": "Person",
+    name: "Abi Abiassi",
+    url: `${baseUrl}/about/abi`,
   },
   publisher: {
     "@type": "Organization",

@@ -80,8 +80,14 @@ export default function BoxBreathingPresentationPage() {
     headline: "Box Breathing Before Presentation: Calm Nerves in 60 Seconds",
     description: "How Navy SEALs use box breathing to stay calm under pressure—and how you can use it before your next presentation.",
     author: {
+      "@type": "Person",
+      name: "Abi Abiassi",
+      url: `${siteUrl}/about/abi`
+    },
+    publisher: {
       "@type": "Organization",
-      name: "Deep Breathing Exercises"
+      name: "Deep Breathing Exercises",
+      url: siteUrl
     },
     datePublished: "2026-01-27",
     dateModified: "2026-01-27",

@@ -144,7 +144,7 @@ export const breathingPages: BreathingPageContent[] = [
       ogImage: "og/breathe-box.png",
       twitterTitle: "Box Breathing: Navy SEAL Technique to Stop Anxiety Fast",
       twitterDescription: "The same breathing technique Navy SEALs use before combat. Stop anxiety in 60 seconds. Free visualizer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       reviewer: "",
       datePublished: "2025-11-17",
       dateModified: "2026-02-03"
@@ -409,7 +409,7 @@ export const breathingPages: BreathingPageContent[] = [
       ogImage: "og/breathe-4-7-8.png",
       twitterTitle: "4-7-8 Breathing: Fall Asleep in 2 Minutes",
       twitterDescription: "Dr. Weil's 'natural tranquilizer' breathing technique. Fall asleep faster in just minutes. Free visualizer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       reviewer: "",
       datePublished: "2025-11-17",
       dateModified: "2025-12-07"
@@ -656,7 +656,7 @@ export const breathingPages: BreathingPageContent[] = [
       ogImage: "og/breathe-coherent.png",
       twitterTitle: "Coherent Breathing Timer: 5-6 BPM for HRV (Free)",
       twitterDescription: "Free 5-6 breaths/min coherent breathing timer. Train HRV in 5 minutes. No download.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       reviewer: "",
       datePublished: "2025-11-17",
       dateModified: "2026-05-05"
@@ -888,7 +888,7 @@ export const breathingPages: BreathingPageContent[] = [
     ogImage: "og/breathe-physiological-sigh.png",
     twitterTitle: "Physiological Sigh Breathing — Calm Down in 30 Seconds",
     twitterDescription: "Stop stress in 30 seconds with Stanford's double-inhale technique. Free timer—try now.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     reviewer: "",
     datePublished: "2025-11-17",
     dateModified: "2026-02-03"
@@ -1206,7 +1206,7 @@ export const breathingPages: BreathingPageContent[] = [
       ogImage: "og/breathe-wim-hof.png",
       twitterTitle: "Wim Hof Breathing: Free Guided Tool",
       twitterDescription: "Master the Iceman's breathing technique. 30 power breaths × 3 rounds with retention holds. Free guided visualizer.",
-      author: "Resonance Editorial Team",
+      author: "Abi Abiassi",
       reviewer: "",
       datePublished: "2026-01-02",
       dateModified: "2026-01-02"
@@ -1432,7 +1432,7 @@ const pursedLipPage: BreathingPageContent = {
     ogImage: "og/breathe-pursed-lip.png",
     twitterTitle: "Pursed Lip Breathing: Free Timer",
     twitterDescription: "Stop shortness of breath with the respiratory therapist-approved technique. Free timer.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     reviewer: "",
     datePublished: "2026-01-20",
     dateModified: "2026-02-03"
@@ -1669,7 +1669,7 @@ const nadiShodhanaPage: BreathingPageContent = {
     ogImage: "og/breathe-nadi-shodhana.png",
     twitterTitle: "Alternate Nostril Breathing (Nadi Shodhana) — Free Timer",
     twitterDescription: "Balance your nervous system with the ancient yoga technique. Free timer.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     reviewer: "",
     datePublished: "2026-01-20",
     dateModified: "2026-02-03"
@@ -1945,7 +1945,7 @@ const ujjayiPage: BreathingPageContent = {
     ogImage: "og/breathe-ujjayi.png",
     twitterTitle: "Ujjayi Breathing: Ocean Breath Technique for Yoga & Focus",
     twitterDescription: "Learn the yogic 'ocean breath' that calms your nervous system. Free visualizer + guide.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     reviewer: "",
     datePublished: "2026-01-20",
     dateModified: "2026-02-03"
@@ -2182,7 +2182,7 @@ const bellyPage: BreathingPageContent = {
     ogImage: "og/breathe-belly.png",
     twitterTitle: "Belly Breathing: Diaphragmatic Breathing Exercises",
     twitterDescription: "Learn the foundation of all breathwork. Free visualizer + complete guide.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     reviewer: "",
     datePublished: "2026-01-20",
     dateModified: "2026-02-03"
@@ -2441,7 +2441,7 @@ const buteykoPage: BreathingPageContent = {
     ogImage: "og/breathe-buteyko.png",
     twitterTitle: "Buteyko Breathing: Light Nasal Breathing for Respiratory Health",
     twitterDescription: "The Buteyko method for asthma and respiratory health. Free visualizer + guide.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     reviewer: "",
     datePublished: "2026-01-20",
     dateModified: "2026-01-20"
@@ -2683,7 +2683,7 @@ const tummoPage: BreathingPageContent = {
     twitterTitle: "Tummo Breathing: Tibetan Inner Heat Technique (Free Timer)",
     twitterDescription:
       "Practice tummo breathing \u2014 the ancient Tibetan inner fire technique. Free guided timer with visual pacer.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     reviewer: "",
     datePublished: "2026-02-06",
     dateModified: "2026-02-06",
@@ -2967,7 +2967,7 @@ const breathOfFirePage: BreathingPageContent = {
     twitterTitle: "Breath of Fire: Kundalini Breathing Exercise (Free Timer)",
     twitterDescription:
       "Practice breath of fire (Kapalabhati) \u2014 the rapid Kundalini yoga breathing technique for energy and mental clarity.",
-    author: "Resonance Editorial Team",
+    author: "Abi Abiassi",
     reviewer: "",
     datePublished: "2026-02-06",
     dateModified: "2026-02-06",

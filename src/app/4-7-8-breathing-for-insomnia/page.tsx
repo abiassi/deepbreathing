@@ -80,8 +80,14 @@ export default function FourSevenEightInsomniaPage() {
     headline: "4-7-8 Breathing for Insomnia: Fall Asleep in Minutes",
     description: "How to use 4-7-8 breathing to overcome insomnia naturally. Dr. Weil's technique that works in 2-5 minutes.",
     author: {
+      "@type": "Person",
+      name: "Abi Abiassi",
+      url: `${siteUrl}/about/abi`
+    },
+    publisher: {
       "@type": "Organization",
-      name: "Deep Breathing Exercises"
+      name: "Deep Breathing Exercises",
+      url: siteUrl
     },
     datePublished: "2026-01-27",
     dateModified: "2026-01-27",

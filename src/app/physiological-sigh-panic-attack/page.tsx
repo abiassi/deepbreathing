@@ -80,8 +80,14 @@ export default function PhysiologicalSighPanicAttackPage() {
     headline: "Breathing Technique for Panic Attack: Stop Panic in 30 Seconds",
     description: "The physiological sigh is the fastest way to stop a panic attack—just 1-3 breaths. Stanford-tested technique from Dr. Andrew Huberman.",
     author: {
+      "@type": "Person",
+      name: "Abi Abiassi",
+      url: `${siteUrl}/about/abi`
+    },
+    publisher: {
       "@type": "Organization",
-      name: "Deep Breathing Exercises"
+      name: "Deep Breathing Exercises",
+      url: siteUrl
     },
     datePublished: "2026-01-27",
     dateModified: "2026-01-27",

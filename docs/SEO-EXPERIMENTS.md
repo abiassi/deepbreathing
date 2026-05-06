@@ -18,6 +18,8 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
+| 2026-05-06 | [E-E-A-T Wellness-Class Overhaul — Founder Byline + Lineage + Light Citations](#2026-05-06-e-e-a-t-wellness-class-overhaul--founder-byline--lineage--light-citations) | 🔄 Implemented |
+| 2026-05-05 | [Bing Translated-Page Indexing Push — URL + Content Submission](#2026-05-05-bing-translated-page-indexing-push--url--content-submission) | 🔄 Implemented |
 | 2026-05-05 | [Coherent Page Title Rewrite — Timer Intent Match](#2026-05-05-coherent-page-title-rewrite--timer-intent-match) | 🔄 Implemented |
 | 2026-05-05 | [Fix 5 GSC 404s — Double-locale + Sub-path Redirects](#2026-05-05-fix-5-gsc-404s--double-locale--sub-path-redirects) | 🔄 Implemented |
 | 2026-05-05 | [CTR Investigation — 4 High-Impression Pages (Diagnostic)](#2026-05-05-ctr-investigation--4-high-impression-pages-diagnostic) | 📊 Snapshot |
@@ -60,13 +62,93 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 | 2026-01-06 | [Navy SEAL Content Expansion](#2026-01-06-navy-seal-content-expansion) | ❌ Failed |
 | 2026-01-06 | [CTR Title Rewrites (Batch 1)](#2026-01-06-ctr-title-rewrites-batch-1) | ✅ Success |
 
-**Roll-up by status (41 entries):** ✅ 4 Success · ❌ 8 Failed · ⚪ 11 Inconclusive · 🟡 1 Mixed · ⏳ 1 Waiting · 🔄 11 Implemented · 📊 5 Snapshot.
+**Roll-up by status (42 entries):** ✅ 4 Success · ❌ 8 Failed · ⚪ 11 Inconclusive · 🟡 1 Mixed · ⏳ 1 Waiting · 🔄 12 Implemented · 📊 5 Snapshot.
 
 See also: [Key Learnings (Jan 2026)](#key-learnings-jan-2026) — synthesis of what worked / failed / strategic insights from the first month of experiments.
 
 ---
 
 ## Active Experiments
+
+### 2026-05-06: E-E-A-T Wellness-Class Overhaul — Founder Byline + Lineage + Light Citations
+
+**Hypothesis:** The site is positioned as a wellness/breathwork product (NOT a YMYL/medical site), but currently signals authority like neither — anonymous "Resonance Editorial Team" byline, no lineage attribution, no inline citations, fallback "Resonance Editorial Review Team" rendering on every pattern page despite no real reviewer. Wellness-class peers (Calm, Othership, Wim Hof Method, Huberman, mindbodygreen) are uniformly person-led with lineage attribution and 1–3 inline peer-reviewed hyperlinks per page. Switching to a named founder byline ("Abi Abiassi"), adding 1–2 sentence lineage paragraphs to each technique page, fixing 9 documented overclaims, and applying ~47 light-touch citations across 22 pages should improve avg position on the technique + use-case cohort.
+
+**Reference class & rationale:** [docs/research/eeat-citations-2026-05.md](research/eeat-citations-2026-05.md) — full audit, citation database, lineage paragraphs, decision log. Reference class is wellness/breathwork (NOT medical); we are deliberately NOT adding `MedicalWebPage` schema, "medically reviewed by" lines, or numbered DOI footnotes.
+
+**Baseline (May 6, 2026, last 28d Google):** From MEMORY.md — Mar 2026 baseline: 445 clicks, 111k impressions, avg pos 11.5 (recovered from 19.7 in Feb). **Pull a fresh GSC export of the 22-page cohort (12 `/breathe/*` + 10 `/for/*`) on the day of merge and pin avg position per page here.** Bing baseline: 140 clicks, 4,236 imp, 3.3% CTR, avg pos 4.8.
+
+**What's shipping:**
+1. Byline rename: "Resonance Editorial Team" → "Abi Abiassi" across `breathing-pages.ts` (12), `use-case-pages.ts` (18), and 6 pSEO Article schemas (Organization → Person)
+2. `DEFAULT_REVIEWER` fallback dropped — visible "Reviewed by Resonance Editorial Review Team" line removed when reviewer is empty
+3. Twitter creator handle: `@deepbreathing` → `@abiassi_`
+4. Dead code: `src/components/seo/content-credentials.tsx` deleted
+5. (next commit) `lineage` field + 12 lineage paragraphs on technique pages
+6. (next commit) 9 honesty corrections on existing copy + 3 unsourced number fixes (`/for/focus`, `/for/lung-capacity`)
+7. (next commit) `/about/abi` page (founder bio + Person schema with `sameAs`: linkedin/abiassi.com/x)
+8. (next commit) `/about/methodology` → `/about/editorial-policy` rename + 301 redirect
+9. (next commit) Inline `[text](url)` citation rendering + ~47 light-touch peer-reviewed hyperlinks (Calm/Othership density, NOT footnotes)
+10. (post-deploy) `mcp__mass-translate-backend__translate_content` for es/pt/fr/de/ja → `deploy_translations` → submit sitemaps
+
+**Pre-committed success criteria (8 weeks from merge):**
+- ✅ **Success**: Avg Google position across the 22-page cohort improves by ≥2 points
+- 🟡 **Mixed**: Improvement on ≥half the cohort but cohort avg moves &lt;2 points
+- ⚪ **Inconclusive**: Cohort avg moves &lt;1 point (within noise)
+- ❌ **Failed**: Cohort avg position degrades
+
+**Measure-after date:** 2026-07-01 (8 weeks).
+
+**What's deliberately NOT in this experiment** (to keep signal clean):
+- New page creation for new keyword targets
+- Backlink work
+- Translation re-submission (will run, but not the metric being tested)
+- App store listing changes
+
+---
+
+### 2026-05-05: Bing Translated-Page Indexing Push — URL + Content Submission
+
+**Hypothesis:** Of 47 FR URLs in the sitemap, only 1 (`/fr/breathing-visualizer`) has any Bing data over the last 28 days. Same shape for ES/PT/DE/JA. Bing has been crawling locale sub-sitemaps for weeks (`Status: Success` on all 5), so the bottleneck isn't sitemap awareness or crawl access. `GetUrlInfo` shows FR pages were discovered Mar 13 but mostly haven't been recrawled since. Pushing every translated URL via Bing Webmaster's URL Submission API (and full HTML via Content Submission for the top 10 per locale) is the strongest direct signal we can send. If submission/crawl-budget was the bottleneck, we'll see translated URLs appear in Bing performance data within 2–4 weeks. If nothing changes, it confirms **external authority** (DR 0.2, zero external backlinks pointing to translated variants — `AnchorCount: 0` on every FR URL inspected) is the real constraint, and the answer is link-building, not technical fixes.
+
+**Baseline (May 5, 2026, last 28d Bing data):**
+- Total Bing rows site-wide: 186 URLs / 4,590 imp / 126 clicks / pos 5.3
+- Of 250 translated URLs in sitemap (50 × 5 locales): only **2 have any Bing impressions**
+  - `/fr/breathing-visualizer`: 12 imp / 6 clicks / 50% CTR / pos 3.2 (one SERP appearance Apr 24)
+  - `/ja/for/high-blood-pressure`: 24 imp / 1 click / pos 7.4
+- All other 248 translated URLs: 0 imp
+- `GetUrlInfo` confirms FR pages are *discovered* (DiscoveryDate Mar 13, 2026) but crawl is stale: `/fr/breathe/box` last crawled Mar 8, 2026 (~2 months)
+- `/languages` hub last crawled Mar 19, 2026 (~7 weeks)
+- Locale sitemaps (`/fr/sitemap.xml`, etc.) all submitted to Bing and crawling successfully — UrlCount 44 each
+
+**Pre-committed success criteria (measured 2026-06-02, 4 weeks):**
+- ✅ **Success**: ≥30 of 250 translated URLs appear in Bing performance data (vs 2 today). Confirms submission+crawl was the bottleneck.
+- ⚪ **Inconclusive**: 5–29 URLs appear (some lift, but not transformative).
+- ❌ **Failed**: <5 URLs gain Bing impressions. Confirms external authority is the real constraint and link-building (not submission) is the only remaining lever.
+
+**Change** (May 5, 2026, all done via direct Bing Webmaster API — see Diagnostic learnings below):
+1. **`SubmitUrlBatch`** for all 250 translated URLs (`{es,pt,fr,de,ja}/*`) in 25 batches of 10. Daily quota 9,999, used 251.
+2. **`SubmitContent`** (push base64-encoded HTTP response with full HTML) for top 10 URLs per locale (50 total) — by Google `impressions_28d`: `for/huberman`, `breathe/coherent`, `breathe/physiological-sigh`, `for/public-speaking`, `coherent-breathing-app`, `breathe/box`, `breathe/buteyko`, `for/athletes`, `breathe/tummo`, `breathe/breath-of-fire`. Daily quota 10,000, used 51.
+3. **Re-submitted `/languages`** hub (last crawled Mar 19) — forces Bing to re-crawl it and refresh internal anchor signals to all 250 translated URLs.
+
+**What was NOT the bottleneck (ruled out by diagnostic):**
+- ❌ Sitemap missing hreflang — verified May 5: every sitemap entry has full xhtml:link rel=alternate for all 6 locales
+- ❌ Sitemap not submitted — all 5 locale sitemaps already in Bing's `GetFeeds` with Status: Success
+- ❌ IndexNow not pinging translated URLs — `scripts/ping-sitemap-lib.mjs` submits all 264 URLs from sitemap on every CI deploy
+- ❌ FR pages serving wrong content to Bingbot — verified `<html lang="fr-fr">`, French title/description, self-referencing canonical
+- ❌ Internal linking broken — `/languages` hub exists, is linked from EN home, has 125 links to translated URLs in body
+
+**Diagnostic learnings (worth remembering):**
+- **Mass-translate `submit_urls_bing` MCP is broken for this tenant**: (a) OAuth scope is `Read` only, (b) the tool normalizes `siteUrl` to no-trailing-slash, but Bing's API requires `https://deepbreathingexercises.com/` *with* trailing slash — without it, returns `InvalidApiKey`. Working around with raw curl + the API key from `.env.local`.
+- **Bing `locale` field on perf data is the searcher's locale, not the page's** — `/fr/breathing-visualizer` is tagged `locale: "en-us"`. Don't use `locale=fr-FR` filter on `get_bing_search_performance`; it returns 0 rows.
+- **Bing `AnchorCount` is external-only** — every FR URL has 0; EN equivalents have 0–2. Internal /languages-hub anchors don't count.
+
+**Measurement dates:**
+- 2026-05-19 (2-week interim check via existing `deepbreathing-indexing-checkpoint-2026-05-19` scheduled task)
+- 2026-06-02 (4-week eval — apply success criteria above)
+
+**Status:** 🔄 Implemented (not yet measured)
+
+---
 
 ### 2026-05-05: Coherent Page Title Rewrite — Timer Intent Match
 
