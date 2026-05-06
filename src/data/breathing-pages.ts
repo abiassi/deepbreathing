@@ -3256,7 +3256,7 @@ const breathOfFirePage: BreathingPageContent = {
 const ninthDimensionPage: BreathingPageContent = {
   slug: "9d-breathwork",
   mode: ModeName.WimHof,
-  lineage: "9D Breathwork was created by Brian Kelly in the early 2020s as a guided audio format combining a single breath protocol — conscious connected breathing — with a stack of nine audio production layers (binaural beats, solfeggio frequencies, spatial sound, NLP-style guidance). The breath itself is not new: conscious connected breathing traces back through Wim Hof's activating phase, Stanislav Grof's Holotropic Breathwork (1970s), and earlier rebirthing practices. *9dbreathwork.com* operates the official network of 1,300+ certified facilitators across 50+ countries.",
+  lineage: "Created by Brian Kelly in the early 2020s as a guided audio format pairing conscious connected breathing with a nine-layer soundtrack. The breath itself traces back through Wim Hof's activating phase, Holotropic Breathwork (1970s), and earlier rebirthing practices.",
   hero: {
     title: "9D Breathwork Explained",
     subtitle: "The breath is free. Try it now, then learn what makes a session 9D.",
@@ -3475,7 +3475,7 @@ const ninthDimensionPage: BreathingPageContent = {
 const hopeCartelPage: BreathingPageContent = {
   slug: "hope-cartel-9d-breathwork",
   mode: ModeName.WimHof,
-  lineage: "Hope Cartel is an Australian breathwork community founded by Garry \"Gaz\" Wright, growing rapidly on TikTok in 2024-2026. Wright runs in-person group sessions at \"Hope HQ\" in Melton, Victoria, plus private 1:1s, online group sessions, and interstate touring events. Hope Cartel delivers the 9D Breathwork format created by Brian Kelly — they are not the protocol owner, but one of the most visible delivery brands in the English-speaking breathwork scene.",
+  lineage: "Founded by Garry \"Gaz\" Wright in Melton, Victoria, Hope Cartel grew rapidly on TikTok in 2024-2026 as one of the largest English-speaking delivery brands for 9D Breathwork. They run the licensed format created by Brian Kelly, not their own protocol.",
   hero: {
     title: "Hope Cartel 9D Breathwork",
     subtitle: "Australia's biggest 9D delivery brand. Sessions, pricing, and what to expect.",
