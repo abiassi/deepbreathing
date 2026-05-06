@@ -228,6 +228,15 @@ export function PatternPage({ slug }: { slug: string }) {
             <LocalizedDate date={page.meta.dateModified} reviewerName={reviewerName} />
           </p>
         )}
+        {page.lineage && (
+          <p className="text-sm text-muted-foreground italic -mt-8 max-w-3xl" data-i18n="lineage">
+            {page.lineage.split(/(\*[^*]+\*)/g).map((part, i) =>
+              part.startsWith('*') && part.endsWith('*') && part.length > 2
+                ? <em key={i} className="not-italic font-medium text-foreground/80">{part.slice(1, -1)}</em>
+                : <span key={i}>{part}</span>
+            )}
+          </p>
+        )}
         {/* Voice Search Q&A - prominently placed for featured snippets */}
         {page.voiceSearch && page.voiceSearch.length > 0 && (
           <section className="space-y-6">

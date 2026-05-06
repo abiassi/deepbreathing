@@ -90,15 +90,27 @@ export default function AboutPage() {
         </div>
 
         <div className="glow-card rounded-[32px] border border-border bg-card p-6">
-          <h2 className="text-2xl font-semibold text-card-foreground">Our methodology</h2>
+          <h2 className="text-2xl font-semibold text-card-foreground">Who built this</h2>
           <p className="mt-3">
-            Our content is evidence-informed, drawing from peer-reviewed research and established
-            breathing protocols. We cite sources, include safety information, and update content
-            as new research emerges.
+            Deep Breathing Exercises is built by{" "}
+            <Link href="/about/abi" className="font-semibold text-primary hover:underline">
+              Abi Abiassi
+            </Link>
+            {" "}— founder, photographer, breathwork practitioner — as a free visualizer for the
+            techniques he uses daily.
+          </p>
+        </div>
+
+        <div className="glow-card rounded-[32px] border border-border bg-card p-6">
+          <h2 className="text-2xl font-semibold text-card-foreground">Editorial approach</h2>
+          <p className="mt-3">
+            Each technique page names the practitioner or tradition it comes from, links out to the
+            peer-reviewed research that informs the claims, and shows when it was last updated.
+            Where evidence is weak, we say so.
           </p>
           <p className="mt-3">
-            <Link href="/about/methodology" className="font-semibold text-primary hover:underline">
-              Learn about our content methodology →
+            <Link href="/about/editorial-policy" className="font-semibold text-primary hover:underline">
+              Read our editorial policy →
             </Link>
           </p>
         </div>
@@ -117,8 +129,13 @@ export default function AboutPage() {
               </Link>
             </p>
             <p>
-              <Link href="/about/methodology" className="font-semibold text-primary hover:underline">
-                Content methodology
+              <Link href="/about/abi" className="font-semibold text-primary hover:underline">
+                About Abi
+              </Link>
+            </p>
+            <p>
+              <Link href="/about/editorial-policy" className="font-semibold text-primary hover:underline">
+                Editorial policy
               </Link>
             </p>
             <p>

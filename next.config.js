@@ -17,6 +17,16 @@ const nextConfig = {
     return [
       // Content redirects
       {
+        source: '/about/methodology',
+        destination: '/about/editorial-policy',
+        permanent: true,
+      },
+      {
+        source: '/about/methodology/:path*',
+        destination: '/about/editorial-policy',
+        permanent: true,
+      },
+      {
         source: '/how-to-lower-blood-pressure-with-fourfold-deep-breathing/:path*',
         destination: '/for/high-blood-pressure',
         permanent: true,

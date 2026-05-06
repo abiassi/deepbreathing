@@ -107,6 +107,13 @@ export interface BreathingPageContent {
   mode: ModeName;
   /** Show on homepage "Pick a mode" section. Core techniques = true, SEO expansions = false */
   featured?: boolean;
+  /**
+   * 1–2 sentence origin/lineage attribution rendered below the date stamp on the
+   * pattern page. Wellness-class authority signal: name the originator,
+   * popularizer, or tradition the technique comes from — not a clinical reviewer.
+   * See docs/research/eeat-citations-2026-05.md.
+   */
+  lineage?: string;
   hero: HeroContent;
   meta: MetaContent;
   body: BodySection[];
@@ -131,6 +138,7 @@ export const breathingPages: BreathingPageContent[] = [
     slug: "box",
     mode: ModeName.Box,
     featured: true,
+    lineage: "Named and popularized by former US Navy SEAL commander Mark Divine, who taught it through his SEALFIT and Unbeatable Mind programs starting in the 2010s. The equal-ratio pattern itself is older — it appears as Sama Vritti in classical pranayama and in earlier military tactical breathing protocols that predate the \"box\" name.",
     hero: {
       title: "Box Breathing (4-4-4-4) Visualizer",
       subtitle: "Equal counts to steady arousal and sharpen focus.",
@@ -396,6 +404,7 @@ export const breathingPages: BreathingPageContent[] = [
     slug: "4-7-8",
     mode: ModeName.Relax,
     featured: true,
+    lineage: "Developed by Dr. Andrew Weil, an integrative-medicine physician at the University of Arizona, who has taught the technique since the 1990s and describes it as \"a natural tranquilizer for the nervous system.\" Weil draws explicitly on pranayama, the breath-control limb of classical yoga, where ratio-based holds and extended exhales are foundational.",
     hero: {
       title: "4-7-8 Breathing Visualizer",
       subtitle: "Long-exhale cadence to downshift quickly.",
@@ -643,6 +652,7 @@ export const breathingPages: BreathingPageContent[] = [
     slug: "coherent",
     mode: ModeName.Coherent,
     featured: true,
+    lineage: "Developed by Stephen Elliott of COHERENCE LLC in 2005, building on the heart-rate-variability biofeedback research of Paul Lehrer and Evgeny Vaschillo, who identified the cardiovascular \"resonance frequency\" near 0.1 Hz (about six breaths per minute). Mainstreamed by science journalist James Nestor's 2020 book *Breath*, which fixed the rounded \"5.5 breaths per minute\" cadence in popular awareness.",
     hero: {
       title: "Coherent Breathing Trainer",
       subtitle: "Equal inhale/exhale near 0.1 Hz to amplify HRV.",
@@ -874,6 +884,7 @@ export const breathingPages: BreathingPageContent[] = [
   {
     slug: "physiological-sigh",
     mode: ModeName.Sigh,
+    lineage: "The double-inhale-then-long-exhale reflex was mapped to a specific cluster of brainstem neurons by Jack Feldman (UCLA) and Mark Krasnow (Stanford), reported in *Science* in 2017. Stanford psychiatrist David Spiegel, neurobiologist Andrew Huberman, and Melis Yilmaz Balban turned that finding into a five-minute protocol — \"cyclic sighing\" — in a 2023 randomized study published in *Cell Reports Medicine*.",
     featured: true,
   hero: {
     title: "Physiological Sigh: Instant Stress Relief",
@@ -1192,6 +1203,7 @@ export const breathingPages: BreathingPageContent[] = [
   {
     slug: "wim-hof",
     mode: ModeName.WimHof,
+    lineage: "Developed by Dutch athlete Wim Hof, who pairs hyperventilation-style breathing cycles with cold exposure and concentration. Hof acknowledges parallels to the Tibetan Buddhist practice of Tummo (inner-heat yoga) but frames his own method as derived from direct experimentation with cold rather than from religious lineage.",
     featured: true,
     hero: {
       title: "Wim Hof Breathing Method",
@@ -1419,6 +1431,7 @@ export const breathingPages: BreathingPageContent[] = [
 const pursedLipPage: BreathingPageContent = {
   slug: "pursed-lip",
   mode: ModeName.PursedLip,
+  lineage: "Developed in clinical pulmonary medicine and respiratory therapy as a tool for patients with chronic obstructive pulmonary disease (COPD) — there is no single originator. It became a standard component of pulmonary rehabilitation programs and was endorsed by the American College of Chest Physicians and AACVPR in 1997.",
   hero: {
     title: "Pursed Lip Breathing Technique",
     subtitle: "Slow your breath and ease shortness of breath in seconds.",
@@ -1656,6 +1669,7 @@ const pursedLipPage: BreathingPageContent = {
 const nadiShodhanaPage: BreathingPageContent = {
   slug: "nadi-shodhana",
   mode: ModeName.NadiShodhana,
+  lineage: "A pranayama practice from the Hatha Yoga tradition, documented in the 15th-century *Hatha Yoga Pradipika* and the *Gheranda Samhita*, where it is described as a purification of the *nadis* (subtle energy channels) and is taught as a foundation for more advanced breath work.",
   hero: {
     title: "Alternate Nostril Breathing (Nadi Shodhana)",
     subtitle: "Balance your nervous system with this ancient yoga technique.",
@@ -1931,6 +1945,7 @@ const nadiShodhanaPage: BreathingPageContent = {
 const ujjayiPage: BreathingPageContent = {
   slug: "ujjayi",
   mode: ModeName.Ujjayi,
+  lineage: "A pranayama with a slight glottal constriction that produces an audible whisper-like breath. It is described in B. K. S. Iyengar's *Light on Yoga* (1966) and is the continuous breath of Ashtanga vinyasa yoga as taught by K. Pattabhi Jois — both of whom studied under Tirumalai Krishnamacharya in 20th-century Mysore.",
   featured: false,
   hero: {
     title: "Ujjayi Breathing: The Ocean Breath Technique",
@@ -2168,6 +2183,7 @@ const ujjayiPage: BreathingPageContent = {
 const bellyPage: BreathingPageContent = {
   slug: "belly",
   mode: ModeName.Belly,
+  lineage: "There is no single originator. Diaphragm-led breathing is taught in clinical respiratory therapy, in pranayama (where it underlies most slower techniques), and in somatic and martial-arts traditions including tai chi — converging on the same physiology from different lineages.",
   featured: false,
   hero: {
     title: "Belly Breathing: Diaphragmatic Breathing Exercises",
@@ -2427,6 +2443,7 @@ const bellyPage: BreathingPageContent = {
 const buteykoPage: BreathingPageContent = {
   slug: "buteyko",
   mode: ModeName.Buteyko,
+  lineage: "Developed by Soviet physician Konstantin Buteyko (1923–2003), who began testing the method clinically in 1959 at the Leningrad Institute of Pulmonology. It is built around the premise that chronic over-breathing depletes carbon dioxide and that retraining toward slower, lighter, nasal breathing can ease asthma and related conditions.",
   featured: false,
   hero: {
     title: "Buteyko Breathing: Light, Nasal Breathing Method",
@@ -2665,6 +2682,7 @@ const buteykoPage: BreathingPageContent = {
 const tummoPage: BreathingPageContent = {
   slug: "tummo",
   mode: ModeName.Tummo,
+  lineage: "A Tibetan Vajrayana Buddhist inner-heat practice, transmitted as one of the Six Yogas of Naropa. The lineage runs from the Indian mahasiddhas Tilopa (c. 988–1069 CE) and Naropa to the Tibetan translator Marpa, and through Milarepa it became central to the Kagyu school.",
   featured: false,
   hero: {
     title: "Tummo Breathing: Tibetan Inner Heat Technique",
@@ -2950,6 +2968,7 @@ const tummoPage: BreathingPageContent = {
 const breathOfFirePage: BreathingPageContent = {
   slug: "breath-of-fire",
   mode: ModeName.BreathOfFire,
+  lineage: "Documented as Kapalabhati (\"skull-shining breath\") in the 15th-century *Hatha Yoga Pradipika*, where it appears among the six purification practices (*shatkarmas*) of Hatha Yoga. The \"Breath of Fire\" name and faster, sustained variation were popularized in the West through the Kundalini Yoga lineage taught by Yogi Bhajan from the late 1960s onward.",
   featured: false,
   hero: {
     title: "Breath of Fire: Kundalini Yoga Breathing Exercise",
