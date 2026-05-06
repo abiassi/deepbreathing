@@ -138,7 +138,7 @@ export const breathingPages: BreathingPageContent[] = [
     slug: "box",
     mode: ModeName.Box,
     featured: true,
-    lineage: "Named and popularized by former US Navy SEAL commander Mark Divine, who taught it through his SEALFIT and Unbeatable Mind programs starting in the 2010s. The equal-ratio pattern itself is older — it appears as Sama Vritti in classical pranayama and in earlier military tactical breathing protocols that predate the \"box\" name.",
+    lineage: "Named and popularized by former US Navy SEAL commander Mark Divine, who taught it through his SEALFIT and Unbeatable Mind programs starting in the 2010s. The equal-ratio pattern itself is older. It appears as Sama Vritti in classical pranayama and in earlier military tactical breathing protocols that predate the \"box\" name.",
     hero: {
       title: "Box Breathing (4-4-4-4) Visualizer",
       subtitle: "Equal counts to steady arousal and sharpen focus.",
@@ -884,7 +884,7 @@ export const breathingPages: BreathingPageContent[] = [
   {
     slug: "physiological-sigh",
     mode: ModeName.Sigh,
-    lineage: "The double-inhale-then-long-exhale reflex was mapped to a specific cluster of brainstem neurons by Jack Feldman (UCLA) and Mark Krasnow (Stanford), reported in *Science* in 2017. Stanford psychiatrist David Spiegel, neurobiologist Andrew Huberman, and Melis Yilmaz Balban turned that finding into a five-minute protocol — \"cyclic sighing\" — in a 2023 randomized study published in *Cell Reports Medicine*.",
+    lineage: "The double-inhale-then-long-exhale reflex was mapped to a specific cluster of brainstem neurons by Jack Feldman (UCLA) and Mark Krasnow (Stanford), reported in *Science* in 2017. Stanford psychiatrist David Spiegel, neurobiologist Andrew Huberman, and Melis Yilmaz Balban turned that finding into a five-minute protocol called \"cyclic sighing\" in a 2023 randomized study published in *Cell Reports Medicine*.",
     featured: true,
   hero: {
     title: "Physiological Sigh: Instant Stress Relief",
@@ -1431,7 +1431,7 @@ export const breathingPages: BreathingPageContent[] = [
 const pursedLipPage: BreathingPageContent = {
   slug: "pursed-lip",
   mode: ModeName.PursedLip,
-  lineage: "Developed in clinical pulmonary medicine and respiratory therapy as a tool for patients with chronic obstructive pulmonary disease (COPD) — there is no single originator. It became a standard component of pulmonary rehabilitation programs and was endorsed by the American College of Chest Physicians and AACVPR in 1997.",
+  lineage: "Developed in clinical pulmonary medicine and respiratory therapy as a tool for patients with chronic obstructive pulmonary disease (COPD). There is no single originator. It became a standard component of pulmonary rehabilitation programs and was endorsed by the American College of Chest Physicians and AACVPR in 1997.",
   hero: {
     title: "Pursed Lip Breathing Technique",
     subtitle: "Slow your breath and ease shortness of breath in seconds.",
@@ -1945,7 +1945,7 @@ const nadiShodhanaPage: BreathingPageContent = {
 const ujjayiPage: BreathingPageContent = {
   slug: "ujjayi",
   mode: ModeName.Ujjayi,
-  lineage: "A pranayama with a slight glottal constriction that produces an audible whisper-like breath. It is described in B. K. S. Iyengar's *Light on Yoga* (1966) and is the continuous breath of Ashtanga vinyasa yoga as taught by K. Pattabhi Jois — both of whom studied under Tirumalai Krishnamacharya in 20th-century Mysore.",
+  lineage: "A pranayama with a slight glottal constriction that produces an audible whisper-like breath. It is described in B. K. S. Iyengar's *Light on Yoga* (1966) and is the continuous breath of Ashtanga vinyasa yoga as taught by K. Pattabhi Jois. Both studied under Tirumalai Krishnamacharya in 20th-century Mysore.",
   featured: false,
   hero: {
     title: "Ujjayi Breathing: The Ocean Breath Technique",
@@ -2183,7 +2183,7 @@ const ujjayiPage: BreathingPageContent = {
 const bellyPage: BreathingPageContent = {
   slug: "belly",
   mode: ModeName.Belly,
-  lineage: "There is no single originator. Diaphragm-led breathing is taught in clinical respiratory therapy, in pranayama (where it underlies most slower techniques), and in somatic and martial-arts traditions including tai chi — converging on the same physiology from different lineages.",
+  lineage: "There is no single originator. Diaphragm-led breathing is taught in clinical respiratory therapy, in pranayama (where it underlies most slower techniques), and in somatic and martial-arts traditions including tai chi. Different lineages converge on the same physiology.",
   featured: false,
   hero: {
     title: "Belly Breathing: Diaphragmatic Breathing Exercises",

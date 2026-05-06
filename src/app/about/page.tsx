@@ -96,8 +96,8 @@ export default function AboutPage() {
             <Link href="/about/abi" className="font-semibold text-primary hover:underline">
               Abi Abiassi
             </Link>
-            {" "}— founder, photographer, breathwork practitioner — as a free visualizer for the
-            techniques he uses daily.
+            , founder, photographer, and breathwork practitioner. He built it as a free visualizer
+            for the techniques he uses daily.
           </p>
         </div>
 

@@ -9,7 +9,7 @@ const canonicalUrl = `${siteUrl}/about/abi`;
 const ogImageUrl = createOgImagePath("About Abi Abiassi");
 
 export const metadata: Metadata = {
-  title: "About Abi Abiassi — Founder, Deep Breathing Exercises",
+  title: "About Abi Abiassi, Founder of Deep Breathing Exercises",
   description:
     "Abi Abiassi built Deep Breathing Exercises as a free visualizer for breathing techniques he uses daily. Photographer, founder, breathwork practitioner.",
   alternates: {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   authors: [{ name: "Abi Abiassi", url: canonicalUrl }],
   openGraph: {
-    title: "About Abi Abiassi — Founder, Deep Breathing Exercises",
+    title: "About Abi Abiassi, Founder of Deep Breathing Exercises",
     description:
       "Built this site as a free visualizer for the breathing techniques I use daily. Photographer, founder.",
     url: canonicalUrl,
@@ -115,8 +115,8 @@ export default function AbiAboutPage() {
         <div className="glow-card rounded-[32px] border border-border bg-card p-8">
           <p>
             I grew up in a family of meditation practitioners. It wasn&apos;t until later in life that I
-            started being more intentional about breathwork — and once I did, I realized how useful
-            these practices were on a day-to-day basis. They&apos;ve been invaluable in furthering my
+            started being more intentional about breathwork. Once I did, I realized how useful these
+            practices were on a day-to-day basis. They&apos;ve been invaluable in furthering my
             photography work too.
           </p>
           <p className="mt-4">
@@ -139,7 +139,7 @@ export default function AbiAboutPage() {
                 rel="noopener noreferrer"
                 className="font-semibold text-primary hover:underline"
               >
-                abiassi.com — photography &amp; personal site →
+                abiassi.com (photography &amp; personal site) →
               </a>
             </li>
             <li>
@@ -159,7 +159,7 @@ export default function AbiAboutPage() {
                 rel="noopener noreferrer"
                 className="font-semibold text-primary hover:underline"
               >
-                X / Twitter — @abiassi_ →
+                X / Twitter (@abiassi_) →
               </a>
             </li>
           </ul>
@@ -169,7 +169,7 @@ export default function AbiAboutPage() {
           <h2 className="text-2xl font-semibold text-card-foreground">How this site is made</h2>
           <p className="mt-3 text-sm">
             Each technique page names the practitioner or tradition it comes from, and links out
-            to the peer-reviewed research that informs the claims. I&apos;m not a clinician — if you
+            to the peer-reviewed research that informs the claims. I&apos;m not a clinician. If you
             have a medical condition, please talk to your doctor before adopting a new breathing
             practice.
           </p>
@@ -183,7 +183,7 @@ export default function AbiAboutPage() {
         <div className="glow-card rounded-[32px] border border-border bg-card p-8">
           <h2 className="text-2xl font-semibold text-card-foreground">Get in touch</h2>
           <p className="mt-3 text-sm">
-            Found an error? Have a feature request? Send me a note —{" "}
+            Found an error? Have a feature request? Send me a note at{" "}
             <a href="mailto:hello@darkmatter.is" className="text-primary hover:underline">
               hello@darkmatter.is
             </a>

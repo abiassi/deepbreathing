@@ -9,9 +9,9 @@ const canonicalUrl = `${siteUrl}/about/editorial-policy`;
 const ogImageUrl = createOgImagePath("Our Editorial Policy");
 
 export const metadata: Metadata = {
-  title: "Editorial Policy — Deep Breathing Exercises",
+  title: "Editorial Policy | Deep Breathing Exercises",
   description:
-    "How we research, write, and update our breathing-technique guides. Lineage attribution, peer-reviewed citations, honest framing — and what we don't claim.",
+    "How we research, write, and update our breathing-technique guides. Lineage attribution, peer-reviewed citations, honest framing, and what we don't claim.",
   alternates: {
     canonical: canonicalUrl
   },
@@ -70,7 +70,7 @@ export default function EditorialPolicyPage() {
     "@type": "Article",
     headline: "Our Editorial Policy",
     description:
-      "How we research, write, and update our breathing-technique guides — lineage attribution, peer-reviewed citations, honest framing.",
+      "How we research, write, and update our breathing-technique guides. Lineage attribution, peer-reviewed citations, honest framing.",
     author: {
       "@type": "Organization",
       name: "Deep Breathing Exercises",
@@ -108,7 +108,7 @@ export default function EditorialPolicyPage() {
             <Link href="/about/abi" className="text-primary hover:underline">
               Abi Abiassi
             </Link>
-            {" "}as a way to practice the techniques he uses daily. It is a wellness/breathwork
+            {" "}as a way to practice the techniques he uses daily. It is a wellness and breathwork
             product, not a medical site. We&apos;re not clinicians. Nothing here is a diagnosis or
             a treatment plan.
           </p>
@@ -119,9 +119,9 @@ export default function EditorialPolicyPage() {
           <div className="mt-4 space-y-3">
             <p>
               Each technique page names the originator, popularizer, or tradition the technique comes
-              from — Mark Divine for box breathing, Dr. Andrew Weil for 4-7-8, Wim Hof for the Wim
-              Hof Method, the Hatha Yoga tradition for Nadi Shodhana and Kapalabhati, and so on.
-              When the technique has no single originator (pursed-lip, belly breathing), we say so.
+              from. Mark Divine for box breathing. Dr. Andrew Weil for 4-7-8. Wim Hof for the Wim
+              Hof Method. The Hatha Yoga tradition for Nadi Shodhana and Kapalabhati. When the
+              technique has no single originator (pursed-lip, belly breathing), we say so.
             </p>
             <p>
               Where popular framing oversimplifies (e.g., box breathing is older than its Navy SEAL
@@ -134,9 +134,9 @@ export default function EditorialPolicyPage() {
           <h2 className="text-2xl font-semibold text-card-foreground">How we cite research</h2>
           <div className="mt-4 space-y-4">
             <p>
-              Where a claim is strong, we link to it. We use a light-touch hyperlink style — one
-              to three peer-reviewed citations per page, anchored on the specific phrase the
-              research supports — rather than dense numbered footnotes.
+              Where a claim is strong, we link to it. We use a light-touch hyperlink style: one to
+              three peer-reviewed citations per page, anchored on the specific phrase the research
+              supports. We don&apos;t use dense numbered footnotes or end-of-article reference lists.
             </p>
             <p>Sources we prioritize, in order:</p>
             <ul className="space-y-3">
@@ -158,7 +158,7 @@ export default function EditorialPolicyPage() {
                 <span className="text-primary">•</span>
                 <span>
                   <strong className="text-card-foreground">Mechanism studies</strong> that explain
-                  why a technique works physiologically — clearly labeled when from animal models.
+                  why a technique works physiologically, clearly labeled when from animal models.
                 </span>
               </li>
               <li className="flex gap-3">
@@ -182,7 +182,7 @@ export default function EditorialPolicyPage() {
             </p>
             <p>
               Some popular claims about breathwork don&apos;t hold up under scrutiny. Where the
-              evidence is weak or contested, we say that too — even when the technique itself is
+              evidence is weak or contested, we say that too, even when the technique itself is
               widely promoted.
             </p>
           </div>
@@ -222,7 +222,7 @@ export default function EditorialPolicyPage() {
               <a href="mailto:hello@darkmatter.is" className="text-primary hover:underline">
                 hello@darkmatter.is
               </a>
-              {" "}— corrections go straight to Abi.
+              . Corrections go straight to Abi.
             </p>
           </div>
         </div>
@@ -248,7 +248,7 @@ export default function EditorialPolicyPage() {
             </p>
             <p className="text-sm">
               We&apos;re not medical professionals. This site is for educational purposes and should
-              complement — not replace — professional healthcare advice.
+              complement professional healthcare advice, not replace it.
             </p>
           </div>
         </div>
