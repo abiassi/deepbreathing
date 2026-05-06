@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { breathingPageMap, type BreathingPageContent } from "@/data/breathing-pages";
 import { LocalizedDate } from "@/components/seo/localized-date";
 import { LanguageSwitcherFooter } from "@/components/language-switcher";
+import { renderInlineLinks } from "@/lib/render-inline-links";
 
 const ShareButton = dynamic(
   () => import("@/components/ui/share-button").then(mod => ({ default: mod.ShareButton })),
@@ -256,7 +257,7 @@ export function PatternPage({ slug }: { slug: string }) {
               {page.body.map((section) => (
                 <div key={section.heading}>
                   <h2 className="text-2xl font-semibold">{section.heading}</h2>
-                  <p className="mt-2 text-muted-foreground">{section.content}</p>
+                  <p className="mt-2 text-muted-foreground">{renderInlineLinks(section.content)}</p>
                 </div>
               ))}
             </div>
@@ -268,7 +269,7 @@ export function PatternPage({ slug }: { slug: string }) {
             <div key={benefit.title} className="min-w-[70vw] snap-center glow-card rounded-[32px] border border-border bg-card p-6 first:ml-4 sm:first:ml-6 last:mr-4 sm:last:mr-6 lg:first:ml-0 lg:last:mr-0 sm:min-w-[400px] lg:min-w-0">
               <p className="text-sm uppercase tracking-widest text-primary">Benefit</p>
               <h2 className="mt-2 text-2xl font-semibold text-card-foreground">{benefit.title}</h2>
-              <p className="mt-2 text-muted-foreground">{benefit.description}</p>
+              <p className="mt-2 text-muted-foreground">{renderInlineLinks(benefit.description)}</p>
             </div>
           ))}
         </section>
@@ -374,7 +375,7 @@ export function PatternPage({ slug }: { slug: string }) {
               {page.faqs.map((faq) => (
                 <div key={faq.question} className="rounded-2xl bg-muted p-4">
                   <h3 className="text-lg font-semibold text-card-foreground">{faq.question}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{faq.answer}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{renderInlineLinks(faq.answer)}</p>
                 </div>
               ))}
             </div>

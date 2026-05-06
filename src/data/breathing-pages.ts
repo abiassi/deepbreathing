@@ -182,7 +182,7 @@ export const breathingPages: BreathingPageContent[] = [
     benefits: [
       {
         title: "Steadies arousal",
-        description: "Slow, even pacing increases parasympathetic activity and can lower perceived stress in minutes."
+        description: "Slow, even pacing increases parasympathetic activity and can [lower perceived stress in minutes](https://doi.org/10.1016/j.xcrm.2022.100895)."
       },
       {
         title: "Portable structure",
@@ -444,7 +444,7 @@ export const breathingPages: BreathingPageContent[] = [
     benefits: [
       {
         title: "Exhale-led calming",
-        description: "Long exhales slow respiration and often increase parasympathetic markers during practice."
+        description: "Long exhales slow respiration and often [increase parasympathetic markers during practice](https://doi.org/10.14814/phy2.15389)."
       },
       {
         title: "Sleep wind-down",
@@ -692,7 +692,7 @@ export const breathingPages: BreathingPageContent[] = [
     benefits: [
       {
         title: "Max HRV amplitude",
-        description: "Breathing ~5–6 bpm often maximizes RSA and baroreflex effects during practice."
+        description: "Breathing ~5–6 bpm often [maximizes RSA and baroreflex effects during practice](https://doi.org/10.3389/fpsyg.2014.00756)."
       },
       {
         title: "Steadier stress response",
@@ -939,7 +939,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
     {
       heading: "Physiological Sigh for Anxiety",
-      content: "Unlike panic attacks (which are acute), anxiety often simmers in the background. The physiological sigh helps in two ways: (1) As an instant reset when anxiety spikes, 1-3 sighs can break the tension. (2) As a daily practice, 5 minutes of cyclic sighing per day can lower baseline anxiety over weeks. The 2023 Stanford study found cyclic sighing improved mood more than mindfulness meditation. For chronic anxiety, pair the sigh with other evidence-based approaches; it's a tool, not a cure."
+      content: "Unlike panic attacks (which are acute), anxiety often simmers in the background. The physiological sigh helps in two ways: (1) As an instant reset when anxiety spikes, 1-3 sighs can break the tension. (2) As a daily practice, 5 minutes of cyclic sighing per day can lower baseline anxiety over weeks. [The 2023 Stanford study found cyclic sighing improved mood more than mindfulness meditation](https://doi.org/10.1016/j.xcrm.2022.100895). For chronic anxiety, pair the sigh with other evidence-based approaches; it's a tool, not a cure."
     }
   ],
   benefits: [
@@ -1230,7 +1230,7 @@ export const breathingPages: BreathingPageContent[] = [
       },
       {
         heading: "Benefits",
-        content: "Practitioners report increased energy, improved focus, reduced stress, and enhanced cold tolerance. Research shows the method can influence the autonomic nervous system and immune response. The breath holds train CO2 tolerance and mental resilience. Many use it as a morning ritual for energy or before cold exposure."
+        content: "Practitioners report increased energy, improved focus, reduced stress, and enhanced cold tolerance. [Research shows the method can influence the autonomic nervous system and immune response](https://doi.org/10.1073/pnas.1322174111). The breath holds train CO2 tolerance and mental resilience. Many use it as a morning ritual for energy or before cold exposure."
       },
       {
         heading: "When to use",
@@ -1453,7 +1453,7 @@ const pursedLipPage: BreathingPageContent = {
   body: [
     {
       heading: "What Is Pursed Lip Breathing?",
-      content: "Pursed lip breathing is a controlled breathing technique where you inhale slowly through your nose and exhale through tightly pursed lips, as if you're blowing through a straw or cooling hot soup. The exhale is typically twice as long as the inhale (2:4 ratio). This creates back-pressure in your airways, keeping them open longer and helping trapped air escape from your lungs."
+      content: "Pursed lip breathing is a controlled breathing technique where you inhale slowly through your nose and exhale through tightly pursed lips, as if you're blowing through a straw or cooling hot soup. The exhale is typically twice as long as the inhale (2:4 ratio). [This creates back-pressure in your airways, keeping them open longer and helping trapped air escape from your lungs](https://doi.org/10.1378/chest.125.2.459)."
     },
     {
       heading: "Who Benefits Most",
@@ -1769,7 +1769,7 @@ const nadiShodhanaPage: BreathingPageContent = {
     },
     {
       question: "What does science say about alternate nostril breathing?",
-      answer: "Research shows alternate nostril breathing can reduce blood pressure, lower heart rate, and decrease anxiety. Studies also show it may improve attention and fine motor coordination. The mechanism appears to be related to activating the parasympathetic nervous system through slow, controlled breathing."
+      answer: "[Research shows alternate nostril breathing can reduce blood pressure, lower heart rate](https://doi.org/10.12659/MSMBR.892063), and decrease anxiety. Studies also show it may improve attention and fine motor coordination. The mechanism appears to be related to activating the parasympathetic nervous system through slow, controlled breathing."
     }
   ],
   howTo: {
@@ -1980,7 +1980,7 @@ const ujjayiPage: BreathingPageContent = {
     },
     {
       heading: "Benefits",
-      content: "The audible breath creates a focal point that anchors attention, making meditation and yoga flow easier. The slight resistance builds heat internally (tapas) and may increase oxygen absorption. Research on slow breathing techniques shows reduced cortisol, lower blood pressure, and increased HRV within minutes of practice."
+      content: "The audible breath creates a focal point that anchors attention, making meditation and yoga flow easier. The slight resistance builds heat internally (tapas) and may increase oxygen absorption. [Research on slow breathing techniques shows reduced cortisol, lower blood pressure, and increased HRV within minutes of practice](https://doi.org/10.1183/20734735.009817)."
     },
     {
       heading: "When to use",
@@ -2218,7 +2218,7 @@ const bellyPage: BreathingPageContent = {
     },
     {
       heading: "Benefits",
-      content: "Deep diaphragmatic breaths stimulate the vagus nerve, activating the parasympathetic 'rest and digest' response. Studies show regular practice can lower cortisol, reduce blood pressure, improve heart rate variability, and decrease anxiety. It's also the foundation for singing, public speaking, and athletic performance."
+      content: "Deep diaphragmatic breaths stimulate the vagus nerve, activating the parasympathetic 'rest and digest' response. [Studies show regular practice can lower cortisol](https://doi.org/10.3389/fpsyg.2017.00874), reduce blood pressure, improve heart rate variability, and decrease anxiety. It's also the foundation for singing, public speaking, and athletic performance."
     },
     {
       heading: "When to use",
@@ -2474,7 +2474,7 @@ const buteykoPage: BreathingPageContent = {
     },
     {
       heading: "Benefits",
-      content: "Studies show Buteyko training can reduce asthma symptoms and medication use, though it doesn't improve lung function measurements. The method emphasizes nasal breathing, which filters, warms, and humidifies air while producing nitric oxide. Many practitioners report better sleep, reduced anxiety, and improved exercise tolerance."
+      content: "[Studies show Buteyko training can reduce asthma symptoms and medication use, though it doesn't improve lung function measurements](https://doi.org/10.1002/14651858.CD001277.pub4). The method emphasizes nasal breathing, which filters, warms, and humidifies air while producing nitric oxide. Many practitioners report better sleep, reduced anxiety, and improved exercise tolerance."
     },
     {
       heading: "When to use",

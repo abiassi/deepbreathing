@@ -472,11 +472,11 @@ export const useCasePages: UseCasePageContent[] = [
     faqs: [
       {
         question: "How long until I see blood pressure changes?",
-        answer: "Some people notice an immediate drop of a few points right after a session. For sustained improvements, most studies show benefits after 4-8 weeks of daily practice. Track your readings to see your personal response, everyone's different."
+        answer: "Some people notice an immediate drop of a few points right after a session. [For sustained improvements, most studies show benefits after 4-8 weeks of daily practice](https://doi.org/10.1016/j.ctim.2019.03.005). Track your readings to see your personal response, everyone's different."
       },
       {
         question: "Can breathing exercises replace my blood pressure medication?",
-        answer: "No. Breathing exercises are complementary. They work alongside medication and lifestyle changes, not instead of them. Never reduce or stop medication without your doctor's guidance. That said, some patients working with their doctors have been able to reduce dosages over time with consistent lifestyle interventions including breathing practice."
+        answer: "No. [Breathing exercises are complementary. They work alongside medication and lifestyle changes, not instead of them](https://doi.org/10.1001/jamainternmed.2014.4336). Never reduce or stop medication without your doctor's guidance. That said, some patients working with their doctors have been able to reduce dosages over time with consistent lifestyle interventions including breathing practice."
       },
       {
         question: "Is the 7-second breath hold safe for me?",
@@ -488,7 +488,7 @@ export const useCasePages: UseCasePageContent[] = [
       },
       {
         question: "What else should I do alongside breathing exercises?",
-        answer: "Breathing exercises work best as part of a comprehensive approach: regular physical activity, reducing sodium intake, maintaining a healthy weight, limiting alcohol, managing stress, and getting adequate sleep. The DASH diet and Mediterranean diet are both associated with lower blood pressure."
+        answer: "[Breathing exercises work best as part of a comprehensive approach](https://doi.org/10.1161/HYP.0b013e318293645f): regular physical activity, reducing sodium intake, maintaining a healthy weight, limiting alcohol, managing stress, and getting adequate sleep. The DASH diet and Mediterranean diet are both associated with lower blood pressure."
       }
     ]
   },
@@ -673,7 +673,7 @@ export const useCasePages: UseCasePageContent[] = [
     faqs: [
       {
         question: "How long does it take to fall asleep with 4-7-8 breathing?",
-        answer: "Most people feel noticeably calmer after just 2-3 cycles (about 1 minute). Falling asleep varies, some drift off within 5 minutes, others may take longer initially. The technique becomes more effective with regular practice as your body learns to associate the pattern with sleep."
+        answer: "Most people feel noticeably calmer after just 2-3 cycles (about 1 minute). Falling asleep varies, some drift off within 5 minutes, others may take longer initially. [The technique becomes more effective with regular practice](https://doi.org/10.3390/jcm8020193) as your body learns to associate the pattern with sleep."
       },
       {
         question: "What if I wake up in the middle of the night?",
@@ -969,7 +969,7 @@ export const useCasePages: UseCasePageContent[] = [
         },
         {
           mechanism: "Lowers Cortisol and Heart Rate",
-          explanation: "Multiple studies show slow breathing reduces cortisol (your primary stress hormone) and lowers heart rate within minutes. A 2017 study found resonance-frequency breathing (similar to box breathing) reduced blood pressure reactivity to stress and improved mood compared to controls."
+          explanation: "[Multiple studies show slow breathing reduces cortisol (your primary stress hormone) and lowers heart rate within minutes](https://doi.org/10.1016/j.cpr.2021.101980). A 2017 study found resonance-frequency breathing (similar to box breathing) reduced blood pressure reactivity to stress and improved mood compared to controls."
         }
       ]
     },
@@ -1155,7 +1155,7 @@ export const useCasePages: UseCasePageContent[] = [
 
     problem: {
       heading: "What Happens During a Panic Attack",
-      content: "A panic attack is your body's alarm system firing at maximum intensity, even though there's no actual danger. Your amygdala (fear center) floods your system with adrenaline, your breathing becomes rapid and shallow (hyperventilation), and you blow off too much CO₂. Low CO₂ causes blood vessels to constrict, making you feel dizzy, tingly, and short of breath, which makes you panic MORE, creating a vicious spiral.",
+      content: "A panic attack is your body's alarm system firing at maximum intensity, even though there's no actual danger. Your amygdala (fear center) floods your system with adrenaline, [your breathing becomes rapid and shallow (hyperventilation), and you blow off too much CO₂](https://doi.org/10.1037/a0019552). Low CO₂ causes blood vessels to constrict, making you feel dizzy, tingly, and short of breath, which makes you panic MORE, creating a vicious spiral.",
       symptoms: [
         "Heart pounding or racing (tachycardia)",
         "Hyperventilating, rapid, shallow breathing",
@@ -1379,7 +1379,7 @@ export const useCasePages: UseCasePageContent[] = [
 
     solution: {
       heading: "Coherent Breathing: The 0.1 Hz Focus Protocol",
-      content: "Coherent breathing (also called resonance frequency breathing) is breathing at a rate of 5 breaths per minute (0.1 Hz). This specific rate is associated with peak heart rate variability (HRV) during practice, a biomarker linked to nervous system regulation and cognitive performance. Research suggests that a brief slow-breathing session before deep work can improve attention and working memory, particularly under stress.",
+      content: "Coherent breathing (also called resonance frequency breathing) is breathing at a rate of 5 breaths per minute (0.1 Hz). This specific rate is associated with peak heart rate variability (HRV) during practice, a biomarker linked to nervous system regulation and cognitive performance. [Research suggests that a brief slow-breathing session before deep work can improve attention and working memory, particularly under stress](https://doi.org/10.1007/s41465-021-00218-3).",
       whyThisPattern: "Your cardiovascular and nervous systems have a natural resonance frequency around 0.1 Hz (5 breaths/min). Breathing at this rate synchronizes your heart rhythms, blood pressure oscillations, and autonomic nervous system, creating a state of 'coherence' that optimizes brain function. It's like tuning a radio to the exact frequency for the clearest signal."
     },
 
@@ -1810,7 +1810,7 @@ export const useCasePages: UseCasePageContent[] = [
       points: [
         {
           mechanism: "Fastest Heart Rate Reduction",
-          explanation: "Stanford's 2023 RCT (Balban et al.) compared cyclic sighing vs box breathing vs coherent breathing vs mindfulness meditation. Cyclic sighing produced the greatest reduction in resting heart rate and respiratory rate over 4 weeks. For acute recovery (post-effort), 3-5 physiological sighs can drop heart rate by 20-30 BPM within 60-90 seconds, faster than passive recovery or panting."
+          explanation: "[Stanford's 2023 RCT (Balban et al.) compared cyclic sighing vs box breathing vs coherent breathing vs mindfulness meditation](https://doi.org/10.1016/j.xcrm.2022.100895). Cyclic sighing produced the greatest reduction in resting heart rate and respiratory rate over 4 weeks. For acute recovery (post-effort), 3-5 physiological sighs can drop heart rate by 20-30 BPM within 60-90 seconds, faster than passive recovery or panting."
         },
         {
           mechanism: "Alveoli Re-inflation and Gas Exchange",
@@ -2032,7 +2032,7 @@ export const useCasePages: UseCasePageContent[] = [
         },
         {
           mechanism: "Trains Pain Management for Labor",
-          explanation: "Labor pain management isn't about eliminating pain. It's about staying calm and in control despite pain. Slow breathing during contractions helps by: (1) Giving you something to focus on (mental distraction). (2) Preventing hyperventilation and panic. (3) Activating endorphins (natural pain relief). Many childbirth educators teach 4-7-8 or similar patterns as core labor coping tools."
+          explanation: "Labor pain management isn't about eliminating pain. It's about staying calm and in control despite pain. Slow breathing during contractions helps by: (1) Giving you something to focus on (mental distraction). (2) Preventing hyperventilation and panic. (3) Activating endorphins (natural pain relief). [Many childbirth educators teach 4-7-8 or similar patterns as core labor coping tools](https://doi.org/10.7189/jogh.13.04023)."
         },
         {
           mechanism: "Safe for All Trimesters (With Modifications)",
@@ -2859,7 +2859,7 @@ const stressPage: UseCasePageContent = {
 
   solution: {
     heading: "The Physiological Sigh: Your 30-Second Reset",
-    content: "The physiological sigh is a double inhale followed by a long exhale, a pattern your body uses naturally when crying or transitioning from sleep. Done deliberately, it's the fastest way to shift from stress to calm. A 2023 Stanford study found that just 5 minutes of daily 'cyclic sighing' improved mood more than mindfulness meditation. For acute stress, even 1-3 sighs (about 30 seconds) can noticeably reduce tension.",
+    content: "The physiological sigh is a double inhale followed by a long exhale, a pattern your body uses naturally when crying or transitioning from sleep. Done deliberately, it's a quick way to shift from stress to calm. [A 2023 Stanford study found that just 5 minutes of daily 'cyclic sighing' improved mood more than mindfulness meditation](https://doi.org/10.1016/j.xcrm.2022.100895). For acute stress, even 1-3 sighs (about 30 seconds) can noticeably reduce tension.",
     whyThisPattern: "The double inhale reinflates collapsed lung tissue, maximizing oxygen exchange. The long exhale directly stimulates your vagus nerve, shifting your nervous system from 'fight-or-flight' to 'rest-and-digest.' Unlike techniques that require minutes of practice, the physiological sigh works in seconds because it leverages your body's built-in calming reflex."
   },
 
@@ -3071,7 +3071,7 @@ const kidsPage: UseCasePageContent = {
     points: [
       {
         mechanism: "Activates the Calming System",
-        explanation: "Slow breathing activates the vagus nerve, which triggers the parasympathetic nervous system, the body's natural 'brake pedal' that counters fight-or-flight responses. This works in children just as it does in adults."
+        explanation: "Slow breathing activates the vagus nerve, which triggers the parasympathetic nervous system, the body's natural 'brake pedal' that counters fight-or-flight responses. [This works in children just as it does in adults](https://doi.org/10.1111/jcpp.12980)."
       },
       {
         mechanism: "Gives Focus During Overwhelm",
@@ -3647,7 +3647,7 @@ const lungCapacityPage: UseCasePageContent = {
     points: [
       {
         mechanism: "Tidal Volume Improvement",
-        explanation: "Tidal volume is the amount of air you move in a normal breath. Most people's tidal volume is only 500ml, about 8% of total lung capacity. Diaphragmatic breathing training can measurably increase tidal volume, meaning you move more air with each breath.",
+        explanation: "Tidal volume is the amount of air you move in a normal breath. Most people's tidal volume is only 500ml, about 8% of total lung capacity. [Diaphragmatic breathing training can measurably increase tidal volume](https://doi.org/10.11124/JBISRIR-2017-003848), meaning you move more air with each breath.",
       },
       {
         mechanism: "Inspiratory Muscle Strengthening",

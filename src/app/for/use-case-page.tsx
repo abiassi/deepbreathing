@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { useCasePageMap, type UseCasePageContent } from "@/data/use-case-pages";
 import { LocalizedDate } from "@/components/seo/localized-date";
 import { LanguageSwitcherFooter } from "@/components/language-switcher";
+import { renderInlineLinks } from "@/lib/render-inline-links";
 import { createOgImagePath } from "@/lib/seo/og-image";
 
 // Dynamic import for client component
@@ -296,7 +297,7 @@ export function UseCasePage({ slug }: { slug: string }) {
         >
           <p className="text-sm uppercase tracking-widest text-primary">The Problem</p>
           <h2 className="mt-2 text-2xl font-semibold">{page.problem.heading}</h2>
-          <p className="mt-4 text-muted-foreground">{page.problem.content}</p>
+          <p className="mt-4 text-muted-foreground">{renderInlineLinks(page.problem.content)}</p>
 
           {page.problem.symptoms && page.problem.symptoms.length > 0 && (
             <div className="mt-6">
@@ -320,14 +321,14 @@ export function UseCasePage({ slug }: { slug: string }) {
         >
           <p className="text-sm uppercase tracking-widest text-primary">The Solution</p>
           <h2 className="mt-2 text-2xl font-semibold">{page.solution.heading}</h2>
-          <p className="mt-4 text-muted-foreground">{page.solution.content}</p>
+          <p className="mt-4 text-muted-foreground">{renderInlineLinks(page.solution.content)}</p>
 
           <div
             className="mt-6 rounded-2xl p-4"
             style={isHolidayPage ? { backgroundColor: WINTER_MUTED } : undefined}
           >
             <p className="text-sm font-medium uppercase tracking-widest text-primary">Why this technique</p>
-            <p className="mt-2 text-card-foreground">{page.solution.whyThisPattern}</p>
+            <p className="mt-2 text-card-foreground">{renderInlineLinks(page.solution.whyThisPattern)}</p>
           </div>
 
           {/* CTAs */}
@@ -365,7 +366,7 @@ export function UseCasePage({ slug }: { slug: string }) {
                 style={isHolidayPage ? { backgroundColor: WINTER_MUTED } : undefined}
               >
                 <p className="font-semibold text-card-foreground">{point.mechanism}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{point.explanation}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{renderInlineLinks(point.explanation)}</p>
               </div>
             ))}
           </div>
@@ -493,7 +494,7 @@ export function UseCasePage({ slug }: { slug: string }) {
                 <h3 className="text-lg font-semibold text-card-foreground">
                   {faq.question}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">{faq.answer}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{renderInlineLinks(faq.answer)}</p>
               </div>
             ))}
           </div>
