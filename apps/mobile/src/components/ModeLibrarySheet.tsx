@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
+  type ViewInstance,
   AccessibilityInfo,
   findNodeHandle,
   Pressable,
@@ -74,7 +75,7 @@ function accessibleTint(color: string, background: string) {
 export default function ModeLibrarySheet({ theme, hidden = false, activeModeName, onSelectMode }: Props) {
   const insets = useSafeAreaInsets();
   const sheetRef = useRef<BottomSheet>(null);
-  const drawerLabelRef = useRef<View>(null);
+  const drawerLabelRef = useRef<ViewInstance>(null);
   const [sheetIndex, setSheetIndex] = useState(hidden ? -1 : 0);
   const collapsedHeight = HANDLE_HEIGHT + DRAWER_LABEL_HEIGHT + insets.bottom;
   const expandedHeight = collapsedHeight + ROW_HEIGHT * VISIBLE_ROWS;
@@ -171,7 +172,6 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
       handleComponent={renderHandle}
       onChange={setSheetIndex}
       accessible={false}
-      onAccessibilityEscape={closeSheet}
       backgroundStyle={{ backgroundColor: bg, borderColor: border, borderWidth: StyleSheet.hairlineWidth }}
       handleIndicatorStyle={{ backgroundColor: handleColor, width: 42 }}
       style={styles.sheet}

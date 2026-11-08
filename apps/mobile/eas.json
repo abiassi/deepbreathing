@@ -19,13 +19,13 @@
       "distribution": "internal",
       "ios": {
         "simulator": true,
-        "image": "macos-tahoe-26.4-xcode-26.4"
+        "image": "macos-tahoe-26.6-xcode-27.1"
       }
     },
     "production": {
       "autoIncrement": true,
       "ios": {
-        "image": "macos-tahoe-26.4-xcode-26.4"
+        "image": "macos-tahoe-26.6-xcode-27.1"
       }
     }
   },
