@@ -64,6 +64,11 @@ Auth: `Authorization: Bearer $DKMT_CC_KEY`
 | `dkmt-cc pm deep-breathing` | PM digest (Linear + commits) |
 | `dkmt-cc whoami` | Check current user |
 
+## Local Mac development
+- Never run local dev against `vercel env pull --environment=development`. That env points at the production Neon host.
+- Run `scripts/dev/setup-local-db.sh` once per checkout. It needs Homebrew Postgres on 127.0.0.1:5432. It creates the local `deepbreathing` database, writes `.env.local`, and applies the better-auth and `src/lib/db/migrations` schema. It is safe to rerun.
+- Then run `pnpm dev`. Pages, guest sessions, and `/api/auth/get-session` work. Google, Apple, and magic-link sign-in need real keys and do not complete locally.
+
 ## Cursor Cloud specific instructions
 - No Docker. Postgres 16 runs as a system service (postgres/postgres, db `deepbreathing`); `.cursor/start.sh` starts it, runs the better-auth CLI migration, and applies `src/lib/db/migrations/*.sql`. Production Neon is never reachable from here.
 - Node 22 + pnpm (version from `packageManager`). The web app runs in the `web-dev` terminal on :3000. Google OAuth and Resend keys are absent unless injected as Cloud Agent secrets; magic-link and Google sign-in will not complete, everything else works.
