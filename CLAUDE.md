@@ -98,7 +98,7 @@ When the question is "how is X doing?" — look at the dashboard first, not GA4 
 
 - GA4 lives on the **DKMT** account, property `527524722`, measurement ID `G-53DLCBMRL3`. The OLD `G-7GG9WVNBBP` (Abiassi) is stale.
 - `mcp__gsc__*` tools work as of 2026-07-10 (the repo's `.mcp.json` points at the `ga-visibility` SA, an Owner of the property). This is the preferred GSC path — durable, nothing expires. The old "403, use mass-translate instead" advice is obsolete; the mass-translate OAuth expires ~2-weekly and is only needed for translation work.
-- The mass-translate **proxy strips one locale prefix** before forwarding to Next.js. Redirect rules in `next.config.js` must target the post-proxy URL.
+- MassTranslate is deprecated. Locale pages are native Next.js routes, and `NATIVE_I18N_MODE` accepts only `native` (default) or `native-preview`. Proxy-era notes in the runbook are history.
 - `dkmt-cc` creds **expire ~30 days** — `dkmt-cc login` to refresh, or fall back to `vercel env pull`.
 - Cloudflare + Vercel cache may serve stale 404s for ~5 min after a redirect deploy. Always cache-bust with `?cb=$(date +%s%N)` when verifying.
 

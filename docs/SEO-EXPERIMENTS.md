@@ -18,6 +18,7 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
+| 2026-11-09 | [Retire MassTranslate Proxy Mode and Cache-Warming Cron](#2026-11-09-retire-masstranslate-proxy-mode-and-cache-warming-cron) | 🔄 Implemented — production verification pending |
 | 2026-09-08 | [Italian pilot and translation corrections](#2026-09-08-italian-pilot-and-translation-corrections) | 🔄 Live and production-verified; indexing review October 6, growth review November 3 |
 | 2026-08-30 | [Agent-Handoff Discoverability + Attribution](#2026-08-30-agent-handoff-discoverability--attribution) | 🔄 Implemented in PR [#72](https://github.com/Darkmatter-AI/deepbreathing/pull/72) — production verification pending |
 | 2026-07-27 | [Index Coverage Hygiene + Canonical-Hijack Recovery](#2026-07-27-index-coverage-hygiene--canonical-hijack-recovery) | 🔄 Implemented |
@@ -94,6 +95,20 @@ See also: [Key Learnings (Jan 2026)](#key-learnings-jan-2026) — synthesis of w
 ---
 
 ## Active Experiments
+
+### 2026-11-09: Retire MassTranslate Proxy Mode and Cache-Warming Cron
+
+**Context.** MassTranslate is no longer used. Since the July native-language cutover, the `/api/warm-cache` route exits early with `skipped: true` unless `NATIVE_I18N_MODE=proxy` (see the 2026-07-20 entry). The 2-hour Vercel Cron that calls it still exists. After the project moved to a Vercel Hobby account, that cron made Vercel reject every deployment, because Hobby allows only daily crons.
+
+**Change.** Remove the cron, the `/api/warm-cache` route, and the `proxy` serving mode. `NATIVE_I18N_MODE` now accepts only `native` (the default) and `native-preview`. `proxy` fails the build. Preview deployments without the variable now serve native locale routes, the same as production.
+
+**Hypothesis.** This change has no search effect. Production already runs in native mode, so its sitemap, redirects, canonicals and hreflang stay the same.
+
+**Baseline (2026-11-09).** Live production sitemap: 339 URLs. Live `/es/1-minute-breathing-exercise` returns 200 from Vercel with no `x-mt-cache` header. Before merging, the local production build of this branch produced the same 339 sitemap URLs as production. Its redirect list was identical to `main` in both `native` and `native-preview` modes. `/es`, `/it/breathe/belly`, `/es/about` and `/languages` returned 200.
+
+**Pre-committed success criteria.** After the merge to `main`: (1) the Vercel production deployment succeeds; (2) the live sitemap still lists the same 339 URLs; (3) sampled locale pages in each language return 200 with self-canonical tags; (4) `/api/warm-cache` returns 404. Count any sitemap, redirect or canonical difference as a failure, and revert.
+
+**Status.** 🔄 Implemented on branch `t3/deprecate-masstranslate`. Production verification is pending.
 
 ### 2026-09-08: Italian Pilot and Translation Corrections
 
@@ -258,7 +273,7 @@ Hydrated-browser verification also showed the GA script present on `deepbreathin
 
 **Pre-committed verification:** focused serving-mode and warmer tests must prove that only `proxy` returns true; the deployed native endpoint must return `200` with `skipped: true` and `reason: mass-translate-proxy-disabled`; no new `deepbreathingexercises_com_ac8ae5` proxy translation requests should appear for one full two-hour cron interval after deployment. Roll back only if the serving mode itself is reverted to `proxy`.
 
-**Status:** 🔄 Implemented locally; deployment and one-cron-window production verification pending.
+**Status:** 🔄 Implemented locally; deployment and one-cron-window production verification pending. **Superseded 2026-11-09:** the warmer, its cron and proxy mode were removed (see the 2026-11-09 entry).
 
 ### 2026-07-20: Post-Migration Locale Metadata Hygiene — Translation Leakage + Truncation Corrections
 

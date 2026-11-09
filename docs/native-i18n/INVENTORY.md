@@ -235,14 +235,13 @@ The groups below separate live coupling from migration provenance and historical
 
 | Evidence | Dependency / cutover implication |
 |---|---|
-| `next.config.js:210` | Keeps locale-prefix stripping only in the legacy proxy build mode; native serving modes release those paths to the App Router. |
+| `next.config.js:100` | Claims the www host and redirects it to the apex; the comment records that www bypasses the Cloudflare layer. Locale-prefix stripping was removed with the proxy serving mode. |
 | `src/lib/seo/sitemap-routes.mjs:14` | Owns the five proxy prefixes, manufactures locale URLs/hreflang, and keeps `/languages` English-only. |
 | `src/lib/seo/sitemap-routes.ts:6` | Typed adapter exposes proxy-specific sitemap constants and URL classification. |
-| `src/app/sitemap.xml/route.ts:13` | Publishes locale-prefixed URLs even though the current Next.js app has no native locale route tree. |
 | `scripts/ping-sitemap.mjs:11` | Builds the canonical URL allowlist used to fail closed when deriving changed-route IndexNow submissions; the legacy-named constant now represents the five published native locale prefixes. |
 | `src/app/robots.ts:8` | Carries `/api/proxy/` crawl cleanup and query-parameter rules created for proxy canonical behavior. |
 | `src/app/(site-en)/layout.tsx:72` | The English root explicitly selects the shared document language; the proxy currently changes locale-facing HTML outside the app. |
-| `src/app/(site-en)/languages/page.tsx:374` | Hardcodes the locale discovery hub; proxy anchor rewriting is why this route is published only in English. |
+| `src/app/(site-en)/languages/page.tsx:368` | Hardcodes the locale discovery hub; proxy anchor rewriting is why this route is published only in English. |
 
 ### Browser locale and translated-DOM contracts (active)
 
@@ -271,19 +270,6 @@ The groups below separate live coupling from migration provenance and historical
 | `scripts/check-og-image.sh:16` | Defaults diagnostics to the origin alias rather than the apex. |
 | `.claude/skills/dbe-accounts-auth/SKILL.md:44` | The auth health runbook explicitly probes the origin callback path. |
 
-### Serving-mode gating (active)
-
-| Evidence | Dependency / cutover implication |
-|---|---|
-| `src/i18n/serving-mode.ts:29` | Decides whether the proxy or native i18n serves locales; proxy-only maintenance must be gated behind usesMassTranslateProxy(). |
-
-### Proxy cache and deployment operations (active)
-
-| Evidence | Dependency / cutover implication |
-|---|---|
-| `src/app/api/warm-cache/route.ts:21` | Fetches all 337 sitemap URLs in English-then-locale order with a bot UA to populate proxy KV and avoid cold translation timeouts. |
-| `vercel.json:22` | Runs the proxy-specific cache warmer every two hours. |
-
 ### Generated translation content and build tooling (active until replaced)
 
 | Evidence | Dependency / cutover implication |
@@ -305,8 +291,6 @@ The groups below separate live coupling from migration provenance and historical
 | `scripts/i18n/semantic-proof/README.md:3` | Documents the isolated two-route semantic compiler and its strict separation between build-time catalog evidence and runtime messages. |
 | `scripts/i18n/semantic-proof/build-semantic-proof.mjs:353` | Compiles approved preservation records into frozen semantic IDs and fail-closed route bundles; it is migration tooling, not a runtime lookup path. |
 | `scripts/tests/native-i18n-semantic-proof.test.mjs:238` | Pins semantic IDs, provenance separation, deterministic generation, runtime bundle shape, and incomplete-route refusal. |
-| `scripts/tests/native-i18n-route-shell.test.mjs:50` | Pins the fail-closed serving-mode boundary so proxy, preview, and cutover builds cannot accidentally expose the wrong route set. |
-| `scripts/tests/next-config-locale-redirects.test.js:142` | Pins locale redirect behavior across legacy proxy and native serving modes so stable translated URLs remain reachable. |
 | `scripts/tests/native-i18n-rw03-embed.test.mjs:37` | Proves the repository-owned embed generator no longer reads the legacy translation global or proxy locale state. |
 | `scripts/tests/native-i18n-rw04-trust-pages.test.mjs:49` | Proves the repository-owned trust-page renderers do not inspect or mutate proxy-translated browser state. |
 | `scripts/i18n/verify-native-preview-build.mjs:126` | Post-build migration verifier rejects client-render error fallbacks, legacy translation globals, unsafe crisis numbers, and incomplete locale metadata in proof HTML. |
@@ -316,7 +300,6 @@ The groups below separate live coupling from migration provenance and historical
 | Evidence | Dependency / cutover implication |
 |---|---|
 | `scripts/tests/sitemap-coverage.test.mjs:9` | Pins proxy-prefixed publication, hreflang, and the English-only `/languages` rule. |
-| `scripts/tests/warm-cache-locale-split.test.mjs:10` | Pins English-versus-proxy URL classification and the five-locale multiplier. |
 | `scripts/tests/ping-sitemap.test.mjs:154` | Pins the changed-route IndexNow safety boundary: localized catch-all changes are ambiguous and must submit nothing rather than expanding to locale variants. |
 | `scripts/tests/languages-page-ssr.test.mjs:23` | Pins the client-only switcher and hardcoded locale discovery links. |
 | `scripts/tests/share-utm.test.mjs:8` | Pins share-copy behavior against proxy-mutated page metadata, and separates the proxy-translated buttons from the natively-translated holiday button. |
@@ -328,7 +311,7 @@ The groups below separate live coupling from migration provenance and historical
 | `CLAUDE.md:100` | Canonical project guidance still documents proxy URL semantics and old OAuth context. |
 | `AGENTS.md:21` | Project environment declares the origin application endpoint. |
 | `.claude/skills/daily-indexing/SKILL.md:19` | Correctly states that MassTranslate submission/OAuth paths are retired for indexing; keep this negative dependency true. |
-| `docs/runbooks/tools-and-data-sources.md:68` | Primary live runbook for proxy cache, signed-webhook bypass, URL semantics, and remaining GSC/Bing fallbacks. |
+| `docs/runbooks/tools-and-data-sources.md:70` | Primary live runbook for proxy cache, signed-webhook bypass, URL semantics, and remaining GSC/Bing fallbacks. |
 | `docs/runbooks/weekly-funnel-refresh.md:78` | Still contains MassTranslate GSC/Bing synchronization commands and OAuth recovery steps. |
 | `docs/indexing-queue.md:52` | Contains operational and historical references to MassTranslate URL-submission tools. |
 | `docs/FUNNEL-DASHBOARD.md:154` | A dated dashboard snapshot names MassTranslate as a prior GSC data source. |
@@ -343,7 +326,7 @@ The groups below separate live coupling from migration provenance and historical
 
 | Evidence | Dependency / cutover implication |
 |---|---|
-| `docs/SEO-EXPERIMENTS.md:259` | Permanent experiment history for proxy defects, mitigations, and indexing outcomes. |
+| `docs/SEO-EXPERIMENTS.md:274` | Permanent experiment history for proxy defects, mitigations, and indexing outcomes. |
 | `docs/UX-BACKLOG.md:102` | Historical ownership and translation-coverage findings. |
 | `docs/qa-reports/traction-pages-2026-06-06.md:9` | Production evidence for delayed translation, partial coverage, and hydration failures. |
 | `docs/research/eeat-citations-2026-05.md:16` | A dated content-research decision record. |
@@ -351,7 +334,7 @@ The groups below separate live coupling from migration provenance and historical
 
 ### Explicit-marker coverage audit
 
-The deterministic marker scan found 53 files with explicit MassTranslate/proxy/origin coupling. All must be classified above.
+The deterministic marker scan found 47 files with explicit MassTranslate/proxy/origin coupling. All must be classified above.
 
 Unclassified marker files: none.
 

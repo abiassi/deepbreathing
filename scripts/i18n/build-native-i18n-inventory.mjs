@@ -49,9 +49,9 @@ export const DEPENDENCY_GROUPS = Object.freeze([
     entries: [
       {
         file: "next.config.js",
-        marker: "Proxy mode keeps",
+        marker: "Cloudflare proxy",
         detail:
-          "Keeps locale-prefix stripping only in the legacy proxy build mode; native serving modes release those paths to the App Router.",
+          "Claims the www host and redirects it to the apex; the comment records that www bypasses the Cloudflare layer. Locale-prefix stripping was removed with the proxy serving mode.",
       },
       {
         file: "src/lib/seo/sitemap-routes.mjs",
@@ -63,12 +63,6 @@ export const DEPENDENCY_GROUPS = Object.freeze([
         file: "src/lib/seo/sitemap-routes.ts",
         marker: "EDGE_PROXY_LOCALE_PREFIXES",
         detail: "Typed adapter exposes proxy-specific sitemap constants and URL classification.",
-      },
-      {
-        file: "src/app/sitemap.xml/route.ts",
-        marker: "EDGE_PROXY_LOCALE_PREFIXES",
-        detail:
-          "Publishes locale-prefixed URLs even though the current Next.js app has no native locale route tree.",
       },
       {
         file: "scripts/ping-sitemap.mjs",
@@ -201,33 +195,6 @@ export const DEPENDENCY_GROUPS = Object.freeze([
     ],
   },
   {
-    title: "Serving-mode gating (active)",
-    entries: [
-      {
-        file: "src/i18n/serving-mode.ts",
-        marker: "MassTranslate proxy",
-        detail:
-          "Decides whether the proxy or native i18n serves locales; proxy-only maintenance must be gated behind usesMassTranslateProxy().",
-      },
-    ],
-  },
-  {
-    title: "Proxy cache and deployment operations (active)",
-    entries: [
-      {
-        file: "src/app/api/warm-cache/route.ts",
-        marker: "x-mt-cache",
-        detail:
-          "Fetches all 337 sitemap URLs in English-then-locale order with a bot UA to populate proxy KV and avoid cold translation timeouts.",
-      },
-      {
-        file: "vercel.json",
-        marker: "/api/warm-cache",
-        detail: "Runs the proxy-specific cache warmer every two hours.",
-      },
-    ],
-  },
-  {
     title: "Generated translation content and build tooling (active until replaced)",
     entries: [
       {
@@ -301,18 +268,6 @@ export const DEPENDENCY_GROUPS = Object.freeze([
           "Pins semantic IDs, provenance separation, deterministic generation, runtime bundle shape, and incomplete-route refusal.",
       },
       {
-        file: "scripts/tests/native-i18n-route-shell.test.mjs",
-        marker: "legacy proxy",
-        detail:
-          "Pins the fail-closed serving-mode boundary so proxy, preview, and cutover builds cannot accidentally expose the wrong route set.",
-      },
-      {
-        file: "scripts/tests/next-config-locale-redirects.test.js",
-        marker: "proxy mode",
-        detail:
-          "Pins locale redirect behavior across legacy proxy and native serving modes so stable translated URLs remain reachable.",
-      },
-      {
         file: "scripts/tests/native-i18n-rw03-embed.test.mjs",
         marker: "__MT_CONFIG__",
         detail:
@@ -339,11 +294,6 @@ export const DEPENDENCY_GROUPS = Object.freeze([
         file: "scripts/tests/sitemap-coverage.test.mjs",
         marker: "EDGE_PROXY_LOCALE_PREFIXES",
         detail: "Pins proxy-prefixed publication, hreflang, and the English-only `/languages` rule.",
-      },
-      {
-        file: "scripts/tests/warm-cache-locale-split.test.mjs",
-        marker: "EDGE_PROXY_LOCALE_PREFIXES",
-        detail: "Pins English-versus-proxy URL classification and the five-locale multiplier.",
       },
       {
         file: "scripts/tests/ping-sitemap.test.mjs",
