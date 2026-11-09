@@ -18,8 +18,8 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
-| 2026-11-09 | [Retire MassTranslate Proxy Mode and Cache-Warming Cron](#2026-11-09-retire-masstranslate-proxy-mode-and-cache-warming-cron) | 🔄 Implemented — production verification pending |
-| 2026-09-08 | [Italian pilot and translation corrections](#2026-09-08-italian-pilot-and-translation-corrections) | 🔄 Live and production-verified; indexing review October 6, growth review November 3 |
+| 2026-11-09 | [Retire MassTranslate Proxy Mode and Cache-Warming Cron](#2026-11-09-retire-masstranslate-proxy-mode-and-cache-warming-cron) | ✅ Success (production-verified 2026-11-09) |
+| 2026-09-08 | [Italian pilot and translation corrections](#2026-09-08-italian-pilot-and-translation-corrections) | ⚪ Inconclusive (day-56 review 2026-11-09: 5 GSC clicks, 3 session starters) |
 | 2026-08-30 | [Agent-Handoff Discoverability + Attribution](#2026-08-30-agent-handoff-discoverability--attribution) | 🔄 Implemented in PR [#72](https://github.com/Darkmatter-AI/deepbreathing/pull/72) — production verification pending |
 | 2026-07-27 | [Index Coverage Hygiene + Canonical-Hijack Recovery](#2026-07-27-index-coverage-hygiene--canonical-hijack-recovery) | 🔄 Implemented |
 | 2026-07-22 | [First-Load-JS Webpack Experiment (PR #31) — Production Outage Post-Mortem + Removal](#2026-07-22-first-load-js-webpack-experiment-pr-31--production-outage-post-mortem--removal) | ❌ Failed |
@@ -108,7 +108,7 @@ See also: [Key Learnings (Jan 2026)](#key-learnings-jan-2026) — synthesis of w
 
 **Pre-committed success criteria.** After the merge to `main`: (1) the Vercel production deployment succeeds; (2) the live sitemap still lists the same 339 URLs; (3) sampled locale pages in each language return 200 with self-canonical tags; (4) `/api/warm-cache` returns 404. Count any sitemap, redirect or canonical difference as a failure, and revert.
 
-**Status.** 🔄 Implemented on branch `t3/deprecate-masstranslate`. Production verification is pending.
+**Status.** ✅ Success. Merged in [PR #84](https://github.com/abiassi/deepbreathing/pull/84). Production deployment `deepbreathing-tmmj-pvllipgz9` built `main@409d43c`, passed the production source guard, and serves apex, www and origin. Live checks on 2026-11-09: the sitemap lists the same 339 URLs as the morning baseline; the home page and one page in each of es, it, ja, de, fr and pt return 200 with self-canonical tags; `/api/warm-cache` returns 404.
 
 ### 2026-09-08: Italian Pilot and Translation Corrections
 
@@ -129,6 +129,15 @@ See also: [Key Learnings (Jan 2026)](#key-learnings-jan-2026) — synthesis of w
 **Search submissions.** September 8: IndexNow accepted 33 reviewed URLs with HTTP 200. Search Console accepted the canonical sitemap through the signed-in browser and priority indexing requests for Italian home, belly and box. The service-account sitemap submission returned 403; the browser submission succeeded. Request acceptance does not establish indexing.
 
 **Early checkpoint, September 8 at approximately 18:08 UTC.** About 11 hours after release, the same production deployment remained healthy and all 33 release URL checks still passed. Google had downloaded the updated sitemap at 06:48 UTC, recognized 339 submitted URLs and reported zero sitemap errors or warnings. URL Inspection found 0 of 8 Italian pages indexed: home, belly and box were crawled but currently not indexed, with successful fetches, indexing allowed and correct self-canonicals; the library was discovered but not indexed; timer, coherent, privacy and support were unknown. Bing reported discovery/crawl records for home, belly and box; search inclusion was not verified. No resubmission or production change was warranted. Search traffic and conversion impact were not measured at this checkpoint. October 6 and November 3 remain the review dates above. These are logged dates, not a scheduled reminder.
+
+**Day-56 review (2026-11-09, window 2026-09-08 to 2026-11-03). Verdict: ⚪ Inconclusive.** Both learning thresholds were missed, so the pre-committed rule applies: classify as inconclusive and inspect before expanding.
+
+- **GSC (all Italian URLs):** 5 clicks, 127 impressions, average position 9.2. By page: `/it/breathe/box` 4 clicks, 84 impressions, position 8.2; `/it/4-7-8-breathing-timer` 1 click, 10 impressions; `/it` 0 clicks, 20 impressions; `/it/breathe/belly` 0 clicks, 13 impressions, position 26.5. Threshold: 30 nonbrand clicks. GSC returned no click-bearing queries (all 5 clicks are on anonymized queries), so the brand split cannot be shown; the total is already below the threshold.
+- **Visible queries:** `respirazione addominale`, `respiro addominale`, `respiro quadrato`, `tecnica navy seal per dormire`, one long box-breathing question, and a `site:` query. The target keyword `respirazione diaframmatica` (6,800 monthly searches in the baseline) does not appear.
+- **GA4 (pages under `/it`):** 16 users. 3 users fired `breathing_session_start`. Threshold: 10 users starting sessions. `/it/breathe/box` drew the most users (6).
+- **Indexing (URL Inspection, 2026-11-09):** `/it`, `/it/breathe`, `/it/breathe/belly`, `/it/breathe/box` and `/it/4-7-8-breathing-timer` are indexed with self-canonicals. `/it/breathe/coherent` is still unknown to Google. No canonical or route defect was found.
+
+**Reading.** The pilot is indexed but barely visible. Impressions are the constraint, not click-through (box breathing earns clicks at position 8). The belly page, which carries the largest keyword, ranks around position 26. Do not expand Italian to more routes on this evidence. Candidate next steps, none started: request indexing for `/it/breathe/coherent`; review the belly page's title, H1 and copy against `respirazione diaframmatica`; recheck at day 112 (2026-12-29) with the same thresholds.
 
 **Validation limit.** The production web build passed 431 tests with 8 skipped and all 5 post-build SSR checks. The GitHub iOS gate separately failed Expo Doctor on unchanged dependency patch expectations; it is not a fully green iOS release gate.
 
