@@ -15,7 +15,7 @@ This file is the operational counterpart to:
 |---|---|
 | Production domain | `https://deepbreathingexercises.com` |
 | Vercel project ID | `prj_zcWnwD9I2TinOJjvzFyamBJMLL8T` |
-| Vercel team ID | `team_Mol8uj8iHUTzXkMbObf8tz8w` |
+| Vercel team ID | `team_Czq07JhjniVvmWWAA4NSF6zi` (`amorimferreiras-projects`). The project moved here from `team_Mol8uj8iHUTzXkMbObf8tz8w` (`darkmatterai`); a `.vercel/project.json` with the old team ID fails with "Could not retrieve Project Settings". Relink: `vercel link --yes --project deepbreathing-tmmj --scope amorimferreiras-projects`. (Nov 8) |
 | GA4 account | `DKMT` (NOT Abiassi) |
 | GA4 property | `Deep Breathing Exercises` (ID `527524722`) |
 | GA4 measurement ID | `G-53DLCBMRL3` |
@@ -145,7 +145,7 @@ curl -sI -o /dev/null -w "HTTP %{http_code}  Location: %{redirect_url}\n" \
 ### Check Vercel deploy status
 
 **Tool:** `mcp__2dbd7705-06ab-4ea1-a16f-bb0b7b961e9f__list_deployments` and `get_deployment`
-**Required:** project ID `prj_zcWnwD9I2TinOJjvzFyamBJMLL8T`, team ID `team_Mol8uj8iHUTzXkMbObf8tz8w` (above).
+**Required:** project ID `prj_zcWnwD9I2TinOJjvzFyamBJMLL8T`, team ID `team_Czq07JhjniVvmWWAA4NSF6zi` (above).
 **For waiting until deploy is live:** poll prod URL with `until [ "$(curl -sI -o /dev/null -w "%{http_code}" "URL?cb=$(date +%s%N)")" = "200" ]; do sleep 5; done` via `Bash` with `run_in_background: true`.
 
 ### Warm the locale-page cache (after deploy / before a crawl)
@@ -257,7 +257,7 @@ These have all bitten us before. Document in this file the FIRST time they bite,
 
 10. **The Neon DB host pattern `ep-bold-feather-anszztep` (non-pooler)** is the right URL for ad-hoc psql queries. The `-pooler` variant runs on PgBouncer transaction mode and silently drops multi-statement SQL — see `pi-data` skill for the full gotcha.
 
-11. **`dkmt-cc env <slug> --export` is deprecated and now returns API 404.** As of 2026-05-22 the command prints a deprecation banner and fails. For the Neon DB URL, use `vercel env pull /tmp/dbenv.txt --environment=production --yes` from this repo (it's Vercel-linked as `darkmatterai/deepbreathing-tmmj`), then `grep -E '^POSTGRES_URL_NON_POOLING=' /tmp/dbenv.txt`. The weekly-funnel-refresh runbook's "preferred" `dkmt-cc env pull` line no longer works — go straight to the Vercel fallback.
+11. **`dkmt-cc env <slug> --export` is deprecated and now returns API 404.** As of 2026-05-22 the command prints a deprecation banner and fails. For the Neon DB URL, use `vercel env pull /tmp/dbenv.txt --environment=production --yes` from this repo (Vercel-linked as `amorimferreiras-projects/deepbreathing-tmmj`; see the team ID row if the link is stale), then `grep -E '^POSTGRES_URL_NON_POOLING=' /tmp/dbenv.txt`. The weekly-funnel-refresh runbook's "preferred" `dkmt-cc env pull` line no longer works — go straight to the Vercel fallback.
 
 12. **`pod install` in `apps/mobile/ios` needs `LANG=en_US.UTF-8`** in non-login shells (agent Bash). Without it CocoaPods crashes with `Unicode Normalization not appropriate for ASCII-8BIT`. Same applies to `npx expo run:ios`, which shells out to pod install. Prefix: `LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8`.
 
