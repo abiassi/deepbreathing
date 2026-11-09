@@ -4,7 +4,7 @@ Compiled from session audit on 2026-04-27. Refreshed 2026-05-05 with post-deploy
 
 ## Mobile app (iOS)
 
-- **In-app theme toggle doesn't reach native chrome** (found 2026-07-22 pre-submission QA): the webview settings' light/dark toggle only themes the webview (`themeOverride` in `BreathingExperience.tsx` is never emitted via `onEvent`). Native side (`apps/mobile/src/app/index.tsx:79`) follows `useColorScheme()` only, so with device-dark + in-app-light the status bar clock is white-on-cream (illegible) and CompletionSummary/account button render dark over a light webview. Fix: emit a `theme_changed` event from the webview and let it override the native theme + `expo-status-bar` style. Cosmetic, only when in-app toggle diverges from system theme; not a 1.0 blocker.
+- ~~**In-app theme toggle doesn't reach native chrome**~~ **FIXED** in [bb9ff53](https://github.com/abiassi/deepbreathing/commit/bb9ff53) (2026-08-10), shipped in 1.0.1 (22). The webview emits `theme_change`; `apps/mobile/src/app/index.tsx` stores it as `experienceTheme` and uses it for the status bar, backdrop, account button and completion summary. Entry kept as history (confirmed in code 2026-11-09).
 - **One-off: session auto-completed immediately on resume tap** (observed once 2026-07-22, simulator): pause → resume showed the completion receipt with full 0:30 credited despite ~20s paused. Deliberate repro (pause 5s → wait 40s → resume) behaves correctly, so likely a double-fired tap (pause+resume) letting the session run out in the background. Watch for it in TestFlight; if real users report instant completions, instrument `handleTogglePlay` re-entry.
 
 ## Test suite — triaged and gated (2026-07-25)
