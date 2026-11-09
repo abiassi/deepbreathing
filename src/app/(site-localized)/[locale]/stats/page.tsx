@@ -21,7 +21,7 @@ import {
   isNativeRoutePreviewable,
   isNativeRoutePublished,
 } from "@/i18n/route-manifest";
-import { getNativeLinkMode, resolveNativeI18nMode } from "@/i18n/serving-mode";
+import { resolveNativeI18nMode } from "@/i18n/serving-mode";
 
 const sourceRoute = "/stats";
 const siteUrl = "https://deepbreathingexercises.com";
@@ -32,11 +32,9 @@ function resolveStatsRequest(params: { locale: string }) {
   const locale = getLocaleByPrefix(params.locale);
   if (!locale || !locale.routePrefix) notFound();
 
-  const mode = resolveNativeI18nMode();
-  const linkMode = getNativeLinkMode(mode);
-  if (!linkMode) notFound();
+  const linkMode = resolveNativeI18nMode();
   const routeIsAvailable =
-    mode === "native-preview"
+    linkMode === "native-preview"
       ? isNativeRoutePreviewable(sourceRoute, locale.code)
       : isNativeRoutePublished(sourceRoute, locale.code);
   if (!routeIsAvailable) notFound();

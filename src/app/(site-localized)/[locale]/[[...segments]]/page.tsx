@@ -156,7 +156,7 @@ import {
   isNativeRoutePublished,
 } from "@/i18n/route-manifest";
 import type { NativeRouteRenderContext } from "@/i18n/render-context";
-import { getNativeLinkMode, resolveNativeI18nMode } from "@/i18n/serving-mode";
+import { resolveNativeI18nMode } from "@/i18n/serving-mode";
 
 import { LocalizedHomeResonance } from "./localized-home-resonance";
 
@@ -179,10 +179,9 @@ const supportSourceRoute = "/support";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  const mode = resolveNativeI18nMode();
-  if (mode === "native-preview") return [...getPreviewLocalizedStaticParams()];
-  if (mode === "native") return [...getLocalizedStaticParams()];
-  return [];
+  return resolveNativeI18nMode() === "native-preview"
+    ? [...getPreviewLocalizedStaticParams()]
+    : [...getLocalizedStaticParams()];
 }
 
 function getBreatheContentSlug(sourceRoute: string): BreatheContentSlug | null {
@@ -252,14 +251,12 @@ function resolveLocalizedRequest(params: {
   const locale = getLocaleByPrefix(params.locale);
   if (!locale || !locale.routePrefix) notFound();
 
-  const mode = resolveNativeI18nMode();
-  const linkMode = getNativeLinkMode(mode);
-  if (!linkMode) notFound();
+  const linkMode = resolveNativeI18nMode();
 
   const sourceRoute = `/${params.segments?.join("/") ?? ""}`;
   const routeDefinition = getNativeRouteByPath(sourceRoute);
   const routeIsAvailable =
-    mode === "native-preview"
+    linkMode === "native-preview"
       ? isNativeRoutePreviewable(sourceRoute, locale.code)
       : isNativeRoutePublished(sourceRoute, locale.code);
   const breatheSlug = getBreatheContentSlug(sourceRoute);
@@ -330,8 +327,7 @@ function withLocalizedAlternates(
   metadata: Metadata,
   canonicalPath: string,
 ): Metadata {
-  const mode = resolveNativeI18nMode();
-  const linkMode = mode === "native-preview" ? mode : "native";
+  const linkMode = resolveNativeI18nMode();
 
   return {
     ...metadata,

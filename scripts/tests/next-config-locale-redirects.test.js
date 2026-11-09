@@ -2,7 +2,7 @@
 
 /**
  * Test next.config.js locale-aware redirects by loading actual config in isolated processes.
- * Runs next.config.js for each NATIVE_I18N_MODE (proxy, native-preview, native)
+ * Runs next.config.js for each NATIVE_I18N_MODE (native-preview, native)
  * and verifies the actual returned redirect rules with exact destination resolution.
  */
 
@@ -136,13 +136,9 @@ function assertEquals(actual, expected, message) {
 async function runTests() {
   console.log('Loading actual next.config.js redirects in isolated processes...\n');
 
-  let proxyRedirects, nativePreviewRedirects, nativeRedirects;
+  let nativePreviewRedirects, nativeRedirects;
 
   try {
-    console.log('Test Suite: Load proxy mode redirects');
-    proxyRedirects = await runNextConfigInMode('proxy');
-    console.log(`✓ Loaded ${proxyRedirects.length} redirects for proxy mode\n`);
-
     console.log('Test Suite: Load native-preview mode redirects');
     nativePreviewRedirects = await runNextConfigInMode('native-preview');
     console.log(`✓ Loaded ${nativePreviewRedirects.length} redirects for native-preview mode\n`);
@@ -155,16 +151,8 @@ async function runTests() {
     process.exit(1);
   }
 
-  // Test 1: Proxy mode configuration
-  console.log('Test Suite: Proxy mode isolation');
-  const proxyHasDoubleLoacleRules = proxyRedirects.some(r => r.source.includes('outer'));
-  assert(!proxyHasDoubleLoacleRules, 'proxy mode should NOT have double-locale redirect rules');
-
-  const proxyNativeLocaleRules = proxyRedirects.filter(r => r.source.includes('locale') && (r.source.includes('methodology') || r.source.includes('languages') || r.source.includes('outer')));
-  assertEquals(proxyNativeLocaleRules.length, 0, 'proxy mode should have zero native locale-aware redirect rules');
-
   // Test 2: Native mode configuration
-  console.log('\nTest Suite: Native mode configuration');
+  console.log('Test Suite: Native mode configuration');
   const nativePreviewHasMethodology = nativePreviewRedirects.some(r => r.source.includes('locale') && r.source.includes('methodology'));
   assert(nativePreviewHasMethodology, 'native-preview should have legacy methodology redirects');
 

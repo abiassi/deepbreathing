@@ -16,7 +16,7 @@ registerHooks({
   },
 });
 
-const { getNativeLinkMode, resolveNativeI18nMode } =
+const { resolveNativeI18nMode } =
   await import("../../src/i18n/serving-mode.ts");
 
 const require = createRequire(import.meta.url);
@@ -47,30 +47,27 @@ function localeStrippingRedirects(redirects) {
   );
 }
 
-test("serving mode defaults fail closed to the legacy proxy", () => {
+test("serving mode defaults to native and rejects the retired proxy mode", () => {
   // Passing `undefined` invokes the function's process.env default, which made
-  // this assertion depend on Vercel's production-only NATIVE_I18N_MODE value.
-  // An empty environment value is the actual fail-closed case.
-  assert.equal(resolveNativeI18nMode(""), "proxy");
+  // this assertion depend on Vercel's NATIVE_I18N_MODE value. An empty
+  // environment value is the default case.
+  assert.equal(resolveNativeI18nMode(""), "native");
   assert.equal(resolveNativeI18nMode("native-preview"), "native-preview");
   assert.equal(resolveNativeI18nMode("native"), "native");
-  assert.equal(getNativeLinkMode("proxy"), null);
-  assert.equal(getNativeLinkMode("native-preview"), "native-preview");
-  assert.equal(getNativeLinkMode("native"), "native");
+  assert.throws(
+    () => resolveNativeI18nMode("proxy"),
+    /Unsupported NATIVE_I18N_MODE: proxy/,
+  );
   assert.throws(
     () => resolveNativeI18nMode("unexpected"),
     /Unsupported NATIVE_I18N_MODE: unexpected/,
   );
 });
 
-test("Next redirects preserve proxy behavior and release prefixes only in native modes", async () => {
+test("Next redirects never strip locale prefixes", async () => {
   assert.equal(
     localeStrippingRedirects(await loadRedirects(undefined)).length,
-    2,
-  );
-  assert.equal(
-    localeStrippingRedirects(await loadRedirects("proxy")).length,
-    2,
+    0,
   );
   assert.equal(
     localeStrippingRedirects(await loadRedirects("native-preview")).length,
@@ -81,6 +78,10 @@ test("Next redirects preserve proxy behavior and release prefixes only in native
     0,
   );
 
+  await assert.rejects(
+    () => loadRedirects("proxy"),
+    /Unsupported NATIVE_I18N_MODE: proxy/,
+  );
   await assert.rejects(
     () => loadRedirects("unexpected"),
     /Unsupported NATIVE_I18N_MODE: unexpected/,
@@ -96,7 +97,7 @@ test("legacy technique aliases redirect to their canonical breathing pages in ev
     ["/wim-hof", "/breathe/wim-hof"],
   ]);
 
-  for (const mode of [undefined, "proxy", "native-preview", "native"]) {
+  for (const mode of [undefined, "native-preview", "native"]) {
     const redirects = await loadRedirects(mode);
     for (const [source, destination] of expected) {
       const redirect = redirects.find((candidate) => candidate.source === source);
@@ -174,11 +175,9 @@ test("the route groups keep English URLs stable and give localized pages their o
   assert.match(localizedLayout, /disableSeasonalBanner/);
 
   assert.match(localizedPage, /export const dynamicParams = false/);
-  assert.match(localizedPage, /mode === "native-preview"/);
+  assert.match(localizedPage, /resolveNativeI18nMode\(\) === "native-preview"/);
   assert.match(localizedPage, /\[\.\.\.getPreviewLocalizedStaticParams\(\)\]/);
-  assert.match(localizedPage, /mode === "native"/);
   assert.match(localizedPage, /\[\.\.\.getLocalizedStaticParams\(\)\]/);
-  assert.match(localizedPage, /return \[\]/);
   assert.match(localizedPage, /isNativeRoutePublished/);
   assert.match(localizedPage, /buildHreflangAlternates/);
   assert.match(localizedPage, /loadForIndexContent/);
@@ -227,7 +226,6 @@ test("the route groups keep English URLs stable and give localized pages their o
   assert.doesNotMatch(localizedPage, /AboutPage|loadAboutContent/);
 
   assert.match(localizedAboutPage, /export const dynamicParams = false/);
-  assert.match(localizedAboutPage, /mode === "proxy"/);
   assert.match(localizedAboutPage, /isNativeRoutePreviewable/);
   assert.match(localizedAboutPage, /isNativeRoutePublished/);
   assert.match(localizedAboutPage, /loadAboutContent/);
@@ -235,7 +233,6 @@ test("the route groups keep English URLs stable and give localized pages their o
   assert.match(localizedAboutPage, /buildHreflangAlternates/);
 
   assert.match(localizedTimerPage, /export const dynamicParams = false/);
-  assert.match(localizedTimerPage, /mode === "proxy"/);
   assert.match(localizedTimerPage, /isNativeRoutePreviewable/);
   assert.match(localizedTimerPage, /isNativeRoutePublished/);
   assert.match(localizedTimerPage, /loadTimerContent/);

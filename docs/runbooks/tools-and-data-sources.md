@@ -36,6 +36,8 @@ If any of these change, update this file FIRST, then update FUNNEL-DASHBOARD.md 
 
 The July native-language cutover supersedes the proxy-specific notes retained below. Current translated content is repository-owned and server-rendered. Do not deploy new translations through MassTranslate, infer English fallback from an old proxy observation, or warm the retired proxy cache. Verify the current route response and browser state.
 
+**MassTranslate is deprecated (2026-11-09).** The app has no proxy serving mode. `NATIVE_I18N_MODE` accepts only `native` (the default) and `native-preview`; `proxy` fails the build. Treat every MassTranslate note below as history.
+
 Production web releases must follow the `CLAUDE.md` provenance guard: review a branch, merge to GitHub `main`, then verify the Git integration's production deployment SHA and live aliases. Never promote a feature-branch deployment to production.
 
 For a partial language rollout, maintain one publication policy for routable pages, internal destinations, language choices, sitemap membership and alternate links. Registering a language does not make every translated page ready. Translate and review the complete interaction and safety copy for each published route.
@@ -148,19 +150,9 @@ curl -sI -o /dev/null -w "HTTP %{http_code}  Location: %{redirect_url}\n" \
 **Required:** project ID `prj_zcWnwD9I2TinOJjvzFyamBJMLL8T`, team ID `team_Czq07JhjniVvmWWAA4NSF6zi` (above).
 **For waiting until deploy is live:** poll prod URL with `until [ "$(curl -sI -o /dev/null -w "%{http_code}" "URL?cb=$(date +%s%N)")" = "200" ]; do sleep 5; done` via `Bash` with `run_in_background: true`.
 
-### Warm the locale-page cache (after deploy / before a crawl)
+### Locale-page cache warming (removed 2026-11-09)
 
-**Why:** locale pages (`/es|pt|fr|de|ja/*`) are served by the mass-translate edge Worker, which on a cold cache fetches the Vercel origin + assembles the translation per request. After a deploy the Vercel origin cache is flushed, so a cold locale page can take **5–21 s** — enough to time out a crawler. This is what crashed the Ahrefs health score to 40 on 13 Jun 2026 (see gotcha #17).
-
-**Durable fix:** `GET /api/warm-cache` (route at `src/app/api/warm-cache/route.ts`) fetches every sitemap `<loc>` with a Googlebot UA, English canonicals first (warms the Vercel origin the proxy reuses for all locales) then locale URLs (warms the Worker KV translation cache). A Vercel Cron in `vercel.json` runs it every 2 h. Protected by `CRON_SECRET` (Vercel prod env; Cron sends it as a bearer token).
-
-```bash
-# Manual warm (e.g. right after a prod deploy, before the weekly Ahrefs crawl):
-curl -s "https://deepbreathingexercises.com/api/warm-cache?token=$CRON_SECRET" | python3 -m json.tool
-# Returns: succeeded/failed counts, proxyCache hit/miss, slowest URLs.
-```
-
-Concurrency is capped at 6 in the route — **do not raise it**, the proxy 503s spoofed bot UAs at ~10 concurrent (gotcha #16d).
+The proxy-era `/api/warm-cache` route and its 2-hour Vercel Cron are gone. Locale pages are native Next.js routes, so there is no MassTranslate translation cache to warm. The 2-hour cron also blocked every deploy on the Vercel Hobby plan, which allows only daily crons. See the 2026-11-09 entry in `docs/SEO-EXPERIMENTS.md`.
 
 ### Query the Neon DB
 
@@ -241,7 +233,7 @@ These have all bitten us before. Document in this file the FIRST time they bite,
 
 2. **GA4 was migrated from Abiassi → DKMT account at some point.** Old measurement ID `G-7GG9WVNBBP` shows zero data. Always confirm you're on `527524722` / `G-53DLCBMRL3` before pulling. (May 5)
 
-3. **The mass-translate proxy strips one locale prefix before forwarding to Next.js.** Redirect rules in `next.config.js` must target the post-proxy URL (single locale form), not the user-typed URL (double locale form). Test both in dev AND in production — dev has no proxy. (May 5, [SEO-EXPERIMENTS.md 2026-05-05 entry](../SEO-EXPERIMENTS.md))
+3. **RETIRED 2026-11-09 (no proxy). Historical:** **The mass-translate proxy strips one locale prefix before forwarding to Next.js.** Redirect rules in `next.config.js` must target the post-proxy URL (single locale form), not the user-typed URL (double locale form). Test both in dev AND in production — dev has no proxy. (May 5, [SEO-EXPERIMENTS.md 2026-05-05 entry](../SEO-EXPERIMENTS.md))
 
 4. **Cross-locale anchors get mangled by the proxy.** Don't render server-side anchors to other locales in components that get translated (homepage, breathing pages). The `/languages` page is `EN_ONLY_ROUTES` because of this; the language-switcher is client-only for the same reason.
 
@@ -273,7 +265,7 @@ These have all bitten us before. Document in this file the FIRST time they bite,
 
 16. **The proxy dynamic-renders per User-Agent — what Google sees ≠ what `curl` sees (refines #15).** Allowlisted crawler UAs (Googlebot, Bingbot, AhrefsBot, DuckDuckBot, Yandex, Semrush, facebookexternalhit, Twitterbot) get FULLY translated server HTML — title, hreflang, `lang`, and body H1/H2/prose. Browsers and unknown UAs get the English HTML + client-side swap described in #15. So: (a) to see what Google sees, `curl -A "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" <url>`; (b) `AhrefsSiteAudit` is NOT allowlisted — Ahrefs Site Audit content findings on localized URLs describe the English fallback, not what Google ranks; (c) any query string (`?duration=30`) bypasses translation entirely, even for bots; (d) do NOT bulk-fetch with spoofed bot UAs — anti-spoofing rate limits kick in at ~10 concurrent and then 503 persistently for a while (real Googlebot shows <1% 5xx in GSC crawl stats). Full audit: control repo `seo-error-audit-2026-06-10.md`. (2026-06-10)
 
-17. **A deploy can crash the Ahrefs/Google crawl health score via cold-cache locale timeouts — it's an artifact, not an outage.** Locale pages (`/es|pt|fr|de|ja/*`) are proxy-served: on a cold cache the Worker fetches the Vercel origin (single region `iad1`, US-East) + assembles the translation per request, so a cold locale page from the EU edge can take **5–21 s**. A prod deploy flushes the Vercel origin cache; if a crawler (esp. AhrefsBot crawling the flat 270-URL locale sitemap at depth-0) hits during that window, hundreds of URLs time out and the Ahrefs Health Score tanks (40/Fair on 13 Jun 2026, ~508 "timed out"). The pages return 200 on a single request — verify with `curl -w '%{time_total}'` before assuming an outage. Fix shipped: `/api/warm-cache` + a 2 h Vercel Cron keep both the Vercel origin and Worker KV warm (see "Warm the locale-page cache" above). After any prod deploy, manually hit the warm endpoint before the next crawl. Note: locale pages **do** earn clicks (e.g. `/es/breathing-visualizer` 50% CTR, `/ja/4-7-8-breathing-timer` #1 on Bing as of Jun 2026) — protect them. (2026-06-13)
+17. **RETIRED 2026-11-09 (native locale pages; warmer and cron removed). Historical:** **A deploy can crash the Ahrefs/Google crawl health score via cold-cache locale timeouts — it's an artifact, not an outage.** Locale pages (`/es|pt|fr|de|ja/*`) are proxy-served: on a cold cache the Worker fetches the Vercel origin (single region `iad1`, US-East) + assembles the translation per request, so a cold locale page from the EU edge can take **5–21 s**. A prod deploy flushes the Vercel origin cache; if a crawler (esp. AhrefsBot crawling the flat 270-URL locale sitemap at depth-0) hits during that window, hundreds of URLs time out and the Ahrefs Health Score tanks (40/Fair on 13 Jun 2026, ~508 "timed out"). The pages return 200 on a single request — verify with `curl -w '%{time_total}'` before assuming an outage. Fix shipped: `/api/warm-cache` + a 2 h Vercel Cron keep both the Vercel origin and Worker KV warm (see "Warm the locale-page cache" above). After any prod deploy, manually hit the warm endpoint before the next crawl. Note: locale pages **do** earn clicks (e.g. `/es/breathing-visualizer` 50% CTR, `/ja/4-7-8-breathing-timer` #1 on Bing as of Jun 2026) — protect them. (2026-06-13)
 
 18. **The mass-translate proxy PRESERVES `rel` attributes when rewriting anchors.** Source-side `rel="nofollow"` (or any `rel`) on `<a>` / Next.js `<Link>` survives the proxy's locale-prefix anchor rewrite and reaches the locale variant pages unchanged — so you can control crawl signals for locale URLs from the English source. Confirmed 2026-06-15 by reading the edge-proxy Worker source.
 

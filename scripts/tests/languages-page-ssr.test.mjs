@@ -21,7 +21,6 @@ const NEEDS_BUILD = { skip: fs.existsSync(BUILD_MARKER) ? false : "requires `pnp
 
 const SITE_URL = "https://deepbreathingexercises.com";
 const LOCALE_PREFIXES = ["/es", "/pt", "/fr", "/de", "/ja"];
-const nativeMode = ["native", "native-preview"].includes(process.env.NATIVE_I18N_MODE);
 const KEY_PATHS = [
   "/",
   "/breathe",
@@ -66,7 +65,7 @@ test("/languages SSR HTML has crawlable anchors to every locale root", NEEDS_BUI
     "missing build output for /languages; run `pnpm build` first",
   );
   const html = fs.readFileSync(LANGUAGES_HTML, "utf8");
-  for (const prefix of [...LOCALE_PREFIXES, ...(nativeMode ? ["/it"] : [])]) {
+  for (const prefix of [...LOCALE_PREFIXES, "/it"]) {
     const pattern = new RegExp(`<a[^>]*href=["']${SITE_URL}${prefix}["']`);
     assert.match(
       html,
@@ -96,7 +95,7 @@ test("/languages SSR HTML preserves every locale and key-page crawl link", NEEDS
 test("/languages SSR HTML renders native labels for translated destinations", NEEDS_BUILD, () => {
   const html = fs.readFileSync(LANGUAGES_HTML, "utf8");
   const expectedLinks = [
-    ...(nativeMode ? [["/it/breathe/belly", "Respirazione addominale"]] : []),
+    ["/it/breathe/belly", "Respirazione addominale"],
     ["/es/breathe/belly", "Respiración abdominal"],
     ["/pt/breathe/pursed-lip", "Respiração com lábios franzidos"],
     ["/fr/breathe/coherent", "Cohérence cardiaque"],
@@ -117,7 +116,7 @@ test("/languages SSR HTML renders native labels for translated destinations", NE
     );
   }
 
-  for (const locale of ["es-ES", "pt-BR", "fr-FR", "de-DE", "ja-JP", ...(nativeMode ? ["it-IT"] : [])]) {
+  for (const locale of ["es-ES", "pt-BR", "fr-FR", "de-DE", "ja-JP", "it-IT"]) {
     assert.match(html, new RegExp(`<section[^>]*lang=["']${locale}["']`));
   }
 });

@@ -16,14 +16,8 @@ import { resolveNativeI18nMode } from "@/i18n/serving-mode";
 const SITE_URL = "https://deepbreathingexercises.com";
 
 function getDisplayedLocales() {
-  const mode = resolveNativeI18nMode();
   const availableCodes = new Set<LocaleCode>(
-    mode === "proxy"
-      ? LOCALES.filter(
-          (locale) =>
-            locale.code === DEFAULT_LOCALE || locale.nativePublicationDefault,
-        ).map((locale) => locale.code)
-      : getNativeAvailableLocales("/", mode),
+    getNativeAvailableLocales("/", resolveNativeI18nMode()),
   );
 
   return LOCALES.filter((locale) => availableCodes.has(locale.code));
