@@ -1,6 +1,6 @@
 # Deep Breathing mobile app
 
-This is the Expo SDK 56 mobile app for Deep Breathing. It is a member of the repository's pnpm
+This is the Expo SDK 58 mobile app for Deep Breathing. It is a member of the repository's pnpm
 workspace; dependencies are installed from the root `pnpm-lock.yaml`. The mobile app is not a
 standalone npm project and its old generated `package-lock.json` instructions are stale.
 
@@ -27,6 +27,35 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside `src/app`. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
+## Xcode 27 simulator builds
+
+SDK 58 generates the UIScene lifecycle required by iOS 27. Keep `ios/` generated and ignored.
+Its CocoaPods hooks also raise resource bundle deployment targets for AsyncStorage and SDWebImage.
+
+The root pnpm `packageExtensions` gives Reanimated an explicit React type peer.
+This keeps mobile React 19 types separate from the website's React 18 types.
+Use Node 22.13 or newer on the Node 22 line. Set `LANG=en_US.UTF-8` for CocoaPods.
+
+From `apps/mobile`, regenerate the native project and try Expo first:
+
+```bash
+LANG=en_US.UTF-8 npx expo prebuild --platform ios --clean
+npx expo run:ios --device <simulator-udid>
+```
+
+If Expo treats the simulator as physical and requests signing certificates, build explicitly:
+
+```bash
+xcodebuild -workspace ios/DeepBreathing.xcworkspace -scheme DeepBreathing \
+  -configuration Debug -sdk iphonesimulator -destination 'id=<simulator-udid>' \
+  -derivedDataPath ios/build CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=NO
+xcrun simctl install <simulator-udid> ios/build/Build/Products/Debug-iphonesimulator/DeepBreathing.app
+npx expo start --dev-client
+```
+
+Use Xcode simulator signing for SecureStore keychain entitlements. A fully unsigned build cannot initialize the auth client.
+Open the installed app through the device tools. Leave `CI` unset for live reload.
+
 ## Local checks
 
 Run these from the repository root so workspace links resolve correctly:
@@ -35,7 +64,7 @@ Run these from the repository root so workspace links resolve correctly:
 pnpm --filter mobile test
 pnpm --filter mobile exec tsc --noEmit
 pnpm --filter mobile lint
-pnpm --dir apps/mobile dlx expo-doctor@1.20.1
+pnpm --dir apps/mobile dlx expo-doctor@1.21.6
 ```
 
 The iOS release workflow runs the same checks with pinned Node/pnpm versions. EAS production

@@ -126,6 +126,13 @@
       "yaml": "2.8.3",
       "react-native-css-interop>react": "$react",
       "react-native-css>react": "$react"
+    },
+    "packageExtensions": {
+      "react-native-reanimated@4.7.1": {
+        "peerDependencies": {
+          "@types/react": "*"
+        }
+      }
     }
   },
   "packageManager": "pnpm@10.30.3"

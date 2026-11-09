@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AppState, type AppStateStatus, StyleSheet, View } from 'react-native';
+import { AppState, StyleSheet, View } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
 import * as Localization from 'expo-localization';
@@ -8,7 +8,7 @@ import { setAudioModeAsync } from 'expo-audio';
 
 import BreathingExperienceDom from '../components/breathing-web/BreathingExperience.dom';
 
-function toBreathingAppState(status: AppStateStatus): 'active' | 'background' {
+function toBreathingAppState(status: typeof AppState.currentState): 'active' | 'background' {
   return status === 'active' ? 'active' : 'background';
 }
 

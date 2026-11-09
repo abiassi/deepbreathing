@@ -61,7 +61,7 @@ check(packageJson.dependencies?.["better-auth"] === "1.7.7", "root Better Auth m
 check(packageJson.dependencies?.["@better-auth/expo"] === "1.7.7", "root Better Auth Expo adapter must match 1.7.7");
 check(mobilePackageJson.dependencies?.["better-auth"] === "1.7.7", "mobile Better Auth must stay on the audited 1.7.7 release");
 check(mobilePackageJson.dependencies?.["@better-auth/expo"] === "1.7.7", "mobile Better Auth Expo adapter must match 1.7.7");
-check(mobilePackageJson.dependencies?.["@expo/dom-webview"] === "~56.0.6", "mobile Expo DOM WebView must match SDK 56.0.6");
+check(mobilePackageJson.dependencies?.["@expo/dom-webview"] === "~58.0.2", "mobile Expo DOM WebView must match SDK 58.0.2");
 
 for (const pattern of [
   "**/.claude/worktrees/",

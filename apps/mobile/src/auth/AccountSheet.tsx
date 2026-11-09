@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
+  type TextInstance,
   AccessibilityInfo,
   ActivityIndicator,
   Alert,
@@ -67,7 +68,7 @@ function recentDays(count: number) {
 
 export default function AccountSheet({ open, theme, user, practice, onClose }: Props) {
   const sheetRef = useRef<BottomSheet>(null);
-  const titleRef = useRef<Text>(null);
+  const titleRef = useRef<TextInstance>(null);
   const insets = useSafeAreaInsets();
   const [message, setMessage] = useState<string | null>(null);
   const [sheetIndex, setSheetIndex] = useState(-1);
@@ -213,7 +214,6 @@ export default function AccountSheet({ open, theme, user, practice, onClose }: P
       onChange={setSheetIndex}
       onClose={onClose}
       accessible={false}
-      onAccessibilityEscape={closeSheet}
       style={styles.sheet}
       backgroundStyle={{ backgroundColor: background, borderColor: border, borderWidth: StyleSheet.hairlineWidth }}
       handleIndicatorStyle={{ backgroundColor: dark ? '#745746' : '#c9aa94', width: 42 }}
@@ -239,7 +239,6 @@ export default function AccountSheet({ open, theme, user, practice, onClose }: P
                 style={[styles.title, { color: text }]}
                 accessible
                 accessibilityRole="header"
-                onAccessibilityEscape={closeSheet}
               >
                 {user ? 'Your practice' : 'Keep it with you'}
               </Text>

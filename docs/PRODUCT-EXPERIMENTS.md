@@ -23,6 +23,7 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
+| 2026-11-08 | [Restore iOS 27 development with SDK 58](#2026-11-08-restore-ios-27-development-with-sdk-58) | Simulator verified; unshipped |
 | 2026-10-08 | [Remove iOS usage analytics and custom consent](#2026-10-08-remove-ios-usage-analytics-and-custom-consent) | Implemented locally; verification and resubmission pending |
 | 2026-09-08 | [Italian interaction and translation clarity](#2026-09-08-italian-interaction-and-translation-clarity) | Implemented in [PR #77](https://github.com/Darkmatter-AI/deepbreathing/pull/77); production verification pending |
 | 2026-09-05 | [App acquisition funnel and shared website campaign](#2026-09-05-app-acquisition-funnel-and-shared-website-campaign) | 🔄 Implemented locally — deployment pending |
@@ -59,6 +60,25 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 ---
 
 ## Active Experiments
+
+### 2026-11-08: Restore iOS 27 development with SDK 58
+
+**Hypothesis:** Expo SDK 58's generated scene lifecycle restores local iOS development with Xcode 27.
+
+**Baseline:** SDK 56 builds install but trap at launch in `UIApplicationEvaluateRuntimeIssueForNoSceneLifecycleAdoption` on iOS 27.
+
+**Change:** Upgrade the mobile SDK and managed packages, adopt strict native types, and select the documented Xcode 27 EAS image.
+The generated iOS project remains ignored. No production deployment or App Store submission is part of this change.
+
+**Pre-committed success criteria:** The simulator launches without a new crash report, renders home and sign-in, runs a breathing session,
+receives `deepbreathing://`, and reflects a temporary JavaScript string edit through live reload.
+Existing mobile tests, type-checking, root tests, and the web build must pass.
+
+**Measurement:** Local simulator verification before PR handoff. Physical-device and EAS release verification remain separate.
+
+**Local result:** All six simulator criteria passed on iPhone 18 Pro, iOS 27.0, Xcode 27.2. Mobile tests (124), mobile types,
+root tests (468 passed, two skipped), and the full web build passed. The unsigned simulator fallback needs Xcode simulator signing
+for SecureStore; the working command is in `apps/mobile/README.md`. No release was shipped.
 
 ### 2026-10-08: Remove iOS usage analytics and custom consent
 

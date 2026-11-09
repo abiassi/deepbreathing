@@ -13,7 +13,6 @@ import {
   AccessibilityInfo,
   AppState,
   Linking,
-  type AppStateStatus,
   Pressable,
   StyleSheet,
   Text,
@@ -87,7 +86,7 @@ const firePhaseHaptic = () => {
   Haptics.selectionAsync().catch(() => {});
 };
 
-const toBreathingAppState = (status: AppStateStatus): 'active' | 'background' =>
+const toBreathingAppState = (status: typeof AppState.currentState): 'active' | 'background' =>
   status === 'active' ? 'active' : 'background';
 
 function blendHex(base: string, tint: string, amount: number) {
@@ -274,8 +273,8 @@ export default function HomeScreen() {
   // calls Better Auth's existing token-confirmation branch.
   useEffect(() => {
     let disposed = false;
-    const receive = (url: string | null) => {
-      if (!disposed) handleAccountDeletionURL(url);
+    const receive = (url: string | null | undefined) => {
+      if (!disposed) handleAccountDeletionURL(url ?? null);
     };
     void Linking.getInitialURL().then(receive).catch(() => {});
     const subscription = Linking.addEventListener('url', ({ url }) => receive(url));
