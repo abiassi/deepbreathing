@@ -8,7 +8,7 @@ Submission ID: `25d9e328-3741-464a-b019-843bcbc7a83a`.
 - App: Deep Breathing: Calm & Sleep
 - App Store Connect app: `6786431781`
 - Bundle: `com.deepbreathing.app`
-- Apple team: `M29XZH5LMJ`, Reentry Systems Unipessoal Lda
+- Apple team: `7ZCKCVM4C5`, Amorim Ferreira (Individual). Corrected 2026-11-10: this file said `M29XZH5LMJ` (Reentry Systems), which cannot see the app.
 - Expo owner: `abiabiassi`
 - Expo project: `c5bbb03a-2e8d-44fd-90a6-fe6ab08197a4`
 - Source checkout: `/Users/abi/work/deepbreathing-ios-no-tracking`

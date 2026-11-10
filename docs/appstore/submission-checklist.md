@@ -15,7 +15,7 @@ Status key: ✅ Done | ⏳ Pending | 🔲 Not started | 🚫 Blocked
 | # | Task | Status | Notes |
 |---|---|---|---|
 | 1.1 | Apple Developer Program membership active ($99/yr) | ✅ | Active via EAS credentials |
-| 1.2 | Correct team selected in ASC (App Store Connect) | ✅ | M29XZH5LMJ, Reentry Systems Unipessoal Lda |
+| 1.2 | Correct team selected in ASC (App Store Connect) | ✅ | 7ZCKCVM4C5, Amorim Ferreira (Individual). Corrected 2026-11-10; this row said M29XZH5LMJ (Reentry Systems), which cannot see the app. |
 
 ---
 
