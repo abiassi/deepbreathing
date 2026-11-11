@@ -326,6 +326,10 @@ Release through reviewed GitHub `main` and verify the resulting production SHA.
 This web framework patch and acquisition-reporter repair require no native app
 build or App Store submission.
 
-### Vercel read-only URL may be empty
+### Vercel read-only URL is empty in production, present in development
 
-On 2026-11-11, `vercel env pull --environment=production` returned `POSTGRES_URL_READONLY` with an empty value for project `deepbreathing-tmmj`. A successful pull and the presence of the variable name do not prove a usable credential. Check for a nonempty value without printing it, and verify `current_user` is `dbe_read` before running analytics queries. Do not fall back to owner credentials when the task authorizes only the read-only role.
+On 2026-11-11, `vercel env pull --environment=production` returned `POSTGRES_URL_READONLY` with an empty value for project `deepbreathing-tmmj`. `--environment=development` returned a usable value for the same Neon host with role `dbe_read`. Check for a nonempty value without printing it, and confirm `current_user` is `dbe_read` before an analytics query. Do not fall back to owner credentials when the task authorizes only the read-only role. `psql` is installed on mbp16 at `/opt/homebrew/bin/psql`.
+
+### Weekly refresh needs no browser for GA4
+
+The `ga-visibility` service account key at `~/.config/dbe-ga-visibility-sa.json` reaches the GA4 Data API from mbp16. A `runReport` with dimensions `eventName` and `deviceCategory` and metric `totalUsers` returns the whole funnel table of the weekly refresh. The orangepi host was unreachable from mbp16 on 2026-11-11, so Bing, whose API key lives only there, could not be refreshed.
