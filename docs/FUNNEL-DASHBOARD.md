@@ -1,8 +1,46 @@
 # Funnel Dashboard
 
-**Last refreshed:** 2026-07-10 (weekly refresh; first refresh since 2026-05-18 — 7-week gap)
+**Last refreshed:** 2026-07-10 (last successful top-line refresh). Refresh attempted 2026-11-11; all sources below remain stale.
 **Refresh cadence:** Weekly (Friday). Runbook: [docs/runbooks/weekly-funnel-refresh.md](runbooks/weekly-funnel-refresh.md)
 **Source of truth:** GA4 property `Deep Breathing Exercises` in DKMT account, ID `527524722`, measurement ID `G-53DLCBMRL3`. ⚠️ NOT the old Abiassi property `G-7GG9WVNBBP` (which has stale 2026-Q1 data only).
+
+---
+
+## Refresh attempt — 2026-11-11
+
+Requested windows: 2026-11-04–2026-11-10 and, where required, 2026-10-14–2026-11-10. No current baseline was obtained. Historical values below are unchanged and must not be used as current numbers.
+
+| Source | Status |
+|---|---|
+| GA4 | not refreshed 2026-11-11: the named Claude in Chrome browser route is unavailable in this session. |
+| Neon | not refreshed 2026-11-11: Vercel returned an empty `POSTGRES_URL_READONLY`; no database query ran. |
+| Google Search Console | not refreshed 2026-11-11: the named search-performance tools are unavailable in this session. |
+| Bing Webmaster Tools | not refreshed 2026-11-11: the named search-performance tools are unavailable and the orangepi digest host timed out. |
+
+### Overdue experiment checkpoints
+
+These entries have a dated checkpoint in the past and remain open in the experiment logs. Conditional gates are stated where the logs require them. No new verdicts were issued.
+
+| Experiment | Checkpoint |
+|---|---|
+| [Authenticated /stats reach instrumentation](PRODUCT-EXPERIMENTS.md#2026-07-20-authenticated-stats-reach-instrumentation) | 2026-07-29; production verification tracked with deployment |
+| [/stats retention surface](PRODUCT-EXPERIMENTS.md#2026-06-21-stats-page--practice-calendar--session-stats-for-signed-in-users) | 2026-07-21 |
+| [UTM-tag share buttons](PRODUCT-EXPERIMENTS.md#2026-05-12-utm-tag-share-buttons-attribute-outbound-shares-back-to-ga4) | 2026-06-05 |
+| [Mobile homepage](PRODUCT-EXPERIMENTS.md#2026-05-11-mobile-homepage-pills-mode-picker--full-screen-orb--restore-hero-text) | 2026-06-05 |
+| [Unify session-end events](PRODUCT-EXPERIMENTS.md#2026-05-08-unify-session-end-events--commit-on-pause) | 2026-06-05 |
+| [Engaged-minutes tracking](PRODUCT-EXPERIMENTS.md#2026-05-05-engaged-minutes-tracking--fix-double-counting--stop-event-sync) | 2026-06-02 |
+| [Index coverage hygiene](SEO-EXPERIMENTS.md#2026-07-27-index-coverage-hygiene--canonical-hijack-recovery) | 2026-08-10; deployment and recrawls were pending in the log |
+| [IndexNow changed-URL submission](SEO-EXPERIMENTS.md#2026-07-21-indexnow-changed-canonical-url-submission) | 2026-08-02; positive-path submission still needs a qualifying deployment |
+| [FR coherent Bing CTR](SEO-EXPERIMENTS.md#2026-07-19-fr-coherent-bing-ctr--exercise-intent-title--meta-rewrite) | 2026-08-16 |
+| [Homepage server-rendered content](SEO-EXPERIMENTS.md#2026-07-19-homepage-server-rendered-content--fix-full-page-csr-bailout) | 2026-08-16 |
+| [Hope Cartel reviews intent](SEO-EXPERIMENTS.md#2026-07-18-hope-cartel-reviews-intent-capture--reviews-section--exact-match-faqs--title) | 2026-08-15 |
+| [Owned videos and VideoObject schema](SEO-EXPERIMENTS.md#2026-06-13-owned-youtube-videos--videoobject-schema) | 2026-08-08 |
+| [9D breathwork cluster](SEO-EXPERIMENTS.md#2026-05-06-9d-breathwork-cluster--2-pages-riding-the-breakout-trend) | 2026-06-17 |
+| [E-E-A-T wellness overhaul](SEO-EXPERIMENTS.md#2026-05-06-e-e-a-t-wellness-class-overhaul--founder-byline--lineage--light-citations) | 2026-07-01 |
+| [Indexing remediation checkpoint](SEO-EXPERIMENTS.md#2026-04-20-indexing-remediation--bulk-url-resubmission-to-gsc--bing) | 2026-05-19 |
+| [Localized /languages labels](SEO-EXPERIMENTS.md#2026-07-20-localized-labels-on-the-languages-crawl-hub) | 2026-07-27 and 2026-08-17 |
+
+The assistant handoff experiments in both logs use the later of 2026-09-13 or 100 valid users. Their live receipt and threshold are unconfirmed, so an overdue date cannot be established.
 
 ---
 

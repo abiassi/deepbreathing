@@ -325,3 +325,7 @@ and [Vercel platform protection](https://vercel.com/changelog/nextjs-august-2026
 Release through reviewed GitHub `main` and verify the resulting production SHA.
 This web framework patch and acquisition-reporter repair require no native app
 build or App Store submission.
+
+### Vercel read-only URL may be empty
+
+On 2026-11-11, `vercel env pull --environment=production` returned `POSTGRES_URL_READONLY` with an empty value for project `deepbreathing-tmmj`. A successful pull and the presence of the variable name do not prove a usable credential. Check for a nonempty value without printing it, and verify `current_user` is `dbe_read` before running analytics queries. Do not fall back to owner credentials when the task authorizes only the read-only role.
