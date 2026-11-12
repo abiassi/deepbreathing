@@ -16,6 +16,38 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  web:
+    name: Web checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.22.2
+          cache: pnpm
+
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint web
+        run: pnpm lint
+
+      - name: Typecheck web
+        if: success() || failure()
+        run: pnpm typecheck
+
+      - name: Run web and release tests
+        if: success() || failure()
+        run: pnpm test
+
   verify:
     name: Tests, typecheck, lint, Expo Doctor
     runs-on: macos-15
@@ -43,9 +75,6 @@ jobs:
 
       - name: Reject critical production dependency advisories
         run: pnpm audit --prod --audit-level critical
-
-      - name: Run web and release tests
-        run: pnpm test
 
       - name: Compile the production web and API surface
         run: pnpm exec next build

@@ -9,6 +9,7 @@
     "start": "next start",
     "postbuild": "node ./scripts/ping-sitemap.mjs && pnpm run test:post-build",
     "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "ping:sitemap": "node ./scripts/ping-sitemap.mjs",
     "build:og-translations": "node ./scripts/build-og-translations.mjs",
     "build:native-i18n-about": "node ./scripts/i18n/bespoke/compile-about-content.mjs",
