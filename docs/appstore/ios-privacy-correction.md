@@ -26,11 +26,11 @@ Guest practice and settings remain local. Optional sign-in and practice sync
 still collect account data for app functionality. The app does not use IDFA,
 advertising attribution, or tracking across other companies' apps and websites.
 
-## Current iOS App Privacy answers
+## Candidate iOS App Privacy answers
 
 Data collection remains **Yes** because of optional accounts and practice sync.
-Tracking remains **No**. Remove the per-install analytics Device ID declaration
-and remove Analytics from Product Interaction's purposes.
+Tracking remains **No**. At manual release, remove the per-install analytics
+Device ID declaration and remove Analytics from Product Interaction's purposes.
 
 | Data type | Collection | Linked to user | Tracking | Purpose |
 |---|---|---|---|---|
@@ -39,11 +39,18 @@ and remove Analytics from Product Interaction's purposes.
 | Name | Optional account provider supplies it | Yes | No | App Functionality |
 | Product Interaction | Signed-in practice sync | Yes | No | App Functionality |
 
-Recheck the saved App Store Connect label before submission. The new iOS policy
-is `public/ios-privacy.html`, linked from the iOS account sheet. Deploy it through
-the GitHub main workflow and verify `https://deepbreathingexercises.com/ios-privacy.html`
-before uploading and resubmitting. Set the iOS App Store Connect Privacy Policy
-URL to that address. The existing `/privacy` page stays available for the website.
+Apple publishes App Privacy changes immediately. Its instructions require answers
+to describe the version currently available on the App Store. Version 1.0 remains
+available while 1.0.1 waits for review and manual release. Retain its Device ID
+and Analytics disclosures until that release. User ID was added for optional
+accounts, with App Functionality, linked to the user, and tracking set to No.
+See [Apple's App Privacy instructions](https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy).
+
+The new iOS policy is `public/ios-privacy.html`, linked from the iOS account sheet.
+It is live at `https://deepbreathingexercises.com/ios-privacy.html` and explicitly
+applies to 1.0.1 and later. The listing and Review Notes link to that page.
+At manual release, also set the global App Store Connect Privacy Policy URL to
+that address. Until then, its existing `/privacy` URL remains unchanged.
 
 The owner authorized publication of the prepared policy through GitHub main on
 October 8, 2026. Preserve the Git integration production provenance guard.
@@ -79,28 +86,42 @@ Use this text only after the exact candidate has passed verification:
   and [Apple's lifecycle requirement](https://developer.apple.com/documentation/uikit/transitioning-to-the-uikit-scene-based-life-cycle).
 - Simulator artifact: `/tmp/deepbreathing-ios-native-review/Build/Products/Release-iphonesimulator/DeepBreathing.app`
 - Simulator main bundle SHA-256: `33b81ccc39e9e213d6abf4b27dfcce2c6c9cfed6302fddb62407e2863d65718f`
-- Policy rendered locally and inspected; publication remains pending.
+- Policy rendered locally and inspected; publication verified on production.
 - EAS simulator and production profiles use `macos-tahoe-26.4-xcode-26.4`, the
   [documented SDK 56 image](https://docs.expo.dev/build-reference/infrastructure/#macos-tahoe-264-xcode-264-sdk-56).
   After Expo login, build the simulator profile for native UI and upgrade checks
   before creating the production candidate. Simulator build `ca591359-9140-4bf7-ad5f-7cb691e6b8b0` finished from
   `ffb20e4f7b306b273bc2c8b8a465bd428f8d16e4`, version 1.0.1 (21).
   The simulator build does not increment the production version.
-- Production EAS build and build number: pending
-- App Store processing: pending
-- App Privacy readback: pending
-- Review Notes saved: pending
-- Resubmission status: not submitted
+- Production EAS build: `65f7283f-9549-4afe-af84-137fc29935b2`, version 1.0.1 (22).
+- Production source: `14f6e08fcdc1b05299c226101ffd297550d19d92`.
+- Signed IPA SHA-256: `c66bdf2c9b694d1b821ea0539f00b1795554eeb9d540052e39980cd58a8201ab`.
+- Inspected the signed IPA: correct bundle, version, build and team; tracking
+  false, no Device ID collection, and no analytics endpoint in packaged code.
+- EAS upload: `28ee27a2-c92d-436a-b6e5-b7cedd57b60e`, Succeeded.
+- Apple processing finished; selected build 22 and saved the version.
+- App Privacy readback: User ID added and published. Existing live 1.0 analytics
+  disclosures remain until manual release, as described above.
+- Review Notes saved, including the analytics removal and privacy-label timing.
+- Resubmission: **Waiting for Review**, October 8, 2026 at 11:25 PM, as displayed
+  by App Store Connect. Submission ID remains `25d9e328-3741-464a-b019-843bcbc7a83a`.
 - Release timing: preserve the existing manual release setting
+- PR [#80](https://github.com/Darkmatter-AI/deepbreathing/pull/80) merged to main
+  `a78763e9cf6a2aec5803b5d03f6d772f087ae75a`. Its tree equals the production source.
+- Vercel Git production deployment: `dpl_tVfzUsEwXr8KWjhtM8t9bvz3pP7e`.
+  Build logs confirm the production source guard passed for that main commit.
+- Public iOS policy returned HTTP 200 and matches the deployed main source.
 
-## Remaining access
+![App Review resubmission confirmation](evidence/ios-review-submitted-20261008.png)
+
+## Access and cleanup
 
 Expo login is verified as `abiabiassi`. Safari is authenticated in App Store
 Connect as Amorim Ferreira, Reentry Systems Unipessoal Lda. Live readback confirms
-app 6786431781, rejected version 1.0.1 with build 21, and manual release.
-The published label still lists Device ID for Analytics and Product Interaction
-for Analytics and App Functionality. It does not yet include User ID.
-No App Store upload, metadata mutation, or resubmission has occurred.
+app 6786431781, version 1.0.1 with build 22 Waiting for Review, and manual release.
+The requested App Store Connect tab remains open in Safari. Agent-created
+verification browser tabs are closed. The DBE Privacy Review simulator is shut
+down and removed from the Device panel. No agent-started server is running.
 
 ## Listing corrections prepared for submission
 
