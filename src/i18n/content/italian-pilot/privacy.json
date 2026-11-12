@@ -146,9 +146,9 @@
     {
       "messagePath": "sections.deletion.beforeAction",
       "reason": "Italian pilot translation reviewed for source binding, natural phrasing, and privacy and support semantics.",
-      "reviewedSourceHash": "bd4e84e40d3705795a441f73eb524bb7908958ece94b3c1f21cc20d3275cd648",
-      "sourceText": "You may use the core breathing experience as a guest. Signed-in users can open the account menu and choose",
-      "translation": "Puoi usare l'esperienza di respirazione principale come ospite. Gli utenti che hanno effettuato l'accesso possono aprire il menu dell'account e scegliere"
+      "reviewedSourceHash": "c42a38c6f14c576244b2e9c6e49c164f171bfa70072c30d28075661fc4a19c00",
+      "sourceText": "You may use the core breathing experience as a guest. Signed-in users can open the account menu in the app, or the Your practice page on the website, and choose",
+      "translation": "Puoi usare l'esperienza di respirazione principale come ospite. Gli utenti che hanno effettuato l'accesso possono aprire il menu dell'account nell'app, oppure la pagina «La tua pratica» sul sito web, e scegliere"
     },
     {
       "messagePath": "sections.deletion.action",

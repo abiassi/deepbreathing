@@ -160,9 +160,9 @@
     {
       "messagePath": "commonQuestions.deletion.beforeAction",
       "reason": "Italian pilot translation reviewed for source binding, natural phrasing, and privacy and support semantics.",
-      "reviewedSourceHash": "77e79a722a22b3f564091cee5ac3717b15ffc07fd2a54a1aff0c8b6db4ce8161",
-      "sourceText": "Open your account menu in the app or website and choose",
-      "translation": "Apri il menu dell'account nell'app o sul sito web e scegli"
+      "reviewedSourceHash": "d8f7e8c41dc3af6524aa1877305457ad89ea6d5e25e56ee17544217cbda2cbd6",
+      "sourceText": "In the app, open your account menu. On the website, open Your practice and scroll to the bottom. Then choose",
+      "translation": "Nell'app, apri il menu dell'account. Sul sito web, apri «La tua pratica» e scorri fino in fondo. Poi scegli"
     },
     {
       "messagePath": "commonQuestions.deletion.action",

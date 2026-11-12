@@ -37,7 +37,7 @@
     "deletion": {
       "action": "Eliminar cuenta.",
       "afterAction": "Tras la confirmación, eliminamos permanentemente la cuenta y los datos de prácticas sincronizados. Los datos locales pueden eliminarse borrando la app o los datos del sitio en tu navegador.",
-      "beforeAction": "Puedes usar la experiencia principal de respiración como invitado. Los usuarios que hayan iniciado sesión pueden abrir el menú de la cuenta y elegir",
+      "beforeAction": "Puedes usar la experiencia principal de respiración como invitado. Los usuarios que hayan iniciado sesión pueden abrir el menú de la cuenta en la app, o la página «Tu práctica» en el sitio web, y elegir",
       "title": "Tus opciones y la eliminación"
     },
     "device": {

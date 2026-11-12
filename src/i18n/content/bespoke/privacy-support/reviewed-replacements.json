@@ -116,15 +116,15 @@
     {
       "route": "/privacy",
       "messagePath": "sections.deletion.beforeAction",
-      "sourceText": "You may use the core breathing experience as a guest. Signed-in users can open the account menu and choose",
-      "reviewedSourceHash": "bd4e84e40d3705795a441f73eb524bb7908958ece94b3c1f21cc20d3275cd648",
+      "sourceText": "You may use the core breathing experience as a guest. Signed-in users can open the account menu in the app, or the Your practice page on the website, and choose",
+      "reviewedSourceHash": "c42a38c6f14c576244b2e9c6e49c164f171bfa70072c30d28075661fc4a19c00",
       "reason": "Current guest-use and in-product deletion instructions are absent from the preservation catalog.",
       "translations": {
-        "de-de": "Sie können das grundlegende Atemangebot als Gast nutzen. Angemeldete Nutzer können das Kontomenü öffnen und Folgendes auswählen",
-        "es-es": "Puedes usar la experiencia principal de respiración como invitado. Los usuarios que hayan iniciado sesión pueden abrir el menú de la cuenta y elegir",
-        "fr-fr": "Vous pouvez utiliser l'expérience de respiration principale en tant qu'utilisateur non connecté. Les utilisateurs connectés peuvent ouvrir le menu du compte et choisir",
-        "ja-jp": "ゲストとして中核となる呼吸体験を利用できます。サインインしているユーザーはアカウントメニューを開き、次を選択できます",
-        "pt-br": "Você pode usar a experiência principal de respiração como visitante. Usuários conectados podem abrir o menu da conta e escolher"
+        "de-de": "Sie können das grundlegende Atemangebot als Gast nutzen. Angemeldete Nutzer können in der App das Kontomenü oder auf der Website die Seite „Deine Praxis“ öffnen und Folgendes auswählen",
+        "es-es": "Puedes usar la experiencia principal de respiración como invitado. Los usuarios que hayan iniciado sesión pueden abrir el menú de la cuenta en la app, o la página «Tu práctica» en el sitio web, y elegir",
+        "fr-fr": "Vous pouvez utiliser l'expérience de respiration principale en tant qu'utilisateur non connecté. Les utilisateurs connectés peuvent ouvrir le menu du compte dans l'application, ou la page « Votre pratique » sur le site web, et choisir",
+        "ja-jp": "ゲストとして中核となる呼吸体験を利用できます。サインインしているユーザーは、アプリではアカウントメニュー、ウェブサイトでは「あなたの練習」ページを開き、次を選択できます",
+        "pt-br": "Você pode usar a experiência principal de respiração como visitante. Usuários conectados podem abrir o menu da conta no app, ou a página “Sua prática” no site, e escolher"
       }
     },
     {
@@ -158,15 +158,15 @@
     {
       "route": "/support",
       "messagePath": "commonQuestions.deletion.beforeAction",
-      "sourceText": "Open your account menu in the app or website and choose",
-      "reviewedSourceHash": "77e79a722a22b3f564091cee5ac3717b15ffc07fd2a54a1aff0c8b6db4ce8161",
+      "sourceText": "In the app, open your account menu. On the website, open Your practice and scroll to the bottom. Then choose",
+      "reviewedSourceHash": "d8f7e8c41dc3af6524aa1877305457ad89ea6d5e25e56ee17544217cbda2cbd6",
       "reason": "Current in-product deletion instructions supersede the stale email-based catalog fragments.",
       "translations": {
-        "de-de": "Öffnen Sie Ihr Kontomenü in der App oder auf der Website und wählen Sie",
-        "es-es": "Abre el menú de tu cuenta en la app o el sitio web y elige",
-        "fr-fr": "Ouvrez le menu de votre compte dans l'application ou sur le site web et choisissez",
-        "ja-jp": "アプリまたはウェブサイトでアカウントメニューを開き、次を選択します",
-        "pt-br": "Abra o menu da sua conta no app ou no site e escolha"
+        "de-de": "Öffnen Sie in der App Ihr Kontomenü. Öffnen Sie auf der Website die Seite „Deine Praxis“ und scrollen Sie nach unten. Wählen Sie dann",
+        "es-es": "En la app, abre el menú de tu cuenta. En el sitio web, abre «Tu práctica» y desplázate hasta el final. Luego elige",
+        "fr-fr": "Dans l'application, ouvrez le menu de votre compte. Sur le site web, ouvrez « Votre pratique » et faites défiler jusqu'en bas. Choisissez ensuite",
+        "ja-jp": "アプリではアカウントメニューを開きます。ウェブサイトでは「あなたの練習」を開き、一番下までスクロールします。次を選択します",
+        "pt-br": "No app, abra o menu da sua conta. No site, abra “Sua prática” e role até o final. Depois escolha"
       }
     },
     {

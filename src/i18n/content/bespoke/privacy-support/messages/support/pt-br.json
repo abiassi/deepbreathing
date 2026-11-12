@@ -22,7 +22,7 @@
     "deletion": {
       "action": "Excluir conta.",
       "afterAction": "Enviamos um link de confirmação antes de remover permanentemente sua conta e os dados de prática sincronizados.",
-      "beforeAction": "Abra o menu da sua conta no app ou no site e escolha",
+      "beforeAction": "No app, abra o menu da sua conta. No site, abra “Sua prática” e role até o final. Depois escolha",
       "question": "Como excluo minha conta?"
     },
     "medical": {

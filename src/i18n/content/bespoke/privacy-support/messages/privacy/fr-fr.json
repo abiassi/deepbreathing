@@ -37,7 +37,7 @@
     "deletion": {
       "action": "Supprimer le compte.",
       "afterAction": "Après confirmation, nous supprimons définitivement le compte et les données de pratique synchronisées. Les données locales peuvent être supprimées en désinstallant l'application ou en effaçant les données du site dans votre navigateur.",
-      "beforeAction": "Vous pouvez utiliser l'expérience de respiration principale en tant qu'utilisateur non connecté. Les utilisateurs connectés peuvent ouvrir le menu du compte et choisir",
+      "beforeAction": "Vous pouvez utiliser l'expérience de respiration principale en tant qu'utilisateur non connecté. Les utilisateurs connectés peuvent ouvrir le menu du compte dans l'application, ou la page « Votre pratique » sur le site web, et choisir",
       "title": "Vos choix et la suppression"
     },
     "device": {

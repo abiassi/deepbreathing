@@ -33,7 +33,7 @@
     },
     "deletion": {
       "title": "Your choices and deletion",
-      "beforeAction": "You may use the core breathing experience as a guest. Signed-in users can open the account menu and choose",
+      "beforeAction": "You may use the core breathing experience as a guest. Signed-in users can open the account menu in the app, or the Your practice page on the website, and choose",
       "action": "Delete account.",
       "afterAction": "After confirmation, we permanently delete the account and synced practice data. Local data can be removed by deleting the app or clearing site data in your browser."
     },

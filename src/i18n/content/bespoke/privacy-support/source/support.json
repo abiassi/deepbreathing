@@ -33,7 +33,7 @@
     },
     "deletion": {
       "question": "How do I delete my account?",
-      "beforeAction": "Open your account menu in the app or website and choose",
+      "beforeAction": "In the app, open your account menu. On the website, open Your practice and scroll to the bottom. Then choose",
       "action": "Delete account.",
       "afterAction": "We send a confirmation link before permanently removing your account and synced practice data."
     },

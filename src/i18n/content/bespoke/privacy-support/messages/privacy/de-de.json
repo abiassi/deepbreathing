@@ -37,7 +37,7 @@
     "deletion": {
       "action": "Konto löschen.",
       "afterAction": "Nach der Bestätigung löschen wir das Konto und die synchronisierten Übungsdaten dauerhaft. Lokale Daten können entfernt werden, indem Sie die App löschen oder die Websitedaten in Ihrem Browser löschen.",
-      "beforeAction": "Sie können das grundlegende Atemangebot als Gast nutzen. Angemeldete Nutzer können das Kontomenü öffnen und Folgendes auswählen",
+      "beforeAction": "Sie können das grundlegende Atemangebot als Gast nutzen. Angemeldete Nutzer können in der App das Kontomenü oder auf der Website die Seite „Deine Praxis“ öffnen und Folgendes auswählen",
       "title": "Ihre Wahlmöglichkeiten und Löschung"
     },
     "device": {

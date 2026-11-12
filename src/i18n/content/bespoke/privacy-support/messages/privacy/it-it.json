@@ -37,7 +37,7 @@
     "deletion": {
       "action": "Elimina l'account.",
       "afterAction": "Dopo la conferma, eliminiamo definitivamente l'account e i dati della pratica sincronizzati. I dati locali possono essere rimossi eliminando l'app o cancellando i dati del sito nel browser.",
-      "beforeAction": "Puoi usare l'esperienza di respirazione principale come ospite. Gli utenti che hanno effettuato l'accesso possono aprire il menu dell'account e scegliere",
+      "beforeAction": "Puoi usare l'esperienza di respirazione principale come ospite. Gli utenti che hanno effettuato l'accesso possono aprire il menu dell'account nell'app, oppure la pagina «La tua pratica» sul sito web, e scegliere",
       "title": "Le tue scelte e la cancellazione"
     },
     "device": {

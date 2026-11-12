@@ -22,7 +22,7 @@
     "deletion": {
       "action": "Elimina l'account.",
       "afterAction": "Ti invieremo un link di conferma prima di rimuovere definitivamente l'account e i dati della pratica sincronizzati.",
-      "beforeAction": "Apri il menu dell'account nell'app o sul sito web e scegli",
+      "beforeAction": "Nell'app, apri il menu dell'account. Sul sito web, apri «La tua pratica» e scorri fino in fondo. Poi scegli",
       "question": "Come elimino il mio account?"
     },
     "medical": {

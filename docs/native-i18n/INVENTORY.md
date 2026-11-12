@@ -275,7 +275,7 @@ The groups below separate live coupling from migration provenance and historical
 | Evidence | Dependency / cutover implication |
 |---|---|
 | `scripts/build-og-translations.mjs:8` | Scrapes localized apex pages and treats proxy-produced `og:title` as authoritative. |
-| `package.json:13` | Exposes the proxy-scraping OG translation build command. |
+| `package.json:14` | Exposes the proxy-scraping OG translation build command. |
 | `src/data/og-translations.json:3` | Checked-in localized OG-title artifact produced by live-site scraping. |
 | `src/app/og/route.tsx:5` | Consumes the proxy-derived OG-title artifact for query-based images. |
 | `src/app/og/[slug]/route.tsx:6` | Consumes the proxy-derived OG-title artifact for slug-based images. |
@@ -308,13 +308,13 @@ The groups below separate live coupling from migration provenance and historical
 
 | Evidence | Dependency / cutover implication |
 |---|---|
-| `CLAUDE.md:100` | Canonical project guidance still documents proxy URL semantics and old OAuth context. |
+| `CLAUDE.md:101` | Canonical project guidance still documents proxy URL semantics and old OAuth context. |
 | `AGENTS.md:21` | Project environment declares the origin application endpoint. |
 | `.claude/skills/daily-indexing/SKILL.md:19` | Correctly states that MassTranslate submission/OAuth paths are retired for indexing; keep this negative dependency true. |
-| `docs/runbooks/tools-and-data-sources.md:70` | Primary live runbook for proxy cache, signed-webhook bypass, URL semantics, and remaining GSC/Bing fallbacks. |
+| `docs/runbooks/tools-and-data-sources.md:71` | Primary live runbook for proxy cache, signed-webhook bypass, URL semantics, and remaining GSC/Bing fallbacks. |
 | `docs/runbooks/weekly-funnel-refresh.md:78` | Still contains MassTranslate GSC/Bing synchronization commands and OAuth recovery steps. |
 | `docs/indexing-queue.md:52` | Contains operational and historical references to MassTranslate URL-submission tools. |
-| `docs/FUNNEL-DASHBOARD.md:154` | A dated dashboard snapshot names MassTranslate as a prior GSC data source. |
+| `docs/FUNNEL-DASHBOARD.md:258` | A dated dashboard snapshot names MassTranslate as a prior GSC data source. |
 
 ### App Store submission notes (active)
 
@@ -326,7 +326,7 @@ The groups below separate live coupling from migration provenance and historical
 
 | Evidence | Dependency / cutover implication |
 |---|---|
-| `docs/SEO-EXPERIMENTS.md:274` | Permanent experiment history for proxy defects, mitigations, and indexing outcomes. |
+| `docs/SEO-EXPERIMENTS.md:283` | Permanent experiment history for proxy defects, mitigations, and indexing outcomes. |
 | `docs/UX-BACKLOG.md:102` | Historical ownership and translation-coverage findings. |
 | `docs/qa-reports/traction-pages-2026-06-06.md:9` | Production evidence for delayed translation, partial coverage, and hydration failures. |
 | `docs/research/eeat-citations-2026-05.md:16` | A dated content-research decision record. |

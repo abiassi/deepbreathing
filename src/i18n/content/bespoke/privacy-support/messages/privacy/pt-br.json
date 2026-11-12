@@ -37,7 +37,7 @@
     "deletion": {
       "action": "Excluir conta.",
       "afterAction": "Após a confirmação, excluímos permanentemente a conta e os dados de prática sincronizados. Os dados locais podem ser removidos ao excluir o app ou limpar os dados do site no navegador.",
-      "beforeAction": "Você pode usar a experiência principal de respiração como visitante. Usuários conectados podem abrir o menu da conta e escolher",
+      "beforeAction": "Você pode usar a experiência principal de respiração como visitante. Usuários conectados podem abrir o menu da conta no app, ou a página “Sua prática” no site, e escolher",
       "title": "Suas escolhas e exclusão"
     },
     "device": {
