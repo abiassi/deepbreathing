@@ -1,6 +1,6 @@
 # Apple team transfer and the 1.0.2 release
 
-Status on 2026-11-12: **1.0.2 is not ready to submit.** Build 24 is in TestFlight only.
+Status on 2026-11-12: **1.0.2 is not submitted.** Website Sign in with Apple works on the new team. The app needs a new build and one TestFlight test.
 
 ## What happened
 
@@ -18,9 +18,9 @@ Status on 2026-11-12: **1.0.2 is not ready to submit.** Build 24 is in TestFligh
 | Risk | Effect | State |
 |---|---|---|
 | Sign in with Apple user IDs | Apple gives each user a new ID on the new team. The server would open a new, empty account. | Accepted. See the decision below. |
-| Server Apple credentials | `src/lib/auth.ts` signs with `APPLE_TEAM_ID` and `APPLE_KEY_ID`. A Reentry value may fail for the transferred bundle ID. | Unknown. Vercel returns these values empty. |
+| Server Apple credentials | `src/lib/auth.ts` signs with `APPLE_TEAM_ID` and `APPLE_KEY_ID`. A Reentry value may fail for the transferred bundle ID. | Fixed 2026-11-12. See below. |
 | Keychain | Users signed in on 1.0.1 are signed out once after the update. Practice history stays. | Accepted. |
-| Private-relay email | Sending addresses are registered for Sign in with Apple email on Reentry Systems only. | Open. |
+| Private-relay email | Sending addresses are registered for Sign in with Apple email on Reentry Systems only. | Fixed 2026-11-12. See below. |
 
 ## Evidence from production, read-only, 2026-11-12
 
@@ -41,11 +41,35 @@ under the old account.
   scoped per account in `apps/mobile/src/sync/session-sync-client.ts`.
 - Accounts with a real email should relink by email through Better Auth. Untested.
 
+## Done on 2026-11-12
+
+- Read both teams in the Apple developer portal. The Individual team owns the App ID
+  `com.deepbreathing.app` and the Services ID `com.deepbreathing.app.web`, grouped
+  together. The Individual team had no Sign in with Apple key.
+- Created Sign in with Apple key `4H8RUTKW9M` on the Individual team. The private key
+  is in 1Password, Agent Work vault, item "Deep Breathing - Sign in with Apple key
+  4H8RUTKW9M". Apple allows one download only.
+- Set `APPLE_TEAM_ID`, `APPLE_KEY_ID` and `APPLE_PRIVATE_KEY` in Vercel production and
+  redeployed production from `main`.
+- Abi signed in with Apple on the website at 10:57 UTC. The database shows one new
+  Apple account with a stored Apple token, so the code exchange works with the new key.
+- Registered `noreply@deepbreathingexercises.com` and `abi@deepbreathingexercises.com`
+  under Sign in with Apple for Email Communication on the Individual team. Both show
+  status SPF. Before that, all 3 private-relay signups in November bounced, against
+  0 of 31 from August to October.
+
+A fake authorization code cannot test the key. Apple answers `invalid_grant` for a
+correct key and for a wrong key alike. Only a real sign-in proves the credentials.
+
 ## Before submitting 1.0.2
 
-1. Find which team owns the website Services ID and the Sign in with Apple key.
-2. Point the server Apple credentials at the Individual team for both the app and
-   the website. A person gets one account only when both sit on the same team.
-3. Register the sending addresses for Sign in with Apple email on the Individual team.
-4. Test build 24 from TestFlight. Sign in with Apple must succeed.
-5. Submit 1.0.2 for review.
+1. Build 1.0.2 from current `main`. Build 24 predates the Expo patch updates.
+2. Test the new build from TestFlight. Sign in with Apple must succeed in the app.
+3. Confirm that a new private-relay signup receives the welcome email.
+4. Create version 1.0.2 in App Store Connect and submit it for review.
+
+## Open
+
+- Three private-relay addresses from November sit in `email_suppressions` as bounces.
+  They receive no mail until someone removes those rows.
+- The Reentry Systems certificates area is closed to the `tzolking@gmail.com` Apple ID.
