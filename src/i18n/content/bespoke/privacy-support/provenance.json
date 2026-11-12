@@ -127,7 +127,7 @@
             "status": "reviewed-replacement"
           },
           "sections.deletion.beforeAction": {
-            "reviewedSourceHash": "bd4e84e40d3705795a441f73eb524bb7908958ece94b3c1f21cc20d3275cd648",
+            "reviewedSourceHash": "c42a38c6f14c576244b2e9c6e49c164f171bfa70072c30d28075661fc4a19c00",
             "status": "reviewed-replacement"
           },
           "sections.deletion.title": {
@@ -290,7 +290,7 @@
             "status": "reviewed-replacement"
           },
           "sections.deletion.beforeAction": {
-            "reviewedSourceHash": "bd4e84e40d3705795a441f73eb524bb7908958ece94b3c1f21cc20d3275cd648",
+            "reviewedSourceHash": "c42a38c6f14c576244b2e9c6e49c164f171bfa70072c30d28075661fc4a19c00",
             "status": "reviewed-replacement"
           },
           "sections.deletion.title": {
@@ -453,7 +453,7 @@
             "status": "reviewed-replacement"
           },
           "sections.deletion.beforeAction": {
-            "reviewedSourceHash": "bd4e84e40d3705795a441f73eb524bb7908958ece94b3c1f21cc20d3275cd648",
+            "reviewedSourceHash": "c42a38c6f14c576244b2e9c6e49c164f171bfa70072c30d28075661fc4a19c00",
             "status": "reviewed-replacement"
           },
           "sections.deletion.title": {
@@ -614,7 +614,7 @@
           },
           "sections.deletion.beforeAction": {
             "reason": "Italian pilot translation reviewed for source binding, natural phrasing, and privacy and support semantics.",
-            "reviewedSourceHash": "bd4e84e40d3705795a441f73eb524bb7908958ece94b3c1f21cc20d3275cd648",
+            "reviewedSourceHash": "c42a38c6f14c576244b2e9c6e49c164f171bfa70072c30d28075661fc4a19c00",
             "status": "italian-pilot-reviewed"
           },
           "sections.deletion.title": {
@@ -778,7 +778,7 @@
             "status": "reviewed-replacement"
           },
           "sections.deletion.beforeAction": {
-            "reviewedSourceHash": "bd4e84e40d3705795a441f73eb524bb7908958ece94b3c1f21cc20d3275cd648",
+            "reviewedSourceHash": "c42a38c6f14c576244b2e9c6e49c164f171bfa70072c30d28075661fc4a19c00",
             "status": "reviewed-replacement"
           },
           "sections.deletion.title": {
@@ -941,7 +941,7 @@
             "status": "reviewed-replacement"
           },
           "sections.deletion.beforeAction": {
-            "reviewedSourceHash": "bd4e84e40d3705795a441f73eb524bb7908958ece94b3c1f21cc20d3275cd648",
+            "reviewedSourceHash": "c42a38c6f14c576244b2e9c6e49c164f171bfa70072c30d28075661fc4a19c00",
             "status": "reviewed-replacement"
           },
           "sections.deletion.title": {
@@ -1046,11 +1046,11 @@
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.afterAction": {
-            "reviewedSourceHash": "cabe7ea15d9592fe2f32f577e0f5c1d51f2489609953fdadf3f9bc084517ea97",
+            "reviewedSourceHash": "f745245fa2f881c0a9d72e17bc1ae26f57b733c5da4f4fe449f8954f667c0f97",
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.beforeAction": {
-            "reviewedSourceHash": "77e79a722a22b3f564091cee5ac3717b15ffc07fd2a54a1aff0c8b6db4ce8161",
+            "reviewedSourceHash": "d8f7e8c41dc3af6524aa1877305457ad89ea6d5e25e56ee17544217cbda2cbd6",
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.question": {
@@ -1231,11 +1231,11 @@
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.afterAction": {
-            "reviewedSourceHash": "cabe7ea15d9592fe2f32f577e0f5c1d51f2489609953fdadf3f9bc084517ea97",
+            "reviewedSourceHash": "f745245fa2f881c0a9d72e17bc1ae26f57b733c5da4f4fe449f8954f667c0f97",
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.beforeAction": {
-            "reviewedSourceHash": "77e79a722a22b3f564091cee5ac3717b15ffc07fd2a54a1aff0c8b6db4ce8161",
+            "reviewedSourceHash": "d8f7e8c41dc3af6524aa1877305457ad89ea6d5e25e56ee17544217cbda2cbd6",
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.question": {
@@ -1416,11 +1416,11 @@
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.afterAction": {
-            "reviewedSourceHash": "cabe7ea15d9592fe2f32f577e0f5c1d51f2489609953fdadf3f9bc084517ea97",
+            "reviewedSourceHash": "f745245fa2f881c0a9d72e17bc1ae26f57b733c5da4f4fe449f8954f667c0f97",
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.beforeAction": {
-            "reviewedSourceHash": "77e79a722a22b3f564091cee5ac3717b15ffc07fd2a54a1aff0c8b6db4ce8161",
+            "reviewedSourceHash": "d8f7e8c41dc3af6524aa1877305457ad89ea6d5e25e56ee17544217cbda2cbd6",
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.question": {
@@ -1601,12 +1601,12 @@
           },
           "commonQuestions.deletion.afterAction": {
             "reason": "Italian pilot translation reviewed for source binding, natural phrasing, and privacy and support semantics.",
-            "reviewedSourceHash": "cabe7ea15d9592fe2f32f577e0f5c1d51f2489609953fdadf3f9bc084517ea97",
+            "reviewedSourceHash": "f745245fa2f881c0a9d72e17bc1ae26f57b733c5da4f4fe449f8954f667c0f97",
             "status": "italian-pilot-reviewed"
           },
           "commonQuestions.deletion.beforeAction": {
             "reason": "Italian pilot translation reviewed for source binding, natural phrasing, and privacy and support semantics.",
-            "reviewedSourceHash": "77e79a722a22b3f564091cee5ac3717b15ffc07fd2a54a1aff0c8b6db4ce8161",
+            "reviewedSourceHash": "d8f7e8c41dc3af6524aa1877305457ad89ea6d5e25e56ee17544217cbda2cbd6",
             "status": "italian-pilot-reviewed"
           },
           "commonQuestions.deletion.question": {
@@ -1783,11 +1783,11 @@
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.afterAction": {
-            "reviewedSourceHash": "cabe7ea15d9592fe2f32f577e0f5c1d51f2489609953fdadf3f9bc084517ea97",
+            "reviewedSourceHash": "f745245fa2f881c0a9d72e17bc1ae26f57b733c5da4f4fe449f8954f667c0f97",
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.beforeAction": {
-            "reviewedSourceHash": "77e79a722a22b3f564091cee5ac3717b15ffc07fd2a54a1aff0c8b6db4ce8161",
+            "reviewedSourceHash": "d8f7e8c41dc3af6524aa1877305457ad89ea6d5e25e56ee17544217cbda2cbd6",
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.question": {
@@ -1968,11 +1968,11 @@
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.afterAction": {
-            "reviewedSourceHash": "cabe7ea15d9592fe2f32f577e0f5c1d51f2489609953fdadf3f9bc084517ea97",
+            "reviewedSourceHash": "f745245fa2f881c0a9d72e17bc1ae26f57b733c5da4f4fe449f8954f667c0f97",
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.beforeAction": {
-            "reviewedSourceHash": "77e79a722a22b3f564091cee5ac3717b15ffc07fd2a54a1aff0c8b6db4ce8161",
+            "reviewedSourceHash": "d8f7e8c41dc3af6524aa1877305457ad89ea6d5e25e56ee17544217cbda2cbd6",
             "status": "reviewed-replacement"
           },
           "commonQuestions.deletion.question": {

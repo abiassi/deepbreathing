@@ -66,7 +66,7 @@ const AudioDebugPanel = dynamic(
 );
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet';
 import { useAuth } from '@/components/auth/auth-provider';
-import { authClient, signOut } from '@/lib/auth-client';
+import { signOut } from '@/lib/auth-client';
 import { useConversionTriggers } from '@/lib/conversion/use-conversion-triggers';
 import { SessionCompletePrompt } from '@/components/auth/session-complete-prompt';
 import { ConversionNudge } from '@/components/auth/conversion-nudge';
@@ -1660,19 +1660,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                     >
                       <LogOut size={14} />
                       {getSafePhrase('ui.sign_out')}
-                    </button>
-                    <button
-                      onClick={async () => {
-                        if (!window.confirm(getSafePhrase('ui.delete_account_confirm'))) return;
-                        const callbackURL = `${window.location.pathname}${window.location.search}`;
-                        const result = await authClient.deleteUser({ callbackURL });
-                        if (result.error) window.alert(result.error.message || getSafePhrase('ui.delete_account_start_error'));
-                        else window.alert(getSafePhrase('ui.delete_account_check_email'));
-                      }}
-                      className="flex w-full items-center gap-2 rounded-xl px-2 py-2 text-sm text-destructive transition-colors hover:bg-destructive/10"
-                    >
-                      <X size={14} />
-                      {getSafePhrase('ui.delete_account')}
                     </button>
                   </div>
                 )}

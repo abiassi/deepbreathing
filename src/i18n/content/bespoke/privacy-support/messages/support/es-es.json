@@ -21,8 +21,8 @@
     },
     "deletion": {
       "action": "Eliminar cuenta.",
-      "afterAction": "Enviamos un enlace de confirmación antes de eliminar permanentemente tu cuenta y los datos de prácticas sincronizados.",
-      "beforeAction": "Abre el menú de tu cuenta en la app o el sitio web y elige",
+      "afterAction": "Te enviamos un enlace de confirmación por correo electrónico. Tu cuenta y los datos de prácticas sincronizados solo se eliminan permanentemente después de que confirmes la eliminación mediante ese enlace.",
+      "beforeAction": "En la app, abre el menú de tu cuenta. En el sitio web, abre «Tu práctica» y desplázate hasta el final. Luego elige",
       "question": "¿Cómo elimino mi cuenta?"
     },
     "medical": {

@@ -21,8 +21,8 @@
     },
     "deletion": {
       "action": "Konto löschen.",
-      "afterAction": "Wir senden einen Bestätigungslink, bevor wir Ihr Konto und die synchronisierten Übungsdaten dauerhaft entfernen.",
-      "beforeAction": "Öffnen Sie Ihr Kontomenü in der App oder auf der Website und wählen Sie",
+      "afterAction": "Wir senden Ihnen einen Bestätigungslink per E-Mail. Ihr Konto und die synchronisierten Übungsdaten werden erst dauerhaft gelöscht, nachdem Sie die Löschung über diesen Link bestätigt haben.",
+      "beforeAction": "Öffnen Sie in der App Ihr Kontomenü. Öffnen Sie auf der Website die Seite „Deine Praxis“ und scrollen Sie nach unten. Wählen Sie dann",
       "question": "Wie lösche ich mein Konto?"
     },
     "medical": {

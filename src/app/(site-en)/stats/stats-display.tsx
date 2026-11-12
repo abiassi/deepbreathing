@@ -18,6 +18,7 @@ import {
   last7Days,
 } from "@/lib/stats/streak-calendar";
 
+import { DeleteAccount } from "./delete-account";
 import styles from "./stats.module.css";
 
 const GARDEN_WEEKS = 18;
@@ -514,6 +515,11 @@ export function StatsDisplay({
             </div>
           </div>
         </section>
+
+        <DeleteAccount
+          callbackURL={renderContext.appHref}
+          locale={renderContext.locale}
+        />
       </div>
     </div>
   );

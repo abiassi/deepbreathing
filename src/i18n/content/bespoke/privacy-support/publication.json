@@ -9,37 +9,37 @@
           "path": "messages/privacy/de-de.json",
           "publishable": true,
           "resolvedMessages": 32,
-          "sha256": "c8d4df3c244fe4d1b493ab673e0d97a39b723f382a314681a219aac8609e30b9"
+          "sha256": "bf326aef7bc1946b45a83d1acfb89c11b090326ced9fd119940c4740077b6fae"
         },
         "es-es": {
           "path": "messages/privacy/es-es.json",
           "publishable": true,
           "resolvedMessages": 32,
-          "sha256": "e536517b17799be3d0d2bf8a056ea7c95a2c4546d38f4211beb562c1c12a37ac"
+          "sha256": "1f40e03cac830519cc0a14b6ad895bcd269a310eddb3738231e3714fcbf600b3"
         },
         "fr-fr": {
           "path": "messages/privacy/fr-fr.json",
           "publishable": true,
           "resolvedMessages": 32,
-          "sha256": "727d50503738150b952eb0758201cac372a6954ed9e23637387cd125d2745506"
+          "sha256": "031da58acde42b83d38a4d9df19283f1fac5fc5108b481dd181b6ddac0b9a235"
         },
         "it-it": {
           "path": "messages/privacy/it-it.json",
           "publishable": true,
           "resolvedMessages": 32,
-          "sha256": "fa02973c56bbb1a3dd45dbfc2c200b4747cbeea845252aa5345831f9fa65f619"
+          "sha256": "5a5ebd7244f4e6e5a9b0ee6ca890c799cf7027460924067872365d23d8320dfd"
         },
         "ja-jp": {
           "path": "messages/privacy/ja-jp.json",
           "publishable": true,
           "resolvedMessages": 32,
-          "sha256": "53875220baf6a086d4d7e3c97769b319a9ab3d5f53cdc8ef388a318b2dcb4ef0"
+          "sha256": "375a4e5b5213cc094c9f94ddd21200ed74e44f7c531d7c964007aec9dbf0cde6"
         },
         "pt-br": {
           "path": "messages/privacy/pt-br.json",
           "publishable": true,
           "resolvedMessages": 32,
-          "sha256": "08358708474658421f10587bdd0a12026ffe2ccbb034c08b9ebe1de25a69dfff"
+          "sha256": "8ae47722a636871c27414f17cc5db71b99e1ab3812cca60e5de1abdf2954557d"
         }
       },
       "mirrorBindings": 2,
@@ -58,37 +58,37 @@
           "path": "messages/support/de-de.json",
           "publishable": true,
           "resolvedMessages": 36,
-          "sha256": "32dd60ed7ea2fbefc517713fadb6799b0fce15307773f80aa53b858bbadf988b"
+          "sha256": "e324284580e2966847a49070b17a340faa84b79533b75201f6aeeab293f35da4"
         },
         "es-es": {
           "path": "messages/support/es-es.json",
           "publishable": true,
           "resolvedMessages": 36,
-          "sha256": "69a69ffcea99660201a6f6a614d7d78ac49e4ea5d681d78f5e52be0d26d79132"
+          "sha256": "839c13f53b4014c1e614c4b814b51d75ed39a3b015eab5cbda5922ef766d846b"
         },
         "fr-fr": {
           "path": "messages/support/fr-fr.json",
           "publishable": true,
           "resolvedMessages": 36,
-          "sha256": "d52811f0dc987dbbfea23c68fa416490e8f85038a5e52613b321dda999cf4799"
+          "sha256": "ea65b2adcc0d80351789a8f613282fd7e334dbae13cd83efec690864db11ec67"
         },
         "it-it": {
           "path": "messages/support/it-it.json",
           "publishable": true,
           "resolvedMessages": 36,
-          "sha256": "58649d60866b048e18bce0883ea518828b1b6831732d3712bc36242cf44e8423"
+          "sha256": "2b77445c21613b02dfeb4ff729de6a0f95ef82d74e7d7b477f31466e67373642"
         },
         "ja-jp": {
           "path": "messages/support/ja-jp.json",
           "publishable": true,
           "resolvedMessages": 36,
-          "sha256": "096ffe658e8c7c9eeacc2c0266d4d1ef615f537c99232395b3a6c99c47b846fc"
+          "sha256": "fd1dc2a240a06b2a58c4d68952734fef4f67987b9619939f2a4d2652f88f5694"
         },
         "pt-br": {
           "path": "messages/support/pt-br.json",
           "publishable": true,
           "resolvedMessages": 36,
-          "sha256": "229152147c3fae31dbc9cd23d1d6565058146e9a9f565676d4b6c6d290a6f09e"
+          "sha256": "ddda7ec9cd021d121f3f4037a54e31fb8dc08c38081c9ec720708a7ce7d3d29b"
         }
       },
       "mirrorBindings": 2,

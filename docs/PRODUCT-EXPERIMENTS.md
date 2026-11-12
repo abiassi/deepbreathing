@@ -23,6 +23,7 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
+| 2026-11-12 | [Move web account deletion to the practice page](#2026-11-12-move-web-account-deletion-to-the-practice-page) | 🔄 Implemented; production verification pending |
 | 2026-11-08 | [Restore iOS 27 development with SDK 58](#2026-11-08-restore-ios-27-development-with-sdk-58) | Simulator verified; unshipped |
 | 2026-10-08 | [Remove iOS usage analytics and custom consent](#2026-10-08-remove-ios-usage-analytics-and-custom-consent) | Implemented locally; verification and resubmission pending |
 | 2026-09-08 | [Italian interaction and translation clarity](#2026-09-08-italian-interaction-and-translation-clarity) | Implemented in [PR #77](https://github.com/Darkmatter-AI/deepbreathing/pull/77); production verification pending |
@@ -60,6 +61,24 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 ---
 
 ## Active Experiments
+
+### 2026-11-12: Move web account deletion to the practice page
+
+**Observed baseline:** The signed-in web account menu on the homepage held three items: "Your practice", "Sign out", and a red "Delete account". The delete item arrived with the account system in commit `cb8d21b` (2026-07-11) with no recorded placement decision. Web deletion requests are not instrumented, so no request count exists as a baseline.
+
+**Hypothesis:** A destructive, rare action does not belong beside the two everyday menu items. Moving it to the bottom of `/stats` removes accidental exposure without removing the self-serve route that the support and privacy pages promise.
+
+**Exact change:** Remove "Delete account" from the homepage account menu. Add a low-emphasis "Delete account" control at the bottom of the signed-in `/stats` page. The control keeps the browser confirmation prompt and the emailed confirmation link, and shows the result inline. Support and privacy copy now name both locations (app account menu; website practice page) in all seven languages. The mobile account sheet and the server deletion flow are unchanged.
+
+**Primary metric:** None. This is a placement correction, not a funnel experiment.
+
+**Guardrails:** A signed-in web user can still start deletion and receive the "Confirm account deletion" email. No support message reports a missing delete option. Authenticated `/stats` reach (`stats_authenticated_view`) does not drop.
+
+**Pre-committed criteria:** Success if one production deletion request from `/stats` delivers the confirmation email, and no support message about a missing delete option arrives by the measure-after date. Failed if either guardrail breaks.
+
+**Measure-after:** 2026-11-26.
+
+**Status:** 🔄 Implemented; production verification pending.
 
 ### 2026-11-08: Restore iOS 27 development with SDK 58
 
