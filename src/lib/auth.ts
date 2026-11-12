@@ -313,7 +313,7 @@ function createAuth() {
           after: async (user) => {
             try {
               if (await isSuppressed(user.email)) return;
-              await getResend().emails.send({
+              const result = await getResend().emails.send({
                 from: "Abi from Deep Breathing Exercises <abi@deepbreathingexercises.com>",
                 to: user.email,
                 subject: "Welcome, glad you're here",
@@ -328,6 +328,10 @@ function createAuth() {
   <p style="font-size: 16px; line-height: 1.7;">Thanks for being here,<br/>Abi</p>
 </div>`,
               });
+              // Resend reports a rejected send in the result, not by throwing.
+              if (result.error) {
+                console.error("[welcome-email] send failed", result.error);
+              }
             } catch (err) {
               // don't block signup if welcome email fails, but leave a trace —
               // a silent catch here hid a broken reply path for months
@@ -343,7 +347,7 @@ function createAuth() {
       magicLink({
         sendMagicLink: async ({ email, url }) => {
           if (await isSuppressed(email)) return;
-          await getResend().emails.send({
+          const result = await getResend().emails.send({
             from: "Deep Breathing Exercises <noreply@deepbreathingexercises.com>",
             to: email,
             subject: "Your sign-in link",
@@ -353,6 +357,9 @@ function createAuth() {
   <p style="font-size: 13px; color: #999; margin-top: 20px;">This link expires in 5 minutes. If you didn't request it, just ignore this.</p>
 </div>`,
           });
+          if (result.error) {
+            console.error("[magic-link] send failed", result.error);
+          }
         },
         expiresIn: 300,
       }),
