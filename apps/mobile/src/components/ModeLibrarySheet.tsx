@@ -177,33 +177,33 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
       style={styles.sheet}
     >
       <View
-        style={styles.accessibilityContainer}
+        style={{ height: expandedHeight - HANDLE_HEIGHT }}
         accessible={false}
         accessibilityElementsHidden={contentHidden}
         importantForAccessibility={contentHidden ? 'no-hide-descendants' : 'yes'}
         accessibilityViewIsModal={sheetIndex === 1 && !hidden}
         onAccessibilityEscape={closeSheet}
       >
+        <Pressable
+          ref={drawerLabelRef}
+          onPress={() => {
+            if (sheetIndex === 1) sheetRef.current?.snapToIndex(0);
+            else openSheet();
+          }}
+          style={[styles.drawerLabel, { height: DRAWER_LABEL_HEIGHT + insets.bottom }]}
+          accessibilityRole="button"
+          accessibilityLabel={sheetIndex === 1 ? 'Collapse mode library' : 'Open mode library'}
+          accessibilityHint={sheetIndex === 1 ? 'Double-tap to return to the mode tab' : 'Double-tap to choose a breathing mode'}
+          accessibilityState={{ expanded: sheetIndex === 1 }}
+          onAccessibilityEscape={closeSheet}
+        >
+          <Text style={[styles.drawerLabelText, { color: subtle }]}>Modes</Text>
+        </Pressable>
         <BottomSheetScrollView
-          contentContainerStyle={styles.rowList}
+          contentContainerStyle={[styles.rowList, { paddingBottom: insets.bottom }]}
           showsVerticalScrollIndicator
           accessible={false}
         >
-          <Pressable
-            ref={drawerLabelRef}
-            onPress={() => {
-              if (sheetIndex === 1) sheetRef.current?.snapToIndex(0);
-              else openSheet();
-            }}
-            style={[styles.drawerLabel, { height: DRAWER_LABEL_HEIGHT + insets.bottom }]}
-            accessibilityRole="button"
-            accessibilityLabel={sheetIndex === 1 ? 'Collapse mode library' : 'Open mode library'}
-            accessibilityHint={sheetIndex === 1 ? 'Double-tap to return to the mode tab' : 'Double-tap to choose a breathing mode'}
-            accessibilityState={{ expanded: sheetIndex === 1 }}
-            onAccessibilityEscape={closeSheet}
-          >
-            <Text style={[styles.drawerLabelText, { color: subtle }]}>Modes</Text>
-          </Pressable>
           <View
             accessible={false}
             accessibilityElementsHidden={rowsHidden}
@@ -245,7 +245,6 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
 
 const styles = StyleSheet.create({
   sheet: { zIndex: 90 },
-  accessibilityContainer: { flex: 1 },
   rowList: { paddingHorizontal: 20 },
   drawerLabel: { minHeight: 44, alignItems: 'center', justifyContent: 'center' },
   drawerLabelText: { fontSize: 11, fontWeight: '600', letterSpacing: 0.5 },

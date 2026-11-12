@@ -23,6 +23,7 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
+| 2026-11-12 | [Restore iOS modes scrolling](#2026-11-12-restore-ios-modes-scrolling) | 🔄 Implemented locally; release pending |
 | 2026-11-12 | [Move web account deletion to the practice page](#2026-11-12-move-web-account-deletion-to-the-practice-page) | 🔄 Implemented; production verification pending |
 | 2026-11-08 | [Restore iOS 27 development with SDK 58](#2026-11-08-restore-ios-27-development-with-sdk-58) | Simulator verified; unshipped |
 | 2026-10-08 | [Remove iOS usage analytics and custom consent](#2026-10-08-remove-ios-usage-analytics-and-custom-consent) | Implemented locally; verification and resubmission pending |
@@ -61,6 +62,20 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 ---
 
 ## Active Experiments
+
+### 2026-11-12: Restore iOS modes scrolling
+
+**Baseline:** One customer reported that modes below Physiological Sigh were unreachable. On an iPhone 18 Pro simulator, the fresh-launch list returned to the top after a drag. No mode-selection analytics are collected in iOS 1.0.1.
+
+**Hypothesis:** Constraining the list to the expanded sheet and keeping the Modes tab visible will let people reach and select all seven modes.
+
+**Change:** Bound the scrollable area to the sheet, keep the Modes tab outside the scrolling content, and reserve the bottom safe area.
+
+**Pre-committed criteria:** Success requires all seven modes to be reachable and selectable on a physical iPhone at default and large text sizes, with the tab usable after selection. Failure is any unreachable mode or unusable tab. Customer reports remain qualitative because iOS mode selection has no analytics.
+
+**Measure-after:** Two weeks after the fix reaches the App Store. Record the release date and physical-device results here.
+
+---
 
 ### 2026-11-12: Move web account deletion to the practice page
 
