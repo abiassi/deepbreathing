@@ -12,10 +12,14 @@ const SRC = path.join(ROOT, "src");
  * Anything we ask a user to reply to must be on this list.
  * Run `pnpm run check:email-dns` before adding an entry.
  */
-const RECEIVING_DOMAINS = ["abiassi.com"];
+const RECEIVING_DOMAINS = ["abiassi.com", "deepbreathingexercises.com"];
 
 /**
  * Domains that can SEND (verified in Resend) but CANNOT RECEIVE.
+ *
+ * Empty since 2026-11-12: deepbreathingexercises.com now receives mail through iCloud,
+ * but for support@ ONLY. abi@ and noreply@ there still do not receive, so the only
+ * replyTo allowed on that domain is support@. The history below explains the contract.
  *
  * deepbreathingexercises.com has no MX record on the apex — Resend uses a custom
  * MAIL FROM on the `send.` subdomain, and the apex itself never got MX records.
@@ -26,7 +30,7 @@ const RECEIVING_DOMAINS = ["abiassi.com"];
  * email shipped with `replyTo: abi@deepbreathingexercises.com`) until 2026-07-25.
  * The email said "Hit reply, it goes straight to me" the entire time. It did not.
  */
-const SEND_ONLY_DOMAINS = ["deepbreathingexercises.com"];
+const SEND_ONLY_DOMAINS = [];
 
 /** Copy that promises a human will read a reply. Requires a working replyTo. */
 const INVITES_REPLY = /hit reply|just reply|reply to this|goes straight to me/i;

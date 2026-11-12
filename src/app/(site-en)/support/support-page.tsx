@@ -107,7 +107,7 @@ export function SupportPage({
             {content.contact.emailBefore}
             {wordGap}
             <a
-              href="mailto:hi@abiassi.com"
+              href="mailto:support@deepbreathingexercises.com"
               className="font-semibold text-primary hover:underline"
             >
               {content.contact.emailAddress}

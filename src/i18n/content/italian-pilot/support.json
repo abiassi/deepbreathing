@@ -104,9 +104,9 @@
     {
       "messagePath": "contact.emailAddress",
       "reason": "Italian pilot translation reviewed for source binding, natural phrasing, and privacy and support semantics.",
-      "reviewedSourceHash": "e64f030216766faf1005a0b732c299660e8385d512aaca2fb34c1464a761bf72",
-      "sourceText": "hi@abiassi.com",
-      "translation": "hi@abiassi.com"
+      "reviewedSourceHash": "4a0fa35ee26d21cf99e3ad76b6a67edd0855141418846ba61a1de7a8f64e8bdb",
+      "sourceText": "support@deepbreathingexercises.com",
+      "translation": "support@deepbreathingexercises.com"
     },
     {
       "messagePath": "contact.emailAfter",
