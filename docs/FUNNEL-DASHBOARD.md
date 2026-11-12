@@ -1,12 +1,116 @@
 # Funnel Dashboard
 
-**Last refreshed:** 2026-07-10 (weekly refresh; first refresh since 2026-05-18 — 7-week gap)
+**Last refreshed:** 2026-11-11 (GA4, Neon and Google Search Console refreshed; Bing not refreshed). Previous refresh: 2026-07-10, a 17-week gap.
 **Refresh cadence:** Weekly (Friday). Runbook: [docs/runbooks/weekly-funnel-refresh.md](runbooks/weekly-funnel-refresh.md)
 **Source of truth:** GA4 property `Deep Breathing Exercises` in DKMT account, ID `527524722`, measurement ID `G-53DLCBMRL3`. ⚠️ NOT the old Abiassi property `G-7GG9WVNBBP` (which has stale 2026-Q1 data only).
 
 ---
 
-## Top-line snapshot — last 7 days (Jul 3 – Jul 9, 2026)
+## Refresh — 2026-11-11
+
+GA4 and Neon cover 2026-11-04 to 2026-11-10. Google Search Console covers 2026-11-02 to 2026-11-08, because the API had no rows yet for the last two days.
+
+| Source | Status |
+|---|---|
+| GA4 | Refreshed 2026-11-11 through the GA4 Data API with the `ga-visibility` service account. No browser was used. |
+| Neon | Refreshed 2026-11-11 with the `dbe_read` role (`can_insert = false`). The read-only URL came from the Vercel **development** environment; the production value is empty. |
+| Google Search Console | Refreshed 2026-11-11 through `mcp__gsc__search_analytics`. |
+| Bing Webmaster Tools | not refreshed 2026-11-11: the Bing API key lives only on orangepi, and that host did not answer from mbp16. The last Bing numbers in this file are from 2026-07-10. |
+
+### Overdue experiment checkpoints
+
+These entries have a dated checkpoint in the past and remain open in the experiment logs. Conditional gates are stated where the logs require them. No new verdicts were issued.
+
+| Experiment | Checkpoint |
+|---|---|
+| [Authenticated /stats reach instrumentation](PRODUCT-EXPERIMENTS.md#2026-07-20-authenticated-stats-reach-instrumentation) | 2026-07-29; production verification tracked with deployment |
+| [/stats retention surface](PRODUCT-EXPERIMENTS.md#2026-06-21-stats-page--practice-calendar--session-stats-for-signed-in-users) | 2026-07-21 |
+| [UTM-tag share buttons](PRODUCT-EXPERIMENTS.md#2026-05-12-utm-tag-share-buttons-attribute-outbound-shares-back-to-ga4) | 2026-06-05 |
+| [Mobile homepage](PRODUCT-EXPERIMENTS.md#2026-05-11-mobile-homepage-pills-mode-picker--full-screen-orb--restore-hero-text) | 2026-06-05 |
+| [Unify session-end events](PRODUCT-EXPERIMENTS.md#2026-05-08-unify-session-end-events--commit-on-pause) | 2026-06-05 |
+| [Engaged-minutes tracking](PRODUCT-EXPERIMENTS.md#2026-05-05-engaged-minutes-tracking--fix-double-counting--stop-event-sync) | 2026-06-02 |
+| [Index coverage hygiene](SEO-EXPERIMENTS.md#2026-07-27-index-coverage-hygiene--canonical-hijack-recovery) | 2026-08-10; deployment and recrawls were pending in the log |
+| [IndexNow changed-URL submission](SEO-EXPERIMENTS.md#2026-07-21-indexnow-changed-canonical-url-submission) | 2026-08-02; positive-path submission still needs a qualifying deployment |
+| [FR coherent Bing CTR](SEO-EXPERIMENTS.md#2026-07-19-fr-coherent-bing-ctr--exercise-intent-title--meta-rewrite) | 2026-08-16 |
+| [Homepage server-rendered content](SEO-EXPERIMENTS.md#2026-07-19-homepage-server-rendered-content--fix-full-page-csr-bailout) | 2026-08-16 |
+| [Hope Cartel reviews intent](SEO-EXPERIMENTS.md#2026-07-18-hope-cartel-reviews-intent-capture--reviews-section--exact-match-faqs--title) | 2026-08-15 |
+| [Owned videos and VideoObject schema](SEO-EXPERIMENTS.md#2026-06-13-owned-youtube-videos--videoobject-schema) | 2026-08-08 |
+| [9D breathwork cluster](SEO-EXPERIMENTS.md#2026-05-06-9d-breathwork-cluster--2-pages-riding-the-breakout-trend) | 2026-06-17 |
+| [E-E-A-T wellness overhaul](SEO-EXPERIMENTS.md#2026-05-06-e-e-a-t-wellness-class-overhaul--founder-byline--lineage--light-citations) | 2026-07-01 |
+| [Indexing remediation checkpoint](SEO-EXPERIMENTS.md#2026-04-20-indexing-remediation--bulk-url-resubmission-to-gsc--bing) | 2026-05-19 |
+| [Localized /languages labels](SEO-EXPERIMENTS.md#2026-07-20-localized-labels-on-the-languages-crawl-hub) | 2026-07-27 and 2026-08-17 |
+
+The assistant handoff experiments in both logs use the later of 2026-09-13 or 100 valid users. Their live receipt and threshold are unconfirmed, so an overdue date cannot be established.
+
+---
+
+## Top-line snapshot — last 7 days (Nov 4 – Nov 10, 2026)
+
+### Engagement funnel (unique users, GA4; Web = All − Mobile)
+
+| Step | All users | Mobile | Web |
+|------|---:|---:|---:|
+| `first_visit` | 633 | 230 | 403 |
+| `page_viewed_breathing` | 500 | 226 | 274 |
+| `breathing_session_start` | **203** | **85** | 118 |
+| `breathing_session_end` | 191 | 76 | 115 |
+| `mode_switch` | 0 (6 users in the 28-day window) | 0 | 0 |
+| `conversion_prompt_shown` | 127 | 44 | 83 |
+| `conversion_prompt_dismissed` | 54 | 21 | 33 |
+| `conversion_signup_completed` | **14** | 8 | 6 |
+| `signup_user_identified` | 3 | 1 | 2 |
+| `app_store_promotion_view` | 150 | 65 | 85 |
+| `app_store_click` | 14 | 10 | 4 |
+
+Total active users (7d): 707. New users: 635. Sessions: 1,005 (+9.8% against 915 for Oct 28 – Nov 3). Channels (sessions): Direct 473, Organic Search 471, Unassigned 58, Referral 21, AI Assistant 13, Organic Social 2. Engagement rate is not reported, because GA4 `engagedSessions` for the last two days is not mature (tools gotcha 20).
+
+Previous 7 days (Oct 28 – Nov 3), all users: `page_viewed_breathing` 531, `breathing_session_start` 225, `breathing_session_end` 219, `conversion_prompt_shown` 143, `conversion_signup_completed` 14.
+
+28 days (Oct 14 – Nov 10), all users: active 2,418, sessions 3,819, `page_viewed_breathing` 1,981, `breathing_session_start` 793, `breathing_session_end` 752, `conversion_prompt_shown` 466, `conversion_signup_completed` 54.
+
+### Funnel ratios (7d)
+
+| | All | Mobile | Web |
+|---|---:|---:|---:|
+| viewed → start | 40.6% | 37.6% | 43.1% |
+| start → end | **94.1%** | 89.4% | 97.5% |
+| prompt_shown → signup | **11.0%** | 18.2% | 7.2% |
+
+Against the Jul 3 – Jul 9 snapshot: viewed → start moved from 38.3% to 40.6%, start → end from 80.0% to 94.1%, and prompt_shown → signup from 4.7% to 11.0%. Weekly breathing-page viewers grew from 366 to 500. These are two single weeks 17 weeks apart, so the comparison shows direction only. The weakest step is still the top: about 6 in 10 breathing-page viewers never start a session.
+
+### Sign-up cohort quality (Neon DB, all-time, pulled 2026-11-11)
+
+| Metric | Count | % |
+|---|---:|---:|
+| Total users | **271** (+198 since Jul 10) | — |
+| Failed signups (no session row) | 6 | — |
+| Signups in last 28 days | 48 (~12/wk) | — |
+| Signups in last 7 days | **14** | — |
+| Returned after day 1 | 142 | 52% |
+| Logged any minutes | 180 | 66% |
+| Logged 30+ minutes | 30 | 11% |
+| Active in last 7 / 14 days | 32 / 49 | 12% / 18% |
+| `sessions_completed > 0` | 185 | 68% |
+
+**Cohort notes (2026-11-11):** The 14 database signups in the last 7 days match the 14 GA4 `conversion_signup_completed` users for the same week. 201 of 271 users are gmail.com, and 36 use Apple private relay addresses, which did not exist in the July pull. One yopmail.com address is the only burner-domain signup.
+
+### Google Search Console (Nov 2 – Nov 8, 2026)
+
+Totals: 139 clicks, 3,794 impressions, 3.66% CTR, average position 12.9.
+
+| Page | Clicks | Impressions | CTR | Position |
+|---|---:|---:|---:|---:|
+| `/breathing-visualizer` | 28 | 248 | 11.3% | 6.9 |
+| `/box-breathing-app` | 10 | 106 | 9.4% | 10.4 |
+| `/ja/breathe/tummo` | 10 | 94 | 10.6% | 3.5 |
+| `/es/breathing-visualizer` | 7 | 48 | 14.6% | 3.1 |
+| `/coherent-breathing-app` | 6 | 77 | 7.8% | 7.8 |
+
+12 of the top 20 pages by clicks are translated pages. `/breathe/hope-cartel-9d-breathwork` has the most impressions (499) and a 0.8% CTR at position 7.8.
+
+---
+
+## Top-line snapshot — last 7 days (Jul 3 – Jul 9, 2026) — previous refresh, kept for trend reference
 
 ### Engagement funnel (unique users, GA4; Web = All − Mobile)
 
