@@ -73,6 +73,8 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 
 **Pre-committed criteria:** Success requires all seven modes to be reachable and selectable on a physical iPhone at default and large text sizes, with the tab usable after selection. Failure is any unreachable mode or unusable tab. Customer reports remain qualitative because iOS mode selection has no analytics.
 
+**Release simulator check:** On 2026-11-12, a local Release build of main `a4472cb` exposed all three lower modes on an iPhone 18 Pro simulator running iOS 27. Pursed Lip and Belly became selected, including after a cold relaunch. At accessibility-large text size, Pursed Lip remained reachable. Physical iPhone, VoiceOver, Reduce Motion, and small-screen coverage remain pending.
+
 **Measure-after:** Two weeks after the fix reaches the App Store. Record the release date and physical-device results here.
 
 ---
