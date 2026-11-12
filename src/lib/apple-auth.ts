@@ -119,6 +119,17 @@ export async function exchangeAppleAuthorizationCode(
   );
 
   if (!response.ok) {
+    // Apple's `error` is a fixed code such as `invalid_client` (our signing
+    // team or key is wrong) or `invalid_grant` (the code is bad or reused).
+    // The body carries no secret, and without the code the two are
+    // indistinguishable from outside.
+    const failure = (await response.json().catch(() => null)) as {
+      error?: unknown;
+    } | null;
+    console.error("[apple-auth] authorization code exchange failed", {
+      status: response.status,
+      error: typeof failure?.error === "string" ? failure.error : "unknown",
+    });
     throw new Error("Apple authorization code exchange failed");
   }
 
