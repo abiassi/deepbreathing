@@ -119,6 +119,16 @@ export async function exchangeAppleAuthorizationCode(
   );
 
   if (!response.ok) {
+    // Apple's `error` is a fixed code and the body carries no secret. Apple
+    // answers `invalid_grant` for a bad code even when our key is wrong, so
+    // only a rejected real sign-in says anything about the credentials.
+    const failure = (await response.json().catch(() => null)) as {
+      error?: unknown;
+    } | null;
+    console.error("[apple-auth] authorization code exchange failed", {
+      status: response.status,
+      error: typeof failure?.error === "string" ? failure.error : "unknown",
+    });
     throw new Error("Apple authorization code exchange failed");
   }
 
