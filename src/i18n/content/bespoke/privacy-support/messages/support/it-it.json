@@ -21,7 +21,7 @@
     },
     "deletion": {
       "action": "Elimina l'account.",
-      "afterAction": "Ti invieremo un link di conferma prima di rimuovere definitivamente l'account e i dati della pratica sincronizzati.",
+      "afterAction": "Ti invieremo un link di conferma via email. Il tuo account e i dati della pratica sincronizzati saranno eliminati definitivamente solo dopo che avrai confermato l'eliminazione tramite quel link.",
       "beforeAction": "Nell'app, apri il menu dell'account. Sul sito web, apri «La tua pratica» e scorri fino in fondo. Poi scegli",
       "question": "Come elimino il mio account?"
     },

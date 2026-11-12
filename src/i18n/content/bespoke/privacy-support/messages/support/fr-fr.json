@@ -21,7 +21,7 @@
     },
     "deletion": {
       "action": "Supprimer le compte.",
-      "afterAction": "Nous envoyons un lien de confirmation avant de supprimer définitivement votre compte et les données de pratique synchronisées.",
+      "afterAction": "Nous vous envoyons un lien de confirmation par e-mail. Votre compte et les données de pratique synchronisées ne sont supprimés définitivement qu'après votre confirmation via ce lien.",
       "beforeAction": "Dans l'application, ouvrez le menu de votre compte. Sur le site web, ouvrez « Votre pratique » et faites défiler jusqu'en bas. Choisissez ensuite",
       "question": "Comment supprimer mon compte ?"
     },

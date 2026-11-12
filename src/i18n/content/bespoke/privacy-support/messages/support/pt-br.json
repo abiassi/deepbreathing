@@ -21,7 +21,7 @@
     },
     "deletion": {
       "action": "Excluir conta.",
-      "afterAction": "Enviamos um link de confirmação antes de remover permanentemente sua conta e os dados de prática sincronizados.",
+      "afterAction": "Enviamos um link de confirmação por e-mail. Sua conta e os dados de prática sincronizados só são excluídos permanentemente depois que você confirma a exclusão por esse link.",
       "beforeAction": "No app, abra o menu da sua conta. No site, abra “Sua prática” e role até o final. Depois escolha",
       "question": "Como excluo minha conta?"
     },

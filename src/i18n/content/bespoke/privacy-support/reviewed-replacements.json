@@ -120,10 +120,10 @@
       "reviewedSourceHash": "c42a38c6f14c576244b2e9c6e49c164f171bfa70072c30d28075661fc4a19c00",
       "reason": "Current guest-use and in-product deletion instructions are absent from the preservation catalog.",
       "translations": {
-        "de-de": "Sie können das grundlegende Atemangebot als Gast nutzen. Angemeldete Nutzer können in der App das Kontomenü oder auf der Website die Seite „Deine Praxis“ öffnen und Folgendes auswählen",
+        "de-de": "Sie können das grundlegende Atemangebot als Gast nutzen. Angemeldete Nutzer können in der App das Kontomenü oder auf der Website die Seite „Deine Praxis“ öffnen und Folgendes auswählen:",
         "es-es": "Puedes usar la experiencia principal de respiración como invitado. Los usuarios que hayan iniciado sesión pueden abrir el menú de la cuenta en la app, o la página «Tu práctica» en el sitio web, y elegir",
         "fr-fr": "Vous pouvez utiliser l'expérience de respiration principale en tant qu'utilisateur non connecté. Les utilisateurs connectés peuvent ouvrir le menu du compte dans l'application, ou la page « Votre pratique » sur le site web, et choisir",
-        "ja-jp": "ゲストとして中核となる呼吸体験を利用できます。サインインしているユーザーは、アプリではアカウントメニュー、ウェブサイトでは「あなたの練習」ページを開き、次を選択できます",
+        "ja-jp": "ゲストとして中核となる呼吸体験を利用できます。サインインしているユーザーは、アプリではアカウントメニュー、ウェブサイトでは「あなたの練習」ページを開き、次の項目を選択できます：",
         "pt-br": "Você pode usar a experiência principal de respiração como visitante. Usuários conectados podem abrir o menu da conta no app, ou a página “Sua prática” no site, e escolher"
       }
     },
@@ -165,7 +165,7 @@
         "de-de": "Öffnen Sie in der App Ihr Kontomenü. Öffnen Sie auf der Website die Seite „Deine Praxis“ und scrollen Sie nach unten. Wählen Sie dann",
         "es-es": "En la app, abre el menú de tu cuenta. En el sitio web, abre «Tu práctica» y desplázate hasta el final. Luego elige",
         "fr-fr": "Dans l'application, ouvrez le menu de votre compte. Sur le site web, ouvrez « Votre pratique » et faites défiler jusqu'en bas. Choisissez ensuite",
-        "ja-jp": "アプリではアカウントメニューを開きます。ウェブサイトでは「あなたの練習」を開き、一番下までスクロールします。次を選択します",
+        "ja-jp": "アプリではアカウントメニューを開きます。ウェブサイトでは「あなたの練習」を開き、一番下までスクロールします。次の項目を選択します：",
         "pt-br": "No app, abra o menu da sua conta. No site, abra “Sua prática” e role até o final. Depois escolha"
       }
     },
@@ -186,15 +186,15 @@
     {
       "route": "/support",
       "messagePath": "commonQuestions.deletion.afterAction",
-      "sourceText": "We send a confirmation link before permanently removing your account and synced practice data.",
-      "reviewedSourceHash": "cabe7ea15d9592fe2f32f577e0f5c1d51f2489609953fdadf3f9bc084517ea97",
+      "sourceText": "We email you a confirmation link. Your account and synced practice data are permanently deleted only after you confirm using that link.",
+      "reviewedSourceHash": "f745245fa2f881c0a9d72e17bc1ae26f57b733c5da4f4fe449f8954f667c0f97",
       "reason": "Current confirmation-link deletion claim supersedes the stale email-subject and 30-day catalog claim.",
       "translations": {
-        "de-de": "Wir senden einen Bestätigungslink, bevor wir Ihr Konto und die synchronisierten Übungsdaten dauerhaft entfernen.",
-        "es-es": "Enviamos un enlace de confirmación antes de eliminar permanentemente tu cuenta y los datos de prácticas sincronizados.",
-        "fr-fr": "Nous envoyons un lien de confirmation avant de supprimer définitivement votre compte et les données de pratique synchronisées.",
-        "ja-jp": "アカウントと同期された練習データを完全に削除する前に、確認リンクを送信します。",
-        "pt-br": "Enviamos um link de confirmação antes de remover permanentemente sua conta e os dados de prática sincronizados."
+        "de-de": "Wir senden Ihnen einen Bestätigungslink per E-Mail. Ihr Konto und die synchronisierten Übungsdaten werden erst dauerhaft gelöscht, nachdem Sie die Löschung über diesen Link bestätigt haben.",
+        "es-es": "Te enviamos un enlace de confirmación por correo electrónico. Tu cuenta y los datos de prácticas sincronizados solo se eliminan permanentemente después de que confirmes la eliminación mediante ese enlace.",
+        "fr-fr": "Nous vous envoyons un lien de confirmation par e-mail. Votre compte et les données de pratique synchronisées ne sont supprimés définitivement qu'après votre confirmation via ce lien.",
+        "ja-jp": "確認リンクをメールでお送りします。そのリンクから削除を確認した後に、アカウントと同期された練習データを完全に削除します。",
+        "pt-br": "Enviamos um link de confirmação por e-mail. Sua conta e os dados de prática sincronizados só são excluídos permanentemente depois que você confirma a exclusão por esse link."
       }
     },
     {
