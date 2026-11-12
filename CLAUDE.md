@@ -47,6 +47,7 @@ Before exploring, check whether your task is one of these. Each has a canonical 
 
 | When you need to… | Canonical path |
 |---|---|
+| Verify the local web UI and capture breathing-session screenshots | skill **`verify-deepbreathing`** |
 | Check users / traffic / signups / funnel health (GA4) | skill **`dbe-analytics`** |
 | Count real new accounts, or debug signup / auth | skill **`dbe-accounts-auth`** |
 | Submit translated pages to GSC / Bing for indexing | skill **`daily-indexing`** |
