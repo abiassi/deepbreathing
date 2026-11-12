@@ -12,10 +12,14 @@ const SRC = path.join(ROOT, "src");
  * Anything we ask a user to reply to must be on this list.
  * Run `pnpm run check:email-dns` before adding an entry.
  */
-const RECEIVING_DOMAINS = ["abiassi.com"];
+const RECEIVING_DOMAINS = ["abiassi.com", "deepbreathingexercises.com"];
 
 /**
  * Domains that can SEND (verified in Resend) but CANNOT RECEIVE.
+ *
+ * Empty since 2026-11-12: deepbreathingexercises.com now receives mail through iCloud,
+ * but for support@ ONLY. abi@ and noreply@ there still do not receive, so the only
+ * replyTo allowed on that domain is support@. The history below explains the contract.
  *
  * deepbreathingexercises.com has no MX record on the apex — Resend uses a custom
  * MAIL FROM on the `send.` subdomain, and the apex itself never got MX records.
@@ -26,7 +30,14 @@ const RECEIVING_DOMAINS = ["abiassi.com"];
  * email shipped with `replyTo: abi@deepbreathingexercises.com`) until 2026-07-25.
  * The email said "Hit reply, it goes straight to me" the entire time. It did not.
  */
-const SEND_ONLY_DOMAINS = ["deepbreathingexercises.com"];
+const SEND_ONLY_DOMAINS = [];
+
+/**
+ * Receiving domains where only some mailboxes exist. A replyTo on these domains must
+ * use one of the listed local parts. deepbreathingexercises.com receives through iCloud
+ * for support@ only; abi@ and noreply@ there still bounce.
+ */
+const RECEIVING_MAILBOXES_ONLY = { "deepbreathingexercises.com": ["support"] };
 
 /** Copy that promises a human will read a reply. Requires a working replyTo. */
 const INVITES_REPLY = /hit reply|just reply|reply to this|goes straight to me/i;
@@ -92,6 +103,24 @@ test("every replyTo points at a domain confirmed to receive mail", () => {
         `${rel}: replyTo "${replyTo}" uses domain "${domain}", which is not a confirmed ` +
           `receiving domain (${RECEIVING_DOMAINS.join(", ")}). Verify MX with ` +
           `\`pnpm run check:email-dns\` and add it to RECEIVING_DOMAINS before shipping.`
+      );
+    }
+  }
+});
+
+test("a replyTo on a partly receiving domain uses a mailbox that exists", () => {
+  for (const file of senderFiles()) {
+    const rel = path.relative(ROOT, file);
+    for (const block of sendCalls(fs.readFileSync(file, "utf8"))) {
+      const replyTo = field(block, "replyTo");
+      if (!replyTo) continue;
+      const [, localPart, domain] = replyTo.match(/<?([^\s<>@]+)@([^\s<>]+?)>?$/) ?? [];
+      const allowed = RECEIVING_MAILBOXES_ONLY[domain];
+      if (!allowed) continue;
+      assert.ok(
+        allowed.includes(localPart),
+        `${rel}: replyTo "${replyTo}" is on "${domain}", which only receives for ` +
+          `${allowed.map((p) => `${p}@`).join(", ")}. Other mailboxes there bounce.`
       );
     }
   }

@@ -317,9 +317,10 @@ function createAuth() {
                 from: "Abi from Deep Breathing Exercises <abi@deepbreathingexercises.com>",
                 to: user.email,
                 subject: "Welcome, glad you're here",
-                // deepbreathingexercises.com has no MX record, so replies to
-                // abi@ there are undeliverable. Point at a mailbox that receives.
-                replyTo: "hi@abiassi.com",
+                // deepbreathingexercises.com now receives mail through iCloud
+                // for support@ only. abi@ and noreply@ still do not receive, so
+                // replies go to support@.
+                replyTo: "support@deepbreathingexercises.com",
                 html: `<div style="font-family: system-ui, -apple-system, sans-serif; max-width: 480px; margin: 0 auto; padding: 40px 20px; color: #333;">
   <p style="font-size: 16px; line-height: 1.7;">Hey${user.name ? ` ${user.name.split(" ")[0]}` : ""},</p>
   <p style="font-size: 16px; line-height: 1.7;">Abi here. I made this breathing app a while back because I was dealing with anxiety and needed something simple that actually worked. Somehow it turned into a thing that thousands of people use every month, which still kind of blows my mind.</p>
