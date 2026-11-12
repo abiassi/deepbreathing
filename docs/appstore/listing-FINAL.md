@@ -82,11 +82,11 @@ breathing,calm,box breathing,4-7-8,sleep,anxiety,meditation,relax,stress,breathe
 ```
 © 2026 Darkmatter AI Labs
 ```
-> ⚠️ CONFIRM: the ASC legal entity / Apple account team is **Reentry Systems Unipessoal Lda**.
-> The public "seller" name shown on the App Store is the legal entity (or a registered DBA).
-> The copyright field above is free text (brand name is fine). Decide whether the store
-> should show "Reentry Systems Unipessoal Lda" or a configured DBA, and whether copyright
-> should read "Darkmatter AI Labs" or the legal entity.
+> The app moved from Reentry Systems Unipessoal Lda to the Amorim Ferreira (Individual)
+> team, `7ZCKCVM4C5`, in early November 2026. An Individual account shows the person's
+> name as the App Store seller. Recheck the seller name on the live listing.
+> The copyright field above is free text. Decide whether it keeps "Darkmatter AI Labs".
+> See [team-transfer-1.0.2.md](team-transfer-1.0.2.md).
 
 ## Age rating — health/wellness topics present → expected 9+ on Apple's updated system
 Use these answers in the current App Store Connect questionnaire. Apple's definition of

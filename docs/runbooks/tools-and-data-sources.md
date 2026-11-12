@@ -25,7 +25,7 @@ This file is the operational counterpart to:
 | GitHub repo | `abiassi/deepbreathing` |
 | Logged-in Google account | `amorim.a.ferreira@gmail.com` |
 | Bing Webmaster account | same Google login |
-| Apple team (iOS app) | `7ZCKCVM4C5`, Amorim Ferreira (Individual). It owns App Store app `6786431781`, bundle `com.deepbreathing.app`, the distribution certificate and the EAS Submit key `H2UL53B626` (APP_MANAGER). The `tzolking@gmail.com` Apple ID can also see `M29XZH5LMJ` (Reentry Systems); that team cannot see the app. Pick the Individual team in EAS prompts. (Nov 10) |
+| Apple team (iOS app) | `7ZCKCVM4C5`, Amorim Ferreira (Individual). It owns App Store app `6786431781`, bundle `com.deepbreathing.app`, the distribution certificate and the EAS Submit key `H2UL53B626` (APP_MANAGER). The `tzolking@gmail.com` Apple ID can also see `M29XZH5LMJ` (Reentry Systems). That team owned the app until the transfer in early November 2026 and signed builds through 1.0.1 (22). It can no longer see the app. Release blockers from the transfer: [`docs/appstore/team-transfer-1.0.2.md`](../appstore/team-transfer-1.0.2.md). Pick the Individual team in EAS prompts. (Nov 10) |
 | YouTube channel | `@deepbreathingexercises` (ID `UC17_GvnAKkxsv39BMVE3MdQ`) |
 | YouTube Data API key | `~/.config/dbe-youtube-api-key` (mbp14 + mbp16) · `task/youtube-api-key.txt` (orangepi digest) — restricted to `youtube.googleapis.com`, never expires |
 

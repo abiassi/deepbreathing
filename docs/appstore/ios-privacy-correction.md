@@ -8,7 +8,10 @@ Submission ID: `25d9e328-3741-464a-b019-843bcbc7a83a`.
 - App: Deep Breathing: Calm & Sleep
 - App Store Connect app: `6786431781`
 - Bundle: `com.deepbreathing.app`
-- Apple team: `7ZCKCVM4C5`, Amorim Ferreira (Individual). Corrected 2026-11-10: this file said `M29XZH5LMJ` (Reentry Systems), which cannot see the app.
+- Apple team today: `7ZCKCVM4C5`, Amorim Ferreira (Individual).
+- Apple team for this record: `M29XZH5LMJ`, Reentry Systems Unipessoal Lda. That team
+  owned the app and signed builds through 1.0.1 (22). The app moved to the Individual
+  team in early November 2026. See [team-transfer-1.0.2.md](team-transfer-1.0.2.md).
 - Expo owner: `abiabiassi`
 - Expo project: `c5bbb03a-2e8d-44fd-90a6-fe6ab08197a4`
 - Source checkout: `/Users/abi/work/deepbreathing-ios-no-tracking`
@@ -117,7 +120,8 @@ Use this text only after the exact candidate has passed verification:
 ## Access and cleanup
 
 Expo login is verified as `abiabiassi`. Safari is authenticated in App Store
-Connect as Amorim Ferreira, Reentry Systems Unipessoal Lda. Live readback confirms
+Connect as Amorim Ferreira, Reentry Systems Unipessoal Lda, the owning team on
+October 8, 2026. Live readback confirms
 app 6786431781, version 1.0.1 with build 22 Waiting for Review, and manual release.
 The requested App Store Connect tab remains open in Safari. Agent-created
 verification browser tabs are closed. The DBE Privacy Review simulator is shut
