@@ -18,7 +18,8 @@ import BottomSheet, {
   type BottomSheetHandleProps,
 } from '@gorhom/bottom-sheet';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import { LinearGradient } from 'expo-linear-gradient';
+import Animated, { Easing, ReduceMotion, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { ModeName, BREATHING_PATTERNS } from './breathing-web/constants';
 
@@ -76,8 +77,10 @@ function accessibleTint(color: string, background: string) {
 
 export default function ModeLibrarySheet({ theme, hidden = false, activeModeName, onSelectMode }: Props) {
   const insets = useSafeAreaInsets();
-  const { height: windowHeight } = useWindowDimensions();
+  const { height: windowHeight, fontScale } = useWindowDimensions();
   const scrollY = useSharedValue(0);
+  const contentHeight = useSharedValue(0);
+  const viewportHeight = useSharedValue(0);
   const [rowsHeight, setRowsHeight] = useState(ROW_HEIGHT * SHIPPED_MODES.length);
   const [labelHeight, setLabelHeight] = useState(DRAWER_LABEL_HEIGHT);
   const sheetRef = useRef<BottomSheet>(null);
@@ -95,11 +98,17 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
       'worklet';
       originalOnScroll?.(event, context);
       scrollY.set(event.contentOffset.y);
+      contentHeight.set(event.contentSize.height);
+      viewportHeight.set(event.layoutMeasurement.height);
     }, [originalOnScroll]);
     return { ...handlers, handleOnScroll };
   };
-  const dividerStyle = useAnimatedStyle(() => ({
-    opacity: Math.min(Math.max(scrollY.get() / 8, 0), 1) * 0.7,
+  const fadeTiming = { duration: 150, easing: Easing.bezier(0.23, 1, 0.32, 1), reduceMotion: ReduceMotion.System };
+  const topFadeStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(scrollY.get() > 0 ? 1 : 0, fadeTiming),
+  }));
+  const bottomFadeStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(contentHeight.get() - viewportHeight.get() - Math.max(scrollY.get(), 0) > 1 ? 1 : 0, fadeTiming),
   }));
   const snapPoints = useMemo(
     () => [collapsedHeight, expandedHeight],
@@ -232,9 +241,10 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
         >
           <Text style={[styles.drawerLabelText, { color: subtle }]}>Modes</Text>
         </Pressable>
-        <View style={styles.scrollContainer}>
+        <View style={styles.scrollContainer} onLayout={(event) => viewportHeight.set(event.nativeEvent.layout.height)}>
           <BottomSheetScrollView
             scrollEventsHandlersHook={useModeScrollHandlers}
+            onContentSizeChange={(_width, height) => contentHeight.set(height)}
             contentContainerStyle={[styles.rowList, { paddingBottom: insets.bottom }]}
             showsVerticalScrollIndicator
             accessible={false}
@@ -263,9 +273,11 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
                     accessibilityState={{ selected: active }}
                     accessibilityValue={{ text: active ? 'Selected' : 'Not selected' }}
                   >
-                    <View style={[styles.dot, { backgroundColor: entry.color }]} accessible={false} />
                     <View style={styles.rowText} accessible={false}>
-                      <Text style={[styles.modeName, { color: text }]}>{entry.name}</Text>
+                      <View style={styles.titleRow}>
+                        <View style={[styles.dot, { backgroundColor: entry.color, marginTop: Math.max(0, (18 * fontScale - 12) / 2) }]} />
+                        <Text style={[styles.modeName, { color: text }]}>{entry.name}</Text>
+                      </View>
                       <Text style={[styles.modeDetail, { color: subtle }]}>{entry.phaseLabel} · {entry.use}</Text>
                     </View>
                     {active ? <Text style={[styles.check, { color: checkColor }]} accessible={false}>✓</Text> : null}
@@ -274,7 +286,12 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
               })}
             </View>
           </BottomSheetScrollView>
-          <Animated.View pointerEvents="none" style={[styles.scrollDivider, { backgroundColor: subtle }, dividerStyle]} />
+          <Animated.View pointerEvents="none" style={[styles.fade, styles.topFade, topFadeStyle]}>
+            <LinearGradient colors={[bg, `${bg}00`]} style={StyleSheet.absoluteFill} />
+          </Animated.View>
+          <Animated.View pointerEvents="none" style={[styles.fade, styles.bottomFade, bottomFadeStyle]}>
+            <LinearGradient colors={[`${bg}00`, bg]} style={StyleSheet.absoluteFill} />
+          </Animated.View>
         </View>
       </View>
     </BottomSheet>
@@ -285,14 +302,17 @@ const styles = StyleSheet.create({
   sheet: { zIndex: 90 },
   rowList: { paddingHorizontal: 20 },
   scrollContainer: { flex: 1 },
-  scrollDivider: { position: 'absolute', top: 0, left: 20, right: 20, height: StyleSheet.hairlineWidth },
+  fade: { position: 'absolute', left: 0, right: 0, height: 24 },
+  topFade: { top: 0 },
+  bottomFade: { bottom: 0 },
   drawerLabel: { minHeight: 44, alignItems: 'center', justifyContent: 'center' },
   drawerLabelText: { fontSize: 11, fontWeight: '600', letterSpacing: 0.5 },
   row: { minHeight: ROW_HEIGHT, flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 10 },
   pressed: { opacity: 0.62 },
   dot: { width: 12, height: 12, borderRadius: 6 },
+  titleRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 14 },
   rowText: { flex: 1 },
-  modeName: { fontSize: 15, fontWeight: '600' },
-  modeDetail: { fontSize: 12, marginTop: 2 },
+  modeName: { flex: 1, fontSize: 15, fontWeight: '600' },
+  modeDetail: { fontSize: 12, marginTop: 2, marginLeft: 26 },
   check: { fontSize: 16, fontWeight: '700' },
 });
