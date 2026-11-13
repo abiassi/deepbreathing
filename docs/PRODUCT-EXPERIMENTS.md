@@ -23,6 +23,7 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
+| 2026-11-13 | [Fit the iOS Modes sheet to its rows](#2026-11-13-fit-the-ios-modes-sheet-to-its-rows) | 🔄 Implemented locally; release pending |
 | 2026-11-12 | [Restore iOS modes scrolling](#2026-11-12-restore-ios-modes-scrolling) | 🔄 Implemented locally; release pending |
 | 2026-11-12 | [Move web account deletion to the practice page](#2026-11-12-move-web-account-deletion-to-the-practice-page) | 🔄 Implemented; production verification pending |
 | 2026-11-08 | [Restore iOS 27 development with SDK 58](#2026-11-08-restore-ios-27-development-with-sdk-58) | Simulator verified; unshipped |
@@ -62,6 +63,20 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 ---
 
 ## Active Experiments
+
+### 2026-11-13: Fit the iOS Modes sheet to its rows
+
+**Baseline:** TestFlight 1.0.2 (26) shows four rows in a scrolling window and clips a row beneath the Modes label. iOS mode-selection analytics are not collected.
+
+**Hypothesis:** Fitting all seven rows when space permits, and indicating scrolling when they do not fit, makes the sheet easier to understand.
+
+**Pre-committed criteria:** Success requires all seven modes to fit on a standard iPhone at default text size, and remain reachable at large text sizes. The collapsed tab must remain unchanged. Validate on a physical iPhone after release; customer feedback is qualitative.
+
+**Simulator result:** A local Release build on iPhone 18 Pro, iOS 27, showed all seven rows in light and dark themes. At accessibility-large text size, the list scrolled to Pursed Lip and showed a divider above clipped rows. Selecting a mode restored the collapsed tab. Physical-device, VoiceOver and Reduce Motion checks remain pending.
+
+**Measure-after:** Two weeks after the change reaches the App Store. Record the release date and physical-device results here.
+
+---
 
 ### 2026-11-12: Restore iOS modes scrolling
 

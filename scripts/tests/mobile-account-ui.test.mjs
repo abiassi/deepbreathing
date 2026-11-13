@@ -52,7 +52,7 @@ test("mode drawer is a persistent two-detent sheet that follows the drag", () =>
     path.join(ROOT, "apps/mobile/src/components/ModeLibrarySheet.tsx"),
     "utf8"
   );
-  assert.match(source, /VISIBLE_ROWS = 4/);
+  assert.match(source, /Math\.min\(HANDLE_HEIGHT \+ labelHeight \+ rowsHeight \+ insets\.bottom, windowHeight \* [\d.]+\)/);
   assert.match(source, /<BottomSheet/);
   assert.match(source, /BottomSheetScrollView/);
   assert.match(source, /snapPoints=\{snapPoints\}/);
