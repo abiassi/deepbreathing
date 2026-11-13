@@ -7,15 +7,18 @@ import {
   StyleSheet,
   Text,
   View,
+  useWindowDimensions,
 } from 'react-native';
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetHandle,
   BottomSheetScrollView,
+  useScrollEventsHandlersDefault,
   type BottomSheetBackdropProps,
   type BottomSheetHandleProps,
 } from '@gorhom/bottom-sheet';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
 import { ModeName, BREATHING_PATTERNS } from './breathing-web/constants';
 
@@ -45,7 +48,6 @@ interface Props {
 }
 
 const ROW_HEIGHT = 62;
-const VISIBLE_ROWS = 4;
 const HANDLE_HEIGHT = 24;
 const DRAWER_LABEL_HEIGHT = 44;
 
@@ -74,11 +76,31 @@ function accessibleTint(color: string, background: string) {
 
 export default function ModeLibrarySheet({ theme, hidden = false, activeModeName, onSelectMode }: Props) {
   const insets = useSafeAreaInsets();
+  const { height: windowHeight } = useWindowDimensions();
+  const scrollY = useSharedValue(0);
+  const [rowsHeight, setRowsHeight] = useState(ROW_HEIGHT * SHIPPED_MODES.length);
+  const [labelHeight, setLabelHeight] = useState(DRAWER_LABEL_HEIGHT);
   const sheetRef = useRef<BottomSheet>(null);
   const drawerLabelRef = useRef<ViewInstance>(null);
   const [sheetIndex, setSheetIndex] = useState(hidden ? -1 : 0);
   const collapsedHeight = HANDLE_HEIGHT + DRAWER_LABEL_HEIGHT + insets.bottom;
-  const expandedHeight = collapsedHeight + ROW_HEIGHT * VISIBLE_ROWS;
+  const expandedHeight = Math.max(
+    collapsedHeight + 1,
+    Math.min(HANDLE_HEIGHT + labelHeight + rowsHeight + insets.bottom, windowHeight * 0.85),
+  );
+  const useModeScrollHandlers: typeof useScrollEventsHandlersDefault = (ref, offset) => {
+    const handlers = useScrollEventsHandlersDefault(ref, offset);
+    const originalOnScroll = handlers.handleOnScroll;
+    const handleOnScroll: NonNullable<typeof handlers.handleOnScroll> = useCallback((event, context) => {
+      'worklet';
+      originalOnScroll?.(event, context);
+      scrollY.set(event.contentOffset.y);
+    }, [originalOnScroll]);
+    return { ...handlers, handleOnScroll };
+  };
+  const dividerStyle = useAnimatedStyle(() => ({
+    opacity: Math.min(Math.max(scrollY.get() / 8, 0), 1) * 0.7,
+  }));
   const snapPoints = useMemo(
     () => [collapsedHeight, expandedHeight],
     [collapsedHeight, expandedHeight],
@@ -95,8 +117,10 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
   const rowsHidden = contentHidden || sheetIndex !== 1;
 
   const closeSheet = useCallback(() => {
-    if (sheetIndex === 1) sheetRef.current?.snapToIndex(0);
-    else sheetRef.current?.close();
+    if (sheetIndex === 1) {
+      setSheetIndex(0);
+      sheetRef.current?.snapToIndex(0);
+    } else sheetRef.current?.close();
   }, [sheetIndex]);
 
   const focusDrawerLabel = useCallback(() => {
@@ -142,6 +166,7 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
   );
   const handleRowPress = useCallback((mode: ModeName) => {
     onSelectMode(mode);
+    setSheetIndex(0);
     sheetRef.current?.snapToIndex(0);
   }, [onSelectMode]);
   const openSheet = useCallback(() => {
@@ -170,6 +195,7 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
       enableHandlePanningGesture
       backdropComponent={renderBackdrop}
       handleComponent={renderHandle}
+      onAnimate={(_fromIndex, toIndex) => setSheetIndex(toIndex)}
       onChange={setSheetIndex}
       accessible={false}
       backgroundStyle={{ backgroundColor: bg, borderColor: border, borderWidth: StyleSheet.hairlineWidth }}
@@ -187,10 +213,17 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
         <Pressable
           ref={drawerLabelRef}
           onPress={() => {
-            if (sheetIndex === 1) sheetRef.current?.snapToIndex(0);
-            else openSheet();
+            if (sheetIndex === 1) {
+              setSheetIndex(0);
+              sheetRef.current?.snapToIndex(0);
+            } else openSheet();
           }}
-          style={[styles.drawerLabel, { height: DRAWER_LABEL_HEIGHT + insets.bottom }]}
+          style={[styles.drawerLabel, sheetIndex === 1
+            ? { minHeight: DRAWER_LABEL_HEIGHT }
+            : { height: DRAWER_LABEL_HEIGHT + insets.bottom }]}
+          onLayout={(event) => {
+            if (sheetIndex === 1) setLabelHeight(event.nativeEvent.layout.height);
+          }}
           accessibilityRole="button"
           accessibilityLabel={sheetIndex === 1 ? 'Collapse mode library' : 'Open mode library'}
           accessibilityHint={sheetIndex === 1 ? 'Double-tap to return to the mode tab' : 'Double-tap to choose a breathing mode'}
@@ -199,45 +232,50 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
         >
           <Text style={[styles.drawerLabelText, { color: subtle }]}>Modes</Text>
         </Pressable>
-        <BottomSheetScrollView
-          contentContainerStyle={[styles.rowList, { paddingBottom: insets.bottom }]}
-          showsVerticalScrollIndicator
-          accessible={false}
-        >
-          <View
+        <View style={styles.scrollContainer}>
+          <BottomSheetScrollView
+            scrollEventsHandlersHook={useModeScrollHandlers}
+            contentContainerStyle={[styles.rowList, { paddingBottom: insets.bottom }]}
+            showsVerticalScrollIndicator
             accessible={false}
-            accessibilityElementsHidden={rowsHidden}
-            importantForAccessibility={rowsHidden ? 'no-hide-descendants' : 'yes'}
           >
-            {SHIPPED_MODES.map((entry, index) => {
-              const active = activeModeName === entry.name || (activeModeName === null && entry.name === ModeName.Box);
-              const checkColor = accessibleTint(entry.color, bg);
-              return (
-                <Pressable
-                  key={entry.name}
-                  style={({ pressed }) => [
-                    styles.row,
-                    index < SHIPPED_MODES.length - 1 && { borderBottomColor: rowSep, borderBottomWidth: StyleSheet.hairlineWidth },
-                    pressed && styles.pressed,
-                  ]}
-                  onPress={() => handleRowPress(entry.name)}
-                  accessibilityRole="radio"
-                  accessibilityLabel={`${entry.name}, ${entry.phaseLabel}, ${entry.use}`}
-                  accessibilityHint="Double-tap to switch breathing mode"
-                  accessibilityState={{ selected: active }}
-                  accessibilityValue={{ text: active ? 'Selected' : 'Not selected' }}
-                >
-                  <View style={[styles.dot, { backgroundColor: entry.color }]} accessible={false} />
-                  <View style={styles.rowText} accessible={false}>
-                    <Text style={[styles.modeName, { color: text }]}>{entry.name}</Text>
-                    <Text style={[styles.modeDetail, { color: subtle }]}>{entry.phaseLabel} · {entry.use}</Text>
-                  </View>
-                  {active ? <Text style={[styles.check, { color: checkColor }]} accessible={false}>✓</Text> : null}
-                </Pressable>
-              );
-            })}
-          </View>
-        </BottomSheetScrollView>
+            <View
+              onLayout={(event) => setRowsHeight(event.nativeEvent.layout.height)}
+              accessible={false}
+              accessibilityElementsHidden={rowsHidden}
+              importantForAccessibility={rowsHidden ? 'no-hide-descendants' : 'yes'}
+            >
+              {SHIPPED_MODES.map((entry, index) => {
+                const active = activeModeName === entry.name || (activeModeName === null && entry.name === ModeName.Box);
+                const checkColor = accessibleTint(entry.color, bg);
+                return (
+                  <Pressable
+                    key={entry.name}
+                    style={({ pressed }) => [
+                      styles.row,
+                      index < SHIPPED_MODES.length - 1 && { borderBottomColor: rowSep, borderBottomWidth: StyleSheet.hairlineWidth },
+                      pressed && styles.pressed,
+                    ]}
+                    onPress={() => handleRowPress(entry.name)}
+                    accessibilityRole="radio"
+                    accessibilityLabel={`${entry.name}, ${entry.phaseLabel}, ${entry.use}`}
+                    accessibilityHint="Double-tap to switch breathing mode"
+                    accessibilityState={{ selected: active }}
+                    accessibilityValue={{ text: active ? 'Selected' : 'Not selected' }}
+                  >
+                    <View style={[styles.dot, { backgroundColor: entry.color }]} accessible={false} />
+                    <View style={styles.rowText} accessible={false}>
+                      <Text style={[styles.modeName, { color: text }]}>{entry.name}</Text>
+                      <Text style={[styles.modeDetail, { color: subtle }]}>{entry.phaseLabel} · {entry.use}</Text>
+                    </View>
+                    {active ? <Text style={[styles.check, { color: checkColor }]} accessible={false}>✓</Text> : null}
+                  </Pressable>
+                );
+              })}
+            </View>
+          </BottomSheetScrollView>
+          <Animated.View pointerEvents="none" style={[styles.scrollDivider, { backgroundColor: subtle }, dividerStyle]} />
+        </View>
       </View>
     </BottomSheet>
   );
@@ -246,6 +284,8 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
 const styles = StyleSheet.create({
   sheet: { zIndex: 90 },
   rowList: { paddingHorizontal: 20 },
+  scrollContainer: { flex: 1 },
+  scrollDivider: { position: 'absolute', top: 0, left: 20, right: 20, height: StyleSheet.hairlineWidth },
   drawerLabel: { minHeight: 44, alignItems: 'center', justifyContent: 'center' },
   drawerLabelText: { fontSize: 11, fontWeight: '600', letterSpacing: 0.5 },
   row: { minHeight: ROW_HEIGHT, flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 10 },
