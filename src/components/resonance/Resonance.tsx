@@ -1446,6 +1446,22 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         const destinationPath = getInternalPracticePath(practiceLink.href);
         if (destinationPath) {
           trackPracticeRouteClick(window.location.pathname, destinationPath);
+          const destinationSlug = stripLocalePrefix(destinationPath).replace(/\/$/, '').split('/').pop();
+          const destinationMode = destinationSlug === 'wim-hof' || destinationSlug === '9d-breathwork'
+            ? ModeName.WimHof
+            : (Object.entries(modeToSlug).find(([, slug]) => slug === destinationSlug)?.[0] as ModeName | undefined);
+          if (
+            destinationMode && destinationMode !== activeMode && event.button === 0 &&
+            !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey &&
+            (!practiceLink.target || practiceLink.target === '_self') && !practiceLink.hasAttribute('download')
+          ) {
+            trackEvent('mode_switch', {
+              from: activeMode,
+              to: destinationMode,
+              origin_path: window.location.pathname,
+              destination_path: destinationPath,
+            });
+          }
         }
       }
       if (target?.closest?.('[data-resonance-start]')) {
@@ -1459,7 +1475,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       window.removeEventListener('resonance:start', handleStartRequest);
       document.removeEventListener('click', handleDelegatedClick);
     };
-  }, [isRunning, handleTogglePlay]);
+  }, [activeMode, isRunning, handleTogglePlay]);
 
   useEffect(() => {
     if (isAuthenticated) return;
