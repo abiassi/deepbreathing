@@ -23,6 +23,7 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
+| 2026-11-14 | [Sound guide: a breath-shaped voice for eyes-closed practice](#2026-11-14-sound-guide-a-breath-shaped-voice-for-eyes-closed-practice) | Prototype behind `?sound=guide`, default off; not shipped |
 | 2026-11-13 | [Fit the iOS Modes sheet to its rows](#2026-11-13-fit-the-ios-modes-sheet-to-its-rows) | 🔄 Implemented locally; release pending |
 | 2026-11-12 | [Restore iOS modes scrolling](#2026-11-12-restore-ios-modes-scrolling) | 🔄 Implemented locally; release pending |
 | 2026-11-12 | [Move web account deletion to the practice page](#2026-11-12-move-web-account-deletion-to-the-practice-page) | 🔄 Implemented; production verification pending |
@@ -63,6 +64,53 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 ---
 
 ## Active Experiments
+
+### 2026-11-14: Sound guide: a breath-shaped voice for eyes-closed practice
+
+**Status:** Prototype on branch `t3/eyes-closed-sound-design`, web only, behind `?sound=guide`. Default off. No user receives it, so nothing is measured yet. Design and evidence: [`docs/audio/SOUND-DESIGN-2026-11.md`](audio/SOUND-DESIGN-2026-11.md).
+
+**Trigger:** Support mail from Denise, 2026-10-24. She wants an inhale and exhale tone in Coherent Breathing, so she does not have to watch the screen.
+
+**Hypothesis:** Today each phase is marked by a 0.3 s cue at its start, and the sound does not change until the next cue. A voice that plays for the whole phase (rises on the inhale, holds still on a hold, falls on the exhale) lets people practise with closed eyes. More timed sessions then reach their end, and fewer people turn the sound off.
+
+**Exact change (prototype):** With `?sound=guide`, the engine adds the sound guide layer, lowers the ambient beds under it, and tunes the binaural carrier to the mode's key. The guide replaces the phase cues and the parked eyes-closed tone. A completed session ends on a closing chord. Session start and end events carry `sound: "guide"`. Without the flag, sound and events are unchanged.
+
+**Baseline (GA4 Data API, 2026-10-14 to 2026-11-10, pulled 2026-11-14 with the `ga-visibility` service account; the one GA4 stream, `Deep Breathing Exercises`. Columns are GA4 device categories. Events the iOS app may still send through the Measurement Protocol are not separated):**
+
+| Metric | All | Desktop | Mobile |
+|---|---:|---:|---:|
+| `breathing_session_start` events | 1,581 | 994 | 581 |
+| `breathing_session_start` users | 799 | 467 | 328 |
+| `breathing_session_end`, `reason = completed`, events | 620 | 412 | 206 |
+| `breathing_session_end`, `reason = completed`, users | 342 | 201 | 140 |
+| **Completed share of starts (events)** | **39.2%** | 41.4% | 35.5% |
+| Starters who completed at least one session | 42.8% | 43.0% | 42.7% |
+
+- `breathing_session_end`, `reason = paused`: 1,570 events from 580 users. A session can pause more than once, so this is not a per-session rate.
+- `binaural_toggled`: 35 events from 15 users. Under 2% of starters used the one audio switch in Settings.
+- **Sound-on rate: no baseline.** No event records mute.
+- `mode` is not a registered GA4 dimension, so the baseline cannot be split by mode.
+
+**Proposed measurement (needs Abi's decision before rollout):** A Settings switch will not reach enough people; see the binaural figure above. Give the guide to a sticky 50% of web visitors, assigned at page view. Before that rollout: register `sound` as an event-scoped dimension, and add a `muted` parameter to the session start and end events.
+
+**Pre-committed criteria** (set 2026-11-14, before any rollout):
+
+- **Primary metric:** completed share of starts (`breathing_session_end` with `reason = completed`, divided by `breathing_session_start`), guide arm against control arm, same weeks.
+- ✅ **Success** if the guide arm is at least 5 pp above control (for example 39% to 44%), with at least 1,000 starts in each arm, and both guardrails hold.
+- ❌ **Failed** if the guide arm is at or below control with at least 1,000 starts in each arm, or if a guardrail breaks.
+- ⚪ **Inconclusive** if the lift is between 0 and 5 pp, or if an arm has fewer than 1,000 starts on the measure date. Extend once by 4 weeks, then call it.
+- **Guardrail 1, sound-on rate:** the share of session ends with `muted = false` in the guide arm is not more than 3 pp below control.
+- **Guardrail 2, start rate:** `breathing_session_start` users divided by `page_viewed_breathing` users in the guide arm is not more than 3 pp below control.
+
+**Power:** The stream has about 395 starts a week. A 50% split reaches 1,000 starts per arm in about 5 weeks. At that size the standard error of the difference is about 2.2 pp, so a 5 pp lift is about 2.3 standard errors. Sessions from one person are not independent. Treat a result near the line as inconclusive.
+
+**Qualitative signal:** Send Denise the link when the guide ships. Her answer is a signal, not the verdict.
+
+**Measure-after:** 6 weeks after the rollout date. Record the rollout date and commit here.
+
+**Not part of this entry:** the iOS app. An iOS rollout needs its own physical-device criteria.
+
+---
 
 ### 2026-11-13: Fit the iOS Modes sheet to its rows
 

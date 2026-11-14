@@ -335,3 +335,12 @@ On 2026-11-11, `vercel env pull --environment=production` returned `POSTGRES_URL
 ### Weekly refresh needs no browser for GA4
 
 The `ga-visibility` service account key at `~/.config/dbe-ga-visibility-sa.json` reaches the GA4 Data API from mbp16. A `runReport` with dimensions `eventName` and `deviceCategory` and metric `totalUsers` returns the whole funnel table of the weekly refresh. The orangepi host was unreachable from mbp16 on 2026-11-11, so Bing, whose API key lives only there, could not be refreshed.
+
+### Record and measure the web audio (2026-11-14)
+
+`scripts/audio-lab/` records a real session from the running web app and measures it. The tap sits on the `AudioContext` destination, so the clip is what the speakers receive. Steps and limits are in [`scripts/audio-lab/README.md`](../../scripts/audio-lab/README.md). Recording is real time, and a source edit during a recording reloads the page.
+
+Two details found while building it:
+
+- **CI does not run `packages/audio/src/audioService.test.ts`.** The mobile job runs vitest inside `apps/mobile` only. Run the engine tests with `pnpm exec vitest run packages/audio`.
+- **GA4 has `customEvent:reason` but not `customEvent:mode`.** A `runReport` on `breathing_session_end` by `customEvent:reason` returns the `completed` and `paused` split. The same request by `customEvent:mode` returns HTTP 400, because `mode` is not a registered event dimension.
