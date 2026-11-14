@@ -71,6 +71,17 @@ fails closed unless Vercel's production ref and SHA equal the current GitHub `ma
 Mobile EAS/App Store releases do not authorize a Vercel production deployment; merge
 any required web or auth backend changes to `main` first.
 
+### Public repo: no personal names
+
+This repository is public. Anyone can read every commit, branch, PR, issue and
+comment, and old commits stay readable after a fix. Never write the name, email,
+or other identifying detail of a customer, user, or support contact in any of
+them. That includes docs, experiment logs, evidence files, screenshots, test
+data, commit messages and PR text. Write "a customer" or "a support request of
+2026-10-24" instead. Keep identifying details in private notes outside the repo.
+Before every commit and push, check the diff and message for personal names.
+When you brief a delegate with support context, pass this rule on.
+
 ## Experiments — before you ship
 
 **STOP — read [`docs/SEO-EXPERIMENTS.md`](docs/SEO-EXPERIMENTS.md) FIRST.** Any SEO-adjacent task — a GSC/Bing alert, an indexing report, a redirect, a title/meta change, a sitemap or hreflang question, a crawl-health investigation — starts by reviewing that log. Many "new" problems are already diagnosed there as benign or already-fixed (e.g. the recurring "Page with redirect" WNC alert is a known no-action finding). Do not re-investigate from scratch and do not ship a change before checking whether it was already tried. This is non-negotiable; it is the whole reason the log exists.
