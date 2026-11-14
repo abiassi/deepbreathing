@@ -69,7 +69,7 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 
 **Status:** Prototype on branch `t3/eyes-closed-sound-design`, web only, behind `?sound=guide`. Default off. No user receives it, so nothing is measured yet. Design and evidence: [`docs/audio/SOUND-DESIGN-2026-11.md`](audio/SOUND-DESIGN-2026-11.md).
 
-**Trigger:** Support mail from Denise, 2026-10-24. She wants an inhale and exhale tone in Coherent Breathing, so she does not have to watch the screen.
+**Trigger:** A customer's support mail of 2026-10-24. The customer wants an inhale and exhale tone in Coherent Breathing, so that watching the screen is not needed.
 
 **Hypothesis:** Today each phase is marked by a 0.3 s cue at its start, and the sound does not change until the next cue. A voice that plays for the whole phase (rises on the inhale, holds still on a hold, falls on the exhale) lets people practise with closed eyes. More timed sessions then reach their end, and fewer people turn the sound off.
 
@@ -104,7 +104,7 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 
 **Power:** The stream has about 395 starts a week. A 50% split reaches 1,000 starts per arm in about 5 weeks. At that size the standard error of the difference is about 2.2 pp, so a 5 pp lift is about 2.3 standard errors. Sessions from one person are not independent. Treat a result near the line as inconclusive.
 
-**Qualitative signal:** Send Denise the link when the guide ships. Her answer is a signal, not the verdict.
+**Qualitative signal:** Send that customer the link when the guide ships. The answer is a signal, not the verdict.
 
 **Measure-after:** 6 weeks after the rollout date. Record the rollout date and commit here.
 

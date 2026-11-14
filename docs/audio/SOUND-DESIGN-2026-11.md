@@ -4,7 +4,7 @@ Status: prototype on branch `t3/eyes-closed-sound-design`, web only, behind `?so
 
 ## Summary
 
-Today a session marks each phase with a 0.3 s blip at its start. Between two blips the sound does not change. A person with closed eyes cannot tell an inhale from an exhale, or how much of the phase is left. Denise asked for exactly this on 2026-10-24: an inhale and exhale tone in Coherent Breathing, so she does not have to watch the screen.
+Today a session marks each phase with a 0.3 s blip at its start. Between two blips the sound does not change. A person with closed eyes cannot tell an inhale from an exhale, or how much of the phase is left. A customer asked for exactly this by support mail on 2026-10-24: an inhale and exhale tone in Coherent Breathing, so that watching the screen is not needed.
 
 The proposal is one new layer, the **sound guide**: a soft voice that plays for the whole phase and moves the way the breath moves. It rises, brightens and swells on the inhale. It holds still on a hold. It falls, darkens and fades on the exhale. It is synthesized in the shared engine (`packages/audio`), so the same code can run on iOS. It uses no audio files and no paid service.
 
