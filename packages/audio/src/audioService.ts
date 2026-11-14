@@ -6,6 +6,7 @@
  * - Binaural beats accept adaptive entrainment frequencies.
  */
 import { ModeName } from './modes';
+import { SoundGuide, soundGuideProfileFor, type GuidePhaseKind } from './soundGuide';
 
 /**
  * Platform seam. The engine is pure Web Audio; the only environment-specific
@@ -61,6 +62,17 @@ const COMPLETION_CUE_ROOT_GAIN = 0.16;
 const COMPLETION_CUE_ATTACK_SECONDS = 0.045;
 const COMPLETION_CUE_ROOT_RELEASE_SECONDS = 0.64;
 const COMPLETION_CUE_FIFTH_RELEASE_SECONDS = 0.78;
+
+// Cue volume the sound guide's gains were tuned at (the engine default).
+const SOUND_GUIDE_REFERENCE_CUE_VOLUME = 0.32;
+// One dark, slow impulse response for the guide's tone, air and chimes.
+const SOUND_GUIDE_REVERB_SECONDS = 2.2;
+const SOUND_GUIDE_REVERB_DECAY = 2.6;
+const BINAURAL_CARRIER_HZ = 200;
+// Bed gains while the sound guide plays. The drone alone measures -15 LUFS
+// (Box), 10 dB over the noise bed (Coherent, -26 LUFS). Under the guide both
+// beds land near the same level, so the voice leads in every mode.
+const SOUND_GUIDE_BED = { drone: 0.22, subBass: 0.5, pinkNoise: 0.9, binaural: 0.45 } as const;
 
 interface CueProfile {
   oscType: OscillatorType;
@@ -205,6 +217,7 @@ export class AudioService {
     spatialSpeed: number; // initial orbit speed
   } | null = null;
   private droneLfoNodes: OscillatorNode[] = [];
+  private droneLfoDepths: GainNode[] = [];
   private spatialSpeedOverride: number | null = null;
 
   // Spatializer per drone partial. HRTF PannerNode on platforms that have it
@@ -230,6 +243,7 @@ export class AudioService {
     osc: OscillatorNode;
     gain: GainNode;
     lfo: OscillatorNode;
+    lfoDepth: GainNode;
   } | null = null;
   private phaseEnvelopeNode: {
     osc: OscillatorNode;
@@ -253,6 +267,11 @@ export class AudioService {
   private subBassEpoch = 0;
   private phaseEnvelopeEpoch = 0;
   private pinkNoiseEpoch = 0;
+  private soundGuideEpoch = 0;
+  private soundGuide: SoundGuide | null = null;
+  /** True from startSoundGuide until stopSoundGuide: the beds sit under the guide. */
+  private soundGuideMix = false;
+  private soundGuideDisposeTimers = new Set<ReturnType<typeof setTimeout>>();
 
   private isMuted = false;
   private cueVolume = 0.32;
@@ -289,6 +308,27 @@ export class AudioService {
       // eslint-disable-next-line no-console
       console.log('[AudioService]', ...args);
     }
+  }
+
+  /**
+   * A bed's LFO adds to its gain param, so the gain ramp to 0 leaves the LFO
+   * swing sounding until the oscillator stops. Measured on the sub-bass: a
+   * step of -58 to -64 dBFS into silence, 1.6 s after every stop. The drone
+   * is built the same way. The sound guide's closing chord rings through
+   * that moment, so under the guide the LFO depth fades with the gain. The
+   * legacy mix is left as it is.
+   */
+  private fadeLfoDepthsUnderGuide(depths: GainNode[], t: number, seconds: number) {
+    if (!this.soundGuideMix) return;
+    depths.forEach((depth) => {
+      try {
+        depth.gain.cancelScheduledValues(t);
+        depth.gain.setValueAtTime(depth.gain.value, t);
+        depth.gain.linearRampToValueAtTime(0, t + seconds);
+      } catch {
+        // Ignore a node that was invalidated by an interruption.
+      }
+    });
   }
 
   private isLayerStartCurrent(epoch: number, currentEpoch: number) {
@@ -742,7 +782,9 @@ export class AudioService {
 
     // Root: drift toward `rootHz * arcRootDriftFactor` over the window.
     // 1.0 = no drift, 8/9 = whole tone (current default), 2/3 = perfect 5th.
-    const driftFactor = this.arcRootDriftFactor;
+    // The sound guide's notes are fixed to the starting key, so the drone
+    // holds its root while the guide plays.
+    const driftFactor = this.soundGuideMix ? 1 : this.arcRootDriftFactor;
     const rootTarget = this.droneArc.rootHz * (1 - t * (1 - driftFactor));
     this.droneNodes.forEach((node, index) => {
       // Each partial keeps its ratio to root: [1, 1.5, 2, 0.99]
@@ -784,16 +826,20 @@ export class AudioService {
   }
 
   private droneTargetGain() {
-    return this.isMuted ? 0 : this.musicVolume * 0.3 * this.droneScale;
+    const bed = this.soundGuideMix ? SOUND_GUIDE_BED.drone : 1;
+    return this.isMuted ? 0 : this.musicVolume * 0.3 * this.droneScale * bed;
   }
   private subBassTargetGain() {
-    return this.isMuted ? 0 : this.musicVolume * 0.10 * this.subBassScale;
+    const bed = this.soundGuideMix ? SOUND_GUIDE_BED.subBass : 1;
+    return this.isMuted ? 0 : this.musicVolume * 0.10 * this.subBassScale * bed;
   }
   private pinkNoiseTargetGain() {
-    return this.isMuted ? 0 : this.musicVolume * 0.25 * this.pinkNoiseScale;
+    const bed = this.soundGuideMix ? SOUND_GUIDE_BED.pinkNoise : 1;
+    return this.isMuted ? 0 : this.musicVolume * 0.25 * this.pinkNoiseScale * bed;
   }
   private binauralTargetGain() {
-    return this.isMuted ? 0 : 0.05 * this.binauralScale;
+    const bed = this.soundGuideMix ? SOUND_GUIDE_BED.binaural : 1;
+    return this.isMuted ? 0 : 0.05 * this.binauralScale * bed;
   }
   private phaseEnvelopePeakGain() {
     return this.isMuted ? 0 : this.musicVolume * 0.22 * this.phaseEnvelopeScale;
@@ -812,6 +858,7 @@ export class AudioService {
     this.stopPhaseEnvelope();
     this.stopPinkNoise();
     this.stopBinaural();
+    this.stopSoundGuide();
   }
 
   public stopCues() {
@@ -879,6 +926,7 @@ export class AudioService {
     this.envelopeAnalyser = null;
     this.droneNodes = [];
     this.droneLfoNodes = [];
+    this.droneLfoDepths = [];
     this.binauralNodes = [];
     this.noiseNode = null;
     this.subBassNode = null;
@@ -889,6 +937,8 @@ export class AudioService {
     this.cueReverbCache.clear();
     this.completionCueCleanupTimers.forEach((timer) => clearTimeout(timer));
     this.completionCueCleanupTimers.clear();
+    this.soundGuideDisposeTimers.forEach((timer) => clearTimeout(timer));
+    this.soundGuideDisposeTimers.clear();
     this.activeCueCleanups.clear();
     this.activeCueBuses.clear();
   }
@@ -916,6 +966,7 @@ export class AudioService {
     this.stopPhaseEnvelope();
     this.stopPinkNoise();
     this.stopBinaural();
+    this.stopSoundGuide({ seconds: fadeSeconds });
 
     await new Promise((resolve) => setTimeout(resolve, (fadeSeconds * 1000) + 40));
 
@@ -1234,14 +1285,14 @@ export class AudioService {
     this.completionCueCleanupTimers.add(cleanupTimer);
   }
 
-  public async startBinaural(beatHz: number = 10) {
+  public async startBinaural(beatHz: number = 10, carrierHz: number = BINAURAL_CARRIER_HZ) {
     this.stopBinaural();
     const epoch = this.binauralEpoch;
     const ready = await this.ensureContextReady();
     if (!ready || !this.ctx || !this.masterGain || !this.isLayerStartCurrent(epoch, this.binauralEpoch)) return;
 
     const t = this.ctx.currentTime;
-    const baseFreq = 200;
+    const baseFreq = carrierHz;
 
     const makeChannel = (panValue: number, detune: number) => {
       const osc = this.ctx!.createOscillator();
@@ -1345,6 +1396,7 @@ export class AudioService {
       lfoGain.connect(gain.gain);
       lfo.start(t);
       this.droneLfoNodes.push(lfo);
+      this.droneLfoDepths.push(lfoGain);
 
       osc.connect(gain);
       gain.connect(spatial.panner);
@@ -1368,6 +1420,7 @@ export class AudioService {
     if (!this.ctx) {
       this.droneNodes = [];
       this.droneLfoNodes = [];
+      this.droneLfoDepths = [];
       this.droneLowpass = null;
       this.droneArc = null;
       this.spatialSpeedOverride = null;
@@ -1394,6 +1447,8 @@ export class AudioService {
         // already stopped
       }
     });
+    this.fadeLfoDepthsUnderGuide(this.droneLfoDepths, t, 1);
+    this.droneLfoDepths = [];
     // Drop the shared lowpass reference; its feeding oscillators stop at t+1.1
     // and auto-disconnect, so the orphaned filter becomes GC-eligible.
     this.droneLowpass = null;
@@ -1448,7 +1503,7 @@ export class AudioService {
     osc.start(t);
     lfo.start(t);
 
-    this.subBassNode = { osc, gain, lfo };
+    this.subBassNode = { osc, gain, lfo, lfoDepth: lfoGain };
   }
 
   /**
@@ -1553,7 +1608,7 @@ export class AudioService {
       return;
     }
     const t = this.ctx.currentTime;
-    const { osc, gain, lfo } = this.subBassNode;
+    const { osc, gain, lfo, lfoDepth } = this.subBassNode;
     try {
       gain.gain.cancelScheduledValues(t);
       gain.gain.setValueAtTime(gain.gain.value, t);
@@ -1561,6 +1616,7 @@ export class AudioService {
     } catch {
       // Ignore a node that was invalidated by an interruption.
     }
+    this.fadeLfoDepthsUnderGuide([lfoDepth], t, 1.5);
     this.stopSource(osc, t + 1.6);
     this.stopSource(lfo, t + 1.6);
     this.subBassNode = null;
@@ -1647,6 +1703,69 @@ export class AudioService {
     }
     this.stopSource(this.noiseNode.source, t + 1.1);
     this.noiseNode = null;
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // Sound guide: the breath-shaped voice (see soundGuide.ts).
+  // ─────────────────────────────────────────────────────────────────────────
+
+  /**
+   * A binaural carrier in the key of the current mode: the fifth of the drone
+   * root. The default 200 Hz carrier sits 4 Hz from the drone's 196 Hz fifth
+   * (Box, C3 root) and beats against it.
+   */
+  public inKeyBinauralCarrierHz(colorHex?: string) {
+    let carrier = this.getDroneRootFrequency(colorHex || this.themeColor) * 1.5;
+    while (carrier < 150) carrier *= 2;
+    return carrier;
+  }
+
+  public async startSoundGuide(colorHex?: string) {
+    this.stopSoundGuide({ seconds: 0.05 });
+    this.soundGuideMix = true;
+    const epoch = this.soundGuideEpoch;
+    const ready = await this.ensureContextReady();
+    if (!ready || !this.ctx || !this.masterGain || !this.isLayerStartCurrent(epoch, this.soundGuideEpoch)) return;
+
+    const noiseBuffer = this.generatePinkNoiseBuffer();
+    if (!noiseBuffer) return;
+    this.soundGuide = new SoundGuide({
+      context: this.ctx,
+      output: this.masterGain,
+      rootHz: this.getDroneRootFrequency(colorHex || this.themeColor),
+      profile: soundGuideProfileFor(this.breathingMode),
+      noiseBuffer,
+      reverb: this.getCueReverb(SOUND_GUIDE_REVERB_SECONDS, SOUND_GUIDE_REVERB_DECAY),
+      volume: () => this.cueVolume / SOUND_GUIDE_REFERENCE_CUE_VOLUME,
+    });
+  }
+
+  /** Plays one phase of the sound guide. No-op when the guide is not running. */
+  public playGuidePhase(kind: GuidePhaseKind, durationSeconds: number, options: { topUpFollows?: boolean } = {}) {
+    if (!this.ctx || this.ctx.state !== 'running') return;
+    this.soundGuide?.playPhase(kind, durationSeconds, options);
+  }
+
+  /**
+   * Fades the sound guide out. `closing` adds the completion chord, which
+   * rings on after the voice is gone.
+   */
+  public stopSoundGuide(options: { seconds?: number; closing?: boolean } = {}) {
+    this.soundGuideEpoch += 1;
+    this.soundGuideMix = false;
+    const guide = this.soundGuide;
+    this.soundGuide = null;
+    if (!guide) return;
+    if (!this.ctx) {
+      guide.dispose();
+      return;
+    }
+    const tailSeconds = guide.release({ ...options, closing: options.closing && !this.isMuted });
+    const timer = setTimeout(() => {
+      this.soundGuideDisposeTimers.delete(timer);
+      guide.dispose();
+    }, Math.ceil(tailSeconds * 1000));
+    this.soundGuideDisposeTimers.add(timer);
   }
 
   // ─────────────────────────────────────────────────────────────────────────

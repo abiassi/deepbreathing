@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Volume2, VolumeX, Eye, EyeOff, Activity, Waves, Wind, Sun, Moon, Turtle, Rabbit, X, Settings as SettingsIcon, LogOut, Sprout } from 'lucide-react';
 import { BreathingPhase, ModeName, AIRecommendation, ProtocolPhase, ProtocolState } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER, WIM_HOF_PROTOCOL, modeToSlug } from './constants';
-import { AudioService } from '@resonance/audio';
+import { AudioService, type GuidePhaseKind } from '@resonance/audio';
 import { multiplierToSlider, sliderToMultiplier, speedOf } from '@resonance/domain';
 import Visualizer from './components/Visualizer';
 import { createRuntimePhraseResolver, detectRuntimeLocale, resolveRuntimeModeLabel, RuntimePhraseKey } from './runtime-phrases';
@@ -118,6 +118,22 @@ function parseAndClampDuration(value: string | null): number | undefined {
   return Math.min(parsed, MAX_DURATION);
 }
 
+// Sound guide phase for a breathing phase. Idle has no sound.
+function guidePhaseKind(phase: BreathingPhase): GuidePhaseKind | null {
+  switch (phase) {
+    case BreathingPhase.Inhale: return 'inhale';
+    case BreathingPhase.Inhale2: return 'inhaleTopUp';
+    case BreathingPhase.HoldIn: return 'holdIn';
+    case BreathingPhase.Exhale: return 'exhale';
+    case BreathingPhase.HoldOut: return 'holdOut';
+    case BreathingPhase.Idle: return null;
+    default: {
+      const _exhaustive: never = phase;
+      return _exhaustive;
+    }
+  }
+}
+
 // Parse a boolean-like URL param. Accepts "1"/"0", "true"/"false", "on"/"off".
 // Returns undefined if param is missing/invalid (so callers can fall back to
 // settings persistence or default).
@@ -182,6 +198,17 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   );
   const eyesClosedFromUrl = useMemo(
     () => parseBoolParam(searchParams.get('eyesClosed')),
+    [searchParams]
+  );
+  // Sound guide prototype (docs/audio/SOUND-DESIGN-2026-11.md). URL-only and
+  // default off: `?sound=guide` turns it on, `&bed=0` plays it without the
+  // ambient bed. Sessions without the flag never reach this code.
+  const soundGuideEnabled = useMemo(
+    () => searchParams.get('sound') === 'guide',
+    [searchParams]
+  );
+  const soundGuideBed = useMemo(
+    () => parseBoolParam(searchParams.get('bed')) ?? true,
     [searchParams]
   );
   const authenticatedReceiptPreview =
@@ -719,12 +746,12 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   useEffect(() => {
     if (!isRunning) return;
     const audio = getAudioService();
-    if (eyesClosed) {
+    if (eyesClosed && !soundGuideEnabled) {
       void audio.startPhaseEnvelope(themeColor);
     } else {
       audio.stopPhaseEnvelope();
     }
-  }, [eyesClosed, isRunning, getAudioService, themeColor]);
+  }, [eyesClosed, isRunning, getAudioService, themeColor, soundGuideEnabled]);
 
   // End the in-progress session. `hard` resets seconds + sessionId so a
   // future togglePlay starts fresh; soft (pause) keeps seconds + id so
@@ -823,6 +850,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         mode: activeMode,
         reason,
         seconds_elapsed: seconds,
+        ...(soundGuideEnabled ? { sound: 'guide' } : {}),
       });
       if (hard) {
         setSessionSeconds(0);
@@ -839,6 +867,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       sessionId,
       sessionCommittedSeconds,
       sessionsCompleted,
+      soundGuideEnabled,
       syncStats,
       totalMinutes,
     ]
@@ -874,7 +903,11 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         setSessionCommittedSeconds(0);
         sessionPromptFiredRef.current = false; // fresh session → prompt may fire again
         authenticatedReceiptFiredRef.current = false;
-        trackEvent('breathing_session_start', { mode: activeMode, duration: selectedDuration ?? 0 });
+        trackEvent('breathing_session_start', {
+          mode: activeMode,
+          duration: selectedDuration ?? 0,
+          ...(soundGuideEnabled ? { sound: 'guide' } : {}),
+        });
       }
 
       // Check if this is Wim Hof (protocol mode)
@@ -906,32 +939,56 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         setPhase(BreathingPhase.Inhale);
         phaseStartRef.current = performance.now();
 
-        // Adaptive Audio Logic
-        if (activeMode === ModeName.Relax || activeMode === ModeName.Coherent) {
-          // Relax/Coherent get Pink Noise (Rain → Ocean with breath-coupled filter)
-          await audio.startPinkNoise();
-          if (binauralEnabled) {
-            // Relax gets Delta Waves (Sleep), Coherent gets Alpha
-            const hz = activeMode === ModeName.Relax ? 2 : 10;
-            await audio.startBinaural(hz);
+        if (soundGuideEnabled) {
+          // Sound guide: the voice carries every phase. It starts first so the
+          // beds below ramp in at their under-the-guide level.
+          const pattern = BREATHING_PATTERNS[activeMode];
+          await audio.startSoundGuide(themeColor);
+          if (soundGuideBed) {
+            const noiseBed = activeMode === ModeName.Relax || activeMode === ModeName.Coherent;
+            if (noiseBed) await audio.startPinkNoise();
+            else await audio.startDrone(themeColor);
+            if (binauralEnabled) {
+              const hz = activeMode === ModeName.Relax ? 2 : 10;
+              await audio.startBinaural(hz, audio.inKeyBinauralCarrierHz(themeColor));
+            }
+            await audio.startSubBass(themeColor);
           }
+          // The awaits above take a few frames. Restart the phase clock so the
+          // first inhale's sound and its orb begin together.
+          phaseStartRef.current = performance.now();
+          audio.playGuidePhase('inhale', pattern.inhale * speedMultiplier, {
+            topUpFollows: (pattern.inhale2 ?? 0) > 0,
+          });
+          setInstructionKey('instruction.inhale_slowly');
         } else {
-          // Others get Drone Synth + Alpha
-          await audio.startDrone(themeColor);
-          if (binauralEnabled) {
-            await audio.startBinaural(10);
+          // Adaptive Audio Logic
+          if (activeMode === ModeName.Relax || activeMode === ModeName.Coherent) {
+            // Relax/Coherent get Pink Noise (Rain → Ocean with breath-coupled filter)
+            await audio.startPinkNoise();
+            if (binauralEnabled) {
+              // Relax gets Delta Waves (Sleep), Coherent gets Alpha
+              const hz = activeMode === ModeName.Relax ? 2 : 10;
+              await audio.startBinaural(hz);
+            }
+          } else {
+            // Others get Drone Synth + Alpha
+            await audio.startDrone(themeColor);
+            if (binauralEnabled) {
+              await audio.startBinaural(10);
+            }
           }
-        }
-        // Sub-bass body-resonance layer pairs with both drone and noise beds.
-        await audio.startSubBass(themeColor);
-        // Eyes-closed mode: add a phase-length tonal envelope so the audio
-        // carries the breath when the visuals are dimmed.
-        if (eyesClosed) {
-          await audio.startPhaseEnvelope(themeColor);
-        }
+          // Sub-bass body-resonance layer pairs with both drone and noise beds.
+          await audio.startSubBass(themeColor);
+          // Eyes-closed mode: add a phase-length tonal envelope so the audio
+          // carries the breath when the visuals are dimmed.
+          if (eyesClosed) {
+            await audio.startPhaseEnvelope(themeColor);
+          }
 
-        audio.playCue('inhale', themeColor);
-        setInstructionKey('instruction.inhale_slowly');
+          audio.playCue('inhale', themeColor);
+          setInstructionKey('instruction.inhale_slowly');
+        }
       }
 
       if (isIOS && soundStatus !== 'confirmed') {
@@ -955,9 +1012,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       audio.stopPhaseEnvelope();
       audio.stopPinkNoise();
       audio.stopBinaural();
+      audio.stopSoundGuide();
       setScale(0);
     }
-  }, [isRunning, activeMode, themeColor, getAudioService, isIOS, soundStatus, sessionSeconds, selectedDuration, setInstructionKey, sessionId, endSession, binauralEnabled, eyesClosed]);
+  }, [isRunning, activeMode, themeColor, getAudioService, isIOS, soundStatus, sessionSeconds, selectedDuration, setInstructionKey, sessionId, endSession, binauralEnabled, eyesClosed, soundGuideEnabled, soundGuideBed, speedMultiplier]);
 
   const handleStop = () => {
     const audio = getAudioService();
@@ -979,6 +1037,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     audio.stopPhaseEnvelope();
     audio.stopPinkNoise();
     audio.stopBinaural();
+    audio.stopSoundGuide();
   };
 
   const handleModeSelect = useCallback(
@@ -1127,13 +1186,25 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setPhase(nextPhase);
       phaseStartRef.current = time;
 
-      if (nextPhase === BreathingPhase.Inhale || nextPhase === BreathingPhase.Inhale2) audio.playCue('inhale', themeColor);
+      const guideKind = soundGuideEnabled ? guidePhaseKind(nextPhase) : null;
+      if (guideKind) {
+        const guideSeconds: Record<GuidePhaseKind, number> = {
+          inhale: inhaleDur,
+          inhaleTopUp: inhale2Dur,
+          holdIn: holdInDur,
+          exhale: exhaleDur,
+          holdOut: holdOutDur,
+        };
+        audio.playGuidePhase(guideKind, guideSeconds[guideKind] / 1000, {
+          topUpFollows: guideKind === 'inhale' && inhale2Dur > 0,
+        });
+      } else if (nextPhase === BreathingPhase.Inhale || nextPhase === BreathingPhase.Inhale2) audio.playCue('inhale', themeColor);
       else if (nextPhase === BreathingPhase.Exhale) audio.playCue('exhale', themeColor);
       else audio.playCue('hold', themeColor);
     }
 
     requestRef.current = requestAnimationFrame(animate);
-  }, [activeMode, getAudioService, getSafePhrase, isRunning, phase, setInstructionKey, speedMultiplier, themeColor]);
+  }, [activeMode, getAudioService, getSafePhrase, isRunning, phase, setInstructionKey, soundGuideEnabled, speedMultiplier, themeColor]);
 
   // --- Wim Hof Protocol Animation ---
   const animateProtocol = useCallback((time: number) => {
@@ -1353,6 +1424,8 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       audio.stopPhaseEnvelope();
       audio.stopPinkNoise();
       audio.stopBinaural();
+      // The sound guide ends a completed session with its closing chord.
+      audio.stopSoundGuide({ seconds: 1.6, closing: true });
     }
   }, [selectedDuration, isRunning, sessionSeconds, getAudioService, setInstructionKey, endSession]);
 
