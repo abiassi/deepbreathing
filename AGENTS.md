@@ -64,6 +64,9 @@ Auth: `Authorization: Bearer $DKMT_CC_KEY`
 | `dkmt-cc pm deep-breathing` | PM digest (Linear + commits) |
 | `dkmt-cc whoami` | Check current user |
 
+## Public repo: no personal names
+- This repository is public, and old commits stay readable after a fix. Never write a customer's, user's, or support contact's name, email, or other identifying detail in a commit, branch, PR, issue, comment, doc, evidence file, screenshot or test data. Write "a customer" instead. Check every diff and commit message before you push. Details: `CLAUDE.md`, "Public repo: no personal names".
+
 ## Local Mac development
 - Never run local dev against `vercel env pull --environment=development`. That env points at the production Neon host.
 - Run `scripts/dev/setup-local-db.sh` once per checkout. It needs Homebrew Postgres on 127.0.0.1:5432. It creates the local `deepbreathing` database, writes `.env.local`, and applies the better-auth and `src/lib/db/migrations` schema. It is safe to rerun.
