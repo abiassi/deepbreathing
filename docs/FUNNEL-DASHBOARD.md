@@ -62,6 +62,8 @@ The assistant handoff experiments in both logs use the later of 2026-09-13 or 10
 | `app_store_promotion_view` | 150 | 65 | 85 |
 | `app_store_click` | 14 | 10 | 4 |
 
+**Investigation (Nov 14):** The settings picker emitted this event, but practice links did not. The picker is hidden during sessions and on localized pages. See [local evidence](evidence/mode-switch-2026-11-14/observations.md). The proposed tracking change counts different-mode practice links, including initial homepage choices, so future counts use a broader definition.
+
 Total active users (7d): 707. New users: 635. Sessions: 1,005 (+9.8% against 915 for Oct 28 – Nov 3). Channels (sessions): Direct 473, Organic Search 471, Unassigned 58, Referral 21, AI Assistant 13, Organic Social 2. Engagement rate is not reported, because GA4 `engagedSessions` for the last two days is not mature (tools gotcha 20).
 
 Previous 7 days (Oct 28 – Nov 3), all users: `page_viewed_breathing` 531, `breathing_session_start` 225, `breathing_session_end` 219, `conversion_prompt_shown` 143, `conversion_signup_completed` 14.

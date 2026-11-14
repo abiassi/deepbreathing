@@ -23,6 +23,7 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
+| 2026-11-14 | [Track mode changes through practice links](#2026-11-14-track-mode-changes-through-practice-links) | 🔄 Implemented locally; deployment pending |
 | 2026-11-13 | [Fit the iOS Modes sheet to its rows](#2026-11-13-fit-the-ios-modes-sheet-to-its-rows) | 🔄 Implemented locally; release pending |
 | 2026-11-12 | [Restore iOS modes scrolling](#2026-11-12-restore-ios-modes-scrolling) | 🔄 Implemented locally; release pending |
 | 2026-11-12 | [Move web account deletion to the practice page](#2026-11-12-move-web-account-deletion-to-the-practice-page) | 🔄 Implemented; production verification pending |
@@ -63,6 +64,20 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 ---
 
 ## Active Experiments
+
+### 2026-11-14: Track mode changes through practice links
+
+**Hypothesis:** Recording navigation to a different breathing mode will capture selections missed by the settings-only `mode_switch` event. This includes choosing a non-default mode before starting a session.
+
+**Baseline:** November 4–10 had 0 `mode_switch` users and 203 `breathing_session_start` users. These are separate user counts, not a matched cohort. GA4 recorded switches on November 11 and 12, so the existing settings event was not permanently broken.
+
+**Change:** Emit `mode_switch` for same-tab practice links to a different mode. The event now includes initial selections from the homepage default; counts are not directly comparable with the old settings-only metric. The picker is still hidden during a running session and on localized pages. Consider a more visible mode picker as a separate UX proposal.
+
+**Pre-committed success criterion:** At least one `mode_switch` user in the first full week after deployment. A nonzero count alone does not prove complete delivery or improved discoverability.
+
+**Measure-after:** The first weekly refresh after that full week and GA4's two-day maturation window. Record the deployment date and PR when shipped. [Local evidence](evidence/mode-switch-2026-11-14/observations.md).
+
+---
 
 ### 2026-11-13: Fit the iOS Modes sheet to its rows
 
