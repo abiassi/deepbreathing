@@ -277,18 +277,76 @@ describe('sound guide phase plan', () => {
       { kind: 'exhale', seconds: 5.5 },
     ]);
 
-    // Inhale: silence to the fifth at full level, air opening.
+    // Inhale: silence to full level, with the fifth joined above the root.
     expect(first(inhale.states)).toMatchObject({ position: 0, level: 0 });
     expect(endOf(inhale).position).toBeCloseTo(1, 5);
     expect(endOf(inhale).level).toBeCloseTo(1, 5);
-    expect(last(inhale.airBandHz).value).toBeGreaterThan(first(inhale.airBandHz).value);
-    expect(last(inhale.notes[1]).value).toBeGreaterThan(last(inhale.notes[0]).value);
+    expect(first(inhale.notes[1]).value).toBe(0);
+    expect(last(inhale.notes[1]).value).toBeGreaterThan(0.05);
+    // The root carries the voice: no note above it is ever louder.
+    expect(last(inhale.notes[0]).value).toBeGreaterThan(last(inhale.notes[1]).value);
 
-    // Exhale: back to the root, near silence, air closing.
+    // Exhale: back to the root alone, near silence.
     expect(endOf(exhale).position).toBeCloseTo(0, 5);
     expect(endOf(exhale).level).toBeLessThan(0.2);
-    expect(last(exhale.airBandHz).value).toBeLessThan(first(exhale.airBandHz).value);
-    expect(last(exhale.notes[0]).value).toBeGreaterThan(last(exhale.notes[1]).value);
+    expect(last(exhale.notes[1]).value).toBeCloseTo(0, 6);
+    expect(last(exhale.notes[0]).value).toBeGreaterThan(0);
+  });
+
+  it('fills to a peak at the end of the inhale and empties as its mirror', () => {
+    const [, , inhale, exhale] = play([
+      { kind: 'inhale', seconds: 5.5 },
+      { kind: 'exhale', seconds: 5.5 },
+      { kind: 'inhale', seconds: 5.5 },
+      { kind: 'exhale', seconds: 5.5 },
+    ]);
+    const rises = (curve: Array<{ value: number }>) =>
+      curve.every((point, index) => index === 0 || point.value >= curve[index - 1].value - 1e-9);
+    const falls = (curve: Array<{ value: number }>) =>
+      curve.every((point, index) => index === 0 || point.value <= curve[index - 1].value + 1e-9);
+    const curvesOf = (plan: GuidePhasePlan) => [plan.notes[0], plan.notes[1], plan.toneLowpassHz];
+
+    // Level, body and brightness rise to the last moment of the inhale.
+    curvesOf(inhale).forEach((curve) => {
+      expect(rises(curve)).toBe(true);
+      expect(last(curve).value).toBeGreaterThan(curve[Math.floor(curve.length * 0.75)].value);
+    });
+    // The exhale starts at its fullest and falls for the whole phase.
+    curvesOf(exhale).forEach((curve) => {
+      expect(falls(curve)).toBe(true);
+      expect(last(curve).value).toBeLessThan(curve[Math.floor(curve.length * 0.75)].value);
+    });
+    // The exhale is the inhale backwards.
+    inhale.notes[0].forEach((point, index) => {
+      const mirrored = exhale.notes[0][exhale.notes[0].length - 1 - index];
+      expect(mirrored.value).toBeCloseTo(point.value, 2);
+    });
+  });
+
+  it('holds still', () => {
+    const [, holdIn, , holdOut] = play([
+      { kind: 'inhale', seconds: 4 },
+      { kind: 'holdIn', seconds: 4 },
+      { kind: 'exhale', seconds: 4 },
+      { kind: 'holdOut', seconds: 4 },
+    ]);
+    [holdIn, holdOut].forEach((hold) => {
+      // After the hold has settled, nothing moves.
+      [...hold.notes, hold.toneLowpassHz].forEach((curve) => {
+        const settled = curve.filter((point) => point.at >= 1.3).map((point) => point.value);
+        expect(Math.max(...settled) - Math.min(...settled)).toBeCloseTo(0, 6);
+      });
+    });
+  });
+
+  it('stays warm: no noise by default, and a capped brightness', () => {
+    Object.values(ModeName).forEach((mode) => {
+      const modeProfile = soundGuideProfileFor(mode);
+      const plan = planGuidePhase({ kind: 'inhale', durationSeconds: 4, from: GUIDE_REST, profile: modeProfile });
+      expect(Math.max(...plan.toneLowpassHz.map((point) => point.value))).toBeLessThanOrEqual(1200);
+      const air = Math.max(...plan.airGain.map((point) => point.value));
+      expect(air).toBeLessThanOrEqual(mode === ModeName.Ujjayi ? 0.07 : 0);
+    });
   });
 
   it('tells a full-lungs hold from an empty-lungs hold', () => {
@@ -322,8 +380,13 @@ describe('sound guide phase plan', () => {
     expect(dip).toBeLessThan(endOf(inhale).level - 0.15);
     expect(endOf(topUp).position).toBeCloseTo(2, 5);
     expect(endOf(topUp).level).toBeCloseTo(1, 5);
-    // The two sips are marked on different notes.
-    expect(topUp.marker.ladderIndex).toBeGreaterThan(inhale.marker.ladderIndex);
+    // The octave joins only on the second sip.
+    expect(last(inhale.notes[2]).value).toBe(0);
+    expect(last(topUp.notes[2]).value).toBeGreaterThan(0.03);
+    // Both sips are marked by a rising pair, the second one higher; the fall by a falling pair.
+    [inhale, topUp].forEach((sip) => expect(sip.marker.notes[1]).toBeGreaterThan(sip.marker.notes[0]));
+    expect(topUp.marker.notes[1]).toBeGreaterThan(inhale.marker.notes[1]);
+    expect(exhale.marker.notes[1]).toBeLessThan(exhale.marker.notes[0]);
     // The sigh falls all the way from the octave to the root.
     expect(first(exhale.states).position).toBeCloseTo(2, 5);
     expect(endOf(exhale).position).toBeCloseTo(0, 5);
@@ -345,7 +408,6 @@ describe('sound guide phase plan', () => {
         expect(first(curve).value).toBeCloseTo(last(previous.notes[note]).value, 6);
       });
       expect(first(plan.airGain).value).toBeCloseTo(last(previous.airGain).value, 6);
-      expect(first(plan.airBandHz).value).toBeCloseTo(last(previous.airBandHz).value, 6);
       expect(first(plan.toneLowpassHz).value).toBeCloseTo(last(previous.toneLowpassHz).value, 6);
     });
   });
@@ -377,12 +439,14 @@ describe('sound guide phase plan', () => {
     });
   });
 
-  it('puts the ladder where a phone speaker can play it', () => {
+  it('keeps the ladder low, with harmonics a phone speaker can play', () => {
     // Every drone root in the engine, 87 Hz (Sigh) to 165 Hz (Coherent).
     [87.31, 110, 130.81, 146.83, 164.81].forEach((root) => {
       const base = ladderBaseHz(root);
-      expect(base).toBeGreaterThanOrEqual(247);
-      expect(base).toBeLessThan(494);
+      expect(base).toBeGreaterThanOrEqual(123.5);
+      expect(base).toBeLessThan(247);
+      // The second harmonic of the root is the lowest partial a phone plays.
+      expect(base * 2).toBeGreaterThanOrEqual(247);
       expect(Math.log2(base / root) % 1).toBeCloseTo(0, 6);
     });
   });
@@ -417,7 +481,7 @@ describe('sound guide lifecycle', () => {
     await service.startSoundGuide('#0ea5e9');
     service.playGuidePhase('inhale', 2.5, { topUpFollows: true });
     const guideSources = context.sources.filter((source) => source.started);
-    // Three notes of three oscillators, the air noise, and a two-partial chime.
+    // Three notes of three oscillators, the root's twin, and a two-note marker. No noise.
     expect(guideSources).toHaveLength(12);
 
     service.stopSoundGuide({ seconds: 1.6, closing: true });

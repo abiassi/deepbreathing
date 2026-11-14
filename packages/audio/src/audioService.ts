@@ -6,7 +6,7 @@
  * - Binaural beats accept adaptive entrainment frequencies.
  */
 import { ModeName } from './modes';
-import { SoundGuide, soundGuideProfileFor, type GuidePhaseKind } from './soundGuide';
+import { ladderBaseHz, SoundGuide, soundGuideProfileFor, type GuidePhaseKind } from './soundGuide';
 
 /**
  * Platform seam. The engine is pure Web Audio; the only environment-specific
@@ -71,8 +71,11 @@ const SOUND_GUIDE_REVERB_DECAY = 2.6;
 const BINAURAL_CARRIER_HZ = 200;
 // Bed gains while the sound guide plays. The drone alone measures -15 LUFS
 // (Box), 10 dB over the noise bed (Coherent, -26 LUFS). Under the guide both
-// beds land near the same level, so the voice leads in every mode.
-const SOUND_GUIDE_BED = { drone: 0.22, subBass: 0.5, pinkNoise: 0.9, binaural: 0.45 } as const;
+// beds land near the same level, so the voice leads in every mode. The drone
+// plays the same notes as the guide's voice (Box, Ujjayi and Belly share
+// their root with it); at 0.22, and still at 0.09, its slow swells hid the
+// end of the voice's fall.
+const SOUND_GUIDE_BED = { drone: 0.06, subBass: 0.5, pinkNoise: 0.9, binaural: 0.45 } as const;
 
 interface CueProfile {
   oscType: OscillatorType;
@@ -1670,6 +1673,9 @@ export class AudioService {
    */
   public updatePinkNoisePhase(phase: 'inhale' | 'exhale' | 'hold', progress: number) {
     if (!this.ctx || !this.noiseNode) return;
+    // Under the sound guide the bed stays still and dark. A noise band that
+    // opens on every inhale was heard, with the guide's own air, as a whoosh.
+    if (this.soundGuideMix) return;
     const t = this.ctx.currentTime;
     const p = Math.max(0, Math.min(1, progress));
     let target: number;
@@ -1710,14 +1716,16 @@ export class AudioService {
   // ─────────────────────────────────────────────────────────────────────────
 
   /**
-   * A binaural carrier in the key of the current mode: the fifth of the drone
-   * root. The default 200 Hz carrier sits 4 Hz from the drone's 196 Hz fifth
-   * (Box, C3 root) and beats against it.
+   * A binaural carrier for the sound guide: the fifth below the guide's root,
+   * 92 to 185 Hz. It is in the key of the mode, and it is at least 30 Hz from
+   * every note of the voice and of the drone. A carrier on one of those notes
+   * beats against it at the binaural rate: the default 200 Hz carrier sits
+   * 4 Hz from Box's 196 Hz fifth. A pair this low is also below what a laptop
+   * or phone speaker plays, where the two carriers would mix in the air into
+   * a 10 Hz flutter.
    */
   public inKeyBinauralCarrierHz(colorHex?: string) {
-    let carrier = this.getDroneRootFrequency(colorHex || this.themeColor) * 1.5;
-    while (carrier < 150) carrier *= 2;
-    return carrier;
+    return ladderBaseHz(this.getDroneRootFrequency(colorHex || this.themeColor)) * 0.75;
   }
 
   public async startSoundGuide(colorHex?: string) {

@@ -23,7 +23,7 @@ if [[ ! -f "$skill/run/browser-session" ]]; then
 fi
 export AGENT_BROWSER_SESSION="$(cat "$skill/run/browser-session")"
 export AGENT_BROWSER_ARGS=--autoplay-policy=no-user-gesture-required
-export AGENT_BROWSER_INIT_SCRIPTS="$PWD/scripts/audio-lab/tap.init.js"
+export AGENT_BROWSER_INIT_SCRIPTS="$PWD/scripts/audio-lab/tap.init.js,$PWD/scripts/audio-lab/stems.init.js"
 
 agent-browser open "http://127.0.0.1:${app_port}${target}" >/dev/null
 agent-browser set viewport 1280 800 >/dev/null
@@ -43,3 +43,5 @@ agent-browser eval "document.addEventListener('click', () => window.__dbeTap.res
 agent-browser click '[aria-label="Start Session"]' >/dev/null
 sleep "$seconds"
 agent-browser eval "window.__dbeTap.upload('http://127.0.0.1:${receiver_port}/save?name=${name}.wav')"
+# With &labsolo=<stem> in the target: how many sources each stem had, and how many were muted.
+agent-browser eval "JSON.stringify(window.__dbeStems || {})"

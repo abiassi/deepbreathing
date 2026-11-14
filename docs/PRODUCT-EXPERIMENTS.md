@@ -69,11 +69,13 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 
 **Status:** Prototype on branch `t3/eyes-closed-sound-design`, web only, behind `?sound=guide`. Default off. No user receives it, so nothing is measured yet. Design and evidence: [`docs/audio/SOUND-DESIGN-2026-11.md`](audio/SOUND-DESIGN-2026-11.md).
 
+**Listening pass 1 (2026-11-14):** Abi heard a mosquito and a whoosh in the first version. Each layer was recorded alone: the mosquito was the tone (a pure sine that reached 494 Hz as it swelled) and the whoosh was the air layer (noise sweeping 1.5 octaves). The second version keeps the voice low and warm, with no glide and no sweep. It has been measured, not heard.
+
 **Trigger:** A customer's support mail of 2026-10-24. The customer wants an inhale and exhale tone in Coherent Breathing, so that watching the screen is not needed.
 
-**Hypothesis:** Today each phase is marked by a 0.3 s cue at its start, and the sound does not change until the next cue. A voice that plays for the whole phase (rises on the inhale, holds still on a hold, falls on the exhale) lets people practise with closed eyes. More timed sessions then reach their end, and fewer people turn the sound off.
+**Hypothesis:** Today each phase is marked by a 0.3 s cue at its start, and the sound does not change until the next cue. A voice that plays for the whole phase (fills on the inhale, holds still on a hold, empties on the exhale) lets people practise with closed eyes. More timed sessions then reach their end, and fewer people turn the sound off.
 
-**Exact change (prototype):** With `?sound=guide`, the engine adds the sound guide layer, lowers the ambient beds under it, and tunes the binaural carrier to the mode's key. The guide replaces the phase cues and the parked eyes-closed tone. A completed session ends on a closing chord. Session start and end events carry `sound: "guide"`. Without the flag, sound and events are unchanged.
+**Exact change (prototype):** With `?sound=guide`, the engine adds the sound guide layer, lowers the ambient beds under it, holds the noise bed's filter still, and tunes the binaural carrier to the mode's key. The guide replaces the phase cues and the parked eyes-closed tone. A completed session ends on a closing chord. Session start and end events carry `sound: "guide"`. Without the flag, sound and events are unchanged.
 
 **Baseline (GA4 Data API, 2026-10-14 to 2026-11-10, pulled 2026-11-14 with the `ga-visibility` service account; the one GA4 stream, `Deep Breathing Exercises`. Columns are GA4 device categories. Events the iOS app may still send through the Measurement Protocol are not separated):**
 
