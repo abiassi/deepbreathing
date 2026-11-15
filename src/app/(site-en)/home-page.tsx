@@ -136,7 +136,7 @@ const FOOTER_SITUATION_KEYS = [
 
 const CREDIT_LINKS = {
   abiassi: "https://abiassi.com/",
-  darkmatter: "https://darkmatter.is/",
+  darkmatter: "https://abiassi.com/",
 } as const;
 
 const infoCardClass =

@@ -52,9 +52,9 @@
         "status": "route-catalog-equivalent"
       },
       "sections.credits.darkmatter": {
-        "catalogRoute": "/about",
-        "sourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-        "status": "route-catalog-equivalent"
+        "reason": "Credit renamed to the owner's legal name, 2026-11-15. A proper name is not translated.",
+        "sourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+        "status": "repo-reviewed-replacement"
       },
       "sections.credits.title": {
         "catalogRoute": "/about",
@@ -209,9 +209,9 @@
         "status": "route-catalog-equivalent"
       },
       "sections.credits.darkmatter": {
-        "catalogRoute": "/about",
-        "sourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-        "status": "route-catalog-equivalent"
+        "reason": "Credit renamed to the owner's legal name, 2026-11-15. A proper name is not translated.",
+        "sourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+        "status": "repo-reviewed-replacement"
       },
       "sections.credits.title": {
         "catalogRoute": "/about",
@@ -366,9 +366,9 @@
         "status": "route-catalog-equivalent"
       },
       "sections.credits.darkmatter": {
-        "catalogRoute": "/about",
-        "sourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-        "status": "route-catalog-equivalent"
+        "reason": "Credit renamed to the owner's legal name, 2026-11-15. A proper name is not translated.",
+        "sourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+        "status": "repo-reviewed-replacement"
       },
       "sections.credits.title": {
         "catalogRoute": "/about",
@@ -523,9 +523,9 @@
         "status": "route-catalog-equivalent"
       },
       "sections.credits.darkmatter": {
-        "catalogRoute": "/about",
-        "sourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-        "status": "route-catalog-equivalent"
+        "reason": "Credit renamed to the owner's legal name, 2026-11-15. A proper name is not translated.",
+        "sourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+        "status": "repo-reviewed-replacement"
       },
       "sections.credits.title": {
         "catalogRoute": "/about",
@@ -680,9 +680,9 @@
         "status": "route-catalog-equivalent"
       },
       "sections.credits.darkmatter": {
-        "catalogRoute": "/about",
-        "sourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-        "status": "route-catalog-equivalent"
+        "reason": "Credit renamed to the owner's legal name, 2026-11-15. A proper name is not translated.",
+        "sourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+        "status": "repo-reviewed-replacement"
       },
       "sections.credits.title": {
         "catalogRoute": "/about",

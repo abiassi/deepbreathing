@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedSourceHash": "8128efc60f899d568db15ff8b20263cc1c5c697e38787622f70b770db86a1d2f",
+  "reviewedSourceHash": "e55716321ee3fae6ea4e2c407d02d2944d3ac511db5aea6f2ba0ba7f357ed17e",
   "bindings": {
     "abi.hero.eyebrow": {
       "occurrenceKey": "sel:p.text-xs.uppercase:ctx:p:pos:0",

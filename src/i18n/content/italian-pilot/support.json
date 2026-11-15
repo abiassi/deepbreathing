@@ -124,10 +124,10 @@
     },
     {
       "messagePath": "contact.darkmatterLabel",
-      "reason": "Italian pilot translation reviewed for source binding, natural phrasing, and privacy and support semantics.",
-      "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-      "sourceText": "Darkmatter AI Labs",
-      "translation": "Darkmatter AI Labs"
+      "reason": "Credit renamed to the owner's legal name, 2026-11-15. A proper name is not translated.",
+      "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+      "sourceText": "Amorim Abiassi Ferreira",
+      "translation": "Amorim Abiassi Ferreira"
     },
     {
       "messagePath": "commonQuestions.title",

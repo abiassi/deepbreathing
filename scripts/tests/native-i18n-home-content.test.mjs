@@ -36,11 +36,11 @@ test("compiles home content deterministically with catalog-backed coverage", asy
   assert.equal(first.publication.expectedMessages, 159);
   assert.deepEqual(Object.keys(first.publication.locales), expectedOutputLocales);
   const expectedReplacementCounts = {
-    "de-de": 7,
-    "es-es": 13,
-    "fr-fr": 4,
-    "ja-jp": 11,
-    "pt-br": 6,
+    "de-de": 8,
+    "es-es": 14,
+    "fr-fr": 5,
+    "ja-jp": 12,
+    "pt-br": 7,
   };
 
   for (const locale of HOME_LOCALES) {

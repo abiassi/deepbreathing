@@ -2,54 +2,54 @@
   "expectedMessages": 31,
   "locales": {
     "de-de": {
-      "bytes": 2530,
-      "catalogMessages": 29,
+      "bytes": 2535,
+      "catalogMessages": 28,
       "overrideMessages": 2,
       "path": "messages/de-de.json",
       "publishable": true,
       "resolvedMessages": 31,
-      "reviewedReplacementMessages": 0,
-      "sha256": "6b6f96bb20a41bdbe46183c8672cb653ee137cca674f60f3a27e63f5598efd62"
+      "reviewedReplacementMessages": 1,
+      "sha256": "bc012b390a78e0998209fcc8e4f830743d70041aa189d8f1ea065b59873fd57f"
     },
     "es-es": {
-      "bytes": 2621,
-      "catalogMessages": 29,
+      "bytes": 2626,
+      "catalogMessages": 28,
       "overrideMessages": 2,
       "path": "messages/es-es.json",
       "publishable": true,
       "resolvedMessages": 31,
-      "reviewedReplacementMessages": 0,
-      "sha256": "22d01ad15cc80e2643902036a2561d715639fc6fae30d7c5c500bf215bc847ef"
+      "reviewedReplacementMessages": 1,
+      "sha256": "2a9828a252871e6ebc3e6ad170dc6f0146eefb1b6c817462bb3e40f6f4745435"
     },
     "fr-fr": {
-      "bytes": 2816,
-      "catalogMessages": 29,
+      "bytes": 2821,
+      "catalogMessages": 28,
       "overrideMessages": 2,
       "path": "messages/fr-fr.json",
       "publishable": true,
       "resolvedMessages": 31,
-      "reviewedReplacementMessages": 0,
-      "sha256": "4a4356746239fe176265b4d8b8d0443c44972d180d55675ee78358e3909127ad"
+      "reviewedReplacementMessages": 1,
+      "sha256": "fe1174c0a735f24c0cd6df7507224816c62788db2ea250c0019b269775f2e3db"
     },
     "ja-jp": {
-      "bytes": 2842,
-      "catalogMessages": 27,
+      "bytes": 2847,
+      "catalogMessages": 26,
       "overrideMessages": 2,
       "path": "messages/ja-jp.json",
       "publishable": true,
       "resolvedMessages": 31,
-      "reviewedReplacementMessages": 2,
-      "sha256": "9acec68500cfa30d583e9ba05d31a569bdf5edde07b191cbfd08a12bd749b39e"
+      "reviewedReplacementMessages": 3,
+      "sha256": "0b8a7be87246009ea7f0ae62d0f0df898825964a5764694c8e04f1ede5c12045"
     },
     "pt-br": {
-      "bytes": 2843,
-      "catalogMessages": 29,
+      "bytes": 2848,
+      "catalogMessages": 28,
       "overrideMessages": 2,
       "path": "messages/pt-br.json",
       "publishable": true,
       "resolvedMessages": 31,
-      "reviewedReplacementMessages": 0,
-      "sha256": "93ded25df67acbd07e7ba9acd87533648746b4dbd5db36077fa0822da74b3a7e"
+      "reviewedReplacementMessages": 1,
+      "sha256": "328b5d55cbec09b27fadeaefd928c0577f5e884c36c766e3a53d1a5105e24f5f"
     }
   },
   "routeId": "about",

@@ -101,10 +101,8 @@
             "status": "explicit-catalog-alias"
           },
           "sections.contact.darkmatterLabel": {
-            "catalogRoute": "/privacy",
-            "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-            "status": "explicit-catalog-alias"
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+            "status": "reviewed-replacement"
           },
           "sections.contact.intro": {
             "catalogRoute": "/privacy",
@@ -264,10 +262,8 @@
             "status": "explicit-catalog-alias"
           },
           "sections.contact.darkmatterLabel": {
-            "catalogRoute": "/privacy",
-            "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-            "status": "explicit-catalog-alias"
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+            "status": "reviewed-replacement"
           },
           "sections.contact.intro": {
             "catalogRoute": "/privacy",
@@ -427,10 +423,8 @@
             "status": "explicit-catalog-alias"
           },
           "sections.contact.darkmatterLabel": {
-            "catalogRoute": "/privacy",
-            "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-            "status": "explicit-catalog-alias"
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+            "status": "reviewed-replacement"
           },
           "sections.contact.intro": {
             "catalogRoute": "/privacy",
@@ -588,8 +582,8 @@
             "status": "italian-pilot-reviewed"
           },
           "sections.contact.darkmatterLabel": {
-            "reason": "Italian pilot translation reviewed for source binding, natural phrasing, and privacy and support semantics.",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
+            "reason": "Credit renamed to the owner's legal name, 2026-11-15. A proper name is not translated.",
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
             "status": "italian-pilot-reviewed"
           },
           "sections.contact.intro": {
@@ -752,10 +746,8 @@
             "status": "explicit-catalog-alias"
           },
           "sections.contact.darkmatterLabel": {
-            "catalogRoute": "/privacy",
-            "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-            "status": "explicit-catalog-alias"
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+            "status": "reviewed-replacement"
           },
           "sections.contact.intro": {
             "catalogRoute": "/privacy",
@@ -915,10 +907,8 @@
             "status": "explicit-catalog-alias"
           },
           "sections.contact.darkmatterLabel": {
-            "catalogRoute": "/privacy",
-            "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-            "status": "explicit-catalog-alias"
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+            "status": "reviewed-replacement"
           },
           "sections.contact.intro": {
             "catalogRoute": "/privacy",
@@ -1075,10 +1065,8 @@
             "status": "explicit-catalog-alias"
           },
           "contact.darkmatterLabel": {
-            "catalogRoute": "/support",
-            "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-            "status": "explicit-catalog-alias"
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+            "status": "reviewed-replacement"
           },
           "contact.emailAddress": {
             "placementId": "3a4416fd-1a0e-4b5c-87d2-8fd6fb8b282a",
@@ -1260,10 +1248,8 @@
             "status": "explicit-catalog-alias"
           },
           "contact.darkmatterLabel": {
-            "catalogRoute": "/support",
-            "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-            "status": "explicit-catalog-alias"
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+            "status": "reviewed-replacement"
           },
           "contact.emailAddress": {
             "placementId": "3a4416fd-1a0e-4b5c-87d2-8fd6fb8b282a",
@@ -1445,10 +1431,8 @@
             "status": "explicit-catalog-alias"
           },
           "contact.darkmatterLabel": {
-            "catalogRoute": "/support",
-            "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-            "status": "explicit-catalog-alias"
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+            "status": "reviewed-replacement"
           },
           "contact.emailAddress": {
             "placementId": "3a4416fd-1a0e-4b5c-87d2-8fd6fb8b282a",
@@ -1630,8 +1614,8 @@
             "status": "italian-pilot-reviewed"
           },
           "contact.darkmatterLabel": {
-            "reason": "Italian pilot translation reviewed for source binding, natural phrasing, and privacy and support semantics.",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
+            "reason": "Credit renamed to the owner's legal name, 2026-11-15. A proper name is not translated.",
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
             "status": "italian-pilot-reviewed"
           },
           "contact.emailAddress": {
@@ -1812,10 +1796,8 @@
             "status": "explicit-catalog-alias"
           },
           "contact.darkmatterLabel": {
-            "catalogRoute": "/support",
-            "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-            "status": "explicit-catalog-alias"
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+            "status": "reviewed-replacement"
           },
           "contact.emailAddress": {
             "placementId": "3a4416fd-1a0e-4b5c-87d2-8fd6fb8b282a",
@@ -1997,10 +1979,8 @@
             "status": "explicit-catalog-alias"
           },
           "contact.darkmatterLabel": {
-            "catalogRoute": "/support",
-            "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-            "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-            "status": "explicit-catalog-alias"
+            "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+            "status": "reviewed-replacement"
           },
           "contact.emailAddress": {
             "placementId": "3a4416fd-1a0e-4b5c-87d2-8fd6fb8b282a",
