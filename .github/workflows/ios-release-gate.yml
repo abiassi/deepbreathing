@@ -50,7 +50,7 @@ jobs:
 
   verify:
     name: Tests, typecheck, lint, Expo Doctor
-    runs-on: macos-15
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     defaults:
       run:
