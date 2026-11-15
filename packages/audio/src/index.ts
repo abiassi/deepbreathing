@@ -8,3 +8,9 @@ export {
   type TuningSnapshot,
 } from './audioService';
 export { ModeName } from './modes';
+export {
+  planGuidePhase,
+  soundGuideProfileFor,
+  type GuidePhaseKind,
+  type SoundGuideProfile,
+} from './soundGuide';
