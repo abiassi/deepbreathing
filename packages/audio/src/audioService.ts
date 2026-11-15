@@ -62,6 +62,9 @@ const COMPLETION_CUE_ROOT_GAIN = 0.16;
 const COMPLETION_CUE_ATTACK_SECONDS = 0.045;
 const COMPLETION_CUE_ROOT_RELEASE_SECONDS = 0.64;
 const COMPLETION_CUE_FIFTH_RELEASE_SECONDS = 0.78;
+// A centred StereoPanner passes a mono cue at cos(π/4) per channel. This gain
+// brings each channel back to the cue's own level.
+const CUE_SPLIT_MAKEUP_GAIN = Math.SQRT2;
 
 // Cue volume the sound guide's gains were tuned at (the engine default).
 const SOUND_GUIDE_REFERENCE_CUE_VOLUME = 0.32;
@@ -1026,7 +1029,7 @@ export class AudioService {
     cueBus.gain.setValueAtTime(1, t);
 
     const cueOutput = this.ctx.createGain();
-    cueOutput.gain.setValueAtTime(1, t);
+    cueOutput.gain.setValueAtTime(CUE_SPLIT_MAKEUP_GAIN, t);
     cueOutput.connect(this.masterGain);
     this.activeCueBuses.add(cueOutput);
 
@@ -1035,12 +1038,18 @@ export class AudioService {
     masterLowpass.frequency.setValueAtTime(preset.masterLowpassHz, t);
     masterLowpass.Q.setValueAtTime(0.7, t);
 
-    const dryGain = this.ctx.createGain();
-    dryGain.gain.setValueAtTime(1, t);
+    // The dry path and the reverb send split at a centred StereoPanner, not
+    // at the filter. On react-native-audio-api 0.13.6, gain and filter nodes
+    // process in place on their input's buffer, and a second node that reads
+    // the same output gets silence. Split at the filter, the convolver took
+    // the cue and the dry path was silent: no audible cue on iOS. A
+    // StereoPanner writes its own output buffer, so both paths read the cue.
+    const cueSplit = this.ctx.createStereoPanner();
+    cueSplit.pan.setValueAtTime(0, t);
 
     cueBus.connect(masterLowpass);
-    masterLowpass.connect(dryGain);
-    dryGain.connect(cueOutput);
+    masterLowpass.connect(cueSplit);
+    cueSplit.connect(cueOutput);
 
     let convolver: ConvolverNode | null = null;
     let wetGain: GainNode | null = null;
@@ -1050,14 +1059,14 @@ export class AudioService {
         wetGain = this.ctx.createGain();
         const mix = Math.max(0, Math.min(1, preset.reverb.mix * this.cueReverbMix));
         wetGain.gain.setValueAtTime(mix, t);
-        masterLowpass.connect(convolver);
+        cueSplit.connect(convolver);
         convolver.connect(wetGain);
         wetGain.connect(cueOutput);
       }
     }
 
     const sourceNodes: CueSourceNode[] = [];
-    const nodesToDisconnect: AudioNode[] = [cueBus, cueOutput, masterLowpass, dryGain];
+    const nodesToDisconnect: AudioNode[] = [cueBus, cueOutput, masterLowpass, cueSplit];
     let cleanupTimer: ReturnType<typeof setTimeout> | null = null;
     let cleanedUp = false;
     let detachEndedHandlers: Array<() => void> = [];
@@ -1076,7 +1085,7 @@ export class AudioService {
       // Disconnect only this cue's send from the cached convolver. Calling
       // convolver.disconnect() here would tear down every concurrent cue that
       // shares the same impulse response (the old fan-out leak/cutoff bug).
-      this.disconnectNode(masterLowpass, convolver ?? undefined);
+      this.disconnectNode(cueSplit, convolver ?? undefined);
       this.disconnectNode(convolver, wetGain ?? undefined);
       nodesToDisconnect.forEach((node) => this.disconnectNode(node));
       if (wetGain) this.disconnectNode(wetGain);
