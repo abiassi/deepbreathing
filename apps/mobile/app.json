@@ -141,6 +141,15 @@
       "expo-secure-store",
       "expo-status-bar",
       "expo-web-browser",
+      [
+        "react-native-audio-api",
+        {
+          "iosBackgroundMode": false,
+          "androidPermissions": [],
+          "androidForegroundService": false,
+          "disableFFmpeg": true
+        }
+      ],
       "./plugins/withStripFrameworkSymbols"
     ],
     "experiments": {
