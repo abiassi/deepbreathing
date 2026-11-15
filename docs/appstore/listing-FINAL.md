@@ -80,12 +80,12 @@ breathing,calm,box breathing,4-7-8,sleep,anxiety,meditation,relax,stress,breathe
 
 ## Copyright
 ```
-© 2026 Darkmatter AI Labs
+© 2026 Amorim Abiassi Ferreira
 ```
 > The app moved from Reentry Systems Unipessoal Lda to the Amorim Ferreira (Individual)
 > team, `7ZCKCVM4C5`, in early November 2026. An Individual account shows the person's
 > name as the App Store seller. Recheck the seller name on the live listing.
-> The copyright field above is free text. Decide whether it keeps "Darkmatter AI Labs".
+> The copyright field above is free text. Set to "© 2026 Amorim Abiassi Ferreira" in App Store Connect on 2026-11-15.
 > See [team-transfer-1.0.2.md](team-transfer-1.0.2.md).
 
 ## Age rating — health/wellness topics present → expected 9+ on Apple's updated system

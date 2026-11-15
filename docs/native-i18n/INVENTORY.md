@@ -308,7 +308,7 @@ The groups below separate live coupling from migration provenance and historical
 
 | Evidence | Dependency / cutover implication |
 |---|---|
-| `CLAUDE.md:112` | Canonical project guidance still documents proxy URL semantics and old OAuth context. |
+| `CLAUDE.md:128` | Canonical project guidance still documents proxy URL semantics and old OAuth context. |
 | `AGENTS.md:21` | Project environment declares the origin application endpoint. |
 | `.claude/skills/daily-indexing/SKILL.md:19` | Correctly states that MassTranslate submission/OAuth paths are retired for indexing; keep this negative dependency true. |
 | `docs/runbooks/tools-and-data-sources.md:71` | Primary live runbook for proxy cache, signed-webhook bypass, URL semantics, and remaining GSC/Bing fallbacks. |

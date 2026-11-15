@@ -82,6 +82,22 @@ data, commit messages and PR text. Write "a customer" or "a support request of
 Before every commit and push, check the diff and message for personal names.
 When you brief a delegate with support context, pass this rule on.
 
+### Merging web PRs: merge once CI passes
+
+Merge a web app PR yourself as soon as every CI check passes, when the change is
+low risk and a revert fully undoes it. Examples: UI, copy, content, docs, i18n,
+tracking events, sound and styling. Do not wait for a human review on these.
+After the merge, verify production as the deploy runbook describes.
+
+`main` has no branch protection, so `gh pr merge --auto` merges before CI
+finishes. Never use `--auto`. Wait until every check is green, then run
+`gh pr merge`.
+
+Ask Abi before merging when a revert would not undo the effect. That includes
+database migrations or backfills, auth and session changes, account or data
+deletion, payments, secrets or environment changes, and anything that sends
+messages to users. Mobile EAS and App Store releases keep their own process.
+
 ## Experiments — before you ship
 
 **STOP — read [`docs/SEO-EXPERIMENTS.md`](docs/SEO-EXPERIMENTS.md) FIRST.** Any SEO-adjacent task — a GSC/Bing alert, an indexing report, a redirect, a title/meta change, a sitemap or hreflang question, a crawl-health investigation — starts by reviewing that log. Many "new" problems are already diagnosed there as benign or already-fixed (e.g. the recurring "Page with redirect" WNC alert is a known no-action finding). Do not re-investigate from scratch and do not ship a change before checking whether it was already tried. This is non-negotiable; it is the whole reason the log exists.

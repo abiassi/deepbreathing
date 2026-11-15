@@ -61,53 +61,53 @@
       "locales": {
         "de-de": {
           "binding": 10,
-          "bytes": 5510,
-          "catalog": 42,
+          "bytes": 5515,
+          "catalog": 41,
           "path": "messages/de-de/editorialPolicy.json",
           "publishable": true,
-          "replacement": 0,
+          "replacement": 1,
           "resolvedMessages": 52,
-          "sha256": "3912369d0e831647bf04e961be639e3f6e52f1cc7186ec377d5898a39f5a6efb"
+          "sha256": "e7d0ab1c4cdec106124c3ad172e2764d49b428941f202349b7d38f1036a41f96"
         },
         "es-es": {
           "binding": 10,
-          "bytes": 5584,
-          "catalog": 42,
+          "bytes": 5589,
+          "catalog": 41,
           "path": "messages/es-es/editorialPolicy.json",
           "publishable": true,
-          "replacement": 0,
+          "replacement": 1,
           "resolvedMessages": 52,
-          "sha256": "ea8a2b17e765f092bf2f28c86923830bf9481a16efd2ae8d9a22185529d56b91"
+          "sha256": "07394cf29bd84ef8c8782c2e142e1dbd64a53d1e94bab57b6f451a42b44c81c2"
         },
         "fr-fr": {
           "binding": 10,
-          "bytes": 5863,
-          "catalog": 42,
+          "bytes": 5868,
+          "catalog": 41,
           "path": "messages/fr-fr/editorialPolicy.json",
           "publishable": true,
-          "replacement": 0,
+          "replacement": 1,
           "resolvedMessages": 52,
-          "sha256": "f439541c5be876fc2639077734cce83a168133c006d6da7c3bd170e536dc1ace"
+          "sha256": "931faf850f81f09b7403bbfc929a830ce96f6b02e1c012c51e95deac1c8255fd"
         },
         "ja-jp": {
           "binding": 10,
-          "bytes": 6140,
-          "catalog": 42,
+          "bytes": 6145,
+          "catalog": 41,
           "path": "messages/ja-jp/editorialPolicy.json",
           "publishable": true,
-          "replacement": 0,
+          "replacement": 1,
           "resolvedMessages": 52,
-          "sha256": "45fdfe013145dca5436bda4086eecd7554a66d2ce6b329ab6681ecc854e3c4f2"
+          "sha256": "00554404f5f920b431b10cea1e82f703c8d66230efe4b0db9b3cbcd7d0b2b665"
         },
         "pt-br": {
           "binding": 10,
-          "bytes": 5454,
-          "catalog": 42,
+          "bytes": 5459,
+          "catalog": 41,
           "path": "messages/pt-br/editorialPolicy.json",
           "publishable": true,
-          "replacement": 0,
+          "replacement": 1,
           "resolvedMessages": 52,
-          "sha256": "ca6e03693c1a23eb5366691611d426189bcd0b61ebeca823413e2e3486ea0681"
+          "sha256": "4df6ebf48bf037c909670e6cac7e6b3b52559e32fc8421cabf34f3a40032ec39"
         }
       },
       "sourceRoute": "/about/editorial-policy"

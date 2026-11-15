@@ -37,9 +37,9 @@ test("compiles complete about content deterministically", async () => {
 
   for (const locale of ABOUT_LOCALES) {
     const coverage = first.publication.locales[locale];
-    assert.equal(coverage.catalogMessages, locale === "ja-jp" ? 27 : 29);
+    assert.equal(coverage.catalogMessages, locale === "ja-jp" ? 26 : 28);
     assert.equal(coverage.overrideMessages, 2);
-    assert.equal(coverage.reviewedReplacementMessages, locale === "ja-jp" ? 2 : 0);
+    assert.equal(coverage.reviewedReplacementMessages, locale === "ja-jp" ? 3 : 1);
     assert.equal(coverage.resolvedMessages, 31);
     assert.equal(coverage.publishable, true);
     assert.match(coverage.sha256, /^[0-9a-f]{64}$/);
@@ -96,7 +96,7 @@ test("records catalog provenance separately from reviewed overrides and replacem
   }
   assert.deepEqual(
     replacements.replacements.map(({ messagePath }) => messagePath),
-    ["sections.whoBuilt.title", "sections.whoBuilt.afterLink"],
+    ["sections.whoBuilt.title", "sections.whoBuilt.afterLink", "sections.credits.darkmatter"],
   );
 
   for (const locale of ABOUT_LOCALES) {

@@ -280,7 +280,7 @@ export function EditorialPolicyPage({
               </Link>{" "}
               {content.content.whoBuilt.beforeDarkmatter}{" "}
               <a
-                href="https://darkmatter.is/"
+                href="https://abiassi.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"

@@ -168,7 +168,7 @@ Apple requires screenshots for every device size you support. Accepted current i
 | 7.5 | Keywords entered | ⏳ | Recheck the final 100-character field against the approved Build 18 copy before entry. |
 | 7.6 | Support URL: `https://deepbreathingexercises.com/support` | 🚫 | Candidate source uses the receiving `hi@abiassi.com` mailbox, but the live page still advertises the non-receiving branded address. Deploy and verify the new `mailto:` before metadata entry. |
 | 7.7 | Marketing URL: `https://deepbreathingexercises.com` | ⏳ | Recheck the URL and its current deployment immediately before Build 18 metadata entry. |
-| 7.8 | Copyright: `© 2026 Darkmatter AI Labs` | ⏳ | Owner must confirm the ASC legal entity / configured DBA before entering this field. |
+| 7.8 | Copyright: `© 2026 Amorim Abiassi Ferreira` | ✅ | Set in App Store Connect on 2026-11-15 after the team transfer. |
 | 7.9 | Category: Health & Fitness (secondary: Lifestyle) | ✅ | Verified in ASC 2026-07-28 |
 
 ---

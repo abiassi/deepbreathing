@@ -27,14 +27,6 @@
       "reason": "Explicit section heading binding."
     },
     {
-      "messagePath": "contact.darkmatterLabel",
-      "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-      "catalogRoute": "/support",
-      "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-      "catalogSourceText": "Darkmatter AI Labs",
-      "reason": "Explicit external-link label binding."
-    },
-    {
       "messagePath": "commonQuestions.title",
       "reviewedSourceHash": "dfb8a3d41335746f8b5879f9c3a372ecfa4d1e7b6495d7376f335084fa3c46f2",
       "catalogRoute": "/support",

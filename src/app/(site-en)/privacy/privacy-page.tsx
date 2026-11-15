@@ -167,7 +167,7 @@ export function PrivacyPage({
             </p>
             <p>
               <a
-                href="https://darkmatter.is/"
+                href="https://abiassi.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold text-primary hover:underline"

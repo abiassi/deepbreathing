@@ -18,6 +18,19 @@
       "translations": {
         "ja-jp": "（創設者・写真家・ブレスワーク実践者）が、日々実践している呼吸法を可視化する無料ツールとして制作しました。"
       }
+    },
+    {
+      "messagePath": "sections.credits.darkmatter",
+      "sourceText": "Amorim Abiassi Ferreira",
+      "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+      "reason": "Credit renamed to the owner's legal name, 2026-11-15. A proper name is not translated.",
+      "translations": {
+        "de-de": "Amorim Abiassi Ferreira",
+        "es-es": "Amorim Abiassi Ferreira",
+        "fr-fr": "Amorim Abiassi Ferreira",
+        "ja-jp": "Amorim Abiassi Ferreira",
+        "pt-br": "Amorim Abiassi Ferreira"
+      }
     }
   ]
 }
