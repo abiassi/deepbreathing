@@ -275,7 +275,7 @@ The groups below separate live coupling from migration provenance and historical
 | Evidence | Dependency / cutover implication |
 |---|---|
 | `scripts/build-og-translations.mjs:2` | Scrapes localized apex pages and treats proxy-produced `og:title` as authoritative. |
-| `package.json:14` | Exposes the proxy-scraping OG translation build command. |
+| `package.json:15` | Exposes the proxy-scraping OG translation build command. |
 | `src/data/og-translations.json:3` | Checked-in localized OG-title artifact produced by live-site scraping. |
 | `src/app/og/route.tsx:5` | Consumes the proxy-derived OG-title artifact for query-based images. |
 | `src/app/og/[slug]/route.tsx:6` | Consumes the proxy-derived OG-title artifact for slug-based images. |

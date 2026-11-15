@@ -288,6 +288,8 @@ These have all bitten us before. Document in this file the FIRST time they bite,
 
 26. **`accounts.google.com` was polluting Referral until 2026-07-27** — 468 sessions from 59 users (7.9 each) — the Google sign-in round-trip counted as a new referral session. Fixed by adding `Referral domain contains accounts.google.com` under Data streams → Configure tag settings → List unwanted referrals. **The exclusion is forward-only**; historical Referral numbers before Jul 27 still contain it, so don't compare Referral across that boundary. (Jul 27)
 
+27. **Vercel preview builds skip the native-i18n checks and `pnpm test`; production and local builds still run them.** `prebuild` skips both when `VERCEL_ENV=preview`, because the GitHub "Web checks" job runs the same `pnpm run check:native-i18n` and `pnpm test` on every PR in about a third of the time. A red test therefore shows on the PR as "Web checks", not as "Vercel". A production build still fails closed on a stale artifact or a failing test. (2026-11-15)
+
 ---
 
 ## Skills + MCPs cheat-sheet (most-used)

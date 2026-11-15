@@ -244,10 +244,10 @@ test("the normal build fails closed when for artifacts are stale", () => {
     readFileSync(path.join(repoRoot, "package.json"), "utf8"),
   );
 
-  assert.match(
-    packageJson.scripts?.prebuild ?? "",
-    /check:native-i18n-for-pages/,
-  );
+  const { prebuild = "", "check:native-i18n": checks = "" } = packageJson.scripts ?? {};
+
+  assert.match(prebuild, /pnpm run check:native-i18n(?![-\w])/);
+  assert.match(checks, /check:native-i18n-for-pages\b/);
 });
 
 test("metadata uses catalog head occurrences unless explicitly replaced", () => {
