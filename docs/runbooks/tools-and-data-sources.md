@@ -343,4 +343,5 @@ The `ga-visibility` service account key at `~/.config/dbe-ga-visibility-sa.json`
 Two details found while building it:
 
 - **CI does not run `packages/audio/src/audioService.test.ts`.** The mobile job runs vitest inside `apps/mobile` only. Run the engine tests with `pnpm exec vitest run packages/audio`.
+- **The drone's level is set by its swell, not by its gain.** Each drone partial has an LFO that adds a fixed 0.05 to its gain. Below a drone gain of about 0.05 the swell is the drone. To lower the drone bed, lower the LFO depth too. Check with a bed-alone clip (`&labsolo=drone,sub,binaural`).
 - **GA4 has `customEvent:reason` but not `customEvent:mode`.** A `runReport` on `breathing_session_end` by `customEvent:reason` returns the `completed` and `paused` split. The same request by `customEvent:mode` returns HTTP 400, because `mode` is not a registered event dimension.

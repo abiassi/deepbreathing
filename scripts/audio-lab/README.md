@@ -29,7 +29,7 @@ Add `&labsolo=<stem>` to the target. `stems.init.js` names every sound source fr
 scripts/audio-lab/capture.sh coherent-tone '/breathe/coherent?duration=24&sound=guide&bed=0&labsolo=tone' 31
 ```
 
-Stems: `tone`, `air`, `marker`, `chord` (the closing chord), `noisebed`, `drone`, `sub`, `binaural`, `envelope`, `cue`. Several stems can be joined with commas. The capture prints how many sources each stem had and how many were muted; a stem with no sources is an empty recording, not a quiet layer. The bed stems need the bed, so leave `&bed=0` out for them.
+Stems: `tone`, `air`, `marker`, `chord` (the closing chord), `noisebed`, `drone`, `sub`, `binaural`, `envelope`, `cue`. Several stems can be joined with commas: `&labsolo=drone,sub,binaural` records the whole bed of a drone mode alone, to compare its loudness with the guide alone (`&bed=0`). The capture prints how many sources each stem had and how many were muted; a stem with no sources is an empty recording, not a quiet layer. The bed stems need the bed, so leave `&bed=0` out for them.
 
 ## Find a whine, a sweep or a beat
 
@@ -61,6 +61,6 @@ One spectrogram per clip, on the same time, frequency and colour scale.
 
 - `clicks` finds sharp steps. It was checked by injecting faults into a real clip: steps of -40 and -50 dBFS were found 12 of 12 times, -60 dBFS 11 of 12, -70 dBFS 7 of 12. A tick behind a lowpass is band-limited and is not found.
 - Loudness is measured, not heard. No number here says whether a sound is pleasant.
-- `whine_db` follows a thin tone that swells. It was built after a listener heard a mosquito in the first sound guide, and it reads 7 dB lower on the version that replaced it. It has not been checked against a second listener.
+- `whine_db` follows a thin tone that swells. It was built after a listener heard a mosquito in the first sound guide. It reads 7 dB lower on the second version, which the same listener called a lot better, and the same on the third. It has not been checked against a second listener.
 - `width_db` in `contours.py` reads the whole mix. In the drone modes the drone orbits the listener and sets the width; the guide's own width is only visible with `&bed=0`.
 - The clips come from headless Chromium. Safari, Firefox and phones are not covered.

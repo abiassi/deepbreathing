@@ -1,6 +1,6 @@
 # Sound design, November 2026: the sound guide
 
-Status: prototype on branch `t3/eyes-closed-sound-design`, web only, behind `?sound=guide`. Default off. Not shipped. Second version (v2), after the first listening pass on 2026-11-14.
+Status: prototype on branch `t3/eyes-closed-sound-design`, web only, behind `?sound=guide`. Default off. Not shipped. Third version (v3), after the second listening pass on 2026-11-14.
 
 ## Summary
 
@@ -8,7 +8,7 @@ Today a session marks each phase with a 0.3 s blip at its start. Between two bli
 
 The proposal is one new layer, the **sound guide**: a low, warm voice that plays for the whole phase and fills and empties the way the lungs do. It gets louder, rounder and wider on the inhale. It stands still on a hold. It is the inhale played backwards on the exhale. It is synthesized in the shared engine (`packages/audio`), so the same code can run on iOS. It uses no audio files and no paid service.
 
-The first version (v1) was heard as "a mosquito" and "a zoom that's growing". [What the first listening pass found](#what-the-first-listening-pass-found) names the cause and the change. The closing chord, which the listener liked, is unchanged.
+The first version (v1) was heard as "a mosquito" and "a zoom that's growing". [What the first listening pass found](#what-the-first-listening-pass-found) names the cause and the change. The second version (v2) "feels a lot better", but the guide was "a bit too low versus the rest". [What the second listening pass found](#what-the-second-listening-pass-found) gives the level numbers and the six changes of v3. The closing chord, which the listener liked, is unchanged.
 
 Try it: open `/breathe/coherent?sound=guide` on the branch. Add `&bed=0` to hear the guide without the ambient bed.
 
@@ -109,13 +109,48 @@ Stems to confirm by ear: [v1 tone](../evidence/sound-guide-2026-11-14/stems/cohe
 
 Three things in v2 come from a patch that was written before the second remark arrived: the mirrored level curve (even in decibels, from a floor 15 dB under the peak), the still hold, and the two-note markers. The same patch also made the pitch glide a fifth through every inhale, opened the lowpass to 3 kHz and widened the air. Those parts were dropped: a tone that glides up while it swells is the "zoom".
 
+## What the second listening pass found
+
+The owner listened to v2 and reported: "The cue sound is a bit too low versus the rest that's going on. Other than that this sound feels a lot better." The owner then approved six changes, numbered 0 to 5 below, to raise the guide and to make it sound more organic. v3 is those six changes, plus three smaller ones that the measurements asked for.
+
+### Why the guide sounded low
+
+The guide and the bed were each recorded alone from the real page, through the real master chain. The bed alone is `&labsolo=noisebed,sub,binaural` or `&labsolo=drone,sub,binaural`. The guide alone is `&bed=0`. All clips are 31 s long.
+
+| Mode | v2 guide alone | v2 bed alone | v2 lead | v3 guide alone | v3 bed alone | v3 lead |
+|---|---:|---:|---:|---:|---:|---:|
+| Coherent | -20.8 LUFS | -32.8 LUFS | 12.0 LU | -18.9 LUFS | -33.2 LUFS | 14.3 LU |
+| Box | -19.8 LUFS | -23.7 LUFS | 3.9 LU | -18.0 LUFS | -30.2 LUFS | 12.2 LU |
+| Physiological Sigh | -21.7 LUFS | -23.4 LUFS | 1.7 LU | -19.3 LUFS | -29.8 LUFS | 10.5 LU |
+
+In the drone modes the v2 guide led the bed by only 2 to 4 LU. The cause was the drone's slow swell. The swell adds a fixed 0.05 to the gain of each drone partial. v2 lowered the drone gain to about 0.005, so the swell alone was the drone bed, and the gain setting had almost no effect. v3 scales the swell with the drone. Inside the guide, the markers were the quietest part: the marker stem measured -35.4 LUFS against -20.4 LUFS for the tone stem.
+
+### What v3 changes
+
+| # | Change | v2 | v3 | Measured |
+|---|---|---|---|---|
+| 0 | The guide leads the mix | Voice and markers at the profile gains. Drone ×0.06 with the full swell. | Voice and markers ×1.3. Marker gain 0.07 to 0.095, the exhale marker a further ×1.25, the other markers a further ×1.07 to ×1.17. Drone ×0.13 with the swell ×0.24. Sub-bass ×0.4. | Lead over the bed: 12.0, 3.9 and 1.7 LU become 14.3, 12.2 and 10.5 LU. Tone stem +1.5 LU. Marker stem +6.3 LU. |
+| 1 | Detune and drift | One sine per partial. The root had a twin 4 cents sharp, 18 dB down. | Each note is three voices: one in tune, one 4.5 cents sharp, one 3.5 cents flat (less on the higher notes). Each side voice moves to a new place within 1.5 cents over each phase. | The strongest amplitude beat between 3 and 40 Hz has a depth of 0.02 (v2 0.01). A depth above 0.15 is heard as a flutter. |
+| 2 | Breath-shaped envelopes | Close to a straight line in decibels. | Inhale: a quick start and a soft settle. Exhale: the same curve backwards. Still a list of straight ramps. | Tone stem, level in thirds of an inhale: steps of +4.9 and +4.1 dB (v2 +6.0 and +5.7). By design the level is 60 % of the way up at half time (v2 50 %). |
+| 3 | A small warm room | One 2.2 s reverb for everything. | The voice and the markers play into a 1.1 s room with five first reflections per ear and a tail that loses its highs first. The closing chord keeps the 2.2 s reverb. | The room sits about 15 dB under the dry sound. That value is set by the send gain, not measured. |
+| 4 | Opening on the inhale | Lowpass from 420 to 1,150 Hz, following the gain. | The same range and the same 1,150 Hz ceiling. The filter now opens evenly in decibels, so it moves through the whole inhale. | Centroid of the guide alone through an inhale: 218 to 244 Hz (v2 246 to 259 Hz, v1 362 to 532 Hz). |
+| 5 | Breath-to-breath variation | None. | Each breath fills to a level between 0 and 2 dB under the peak. Each marker is up to 1 dB louder or softer. The side voices drift (item 1). All draws come from one seeded source. | Fixed by construction: the same seed gives the same sequence. Two Box takes measure -19.0 and -19.0 LUFS. |
+
+Three more changes came out of the measurements:
+
+- **The notes that join have softer harmonics.** The voice is louder, and its highest partials (494 and 741 Hz in Coherent) come mostly from the note that joins. Their second harmonic went from 0.42 to 0.3 and their third from 0.2 to 0.1. This holds the narrow-tone reading at the v2 value. See the mosquito table below.
+- **The side voices thin out through a hold.** At full level they moved a held note by 2.4 dB. They drop to 40 % within 0.9 s of a hold, and a hold stays inside 1 dB.
+- **The root stays narrow.** With the side voices of the root spread wide, the sound was wide from its first moment. It still widens as it fills, by 7 dB in Coherent (v2: 12 dB). The room is the reason for the difference: its return is fully stereo.
+
+Kept from v2: the register of the voice, the notes, the markers' notes, the still hold, the two fills of the Physiological Sigh, and the closing chord. The closing chord stem measures -26.2 LUFS and -17.5 dBTP in v3, against -26.2 LUFS and -17.4 dBTP in v2.
+
 ## The proposal
 
 ### One grammar for every mode
 
 The guide has two parts: a voice and a marker.
 
-- **Voice.** Up to three notes of the mode's key: root, fifth and octave. The root sits at 123 to 247 Hz. Each note is a sine with two soft harmonics. A phone speaker does not play the root's fundamental; it plays the harmonics, at 247 to 741 Hz.
+- **Voice.** Up to three notes of the mode's key: root, fifth and octave. The root sits at 123 to 247 Hz. Each note is three voices a few cents apart. Each voice is a fundamental with two soft harmonics. A phone speaker does not play the root's fundamental; it plays the harmonics, at 247 to 741 Hz.
 - **Marker.** Two short notes at the start of an inhale or an exhale, or one bell at the start of a hold, one octave above the voice.
 
 | Phase | Voice | Level | Marker |
@@ -128,7 +163,7 @@ The guide has two parts: a voice and a marker.
 
 A listener needs two rules. A sound that moves means breathe; a still sound means hold. Growing means in; shrinking means out.
 
-Nothing glides and nothing sweeps. The pitch of every note is fixed. The only noise in the voice is Ujjayi's.
+Nothing glides and nothing sweeps. The pitch of every note is fixed. The side voices sit 2 to 5 cents from their note and wander by up to 1.5 cents. The only noise in the voice is Ujjayi's.
 
 Session edges:
 
@@ -154,7 +189,7 @@ The tone gain differs by mode (0.145 to 0.19) only so that every mode lands at t
 
 ### The ambient bed is optional and sits under the voice
 
-With the guide on, the beds keep their per-mode recipe at a lower gain: drone ×0.06, sub-bass ×0.5, noise ×0.9, binaural ×0.45. The drone plays the same notes as the voice, and at ×0.22 its slow swells hid the voice's rise and fall. The noise bed's filter stays still. The binaural carrier moves to the fifth below the guide's root (92 to 185 Hz): it is in key, it is at least 30 Hz from every note of the voice and the drone, and it is below what a laptop or phone speaker plays. The drone holds its root while the guide plays. `&bed=0` removes the bed.
+With the guide on, the beds keep their per-mode recipe at a lower gain: drone ×0.13 with its swell at ×0.24, sub-bass ×0.4, noise ×0.9, binaural ×0.45. The drone plays the same notes as the voice, and at ×0.22 its slow swells hid the voice's rise and fall. The bed alone measures 10 to 14 LU under the guide alone in the three modes that were measured. The noise bed's filter stays still. The binaural carrier moves to the fifth below the guide's root (92 to 185 Hz): it is in key, it is at least 30 Hz from every note of the voice and the drone, and it is below what a laptop or phone speaker plays. The drone holds its root while the guide plays. `&bed=0` removes the bed.
 
 ### Mute, volume and the silent switch
 
@@ -172,17 +207,109 @@ With the guide on, the beds keep their per-mode recipe at a lower gain: drone ×
 | `src/components/resonance/Resonance.tsx` | Reads `?sound=guide` and `&bed=0`. Calls the guide at each phase start in place of `playCue`. |
 | `scripts/audio-lab/` | Records and measures real sessions, whole or one layer at a time. |
 
-Each phase is scheduled once, at its start, from its known length. Nothing runs per frame. The schedule uses `setValueAtTime` and `linearRampToValueAtTime` only. Each phase ends its curves 70 ms early and starts 30 ms ahead of the clock, so the next phase finds every parameter at rest.
+Each phase is scheduled once, at its start, from its known length. Nothing runs per frame. The schedule uses `setValueAtTime` and `linearRampToValueAtTime` only. A breath curve is a list of up to 40 straight ramps. Each phase ends its curves 70 ms early and starts 30 ms ahead of the clock, so the next phase finds every parameter at rest.
 
-A marker starts on the next moment when the voice oscillators are back at their starting phase, at most 16 ms later. A marker note has the pitch of a voice harmonic. Started in phase it adds to that harmonic; started anywhere else it could cancel it and sound as a dip.
+One voice is one oscillator with a `PeriodicWave` that holds the fundamental and its two harmonics. The guide has nine voice oscillators (v2 had ten sines). The detune of a side voice moves on one linear ramp per phase. The room is a `ConvolverNode` with a response that the engine generates from a seeded random source. The response carries its own level and is played with `normalize = false`, so the wet level does not depend on a platform's own scaling.
+
+A marker starts on the next moment when the centre voices are back at their starting phase, at most 16 ms later. A marker note has the pitch of a voice harmonic. Started in phase it adds to that harmonic; started anywhere else it could cancel it and sound as a dip.
 
 Without `?sound=guide` no guide code runs. The session start and end events gain a `sound: "guide"` parameter only when the flag is on.
 
-Four changes apply only under the guide, so production is unchanged: the LFO depth of the drone and the sub-bass fades with the bed (finding 7), the binaural carrier is in key (finding 5), the noise bed's filter stays still, and the bed gains are lower. The first two are worth applying to the legacy mix too. That needs Abi's decision.
+Five changes apply only under the guide, so production is unchanged: the LFO depth of the drone and the sub-bass fades with the bed (finding 7), the binaural carrier is in key (finding 5), the noise bed's filter stays still, the bed gains are lower, and the drone's swell is scaled with the drone. The first two are worth applying to the legacy mix too. That needs Abi's decision.
 
 ## Evidence
 
-All clips come from the real page and the real engine, in headless Chromium at 44.1 kHz. "Current" has no flag. "v1" is `?sound=guide` at commit `d615bb9`. "v2" is `?sound=guide` on this branch. Each clip starts at the Start Session click and runs past the session end.
+All clips come from the real page and the real engine, in headless Chromium at 44.1 kHz. "Current" has no flag. "v1" is `?sound=guide` at commit `d615bb9`. "v2" is `?sound=guide` at commit `9dfa517`. "v3" is `?sound=guide` on this branch. Each clip starts at the Start Session click and runs past the session end.
+
+The v3 evidence comes first. The v1 and v2 evidence follows it, as it was written for v2.
+
+### v3 evidence
+
+| Where | What |
+|---|---|
+| [`docs/evidence/sound-guide-2026-11-14/`](../evidence/sound-guide-2026-11-14/) | v3 clips for three modes, the Coherent guide alone in v2 and v3, three stems and five sheets. |
+| `/Users/abi/.t3/userdata/attachments/dbe-sound-2026-11-14-v3/` on the machine that ran this | v2 and v3 clips, v3 clips for all seven modes, every v3 stem of Coherent, the sheets at full size, the recordings as WAV, the raw measurements and a README. |
+
+Listen in this order:
+
+1. Coherent with the bed: [v2](../evidence/sound-guide-2026-11-14/coherent-proposed.m4a), then [v3](../evidence/sound-guide-2026-11-14/coherent-v3.m4a).
+2. Coherent, the guide alone: [v2](../evidence/sound-guide-2026-11-14/coherent-no-bed-v2.m4a), then [v3](../evidence/sound-guide-2026-11-14/coherent-no-bed-v3.m4a).
+3. Box: [v2](../evidence/sound-guide-2026-11-14/box-proposed.m4a), then [v3](../evidence/sound-guide-2026-11-14/box-v3.m4a).
+4. Physiological Sigh: [v2](../evidence/sound-guide-2026-11-14/sigh-proposed.m4a), then [v3](../evidence/sound-guide-2026-11-14/sigh-v3.m4a).
+5. Stems of Coherent: the tone in [v2](../evidence/sound-guide-2026-11-14/stems/coherent-v2-tone.m4a) and [v3](../evidence/sound-guide-2026-11-14/stems/coherent-v3-tone.m4a), then the markers in [v2](../evidence/sound-guide-2026-11-14/stems/coherent-v2-marker.m4a) and [v3](../evidence/sound-guide-2026-11-14/stems/coherent-v3-marker.m4a).
+
+![Coherent, the guide alone: v2 above, v3 below](../evidence/sound-guide-2026-11-14/coherent-no-bed-v2-vs-v3.jpg)
+
+Both pictures use the same scales. The dashed line is 2 kHz. The rows are the same in both: the root at 165 Hz, the fifth at 247 Hz, and the harmonics at 330, 494 and 741 Hz. Nothing was added above them. In v3 the short vertical marks, the markers, are brighter. The 741 Hz row is fainter. The chord at the right is the same.
+
+![Coherent, one breath cycle: v2 left, v3 right](../evidence/sound-guide-2026-11-14/coherent-contours-v2-vs-v3.jpg)
+
+Second row: the v2 level is a straight rise. The v3 level rises faster at first and settles toward the peak, with small ripples from the three voices. Fourth row: v3 starts wider than v2 (the room) and still widens through the inhale. First row: this reading picks the strongest peak between 200 and 1,100 Hz. In v3 three partials have nearly the same level there, so the reading jumps between 247, 330 and 494 Hz. No note changes pitch; the spectrogram above shows level rows only. Third row: between 250 Hz and 4 kHz the v3 centroid falls by about 50 Hz through an inhale. The note that joins has softer harmonics, so it adds more body than brightness in that band. Over the full band the centroid of the tone rises by 26 Hz from the first third of an inhale to the last. Other modes: [Box](../evidence/sound-guide-2026-11-14/box-contours-v2-vs-v3.jpg), [Physiological Sigh](../evidence/sound-guide-2026-11-14/sigh-contours-v2-vs-v3.jpg).
+
+#### The mosquito, v1, v2 and v3
+
+Coherent. The tone stem is `&bed=0&labsolo=tone`. The guide alone is `&bed=0`. Read between the start of the second inhale and the session end.
+
+| | v1 | v2 | v3 |
+|---|---:|---:|---:|
+| Narrow peaks above 400 Hz, A-weighted, top of an inhale (`whine_db`), tone stem | -23.0 dB | -29.9 dB | -30.0 dB |
+| The same, guide alone | -23.4 dB | -30.0 dB | -29.9 dB |
+| `whine_db` at the start of that inhale, tone stem | -44.5 dB | -44.0 dB | -41.5 dB |
+| Strongest narrow peak above 250 Hz at the top of an inhale, tone stem | 495 Hz at -19.7 dB | 328 Hz at -26.6 dB | 328 Hz at -26.3 dB |
+| The 494 Hz partial at the top of the second inhale, guide alone | -16.4 dB | -23.2 dB | -23.2 dB |
+| The 165 Hz root at the same moment | none | -17.6 dB | -17.7 dB |
+| The 741 Hz partial at the same moment | -64.5 dB | -34.6 dB | -39.5 dB |
+| Level above 1 kHz, guide alone | -39.6 dBFS | -116.1 dBFS | -109.1 dBFS |
+| Level above 2 kHz, guide alone | -44.0 dBFS | -130.7 dBFS | -123.9 dBFS |
+| Level above 2 kHz, tone stem | -69.1 dBFS | -144.5 dBFS | -142.0 dBFS |
+| Spectral centroid through an inhale, guide alone | 362 to 532 Hz | 246 to 259 Hz | 218 to 244 Hz |
+| Strongest amplitude beat, 3 to 40 Hz, depth | 0.01 | 0.01 | 0.02 |
+
+![Coherent, the tone stem alone: v1, v2, v3](../evidence/sound-guide-2026-11-14/coherent-tone-v1-v2-v3.jpg)
+
+Three limits on this table. First, `whine_db` still rises through each inhale in v2 and in v3, by 14 dB and by 11.5 dB. The 494 Hz partial is a harmonic of the voice, and the voice fills. It ends 7 dB under v1, and it sits 5.5 dB under a 165 Hz root that v1 did not have. Second, the tone is 1.5 LU louder in v3 and the reading did not rise: the softer harmonics of the notes that join pay for that. Third, the level above 1 and 2 kHz is 7 dB higher than in v2. That is the louder markers. It is still more than 100 dB under full scale.
+
+#### Loudness and peaks, v3
+
+| Clip | Length | Loudness | True peak | Clipped samples | Steps | 2 to 6 kHz | Inhale | Exhale |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Coherent, v2 | 51 s | -20.1 LUFS | -7.6 dBTP | 0 | 0 | -78.6 dBFS | +11.8 dB | -13.2 dB |
+| **Coherent, v3** | 51 s | -18.4 LUFS | -6.1 dBTP | 0 | 0 | -78.5 dBFS | +9.2 dB | -12.0 dB |
+| Box, v2 | 55 s | -19.5 LUFS | -7.4 dBTP | 0 | 0 | -83.0 dBFS | +9.3 dB | -7.7 dB |
+| **Box, v3** | 55 s | -19.0 LUFS | -5.3 dBTP | 0 | 0 | -90.7 dBFS | +8.4 dB | -9.3 dB |
+| Physiological Sigh, v2 | 51 s | -19.6 LUFS | -7.4 dBTP | 0 | 0 | -97.8 dBFS | +8.4 and +5.7 dB | -16.2 dB |
+| **Physiological Sigh, v3** | 51 s | -19.1 LUFS | -5.6 dBTP | 0 | 0 | -104.4 dBFS | +5.0 and +4.9 dB | -14.6 dB |
+| 4-7-8, v3 | 64 s | -19.5 LUFS | -7.1 dBTP | 0 | 0 | -78.6 dBFS | +9.0 dB | -8.8 dB |
+| Ujjayi, v3 | 37 s | -19.9 LUFS | -6.7 dBTP | 0 | 0 | -83.1 dBFS | +6.6 dB | -10.7 dB |
+| Belly, v3 | 37 s | -18.9 LUFS | -6.3 dBTP | 0 | 0 | -91.6 dBFS | +8.5 dB | -10.2 dB |
+| Pursed Lip, v3 | 37 s | -19.9 LUFS | -6.4 dBTP | 0 | 0 | -99.8 dBFS | +6.0 dB | -12.7 dB |
+| Coherent, v3, no bed | 31 s | -18.9 LUFS | -6.4 dBTP | 0 | 0 | -123.4 dBFS | | |
+| Box, v3, no bed | 55 s | -19.2 LUFS | -5.9 dBTP | 0 | 0 | -123.1 dBFS | | |
+| Physiological Sigh, v3, no bed | 31 s | -19.3 LUFS | -5.9 dBTP | 0 | 0 | -119.4 dBFS | | |
+
+How to read the table, where it differs from the v2 table below:
+
+- **Loudness.** The seven v3 modes span 1.5 LU (-19.9 to -18.4 LUFS). Coherent is 1.7 LU louder than in v2. The six other modes are within 0.8 LU of v2: the guide is louder and the drone bed is quieter. Ujjayi and Pursed Lip are 0.5 LU quieter.
+- **Peaks.** The highest true peak in v3 is -5.3 dBTP. No clip has a clipped sample or a step.
+- **Inhale and Exhale.** In all seven v3 modes the inhale rises and the exhale falls. The rise from the first quarter to the last quarter is smaller than in v2: the level now rises early and settles late. In five modes the highest level of the inhale is in its last twelfth. In Ujjayi and Belly it is in the twelfth before, by 0.2 to 0.5 dB. In every v3 exhale the highest level is in the first twelfth.
+- **The inhale and the exhale are opposite shapes.** The correlation between the two level contours is -0.90 in Coherent, -0.85 in 4-7-8, -0.78 and -0.82 in the Sigh, and -0.74 to -0.87 in the four other modes.
+- **The Sigh reads as two fills.** The level rises 8.9 dB from its lowest point through the first inhale. The second inhale starts on its marker, dips 4.2 dB under that, and rises 8.8 dB from the dip to the peak. Measured against the end of the first inhale, the dip is 2.1 dB (v2: 3.8 dB). The louder marker covers part of it.
+- **Holds.** In the Box guide alone, both holds settle within the first second and then stay inside 0.9 dB. With the bed, the empty hold then stays inside 2.2 dB. In v2 it moved by 10 dB there, because the drone's swell was the only sound left.
+- **Run to run.** Box v3 was recorded twice with the bed. Loudness: -19.0 and -19.0 LUFS. Inhale: +8.4 and +7.9 dB. Exhale: -9.3 and -9.0 dB.
+
+#### The flag-off path, measured again
+
+Clips without the flag were recorded from this branch and from the engine and the breathing component of `main` at `c490738`, in the same session.
+
+| Mode | Branch, no flag | `main` code, no flag |
+|---|---|---|
+| Coherent | -25.7 LUFS, -9.9 dBTP | -25.8 LUFS, -10.3 dBTP |
+| Box | -15.4 LUFS, -5.0 dBTP | -15.4 LUFS, -5.0 dBTP |
+| Physiological Sigh | -15.0 LUFS, -5.0 dBTP | -14.9 LUFS, -4.7 dBTP |
+
+The band levels from 20 Hz to 2 kHz agree within 0.3 dB in each pair. Above 2 kHz Coherent and Box agree within 0.4 dB, and the Sigh differs by 1.6 dB at -70 dBFS. The drone and the noise start at a random phase, so two takes of the same code differ by this much; the two recordings are not sample-identical. The code path says the same as the numbers: every changed line in the engine is behind `soundGuideMix`, which only `startSoundGuide` sets. `main` ignores `?sound=guide`: a Coherent clip from `main` code with the flag measures -25.9 LUFS.
+
+### v1 and v2 evidence
 
 | Where | What |
 |---|---|
@@ -261,7 +388,7 @@ Checks beside the table:
 - **The flag-off path is unchanged.** Clips without the flag were recorded in the same session from this branch and from `main` (the engine and the breathing component at `9339d55`; `main` has since changed only a click handler in that component). Coherent: -25.7 against -25.7 LUFS, true peak -10.5 against -10.5 dBTP. Box: -15.3 against -15.2 LUFS, -4.9 against -5.2 dBTP. Sigh: -14.9 against -15.1 LUFS, -4.9 against -4.0 dBTP. All five band levels agree within 0.3 dB in each pair. The drone and the noise start at a random phase, so two takes of the same code differ by this much. The code path says the same: every changed line in the engine is behind `soundGuideMix`, which only `startSoundGuide` sets.
 - **Run-to-run spread.** Box v2 was recorded three times. Loudness: -19.4 to -19.6 LUFS. Inhale: +8.9 to +9.8 dB. Exhale: -4.3 to -7.7 dB. The exhale moves with the phase of the drone's swell.
 - **The streaks in the drone-mode spectrograms are the drone.** Box and Sigh v2 show short vertical marks above 1 kHz. They peak at -55 dBFS between 1.2 and 6 kHz. In the Box guide alone the same band peaks at -85 dBFS. The current mix peaks at -36 dBFS there. v1 hid them under its air.
-- **Mute, pause and the screen recording** were checked on v1 and not again on v2. The guide still connects to the master gain, and the release path did not change.
+- **Mute, pause and the screen recording** were checked on v1 and not again on v2 or v3. The guide still connects to the master gain, and the release path did not change.
 
 To record and measure again, follow [`scripts/audio-lab/README.md`](../../scripts/audio-lab/README.md).
 
@@ -271,7 +398,7 @@ To record and measure again, follow [`scripts/audio-lab/README.md`](../../script
 
 | Step | Effort |
 |---|---|
-| Second listening pass with Abi; adjust `MODE_PROFILES` | 0.5 day |
+| Third listening pass with the owner; adjust `MODE_PROFILES` | 0.5 day |
 | A "Breath sound" setting that replaces the parked eyes-closed switch; saved; phrases for all locales | 1 day |
 | Save mute; add one guide volume and one ambience volume control | 0.5 to 1 day |
 | Wim Hof phases; re-plan the current phase when the speed slider moves | 0.5 day |
@@ -288,24 +415,44 @@ No iOS code is in this branch. The engine part is already shared, but the result
 |---|---|
 | `native-soundscape.ts`: start the guide before the beds; on `phase_haptic` call `playGuidePhase` with `phaseDurationSeconds`; on completion call `stopSoundGuide({ closing: true })` in place of the bloom | 0.5 day |
 | Mirror the setting from `resonance_settings`, the way `binauralEnabled` is mirrored | 0.25 day |
-| Device checks: ramp density (up to 40 ramps per parameter per phase), `cancelAndHoldAtTime`, the 2.2 s reverb, ten oscillators, the marker's phase lock, levels through the soft clipper | 1 day |
+| Device checks: ramp density (up to 40 ramps per parameter per phase), `cancelAndHoldAtTime`, the 2.2 s reverb and the 1.1 s room, nine `PeriodicWave` oscillators and their detune ramps, the marker's phase lock, levels through the soft clipper | 1 day |
 | TestFlight pass: ringer off, lock screen, Bluetooth delay | 0.5 day |
 | Fallback if the device renders the schedule wrongly: render one breath cycle with `OfflineAudioContext` at session start and loop the buffer | 1 to 1.5 days, only if needed |
+
+#### What v3 needs from react-native-audio-api
+
+Checked against the source of version 0.13.6, the version `apps/mobile` installs. Nothing was run on a device.
+
+| v3 part | Web Audio feature | In 0.13.6 | Risk |
+|---|---|---|---|
+| Breath curves | `linearRampToValueAtTime`, up to 40 per parameter per phase | Yes. The legacy engine already uses it. | Low. `setValueCurveAtTime` also exists there, but it rejects a curve that overlaps another event, so v3 does not use it. |
+| Three voices per note | `createPeriodicWave` with `disableNormalization`, `OscillatorNode.setPeriodicWave` | Yes, both. | Medium. No other code in the app uses a custom wave. The level and the phase of its harmonics on a device are untested. The marker's phase lock depends on the phase. |
+| Drift | A linear ramp on `OscillatorNode.detune` | Yes. | Low to medium. The engine sets `detune` as a fixed value today and has not ramped it. |
+| Room | `ConvolverNode` with `normalize = false` | Yes. The cue reverb already runs on it. The `normalize` setter exists and is read when the buffer is assigned. | Low for support. Medium for CPU: the guide keeps two convolvers alive, 1.1 s and 2.2 s. If that is too much on a phone, the room can take the chord too. |
+| Width | `StereoPannerNode`, eight in the voice | Yes. | Low. |
+| Lowpass opening | A linear ramp on `BiquadFilterNode.frequency` | Yes. v2 used it. | Low. |
+| Variation | Plain arithmetic with a seeded source | Not a platform feature. | None. |
+
+The native chain has no compressor; a soft clipper stands in. The v3 guide is about 1.5 LU louder before the master chain than v2, so the levels through the soft clipper need a check on a device.
 
 Rendered audio files (`expo-audio`) are not proposed. The speed slider is continuous, so no fixed set of files can follow the phase length.
 
 ## Decisions for Abi
 
-1. Is the mosquito gone? Listen to the Coherent pair, then to the v1 tone stem alone. If the tone stem is the sound you meant, the diagnosis holds. If it is not, the air and marker stems are next to it.
-2. Is the voice now too low or too plain? The fill is level, body and a second note; no pitch moves. One constant (`NOTE_PARTIALS`) sets how much body the voice has, and one profile value brings air back per mode.
-3. Setting or default? A Settings switch will reach few people: 15 of 799 session starters touched the binaural switch in 28 days. A default for a share of sessions measures faster.
-4. Loudness. Under the guide, Box and Sigh are about 4.5 dB quieter than today and Coherent about 5.5 dB louder. Every mode lands near -20 LUFS.
-5. Apply the end-cut fix and the in-key carrier to today's mix?
+1. Does the guide lead now? `GUIDE_LEAD_GAIN` sets the voice and the markers together, `chimeGain` the markers alone, and `SOUND_GUIDE_BED` the beds.
+2. Is the mosquito still gone? v3 measures the same as v2 on the narrow-tone reading, with a louder voice. Listen to the two tone stems.
+3. Is the shimmer of the three voices pleasant, or does a hold now sound less still? `NOTE_VOICES` sets how far apart and how loud the side voices are.
+4. Is the room right? `ROOM_SEND` sets how much of it is heard. At 0 the voice is dry.
+5. Setting or default? A Settings switch will reach few people: 15 of 799 session starters touched the binaural switch in 28 days. A default for a share of sessions measures faster.
+6. Loudness. Under the guide, Box and Sigh are about 4 dB quieter than today and Coherent about 7 dB louder. Every mode lands near -19 LUFS.
+7. Apply the end-cut fix and the in-key carrier to today's mix?
 
 ## Not verified
 
-- No person has listened to v2. Abi listened to v1. Every claim about v2 here is a measurement: peaks, loudness, clipping, steps, band levels, narrow peaks, contours and spectrograms. `whine_db` was built to follow what Abi described; it has not been checked against a listener.
+- No person has listened to v3. The owner listened to v1 and to v2. Every claim about v3 here is a measurement: peaks, loudness, clipping, steps, band levels, narrow peaks, contours and spectrograms. No number here says that v3 sounds more organic or warmer. `whine_db` was built to follow the first description of the mosquito; v2 read 7 dB lower on it and was heard as "a lot better", which is one data point.
+- The level of the room is set by its send gain and was not measured.
+- The lead of the guide over the bed was measured in Coherent, Box and the Physiological Sigh. The four other modes were measured with the bed only.
 - Nothing was tested on a phone, on Safari or on Firefox. The clips come from headless Chromium on macOS. The voice's root is below what a phone speaker plays; the claim that its harmonics carry it there is not tested on a phone.
-- Mute, unmute, pause and the screen recording were not repeated for v2.
-- The iOS plan is untested.
+- Mute, unmute, pause and the screen recording were not repeated for v2 or v3.
+- The iOS plan is untested. The library support in the table above was read from source, not run.
 - Wim Hof and a speed change in the middle of a phase are not covered by the guide.

@@ -187,14 +187,14 @@ const smooth = (amount: number) => {
 };
 /**
  * Progress of a fill, shaped like a breath in: a quick start, then a soft
- * settle into the peak. Almost half of the curve stays a straight line, so
- * the sound still moves on its last moment and its position tells how much
- * of the phase is left. A curve that goes flat near the top was heard, in
- * the first version, as the same bump on every phase.
+ * settle into the peak. More than half of the curve stays a straight line,
+ * so the sound still moves on its last moment and its position tells how
+ * much of the phase is left. A curve that goes flat near the top was heard,
+ * in the first version, as the same bump on every phase.
  */
 const fill = (progress: number) => {
   const x = clamp01(progress);
-  return 0.45 * x + 0.55 * (1 - (1 - x) ** 1.8);
+  return 0.55 * x + 0.45 * (1 - (1 - x) ** 1.8);
 };
 /** Progress of an emptying: the fill backwards. A soft start, then a quicker fall. */
 const empty = (progress: number) => 1 - fill(1 - clamp01(progress));
@@ -496,8 +496,12 @@ const PHASE_GUARD_SECONDS = 0.07;
 const GUIDE_LEAD_GAIN = 1.3;
 const REVERB_SEND = 0.2;
 const REVERB_LOWPASS_HZ = 2600;
-/** Share of the voice and the markers sent to the room. */
-const ROOM_SEND = 0.25;
+/**
+ * Share of the voice and the markers sent to the room: the room sits about
+ * 15 dB under the dry sound. Its return is fully stereo. At 0.25 the sound
+ * was wide from its first moment and widened by only 4 dB through an inhale.
+ */
+const ROOM_SEND = 0.18;
 const ROOM_LOWPASS_HZ = 1800;
 /** The air layer of the first version reached 3.2 kHz and was heard as a whoosh. */
 const AIR_CEILING_HZ = 900;
@@ -549,6 +553,12 @@ const BREATH_LEVEL_SPREAD_DB = 2;
 const MARKER_VELOCITY_SPREAD_DB = 1;
 /** The notes that join sit a little to each side: the sound widens as it fills. */
 const NOTE_PAN: readonly [number, number, number] = [0, -0.45, 0.45];
+/**
+ * How far the side voices of each note spread from the note's own place. The
+ * root stays narrow: with its voices spread wide the sound was wide from the
+ * first moment, and it no longer widened as it filled.
+ */
+const VOICE_SPREAD: readonly [number, number, number] = [0.3, 1, 1];
 
 /** A bell: the note and a quiet octave. */
 const BELL_PARTIALS: ReadonlyArray<{ ratio: number; level: number }> = [
@@ -683,7 +693,7 @@ export class SoundGuide {
         oscillator.frequency.value = this.baseHz * ratio;
         level.gain.value = voice.level;
         oscillator.connect(level);
-        const pan = Math.max(-1, Math.min(1, NOTE_PAN[index] + voice.pan));
+        const pan = Math.max(-1, Math.min(1, NOTE_PAN[index] + voice.pan * VOICE_SPREAD[index]));
         if (pan !== 0 && typeof context.createStereoPanner === 'function') {
           const panner = this.track(context.createStereoPanner());
           panner.pan.value = pan;
