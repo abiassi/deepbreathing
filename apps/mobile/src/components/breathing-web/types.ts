@@ -12,7 +12,6 @@ export enum BreathingPhase {
 import { ModeName } from '@resonance/domain';
 export { ModeName };
 
-// Protocol-based breathing (for multi-round techniques like Wim Hof)
 export enum ProtocolPhase {
   Idle = 'Get Ready',
   PowerBreathe = 'Power Breathe',
@@ -39,20 +38,19 @@ export interface ProtocolState {
   currentRound: number;
   currentBreathIndex: number;
   phase: ProtocolPhase;
-  retentionTime: number; // seconds held so far
+  retentionTime: number;
   isUserControlledHold: boolean;
 }
 
 export interface BreathingPattern {
   name: ModeName;
   description: string;
-  // Duration in seconds for each phase
   inhale: number;
-  inhale2?: number; // Optional second inhale for physiological sigh
+  inhale2?: number;
   holdIn: number;
   exhale: number;
   holdOut: number;
-  color: string; // Hex code for the theme
+  color: string;
 }
 
 

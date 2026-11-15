@@ -17,7 +17,6 @@ import path from 'node:path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// All paths are absolute so this script works regardless of cwd.
 const mobileRoot = path.resolve(__dirname, '..');
 const repoRoot   = path.resolve(mobileRoot, '../..');
 
@@ -31,7 +30,6 @@ console.log('  input  :', inputCss);
 console.log('  output :', outputCss);
 console.log('  cwd    :', repoRoot);
 
-// Prefer the binary already installed at repo root; fall back to npx.
 const tailwindBin = path.join(repoRoot, 'node_modules/.bin/tailwindcss');
 
 execFileSync(

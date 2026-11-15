@@ -1,5 +1,3 @@
-// Pure helpers for seeding WKWebView localStorage from the native mirror.
-// Unit-tested at the JS level (MOB-4a seed-path acceptance criterion).
 //
 // Snapshot values arrive encodeURIComponent-encoded: the @expo/dom-webview
 // injectedObjectJson bridge embeds props in an unescaped JS template literal,
@@ -21,7 +19,6 @@ function decodeSnapshotValue(value: string): string | null {
       JSON.parse(value);
       return value;
     } catch {
-      // Fall through to the URI decoder so a malformed raw value is rejected.
     }
   }
   try {
@@ -55,7 +52,6 @@ export function parsePersistedJson<T extends Record<string, unknown> = Record<st
         return parsed as T;
       }
     } catch {
-      // Try the next representation, then return null below.
     }
   }
   return null;
@@ -90,7 +86,6 @@ export function resolvePersistedItem(
   return null;
 }
 
-/** Gate native mirror writes until the mount seed pass has finished. */
 export function shouldMirrorPersist(isNativeApp: boolean, storageHydrated: boolean): boolean {
   return isNativeApp && storageHydrated;
 }

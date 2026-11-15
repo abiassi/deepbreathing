@@ -1,10 +1,6 @@
-// Presentation constants for the breathing screen — labels, option lists, and a
-// small dark palette. Mode accent colors come from the pattern catalog itself.
-
 import { ModeName } from '@/breathing';
 import { ALLOWED_DURATIONS_SEC } from '@/breathing/settings';
 
-/** Short, glanceable labels for the mode pills (ModeName values are long). */
 export const MODE_LABELS: Record<ModeName, string> = {
   [ModeName.Box]: 'Box',
   [ModeName.Relax]: 'Relax',
@@ -24,7 +20,6 @@ export interface DurationOption {
   label: string;
   /** Seconds; 0 = open-ended (no auto-stop). */
   seconds: number;
-  /** Spoken label for screen readers. */
   a11y: string;
 }
 

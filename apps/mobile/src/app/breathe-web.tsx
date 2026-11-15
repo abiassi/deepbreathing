@@ -22,7 +22,6 @@ export default function BreatheWebScreen() {
     toBreathingAppState(AppState.currentState),
   );
 
-  // Best-effort audio session setup on mount.
   useEffect(() => {
     (async () => {
       try {
@@ -39,7 +38,6 @@ export default function BreatheWebScreen() {
     })();
   }, []);
 
-  // Track app foreground/background to let the DOM component suspend audio.
   useEffect(() => {
     const sub = AppState.addEventListener('change', (next) => {
       setAppState(toBreathingAppState(next));

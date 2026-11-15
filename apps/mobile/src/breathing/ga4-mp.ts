@@ -42,7 +42,6 @@ let consentCache: AnalyticsConsent | null | undefined;
 let consentPromise: Promise<AnalyticsConsent | null> | null = null;
 let consentGeneration = 0;
 
-/** Read the explicit analytics choice without throwing on storage failures. */
 export async function getAnalyticsConsent(): Promise<AnalyticsConsent | null> {
   if (consentCache !== undefined) return consentCache;
   if (!consentPromise) {
@@ -91,10 +90,6 @@ export async function setAnalyticsConsent(consent: AnalyticsConsent): Promise<vo
   await AsyncStorage.setItem(ANALYTICS_CONSENT_KEY, consent).catch(() => {});
 }
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
 /** Simple UUID v4 (crypto.randomUUID is not available on every RN target). */
 function uuidv4(): string {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
@@ -131,14 +126,8 @@ export async function getOrCreateClientId(): Promise<string | null> {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Main send function
-// ---------------------------------------------------------------------------
-
 export interface SendGA4EventOptions {
-  /** Injected for unit tests; defaults to global fetch. */
   fetcher?: typeof fetch;
-  /** Injected for unit tests; defaults to GA4_MP_TIMEOUT_MS. */
   timeoutMs?: number;
 }
 
@@ -200,14 +189,9 @@ export async function sendGA4Event(
   }
 }
 
-// ---------------------------------------------------------------------------
-// High-level helper used by index.tsx
-// ---------------------------------------------------------------------------
-
 let _clientIdCache: string | null = null;
 let _clientIdPromise: Promise<string | null> | null = null;
 
-/** Eagerly warm the client_id cache, but only after consent is granted. */
 export function warmClientId(): void {
   if (_clientIdCache || _clientIdPromise) return;
   _clientIdPromise = getOrCreateClientId().then((id) => {
@@ -216,11 +200,6 @@ export function warmClientId(): void {
   });
 }
 
-/**
- * Fire-and-forget GA4 event. Called from handleEvent in index.tsx.
- * Silently drops events if consent is absent, config is unavailable server-side,
- * or the network fails.
- */
 export function fireGA4Event(
   eventName: string,
   params: Record<string, unknown>,

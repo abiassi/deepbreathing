@@ -5,23 +5,11 @@ import { AudioService, ModeName } from '@resonance/audio';
 import { BREATHING_PATTERNS } from '../components/breathing-web/constants';
 
 /**
- * Native soundscape driver — runs the SAME @resonance/audio engine the web
- * app uses, on react-native-audio-api's AudioContext, so mobile finally
- * sounds like the web experience (per-mode drone/pink-noise beds, binaural
- * layers, live-synthesized cues) instead of the old calm-bed.m4a + canned
- * WAV stopgap. Native playback also survives the silent switch and screen
- * lock (AVAudioSession category 'playback'), which is the reason the WKWebView
- * engine is disabled on iOS in the first place.
- *
- * Event contract (all emitted by the DOM webview today):
- * - audio_state {active, muted, mode}  → start/stop/retarget the soundscape
- * - phase_haptic {phase, color}        → play cue + re-anchor the phase clock
- * - onSessionComplete()                → queue one post-stop completion bloom
- * - persist(resonance_settings)        → speed multiplier for phase durations
- *
- * The webview stays the timing authority; this hook only interpolates phase
- * progress between transitions (for the breath-coupled noise filter and the
- * session arc), so drift self-corrects on every phase event.
+ * Runs @resonance/audio natively because native playback survives the silent
+ * switch and screen lock (AVAudioSession 'playback'); that is why the WKWebView
+ * engine is disabled on iOS. The webview stays the timing authority: this hook
+ * only interpolates phase progress between its audio_state and phase_haptic
+ * events, so drift self-corrects on every phase event.
  */
 
 type CuePhase = 'inhale' | 'exhale' | 'hold';
@@ -53,17 +41,12 @@ function isModeName(value: unknown): value is ModeName {
 const TICK_MS = 100; // Breath-coupled ramps are setTargetAtTime smoothed; 10Hz is plenty.
 
 export interface NativeSoundscapeHandle {
-  /** audio_state event from the webview. */
   onAudioState(params: { active?: unknown; muted?: unknown; mode?: unknown }): void;
-  /** phase_haptic event from the webview. */
   onPhase(phase: unknown, color?: unknown): void;
-  /** Successful timed session completion; plays once after the ambient stop. */
   onSessionComplete(): void;
-  /** Speed multiplier from mirrored resonance settings. */
   onSpeedMultiplier(speed: number): void;
   /** binauralEnabled from mirrored resonance settings (web parity: users can turn the binaural layer off). */
   onBinauralEnabled(enabled: boolean): void;
-  /** App moved to background/foreground. */
   onAppState(state: 'active' | 'background'): void;
 }
 
@@ -72,7 +55,7 @@ export function useNativeSoundscape(): NativeSoundscapeHandle {
   const activeRef = useRef(false);
   const modeRef = useRef<ModeName>(ModeName.Box);
   const speedRef = useRef(1);
-  const binauralRef = useRef(true); // web default: on
+  const binauralRef = useRef(true);
   const phaseRef = useRef<{ name: unknown; cue: CuePhase; startedAtMs: number }>({
     name: 'Inhale',
     cue: 'inhale',
@@ -131,33 +114,19 @@ export function useNativeSoundscape(): NativeSoundscapeHandle {
       const engine = engineRef.current;
       if (!engine || !activeRef.current) return;
       const now = Date.now();
-      // Dev-only liveness proof: post-limiter RMS should sit well above -90dB
-      // while a soundscape runs. This is how a simulator run (no ears) verifies
-      // the graph is actually producing signal.
       if (__DEV__ && now - meterLogAtRef.current > 2000) {
         meterLogAtRef.current = now;
         try {
           const m = engine.getMeterValues();
-          // Param-level probes (dev-only, private access): ctx.currentTime must
-          // advance between logs (proves the render thread runs) and layer
-          // gains must ramp above 0 (proves param automation works — every
-          // layer fades in from 0, so broken scheduling === total silence).
           const anyEngine = engine as unknown as {
             ctx?: { currentTime: number } | null;
             masterGain?: { gain: { value: number } } | null;
             noiseNode?: { gain: { gain: { value: number } } } | null;
             subBassNode?: { gain: { gain: { value: number } } } | null;
           };
-          // Octave-band spectrum from the in-line analyser (real on native):
-          // distinguishes tonal drone content (low-band peaks) from noise beds
-          // (broadband) — i.e. does Box sound like Box, not just "is it loud".
           let bands = '';
           const analyser = (engine as unknown as { postLimitAnalyser?: AnalyserNode | null }).postLimitAnalyser;
           if (analyser) {
-            // 8192-point FFT (5.4Hz bins) — precise enough to catch wrong
-            // pitches (a semitone at C3 is ~7.8Hz). Log the top spectral peaks
-            // so we can compare actual partial frequencies against the
-            // engine's intended root/partial table.
             if (analyser.fftSize !== 8192) {
               try { analyser.fftSize = 8192; } catch { /* keep default */ }
             }
@@ -182,7 +151,6 @@ export function useNativeSoundscape(): NativeSoundscapeHandle {
             `noiseG=${anyEngine.noiseNode?.gain.gain.value?.toFixed(4)} subG=${anyEngine.subBassNode?.gain.gain.value?.toFixed(4)}${bands}`,
           );
         } catch {
-          // Meters are diagnostics only.
         }
       }
       const { name, cue, startedAtMs } = phaseRef.current;
@@ -223,10 +191,6 @@ export function useNativeSoundscape(): NativeSoundscapeHandle {
       return;
     }
     engine.stopAmbient();
-    // Same per-mode recipe as the web app (Resonance.tsx handleTogglePlay):
-    // Relax/Coherent ride the breath-coupled pink-noise bed; Wim Hof gets an
-    // energizing drone + beta; everything else gets drone + alpha. Sub-bass
-    // pairs with every bed.
     if (mode === ModeName.WimHof) {
       await engine.startDrone(color ?? '#4f46e5');
       if (!stillCurrent()) return;

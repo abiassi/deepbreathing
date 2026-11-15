@@ -6,13 +6,8 @@ import { BreathingPhase } from '../types';
 interface ParticleProps {
   phase: BreathingPhase;
   color: string;
-  /** Overall pace — particles breathe with the session's single speed. */
   speedMultiplier: number;
-  /** The orb wrapper element. Its live bounding rect (including the drag
-   *  offset) is the "ball" anchor particles react to. */
   orbRef?: RefObject<HTMLDivElement | null>;
-  /** Landing-ripple trigger: the host sets {t: timestamp} when the ball
-   *  settles home; the field emits one soft outward wave, then clears it. */
   rippleRef?: RefObject<{ t: number } | null>;
 }
 
@@ -22,14 +17,10 @@ interface PointerState {
   y: number;
   px: number;
   py: number;
-  /** Smoothed pointer velocity (px/s). */
   vx: number;
   vy: number;
-  /** 0..1 decaying ripple energy from a press. */
   pressBurst: number;
-  /** 0..1 decaying swirl energy from drag/scroll. */
   swirl: number;
-  /** Last pointermove timestamp (ms) for velocity math. */
   lastMoveTs: number;
 }
 
@@ -62,10 +53,8 @@ class Particle {
   speedX: number;
   speedY: number;
   alpha: number;
-  // Impulse velocity from interactions — decays each frame.
   vx: number;
   vy: number;
-  // 0..1 interaction "heat" — brightens the particle near a touch.
   heat: number;
 
   constructor(w: number, h: number) {
@@ -117,7 +106,6 @@ class Particle {
     const dy = this.y - cy;
     const dist = Math.hypot(dx, dy);
 
-    // Breathing motion (inward/outward with the phase).
     if (dist > 0.1) {
       const uX = dx / dist;
       const uY = dy / dist;
@@ -125,11 +113,9 @@ class Particle {
       this.y += uY * radialSpeed * dt;
     }
 
-    // Ambient drift.
     this.x += this.speedX * driftSpeed * dt;
     this.y += this.speedY * driftSpeed * dt;
 
-    // --- Interaction field -------------------------------------------------
     if (!reducedMotion && pointer.active) {
       const pdx = this.x - pointer.x;
       const pdy = this.y - pointer.y;
@@ -141,14 +127,11 @@ class Particle {
         const falloff = 1 - pdist / INFLUENCE_RADIUS;
         this.heat = Math.max(this.heat, falloff);
 
-        // Press ripple: push particles outward while the finger is down.
         if (pointer.pressBurst > 0) {
           this.vx += ux * PRESS_PUSH * pointer.pressBurst * falloff * dt;
           this.vy += uy * PRESS_PUSH * pointer.pressBurst * falloff * dt;
         }
 
-        // Drag/scroll swirl: tangential vortex around the pointer, stronger
-        // with faster movement. Direction follows the drag vector.
         if (pointer.swirl > 0) {
           const speed = Math.min(Math.hypot(pointer.vx, pointer.vy), 1400);
           const tangent = { x: -uy, y: ux };
@@ -162,17 +145,11 @@ class Particle {
       }
     }
 
-    // The ball's particle coupling. Active pull while the finger is near the
-    // ball; after release a softer residual wake rides the spring velocity so
-    // the return path still feels alive. Wake-only (no center attraction) —
-    // that is what previously piled particles under the orb. Disabled under
-    // prefers-reduced-motion.
     if (!reducedMotion && orb != null) {
       const orbSpeed = Math.hypot(orb.vx, orb.vy);
       const pullingBall =
         pointer.active &&
         Math.hypot(pointer.x - orb.x, pointer.y - orb.y) < ORB_PULL_RADIUS;
-      // Residual: finger up, ball still moving on its return spring.
       const residualWake = !pointer.active && orbSpeed > ORB_RESIDUAL_SPEED;
       if (pullingBall || residualWake) {
         const obdx = this.x - orb.x;
@@ -183,18 +160,13 @@ class Particle {
           const wake = pullingBall
             ? ORB_WAKE
             : ORB_RESIDUAL_WAKE * Math.min(1, orbSpeed / 420);
-          // Wake only: particles near the moving ball are pushed along its
-          // motion vector (stronger closer to the ball) — no center-pull.
           this.vx += orb.vx * wake * falloff * dt;
           this.vy += orb.vy * wake * falloff * dt;
           if (residualWake) {
-            // Soft heat so the return trail reads without a bright flash.
             this.heat = Math.max(this.heat, falloff * 0.25);
           }
         }
       } else if (!pointer.active) {
-        // Gentle keep-out: when the ball is still, particles near it slowly
-        // drift outward so the field can never pile up under the orb.
         const obdx = this.x - orb.x;
         const obdy = this.y - orb.y;
         const obdist = Math.hypot(obdx, obdy);
@@ -206,14 +178,12 @@ class Particle {
       }
     }
 
-    // Apply + decay impulse velocity (exponential: ~4/s).
     const decay = Math.max(0, 1 - 4 * dt);
     this.vx *= decay;
     this.vy *= decay;
     this.x += this.vx * dt;
     this.y += this.vy * dt;
 
-    // --- Boundary & respawn (unchanged breathing logic) ---
     if (radialSpeed < -1 && dist < 30) {
       this.resetToEdge(w, h);
     } else if (radialSpeed > 1 && (this.x < 0 || this.x > w || this.y < 0 || this.y > h)) {
@@ -282,13 +252,10 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
         animFrameIdRef.current = requestAnimationFrame(animateRef.current);
       }
     } else if (colorChanged) {
-      // Loop is already running — keep it alive so the recolor renders and
-      // the field doesn't immediately re-pause.
       lastActivityTimeRef.current = Date.now();
     }
   }, [phase, color, speedMultiplier, orbRef, rippleRef]);
 
-  // Detect prefers-reduced-motion (iOS accessibility setting).
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     reducedMotionRef.current = mq.matches;
@@ -302,7 +269,6 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
       }
     };
     mq.addEventListener('change', onChange);
-    // Set initial attribute.
     if (mq.matches && canvasRef.current) {
       canvasRef.current.setAttribute('data-reduced-motion', 'true');
     }
@@ -348,7 +314,6 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
         initParticles();
         lastTimestamp = 0;
-        // Resume rAF if paused (orientation change, etc.).
         if (idlePausedRef.current) {
           idlePausedRef.current = false;
           animationFrameId = requestAnimationFrame(animate);
@@ -375,9 +340,9 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
         lastTimestamp = 0;
         animationFrameId = requestAnimationFrame(animate);
         animFrameIdRef.current = animationFrameId;
-        return; // Don't process this event as interaction if reduced motion
+        return;
       }
-      if (reducedMotionRef.current) return; // No interaction field in reduced motion
+      if (reducedMotionRef.current) return;
       const p = toLocal(e);
       const state = pointerRef.current;
       state.active = true;
@@ -405,7 +370,6 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
       state.py = state.y;
       state.x = p.x;
       state.y = p.y;
-      // 1-frame velocity in px/s, smoothed.
       const dt = Math.max((e.timeStamp - state.lastMoveTs) / 1000, 0.001);
       state.lastMoveTs = e.timeStamp;
       const rawVx = (state.x - state.px) / dt;
@@ -413,7 +377,6 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
       state.vx = state.vx * 0.6 + rawVx * 0.4;
       state.vy = state.vy * 0.6 + rawVy * 0.4;
       state.swirl = Math.min(1, state.swirl + 0.35);
-      // Press ripple fades once the finger starts moving (it's a drag now).
       state.pressBurst = Math.max(0, state.pressBurst - 0.35);
     };
 
@@ -433,7 +396,7 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
         animationFrameId = requestAnimationFrame(animate);
         animFrameIdRef.current = animationFrameId;
       }
-      if (reducedMotionRef.current) return; // No interaction in reduced motion
+      if (reducedMotionRef.current) return;
       const p = toLocal(e);
       const state = pointerRef.current;
       state.x = state.px = p.x;
@@ -511,7 +474,6 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
         displayWidth < 640 ? Math.min(72, displayHeight * 0.085) : 0
       );
 
-      // Orb anchor from the live wrapper rect (follows drag + spring-back).
       let orb: { x: number; y: number; vx: number; vy: number } | null = null;
       const orbEl = orbRefRef.current?.current;
       if (orbEl) {
@@ -526,8 +488,6 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
         orb = { x: displayWidth / 2, y: centerY, vx: 0, vy: 0 };
       }
 
-      // Landing ripple: one soft ring expanding from the orb's home when the
-      // ball settles. Read once per frame, cleared when it expires.
       let ripple: { x: number; y: number; age: number } | null = null;
       const rippleReq = rippleRefRef.current;
       if (rippleReq?.current && orb && !reducedMotionRef.current) {
@@ -562,7 +522,7 @@ const ParticleBackground: React.FC<ParticleProps> = ({ phase, color, speedMultip
       // Idle pause: stop rAF when Idle with no activity for ~4s (battery).
       if (phaseRef.current === BreathingPhase.Idle && Date.now() - lastActivityTimeRef.current > 4000) {
         idlePausedRef.current = true;
-        return; // Leave last frame drawn, don't schedule next frame.
+        return;
       }
 
       animationFrameId = requestAnimationFrame(animate);

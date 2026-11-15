@@ -1,7 +1,3 @@
-// Drift-resistant session scheduling — pure functions, no React Native imports.
-//
-// The plan's #1 timing risk: "setTimeout-driven phase transitions can drift; use
-// wall-clock timing or reschedule based on expected end times."
 //
 // We model the running session as a cursor whose phase boundaries are anchored to
 // ABSOLUTE wall-clock times. `phaseStartMs` is the exact instant a phase began;
@@ -23,15 +19,11 @@ import {
 } from "./types";
 
 export interface PhaseCursor {
-  /** Current phase. */
   phase: BreathingPhase;
-  /** Absolute wall-clock ms at which the current phase began. */
   phaseStartMs: number;
-  /** Number of fully completed breath cycles since the session started. */
   cycles: number;
 }
 
-/** Create the cursor for a freshly started session at time `now`. */
 export const createCursor = (now: number): PhaseCursor => ({
   phase: BreathingPhase.Inhale,
   phaseStartMs: now,
@@ -56,13 +48,11 @@ export const advanceCursor = (
   let guard = 0;
   while (guard++ < ADVANCE_GUARD) {
     const durationMs = getPhaseDurationMs(phase, pattern, speedMultiplier);
-    // Defensive: a non-positive duration would otherwise spin the loop.
     if (durationMs <= 0) break;
     if (now < phaseStartMs + durationMs) break;
 
     phaseStartMs += durationMs;
     const next = getNextPhase(phase, hasInhale2, pattern.holdIn, pattern.holdOut);
-    // A return to Inhale marks the completion of one full breath cycle.
     if (next === BreathingPhase.Inhale) cycles += 1;
     phase = next;
   }
@@ -70,11 +60,9 @@ export const advanceCursor = (
   return { phase, phaseStartMs, cycles };
 };
 
-/** Elapsed ms within the current phase (clamped at >= 0). */
 export const elapsedInPhaseMs = (cursor: PhaseCursor, now: number): number =>
   Math.max(0, now - cursor.phaseStartMs);
 
-/** Visual orb state (phase, progress 0..1, scale 0..1) for the cursor at `now`. */
 export const cursorVisualState = (
   cursor: PhaseCursor,
   pattern: BreathingPattern,
@@ -88,7 +76,6 @@ export const cursorVisualState = (
     speedMultiplier
   );
 
-/** Whole seconds elapsed since the session started. */
 export const sessionElapsedSeconds = (sessionStartMs: number, now: number): number =>
   Math.max(0, Math.floor((now - sessionStartMs) / 1000));
 
@@ -105,7 +92,6 @@ export const isSessionComplete = (
   return now - sessionStartMs >= selectedDurationSec * 1000;
 };
 
-// ---------------------------------------------------------------------------
 // Pause model — the "effective clock".
 //
 // The cursor and all session-progress functions above are pure wall-clock: they
@@ -121,9 +107,7 @@ export const isSessionComplete = (
 // ---------------------------------------------------------------------------
 
 export interface PauseState {
-  /** Total milliseconds spent paused across the whole session. */
   pausedTotalMs: number;
-  /** Real-clock instant the current pause began, or null while running. */
   pauseStartedAtMs: number | null;
 }
 
@@ -132,13 +116,11 @@ export const createPauseState = (): PauseState => ({
   pauseStartedAtMs: null,
 });
 
-/** Begin a pause at real-clock `now`. No-op if already paused. */
 export const beginPause = (pause: PauseState, now: number): PauseState =>
   pause.pauseStartedAtMs !== null
     ? pause
     : { ...pause, pauseStartedAtMs: now };
 
-/** End a pause at real-clock `now`, banking the elapsed span. No-op if running. */
 export const endPause = (pause: PauseState, now: number): PauseState =>
   pause.pauseStartedAtMs === null
     ? pause
@@ -158,7 +140,6 @@ export const effectiveNow = (pause: PauseState, now: number): number => {
   return realNow - pause.pausedTotalMs;
 };
 
-// ---------------------------------------------------------------------------
 // Orb animation targets.
 //
 // The hook drives the orb with Reanimated `withTiming` — a fire-and-forget
@@ -172,7 +153,6 @@ export const effectiveNow = (pause: PauseState, now: number): number => {
 // All pure — fully unit-testable without Reanimated.
 // ---------------------------------------------------------------------------
 
-/** The orb scale (0..1) a phase animates TOWARD by its end. */
 export const phaseTargetScale = (
   phase: BreathingPhase,
   hasInhale2: boolean
@@ -195,19 +175,11 @@ export const phaseTargetScale = (
 };
 
 export interface OrbAnimationTarget {
-  /** Scale (0..1) to set immediately, i.e. the orb's current point in the phase. */
   fromScale: number;
-  /** Scale (0..1) to animate toward over `durationMs`. */
   toScale: number;
-  /** Remaining milliseconds in the current phase (>= 0). */
   durationMs: number;
 }
 
-/**
- * What the hook needs to (re-)fire the orb animation for the cursor's current
- * phase at `now`: snap to `fromScale`, then `withTiming(toScale, durationMs)`.
- * `now` is the EFFECTIVE clock (same one used to advance the cursor).
- */
 export const orbAnimationTarget = (
   cursor: PhaseCursor,
   pattern: BreathingPattern,

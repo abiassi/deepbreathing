@@ -1,7 +1,3 @@
-// Phase-change haptics (native only — no-op on web). Mapping per the plan:
-//   inhale -> light, hold -> double medium tap, exhale -> heavy.
-// Best-effort: failures (e.g. unsupported device) are swallowed.
-
 import { useEffect, useRef } from 'react';
 import { Platform } from 'react-native';
 import * as Haptics from 'expo-haptics';
@@ -19,7 +15,6 @@ const impact = (style: Haptics.ImpactFeedbackStyle) =>
 interface UseBreathingHapticsInput {
   phase: BreathingPhase;
   status: SessionStatus;
-  /** Disable haptics entirely (e.g. a future settings toggle). */
   enabled?: boolean;
 }
 

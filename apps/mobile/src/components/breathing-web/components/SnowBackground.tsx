@@ -32,13 +32,13 @@ class Snowflake {
   }
 
   reset(w: number, h: number, startInView: boolean) {
-    this.radius = Math.random() * 3 + 1;  // Larger snowflakes (1-4px)
+    this.radius = Math.random() * 3 + 1;
     this.x = Math.random() * w;
     this.y = startInView ? Math.random() * h : -this.radius - Math.random() * h * 0.2;
     this.speed = Math.random() * 25 + 18;
     this.drift = Math.random() * 12 - 6;
     this.sway = Math.random() * 0.6 + 0.2;
-    this.alpha = Math.random() * 0.4 + 0.5;  // More opaque (0.5-0.9)
+    this.alpha = Math.random() * 0.4 + 0.5;
     this.phase = Math.random() * Math.PI * 2;
   }
 
@@ -139,25 +139,16 @@ const SnowBackground: React.FC<SnowBackgroundProps> = ({ tone = 'light', speedMu
       const baseSpeedScale = Math.min(Math.max(speedRef.current ?? 1, 0.6), 1.4);
       const currentPhase = phaseRef.current;
 
-      // Breathing-responsive snow motion:
-      // Inhale: snow falls normally (gravity)
-      // Exhale: snow floats/drifts upward slightly (suspended, weightless)
-      // Holds: gentle suspension
-      // Idle: soft steady drift
       const phaseMotion = (() => {
         if (currentPhase === BreathingPhase.Inhale || currentPhase === BreathingPhase.Inhale2) {
-          // Normal falling - snow comes down with breath
           return { vertical: 1, drift: 0.8 };
         }
         if (currentPhase === BreathingPhase.Exhale) {
-          // Floating/suspended - snow drifts gently, barely falls (or rises slightly)
           return { vertical: -0.15, drift: 1.8 };
         }
         if (currentPhase === BreathingPhase.HoldIn || currentPhase === BreathingPhase.HoldOut) {
-          // Suspended during holds - snow hangs in air
           return { vertical: 0.1, drift: 0.5 };
         }
-        // Idle - gentle steady snowfall
         return { vertical: 0.5, drift: 0.6 };
       })();
 

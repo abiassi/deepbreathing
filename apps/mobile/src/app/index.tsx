@@ -3,8 +3,6 @@
 // branded website by construction. This native host bridges device locale, theme,
 // app-background -> audio-suspend, and sets up the audio session.
 //
-// The earlier native StyleSheet/Reanimated re-implementation (src/breathing/*,
-// components/breathing/*) is retired by this — kept in-repo for reference only.
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
@@ -73,15 +71,12 @@ import { createSessionSegment, localCalendarDate } from '../sync/session-sync';
 import AccountSheet from '../auth/AccountSheet';
 import { accountAvatarUri } from '../auth/account-avatar';
 
-// Scopes the screen-awake lock to an active session so it releases on pause/stop.
 const KEEP_AWAKE_TAG = 'breathing-session';
 
 // Native haptics bridge. The DOM experience emits this event in the same function
 // call that starts each audio cue, and the native host turns it into the shortest,
 // lightest system haptic. A phase change should feel like a quiet metronome tick,
 // not a notification or alert.
-// NOTE: the simulator produces no haptics, so the *feel* is unverified — confirm
-// the intensities on a real device (see docs/expo-attempt-2-progress.md).
 const firePhaseHaptic = () => {
   Haptics.selectionAsync().catch(() => {});
 };
@@ -140,7 +135,6 @@ export default function HomeScreen() {
   const soundscape = useNativeSoundscape();
   const { onSessionComplete } = soundscape;
 
-  // Completion summary visibility.
   const [summaryData, setSummaryData] = useState<CompletionSummaryData | null>(null);
   const [accountOpen, setAccountOpen] = useState(false);
   const [practiceSummary, setPracticeSummary] = useState<AccountPracticeSummary | null>(null);
@@ -199,8 +193,6 @@ export default function HomeScreen() {
   >(undefined);
   const [privacyChoicesOpen, setPrivacyChoicesOpen] = useState(false);
 
-  // Latest active mode name from the persist stream (resonance_settings.mode).
-  // Used to show a checkmark on the current mode in the sheet.
   const [activeModeName, setActiveModeName] = useState<string | null>(null);
 
   const confirmAccountDeletion = useCallback(
@@ -313,9 +305,6 @@ export default function HomeScreen() {
     getAnalyticsConsent().then(setAnalyticsConsentState);
   }, []);
 
-  // Mirror the native Reduce Motion setting into the DOM experience, including
-  // changes made while the app is open. This keeps animation behavior aligned
-  // with the user's accessibility preference without adding a new dependency.
   useEffect(() => {
     let mounted = true;
     AccessibilityInfo.isReduceMotionEnabled()
@@ -356,8 +345,6 @@ export default function HomeScreen() {
       setPersistedSnapshot(snapshot);
       commitDomOwnerGeneration(transitionGeneration, { kind: 'guest', id: guestId });
       setSnapshotReady(true);
-      // MOB-5: seed the sheet's active-mode checkmark from the saved settings
-      // so the first open is correct before any persist event arrives.
       // Snapshot values are encodeURIComponent-encoded (see resonance-mirror.ts).
       const rawSettings = snapshot[RESONANCE_STORAGE_KEYS.SETTINGS];
       if (rawSettings) {
@@ -365,7 +352,6 @@ export default function HomeScreen() {
           const parsed = JSON.parse(decodeURIComponent(rawSettings)) as Record<string, unknown>;
           if (typeof parsed.mode === 'string') setActiveModeName(parsed.mode);
         } catch {
-          // Malformed value — checkmark falls back to the persist stream.
         }
       }
     }).catch(() => {
@@ -505,7 +491,6 @@ export default function HomeScreen() {
   // AudioManager, category 'playback') — a second library configuring the session
   // here would fight it.
 
-  // Bridge native foreground/background so the DOM component suspends/resumes audio.
   useEffect(() => {
     const sub = AppState.addEventListener('change', (next) => {
       setAppState(toBreathingAppState(next));
@@ -513,7 +498,6 @@ export default function HomeScreen() {
     return () => sub.remove();
   }, []);
 
-  // Release the screen-awake lock if we unmount mid-session.
   useEffect(() => {
     return () => {
       deactivateKeepAwake(KEEP_AWAKE_TAG).catch(() => {});
@@ -541,9 +525,6 @@ export default function HomeScreen() {
       ? completionOwner?.kind === 'account' && completionOwner.id === authSession.user.id
       : completionOwner?.kind === 'guest';
     if (!completionOwnerMatchesAuth) return;
-    // Success haptic — signals a positive completion.
-    // NOTE: haptics cannot be felt on the simulator; this is code-path verified
-    // only (__DEV__ log below). Confirm the feel on a real device (DAR-395).
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
     if (__DEV__) {
       console.log('[MOB-4b] handleSessionComplete fired — haptic: NotificationFeedbackType.Success');
@@ -679,8 +660,6 @@ export default function HomeScreen() {
     }
     if (name === 'persist' && typeof params?.key === 'string') {
       const value = typeof params.value === 'string' ? params.value : null;
-      // MOB-5: Track the active mode from resonance_settings so the sheet can
-      // show a checkmark on the currently active mode.
       if (
         params.key === RESONANCE_STORAGE_KEYS.SETTINGS &&
         value != null &&
@@ -699,7 +678,6 @@ export default function HomeScreen() {
             soundscape.onBinauralEnabled(parsed.binauralEnabled);
           }
         } catch {
-          // Malformed JSON — leave activeModeName unchanged.
         }
       }
       await mirrorPersist(params.key, value, eventOwnerGeneration);
@@ -716,8 +694,6 @@ export default function HomeScreen() {
       }
       return;
     }
-    // Forward analytics events to GA4 Measurement Protocol (MOB-2).
-    // Fire-and-forget — never blocks the event handler.
     if (GA4_FORWARDED_EVENTS.has(name)) {
       fireGA4Event(name, params ?? {});
     }
@@ -769,13 +745,8 @@ export default function HomeScreen() {
     await setAnalyticsConsent(next);
   }, []);
 
-  // MOB-5: Handle mode selection from the sheet.
-  // Sets selectedMode → passed as initialMode prop → webview switches mode.
-  // Also fires mode_switch to GA4 (matching the webview's own event params).
-  // We track from/to using activeModeName (from persist stream) so params align.
   const handleSelectMode = useCallback((mode: ModeName) => {
     const from = activeModeName ?? ModeName.Box;
-    // Fire analytics from the host (MOB-2 GA4 bridge), matching webview params.
     fireGA4Event('mode_switch', { from, to: mode });
     setSelectedMode(mode);
     // Update local checkmark immediately so the sheet reflects the choice
@@ -905,8 +876,6 @@ export default function HomeScreen() {
             </Text>
           </Pressable>
         </View>}
-        {/* MOB-5: Mode library pull-up tab — slides away while a session is
-            running or the full-page settings covers the screen. */}
         <ModeLibrarySheet
           theme={experienceTheme}
           hidden={!overlaysVisible}

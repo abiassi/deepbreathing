@@ -1,6 +1,4 @@
 // Pure breathing-engine types. No React Native imports — safe to unit-test in Node.
-// Ported from the `expo-attempt-1` tag (packages/engine/src/types.ts), which in turn
-// mirrors the live web app at src/components/resonance/types.ts.
 
 export enum BreathingPhase {
   Inhale = "Inhale",

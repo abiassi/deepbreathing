@@ -42,7 +42,6 @@ const SHIPPED_MODES: ModeEntry[] = [
 
 interface Props {
   theme: 'light' | 'dark';
-  /** Slides the sheet off-screen (animated) instead of the host unmounting it. */
   hidden?: boolean;
   activeModeName: string | null;
   onSelectMode: (mode: ModeName) => void;
@@ -182,9 +181,6 @@ export default function ModeLibrarySheet({ theme, hidden = false, activeModeName
     sheetRef.current?.snapToIndex(1);
   }, []);
 
-  // Animated hide/show: close() slides the sheet below the screen edge; on
-  // return it comes back at the collapsed tab. Replaces the host's previous
-  // unmount, which made the drawer pop out with no exit animation.
   useEffect(() => {
     if (hidden) sheetRef.current?.close();
     else sheetRef.current?.snapToIndex(0);
