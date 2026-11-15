@@ -1,24 +1,9 @@
-/**
- * Tests for the pure entitlement resolver.
- *
- * Run from the repo root:
- *   cd packages/access-control && node --require sucrase/register/ts src/resolve-entitlement.test.ts
- *   OR (shorter):
- *   cd packages/access-control && ../../node_modules/.bin/sucrase-node src/resolve-entitlement.test.ts
- *
- * Uses Node.js built-in test runner (node:test) — no additional test framework needed.
- */
-
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { resolveEntitlement } from "./resolve-entitlement";
 import { PLAN_CAPABILITIES, getFeatureAccess } from "./index";
 
 const FIXED_NOW = "2026-06-21T00:00:00.000Z";
-
-// ---------------------------------------------------------------------------
-// Failing test — written first per TDD; implementation must satisfy it
-// ---------------------------------------------------------------------------
 
 test("guest: snapshot has plan=free, empty capabilities, userId=guest", () => {
   const result = resolveEntitlement({
@@ -60,7 +45,6 @@ test("authenticated pro: snapshot has plan=pro, all pro capabilities", () => {
   assert.equal(result.snapshot.userId, "user-pro-123");
   assert.deepEqual(result.snapshot.capabilities, PLAN_CAPABILITIES.pro);
 
-  // Spot-check pro-only capabilities
   assert.ok(result.snapshot.capabilities.includes("audio.extra_soundscapes"));
   assert.ok(result.snapshot.capabilities.includes("protocols.advanced"));
   assert.ok(result.snapshot.capabilities.includes("insights.trends"));
@@ -82,7 +66,6 @@ test("guest capabilities are a strict subset of free member capabilities (guest 
     effectiveAt: FIXED_NOW,
   });
 
-  // Guest has NO capabilities; free has at least history.basic
   assert.equal(guestResult.snapshot.capabilities.length, 0);
   assert.ok(freeResult.snapshot.capabilities.length > 0);
 });
@@ -121,11 +104,6 @@ test("effectiveAt is preserved verbatim in the snapshot", () => {
   });
   assert.equal(result.snapshot.effectiveAt, ts);
 });
-
-// ---------------------------------------------------------------------------
-// getFeatureAccess — verify it works end-to-end with resolver output
-// These tests give @resonance/access-control its first real integration consumer.
-// ---------------------------------------------------------------------------
 
 test("getFeatureAccess: guest is blocked from basic_history", () => {
   const { userState, snapshot } = resolveEntitlement({

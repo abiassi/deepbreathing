@@ -1,8 +1,4 @@
 /**
- * resolve-entitlement.ts
- *
- * Pure, IO-free resolver: maps (userId | null, plan) → EntitlementSnapshot.
- *
  * Rules:
  *  - No session (guest)      → plan "free", capabilities [] (empty = gated)
  *  - Authenticated, no sub   → plan "free", capabilities from PLAN_CAPABILITIES.free
@@ -12,16 +8,12 @@
  * is typed as Plan ("free"|"pro") with no "guest" variant. Empty capabilities
  * let the app distinguish guest-free from authenticated-free without a schema
  * change, and getFeatureAccess() blocks guests via the UserState guard.
- *
- * TODO(RevenueCat/Stripe): replace the `plan` param source in the route with a
- * real entitlement lookup once webhooks are wired. The resolver itself is stable.
  */
 
 import { capabilitiesForPlan } from "./index";
 import type { EntitlementSnapshot } from "@resonance/domain";
 
 export interface ResolveEntitlementInput {
-  /** Authenticated user ID, or null for a guest session. */
   userId: string | null;
   /**
    * The resolved plan for this user.
@@ -40,20 +32,18 @@ export interface ResolveEntitlementInput {
 
 export interface EntitlementResult {
   snapshot: EntitlementSnapshot;
-  /** Derived UserState suitable for passing to getFeatureAccess(). */
   userState: "guest" | "authenticated_free" | "authenticated_pro";
 }
 
 export function resolveEntitlement(input: ResolveEntitlementInput): EntitlementResult {
   const { userId, plan, effectiveAt } = input;
 
-  // Guest: no authenticated session
   if (userId === null) {
     return {
       snapshot: {
         userId: "guest",
         plan: "free",
-        capabilities: [], // empty = gated; distinguishes guest from free member
+        capabilities: [],
         effectiveAt,
         expiresAt: null,
       },
@@ -61,7 +51,6 @@ export function resolveEntitlement(input: ResolveEntitlementInput): EntitlementR
     };
   }
 
-  // Authenticated user — free or pro
   const capabilities = capabilitiesForPlan(plan);
 
   return {
