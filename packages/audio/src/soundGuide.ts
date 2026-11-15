@@ -21,9 +21,15 @@
  * carried by body: notes an octave lower, each with two soft harmonics, under
  * a lowpass that stays below 1.2 kHz.
  *
+ * The third version makes the same voice less mechanical. Each note is three
+ * voices a few cents apart that drift slowly. The fill follows a breath
+ * curve: a quick start and a soft settle. The voice and the markers play
+ * into a small warm room. No two breaths have exactly the same level.
+ *
  * Every phase is scheduled once, at its start, from the known phase length.
  * The schedule uses only setValueAtTime and linearRampToValueAtTime, which
  * react-native-audio-api renders sample-accurately (see AudioPlatformAdapter).
+ * A curve is a list of short straight ramps.
  */
 import { ModeName } from './modes';
 
@@ -63,7 +69,7 @@ const BASE_PROFILE: SoundGuideProfile = {
   airQ: 0.8,
   holdInLevel: 0.72,
   holdOutLevel: 0.18,
-  chimeGain: 0.07,
+  chimeGain: 0.095,
 };
 
 /**
@@ -169,6 +175,10 @@ export interface GuidePhaseRequest {
   profile: SoundGuideProfile;
   /** True when a top-up inhale follows this inhale (physiological sigh). */
   topUpFollows?: boolean;
+  /** Level this breath fills to, 0..1 of the peak. Default 1. */
+  peakLevel?: number;
+  /** Scales the marker gain. Default 1. */
+  markerVelocity?: number;
 }
 
 const smooth = (amount: number) => {
@@ -176,14 +186,18 @@ const smooth = (amount: number) => {
   return x * x * x * (x * (x * 6 - 15) + 10);
 };
 /**
- * Progress of a fill or an emptying. Close to a straight line, so the sound
- * keeps moving for the whole phase and its position tells how much is left.
- * The ends are eased a little so a turn is not a corner.
+ * Progress of a fill, shaped like a breath in: a quick start, then a soft
+ * settle into the peak. Almost half of the curve stays a straight line, so
+ * the sound still moves on its last moment and its position tells how much
+ * of the phase is left. A curve that goes flat near the top was heard, in
+ * the first version, as the same bump on every phase.
  */
-const travel = (progress: number) => {
+const fill = (progress: number) => {
   const x = clamp01(progress);
-  return 0.8 * x + 0.2 * smooth(x);
+  return 0.45 * x + 0.55 * (1 - (1 - x) ** 1.8);
 };
+/** Progress of an emptying: the fill backwards. A soft start, then a quicker fall. */
+const empty = (progress: number) => 1 - fill(1 - clamp01(progress));
 /**
  * Quietest level a moving voice is planned from: 15 dB under the peak. Lower,
  * and the first half of an inhale sits under the ambient bed.
@@ -198,6 +212,13 @@ const levelBetween = (from: number, to: number, amount: number) => {
   const high = Math.max(to, LEVEL_FLOOR);
   return low * (high / low) ** clamp01(amount);
 };
+/**
+ * How open the tone lowpass is at a level: 0 at the floor and below, 1 at
+ * the peak, even in decibels. The filter then opens through the whole inhale
+ * and not only near its end.
+ */
+const opening = (level: number) =>
+  level <= LEVEL_FLOOR ? 0 : clamp01(Math.log(level / LEVEL_FLOOR) / Math.log(1 / LEVEL_FLOOR));
 /**
  * Share of each ladder note at a ladder position. The root always sounds. The
  * fifth joins between positions 0 and 1, the octave between 1 and 2. A note
@@ -232,7 +253,8 @@ function shapeFor(request: GuidePhaseRequest): PhaseShape {
   const startLevel = clamp01(from.level);
   // A short phase gets a short, quiet marker so fast techniques do not clang.
   const brisk = duration < 1.2;
-  const markerScale = brisk ? 0.6 : 1;
+  const markerScale = (brisk ? 0.6 : 1) * (request.markerVelocity ?? 1);
+  const breathPeak = clamp01(request.peakLevel ?? 1);
   const nearest = (position: number): LadderIndex => (position < 0.5 ? 0 : position < 1.5 ? 1 : 2);
   const startNote = nearest(startPosition);
   const pair = (notes: LadderIndex[], gain: number): GuideMarker => ({
@@ -255,14 +277,14 @@ function shapeFor(request: GuidePhaseRequest): PhaseShape {
 
   switch (kind) {
     case 'inhale': {
-      const peak = request.topUpFollows ? TOP_UP_SHELF : 1;
+      const peak = (request.topUpFollows ? TOP_UP_SHELF : 1) * breathPeak;
       return {
-        position: (p) => lerp(startPosition, 1, travel(p)),
-        level: (p) => joinFrom(levelBetween(startLevel, peak, travel(p)), p),
-        air: (p) => travel(p),
+        position: (p) => lerp(startPosition, 1, fill(p)),
+        level: (p) => joinFrom(levelBetween(startLevel, peak, fill(p)), p),
+        air: (p) => fill(p),
         airGain: profile.airInhaleGain * (request.topUpFollows ? 0.7 : 1),
-        // Quiet: the voice is at its softest here.
-        marker: pair([0, 1], 0.6),
+        // Quieter than the others: the voice is at its softest here.
+        marker: pair([0, 1], 0.7),
       };
     }
     case 'inhaleTopUp': {
@@ -270,12 +292,12 @@ function shapeFor(request: GuidePhaseRequest): PhaseShape {
       const dip = Math.max(LEVEL_FLOOR, startLevel * 0.5);
       const refill = (p: number) => clamp01((p - TOP_UP_DIP) / (1 - TOP_UP_DIP));
       return {
-        position: (p) => lerp(startPosition, 2, travel(refill(p))),
+        position: (p) => lerp(startPosition, 2, fill(refill(p))),
         level: (p) =>
-          p < TOP_UP_DIP ? lerp(startLevel, dip, smooth(p / TOP_UP_DIP)) : levelBetween(dip, 1, travel(refill(p))),
-        air: (p) => (p < TOP_UP_DIP ? 0.3 : lerp(0.3, 1, travel(refill(p)))),
+          p < TOP_UP_DIP ? lerp(startLevel, dip, smooth(p / TOP_UP_DIP)) : levelBetween(dip, breathPeak, fill(refill(p))),
+        air: (p) => (p < TOP_UP_DIP ? 0.3 : lerp(0.3, 1, fill(refill(p)))),
         airGain: profile.airInhaleGain,
-        marker: pair([1, 2], 0.75),
+        marker: pair([1, 2], 0.8),
       };
     }
     case 'holdIn': {
@@ -291,12 +313,13 @@ function shapeFor(request: GuidePhaseRequest): PhaseShape {
     case 'exhale': {
       // The inhale backwards: full at the first moment, then falling for the whole phase.
       return {
-        position: (p) => lerp(startPosition, 0, travel(p)),
+        position: (p) => lerp(startPosition, 0, empty(p)),
         level: (p) =>
-          levelBetween(startLevel, profile.holdOutLevel, travel(p)) * (startLevel < LEVEL_FLOOR ? startLevel / LEVEL_FLOOR : 1),
-        air: (p) => 1 - travel(p),
+          levelBetween(startLevel, profile.holdOutLevel, empty(p)) * (startLevel < LEVEL_FLOOR ? startLevel / LEVEL_FLOOR : 1),
+        air: (p) => 1 - empty(p),
         airGain: profile.airExhaleGain,
-        marker: pair([startNote === 0 ? 1 : startNote, 0], 0.8),
+        // The loudest marker: the voice is at its fullest here.
+        marker: pair([startNote === 0 ? 1 : startNote, 0], 1),
       };
     }
     case 'holdOut': {
@@ -305,7 +328,7 @@ function shapeFor(request: GuidePhaseRequest): PhaseShape {
         level: (p) => lerp(startLevel, Math.min(startLevel, profile.holdOutLevel), smooth(p / 0.3)),
         air: () => 0,
         airGain: profile.airExhaleGain,
-        marker: bell(0, 0.55),
+        marker: bell(0, 0.6),
       };
     }
     default: {
@@ -338,12 +361,97 @@ export function planGuidePhase(request: GuidePhaseRequest): GuidePhasePlan {
     notes.forEach((curve, index) => {
       curve.push({ at, value: profile.toneGain * level * noteWeight(position, index) });
     });
-    toneLowpassHz.push({ at, value: lerp(profile.toneLowpassHz[0], profile.toneLowpassHz[1], level) });
+    const [closedHz, openHz] = profile.toneLowpassHz;
+    toneLowpassHz.push({ at, value: closedHz * (openHz / closedHz) ** opening(level) });
     airGain.push({ at, value: air });
     states.push({ at, position, level, air });
   }
 
   return { duration, notes, toneLowpassHz, airGain, marker: shape.marker, states };
+}
+
+/** A small seeded random source (mulberry32). Returns numbers in 0..1. */
+function seededRandom(seed: number): () => number {
+  let state = seed >>> 0;
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let mixed = state;
+    mixed = Math.imul(mixed ^ (mixed >>> 15), mixed | 1);
+    mixed ^= mixed + Math.imul(mixed ^ (mixed >>> 7), mixed | 61);
+    return ((mixed ^ (mixed >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const ROOM_SECONDS = 1.1;
+/** Time for the room to decay by 60 dB. */
+const ROOM_DECAY_SECONDS = 0.85;
+/** The room's highs die first: its noise is lowpassed from the first value down to the second. */
+const ROOM_DAMPING_HZ: readonly [number, number] = [2600, 500];
+/** First reflections, per ear: delay in ms and level. They give the room its size. */
+const ROOM_REFLECTIONS: readonly [ReadonlyArray<readonly [number, number]>, ReadonlyArray<readonly [number, number]>] = [
+  [[9, 0.9], [15, -0.7], [23, 0.55], [32, -0.4], [44, 0.3]],
+  [[11, 0.9], [18, -0.7], [26, 0.55], [36, -0.4], [48, 0.3]],
+];
+
+/**
+ * Impulse response of the guide's room, one array per ear: a few first
+ * reflections, then a short, dark tail. It is made from a seeded random
+ * source, so every session and every platform gets the same room.
+ *
+ * The response is scaled to an average gain of 1 between 120 Hz and 1 kHz,
+ * where the voice is. Play it with `normalize = false`: the wet level is then
+ * set by the send gain alone and does not depend on a platform's own scaling.
+ */
+export function roomImpulseResponse(sampleRate: number, seed = 0x0d0b): [Float32Array, Float32Array] {
+  const random = seededRandom(seed);
+  const length = Math.max(1, Math.floor(sampleRate * ROOM_SECONDS));
+  const tailStart = Math.floor(sampleRate * 0.05);
+  const decayPerSample = Math.log(1000) / (ROOM_DECAY_SECONDS * sampleRate);
+  const channels = ROOM_REFLECTIONS.map((reflections) => {
+    const data = new Float32Array(length);
+    let lowpassed = 0;
+    for (let index = tailStart; index < length; index += 1) {
+      const progress = (index - tailStart) / (length - tailStart);
+      const cutoff = ROOM_DAMPING_HZ[0] * (ROOM_DAMPING_HZ[1] / ROOM_DAMPING_HZ[0]) ** progress;
+      lowpassed += (1 - Math.exp((-2 * Math.PI * cutoff) / sampleRate)) * (random() * 2 - 1 - lowpassed);
+      // The tail fades in over 20 ms, so it does not start as a click.
+      const fadeIn = Math.min(1, (index - tailStart) / (sampleRate * 0.02));
+      data[index] = lowpassed * fadeIn * Math.exp(-decayPerSample * (index - tailStart)) * (1 - progress) ** 0.5;
+    }
+    let tailEnergy = 0;
+    for (let index = 0; index < length; index += 1) tailEnergy += data[index] * data[index];
+    // The reflections carry about a third of the energy of the tail.
+    const reflectionScale = Math.sqrt(tailEnergy / 3 / reflections.reduce((sum, [, level]) => sum + level * level, 0));
+    reflections.forEach(([milliseconds, level]) => {
+      const at = Math.floor((milliseconds / 1000) * sampleRate);
+      if (at < length) data[at] += level * reflectionScale;
+    });
+    return data;
+  }) as [Float32Array, Float32Array];
+
+  // Average power gain at 16 frequencies between 120 Hz and 1 kHz, both ears.
+  let power = 0;
+  const probes = 16;
+  for (let probe = 0; probe < probes; probe += 1) {
+    const step = (2 * Math.PI * 120 * (1000 / 120) ** (probe / (probes - 1))) / sampleRate;
+    const coefficient = 2 * Math.cos(step);
+    channels.forEach((data) => {
+      // Goertzel: the response of the room at one frequency.
+      let previous = 0;
+      let beforePrevious = 0;
+      for (let index = 0; index < length; index += 1) {
+        const current = data[index] + coefficient * previous - beforePrevious;
+        beforePrevious = previous;
+        previous = current;
+      }
+      power += previous * previous + beforePrevious * beforePrevious - coefficient * previous * beforePrevious;
+    });
+  }
+  const scale = power > 0 ? 1 / Math.sqrt(power / (probes * channels.length)) : 0;
+  channels.forEach((data) => {
+    for (let index = 0; index < length; index += 1) data[index] *= scale;
+  });
+  return channels;
 }
 
 export interface SoundGuideOptions {
@@ -354,10 +462,17 @@ export interface SoundGuideOptions {
   profile: SoundGuideProfile;
   /** Looping noise for the air layer. */
   noiseBuffer: AudioBuffer;
-  /** Shared reverb, or null where the platform has none. */
+  /** Long shared reverb for the closing chord, or null where the platform has none. */
   reverb: ConvolverNode | null;
+  /** The small room of the voice and the markers (see roomImpulseResponse), or null. */
+  room: ConvolverNode | null;
   /** Scales every gain; the engine passes cue volume relative to its default. */
   volume: () => number;
+  /**
+   * Seed of the breath-to-breath variation. The default plays the same
+   * sequence in every session, so a recording can be repeated.
+   */
+  seed?: number;
 }
 
 const FADE_IN_SECONDS = 0.5;
@@ -373,30 +488,65 @@ const SCHEDULE_LEAD_SECONDS = 0.03;
  * its final value, and nothing in flight has to be cancelled.
  */
 const PHASE_GUARD_SECONDS = 0.07;
+/**
+ * How far the voice and the markers sit over the tuned profile gains. The
+ * second version was heard as "a bit too low versus the rest". The closing
+ * chord does not get this gain: it keeps its level.
+ */
+const GUIDE_LEAD_GAIN = 1.3;
 const REVERB_SEND = 0.2;
 const REVERB_LOWPASS_HZ = 2600;
+/** Share of the voice and the markers sent to the room. */
+const ROOM_SEND = 0.25;
+const ROOM_LOWPASS_HZ = 1800;
 /** The air layer of the first version reached 3.2 kHz and was heard as a whoosh. */
 const AIR_CEILING_HZ = 900;
 /**
- * Second sine of the root, 4 cents sharp, for a slow shimmer. Its level
- * bounds the depth: 0.1 against 0.8 moves the note by 2.2 dB at 0.3-0.6 Hz,
- * little enough for a hold to sound still.
+ * One ladder note is a fundamental and two soft harmonics that give it body.
+ * The harmonics sit under the tone lowpass, so they are faint while the
+ * breath is empty and come forward as it fills. They are also what a small
+ * speaker plays of the voice. At half these levels the voice measured 7 dB
+ * less narrow-tone energy above 400 Hz, but in the drone modes its rise and
+ * fall could no longer be read above 250 Hz (Box inhale +3.7 dB against
+ * +9.3 dB).
  */
-const CHORUS_RATIO = 2 ** (4 / 1200);
+const NOTE_PARTIALS: readonly number[] = [0.8, 0.42, 0.2];
 /**
- * One ladder note: a sine and two soft harmonics that give it body. The
- * harmonics sit under the tone lowpass, so they are faint while the breath is
- * empty and come forward as it fills. They are also what a small speaker
- * plays of the voice. At half these levels the voice measured 7 dB less
- * narrow-tone energy above 400 Hz, but in the drone modes its rise and fall
- * could no longer be read above 250 Hz (Box inhale +3.7 dB against +9.3 dB).
+ * The notes that join above the root have softer harmonics. Their harmonics
+ * are the highest partials of the voice (494 and 741 Hz in Coherent), and
+ * the voice is now louder: this keeps the narrow-tone energy above 400 Hz
+ * where the second version had it.
  */
-const NOTE_PARTIALS: ReadonlyArray<{ ratio: number; level: number }> = [
-  { ratio: 1, level: 0.8 },
-  { ratio: 2, level: 0.42 },
-  { ratio: 3, level: 0.2 },
+const UPPER_NOTE_PARTIALS: readonly number[] = [0.8, 0.3, 0.1];
+/**
+ * The voices of one note: the centre voice, exactly in tune, and one voice to
+ * each side of it. `cents` is the detune under the root; a higher note gets
+ * less, so every note beats at about the same slow rate. With the drift, two
+ * voices of the root are at most 11 cents apart. The fastest beat is on the
+ * third harmonic of the highest note: about 4 Hz for the highest root. That
+ * is a slow shimmer, far under a rate that is heard as a buzz.
+ *
+ * `level` bounds the depth. Two side voices at 0.16 move a note by 2.4 dB up
+ * and 3.3 dB down at the very most, when both line up against the centre.
+ */
+const NOTE_VOICES: ReadonlyArray<{ cents: number; level: number; pan: number }> = [
+  { cents: 0, level: 1, pan: 0 },
+  { cents: 4.5, level: 0.16, pan: 0.3 },
+  { cents: -3.5, level: 0.16, pan: -0.3 },
 ];
-const ROOT_TWIN_LEVEL = 0.1;
+/** How far a side voice wanders from its detune, in cents. It moves to a new place over each phase. */
+const VOICE_DRIFT_CENTS = 1.5;
+/**
+ * Share of the side voices kept through a hold. The voices beat slowly
+ * against each other; at full level a held note moved by 2.4 dB, and a hold
+ * has to sound still.
+ */
+const HOLD_CHORUS_LEVEL = 0.4;
+const CHORUS_GLIDE_SECONDS = 0.9;
+/** A breath fills to between this level and the peak: a spread of 2 dB. */
+const BREATH_LEVEL_SPREAD_DB = 2;
+/** A marker is up to this much louder or softer than its tuned gain. */
+const MARKER_VELOCITY_SPREAD_DB = 1;
 /** The notes that join sit a little to each side: the sound widens as it fills. */
 const NOTE_PAN: readonly [number, number, number] = [0, -0.45, 0.45];
 
@@ -412,25 +562,54 @@ const MARKER_OCTAVE = 2;
 /** The closing chord keeps the level it was tuned at, whatever a mode's marker gain is. */
 const CLOSING_CHORD_GAIN = 0.106;
 
+const decibels = (value: number) => 10 ** (value / 20);
+
+/** One straight move of a value on the audio clock. */
+interface Glide {
+  from: number;
+  to: number;
+  start: number;
+  seconds: number;
+}
+const glideAt = (glide: Glide, time: number) =>
+  lerp(glide.from, glide.to, glide.seconds > 0 ? clamp01((time - glide.start) / glide.seconds) : 1);
+
+interface DriftingVoice {
+  detune: AudioParam;
+  /** Detune this voice wanders around, in cents. */
+  homeCents: number;
+  glide: Glide;
+}
+
 export class SoundGuide {
   private readonly context: BaseAudioContext;
   private readonly profile: SoundGuideProfile;
   private readonly volume: () => number;
+  private readonly random: () => number;
   private readonly baseHz: number;
   private readonly sources: AudioScheduledSourceNode[] = [];
   private readonly nodes: AudioNode[] = [];
   private readonly noteGains: readonly [GainNode, GainNode, GainNode];
+  private readonly driftingVoices: DriftingVoice[] = [];
+  /** Level of the side voices of each note. Lower through a hold. */
+  private readonly chorusGains: GainNode[] = [];
+  private chorusGlide: Glide = { from: 1, to: 1, start: 0, seconds: 0 };
   private readonly toneLowpass: BiquadFilterNode;
   /** Null when the mode's profile has no air. */
   private readonly airGain: GainNode | null = null;
-  /** When the voice oscillators started. Markers start in phase with them. */
+  /** When the voice oscillators started. Markers start in phase with the centre voices. */
   private readonly voiceStart: number;
   /** Tone and air. Fades on release. */
   private readonly voiceBus: GainNode;
-  /** Markers and the closing chord. Never faded, so the closing chord rings out. */
+  /** Markers. Never faded. */
   private readonly markerBus: GainNode;
+  /** The closing chord. Never faded, so it rings out, into the long reverb. */
+  private readonly chordBus: GainNode;
   private running: { plan: GuidePhasePlan; start: number; volume: number } | null = null;
-  private reverbTail: { reverb: ConvolverNode; wetLowpass: BiquadFilterNode } | null = null;
+  /** Level the current breath fills to. Drawn once per breath, on its first inhale. */
+  private breathPeak = 1;
+  /** Each shared convolver with this guide's own return path. */
+  private readonly returns: Array<{ convolver: ConvolverNode; wetLowpass: BiquadFilterNode }> = [];
   private released = false;
 
   constructor(options: SoundGuideOptions) {
@@ -438,23 +617,33 @@ export class SoundGuide {
     this.context = context;
     this.profile = options.profile;
     this.volume = options.volume;
+    this.random = seededRandom(options.seed ?? 0x5eed);
     this.baseHz = ladderBaseHz(options.rootHz);
     const now = context.currentTime;
 
-    const mix = this.track(context.createGain());
-    mix.connect(output);
-    if (options.reverb) {
+    const sendTo = (source: AudioNode, convolver: ConvolverNode | null, amount: number, lowpassHz: number) => {
+      if (!convolver) return;
       const send = this.track(context.createGain());
       const wetLowpass = this.track(context.createBiquadFilter());
-      send.gain.value = REVERB_SEND;
+      send.gain.value = amount;
       wetLowpass.type = 'lowpass';
-      wetLowpass.frequency.value = REVERB_LOWPASS_HZ;
-      mix.connect(send);
-      send.connect(options.reverb);
-      options.reverb.connect(wetLowpass);
+      wetLowpass.frequency.value = lowpassHz;
+      source.connect(send);
+      send.connect(convolver);
+      convolver.connect(wetLowpass);
       wetLowpass.connect(output);
-      this.reverbTail = { reverb: options.reverb, wetLowpass };
-    }
+      this.returns.push({ convolver, wetLowpass });
+    };
+
+    // The closing chord keeps the long reverb it was tuned with.
+    this.chordBus = this.track(context.createGain());
+    this.chordBus.connect(output);
+    sendTo(this.chordBus, options.reverb, REVERB_SEND, REVERB_LOWPASS_HZ);
+
+    // The voice and the markers decay into a small room.
+    const mix = this.track(context.createGain());
+    mix.connect(output);
+    sendTo(mix, options.room, ROOM_SEND, ROOM_LOWPASS_HZ);
 
     this.voiceBus = this.track(context.createGain());
     this.voiceBus.gain.setValueAtTime(0, now);
@@ -469,29 +658,49 @@ export class SoundGuide {
     this.toneLowpass.frequency.value = this.profile.toneLowpassHz[0];
     this.toneLowpass.connect(this.voiceBus);
 
+    // One wave holds the note and its harmonics, so one oscillator is one
+    // voice and a detune moves every harmonic of that voice together.
+    const waveOf = (partials: readonly number[]) =>
+      context.createPeriodicWave(new Float32Array(partials.length + 1), new Float32Array([0, ...partials]), {
+        disableNormalization: true,
+      });
+    const rootWave = waveOf(NOTE_PARTIALS);
+    const upperWave = waveOf(UPPER_NOTE_PARTIALS);
     this.voiceStart = now;
     const makeNote = (ratio: number, index: number): GainNode => {
       const gain = this.track(context.createGain());
       gain.gain.setValueAtTime(0, now);
-      const pan = NOTE_PAN[index];
-      if (pan !== 0 && typeof context.createStereoPanner === 'function') {
-        const panner = this.track(context.createStereoPanner());
-        panner.pan.value = pan;
-        gain.connect(panner);
-        panner.connect(this.toneLowpass);
-      } else {
-        gain.connect(this.toneLowpass);
-      }
-      const frequency = this.baseHz * ratio;
-      const partials = index === 0 ? [...NOTE_PARTIALS, { ratio: CHORUS_RATIO, level: ROOT_TWIN_LEVEL }] : NOTE_PARTIALS;
-      partials.forEach((partial) => {
+      gain.connect(this.toneLowpass);
+      const chorus = this.track(context.createGain());
+      chorus.gain.setValueAtTime(1, now);
+      chorus.connect(gain);
+      this.chorusGains.push(chorus);
+      NOTE_VOICES.forEach((voice) => {
+        const target = voice.cents === 0 ? gain : chorus;
         const oscillator = context.createOscillator();
         const level = this.track(context.createGain());
-        oscillator.type = 'sine';
-        oscillator.frequency.value = frequency * partial.ratio;
-        level.gain.value = partial.level;
+        oscillator.setPeriodicWave(index === 0 ? rootWave : upperWave);
+        oscillator.frequency.value = this.baseHz * ratio;
+        level.gain.value = voice.level;
         oscillator.connect(level);
-        level.connect(gain);
+        const pan = Math.max(-1, Math.min(1, NOTE_PAN[index] + voice.pan));
+        if (pan !== 0 && typeof context.createStereoPanner === 'function') {
+          const panner = this.track(context.createStereoPanner());
+          panner.pan.value = pan;
+          level.connect(panner);
+          panner.connect(target);
+        } else {
+          level.connect(target);
+        }
+        if (voice.cents !== 0) {
+          const homeCents = voice.cents / Math.sqrt(ratio);
+          oscillator.detune.setValueAtTime(homeCents, now);
+          this.driftingVoices.push({
+            detune: oscillator.detune,
+            homeCents,
+            glide: { from: homeCents, to: homeCents, start: now, seconds: 0 },
+          });
+        }
         oscillator.start(now);
         this.sources.push(oscillator);
       });
@@ -533,20 +742,48 @@ export class SoundGuide {
     // Start from where the voice really is. A phase that arrives early, after
     // a speed change, then continues from mid-curve instead of jumping.
     const from = this.running ? guideStateAt(this.running.plan, start - this.running.start) : GUIDE_REST;
+    // No two breaths are the same size. The draws come from a seeded source
+    // and always in this order, so a session can be repeated exactly.
+    if (kind === 'inhale') this.breathPeak = decibels(-BREATH_LEVEL_SPREAD_DB * this.random());
+    const markerVelocity = decibels(MARKER_VELOCITY_SPREAD_DB * (this.random() * 2 - 1));
     const plan = planGuidePhase({
       kind,
       durationSeconds: durationSeconds - PHASE_GUARD_SECONDS,
       from,
       profile: this.profile,
       topUpFollows: options.topUpFollows,
+      peakLevel: this.breathPeak,
+      markerVelocity,
     });
-    const volume = this.volume();
+    const volume = this.volume() * GUIDE_LEAD_GAIN;
 
     plan.notes.forEach((curve, index) => this.schedule(this.noteGains[index].gain, curve, start, volume));
     if (this.airGain) this.schedule(this.airGain.gain, plan.airGain, start, volume);
     this.schedule(this.toneLowpass.frequency, plan.toneLowpassHz, start, 1);
+    this.driftVoices(start, plan.duration);
+    this.glideChorus(start, kind === 'holdIn' || kind === 'holdOut' ? HOLD_CHORUS_LEVEL : 1, plan.duration);
     this.playMarker(plan.marker, start, volume);
     this.running = { plan, start, volume };
+  }
+
+  /** Moves each side voice to a new detune near its home, over the whole phase. */
+  private driftVoices(start: number, seconds: number) {
+    this.driftingVoices.forEach((voice) => {
+      const from = glideAt(voice.glide, start);
+      const to = voice.homeCents + VOICE_DRIFT_CENTS * (this.random() * 2 - 1);
+      this.schedule(voice.detune, [{ at: 0, value: from }, { at: seconds, value: to }], start, 1);
+      voice.glide = { from, to, start, seconds };
+    });
+  }
+
+  /** Brings the side voices of every note to `level`, early in the phase. */
+  private glideChorus(start: number, level: number, phaseSeconds: number) {
+    const from = glideAt(this.chorusGlide, start);
+    const seconds = Math.min(CHORUS_GLIDE_SECONDS, phaseSeconds * 0.5);
+    this.chorusGains.forEach((chorus) => {
+      this.schedule(chorus.gain, [{ at: 0, value: from }, { at: seconds, value: level }], start, 1);
+    });
+    this.chorusGlide = { from, to: level, start, seconds };
   }
 
   private schedule(param: AudioParam, curve: readonly Breakpoint[], start: number, scale: number) {
@@ -562,11 +799,12 @@ export class SoundGuide {
   }
 
   /**
-   * The next moment at or after `time` when every voice oscillator is back at
-   * the phase it started with. The voice partials are multiples of half the
+   * The next moment at or after `time` when every centre voice is back at
+   * the phase it started with. The centre partials are multiples of half the
    * root, so that happens every two root periods (8-16 ms). A marker that
    * starts there adds to a voice partial of its own pitch. Started anywhere
    * else it could cancel that partial, and the marker would sound as a dip.
+   * The side voices are not locked; they are 16 dB under the centre voice.
    */
   private inPhaseWithVoice(time: number): number {
     const period = 2 / this.baseHz;
@@ -581,6 +819,7 @@ export class SoundGuide {
         decaySeconds: marker.decaySeconds,
         at: this.inPhaseWithVoice(start + index * marker.gapSeconds),
         partials: marker.bell ? BELL_PARTIALS : STEP_PARTIALS,
+        bus: this.markerBus,
       });
     });
   }
@@ -591,6 +830,7 @@ export class SoundGuide {
     decaySeconds: number;
     at: number;
     partials: ReadonlyArray<{ ratio: number; level: number }>;
+    bus: GainNode;
   }) {
     if (chime.gain <= 0) return;
     const { context } = this;
@@ -603,7 +843,7 @@ export class SoundGuide {
     envelope.gain.linearRampToValueAtTime(chime.gain * 0.36, chime.at + attack + chime.decaySeconds * 0.22);
     envelope.gain.linearRampToValueAtTime(chime.gain * 0.11, chime.at + attack + chime.decaySeconds * 0.5);
     envelope.gain.linearRampToValueAtTime(0, end);
-    envelope.connect(this.markerBus);
+    envelope.connect(chime.bus);
 
     chime.partials.forEach((partial) => {
       const oscillator = context.createOscillator();
@@ -661,12 +901,13 @@ export class SoundGuide {
           decaySeconds,
           at: now + note.delay,
           partials: BELL_PARTIALS,
+          bus: this.chordBus,
         });
       });
       tail = Math.max(tail, 0.85 + decaySeconds + 0.2);
     }
     // The reverb tail of the last sound needs a moment to ring out.
-    return tail + (this.reverbTail ? 1.2 : 0);
+    return tail + (this.returns.length > 0 ? 1.2 : 0);
   }
 
   /** Disconnects every node. Call once the time returned by release() has passed. */
@@ -679,14 +920,14 @@ export class SoundGuide {
         // Already stopped.
       }
     });
-    if (this.reverbTail) {
+    this.returns.forEach(({ convolver, wetLowpass }) => {
       try {
-        // Only this guide's return path. The convolver is shared with the cues.
-        this.reverbTail.reverb.disconnect(this.reverbTail.wetLowpass);
+        // Only this guide's return path. The convolvers are shared and cached.
+        convolver.disconnect(wetLowpass);
       } catch {
         // Context already closed.
       }
-    }
+    });
     this.nodes.forEach((node) => {
       try {
         node.disconnect();

@@ -61,6 +61,7 @@ class FakeOscillator extends FakeSource {
   readonly frequency = new FakeParam();
   readonly detune = new FakeParam();
   type: OscillatorType = 'sine';
+  setPeriodicWave() {}
 }
 
 class FakeGain extends FakeNode {
@@ -131,6 +132,7 @@ class FakeContext {
   createGain() { return this.make(new FakeGain(this)); }
   createBiquadFilter() { return this.make(new FakeFilter(this)); }
   createOscillator() { return this.make(new FakeOscillator(this)); }
+  createPeriodicWave() { return {}; }
   createStereoPanner() { return this.make(new FakePanner(this)); }
   createAnalyser() { return this.make(new FakeAnalyser(this)); }
   createWaveShaper() { return this.make(new FakeWaveShaper(this)); }
@@ -481,8 +483,8 @@ describe('sound guide lifecycle', () => {
     await service.startSoundGuide('#0ea5e9');
     service.playGuidePhase('inhale', 2.5, { topUpFollows: true });
     const guideSources = context.sources.filter((source) => source.started);
-    // Three notes of three oscillators, the root's twin, and a two-note marker. No noise.
-    expect(guideSources).toHaveLength(12);
+    // Three notes of three voices, and a two-note marker. No noise.
+    expect(guideSources).toHaveLength(11);
 
     service.stopSoundGuide({ seconds: 1.6, closing: true });
     expect(guideOf(service)).toBeNull();

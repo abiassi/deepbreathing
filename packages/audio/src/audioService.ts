@@ -6,7 +6,7 @@
  * - Binaural beats accept adaptive entrainment frequencies.
  */
 import { ModeName } from './modes';
-import { ladderBaseHz, SoundGuide, soundGuideProfileFor, type GuidePhaseKind } from './soundGuide';
+import { ladderBaseHz, roomImpulseResponse, SoundGuide, soundGuideProfileFor, type GuidePhaseKind } from './soundGuide';
 
 /**
  * Platform seam. The engine is pure Web Audio; the only environment-specific
@@ -65,7 +65,7 @@ const COMPLETION_CUE_FIFTH_RELEASE_SECONDS = 0.78;
 
 // Cue volume the sound guide's gains were tuned at (the engine default).
 const SOUND_GUIDE_REFERENCE_CUE_VOLUME = 0.32;
-// One dark, slow impulse response for the guide's tone, air and chimes.
+// One dark, slow impulse response for the guide's closing chord.
 const SOUND_GUIDE_REVERB_SECONDS = 2.2;
 const SOUND_GUIDE_REVERB_DECAY = 2.6;
 const BINAURAL_CARRIER_HZ = 200;
@@ -75,7 +75,14 @@ const BINAURAL_CARRIER_HZ = 200;
 // plays the same notes as the guide's voice (Box, Ujjayi and Belly share
 // their root with it); at 0.22, and still at 0.09, its slow swells hid the
 // end of the voice's fall.
-const SOUND_GUIDE_BED = { drone: 0.06, subBass: 0.5, pinkNoise: 0.9, binaural: 0.45 } as const;
+//
+// `droneSwell` scales the depth of the drone's slow swell. The swell adds a
+// fixed 0.05 to each partial's gain, whatever the drone gain is; at a drone
+// gain of 0.06 it was the whole drone bed, and the guide alone measured only
+// 2 to 4 LU over that bed (12 LU over the noise bed). The guide was heard as
+// "a bit too low versus the rest". The swell now comes down with the drone,
+// so the guide leads the bed by about the same margin in every mode.
+const SOUND_GUIDE_BED = { drone: 0.13, droneSwell: 0.24, subBass: 0.4, pinkNoise: 0.9, binaural: 0.45 } as const;
 
 interface CueProfile {
   oscType: OscillatorType;
@@ -1394,7 +1401,7 @@ export class AudioService {
       const lfoRate = 0.08 + Math.random() * 0.12;
       lfo.frequency.value = lfoRate;
       lfoRates.push(lfoRate);
-      lfoGain.gain.value = 0.05;
+      lfoGain.gain.value = this.soundGuideMix ? 0.05 * SOUND_GUIDE_BED.droneSwell : 0.05;
       lfo.connect(lfoGain);
       lfoGain.connect(gain.gain);
       lfo.start(t);
@@ -1744,8 +1751,27 @@ export class AudioService {
       profile: soundGuideProfileFor(this.breathingMode),
       noiseBuffer,
       reverb: this.getCueReverb(SOUND_GUIDE_REVERB_SECONDS, SOUND_GUIDE_REVERB_DECAY),
+      room: this.getSoundGuideRoom(),
       volume: () => this.cueVolume / SOUND_GUIDE_REFERENCE_CUE_VOLUME,
     });
+  }
+
+  /** The small room the guide's voice and markers play into. Built once per context. */
+  private getSoundGuideRoom() {
+    if (!this.ctx) return null;
+    const key = 'sound-guide-room';
+    const cached = this.cueReverbCache.get(key);
+    if (cached) return cached;
+    const channels = roomImpulseResponse(this.ctx.sampleRate);
+    const buffer = this.ctx.createBuffer(channels.length, channels[0].length, this.ctx.sampleRate);
+    channels.forEach((data, channel) => buffer.getChannelData(channel).set(data));
+    const convolver = this.ctx.createConvolver();
+    // The response carries its own level. Set before the buffer: a platform
+    // scales the response when the buffer is assigned.
+    convolver.normalize = false;
+    convolver.buffer = buffer;
+    this.cueReverbCache.set(key, convolver);
+    return convolver;
   }
 
   /** Plays one phase of the sound guide. No-op when the guide is not running. */
