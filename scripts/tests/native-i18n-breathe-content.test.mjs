@@ -185,14 +185,11 @@ test("the normal build fails closed when breathe artifacts are stale", () => {
     readFileSync(path.join(repoRoot, "package.json"), "utf8"),
   );
 
-  assert.match(
-    packageJson.scripts?.prebuild ?? "",
-    /check:native-i18n-breathe-index/,
-  );
-  assert.match(
-    packageJson.scripts?.prebuild ?? "",
-    /check:native-i18n-breathe-pages/,
-  );
+  const { prebuild = "", "check:native-i18n": checks = "" } = packageJson.scripts ?? {};
+
+  assert.match(prebuild, /pnpm run check:native-i18n(?![-\w])/);
+  assert.match(checks, /check:native-i18n-breathe-index\b/);
+  assert.match(checks, /check:native-i18n-breathe-pages\b/);
 });
 
 test("metadata uses catalog head occurrences unless explicitly replaced", () => {

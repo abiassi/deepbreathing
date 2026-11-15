@@ -44,6 +44,10 @@ jobs:
         if: success() || failure()
         run: pnpm typecheck
 
+      - name: Check compiled native-i18n content
+        if: success() || failure()
+        run: pnpm run check:native-i18n
+
       - name: Run web and release tests
         if: success() || failure()
         run: pnpm test
