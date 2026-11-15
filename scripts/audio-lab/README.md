@@ -47,6 +47,14 @@ python3 scripts/audio-lab/contours.py --mode coherent --plot /tmp/audio-lab/cont
 
 Pitch, level, brightness and stereo width at 12 points of each phase, and `mirror`: the correlation between the inhale contour and the exhale contour. -1 means the two phases are opposite shapes.
 
+## Measure how far the markers stand out
+
+```sh
+python3 scripts/audio-lab/cues.py --mode box --marker /tmp/audio-lab/box-marker.wav --voice /tmp/audio-lab/box-tone.wav --bed /tmp/audio-lab/box-bed.wav
+```
+
+The three clips are stems of the same session: `&labsolo=marker`, `&labsolo=tone` and the bed alone (`&labsolo=drone,sub,binaural` or `&labsolo=noisebed,sub,binaural`). For the 0.35 s after each marker's onset it reports the A-weighted level of the marker, of the voice and of the bed, and how far the marker stands over each. It also reports the mean per phase kind and the markers per minute.
+
 ## Compare two versions by eye
 
 ```sh
@@ -62,5 +70,6 @@ One spectrogram per clip, on the same time, frequency and colour scale.
 - `clicks` finds sharp steps. It was checked by injecting faults into a real clip: steps of -40 and -50 dBFS were found 12 of 12 times, -60 dBFS 11 of 12, -70 dBFS 7 of 12. A tick behind a lowpass is band-limited and is not found.
 - Loudness is measured, not heard. No number here says whether a sound is pleasant.
 - `whine_db` follows a thin tone that swells. It was built after a listener heard a mosquito in the first sound guide. It reads 7 dB lower on the second version, which the same listener called a lot better, and the same on the third. It has not been checked against a second listener.
+- `cues.py` reads stems. Each stem passes the master compressor alone, so its level is not its level inside the full mix. Use the differences to compare modes and versions.
 - `width_db` in `contours.py` reads the whole mix. In the drone modes the drone orbits the listener and sets the width; the guide's own width is only visible with `&bed=0`.
 - The clips come from headless Chromium. Safari, Firefox and phones are not covered.

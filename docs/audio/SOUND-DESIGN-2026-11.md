@@ -1,6 +1,6 @@
 # Sound design, November 2026: the sound guide
 
-Status: prototype on branch `t3/eyes-closed-sound-design`, web only, behind `?sound=guide`. Default off. Not shipped. Third version (v3), after the second listening pass on 2026-11-14.
+Status: prototype on branch `t3/eyes-closed-sound-design`, web only, behind `?sound=guide`. Default off. Not shipped. Third version (v3), after the second listening pass on 2026-11-14, with one tuning pass (v3.1) after the third on 2026-11-15.
 
 ## Summary
 
@@ -8,7 +8,7 @@ Today a session marks each phase with a 0.3 s blip at its start. Between two bli
 
 The proposal is one new layer, the **sound guide**: a low, warm voice that plays for the whole phase and fills and empties the way the lungs do. It gets louder, rounder and wider on the inhale. It stands still on a hold. It is the inhale played backwards on the exhale. It is synthesized in the shared engine (`packages/audio`), so the same code can run on iOS. It uses no audio files and no paid service.
 
-The first version (v1) was heard as "a mosquito" and "a zoom that's growing". [What the first listening pass found](#what-the-first-listening-pass-found) names the cause and the change. The second version (v2) "feels a lot better", but the guide was "a bit too low versus the rest". [What the second listening pass found](#what-the-second-listening-pass-found) gives the level numbers and the six changes of v3. The closing chord, which the listener liked, is unchanged.
+The first version (v1) was heard as "a mosquito" and "a zoom that's growing". [What the first listening pass found](#what-the-first-listening-pass-found) names the cause and the change. The second version (v2) "feels a lot better", but the guide was "a bit too low versus the rest". [What the second listening pass found](#what-the-second-listening-pass-found) gives the level numbers and the six changes of v3. The closing chord, which the listener liked, is unchanged. The third pass liked the organic feel and asked for louder cues in two modes; [What the third listening pass found](#what-the-third-listening-pass-found) has the numbers and the v3.1 change.
 
 Try it: open `/breathe/coherent?sound=guide` on the branch. Add `&bed=0` to hear the guide without the ambient bed.
 
@@ -144,6 +144,71 @@ Three more changes came out of the measurements:
 
 Kept from v2: the register of the voice, the notes, the markers' notes, the still hold, the two fills of the Physiological Sigh, and the closing chord. The closing chord stem measures -26.2 LUFS and -17.5 dBTP in v3, against -26.2 LUFS and -17.4 dBTP in v2.
 
+## What the third listening pass found
+
+The owner listened to v3 and reported: "I like the organic feel, yes. Sigh is good, but Box and Coherent need a touch louder on cues." v3.1 raises the markers in Box and in Coherent. Nothing else changes: the voice, the room, the drift, the variation, the beds, the closing chord and the five other modes are as in v3.
+
+### Why the cues of the Sigh read louder
+
+"Cues" is read here as the markers. The marker stem, the tone stem and the bed stem of each mode were recorded from the real page (`&labsolo=marker`, `&labsolo=tone`, and the bed stems alone). `scripts/audio-lab/cues.py` reads the 0.35 s after each marker's onset in a 44 s session. Levels are A-weighted, so a low note counts for less, as it does for the ear.
+
+| v3 marker | Coherent | Box | Physiological Sigh |
+|---|---:|---:|---:|
+| Notes of the markers | 330 to 494 Hz | 262 to 392 Hz | 349 to 698 Hz |
+| Markers per minute | 10.9 | 15.0 | 20.8 |
+| Start of an inhale | -34.8 dB | -36.0 dB | -34.0 dB |
+| Start of the second inhale | | | -30.5 dB |
+| Start of a hold, full | | -33.5 dB | |
+| Start of an exhale | -31.7 dB | -32.7 dB | -29.5 dB |
+| Start of a hold, empty | | -38.8 dB | -43.4 dB |
+| Exhale marker over the bed | 16.4 dB | 14.1 dB | 18.1 dB |
+
+All three modes had the same marker gain in v3. Three things still put the Sigh ahead:
+
+- **Pitch.** The Sigh has the highest root. Its exhale marker starts on the octave, at 698 Hz. Without the weighting, the exhale markers of the three modes are within 1 dB of each other (-27.2, -26.4 and -26.2 dB). With it, the Sigh's is 2.2 dB over Coherent's and 3.2 dB over Box's.
+- **Rate.** The Sigh has a marker every 2.9 s on average, Box every 4 s, and Coherent every 5.5 s. Two of the Sigh's four markers per breath are its loudest ones.
+- **The bed.** The Sigh's exhale marker stands 18.1 dB over its bed, against 16.4 dB in Coherent and 14.1 dB in Box.
+
+Against the voice, the Sigh is not ahead. Its exhale marker is 5.9 dB under the voice, against 6.5 dB in Coherent and 3.5 dB in Box.
+
+### What v3.1 changes
+
+One value per mode: `chimeGain` is 0.134 in Coherent (+3.0 dB) and 0.142 in Box (+3.5 dB). The base stays 0.095.
+
+| Marker level, A-weighted | Coherent v3 | Coherent v3.1 | Box v3 | Box v3.1 | Sigh v3 | Sigh v3.1 |
+|---|---:|---:|---:|---:|---:|---:|
+| Start of an inhale | -34.8 dB | -31.8 dB | -36.0 dB | -32.5 dB | -34.0 dB | -34.0 dB |
+| Start of the second inhale | | | | | -30.5 dB | -30.5 dB |
+| Start of a hold, full | | | -33.5 dB | -30.0 dB | | |
+| Start of an exhale | -31.7 dB | -28.7 dB | -32.7 dB | -29.2 dB | -29.5 dB | -29.5 dB |
+| Start of a hold, empty | | | -38.8 dB | -35.3 dB | -43.4 dB | -43.4 dB |
+| Mean of all markers | -33.2 dB | -30.2 dB | -34.9 dB | -31.5 dB | -34.3 dB | -34.3 dB |
+| Mean, marker over the voice | 0.8 dB | 4.0 dB | 0.2 dB | 3.8 dB | 0.2 dB | 0.2 dB |
+| Mean, marker over the bed | 17.1 dB | 20.2 dB | 11.6 dB | 15.2 dB | 13.1 dB | 13.1 dB |
+| Marker stem, loudness | -28.9 LUFS | -25.6 LUFS | -29.3 LUFS | -25.8 LUFS | -28.7 LUFS | -28.7 LUFS |
+
+The exhale markers of Coherent and Box now sit within 0.8 dB of the Sigh's. Their inhale markers are 1.5 to 2.2 dB over the Sigh's; Coherent keeps half as many markers per minute. The Sigh's marker stem measures the same in both versions, band by band.
+
+In the full mix with the bed, the first twelfth of an inhale, which holds the marker, is 1.0 dB louder in Coherent and 2.4 dB louder in Box. The rest of the inhale contour is within 0.9 dB of v3 in Box and within 0.1 dB in Coherent.
+
+| With the bed | v3 | v3.1 | v3.1 true peak | Clipped samples | Steps |
+|---|---:|---:|---:|---:|---:|
+| Coherent | -18.4 LUFS | -18.3 LUFS | -5.5 dBTP | 0 | 0 |
+| Box | -19.0 LUFS | -18.9 LUFS | -5.3 dBTP | 0 | 0 |
+| Physiological Sigh | -19.1 LUFS | -19.1 LUFS | -5.4 dBTP | 0 | 0 |
+| 4-7-8 | -19.5 LUFS | -19.5 LUFS | -7.3 dBTP | 0 | 0 |
+| Ujjayi | -19.9 LUFS | -19.9 LUFS | -6.6 dBTP | 0 | 0 |
+| Belly | -18.9 LUFS | -18.9 LUFS | -6.3 dBTP | 0 | 0 |
+| Pursed Lip | -19.9 LUFS | -19.9 LUFS | -7.2 dBTP | 0 | 0 |
+
+The seven modes span 1.6 LU. The five modes that did not change measure the same loudness as in v3. Their true peaks differ by up to 0.8 dB between takes, because the beds start at a random phase. The Box marker stem alone shows one step of -77 dBFS at the second note of an exhale marker; the detector reads it against a silent background, and the full Box clip shows none.
+
+Without the flag, this head measures -25.7 LUFS in Coherent, -15.2 LUFS in Box and -14.9 LUFS in the Sigh. The code of `main` measured -25.8, -15.4 and -14.9 LUFS on 2026-11-14, and its engine and breathing component have not changed since. The v3.1 change is two values in the guide's own profile table, which runs only under the flag.
+
+Listen: Coherent [v3](../evidence/sound-guide-2026-11-14/coherent-v3.m4a), then [v3.1](../evidence/sound-guide-2026-11-14/coherent-v3.1.m4a). Box [v3](../evidence/sound-guide-2026-11-14/box-v3.m4a), then [v3.1](../evidence/sound-guide-2026-11-14/box-v3.1.m4a). The Sigh [v3](../evidence/sound-guide-2026-11-14/sigh-v3.m4a) and [v3.1](../evidence/sound-guide-2026-11-14/sigh-v3.1.m4a) should sound the same. The [marker stems](../evidence/sound-guide-2026-11-14/markers-v3-vs-v3.1.jpg) of the three modes are on one sheet. The stems, the recordings and the raw measurements are in `/Users/abi/.t3/userdata/attachments/dbe-sound-2026-11-15-v3.1/` on the machine that ran this.
+
+Not verified for v3.1: no person has listened to it. The cue readings come from stems, and each stem passes the master compressor alone, so they compare modes and versions and are not levels inside the mix. The voice's own onset was measured and left as it is.
+
 ## The proposal
 
 ### One grammar for every mode
@@ -185,7 +250,7 @@ Every mode uses the same instrument. v1 gave each mode its own mix of tone and a
 | Belly | C3, 131 Hz | Darker: the lowpass opens to 850 Hz only. |
 | Pursed Lip | E3, 165 Hz | Base profile. |
 
-The tone gain differs by mode (0.145 to 0.19) only so that every mode lands at the same loudness. The other web modes use the base profile. Wim Hof keeps the legacy cues in this prototype, because its phases are not fixed in length.
+The tone gain differs by mode (0.145 to 0.19) only so that every mode lands at the same loudness. Since v3.1 the marker gain is higher in Box and in Coherent. The other web modes use the base profile. Wim Hof keeps the legacy cues in this prototype, because its phases are not fixed in length.
 
 ### The ambient bed is optional and sits under the voice
 
@@ -449,7 +514,7 @@ Rendered audio files (`expo-audio`) are not proposed. The speed slider is contin
 
 ## Not verified
 
-- No person has listened to v3. The owner listened to v1 and to v2. Every claim about v3 here is a measurement: peaks, loudness, clipping, steps, band levels, narrow peaks, contours and spectrograms. No number here says that v3 sounds more organic or warmer. `whine_db` was built to follow the first description of the mosquito; v2 read 7 dB lower on it and was heard as "a lot better", which is one data point.
+- The owner listened to v1, v2 and v3. No person has listened to v3.1. Every claim about v3 here is a measurement: peaks, loudness, clipping, steps, band levels, narrow peaks, contours and spectrograms. No number here says that v3 sounds more organic or warmer. `whine_db` was built to follow the first description of the mosquito; v2 read 7 dB lower on it and was heard as "a lot better", which is one data point.
 - The level of the room is set by its send gain and was not measured.
 - The lead of the guide over the bed was measured in Coherent, Box and the Physiological Sigh. The four other modes were measured with the bed only.
 - Nothing was tested on a phone, on Safari or on Firefox. The clips come from headless Chromium on macOS. The voice's root is below what a phone speaker plays; the claim that its harmonics carry it there is not tested on a phone.

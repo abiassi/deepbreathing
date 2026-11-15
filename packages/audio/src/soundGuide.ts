@@ -79,10 +79,15 @@ const BASE_PROFILE: SoundGuideProfile = {
 const MODE_PROFILES: Partial<Record<ModeName, Partial<SoundGuideProfile>>> = {
   // The tone gains differ only to land every mode at the same loudness
   // (-19.5 LUFS with the bed): short phases and low roots measure louder.
-  [ModeName.Box]: { toneGain: 0.17 },
+  // Box and Coherent have louder markers than the base: +3.5 dB and +3 dB.
+  // Their markers are the lowest in pitch (262-392 Hz in Box) or the rarest
+  // (11 a minute in Coherent), and were heard as a touch too quiet. The
+  // Physiological Sigh, at the base gain, was heard as right: its markers
+  // are higher (349-698 Hz) and come 21 times a minute.
+  [ModeName.Box]: { toneGain: 0.17, chimeGain: 0.142 },
   // 4-7-8: a long, quieter hold.
   [ModeName.Relax]: { toneGain: 0.19, holdInLevel: 0.6 },
-  [ModeName.Coherent]: { toneGain: 0.19 },
+  [ModeName.Coherent]: { toneGain: 0.19, chimeGain: 0.134 },
   [ModeName.Sigh]: { toneGain: 0.15 },
   // Ujjayi: the technique is a throat sound, so this mode alone keeps a faint,
   // dark breath of air under the tone. It does not sweep.
