@@ -1,6 +1,6 @@
 # Sound design, November 2026: the sound guide
 
-Status: prototype on branch `t3/eyes-closed-sound-design`, web only, behind `?sound=guide`. Default off. Not shipped. Third version (v3), after the second listening pass on 2026-11-14, with one tuning pass (v3.1) after the third on 2026-11-15.
+Status: on by default for every web visitor from the merge of PR #103 (v3.1), by Abi's decision on 2026-11-15: no Settings switch and no split. `?sound=classic` plays the previous phase cues. iOS is not included. Sections below that say "behind `?sound=guide`" or "default off" describe the prototype before rollout; there the flag-off sound is what `?sound=classic` now plays.
 
 ## Summary
 
@@ -10,7 +10,7 @@ The proposal is one new layer, the **sound guide**: a low, warm voice that plays
 
 The first version (v1) was heard as "a mosquito" and "a zoom that's growing". [What the first listening pass found](#what-the-first-listening-pass-found) names the cause and the change. The second version (v2) "feels a lot better", but the guide was "a bit too low versus the rest". [What the second listening pass found](#what-the-second-listening-pass-found) gives the level numbers and the six changes of v3. The closing chord, which the listener liked, is unchanged. The third pass liked the organic feel and asked for louder cues in two modes; [What the third listening pass found](#what-the-third-listening-pass-found) has the numbers and the v3.1 change.
 
-Try it: open `/breathe/coherent?sound=guide` on the branch. Add `&bed=0` to hear the guide without the ambient bed.
+Try it: open `/breathe/coherent`. Add `?sound=classic` to hear the previous cues, or `?bed=0` to hear the guide without the ambient bed.
 
 ## What exists
 
@@ -269,7 +269,7 @@ With the guide on, the beds keep their per-mode recipe at a lower gain: drone ×
 |---|---|
 | `packages/audio/src/soundGuide.ts` | The guide. `planGuidePhase` is pure and holds the whole palette. `SoundGuide` schedules a plan on the audio clock. |
 | `packages/audio/src/audioService.ts` | `startSoundGuide`, `playGuidePhase`, `stopSoundGuide`, the bed gains under the guide, the still noise bed, the in-key binaural carrier. |
-| `src/components/resonance/Resonance.tsx` | Reads `?sound=guide` and `&bed=0`. Calls the guide at each phase start in place of `playCue`. |
+| `src/components/resonance/Resonance.tsx` | Plays the guide unless `?sound=classic`; reads `&bed=0`. Calls the guide at each phase start in place of `playCue`. |
 | `scripts/audio-lab/` | Records and measures real sessions, whole or one layer at a time. |
 
 Each phase is scheduled once, at its start, from its known length. Nothing runs per frame. The schedule uses `setValueAtTime` and `linearRampToValueAtTime` only. A breath curve is a list of up to 40 straight ramps. Each phase ends its curves 70 ms early and starts 30 ms ahead of the clock, so the next phase finds every parameter at rest.

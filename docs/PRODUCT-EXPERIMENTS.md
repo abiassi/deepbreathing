@@ -23,7 +23,7 @@ Reverse chronological. Legend: ✅ Success · ❌ Failed · ⚪ Inconclusive · 
 
 | Date | Entry | Status |
 |------|-------|--------|
-| 2026-11-14 | [Sound guide: a breath-shaped voice for eyes-closed practice](#2026-11-14-sound-guide-a-breath-shaped-voice-for-eyes-closed-practice) | Prototype behind `?sound=guide`, default off; not shipped |
+| 2026-11-14 | [Sound guide: a breath-shaped voice for eyes-closed practice](#2026-11-14-sound-guide-a-breath-shaped-voice-for-eyes-closed-practice) | 🔄 Implemented; rolled out to all web visitors on merge |
 | 2026-11-14 | [Track mode changes through practice links](#2026-11-14-track-mode-changes-through-practice-links) | 🔄 Implemented locally; deployment pending |
 | 2026-11-13 | [Fit the iOS Modes sheet to its rows](#2026-11-13-fit-the-ios-modes-sheet-to-its-rows) | 🔄 Implemented locally; release pending |
 | 2026-11-12 | [Restore iOS modes scrolling](#2026-11-12-restore-ios-modes-scrolling) | 🔄 Implemented locally; release pending |
@@ -68,7 +68,7 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 
 ### 2026-11-14: Sound guide: a breath-shaped voice for eyes-closed practice
 
-**Status:** Prototype on branch `t3/eyes-closed-sound-design`, web only, behind `?sound=guide`. Default off. No user receives it, so nothing is measured yet. Design and evidence: [`docs/audio/SOUND-DESIGN-2026-11.md`](audio/SOUND-DESIGN-2026-11.md).
+**Status:** 🔄 Implemented. On by default for every web visitor from the merge of [PR #103](https://github.com/abiassi/deepbreathing/pull/103) (sound guide v3.1). `?sound=classic` plays the previous cues. iOS is not included. Design and evidence: [`docs/audio/SOUND-DESIGN-2026-11.md`](audio/SOUND-DESIGN-2026-11.md).
 
 **Listening pass 1 (2026-11-14):** Abi heard a mosquito and a whoosh in the first version. Each layer was recorded alone: the mosquito was the tone (a pure sine that reached 494 Hz as it swelled) and the whoosh was the air layer (noise sweeping 1.5 octaves). The second version keeps the voice low and warm, with no glide and no sweep. It has been measured, not heard.
 
@@ -94,22 +94,21 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 - **Sound-on rate: no baseline.** No event records mute.
 - `mode` is not a registered GA4 dimension, so the baseline cannot be split by mode.
 
-**Proposed measurement (needs Abi's decision before rollout):** A Settings switch will not reach enough people; see the binaural figure above. Give the guide to a sticky 50% of web visitors, assigned at page view. Before that rollout: register `sound` as an event-scoped dimension, and add a `muted` parameter to the session start and end events.
+**Rollout decision (2026-11-15):** Abi chose a direct rollout to every web visitor: no Settings switch and no 50% split. `?sound=classic` keeps the previous cues for comparison and support. The 50% split proposed on 2026-11-14 is withdrawn, so the measurement is a before/after comparison against the baseline window above. It is weaker than a split: season, traffic mix and SEO changes in the same weeks also move the metric.
 
-**Pre-committed criteria** (set 2026-11-14, before any rollout):
+**Pre-committed criteria** (rewritten 2026-11-15, before rollout; replaces the split criteria of 2026-11-14):
 
-- **Primary metric:** completed share of starts (`breathing_session_end` with `reason = completed`, divided by `breathing_session_start`), guide arm against control arm, same weeks.
-- ✅ **Success** if the guide arm is at least 5 pp above control (for example 39% to 44%), with at least 1,000 starts in each arm, and both guardrails hold.
-- ❌ **Failed** if the guide arm is at or below control with at least 1,000 starts in each arm, or if a guardrail breaks.
-- ⚪ **Inconclusive** if the lift is between 0 and 5 pp, or if an arm has fewer than 1,000 starts on the measure date. Extend once by 4 weeks, then call it.
-- **Guardrail 1, sound-on rate:** the share of session ends with `muted = false` in the guide arm is not more than 3 pp below control.
-- **Guardrail 2, start rate:** `breathing_session_start` users divided by `page_viewed_breathing` users in the guide arm is not more than 3 pp below control.
+- **Primary metric:** completed share of starts (`breathing_session_end` with `reason = completed`, divided by `breathing_session_start`), all web devices, for the first 4 full weeks after rollout, against the baseline 39.2% (2026-10-14 to 2026-11-10, 1,581 starts).
+- ✅ **Success** if the after window is at least 4 pp above baseline (39.2% to 43.2% or more), with at least 1,200 starts, and the guardrail holds.
+- ❌ **Failed** if the after window is 2 pp or more below baseline (37.2% or less), or if the guardrail breaks.
+- ⚪ **Inconclusive** otherwise, or with fewer than 1,200 starts. Extend once by 4 weeks, then call it.
+- **Guardrail, start rate:** `breathing_session_start` users divided by `page_viewed_breathing` users is not more than 3 pp below the same ratio in the baseline window (compute both at measure time with the same query).
 
-**Power:** The stream has about 395 starts a week. A 50% split reaches 1,000 starts per arm in about 5 weeks. At that size the standard error of the difference is about 2.2 pp, so a 5 pp lift is about 2.3 standard errors. Sessions from one person are not independent. Treat a result near the line as inconclusive.
+**Power:** About 395 starts a week gives about 1,580 starts in 4 weeks. The standard error of a before/after difference is then about 1.7 pp, so a 4 pp lift is about 2.3 standard errors. Sessions from one person are not independent, and the windows differ in season. Treat a result near a line as inconclusive.
 
 **Qualitative signal:** Send that customer the link when the guide ships. The answer is a signal, not the verdict.
 
-**Measure-after:** 6 weeks after the rollout date. Record the rollout date and commit here.
+**Measure-after:** 4 full weeks after the rollout date plus GA4's two-day maturation window. Record the rollout date and merge commit here.
 
 **Not part of this entry:** the iOS app. An iOS rollout needs its own physical-device criteria.
 

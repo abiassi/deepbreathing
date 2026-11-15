@@ -200,11 +200,11 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     () => parseBoolParam(searchParams.get('eyesClosed')),
     [searchParams]
   );
-  // Sound guide prototype (docs/audio/SOUND-DESIGN-2026-11.md). URL-only and
-  // default off: `?sound=guide` turns it on, `&bed=0` plays it without the
-  // ambient bed. Sessions without the flag never reach this code.
+  // Sound guide (docs/audio/SOUND-DESIGN-2026-11.md). On by default since
+  // 2026-11-15. `?sound=classic` plays the previous phase cues instead, and
+  // `&bed=0` plays the guide without the ambient bed.
   const soundGuideEnabled = useMemo(
-    () => searchParams.get('sound') === 'guide',
+    () => searchParams.get('sound') !== 'classic',
     [searchParams]
   );
   const soundGuideBed = useMemo(
