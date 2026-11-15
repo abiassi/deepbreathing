@@ -86,8 +86,6 @@ export function EmbedGenerator({
   const [locale, setLocale] = useState<LocaleCode>(initialLocale);
   const [duration, setDuration] = useState<number | null>(60);
   const [binaural, setBinaural] = useState(true);
-  // eyesClosed param plumbing kept in URL builder for internal testing, but
-  // not surfaced as a generator toggle until narration ships.
   const eyesClosed = false;
   const [copied, setCopied] = useState(false);
 
@@ -143,7 +141,6 @@ export function EmbedGenerator({
         </p>
       </header>
 
-      {/* Pattern selector */}
       <section className="mt-10">
         <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4">
           {content.choosePattern}
@@ -176,7 +173,6 @@ export function EmbedGenerator({
         </div>
       </section>
 
-      {/* Appearance: theme + language */}
       <section className="mt-8">
         <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4">
           {content.appearance.title}
@@ -230,7 +226,6 @@ export function EmbedGenerator({
         </div>
       </section>
 
-      {/* Sound options */}
       <section className="mt-8">
         <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4">
           {content.sound.title}
@@ -248,7 +243,6 @@ export function EmbedGenerator({
         </div>
       </section>
 
-      {/* Preview */}
       <section className="mt-10">
         <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4">
           {content.preview.title}
@@ -270,7 +264,6 @@ export function EmbedGenerator({
         </div>
       </section>
 
-      {/* Snippet */}
       <section className="mt-10">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-sm uppercase tracking-widest text-muted-foreground">
@@ -324,7 +317,6 @@ export function EmbedGenerator({
         </pre>
       </section>
 
-      {/* Info */}
       <section className="mt-10 grid gap-6 sm:grid-cols-3">
         {[content.info.free, content.info.responsive, content.info.theme].map(
           (card) => (

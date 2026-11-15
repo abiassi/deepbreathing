@@ -534,7 +534,6 @@ export async function checkInsomniaContentArtifacts() {
     try {
       actual = await readFile(join(contentRoot, relativePath), "utf8");
     } catch {
-      // Missing artifacts are reported through the same deterministic check.
     }
     if (actual !== expected) stale.push(relativePath);
   }

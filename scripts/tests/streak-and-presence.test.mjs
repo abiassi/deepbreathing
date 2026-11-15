@@ -6,8 +6,6 @@ import { computeStreak } from "./helpers/streak-logic.mjs";
 
 const ROOT = process.cwd();
 
-// ── Streak transition logic ────────────────────────────────────────────────
-
 test("streak: no prior session → 1", () => {
   assert.equal(computeStreak(0, null, "2026-06-13"), 1);
 });
@@ -27,8 +25,6 @@ test("streak: gap of 2+ days → reset to 1", () => {
 test("streak: streak=1, first day is the same as session → unchanged", () => {
   assert.equal(computeStreak(1, "2026-06-01", "2026-06-01"), 1);
 });
-
-// ── Migration file ────────────────────────────────────────────────────────
 
 const MIGRATION = path.join(
   ROOT,
@@ -51,8 +47,6 @@ test("migration 002 adds streak columns to user_stats", () => {
   assert.match(sql, /ADD COLUMN IF NOT EXISTS last_session_date/i);
   assert.match(sql, /ADD COLUMN IF NOT EXISTS current_streak/i);
 });
-
-// ── Presence routes ───────────────────────────────────────────────────────
 
 const HEARTBEAT_ROUTE = path.join(
   ROOT,
@@ -86,8 +80,6 @@ test("presence count route sets s-maxage cache header", () => {
   assert.match(src, /s-maxage/i, "count route must set s-maxage cache header");
 });
 
-// ── Stats route ───────────────────────────────────────────────────────────
-
 const STATS_ROUTE = path.join(
   ROOT,
   "src/app/api/v1/sync/stats/route.ts"
@@ -103,8 +95,6 @@ test("stats route contains streak CASE expression", () => {
   assert.match(src, /current_streak\s*=\s*CASE/i, "stats route must update current_streak with a CASE expression");
   assert.match(src, /current_streak \+ 1/i, "CASE must handle consecutive-day increment");
 });
-
-// ── Bootstrap route ───────────────────────────────────────────────────────
 
 const BOOTSTRAP_ROUTE = path.join(
   ROOT,

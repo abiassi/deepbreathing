@@ -1,7 +1,5 @@
 // Audio lab tap. Registered as an agent-browser init script, never shipped.
 //
-// Reroutes every connection to an AudioContext's destination through a tap
-// gain, and records the tap as 32-bit float PCM on the audio thread. The
 // recording is what the real engine sends to the speakers: after the master
 // compressor, limiter and trim.
 (() => {

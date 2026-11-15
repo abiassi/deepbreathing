@@ -344,7 +344,6 @@ export async function checkHomeContentArtifacts() {
     try {
       actual = await readFile(outputPath, "utf8");
     } catch {
-      // missing artifact
     }
     if (actual !== expected) stale.push(relativePath);
   }

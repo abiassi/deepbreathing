@@ -26,8 +26,7 @@ test("audits all structured routes deterministically against the checked-in cata
   assert.equal(stableJson(second), stableJson(first));
   // Drift-detection baseline, not a correctness claim. Re-pin it deliberately when
   // structured content legitimately changes, and read the classification diff below
-  // to confirm the change is the one you intended. Re-pinned 2026-07-25 after the
-  // suite got a runner: content 2917 -> 2923, keyword 408 -> 411.
+  // to confirm the change is the one you intended.
   assert.equal(first.digest, "298e0c6f2525e499790a76605e14a22f359d7f4fcee397578597903a195b5c2e");
   assert.deepEqual(first.locales, ["de-de", "es-es", "fr-fr", "ja-jp", "pt-br"]);
   assert.deepEqual(first.summary.datasets, { breathing: 14, "use-case": 18 });
@@ -62,10 +61,7 @@ test("accounts for every string leaf and preserves the current mapping baseline"
     Object.values(summary.contentMatches).reduce((total, count) => total + count, 0),
     summary.classification.content,
   );
-  // `incomplete` rose 727 -> 737 and `safe_unique` fell 2041 -> 2037 when this was
-  // re-pinned on 2026-07-25: ~10 newer content leaves have no translation yet.
-  // `unsafe_translation_conflict` held at 26, so nothing became less safe — that is
-  // the number to watch, since it counts leaves whose translations actively disagree.
+  // Watch `unsafe_translation_conflict`: it counts leaves whose translations disagree.
   assert.deepEqual(summary.contentBridge, {
     incomplete: 737,
     safe_equivalent_ambiguity: 123,

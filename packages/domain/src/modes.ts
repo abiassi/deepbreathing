@@ -21,6 +21,5 @@ export enum ModeName {
   BreathOfFire = 'Breath of Fire',
 }
 
-// Compile-time drift guard against the domain union.
 const _modeNamesAreBreathingModes = Object.values(ModeName) satisfies BreathingMode[];
 void _modeNamesAreBreathingModes;
