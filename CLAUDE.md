@@ -65,7 +65,8 @@ Project skills live in `.claude/skills/` and load on demand by their trigger des
 
 Production web releases come from GitHub `main` only. Never run `vercel --prod`,
 `vercel promote`, Force Promote, or manual production-alias commands from a feature
-branch or worktree. Branches receive preview deployments; merge the reviewed change
+branch or worktree. Only `main` and `staging` deploy on Vercel (`git.deploymentEnabled`
+in `vercel.json`); other branches get no preview. Merge the reviewed change
 to `main` and let the Git integration create production. The first `prebuild` check
 fails closed unless Vercel's production ref and SHA equal the current GitHub `main`.
 Mobile EAS/App Store releases do not authorize a Vercel production deployment; merge
@@ -88,6 +89,10 @@ Merge a web app PR yourself as soon as every CI check passes, when the change is
 low risk and a revert fully undoes it. Examples: UI, copy, content, docs, i18n,
 tracking events, sound and styling. Do not wait for a human review on these.
 After the merge, verify production as the deploy runbook describes.
+
+Feature branches get no Vercel preview, so PRs show no "Vercel" check. GitHub
+"Web checks" and the mobile job's `next build` gate the merge. Verify UI on a local
+build before the PR, or push the branch to `staging` for a hosted preview.
 
 `main` has no branch protection, so `gh pr merge --auto` merges before CI
 finishes. Never use `--auto`. Wait until every check is green, then run
