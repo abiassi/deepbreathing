@@ -1,22 +1,5 @@
 "use client";
 
-/**
- * NonBlockingSignInBanner — PROTOTYPE
- *
- * A non-blocking version of the post-session signup prompt. Instead of a modal
- * sheet that covers the screen (Conversion Prompt C), this anchors to the bottom
- * of the viewport, leaves the breathing orb fully interactive behind it, and
- * tucks itself away the moment the user starts another session (listens to the
- * `resonance:run-state` event the orb already emits).
- *
- * Two layouts: "card" (rich — session card + Google + email) and "pill"
- * (compact one-liner). Same honest loss-aversion framing/copy as Prompt C.
- *
- * NOT wired into the live experiment. It only renders when SessionCompletePrompt
- * sees a `?promptui=card|pill` query param, so the production default (Prompt C)
- * is untouched.
- */
-
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { X, Check, Loader2 } from "lucide-react";
 import { signIn } from "@/lib/auth-client";
@@ -133,7 +116,6 @@ export function NonBlockingSignInBanner({
     }
   }, [open]);
 
-  // Tuck away when the breathing session starts again.
   useEffect(() => {
     const onRun = (e: Event) => {
       const running = (e as CustomEvent).detail?.running;
@@ -334,9 +316,7 @@ const CSS = `
 }
 .${PREFIX}-card-only .${PREFIX}-panel{}
 
-/* layout: card */
 .${PREFIX}-card .${PREFIX}-panel{width:min(360px,calc(100vw - 28px));border-radius:24px;padding:16px 16px 15px;}
-/* layout: pill */
 .${PREFIX}-pill .${PREFIX}-panel{display:flex;align-items:center;gap:13px;width:min(460px,calc(100vw - 24px));border-radius:20px;padding:10px 12px 10px 14px;}
 
 .${PREFIX}-x{position:absolute;border:none;background:none;color:var(--cream-40);cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:color .2s,background .2s;}

@@ -248,7 +248,7 @@ The groups below separate live coupling from migration provenance and historical
 | Evidence | Dependency / cutover implication |
 |---|---|
 | `src/components/language-switcher.tsx:23` | Reads the injected proxy global, duplicates locale/path logic, and delays links until hydration to avoid rewritten double-prefix URLs. |
-| `src/components/resonance/runtime-phrases.ts:1227` | Uses the injected language as the first locale signal for the existing interactive phrase catalog. |
+| `src/components/resonance/runtime-phrases.ts:1226` | Uses the injected language as the first locale signal for the existing interactive phrase catalog. |
 | `apps/mobile/src/components/breathing-web/runtime-phrases.ts:498` | Mobile web-content copy mirrors the same injected-global locale detection. |
 | `src/components/resonance/Resonance.tsx:13` | Consumes the runtime phrase resolver and reports fallback misses; native routing must provide its locale explicitly. |
 | `src/components/auth/sign-in-sheet.tsx:9` | Detects the proxy-backed runtime locale before resolving sign-in copy. |

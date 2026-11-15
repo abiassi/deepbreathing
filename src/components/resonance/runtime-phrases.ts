@@ -1217,7 +1217,6 @@ function normalizeLocale(locale: string): string {
   return CATALOG[base] ? base : 'en';
 }
 
-/** Return the compact mode label used by the mode picker. */
 export function resolveRuntimeModeLabel(locale: string, mode: ModeName): string {
   return (MODE_LABELS[normalizeLocale(locale)] ?? DEFAULT_MODE_LABELS)[mode];
 }

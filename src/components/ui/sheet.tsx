@@ -42,17 +42,15 @@ const SheetContent = React.forwardRef<
       const overlay = overlayRef.current;
       const handleClick = (e: Event) => {
         const target = e.target as HTMLElement;
-        // Close if clicking directly on the overlay
         if (target === overlay) {
           onOverlayClick();
         }
       };
-      // Use capture phase to catch events before they bubble
-      overlay.addEventListener('mousedown', handleClick, true);
-      overlay.addEventListener('touchstart', handleClick, true);
+      overlay.addEventListener('mousedown', handleClick, { capture: true });
+      overlay.addEventListener('touchstart', handleClick, { capture: true });
       return () => {
-        overlay.removeEventListener('mousedown', handleClick, true);
-        overlay.removeEventListener('touchstart', handleClick, true);
+        overlay.removeEventListener('mousedown', handleClick, { capture: true });
+        overlay.removeEventListener('touchstart', handleClick, { capture: true });
       };
     }
   }, [onOverlayClick]);
