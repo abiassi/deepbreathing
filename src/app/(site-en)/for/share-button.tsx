@@ -18,7 +18,6 @@ export function ShareButton({ url, title, text, buttonText = "Share this guide",
   const handleShare = async () => {
     const liveTitle = getLocalizedShareTitle(title);
     const liveText = getLocalizedShareText(text);
-    // Try native share first (mobile)
     if (navigator.share) {
       try {
         await navigator.share({
@@ -28,13 +27,11 @@ export function ShareButton({ url, title, text, buttonText = "Share this guide",
         });
         return;
       } catch (err) {
-        // User cancelled or share failed, fall through to copy
       }
     }
 
     const taggedUrl = appendShareUtm(url, 'copy');
 
-    // Fallback: copy to clipboard
     try {
       await navigator.clipboard.writeText(`${liveText} ${taggedUrl}`);
       setCopied(true);

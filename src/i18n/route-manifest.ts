@@ -47,9 +47,7 @@ export interface NativeRouteDefinition<
   readonly kind: NativeRouteKind;
   readonly indexable: boolean;
   readonly dynamic: boolean;
-  /** Which localized App Router page owns this route. */
   readonly localizedHandler: LocalizedRouteHandler;
-  /** Whether the final preservation snapshot contains the route's locale file. */
   readonly catalogAvailable: boolean;
   /** Whether the public route is available, separate from sitemap inclusion. */
   readonly publicationIntent: LocalePublicationIntent;
@@ -591,7 +589,6 @@ export function getNativeRouteById(id: string): NativeRoute | null {
   return NATIVE_ROUTE_MANIFEST.find((route) => route.id === id) ?? null;
 }
 
-/** Resolve both canonical and locale-prefixed paths, including embed slugs. */
 export function getNativeRouteByPath(path: string): NativeRoute | null {
   const pathname = normalizeLookupPath(path);
   const exact = NATIVE_ROUTE_MANIFEST.find((route) => route.path === pathname);
@@ -632,11 +629,6 @@ export function isLocaleSemanticReady(
   );
 }
 
-/**
- * Side-by-side preview is available only after the explicit preview gate. It
- * still respects the intended public route matrix and never admits dynamic
- * exceptions through the localized static route tree.
- */
 export function isNativeRoutePreviewable(
   route: NativeRouteDefinition | NativeRouteId | NativeRoutePath | string,
   locale: LocaleCode,
@@ -652,11 +644,6 @@ export function isNativeRoutePreviewable(
   );
 }
 
-/**
- * Production publication is deliberately strict. Preview and semantic-ready
- * content are not public, dynamic exceptions are not emitted as static routes,
- * and a route-locale pair must also belong to the preserved public contract.
- */
 export function isNativeRoutePublished(
   route: NativeRouteDefinition | NativeRouteId | NativeRoutePath | string,
   locale: LocaleCode,
@@ -671,7 +658,6 @@ export function isNativeRoutePublished(
   );
 }
 
-/** A translated locale is cut over only when every intended static route is. */
 export function isNativeLocalePublished(locale: LocaleCode): boolean {
   if (locale === DEFAULT_LOCALE) return false;
 
@@ -685,7 +671,6 @@ export function isNativeLocalePublished(locale: LocaleCode): boolean {
   );
 }
 
-/** Return only locale alternates that are available for this route and mode. */
 export function getNativeAvailableLocales(
   route: NativeRouteDefinition | NativeRouteId | NativeRoutePath | string,
   mode: NativeLinkMode,
@@ -754,7 +739,6 @@ export function getNativeLocalizedRoutePaths(
 export interface LocalizedStaticParam {
   /** Public URL segment, such as `es`, never the unprefixed English locale. */
   readonly locale: string;
-  /** Canonical route segments for an optional catch-all localized route. */
   readonly segments: readonly string[];
 }
 
@@ -782,7 +766,6 @@ function buildLocalizedStaticParams(
   return Object.freeze(params);
 }
 
-/** Generate route params for explicit preview and cutover-ready pairs. */
 export function getPreviewLocalizedStaticParams(
   routes: readonly NativeRouteDefinition[] = NATIVE_ROUTE_MANIFEST,
 ): readonly LocalizedStaticParam[] {

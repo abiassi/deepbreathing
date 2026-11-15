@@ -34,8 +34,6 @@ export async function GET(
 
     const locale = normalizeOgLocale(request.nextUrl.searchParams.get('lang')) ?? 'en';
 
-    // Phase 2: prefer pre-baked translation when a locale is set and we have
-    // one for this slug. Missing translation → falls back to the EN hero title.
     const localizedTitle =
       locale !== 'en' && bySlug[slug]?.[locale] ? bySlug[slug][locale] : enTitle;
     const title = clampText(localizedTitle, 72);

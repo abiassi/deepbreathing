@@ -87,7 +87,6 @@ export function createAppStoreAnalyticsParams({
     const appleCampaign = new URL(destination).searchParams.get("ct");
     if (appleCampaign) params.apple_campaign = appleCampaign;
   } catch {
-    // Keep analytics resilient if a caller supplies an invalid destination.
   }
 
   return params;

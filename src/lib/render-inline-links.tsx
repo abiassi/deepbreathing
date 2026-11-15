@@ -28,7 +28,6 @@ export function renderInlineLinks(text: string): ReactNode {
   let match: RegExpExecArray | null;
   let key = 0;
 
-  // Reset regex state in case of cached lastIndex.
   LINK_RE.lastIndex = 0;
 
   while ((match = LINK_RE.exec(text)) !== null) {

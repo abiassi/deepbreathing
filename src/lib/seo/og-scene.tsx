@@ -54,8 +54,6 @@ function pickBlobShape(seed: string) {
   return BLOB_SHAPES[djb2(seed) % BLOB_SHAPES.length];
 }
 
-// Seeded RNG so the same title always produces the same particle layout —
-// each page gets its own constellation, but it stays stable across renders.
 function mulberry32(seed: number) {
   let s = seed >>> 0;
   return function rng() {
@@ -92,9 +90,7 @@ function generateParticles(seed: number): Particle[] {
     return { top: 30, left: 30, size: sizeMin, a: alphaMin };
   }
 
-  // 6 larger "anchor" particles for visual rhythm.
   for (let i = 0; i < 6; i++) particles.push(gen(16, 22, 0.32, 0.5));
-  // 50 small/medium — 80% small (3-7px), 20% medium (8-13px).
   for (let i = 0; i < 50; i++) {
     if (rng() < 0.8) particles.push(gen(3, 7, 0.22, 0.45));
     else particles.push(gen(8, 13, 0.28, 0.48));
@@ -102,10 +98,6 @@ function generateParticles(seed: number): Particle[] {
   return particles;
 }
 
-// Phase 1 of OG translation: only the focal "BREATHE" label in the orb is
-// localized. og:title/og:description are translated by the mass-translate
-// proxy and shown by social platforms *above* the image, so the bottom-of-image
-// title stays English for now — it's deliberately small/secondary.
 export const BREATHE_LABELS: Record<string, string> = {
   en: "BREATHE",
   es: "RESPIRA",
@@ -162,8 +154,6 @@ export function renderOgScene({
         fontFamily: 'Inter',
       }}
     >
-      {/* Soft halo behind orb. Centered on (600, 280); shrunk to match the
-          smaller orb so the glow doesn't dominate. */}
       <div
         style={{
           position: 'absolute',
@@ -177,7 +167,6 @@ export function renderOgScene({
         }}
       />
 
-      {/* Thin orbit ring — matches blob shape so it reads as an orbit */}
       <div
         style={{
           position: 'absolute',
@@ -225,10 +214,6 @@ export function renderOgScene({
         </div>
       </div>
 
-      {/* Decorative particles. Positions and sizes are seeded from the
-          title hash so every page gets its own constellation that stays
-          stable across renders. Mix of small (3-7px), medium (8-13px), and
-          larger "anchor" dots (16-22px) for visual rhythm. */}
       {particles.map((p, i) => (
         <div
           key={i}

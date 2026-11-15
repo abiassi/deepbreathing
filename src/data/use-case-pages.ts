@@ -81,9 +81,7 @@ export interface UseCaseVideoEmbed {
   description: string;
 }
 
-/** Voice search optimization - question H2 with direct answer for featured snippets */
 export interface VoiceSearchQA {
-  /** The exact question users ask (becomes H2) */
   question: string;
   /** 40-50 word direct answer (snippet-optimized) */
   answer: string;
@@ -115,7 +113,6 @@ export interface UseCasePageContent {
   relatedUseCases: RelatedUseCasePage[];
   relatedGuides?: RelatedGuide[];
   faqs: UseCaseFaq[];
-  /** Voice search optimization - question H2s with direct answers */
   voiceSearch?: VoiceSearchQA[];
 }
 
@@ -1376,7 +1373,6 @@ export const useCasePages: UseCasePageContent[] = [
     ]
   },
 
-  // Focus & Concentration
   {
     slug: "focus",
     mode: ModeName.Coherent,
@@ -1589,7 +1585,6 @@ export const useCasePages: UseCasePageContent[] = [
     ]
   },
 
-  // Meditation
   {
     slug: "meditation",
     mode: ModeName.Coherent,
@@ -1802,7 +1797,6 @@ export const useCasePages: UseCasePageContent[] = [
     ]
   },
 
-  // Athletic Recovery
   {
     slug: "athletes",
     mode: ModeName.Sigh,
@@ -2023,7 +2017,6 @@ export const useCasePages: UseCasePageContent[] = [
     ]
   },
 
-  // Pregnancy & Labor Preparation
   {
     slug: "pregnancy",
     mode: ModeName.Relax,
@@ -2241,7 +2234,6 @@ export const useCasePages: UseCasePageContent[] = [
     ]
   },
 
-  // Holiday Stress
   {
     slug: "holiday-stress",
     mode: ModeName.Sigh,
@@ -2441,7 +2433,6 @@ export const useCasePages: UseCasePageContent[] = [
     ]
   },
 
-  // Travel Anxiety
   {
     slug: "travel-anxiety",
     mode: ModeName.Coherent,
@@ -2879,7 +2870,6 @@ export const useCasePages: UseCasePageContent[] = [
   }
 ];
 
-// Stress relief use-case page
 const stressPage: UseCasePageContent = {
   slug: "stress",
   mode: ModeName.Sigh,
@@ -3088,7 +3078,6 @@ const stressPage: UseCasePageContent = {
 
 useCasePages.push(stressPage);
 
-// Kids breathing exercises page (SEO expansion)
 const kidsPage: UseCasePageContent = {
   slug: "kids",
   mode: ModeName.Box,
@@ -3285,7 +3274,6 @@ const kidsPage: UseCasePageContent = {
   ]
 };
 
-// Pranayama hub page (SEO expansion)
 const pranayamaPage: UseCasePageContent = {
   slug: "pranayama",
   mode: ModeName.NadiShodhana,
