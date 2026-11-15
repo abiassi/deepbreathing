@@ -19,9 +19,6 @@ import { ResonanceClient as Resonance } from "@/components/resonance/resonance-c
 
 const baseUrl = "https://deepbreathingexercises.com";
 
-// Internal link opportunities identified by Ahrefs — one link per keyword per page.
-// linkifyOnce finds the FIRST occurrence of a keyword in a string and wraps it in a Link.
-// Subsequent occurrences remain as plain text (tracked via the `linked` Set).
 const internalLinkMappings: Record<
   string,
   Array<{ keyword: string; href: string }>
@@ -121,10 +118,9 @@ export function createUseCaseMetadata(slug: string): Metadata {
   return page ? createUseCaseMetadataFromContent(page) : {};
 }
 
-// Winter blue colors (must match Resonance.tsx)
 const WINTER_BLUE = "#0c1929";
-const WINTER_CARD = "#162a43"; // Lighter blue for cards
-const WINTER_MUTED = "#1a3352"; // Even lighter for nested elements
+const WINTER_CARD = "#162a43";
+const WINTER_MUTED = "#1a3352";
 
 interface UseCasePageProps {
   slug: string;
@@ -170,7 +166,6 @@ export function UseCasePage({
     color: pattern?.color,
   });
 
-  // Internal link opportunity tracking — ensures each keyword is only linked once per page
   const pageLinkMappings = (internalLinkMappings[routeSlug] ?? []).map(
     (mapping) =>
       routeSlug === "lung-capacity" && mapping.href === "/breathe/pursed-lip"
@@ -340,7 +335,6 @@ export function UseCasePage({
       <h1 className="sr-only">{page.hero.title}</h1>
       <JsonLd data={structuredData} />
 
-      {/* Hero with Visualizer */}
       <section
         id="practice"
         className="relative isolate z-20 min-h-screen w-full text-foreground"
@@ -363,7 +357,6 @@ export function UseCasePage({
         </div>
       </section>
 
-      {/* Main Content */}
       <section
         className={`relative z-10 mx-auto mt-6 w-full max-w-6xl space-y-12 rounded-t-[48px] px-4 pb-20 pt-16 sm:px-6 lg:px-8 ${
           isHolidayPage
@@ -378,7 +371,6 @@ export function UseCasePage({
       >
         {!renderContext ? <AppStorePromotion variant="strip" /> : null}
 
-        {/* Back to Holiday Hub link */}
         {isHolidayPage && (
           <div className="-mt-4 mb-2">
             <Link
@@ -406,7 +398,6 @@ export function UseCasePage({
           </div>
         )}
 
-        {/* Intro */}
         <p
           className="text-xs text-muted-foreground -mt-4"
           data-i18n="credentials"
@@ -429,7 +420,6 @@ export function UseCasePage({
           <p className="text-xl leading-relaxed">{page.hero.intro}</p>
         </div>
 
-        {/* Voice Search Q&A - prominently placed for featured snippets */}
         {page.voiceSearch && page.voiceSearch.length > 0 && (
           <section className="space-y-6">
             {page.voiceSearch.map((qa) => (
@@ -456,7 +446,6 @@ export function UseCasePage({
           </section>
         )}
 
-        {/* Medical Disclaimer (if present) */}
         {page.disclaimer && (
           <div className="rounded-2xl border-l-4 border-amber-500 bg-amber-500/10 p-6">
             <p className="font-medium text-amber-700 dark:text-amber-400">
@@ -468,7 +457,6 @@ export function UseCasePage({
           </div>
         )}
 
-        {/* The Problem */}
         <section
           className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
           style={
@@ -510,7 +498,6 @@ export function UseCasePage({
           )}
         </section>
 
-        {/* The Solution */}
         <section
           className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
           style={
@@ -549,7 +536,6 @@ export function UseCasePage({
             </p>
           </div>
 
-          {/* CTAs */}
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <a
               href="#practice"
@@ -576,7 +562,6 @@ export function UseCasePage({
           </div>
         </section>
 
-        {/* Why It Works (Science) */}
         <section
           className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
           style={
@@ -615,7 +600,6 @@ export function UseCasePage({
           </div>
         </section>
 
-        {/* How-To Steps */}
         <section
           id="how-to"
           className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
@@ -684,7 +668,6 @@ export function UseCasePage({
           )}
         </section>
 
-        {/* References */}
         <section
           className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
           style={
@@ -736,7 +719,6 @@ export function UseCasePage({
           </ul>
         </section>
 
-        {/* Video */}
         {page.video && (
           <section
             className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
@@ -769,7 +751,6 @@ export function UseCasePage({
           </section>
         )}
 
-        {/* FAQ */}
         <section
           id="faq"
           className="glow-card rounded-[32px] border border-border p-8 text-card-foreground"
@@ -811,7 +792,6 @@ export function UseCasePage({
           </div>
         </section>
 
-        {/* Related Use Cases */}
         {page.relatedUseCases.length > 0 && (
           <section className="space-y-4">
             <p className="text-sm uppercase tracking-widest text-primary">
@@ -875,7 +855,6 @@ export function UseCasePage({
           </section>
         )}
 
-        {/* In-depth guides for specific situations */}
         {page.relatedGuides && page.relatedGuides.length > 0 && (
           <section className="space-y-4">
             <p className="text-sm uppercase tracking-widest text-primary">
@@ -913,7 +892,6 @@ export function UseCasePage({
           </section>
         )}
 
-        {/* Ready to practice */}
         <section
           className="rounded-[32px] p-8 text-center"
           style={{ backgroundColor: `${pattern.color}10` }}
@@ -1077,7 +1055,6 @@ export function UseCasePage({
               </>
             )}
           </div>
-          {/* Dedicated app links based on breathing technique */}
           {!isHolidayPage && page.breathingPageSlug === "box" && (
             <div className="mt-4 pt-4 border-t border-border">
               <Link

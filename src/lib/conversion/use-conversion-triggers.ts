@@ -67,17 +67,15 @@ export function useConversionTriggers(isAuthenticated: boolean) {
 
   const commit = useCallback((next: ConversionState) => {
     stateRef.current = next; // synchronous — survives same-tick multi-writer batching
-    saveState(next); // persistence for every writer (out of the updater)
-    setState(next); // pure value, not an updater fn
+    saveState(next);
+    setState(next);
   }, []);
 
-  // Load on mount, and assign/restore the A/B bucket (persisted in localStorage).
   useEffect(() => {
     setState(loadState());
     setVariant(getConversionVariant());
   }, []);
 
-  // Hide everything if authenticated
   useEffect(() => {
     if (isAuthenticated) {
       setShowSessionPrompt(false);

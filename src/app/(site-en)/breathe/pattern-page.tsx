@@ -9,7 +9,6 @@ import { breathingPageMap, type BreathingPageContent, type OwnedVideoEmbed } fro
 import { LocalizedDate } from "@/components/seo/localized-date";
 import { LanguageSwitcherFooter } from "@/components/language-switcher-footer-lazy";
 import { renderInlineLinks } from "@/lib/render-inline-links";
-// Lazy-load ShareButton via a client wrapper so its chunk stays out of first load.
 import { ShareButton } from "@/components/ui/share-button-lazy";
 import {
   resolveNativeInternalHref,
@@ -26,7 +25,6 @@ export function createPatternMetadataFromContent(
   serverMessages?: ProofServerChromeMessages,
 ): Metadata {
   const canonicalUrl = new URL(canonicalPath, baseUrl).toString();
-  // Use dynamic OG image route if available, otherwise fall back to static or custom image
   const ogImageUrl = pageContent.meta.ogImage && !pageContent.meta.ogImage.startsWith('og/')
     ? new URL(pageContent.meta.ogImage, baseUrl).toString()
     : new URL(`/og/${pageContent.slug}`, baseUrl).toString();
@@ -286,7 +284,6 @@ export function PatternPage({
             )}
           </p>
         )}
-        {/* Voice Search Q&A - prominently placed for featured snippets */}
         {page.voiceSearch && page.voiceSearch.length > 0 && (
           <section className="space-y-6">
             {page.voiceSearch.map((qa) => (
@@ -674,7 +671,6 @@ export function PatternPage({
           </section>
         ) : null}
 
-        {/* Quick sessions - not applicable for protocol-based patterns like Wim Hof */}
         {routeSlug !== "wim-hof" && (
           <section className="glow-card rounded-[32px] border border-border bg-card p-6">
             <p className="text-sm uppercase tracking-widest text-primary">{chrome("chrome.shared.quick-sessions", "Quick sessions")}</p>
@@ -690,7 +686,6 @@ export function PatternPage({
                 {chrome("chrome.shared.five-minutes", "5 minutes")}
               </a>
             </div>
-            {/* Dedicated app links based on breathing technique */}
             {routeSlug === "box" && (
               <div className="mt-4 pt-4 border-t border-border">
                 <a

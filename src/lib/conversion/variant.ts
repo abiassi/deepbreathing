@@ -1,21 +1,5 @@
 "use client";
 
-/**
- * A/B bucketing for the post-session conversion prompt.
- *
- *  - "control"      = the existing SignInSheet ("Save your progress")
- *  - "social_stats" = Conversion Prompt B (social proof + personal stats) — paused 2026-06-14
- *  - "loss_aversion" = Conversion Prompt C (real session card + loss-aversion copy) — paused
- *  - "keep_practice" = provider-complete Save your progress receipt — ACTIVE
- *
- * The active challenger is determined by ACTIVE_CHALLENGER. Setting CHALLENGER_SHARE = 0
- * is the instant rollback to control; setting it to 1 ships the challenger to everyone.
- *
- * Storage key v2 was bumped when switching from social_stats to loss_aversion so that
- * returning visitors who had been persisted as social_stats re-draw under the new
- * bucketing.
- */
-
 export type ConversionVariant =
   | "control"
   | "social_stats"
@@ -23,31 +7,14 @@ export type ConversionVariant =
   | "loss_aversion_banner"
   | "keep_practice";
 
-/**
- * The currently active challenger variant. One line to swap challengers.
- *
- * 2026-08-30: restored "keep_practice" as a product-correctness fix so every
- * signed-out completion offers both Apple and Google. Full rollback to control
- * remains CHALLENGER_SHARE = 0.
- */
 export const ACTIVE_CHALLENGER: ConversionVariant = "keep_practice";
 
-/**
- * Share of visitors bucketed into the active challenger.
- *   1   = 100% challenger (current — measured pre/post vs baseline)
- *   0   = instant rollback to control
- *   0.5 = true 50/50 A/B (only worthwhile once traffic supports a split)
- */
+/** 0 rolls every visitor back to control; 1 sends every visitor to ACTIVE_CHALLENGER. */
 export const CHALLENGER_SHARE = 1;
 
-/**
- * Kept for reference; no longer drives assignment.
- * ACTIVE_CHALLENGER + CHALLENGER_SHARE are the live controls.
- */
+/** Unused. ACTIVE_CHALLENGER and CHALLENGER_SHARE drive assignment. */
 export const SOCIAL_STATS_SHARE = 1;
 
-// Bumped v5 → v6 so returning visitors persisted as "loss_aversion" re-draw
-// onto the provider-complete Save your progress prompt.
 const VARIANT_KEY = "resonance_conversion_variant_v6";
 
 function isVariant(v: unknown): v is ConversionVariant {
@@ -60,10 +27,6 @@ function isVariant(v: unknown): v is ConversionVariant {
   );
 }
 
-/**
- * Returns the visitor's bucket, assigning and persisting one on first call.
- * Safe on the server (returns "control" without writing).
- */
 export function getConversionVariant(): ConversionVariant {
   if (typeof window === "undefined") return "control";
   try {
@@ -105,6 +68,5 @@ export function setConversionVariant(v: ConversionVariant) {
   try {
     if (localStorage.getItem(VARIANT_KEY) !== v) localStorage.setItem(VARIANT_KEY, v);
   } catch {
-    /* ignore */
   }
 }

@@ -7,11 +7,6 @@ function toDateStr(utcDays: number): string {
   return new Date(utcDays * 86400000).toISOString().slice(0, 10);
 }
 
-/**
- * Returns the live streak count for display.
- * The stored current_streak is only valid if last_session_date was today or yesterday.
- * A session older than that means the streak is broken and should display as 0.
- */
 export function computeLiveStreak(
   currentStreak: number,
   lastSessionDate: string | null,
@@ -22,12 +17,6 @@ export function computeLiveStreak(
   return diffDays <= 1 ? currentStreak : 0;
 }
 
-/**
- * Returns the consecutive day strings (YYYY-MM-DD) covered by a stored streak window:
- * [lastSessionDate - (streak - 1) .. lastSessionDate].
- * Used as a fallback / floor for the calendar when per-day rows are unavailable
- * (e.g. before the user_active_days migration is applied or backfilled).
- */
 export function streakWindowDays(
   currentStreak: number,
   lastSessionDate: string | null
@@ -42,16 +31,11 @@ export function streakWindowDays(
 }
 
 export interface DayCell {
-  date: string; // YYYY-MM-DD
+  date: string;
   active: boolean;
   isToday: boolean;
 }
 
-/**
- * Builds a full calendar-month grid (Sunday-first columns), respectful of the month's
- * real day count and weekday alignment. Leading/trailing pad cells are null.
- * A day is `active` if its date string is present in `activeDays`.
- */
 export function buildMonthGrid(
   year: number,
   month: number, // 1-12
@@ -59,7 +43,7 @@ export function buildMonthGrid(
   today: string
 ): (DayCell | null)[][] {
   const activeSet = new Set(activeDays);
-  const firstWeekday = new Date(Date.UTC(year, month - 1, 1)).getUTCDay(); // 0=Sun
+  const firstWeekday = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
   const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
 
   const cells: (DayCell | null)[] = [];
@@ -84,14 +68,14 @@ const MONTH_SHORT = [
 const WEEKDAY_INITIALS = ["S", "M", "T", "W", "T", "F", "S"];
 
 function utcWeekday(utcDays: number): number {
-  return new Date(utcDays * 86400000).getUTCDay(); // 0=Sun
+  return new Date(utcDays * 86400000).getUTCDay();
 }
 
 export interface GardenDay {
-  date: string; // YYYY-MM-DD
+  date: string;
   active: boolean;
   isToday: boolean;
-  future: boolean; // after `today` — render as an empty cell
+  future: boolean;
 }
 
 export interface GardenWeek {
@@ -113,8 +97,8 @@ export function buildGardenWeeks(
 ): GardenWeek[] {
   const activeSet = new Set(activeDays);
   const todayDays = dateToUtcDays(today);
-  const lastSunday = todayDays - utcWeekday(todayDays); // Sunday of today's week
-  const firstSunday = lastSunday - (weeksCount - 1) * 7; // Sunday of the first column
+  const lastSunday = todayDays - utcWeekday(todayDays);
+  const firstSunday = lastSunday - (weeksCount - 1) * 7;
 
   const weeks: GardenWeek[] = [];
   // Seed with the leading column's month so that partial first column isn't
@@ -171,10 +155,9 @@ export interface WeekStripDay {
   date: string;
   active: boolean;
   isToday: boolean;
-  label: string; // single-letter weekday
+  label: string;
 }
 
-/** The 7 calendar days ending at `today` (oldest first), each flagged active/today. */
 export function last7Days(activeDays: string[], today: string): WeekStripDay[] {
   const activeSet = new Set(activeDays);
   const end = dateToUtcDays(today);

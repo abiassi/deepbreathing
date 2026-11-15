@@ -39,9 +39,6 @@ export async function GET(request: NextRequest) {
     const subtitle = clampText(requestedSubtitle || DEFAULT_SUBTITLE, 56);
     const locale = normalizeOgLocale(searchParams.get('lang')) ?? 'en';
 
-    // Phase 2: when a locale is set and we have a pre-baked translation for
-    // this exact EN title, render the translated text as the bottom-of-image
-    // title. Missing translation → fall back to the EN title (no regression).
     const localizedTitle =
       locale !== 'en' && byTitle[enTitle]?.[locale] ? byTitle[enTitle][locale] : enTitle;
     const title = clampText(localizedTitle, 72);
