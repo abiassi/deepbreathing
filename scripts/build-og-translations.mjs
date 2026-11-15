@@ -1,21 +1,12 @@
 #!/usr/bin/env node
-// Build src/data/og-translations.json by scraping the live site.
-//
-// For every canonical (EN) URL in the sitemap:
-//   1. Fetch the EN page → extract its og:image URL to determine the lookup key
-//      (either a `title=...` query param value, or a `/og/<slug>` path slug).
-//   2. For each non-EN locale, fetch /<locale><path> and capture its og:title.
-//      mass-translate has already translated og:title at the proxy layer, so
-//      whatever we read there is the authoritative localized headline.
-//
+// Localized og:title comes from mass-translate at the proxy layer, so the
+// scraped value is the authoritative localized headline.
 // Result schema: `src/data/og-translations.json`
 //   {
 //     "byTitle": { "Free Online Box Breathing Timer": { "es": "…", "pt": "…", … } },
 //     "bySlug":  { "4-7-8": { "es": "…", "pt": "…", … } }
 //   }
 //
-// Run manually when translations drift:
-//   node scripts/build-og-translations.mjs
 //
 // Commit the generated JSON to git. The /og and /og/[slug] route handlers
 // import it and fall back to EN when a key/locale is missing — so a stale or
@@ -110,7 +101,6 @@ async function main() {
   const sitemap = await fetchText(`${BASE}/sitemap.xml`);
   const allUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 
-  // Distinct EN paths only (those without /es/, /pt/, /fr/, /de/, /ja/ prefix).
   const enPaths = [
     ...new Set(
       allUrls

@@ -68,7 +68,6 @@ test("Host gating is consistent across PageViewTracker and google-analytics", ()
 test("Non-production hosts are explicitly documented as not allowed", () => {
   const trackerSrc = fs.readFileSync(PAGE_VIEW_TRACKER_PATH, "utf8");
 
-  // The code should NOT allow localhost or origin subdomain
   assert.ok(!trackerSrc.includes('"localhost"'), "must not allow localhost");
   assert.ok(!trackerSrc.includes('"origin.'), "must not allow origin subdomain");
   assert.ok(!trackerSrc.includes('"127.0.0.1'), "must not allow 127.0.0.1");

@@ -256,7 +256,6 @@ test("translated migration state admits the complete cutover candidate", () => {
     TRANSLATED_LOCALES.every(({ code }) => isNativeLocalePublished(code)),
   );
   assert.equal(getLocalizedStaticParams().length, 272);
-  // Explicit bespoke routes own their params outside the shared catch-all.
   assert.equal(getPreviewLocalizedStaticParams().length, 272);
   assert.equal(isNativeLocalePublished(DEFAULT_LOCALE), false);
 });

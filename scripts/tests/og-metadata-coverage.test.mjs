@@ -22,8 +22,6 @@ function walkPages(dir) {
   return pages;
 }
 
-// Resolve a TS/TSX import specifier to a file on disk, so a page that delegates
-// its metadata to a shared factory can be checked at the factory instead.
 function resolveImport(spec, fromFile) {
   const base = spec.startsWith('@/')
     ? path.join(ROOT, 'src', spec.slice(2))
@@ -61,10 +59,6 @@ test('every page with metadata defines openGraph.images and twitter.images, inli
 
     if (hasImageConfig(source)) continue;
 
-    // Most pages now delegate to a shared metadata factory (createDurationMetadata-
-    // FromContent, createPatternMetadata, ...) instead of spelling openGraph out
-    // inline. Follow the factory's import and assert the images are set there,
-    // rather than maintaining a hardcoded list of factory names.
     const factory = source.match(/export\s+const\s+metadata\s*(?::\s*Metadata)?\s*=\s*(?:await\s+)?([A-Za-z0-9_$]+)\s*\(/);
     if (factory) {
       const name = factory[1];

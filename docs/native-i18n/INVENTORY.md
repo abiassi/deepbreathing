@@ -274,7 +274,7 @@ The groups below separate live coupling from migration provenance and historical
 
 | Evidence | Dependency / cutover implication |
 |---|---|
-| `scripts/build-og-translations.mjs:8` | Scrapes localized apex pages and treats proxy-produced `og:title` as authoritative. |
+| `scripts/build-og-translations.mjs:2` | Scrapes localized apex pages and treats proxy-produced `og:title` as authoritative. |
 | `package.json:14` | Exposes the proxy-scraping OG translation build command. |
 | `src/data/og-translations.json:3` | Checked-in localized OG-title artifact produced by live-site scraping. |
 | `src/app/og/route.tsx:5` | Consumes the proxy-derived OG-title artifact for query-based images. |
@@ -302,7 +302,7 @@ The groups below separate live coupling from migration provenance and historical
 | `scripts/tests/sitemap-coverage.test.mjs:9` | Pins proxy-prefixed publication, hreflang, and the English-only `/languages` rule. |
 | `scripts/tests/ping-sitemap.test.mjs:154` | Pins the changed-route IndexNow safety boundary: localized catch-all changes are ambiguous and must submit nothing rather than expanding to locale variants. |
 | `scripts/tests/languages-page-ssr.test.mjs:23` | Pins the client-only switcher and hardcoded locale discovery links. |
-| `scripts/tests/share-utm.test.mjs:8` | Pins share-copy behavior against proxy-mutated page metadata, and separates the proxy-translated buttons from the natively-translated holiday button. |
+| `scripts/tests/share-utm.test.mjs:73` | Pins share-copy behavior against proxy-mutated page metadata, and separates the proxy-translated buttons from the natively-translated holiday button. |
 
 ### Operational instructions and analytics integrations (mixed active and stale)
 

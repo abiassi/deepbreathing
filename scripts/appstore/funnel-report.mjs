@@ -1,21 +1,8 @@
 #!/usr/bin/env node
 /**
- * Read-only app acquisition funnel report.
- *
- * Sources:
- *   - GA4 Data API (service-account JWT)
- *   - App Store Connect Analytics Reports API (ASC JWT, if configured)
- *
- * This script never creates an Apple Analytics report request. Apple must
- * already have generated the requested Analytics Reports before the script
- * can read them. Missing or privacy-withheld rows are represented as missing,
- * never as fabricated zeroes.
- *
- * Examples:
- *   node scripts/appstore/funnel-report.mjs --help
- *   node scripts/appstore/funnel-report.mjs --source ga4 --format json
- *   node scripts/appstore/funnel-report.mjs --start 2026-08-01 --end 2026-08-31 \
- *     --source all --format markdown
+ * Never creates an Apple Analytics report request: Apple must already have
+ * generated the reports. Missing or privacy-withheld rows stay missing, never
+ * fabricated zeroes.
  */
 
 import { createSign } from "node:crypto";

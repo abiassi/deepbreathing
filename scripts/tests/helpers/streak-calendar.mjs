@@ -30,7 +30,7 @@ export function streakWindowDays(currentStreak, lastSessionDate) {
 
 export function buildMonthGrid(year, month, activeDays, today) {
   const activeSet = new Set(activeDays);
-  const firstWeekday = new Date(Date.UTC(year, month - 1, 1)).getUTCDay(); // 0=Sun
+  const firstWeekday = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
   const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
 
   const cells = [];
@@ -55,7 +55,7 @@ const MONTH_SHORT = [
 const WEEKDAY_INITIALS = ["S", "M", "T", "W", "T", "F", "S"];
 
 function utcWeekday(utcDays) {
-  return new Date(utcDays * 86400000).getUTCDay(); // 0=Sun
+  return new Date(utcDays * 86400000).getUTCDay();
 }
 
 export function buildGardenWeeks(activeDays, today, weeksCount) {
