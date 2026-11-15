@@ -1,48 +1,15 @@
-/**
- * Sound guide: a breath-shaped voice that makes every phase legible with eyes
- * closed.
- *
- * The legacy cues are 0.3 s blips at phase boundaries. Between two blips the
- * sound does not change, so a listener cannot tell an inhale from an exhale,
- * or how much of the phase is left. The sound guide plays for the whole phase.
- *
- * One number drives it: how full the breath is.
- *
- * - Inhale fills. A low, warm note gets louder and rounder, and a second note
- *   joins above it. Everything reaches its peak on the last moment.
- * - Exhale empties. It is the inhale played backwards.
- * - A hold stands still: one level, nothing moves.
- * - Marker: two soft notes going up start an inhale, two going down start an
- *   exhale, and one bell starts a hold.
- *
- * Nothing glides and nothing sweeps. The first version used a pure sine that
- * rose from 330 to 494 Hz while it swelled, under a noise band that swept
- * from 450 to 1900 Hz. Listeners heard a mosquito and a zoom. The fill is now
- * carried by body: notes an octave lower, each with two soft harmonics, under
- * a lowpass that stays below 1.2 kHz.
- *
- * The third version makes the same voice less mechanical. Each note is three
- * voices a few cents apart that drift slowly. The fill follows a breath
- * curve: a quick start and a soft settle. The voice and the markers play
- * into a small warm room. No two breaths have exactly the same level.
- *
- * Every phase is scheduled once, at its start, from the known phase length.
- * The schedule uses only setValueAtTime and linearRampToValueAtTime, which
- * react-native-audio-api renders sample-accurately (see AudioPlatformAdapter).
- * A curve is a list of short straight ramps.
- */
+// Design and listening notes: docs/audio/SOUND-DESIGN-2026-11.md.
+// Schedule only setValueAtTime and linearRampToValueAtTime: react-native-audio-api
+// renders those sample-accurately (see AudioPlatformAdapter.preferLinearRamps).
 import { ModeName } from './modes';
 
 export type GuidePhaseKind = 'inhale' | 'inhaleTopUp' | 'holdIn' | 'exhale' | 'holdOut';
 
-/** Ladder position: 0 = root, 1 = fifth, 2 = octave. */
 type LadderIndex = 0 | 1 | 2;
 const LADDER_RATIOS: readonly [number, number, number] = [1, 1.5, 2];
 
 export interface SoundGuideProfile {
-  /** Peak gain of the root note at the default cue volume. */
   toneGain: number;
-  /** Tone lowpass in Hz: closed at rest, open at the top of the breath. */
   toneLowpassHz: readonly [closed: number, open: number];
   /**
    * Peak gain of the air layer on the inhale and on the exhale. 0 on both
@@ -53,10 +20,8 @@ export interface SoundGuideProfile {
   /** Bandpass centre of the air layer in Hz. Fixed: the band never sweeps. */
   airBandHz: number;
   airQ: number;
-  /** Tone level kept through a hold, as a fraction of the peak. */
   holdInLevel: number;
   holdOutLevel: number;
-  /** Peak gain of the phase marker. */
   chimeGain: number;
 }
 
@@ -85,7 +50,6 @@ const MODE_PROFILES: Partial<Record<ModeName, Partial<SoundGuideProfile>>> = {
   // Physiological Sigh, at the base gain, was heard as right: its markers
   // are higher (349-698 Hz) and come 21 times a minute.
   [ModeName.Box]: { toneGain: 0.17, chimeGain: 0.142 },
-  // 4-7-8: a long, quieter hold.
   [ModeName.Relax]: { toneGain: 0.19, holdInLevel: 0.6 },
   [ModeName.Coherent]: { toneGain: 0.19, chimeGain: 0.134 },
   [ModeName.Sigh]: { toneGain: 0.15 },
@@ -117,45 +81,35 @@ const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 const lerp = (from: number, to: number, amount: number) => from + (to - from) * amount;
 
 export interface GuideState {
-  /** Ladder position, 0..2: how far the notes above the root have joined. */
   position: number;
-  /** Tone level, 0..1 of the peak. Also how full the breath sounds. */
   level: number;
-  /** Air gain before volume. */
   air: number;
 }
 
 export const GUIDE_REST: GuideState = { position: 0, level: 0, air: 0 };
 
 export interface Breakpoint {
-  /** Seconds from the phase start. */
   at: number;
   value: number;
 }
 
 export interface GuideMarker {
-  /** Ladder notes, in the order they sound. Two notes make a rising or a falling pair. */
   notes: LadderIndex[];
-  /** True for the hold bell: one note with a longer tail. */
   bell: boolean;
   gain: number;
   decaySeconds: number;
-  /** Seconds between the two notes of a pair. */
   gapSeconds: number;
 }
 
 export interface GuidePhasePlan {
   duration: number;
-  /** Gain curve of each ladder note: root, fifth, octave. */
   notes: readonly [Breakpoint[], Breakpoint[], Breakpoint[]];
   toneLowpassHz: Breakpoint[];
   airGain: Breakpoint[];
   marker: GuideMarker;
-  /** State at each breakpoint. The next phase starts from the state it interrupts. */
   states: Array<GuideState & { at: number }>;
 }
 
-/** State of a plan at `seconds` after its start. Holds the last state past the end. */
 export function guideStateAt(plan: Pick<GuidePhasePlan, 'states'>, seconds: number): GuideState {
   const { states } = plan;
   const last = states[states.length - 1];
@@ -178,11 +132,8 @@ export interface GuidePhaseRequest {
   durationSeconds: number;
   from: GuideState;
   profile: SoundGuideProfile;
-  /** True when a top-up inhale follows this inhale (physiological sigh). */
   topUpFollows?: boolean;
-  /** Level this breath fills to, 0..1 of the peak. Default 1. */
   peakLevel?: number;
-  /** Scales the marker gain. Default 1. */
   markerVelocity?: number;
 }
 
@@ -201,7 +152,6 @@ const fill = (progress: number) => {
   const x = clamp01(progress);
   return 0.55 * x + 0.45 * (1 - (1 - x) ** 1.8);
 };
-/** Progress of an emptying: the fill backwards. A soft start, then a quicker fall. */
 const empty = (progress: number) => 1 - fill(1 - clamp01(progress));
 /**
  * Quietest level a moving voice is planned from: 15 dB under the peak. Lower,
@@ -237,15 +187,11 @@ const noteWeight = (position: number, index: number) =>
 const MIN_PHASE_SECONDS = 0.4;
 /** Level a first inhale stops at when a top-up follows. The orb stops at 75 %. */
 const TOP_UP_SHELF = 0.62;
-/** The second sip starts from a short dip, so it is heard as a new fill. */
 const TOP_UP_DIP = 0.16;
 
 interface PhaseShape {
-  /** Ladder position at phase progress 0..1. */
   position(progress: number): number;
-  /** Tone level at phase progress 0..1. */
   level(progress: number): number;
-  /** Air gain as a fraction of the profile's inhale or exhale gain. */
   air(progress: number): number;
   airGain: number;
   marker: GuideMarker;
@@ -276,8 +222,6 @@ function shapeFor(request: GuidePhaseRequest): PhaseShape {
     decaySeconds: brisk ? 0.5 : 1.1,
     gapSeconds: 0,
   });
-  // A voice that starts below the floor (the first breath of a session) joins
-  // the planned curve over the first tenth of the phase.
   const joinFrom = (planned: number, progress: number) => lerp(startLevel, planned, smooth(progress / 0.1));
 
   switch (kind) {
@@ -316,7 +260,6 @@ function shapeFor(request: GuidePhaseRequest): PhaseShape {
       };
     }
     case 'exhale': {
-      // The inhale backwards: full at the first moment, then falling for the whole phase.
       return {
         position: (p) => lerp(startPosition, 0, empty(p)),
         level: (p) =>
@@ -354,7 +297,6 @@ export function planGuidePhase(request: GuidePhaseRequest): GuidePhasePlan {
   const toneLowpassHz: Breakpoint[] = [];
   const airGain: Breakpoint[] = [];
   const states: GuidePhasePlan['states'] = [];
-  // Air joins the new shape over a short blend, so its curve does not step.
   const blendSeconds = Math.min(0.3, duration * 0.25);
 
   for (let step = 0; step <= steps; step += 1) {
@@ -375,7 +317,6 @@ export function planGuidePhase(request: GuidePhaseRequest): GuidePhasePlan {
   return { duration, notes, toneLowpassHz, airGain, marker: shape.marker, states };
 }
 
-/** A small seeded random source (mulberry32). Returns numbers in 0..1. */
 function seededRandom(seed: number): () => number {
   let state = seed >>> 0;
   return () => {
@@ -425,7 +366,6 @@ export function roomImpulseResponse(sampleRate: number, seed = 0x0d0b): [Float32
     }
     let tailEnergy = 0;
     for (let index = 0; index < length; index += 1) tailEnergy += data[index] * data[index];
-    // The reflections carry about a third of the energy of the tail.
     const reflectionScale = Math.sqrt(tailEnergy / 3 / reflections.reduce((sum, [, level]) => sum + level * level, 0));
     reflections.forEach(([milliseconds, level]) => {
       const at = Math.floor((milliseconds / 1000) * sampleRate);
@@ -434,14 +374,12 @@ export function roomImpulseResponse(sampleRate: number, seed = 0x0d0b): [Float32
     return data;
   }) as [Float32Array, Float32Array];
 
-  // Average power gain at 16 frequencies between 120 Hz and 1 kHz, both ears.
   let power = 0;
   const probes = 16;
   for (let probe = 0; probe < probes; probe += 1) {
     const step = (2 * Math.PI * 120 * (1000 / 120) ** (probe / (probes - 1))) / sampleRate;
     const coefficient = 2 * Math.cos(step);
     channels.forEach((data) => {
-      // Goertzel: the response of the room at one frequency.
       let previous = 0;
       let beforePrevious = 0;
       for (let index = 0; index < length; index += 1) {
@@ -465,11 +403,8 @@ export interface SoundGuideOptions {
   output: AudioNode;
   rootHz: number;
   profile: SoundGuideProfile;
-  /** Looping noise for the air layer. */
   noiseBuffer: AudioBuffer;
-  /** Long shared reverb for the closing chord, or null where the platform has none. */
   reverb: ConvolverNode | null;
-  /** The small room of the voice and the markers (see roomImpulseResponse), or null. */
   room: ConvolverNode | null;
   /** Scales every gain; the engine passes cue volume relative to its default. */
   volume: () => number;
@@ -565,7 +500,6 @@ const NOTE_PAN: readonly [number, number, number] = [0, -0.45, 0.45];
  */
 const VOICE_SPREAD: readonly [number, number, number] = [0.3, 1, 1];
 
-/** A bell: the note and a quiet octave. */
 const BELL_PARTIALS: ReadonlyArray<{ ratio: number; level: number }> = [
   { ratio: 1, level: 0.86 },
   { ratio: 2, level: 0.14 },
@@ -621,7 +555,6 @@ export class SoundGuide {
   /** The closing chord. Never faded, so it rings out, into the long reverb. */
   private readonly chordBus: GainNode;
   private running: { plan: GuidePhasePlan; start: number; volume: number } | null = null;
-  /** Level the current breath fills to. Drawn once per breath, on its first inhale. */
   private breathPeak = 1;
   /** Each shared convolver with this guide's own return path. */
   private readonly returns: Array<{ convolver: ConvolverNode; wetLowpass: BiquadFilterNode }> = [];
@@ -650,12 +583,10 @@ export class SoundGuide {
       this.returns.push({ convolver, wetLowpass });
     };
 
-    // The closing chord keeps the long reverb it was tuned with.
     this.chordBus = this.track(context.createGain());
     this.chordBus.connect(output);
     sendTo(this.chordBus, options.reverb, REVERB_SEND, REVERB_LOWPASS_HZ);
 
-    // The voice and the markers decay into a small room.
     const mix = this.track(context.createGain());
     mix.connect(output);
     sendTo(mix, options.room, ROOM_SEND, ROOM_LOWPASS_HZ);
@@ -910,7 +841,6 @@ export class SoundGuide {
       const decaySeconds = 3;
       chord.forEach((note) => {
         this.playChime({
-          // Same notes as the first version: 247-494 Hz for the root.
           hz: this.baseHz * MARKER_OCTAVE * note.ratio,
           gain: CLOSING_CHORD_GAIN * note.gain * volume,
           decaySeconds,
@@ -921,7 +851,6 @@ export class SoundGuide {
       });
       tail = Math.max(tail, 0.85 + decaySeconds + 0.2);
     }
-    // The reverb tail of the last sound needs a moment to ring out.
     return tail + (this.returns.length > 0 ? 1.2 : 0);
   }
 
@@ -932,7 +861,6 @@ export class SoundGuide {
       try {
         source.stop();
       } catch {
-        // Already stopped.
       }
     });
     this.returns.forEach(({ convolver, wetLowpass }) => {
