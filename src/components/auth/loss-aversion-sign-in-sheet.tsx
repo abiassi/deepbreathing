@@ -34,7 +34,7 @@ interface LossAversionSignInSheetProps {
   locale?: string;
 }
 
-const PREFIX = "cpl"; // conversion-prompt loss-aversion
+const PREFIX = "cpl";
 
 function formatDuration(seconds: number): string {
   const m = Math.floor(seconds / 60);
@@ -133,7 +133,6 @@ export function LossAversionSignInSheet({
   const sending = status === "sending";
   const sent = status === "sent";
   const duration = formatDuration(sessionSeconds);
-  // r=16, circumference ≈ 100.53
   const CIRC = 100.53;
 
   return (
@@ -165,7 +164,6 @@ export function LossAversionSignInSheet({
             </div>
           ) : (
             <>
-              {/* Real session card */}
               <div className={`${PREFIX}-card`}>
                 <div className={`${PREFIX}-ring-wrap`}>
                   <svg viewBox="0 0 40 40" className={`${PREFIX}-svg`} aria-hidden="true">

@@ -38,7 +38,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     useSync(isAuthenticated);
   const hasMerged = useRef(false);
 
-  // On first auth, merge guest data then hydrate
   useEffect(() => {
     if (!isAuthenticated || hasMerged.current) return;
     hasMerged.current = true;
@@ -62,8 +61,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // Attach the A/B bucket as a user property so the converted user is
-    // segmentable by arm in GA4 (the truth metric: prompt_shown -> real signup).
     const variant = readConversionVariant();
     gtagSafe("set", "user_id", userId);
     gtagSafe("set", "user_properties", { signed_up: true, conversion_variant: variant });

@@ -63,9 +63,6 @@ function getDisplayedLocales(basePath: string) {
     isEnOnlyRoute(basePath) ? "/" : basePath,
   );
   if (!route) {
-    // MassTranslate can serve dynamic proxy routes that are deliberately not
-    // admitted to the static native manifest. Preserve those old options only
-    // when the proxy has explicitly configured them.
     return configuredCodes ? candidates : [];
   }
 
@@ -75,7 +72,6 @@ function getDisplayedLocales(basePath: string) {
   );
 }
 
-/** Build a locale option without linking to an unavailable native route. */
 function localeHref(locale: LocaleCode, basePath: string): string {
   if (isEnOnlyRoute(basePath)) return localizePathname("/", locale);
   return resolveNativeInternalHref(basePath, locale, "native");
@@ -129,11 +125,6 @@ function GlobeIcon({ className }: { className?: string }) {
   );
 }
 
-/**
- * Inline language switcher for the Resonance header.
- * Shows just "PT" (or current locale) left of Settings — no extra chrome.
- * Click opens a dropdown with all languages.
- */
 export function LanguageSwitcherInline({ basePath, locale }: LanguageSwitcherProps = {}) {
   const [open, setOpen] = useState(false);
   const [info, setInfo] = useState<LocaleInfo | null>(
@@ -204,14 +195,6 @@ export function LanguageSwitcherInline({ basePath, locale }: LanguageSwitcherPro
   );
 }
 
-/**
- * Footer-style language switcher, inline links.
- * Minimized: globe that expands to show all locales.
- *
- * This stays client-side because the switcher is an interactive control. It
- * only offers locales whose current route is published, while proxy pages use
- * the proxy's configured locale list for dynamic legacy routes.
- */
 export function LanguageSwitcherFooter({ basePath, locale }: LanguageSwitcherProps = {}) {
   const [open, setOpen] = useState(false);
   const [info, setInfo] = useState<LocaleInfo | null>(
