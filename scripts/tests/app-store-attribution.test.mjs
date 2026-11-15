@@ -83,7 +83,6 @@ test("Apple acquisition requires complete verified segments", async (t) => {
   });
   t.mock.timers.enable({ apis: ["Date"], now: new Date("2026-09-21T12:00:00Z") });
 
-  // Exercise the public reader with in-memory Apple responses and valid gzip/MD5 metadata.
   function source(context, options = {}) {
     const calls = new Map();
     const reports = [

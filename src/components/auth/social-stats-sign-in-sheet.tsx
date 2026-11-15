@@ -1,29 +1,5 @@
 "use client";
 
-/**
- * SocialStatsSignInSheet — "Conversion Prompt B (Social + Stats)"
- *
- * A faithful production port of the chosen design direction from Claude Design
- * (claude.ai/design handoff bundle). It reframes *why* to sign up rather than
- * restyling buttons: social proof ("people breathing right now") leads, and the
- * visitor's own week (blurred personal stats) gives a private reason to finish.
- *
- * This is a sibling to {@link SignInSheet}, not a replacement. The live funnel
- * (SessionCompletePrompt -> SignInSheet in Resonance.tsx) is intentionally left
- * untouched. Wiring this in should go through docs/PRODUCT-EXPERIMENTS.md with a
- * baseline + pre-committed success criteria, per the project CLAUDE.md.
- *
- * Honest adaptations from the prototype:
- *  - Google sign-in redirects away (real OAuth), so the in-page "unblur -> You're
- *    in" flourish only fires on the email magic-link path, mirroring the real
- *    sheet's `sent` state.
- *  - Copy is English literals via props. i18n follow-up: route through
- *    runtime-phrases like SignInSheet does (see handoff note).
- *  - Only `yourMinutes` maps to real data (the existing `totalMinutes` prop on
- *    SignInSheet). `liveCount`, `dayStreak`, and the avatars are placeholders to
- *    swap for a real source before shipping.
- */
-
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { X, Lock, Check, Loader2 } from "lucide-react";
 import { signIn } from "@/lib/auth-client";
@@ -39,25 +15,19 @@ interface SocialStatsSignInSheetProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSuccess?: () => void;
-  /** Real data: minutes the visitor has logged this week (maps to existing `totalMinutes`). */
   yourMinutes?: number;
-  /** Placeholder until a real streak source exists. */
   dayStreak?: number;
   /** @deprecated — live count is now fetched from /api/v1/presence/count on open. */
   liveCount?: number;
   /** Show the personal stats block. Gate on real data (yourMinutes > 0) so we
    *  never blur a "0". Social proof still leads when this is false. */
   showStats?: boolean;
-  /** Copy overrides (i18n follow-up). */
   headline?: string;
   subtitle?: string;
 }
 
-const PREFIX = "cps"; // conversion-prompt social
+const PREFIX = "cps";
 
-// The 12 per-breathing-style accent colors (src/components/resonance/constants.ts).
-// The social-proof avatars draw a random 4 of these on each open so the faces feel
-// varied and tie back to the rest of the app's color language.
 const ACCENT_COLORS = [
   "#e11d48", "#4f46e5", "#059669", "#0ea5e9", "#f97316", "#10b981",
   "#8b5cf6", "#0891b2", "#f59e0b", "#38bdf8", "#dc2626", "#ea580c",
@@ -87,24 +57,20 @@ export function SocialStatsSignInSheet({
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [emailOpen, setEmailOpen] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
-  // null = loading; 0 = failed/empty → show text fallback; >0 = real anchor.
   const [liveCountAnchor, setLiveCountAnchor] = useState<number | null>(null);
   const [count, setCount] = useState(0);
   // Deterministic default keeps SSR/first paint stable; re-randomized on each open below.
   const [avatarColors, setAvatarColors] = useState<string[]>(() => ACCENT_COLORS.slice(0, 4));
   const swapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Track view once per open.
   useEffect(() => {
     if (open) trackEvent("signin_prompt_view", { variant: "social_stats" });
   }, [open]);
 
-  // Fresh random accent colors each time the sheet opens (decorative, client-only).
   useEffect(() => {
     if (open) setAvatarColors(pickAvatarColors(4));
   }, [open]);
 
-  // Fetch real live count on each open; use it as the jitter anchor.
   useEffect(() => {
     if (!open) return;
     setLiveCountAnchor(null);
@@ -120,7 +86,6 @@ export function SocialStatsSignInSheet({
       });
   }, [open]);
 
-  // Reset to a clean form shortly after the sheet closes.
   useEffect(() => {
     if (open) return;
     const t = setTimeout(() => {
@@ -134,7 +99,6 @@ export function SocialStatsSignInSheet({
     return () => clearTimeout(t);
   }, [open]);
 
-  // Gentle jitter around the real anchor while open; skip for reduced-motion.
   useEffect(() => {
     if (!open || liveCountAnchor === null || liveCountAnchor === 0) return;
     if (typeof window === "undefined") return;
@@ -177,8 +141,6 @@ export function SocialStatsSignInSheet({
     try {
       await signIn.magicLink({ email, callbackURL: "/" });
       onSuccess?.();
-      // Endowment payoff: reveal the stats that were theirs all along, then
-      // resolve to the "check your email" state (matches SignInSheet's `sent`).
       setUnlocked(true);
       swapTimer.current = setTimeout(() => setStatus("sent"), 560);
     } catch {
@@ -222,7 +184,6 @@ export function SocialStatsSignInSheet({
               <div className={`${PREFIX}-live`}>
                 <span className={`${PREFIX}-pulse`} aria-hidden="true" />
                 {liveCountAnchor === null ? (
-                  /* Loading — pulse dot + avatars are already visible */
                   <span className={`${PREFIX}-lt`} aria-hidden="true" />
                 ) : liveCountAnchor === 0 ? (
                   <span className={`${PREFIX}-lt`}>Join thousands breathing today</span>

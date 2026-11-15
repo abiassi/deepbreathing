@@ -12,8 +12,6 @@ export function appendShareUtm(url: string, medium: ShareMedium = "copy"): strin
   }
 }
 
-// Strip " | Brand" or " — Brand" suffix from a page title so the result
-// reads naturally as a share message.
 function stripSiteSuffix(title: string): string {
   const stripped = title.split(/ [|—–] /)[0]?.trim();
   return stripped || title;
@@ -38,8 +36,6 @@ export function getLocalizedShareText(fallback: string): string {
   if (typeof document === "undefined") return fallback;
   const lang = (document.documentElement.lang || "en").toLowerCase();
   if (lang.startsWith("en")) {
-    // EN: meta description is the curated SEO copy. Prefer it over the prop
-    // when present; both are English so tone-wise they're interchangeable.
     const desc = document
       .querySelector('meta[name="description"]')
       ?.getAttribute("content")

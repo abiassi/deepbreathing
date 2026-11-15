@@ -10,7 +10,6 @@
 import { ModeName } from "./modes";
 import type { BreathingPattern } from "./pacing";
 
-/** Protocol phases (multi-round techniques like Wim Hof). */
 export enum ProtocolPhase {
   Idle = "Get Ready",
   PowerBreathe = "Power Breathe",

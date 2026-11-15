@@ -1,8 +1,3 @@
-// Dev-only OG image gallery. Renders every /og/[slug] variant plus a few
-// custom-color examples in a grid so you can eyeball the brand consistency
-// without clicking through 12 tabs. Not linked from anywhere — visit
-// /og-preview directly.
-
 const slugs = [
   'box',
   '4-7-8',

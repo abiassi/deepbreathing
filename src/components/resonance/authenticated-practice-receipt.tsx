@@ -73,7 +73,6 @@ function trackStatsEntryEvent(
   });
 }
 
-/** Track a stats link click from either an in-session receipt or account menu. */
 export function trackStatsEntryClick({
   source,
   mode,
@@ -82,7 +81,6 @@ export function trackStatsEntryClick({
   trackStatsEntryEvent("stats_entry_click", source, { mode, sessionSeconds });
 }
 
-/** Parent-facing helper for the authenticated account-menu stats link. */
 export function trackAccountMenuStatsEntryClick(
   context: StatsEntryContext,
 ): void {

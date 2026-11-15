@@ -93,7 +93,6 @@ test('sitemap entries include hreflang alternates for all languages', () => {
   assert.equal(langs['de-DE'], `${SITE_URL}/de`, 'de-DE hreflang should point to /de');
   assert.equal(langs['ja-JP'], `${SITE_URL}/ja`, 'ja-JP hreflang should point to /ja');
 
-  // Translated entry should have identical alternates
   const esBox = entries.find((e) => e.url === `${SITE_URL}/es/breathe/box`);
   assert.ok(esBox.alternates, '/es/breathe/box missing alternates');
   assert.equal(

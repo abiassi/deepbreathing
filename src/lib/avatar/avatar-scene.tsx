@@ -10,7 +10,7 @@ import { AvatarParams, blobPath } from './params';
 // feature set. Glow/ring/particles drop below 64px (invisible at favicon size).
 export function renderAvatarScene(p: AvatarParams, size: number) {
   const detail = size >= 64;
-  const box = Math.round(size * 0.74); // svg viewport; leaves room for the halo
+  const box = Math.round(size * 0.74);
 
   const orbPath = blobPath(p.harmonics, 33);
   const ringPath = blobPath(p.harmonics, 36);

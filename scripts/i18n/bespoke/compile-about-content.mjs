@@ -349,7 +349,6 @@ export async function checkAboutContentArtifacts() {
     try {
       actual = await readFile(outputPath, "utf8");
     } catch {
-      // Report missing output through the same stale-artifact contract.
     }
     if (actual !== expected) stale.push(relativePath);
   }

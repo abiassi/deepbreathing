@@ -15,7 +15,6 @@ export interface LocaleDefinition {
   readonly code: LocaleCode;
   readonly language: string;
   readonly routePrefix: string;
-  /** Whether all-locale route defaults may publish this locale. */
   readonly nativePublicationDefault: boolean;
   readonly label: string;
   readonly nativeLabel: string;
@@ -170,7 +169,6 @@ export function isLocaleCode(value: unknown): value is LocaleCode {
   return typeof value === "string" && localeByCode.has(value as LocaleCode);
 }
 
-/** Resolve a BCP 47 tag, primary language code, or URL prefix. */
 export function resolveLocaleCode(value: string | null | undefined): LocaleCode | null {
   if (!value) return null;
   return localeAliases[normalizeLocaleAlias(value)] ?? null;
@@ -189,7 +187,6 @@ export function getLocaleByPrefix(prefix: string): LocaleDefinition | null {
   return localeByPrefix.get(normalized) ?? null;
 }
 
-/** Return the locale's URL prefix, including the leading slash. */
 export function getLocalePathPrefix(locale: LocaleCode | string): string {
   const prefix = getLocale(locale).routePrefix;
   return prefix ? `/${prefix}` : "";
@@ -244,7 +241,6 @@ export function stripLocalePrefix(path: string): string {
   return `${pathname}${suffix}`;
 }
 
-/** Replace any existing locale prefix with the requested native locale. */
 export function localizePathname(path: string, locale: LocaleCode | string): string {
   const basePath = stripLocalePrefix(path);
   const { pathname, suffix } = splitPath(basePath);

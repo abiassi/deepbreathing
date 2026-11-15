@@ -1,10 +1,3 @@
-/**
- * Generative audio engine for Resonance.
- * - Drone pads move through an 8D panner.
- * - Pink noise beds emulate rain.
- * - Phase cues shift timbre based on the active color theme.
- * - Binaural beats accept adaptive entrainment frequencies.
- */
 import { ModeName } from './modes';
 import { ladderBaseHz, roomImpulseResponse, SoundGuide, soundGuideProfileFor, type GuidePhaseKind } from './soundGuide';
 
@@ -50,8 +43,8 @@ const NOISE_FILTER_Q = 0.7;
 // 87–165 Hz with partials up to 2× root (~330 Hz), so a gentle lowpass here
 // keeps the low harmonics that give it warmth while removing the hiss band.
 // See tools/orb-video ROADMAP for the isolation evidence.
-const DRONE_LOWPASS_HZ = 1400; // was 2000; lowered to warm up drone timbre (less upper-harmonic brightness)
-const DRONE_LOWPASS_Q = 0.4; // was 0.5; gentler knee for a softer roll-off
+const DRONE_LOWPASS_HZ = 1400;
+const DRONE_LOWPASS_Q = 0.4;
 
 // The completion bloom is intentionally a separate recipe from breath cues:
 // two quiet sine notes (root → fifth), no noise transient, with a long enough
@@ -65,7 +58,6 @@ const COMPLETION_CUE_FIFTH_RELEASE_SECONDS = 0.78;
 
 // Cue volume the sound guide's gains were tuned at (the engine default).
 const SOUND_GUIDE_REFERENCE_CUE_VOLUME = 0.32;
-// One dark, slow impulse response for the guide's closing chord.
 const SOUND_GUIDE_REVERB_SECONDS = 2.2;
 const SOUND_GUIDE_REVERB_DECAY = 2.6;
 const BINAURAL_CARRIER_HZ = 200;
@@ -193,8 +185,6 @@ export class AudioService {
   private mediaUnlocking: Promise<void> | null = null;
   private mediaUnlocked = false;
 
-  // Live-tweakable scale multipliers — applied on top of the existing per-layer
-  // target gains so the debug panel can ride levels without recompiling.
   private droneScale = 1;
   private subBassScale = 1;
   private subBassFreqMultiplier = 1;
@@ -211,20 +201,16 @@ export class AudioService {
   private cueNoiseScale = 1;
   private cueReverbMix = 1;
 
-  // Session-arc tunables — replace the prior hardcoded constants so the debug
-  // panel can dial the arc shape live.
   private arcWindowSeconds = 240;
   private arcRootDriftFactor = 8 / 9;
   private arcLfoSlowdownFactor = 0.5;
   private arcOrbitSlowdownFactor = 0.4;
 
-  // Session-arc evolution state — captured when the drone starts so we can
-  // ramp params relative to their initial values.
   private droneArc: {
-    startedAt: number; // ctx.currentTime at startDrone
+    startedAt: number;
     rootHz: number;
-    lfoRates: number[]; // initial LFO frequency per partial
-    spatialSpeed: number; // initial orbit speed
+    lfoRates: number[];
+    spatialSpeed: number;
   } | null = null;
   private droneLfoNodes: OscillatorNode[] = [];
   private droneLfoDepths: GainNode[] = [];
@@ -240,8 +226,7 @@ export class AudioService {
       | { kind: 'stereo'; panner: StereoPannerNode };
     gain: GainNode;
   }[] = [];
-  // Shared post-panner lowpass that all drone partials route through before the
-  // master bus — strips the triangle-harmonic / panner-zipper HF "hiss".
+  // Every drone partial passes through this lowpass to strip panner-zipper HF hiss.
   private droneLowpass: BiquadFilterNode | null = null;
   private binauralNodes: { osc: OscillatorNode; pan: StereoPannerNode; gain: GainNode }[] = [];
   private noiseNode: {
@@ -279,7 +264,6 @@ export class AudioService {
   private pinkNoiseEpoch = 0;
   private soundGuideEpoch = 0;
   private soundGuide: SoundGuide | null = null;
-  /** True from startSoundGuide until stopSoundGuide: the beds sit under the guide. */
   private soundGuideMix = false;
   private soundGuideDisposeTimers = new Set<ReturnType<typeof setTimeout>>();
 
@@ -600,7 +584,6 @@ export class AudioService {
         .catch((error) => this.log('Media unlock error (non-blocking)', error));
     }
 
-    // Recreate if the context was closed by the browser.
     const state = (this.ctx.state as AudioContextState | 'interrupted');
     if (state === 'closed') {
       this.ctx = null;
@@ -671,7 +654,6 @@ export class AudioService {
     }
 
     if (this.masterGain && this.ctx && this.masterGain.context !== this.ctx) {
-      // Context was rebuilt elsewhere; rebuild the full output chain on the new ctx.
       this.masterGain = null;
       this.masterCompressor = null;
       this.masterLimiter = null;
@@ -743,10 +725,6 @@ export class AudioService {
     this.breathingMode = mode;
   }
 
-  /**
-   * Slowly rotate drone sources around the listener (8D audio).
-   * Orbit speed may be reduced by the session-arc (tickSessionArc).
-   */
   public updateSpatial(time: number) {
     if (!this.ctx || this.droneNodes.length === 0) return;
     const speed = this.spatialSpeedOverride ?? 0.0005;
@@ -785,32 +763,27 @@ export class AudioService {
     if (!this.ctx || !this.droneArc || this.droneNodes.length === 0) return;
     const window = Math.max(1, this.arcWindowSeconds);
     const t = Math.max(0, Math.min(1, elapsedSeconds / window));
-    if (t === 0) return; // Nothing to update on the very first tick.
+    if (t === 0) return;
 
     const ctxTime = this.ctx.currentTime;
-    const TC = 8; // setTargetAtTime time constant — long, imperceptible per-frame change
+    const TC = 8;
 
-    // Root: drift toward `rootHz * arcRootDriftFactor` over the window.
-    // 1.0 = no drift, 8/9 = whole tone (current default), 2/3 = perfect 5th.
     // The sound guide's notes are fixed to the starting key, so the drone
     // holds its root while the guide plays.
     const driftFactor = this.soundGuideMix ? 1 : this.arcRootDriftFactor;
     const rootTarget = this.droneArc.rootHz * (1 - t * (1 - driftFactor));
     this.droneNodes.forEach((node, index) => {
-      // Each partial keeps its ratio to root: [1, 1.5, 2, 0.99]
       const ratios = [1, 1.5, 2, 0.99];
       const ratio = ratios[index] ?? 1;
       this.glideParam(node.osc.frequency, rootTarget * ratio, TC);
     });
 
-    // LFO: slow from initial → (1 - arcLfoSlowdownFactor) over the arc window.
     this.droneLfoNodes.forEach((lfo, index) => {
       const initial = this.droneArc!.lfoRates[index] ?? 0.1;
       const target = initial * (1 - t * this.arcLfoSlowdownFactor);
       this.glideParam(lfo.frequency, target, TC);
     });
 
-    // 8D orbit speed: slow by arcOrbitSlowdownFactor over the arc window.
     this.spatialSpeedOverride = this.droneArc.spatialSpeed * (1 - t * this.arcOrbitSlowdownFactor);
   }
 
@@ -998,12 +971,8 @@ export class AudioService {
     }
   }
 
-  /**
-   * Breathing cues now adapt oscillator types/envelopes to the color palette.
-   */
   public playCue(type: CueType, colorHex?: string, options: CuePlaybackOptions = {}) {
     if (this.isMuted || !this.ctx || !this.masterGain) {
-      // If context is suspended, try to resume
       if (this.ctx?.state === 'suspended') {
         this.ctx.resume().catch(console.warn);
       }
@@ -1359,9 +1328,6 @@ export class AudioService {
     const partials = [1, 1.5, 2, 0.99];
     const lfoRates: number[] = [];
 
-    // Shared drone bus: all partials → one lowpass → master. Removes the
-    // triangle-harmonic / panner-zipper HF that read as "static" while leaving
-    // the low warm pad intact.
     const droneLowpass = this.ctx.createBiquadFilter();
     droneLowpass.type = 'lowpass';
     droneLowpass.frequency.value = DRONE_LOWPASS_HZ;
@@ -1370,8 +1336,6 @@ export class AudioService {
     if (this.droneAnalyser) droneLowpass.connect(this.droneAnalyser);
     this.droneLowpass = droneLowpass;
 
-    // HRTF spatializer where the platform implements PannerNode; StereoPanner
-    // orbit approximation elsewhere (react-native-audio-api, for now).
     const supportsHrtf = typeof (this.ctx as any).createPanner === 'function';
 
     partials.forEach((ratio, index) => {
@@ -1416,7 +1380,6 @@ export class AudioService {
       this.droneNodes.push({ osc, spatial, gain });
     });
 
-    // Capture session-arc baseline.
     this.droneArc = {
       startedAt: this.ctx.currentTime,
       rootHz: baseFreq,
@@ -1454,13 +1417,10 @@ export class AudioService {
         lfo.frequency.cancelScheduledValues(t);
         this.stopSource(lfo, t + 1.1);
       } catch {
-        // already stopped
       }
     });
     this.fadeLfoDepthsUnderGuide(this.droneLfoDepths, t, 1);
     this.droneLfoDepths = [];
-    // Drop the shared lowpass reference; its feeding oscillators stop at t+1.1
-    // and auto-disconnect, so the orphaned filter becomes GC-eligible.
     this.droneLowpass = null;
     this.droneNodes = [];
     this.droneLfoNodes = [];
@@ -1577,10 +1537,6 @@ export class AudioService {
     this.phaseEnvelopeNode = null;
   }
 
-  /**
-   * Drive the phase-length envelope from the rAF loop with the current
-   * breath phase + progress (0..1). No-op when envelope isn't running.
-   */
   public updatePhaseEnvelope(phase: 'inhale' | 'exhale' | 'hold', progress: number) {
     if (!this.ctx || !this.phaseEnvelopeNode) return;
     const { gain, filter } = this.phaseEnvelopeNode;
@@ -1589,12 +1545,11 @@ export class AudioService {
 
     const PEAK_GAIN = this.phaseEnvelopePeakGain();
     const FILTER_BASE = 500;
-    const FILTER_PEAK = 1700; // was 2200; reduced to warm the phase-envelope opening
+    const FILTER_PEAK = 1700;
 
     let targetGain: number;
     let targetFilter: number;
     if (phase === 'inhale') {
-      // Smooth ease-in via sin curve so the swell feels organic, not linear.
       const eased = Math.sin(p * Math.PI / 2);
       targetGain = PEAK_GAIN * eased;
       targetFilter = FILTER_BASE + (FILTER_PEAK - FILTER_BASE) * eased;
@@ -1603,7 +1558,6 @@ export class AudioService {
       targetGain = PEAK_GAIN * eased;
       targetFilter = FILTER_BASE + (FILTER_PEAK - FILTER_BASE) * eased;
     } else {
-      // Hold: keep tracking the previous target, don't ramp anything new.
       return;
     }
 
@@ -1645,11 +1599,6 @@ export class AudioService {
     source.buffer = buffer;
     source.loop = true;
 
-    // Breath-coupled low-pass filter — driven by updatePinkNoisePhase from
-    // the rAF loop. Cutoff opens on inhale (sounds like ocean swelling
-    // toward the shore) and closes on exhale (settling away). The cue layer
-    // already does this per-transition; this couples the BED to the breath
-    // so the whole texture breathes with the user.
     const filter = this.ctx.createBiquadFilter();
     filter.type = 'lowpass';
     filter.Q.value = this.noiseFilterQ;
@@ -1693,7 +1642,6 @@ export class AudioService {
     } else if (phase === 'exhale') {
       target = peak - (peak - base) * p;
     } else {
-      // Hold: hold the current target steady — no ramp.
       return;
     }
     // Short time constant for smooth tracking without zipper noise.
@@ -1717,10 +1665,6 @@ export class AudioService {
     this.stopSource(this.noiseNode.source, t + 1.1);
     this.noiseNode = null;
   }
-
-  // ─────────────────────────────────────────────────────────────────────────
-  // Sound guide: the breath-shaped voice (see soundGuide.ts).
-  // ─────────────────────────────────────────────────────────────────────────
 
   /**
    * A binaural carrier for the sound guide: the fifth below the guide's root,
@@ -1756,7 +1700,6 @@ export class AudioService {
     });
   }
 
-  /** The small room the guide's voice and markers play into. Built once per context. */
   private getSoundGuideRoom() {
     if (!this.ctx) return null;
     const key = 'sound-guide-room';
@@ -1774,7 +1717,6 @@ export class AudioService {
     return convolver;
   }
 
-  /** Plays one phase of the sound guide. No-op when the guide is not running. */
   public playGuidePhase(kind: GuidePhaseKind, durationSeconds: number, options: { topUpFollows?: boolean } = {}) {
     if (!this.ctx || this.ctx.state !== 'running') return;
     this.soundGuide?.playPhase(kind, durationSeconds, options);
@@ -1802,10 +1744,7 @@ export class AudioService {
     this.soundGuideDisposeTimers.add(timer);
   }
 
-  // ─────────────────────────────────────────────────────────────────────────
-  // Debug-panel surface: live setters, meter readings, tuning snapshot.
   // Only the ?debug=audio panel calls these — keep them inert when unused.
-  // ─────────────────────────────────────────────────────────────────────────
 
   public setCompressorParams(params: Partial<{ threshold: number; knee: number; ratio: number; attack: number; release: number }>) {
     if (!this.masterCompressor) return;
@@ -1876,8 +1815,6 @@ export class AudioService {
 
   public setPhaseEnvelopeGain(scale: number) {
     this.phaseEnvelopeScale = Math.max(0, scale);
-    // Peak gain is sampled per-tick from phaseEnvelopePeakGain(); next
-    // updatePhaseEnvelope call honors the new scale without further wiring.
   }
 
   public setPhaseEnvelopeFreqMultiplier(x: number) {
@@ -2060,7 +1997,7 @@ export class AudioService {
             attack: 0.02,
             release: 0.22,
             lowpassStart: 900,
-            lowpassEnd: 1800, // was 2200; reduced to tame high-frequency noise brightness
+            lowpassEnd: 1800,
             highpass: 140,
             q: 0.8
           },
@@ -2102,7 +2039,7 @@ export class AudioService {
           freqStart: 660,
           freqEnd: 660,
           detune: -5,
-          attack: 0.02, // was 0.01; softened onset for warmer cue
+          attack: 0.02,
           release: 0.16,
           gain: 0.55
         },
@@ -2198,7 +2135,7 @@ export class AudioService {
             attack: 0.03,
             release: 0.28,
             lowpassStart: 700,
-            lowpassEnd: bright ? 2000 : 1700, // was 2400:2000; reduced to tame high-frequency noise brightness
+            lowpassEnd: bright ? 2000 : 1700,
             highpass: 130,
             q: 0.75
           },
@@ -2257,16 +2194,16 @@ export class AudioService {
           freqStart: 540,
           freqEnd: 740,
           detune: 0,
-          attack: 0.025, // was 0.015; softened onset for warmer cue
+          attack: 0.025,
           release: 0.18,
           gain: 0.85
         },
         noise: {
           gain: 0.24,
-          attack: 0.025, // was 0.015; softened onset for warmer cue
+          attack: 0.025,
           release: 0.2,
           lowpassStart: 800,
-          lowpassEnd: 2100, // was 2600; reduced to tame high-frequency noise brightness
+          lowpassEnd: 2100,
           highpass: 160,
           q: 0.75
         },
@@ -2308,7 +2245,7 @@ export class AudioService {
         freqStart: 620,
         freqEnd: 620,
         detune: 0,
-        attack: 0.02, // was 0.01; softened onset for warmer cue
+        attack: 0.02,
         release: 0.16,
         gain: 0.55
       },

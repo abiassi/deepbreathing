@@ -5,16 +5,11 @@ import path from "node:path";
 
 const ROOT = process.cwd();
 const HELPER_PATH = path.join(ROOT, "src", "lib", "share-utm.ts");
-// Buttons on proxy-translated pages: the server HTML is English and the proxy
-// swaps text client-side, so these must read the settled DOM at click time.
 const DOM_LOCALIZED_SHARE_BUTTONS = [
   "src/components/ui/share-button.tsx",
   "src/app/(site-en)/for/share-button.tsx",
 ];
 
-// Buttons on natively-translated routes: content is compiled per locale
-// server-side (see check:native-i18n-holiday) and arrives as already-localized
-// props, so reading the DOM would be redundant. b05516b migrated this one.
 const PROP_LOCALIZED_SHARE_BUTTONS = [
   "src/app/(site-en)/holiday-breathing-exercises/share-button.tsx",
 ];
@@ -42,8 +37,6 @@ test("share-utm exports getLocalizedShareText/Title that read DOM meta descripti
 });
 
 test("appendShareUtm produces expected URL when imported", async () => {
-  // Inline the helper's behavior to verify the contract, since the source is TS.
-  // The real file is statically checked above; this verifies the algorithm we expect.
   function ref(url, medium = "copy") {
     try {
       const u = new URL(url);
@@ -60,7 +53,6 @@ test("appendShareUtm produces expected URL when imported", async () => {
   assert.equal(parsed.searchParams.get("utm_source"), "share");
   assert.equal(parsed.searchParams.get("utm_medium"), "native");
   assert.equal(parsed.searchParams.get("utm_campaign"), "user_share");
-  // Idempotent: a second pass overwrites the same params, not appends new ones.
   const twice = ref(out, "copy");
   assert.equal(new URL(twice).searchParams.get("utm_medium"), "copy");
   assert.equal(twice.match(/utm_source=/g).length, 1);

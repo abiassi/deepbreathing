@@ -52,7 +52,6 @@ function walk(dir) {
   return out;
 }
 
-/** Every file under src/ that calls resend.emails.send(). */
 function senderFiles() {
   return walk(SRC).filter((f) => /emails\.send\(/.test(fs.readFileSync(f, "utf8")));
 }

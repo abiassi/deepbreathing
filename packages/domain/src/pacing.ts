@@ -8,9 +8,6 @@
  *      scaled by pace) — see BreathingExperience's auto-stop.
  */
 
-// ---------------------------------------------------------------------------
-// Breathing phase enum — shared between mobile and desktop.
-// ---------------------------------------------------------------------------
 export enum BreathingPhase {
   Inhale = 'Inhale',
   Inhale2 = 'Inhale (Top up)',
@@ -22,7 +19,6 @@ export enum BreathingPhase {
 
 import { ModeName } from "./modes";
 
-/** Duration in seconds for each phase of a breathing pattern. */
 export interface BreathingPattern {
   name: ModeName;
   description: string;
@@ -34,9 +30,6 @@ export interface BreathingPattern {
   color: string;
 }
 
-// ---------------------------------------------------------------------------
-// Speed constants
-// ---------------------------------------------------------------------------
 export const MIN_SPEED = 0.5;
 export const MAX_SPEED = 2.0;
 export const DEFAULT_SPEED = 1.0;
@@ -47,7 +40,6 @@ export const clampSpeed = (raw: unknown): number => {
   return Math.round(Math.min(MAX_SPEED, Math.max(MIN_SPEED, n)) * 10) / 10;
 };
 
-/** Phase duration in ms at the given speed (single source of truth). */
 export const phaseDurationMs = (
   phase: BreathingPhase,
   pattern: BreathingPattern,
@@ -82,8 +74,6 @@ export const remapPhaseStartMs = (
   return nowMs - progressFraction * newDuration;
 };
 
-// ---------------------------------------------------------------------------
-// Slider mapping — LEFT = SLOWER, RIGHT = FASTER, DEFAULT CENTERED.
 //
 // The multiplier range [0.5, 2.0] is not numerically symmetric around 1.0, so
 // a linear input would put the default knob at 33%. Instead the slider uses a
@@ -91,7 +81,6 @@ export const remapPhaseStartMs = (
 //   position 0.5 (far left)  -> multiplier 2.0 (slowest, phases 2x longer)
 //   position 1.25 (middle)   -> multiplier 1.0 (default)
 //   position 2.0 (far right) -> multiplier 0.5 (fastest, phases 2x shorter)
-// ---------------------------------------------------------------------------
 export const SLIDER_MIN = 0.5;
 export const SLIDER_MAX = 2.0;
 export const SLIDER_STEP = 0.05; // keeps the centered default (1.25) on-grid
@@ -111,5 +100,4 @@ export const sliderToMultiplier = (sliderValue: number): number => {
 export const sliderFillPercent = (sliderValue: number): number =>
   ((Math.min(SLIDER_MAX, Math.max(SLIDER_MIN, sliderValue)) - SLIDER_MIN) / (SLIDER_MAX - SLIDER_MIN)) * 100;
 
-/** Speed semantics for the label: 1/multiplier — 0.5× = slow, 2× = fast. */
 export const speedOf = (multiplier: number): number => 1 / multiplier;

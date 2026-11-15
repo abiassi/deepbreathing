@@ -1,11 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * Test next.config.js locale-aware redirects by loading actual config in isolated processes.
- * Runs next.config.js for each NATIVE_I18N_MODE (native-preview, native)
- * and verifies the actual returned redirect rules with exact destination resolution.
- */
-
 const { spawn } = require('child_process');
 const path = require('path');
 
@@ -55,21 +49,17 @@ function runNextConfigInMode(mode) {
   });
 }
 
-// Match a path against a redirect source pattern and return captured groups
 function matchPathPattern(source, testPath) {
   let pattern = source.replace(/\//g, '\\/');
 
-  // Replace /:name(...) patterns
   pattern = pattern.replace(/:(\w+)\(([^)]+)\)/g, (match, name) => {
     const choices = match.split('(')[1].slice(0, -1);
     return `(?<${name}>${choices})`;
   });
 
-  // Replace /:name+ and /:name* patterns
   pattern = pattern.replace(/:(\w+)\+/g, '(?<$1>[^/]+(?:\\/[^/]+)*)');
   pattern = pattern.replace(/:(\w+)\*/g, '(?<$1>[^/]*(?:\\/[^/]*)*)');
 
-  // Replace plain :name patterns
   pattern = pattern.replace(/:(\w+)/g, '(?<$1>[^/]+)');
 
   const regex = new RegExp(`^${pattern}$`);
@@ -77,7 +67,6 @@ function matchPathPattern(source, testPath) {
   return match ? match.groups : null;
 }
 
-// Resolve destination by substituting captured groups into the destination pattern
 function resolveDestination(destination, capturedGroups) {
   let resolved = destination;
   if (capturedGroups) {
@@ -88,11 +77,8 @@ function resolveDestination(destination, capturedGroups) {
   return resolved;
 }
 
-// Find a matching redirect rule for a test path and return the resolved destination
-// Skips rules with host conditions (www redirects) to test path-only matching
 function findRedirectDestination(redirects, testPath) {
   for (const rule of redirects) {
-    // Skip rules with host conditions - they don't apply to path-only testing
     if (rule.has) {
       continue;
     }
@@ -151,7 +137,6 @@ async function runTests() {
     process.exit(1);
   }
 
-  // Test 2: Native mode configuration
   console.log('Test Suite: Native mode configuration');
   const nativePreviewHasMethodology = nativePreviewRedirects.some(r => r.source.includes('locale') && r.source.includes('methodology'));
   assert(nativePreviewHasMethodology, 'native-preview should have legacy methodology redirects');
@@ -164,20 +149,17 @@ async function runTests() {
   );
   assertEquals(nativePreviewNativeRules.length, 5, 'native-preview should have 5 native locale-aware redirect rules (2 methodology, 1 languages, 2 double-locale)');
 
-  // Test 3: Native mode same rules
   console.log('\nTest Suite: Native mode parity');
   const nativeNativeRules = nativeRedirects.filter(
     r => (r.source.includes('locale') && (r.source.includes('methodology') || r.source.includes('languages'))) || r.source.includes('outer'),
   );
   assertEquals(nativeNativeRules.length, 5, 'native should have 5 native locale-aware redirect rules');
 
-  // Test 4: Verify all native locale redirect rules have permanent: true
   console.log('\nTest Suite: Permanence of all native locale redirects');
   for (const rule of nativePreviewNativeRules) {
     assert(rule.permanent === true, `rule ${rule.source} must have permanent: true`);
   }
 
-  // Test 5: Test methodology redirects for all 5 locales with exact destinations
   console.log('\nTest Suite: Methodology redirects - exact destinations');
   const locales = ['es', 'pt', 'fr', 'de', 'ja'];
 
@@ -208,7 +190,6 @@ async function runTests() {
     );
   }
 
-  // Test 6: Test nested methodology redirects
   console.log('\nTest Suite: Nested methodology redirects');
   for (const locale of locales) {
     const testPath = `/${locale}/about/methodology/some/path`;
@@ -220,7 +201,6 @@ async function runTests() {
     );
   }
 
-  // Test 7: Test /languages redirects for all 5 locales
   console.log('\nTest Suite: Languages redirects - exact destinations');
   for (const locale of locales) {
     const testPath = `/${locale}/languages`;
@@ -232,7 +212,6 @@ async function runTests() {
     );
   }
 
-  // Test 8: Test double-locale bare paths for all locale combinations
   console.log('\nTest Suite: Double-locale bare paths - exact destinations');
   const doubleLocaleExamples = [
     ['/de/fr', '/de/'],
@@ -251,7 +230,6 @@ async function runTests() {
     );
   }
 
-  // Test 9: Test double-locale nested paths for all locale combinations
   console.log('\nTest Suite: Double-locale nested paths - exact destinations');
   const doubleLocaleNestedExamples = [
     ['/de/fr/breathe/breath-of-fire', '/de/breathe/breath-of-fire'],
@@ -270,7 +248,6 @@ async function runTests() {
     );
   }
 
-  // Test 10: Verify no redirect loop between sources and destinations
   console.log('\nTest Suite: Redirect loop prevention');
   const nativeSpecificRules = nativePreviewRedirects.filter(
     r => (r.source.includes('locale') && (r.source.includes('methodology') || r.source.includes('languages'))) || r.source.includes('outer'),
@@ -280,7 +257,6 @@ async function runTests() {
     assert(!reverseMatch, `destination ${rule.destination} should not match source pattern ${rule.source}`);
   }
 
-  // Summary
   console.log(`\n${'='.repeat(50)}`);
   console.log(`Tests passed: ${passed}`);
   console.log(`Tests failed: ${failed}`);
