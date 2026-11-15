@@ -44,8 +44,6 @@ export async function PUT(request: NextRequest) {
     [userId, body.totalMinutes ?? 0, body.sessionsCompleted ?? 0, sessionDate]
   );
 
-  // Record the active day for the practice calendar (best-effort: never block the
-  // core stats sync if the user_active_days table isn't migrated yet).
   if (sessionDate) {
     try {
       await pool.query(

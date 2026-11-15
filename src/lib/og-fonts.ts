@@ -73,5 +73,4 @@ export async function loadOgFonts(options?: { jpSubset?: string }): Promise<OgFo
   return Promise.all(tasks);
 }
 
-// Back-compat alias for any caller still importing loadInterFonts.
 export const loadInterFonts = () => loadOgFonts();

@@ -104,15 +104,11 @@ export interface OwnedVideoEmbed {
   youtubeId: string;
   title: string;
   description: string;
-  /** ISO 8601 duration, e.g. PT5M, PT30S */
   duration: string;
-  /** ISO 8601 date, e.g. 2026-06-08 */
   uploadDate: string;
 }
 
-/** Voice search optimization - question H2 with direct answer for featured snippets */
 export interface VoiceSearchQA {
-  /** The exact question users ask (becomes H2) */
   question: string;
   /** 40-50 word direct answer (snippet-optimized) */
   answer: string;
@@ -121,7 +117,6 @@ export interface VoiceSearchQA {
 export interface BreathingPageContent {
   slug: string;
   mode: ModeName;
-  /** Show on homepage "Pick a mode" section. Core techniques = true, SEO expansions = false */
   featured?: boolean;
   /**
    * 1–2 sentence origin/lineage attribution rendered below the date stamp on the
@@ -146,9 +141,7 @@ export interface BreathingPageContent {
   synonyms: string[];
   frequency: string;
   video?: VideoEmbed;
-  /** Owned YouTube video (recorded pacer on our channel). Gets the VideoObject schema. */
   ownedVideo?: OwnedVideoEmbed;
-  /** Voice search optimization - question H2s with direct answers */
   voiceSearch?: VoiceSearchQA[];
 }
 
@@ -1533,7 +1526,6 @@ export const breathingPages: BreathingPageContent[] = [
   }
 ];
 
-// Pursed Lip Breathing page
 const pursedLipPage: BreathingPageContent = {
   slug: "pursed-lip",
   mode: ModeName.PursedLip,
@@ -1771,7 +1763,6 @@ const pursedLipPage: BreathingPageContent = {
   }
 };
 
-// Nadi Shodhana (Alternate Nostril Breathing) page
 const nadiShodhanaPage: BreathingPageContent = {
   slug: "nadi-shodhana",
   mode: ModeName.NadiShodhana,
@@ -2055,7 +2046,6 @@ const nadiShodhanaPage: BreathingPageContent = {
   ]
 };
 
-// Ujjayi Breathing page content (SEO expansion - not featured)
 const ujjayiPage: BreathingPageContent = {
   slug: "ujjayi",
   mode: ModeName.Ujjayi,
@@ -2293,7 +2283,6 @@ const ujjayiPage: BreathingPageContent = {
   frequency: "Daily during yoga practice, or 5-15 minutes as standalone practice"
 };
 
-// Belly Breathing page content (SEO expansion - not featured)
 const bellyPage: BreathingPageContent = {
   slug: "belly",
   mode: ModeName.Belly,
@@ -2560,7 +2549,6 @@ const bellyPage: BreathingPageContent = {
   }
 };
 
-// Buteyko Breathing page content (SEO expansion - not featured)
 const buteykoPage: BreathingPageContent = {
   slug: "buteyko",
   mode: ModeName.Buteyko,
@@ -3411,10 +3399,8 @@ const breathOfFirePage: BreathingPageContent = {
   ],
 };
 
-// 9D Breathwork explainer page (head term: "9d breathwork", 1.7K/mo US, KD 0–5)
 // Honest editorial: the breath protocol underneath 9D is conscious connected breathing
 // (Wim Hof activating phase). The "9D" is the audio production stack, not the breath.
-// See docs/research/9d-breathwork-content-brief.md.
 const ninthDimensionPage: BreathingPageContent = {
   slug: "9d-breathwork",
   mode: ModeName.WimHof,
@@ -3633,7 +3619,6 @@ const ninthDimensionPage: BreathingPageContent = {
   frequency: "Most practitioners do a full session weekly. The breath itself can be practiced briefly (2-5 min) more often as a pacer-only nervous-system primer."
 };
 
-// Hope Cartel 9D Breathwork delivery brand explainer (long-tail: "hope cartel 9d breathwork", 800/mo US, KD 0–5)
 const hopeCartelPage: BreathingPageContent = {
   slug: "hope-cartel-9d-breathwork",
   mode: ModeName.WimHof,
@@ -3858,7 +3843,6 @@ const hopeCartelPage: BreathingPageContent = {
   frequency: "Most attendees do 1 group session every 2-4 weeks. Combine with daily 2-5 minute pacer-only practice between sessions to maintain familiarity with the breath."
 };
 
-// Add new pages to the array
 breathingPages.push(pursedLipPage);
 breathingPages.push(nadiShodhanaPage);
 breathingPages.push(ujjayiPage);
@@ -3873,7 +3857,6 @@ export const breathingPageMap: Record<string, BreathingPageContent> = Object.fro
   breathingPages.map((page) => [page.slug, page])
 ) as Record<string, BreathingPageContent>;
 
-/** Featured pages shown on homepage "Pick a mode" section */
 export const featuredBreathingPages = breathingPages.filter((page) => page.featured === true);
 
 export const modeToBreathingPage = breathingPages.reduce(

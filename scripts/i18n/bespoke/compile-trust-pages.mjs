@@ -439,7 +439,6 @@ export async function checkTrustPageArtifacts() {
     try {
       actual = await readFile(outputPath, "utf8");
     } catch {
-      // Missing output is reported through the same stale-artifact contract.
     }
     if (actual !== expected) stale.push(relativePath);
   }

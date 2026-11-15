@@ -30,10 +30,6 @@ test("GA measurement ID is centralized outside the root layout", () => {
     "root layout should not hardcode a GA measurement ID"
   );
 
-  // The GA <Script> tags were extracted out of site-document.tsx into the
-  // GoogleAnalyticsScript client component (which ga-script-gating.test.mjs
-  // covers). SiteDocument now only delegates — that still satisfies this
-  // test's intent, which is that no GA id is hardcoded in the layout.
   assert.match(siteDocumentSource, /<GoogleAnalyticsScript\s*\/>/);
   assert.match(siteDocumentSource, /from "@\/components\/analytics\/GoogleAnalyticsScript"/);
 

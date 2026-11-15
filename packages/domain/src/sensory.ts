@@ -84,7 +84,6 @@ export const SENSORY_HAPTIC_PATTERNS = [
 export type SensoryHapticPattern = (typeof SENSORY_HAPTIC_PATTERNS)[number];
 
 export interface SensoryPalette {
-  /** Six-digit RGB hex values. */
   background: string;
   backgroundAccent: string;
   orb: string;
@@ -94,19 +93,13 @@ export interface SensoryPalette {
 }
 
 export interface SensoryMotionSettings {
-  /** Resting orb scale. Range: 0.2...1. */
   orbMinScale: number;
-  /** Fully expanded orb scale. Range: 0.5...2, never below orbMinScale. */
   orbMaxScale: number;
-  /** Strength of organic shape deformation. Range: 0...1. */
   morphAmount: number;
-  /** Relative particle count. Range: 0...1. */
   particleDensity: number;
-  /** Ambient particle drift speed. Range: 0...2. */
   particleDrift: number;
-  /** Vertical scene focus in viewport units. Range: -0.5...0.5. */
+  /** Vertical scene focus in viewport units. */
   gravityOffsetY: number;
-  /** Smoothing applied at phase boundaries. Range: 0...1. */
   cycleSmoothing: number;
 }
 
@@ -148,13 +141,9 @@ export interface SensoryAudioEngineSettings {
 
 export interface SensoryAudioSettings {
   soundscape: SensorySoundscape;
-  /** Ambient-bed volume. Range: 0...1. */
   ambientVolume: number;
-  /** Master multiplier for phase cues. Range: 0...1. */
   cueVolume: number;
-  /** How strongly the ambient bed follows breath volume. Range: 0...1. */
   breathModulation: number;
-  /** Full production AudioService graph, including layer gates and live tuning. */
   engine: SensoryAudioEngineSettings;
 }
 
@@ -162,12 +151,11 @@ export interface SensoryGuidanceSettings {
   showLabels: boolean;
   audioCues: boolean;
   haptics: boolean;
-  /** Number of completed cycles before instructional labels fade. Range: 0...20. */
   instructionFadeCycles: number;
 }
 
 export interface SensoryPhaseVisual {
-  /** Position inside the global orb envelope. 0 = resting, 1 = fully expanded. */
+  /** 0 = resting, 1 = fully expanded. */
   orbScale: number;
   lightIntensity: number;
   edgeGlow: number;

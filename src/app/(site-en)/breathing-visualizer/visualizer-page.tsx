@@ -174,7 +174,6 @@ export function BreathingVisualizerPage({
     <main className="bg-transparent">
       <JsonLd data={[breadcrumbSchema, faqSchema, howToSchema]} />
 
-      {/* Hero with full-screen visualizer */}
       <section className="relative isolate min-h-screen w-full text-foreground">
         <Suspense
           fallback={<div className="min-h-screen w-full bg-background" aria-hidden />}
@@ -220,7 +219,6 @@ export function BreathingVisualizerPage({
           <AppStorePromotion className="mb-12" variant="strip" />
         ) : null}
 
-        {/* Voice search / Quick answer */}
         <div className="mb-12 glow-card rounded-[32px] border border-border bg-card p-6">
           <h2 className="text-2xl font-semibold text-card-foreground">
             {content.quickAnswer.title}
@@ -230,7 +228,6 @@ export function BreathingVisualizerPage({
           </p>
         </div>
 
-        {/* Why use a breathing visualizer, 2x3 grid */}
         <section className="mb-12">
           <h2 className="text-3xl font-semibold text-card-foreground text-center mb-8">
             {content.benefits.title}
@@ -295,7 +292,6 @@ export function BreathingVisualizerPage({
           </div>
         </section>
 
-        {/* How it works */}
         <section className="mb-12 glow-card rounded-[32px] border border-border bg-card p-8">
           <h2 className="text-2xl font-semibold text-card-foreground">
             {content.howItWorks.title}
@@ -317,7 +313,6 @@ export function BreathingVisualizerPage({
           </div>
         </section>
 
-        {/* FAQ */}
         <section className="mb-12 glow-card rounded-[32px] border border-border bg-card p-8">
           <h2 className="text-2xl font-semibold text-card-foreground">
             {content.faq.title}
@@ -336,7 +331,6 @@ export function BreathingVisualizerPage({
           </div>
         </section>
 
-        {/* More tools */}
         <section className="mb-12 glow-card rounded-[32px] border border-border bg-card p-6">
           <h2 className="text-2xl font-semibold text-card-foreground">
             {content.moreTools.title}
@@ -357,7 +351,6 @@ export function BreathingVisualizerPage({
           </div>
         </section>
 
-        {/* Footer */}
         <footer className="rounded-[32px] border border-border bg-card p-6 text-center">
           <p className="text-xs text-muted-foreground">
             {content.footer.warning}

@@ -253,7 +253,7 @@ The groups below separate live coupling from migration provenance and historical
 | `src/components/resonance/Resonance.tsx:13` | Consumes the runtime phrase resolver and reports fallback misses; native routing must provide its locale explicitly. |
 | `src/components/auth/sign-in-sheet.tsx:9` | Detects the proxy-backed runtime locale before resolving sign-in copy. |
 | `src/components/auth/session-complete-prompt.tsx:14` | Detects the proxy-backed runtime locale before resolving conversion-prompt copy. |
-| `src/lib/share-utm.ts:23` | Reads proxy-mutated `document.title` and `<html lang>` because localized meta descriptions are unavailable. |
+| `src/lib/share-utm.ts:21` | Reads proxy-mutated `document.title` and `<html lang>` because localized meta descriptions are unavailable. |
 | `src/lib/render-inline-links.tsx:10` | Assumes the proxy preserves citation link URLs; this is compatibility coupling rather than locale detection. |
 
 ### Proxy bypasses for auth, webhooks, and diagnostics (active or externally configured)
@@ -274,12 +274,12 @@ The groups below separate live coupling from migration provenance and historical
 
 | Evidence | Dependency / cutover implication |
 |---|---|
-| `scripts/build-og-translations.mjs:8` | Scrapes localized apex pages and treats proxy-produced `og:title` as authoritative. |
+| `scripts/build-og-translations.mjs:2` | Scrapes localized apex pages and treats proxy-produced `og:title` as authoritative. |
 | `package.json:14` | Exposes the proxy-scraping OG translation build command. |
 | `src/data/og-translations.json:3` | Checked-in localized OG-title artifact produced by live-site scraping. |
 | `src/app/og/route.tsx:5` | Consumes the proxy-derived OG-title artifact for query-based images. |
 | `src/app/og/[slug]/route.tsx:6` | Consumes the proxy-derived OG-title artifact for slug-based images. |
-| `src/lib/seo/og-scene.tsx:101` | Locale normalization and image-copy assumptions are documented in proxy terms. |
+| `src/lib/seo/og-scene.tsx:106` | Locale normalization and image-copy assumptions are documented in proxy terms. |
 
 ### Snapshot migration provenance (temporary, not runtime)
 
@@ -302,7 +302,7 @@ The groups below separate live coupling from migration provenance and historical
 | `scripts/tests/sitemap-coverage.test.mjs:9` | Pins proxy-prefixed publication, hreflang, and the English-only `/languages` rule. |
 | `scripts/tests/ping-sitemap.test.mjs:154` | Pins the changed-route IndexNow safety boundary: localized catch-all changes are ambiguous and must submit nothing rather than expanding to locale variants. |
 | `scripts/tests/languages-page-ssr.test.mjs:23` | Pins the client-only switcher and hardcoded locale discovery links. |
-| `scripts/tests/share-utm.test.mjs:8` | Pins share-copy behavior against proxy-mutated page metadata, and separates the proxy-translated buttons from the natively-translated holiday button. |
+| `scripts/tests/share-utm.test.mjs:73` | Pins share-copy behavior against proxy-mutated page metadata, and separates the proxy-translated buttons from the natively-translated holiday button. |
 
 ### Operational instructions and analytics integrations (mixed active and stale)
 

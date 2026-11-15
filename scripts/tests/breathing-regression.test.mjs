@@ -3,26 +3,13 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 
-// Regression contracts for the breathing experience — DESKTOP (src/components/resonance)
-// and MOBILE (apps/mobile/src/components/breathing-web). These pin the behaviors we
-// shipped: single speed measure, wall-clock session clock, speed affects the animation
-// (not the clock), interactive particles that never pile up, the sharp play triangle,
-// and the drag/ring-follow mechanics. Each test reads the SOURCE and asserts an
-// invariant, so a future refactor that silently breaks behavior fails `pnpm test`.
-
 const ROOT = process.cwd();
 const MOBILE = path.join(ROOT, "apps/mobile/src/components/breathing-web");
 const DESKTOP = path.join(ROOT, "src/components/resonance");
 
 const read = (p) => fs.readFileSync(path.join(ROOT, p), "utf8");
 
-// Shared pacing source — single source of truth for the slider mapping and
-// phase-duration math (used by both mobile and desktop).
 const sharedPacing = read("packages/domain/src/pacing.ts");
-
-// ---------------------------------------------------------------------------
-// MOBILE — breathing-web (the iOS app's web-parity experience)
-// ---------------------------------------------------------------------------
 
 const exp = read("apps/mobile/src/components/breathing-web/BreathingExperience.tsx");
 const paceCss = read("apps/mobile/src/components/breathing-web/styles/source.css");
@@ -31,14 +18,11 @@ const viz = read("apps/mobile/src/components/breathing-web/components/Visualizer
 const pacing = read("apps/mobile/src/components/breathing-web/pacing.ts");
 
 test("mobile: speed slider — LEFT = slower, RIGHT = faster, default centered", () => {
-  // The pacing contract now lives in the shared domain package.
   assert.match(sharedPacing, /multiplierToSlider = /);
   assert.match(sharedPacing, /sliderToMultiplier = /);
   assert.match(sharedPacing, /SLIDER_MID = 1\.25/, "centered default position value");
-  // left end -> slowest (2x multiplier), right end -> fastest (0.5x)
   assert.match(sharedPacing, /return m >= 1 \? 2 - 0\.75 \* m : 2\.75 - 1\.5 \* m;/, "left=slow, right=fast map");
   assert.match(sharedPacing, /speedOf = \(multiplier: number\): number => 1 \/ multiplier/, "display speed is the inverse of the duration multiplier");
-  // Mobile pacing.ts is a thin re-export from the shared source.
   assert.match(pacing, /from '@resonance\/domain'/, "mobile pacing re-exports from domain");
   // the slider input uses the mapping and a 0.05 step so the default centers
   assert.match(exp, /const sliderValue = multiplierToSlider\(value\);/);
@@ -49,7 +33,6 @@ test("mobile: speed slider — LEFT = slower, RIGHT = faster, default centered",
 });
 
 test("mobile: ONE speed measure — no per-phase sliders, no toggle pill", () => {
-  // The floating control is a bare slider mounted only while actively running.
   assert.match(exp, /const \[speedMultiplier, setSpeedMultiplier\] = useState/);
   assert.doesNotMatch(exp, /paceOpen/, "pace toggle state must not return");
   assert.doesNotMatch(exp, /Adjust breath pace/, "toggle pill button must not return");
@@ -59,7 +42,6 @@ test("mobile: ONE speed measure — no per-phase sliders, no toggle pill", () =>
 });
 
 test("mobile: speed scales every phase duration (animation + cues)", () => {
-  // Phase-duration math lives in the shared domain package.
   assert.match(sharedPacing, /phaseDurationMs/);
   assert.match(sharedPacing, /\(pattern\.inhale \* speed\) \* 1000/);
   assert.match(sharedPacing, /\(pattern\.holdIn \* speed\) \* 1000/);
@@ -83,7 +65,6 @@ test("mobile: speed scales every phase duration (animation + cues)", () => {
 });
 
 test("mobile: live speed change mid-phase is progress-preserving (no orb jump)", () => {
-  // Remap logic lives in the shared domain package.
   assert.match(sharedPacing, /remapPhaseStartMs/);
   assert.match(sharedPacing, /progressFraction = Math\.min\(elapsed \/ prevPhaseDurationMs, 1\)/);
   assert.match(sharedPacing, /nowMs - progressFraction \* newDuration/);
@@ -91,26 +72,20 @@ test("mobile: live speed change mid-phase is progress-preserving (no orb jump)",
 });
 
 test("mobile: session clock is WALL-CLOCK — duration never scales with speed", () => {
-  // Timer derives from Date.now(); the auto-stop compares wall seconds and
-  // must NOT multiply by speedMultiplier.
   assert.match(exp, /sessionClockStartRef\.current = Date\.now\(\) - \(sessionSeconds \* 1000\)/);
   assert.match(exp, /Math\.floor\(\(Date\.now\(\) - sessionClockStartRef\.current\) \/ 1000\)/);
   assert.match(exp, /sessionSeconds >= selectedDuration/);
-  // The stop condition line must not scale by speed:
   const stopLine = exp.split("\n").find((l) => /sessionSeconds >= selectedDuration/.test(l));
   assert.ok(stopLine, "auto-stop condition exists");
   assert.doesNotMatch(stopLine, /speedMultiplier/, "30s stays 30s regardless of pace");
 });
 
 test("mobile: particles idle-float — no outward expulsion, no pile, no center rake", () => {
-  // Idle = pure float (radial 0), keep-out only near the ball.
   const idleIdx = pb.indexOf("// Idle: pure float");
   assert.ok(idleIdx >= 0, "idle branch documented");
   const idleBlock = pb.slice(idleIdx, idleIdx + 500);
   assert.match(idleBlock, /targetRadialSpeed = 0/, "idle radial must be 0 (float, not expulsion)");
-  // One-time settle re-scatter on session end.
   assert.match(pb, /prevPhaseRef\.current !== BreathingPhase\.Idle && currentPhase === BreathingPhase\.Idle/);
-  // Orb wake is finger-gated and has NO attraction term (drags must not rake particles into the center).
   assert.match(pb, /pullingBall/);
   assert.doesNotMatch(pb, /ORB_PULL_ACCEL/, "attraction toward the ball must not return");
   assert.match(pb, /orb\.vx \* wake/, "wake-only drag coupling");
@@ -142,8 +117,6 @@ test("mobile: outer ring follows the ball slowly and returns slower", () => {
 });
 
 test("mobile: pace slider emits haptic ticks on position change", () => {
-  // The PaceSlider onChange wrapper fires 'pace_haptic' through the onEvent
-  // bridge when the slider position changes by at least one step (0.05).
   assert.match(exp, /'pace_haptic'/);
   assert.match(exp, /pace_haptic/, "pace_haptic event name appears in BreathingExperience");
   assert.match(exp, /paceHapticLastPosRef/, "tracks last emitted slider position");
@@ -200,18 +173,14 @@ test("mobile: index.tsx handles pace_haptic with Haptics.selectionAsync", () => 
 });
 
 test("mobile: session-progress dot rides the ring with angle math (cos/sin)", () => {
-  // Visualizer receives sessionProgress and computes the dot position with trig.
   assert.match(viz, /sessionProgress/, "Visualizer accepts sessionProgress prop");
   assert.match(viz, /Math\.sin\(dotAngle\)/, "dot angle uses sin for x position");
   assert.match(viz, /Math\.cos\(dotAngle\)/, "dot angle uses cos for y position");
   assert.match(viz, /showDot/, "dot visibility gated on showDot");
-  // The dot is a span inside the ring-border div.
   assert.match(viz, /Session-progress dot/, "dot element documented inside ring layer");
-  // BreathingExperience computes session progress in the animate loop.
   assert.match(exp, /setSessionProgress/, "sessionProgress set in animate loop");
   assert.match(exp, /Date\.now\(\) - sessionClockStartRef\.current/, "wall-clock elapsed time");
   assert.match(exp, /selectedDuration/, "progress fraction uses selectedDuration");
-  // progress prop stays at 0 (not rewired for per-phase progress).
   assert.match(exp, /progress=\{0\}/, "progress prop pinned to 0");
 });
 
@@ -271,27 +240,19 @@ test("mobile: Wim Hof completion commits the session exactly once", () => {
     "duration auto-stop cannot double-commit a completed protocol");
 });
 
-// ---------------------------------------------------------------------------
-// DESKTOP — the website's resonance experience
-// ---------------------------------------------------------------------------
-
 const resonance = read("src/components/resonance/Resonance.tsx");
 const desktopPb = read("src/components/resonance/components/ParticleBackground.tsx");
 
 test("desktop: single speed slider — LEFT = slower, RIGHT = faster, default centered", () => {
   assert.match(resonance, /const \[speedMultiplier, setSpeedMultiplier\] = useState/);
   assert.match(resonance, /type="range"/);
-  // Desktop imports the shared mapping from @resonance/domain — no inline definitions.
   assert.match(resonance, /import \{ multiplierToSlider, sliderToMultiplier, speedOf \} from '@resonance\/domain'/,
     "desktop imports slider and display-speed fns from shared domain package");
-  // Still uses them at the call site (the contract pins the wiring, not the
-  // definition location).
   assert.match(resonance, /value=\{multiplierToSlider\(speedMultiplier\)\}/);
   assert.match(resonance, /onChange=\{\(e\) => setSpeedMultiplier\(sliderToMultiplier\(parseFloat\(e\.target\.value\)\)\)/);
   assert.match(resonance, /step="0\.05"/, "0.05 step keeps the centered default on-grid");
   assert.match(resonance, /ui\.speed_multiplier.*speedOf\(speedMultiplier\)\.toFixed\(1\)/,
     "desktop displays speedOf so the label preserves slow-left/fast-right semantics");
-  // Verify the mapping lives in the shared source.
   assert.match(sharedPacing, /multiplierToSlider = /, "shared source defines multiplierToSlider");
   assert.match(sharedPacing, /sliderToMultiplier = /, "shared source defines sliderToMultiplier");
 });
@@ -302,8 +263,6 @@ test("desktop: speed scales the animation phases", () => {
 });
 
 test("desktop: session clock is wall-clock", () => {
-  // The desktop ticks a 1s counter (never speed-scaled) and auto-stops on
-  // wall seconds.
   assert.match(resonance, /setSessionSeconds\(s => \{\s*const next = s \+ 1;/,
     "timer increments 1s per tick");
   const stopLine = resonance.split("\n").find((l) => /sessionSeconds >= selectedDuration/.test(l));
@@ -312,38 +271,29 @@ test("desktop: session clock is wall-clock", () => {
 });
 
 test("mobile: ParticleBackground respects prefers-reduced-motion", () => {
-  // Must have matchMedia('(prefers-reduced-motion: reduce)') somewhere.
   assert.match(pb, /matchMedia\('\(prefers-reduced-motion:\s*reduce\)'\)/,
     "ParticleBackground must query prefers-reduced-motion");
-  // Must have a reduced-motion gate on the interaction code (the gate variable
-  // guards pointer.active and the orb wake/keep-out blocks).
   assert.match(pb, /!reducedMotion\s*&&\s*pointer\.active/,
     "interaction field must be gated on reducedMotion");
   assert.match(pb, /if\s*\(!reducedMotion\s*&&\s*orb\s*!=\s*null\)\s*\{/,
     "orb interaction block must be gated on reducedMotion");
-  // The canvas element must carry a data-reduced-motion attribute.
   assert.match(pb, /data-reduced-motion/,
     "canvas must set data-reduced-motion attribute");
-  // Particle count must be halved when reduced.
   assert.match(pb, /reducedMotionRef\.current\s*\?\s*Math\.floor\(baseCount\s*\/\s*2\)/,
     "particle count must be halved when reduced motion is active");
 });
 
 test("mobile: ParticleBackground has idle-pause mechanism for battery", () => {
-  // Must have an idle timer ref that gates the animation loop.
   assert.match(pb, /lastActivityTimeRef/,
     "must track last activity time for idle detection");
   assert.match(pb, /idlePausedRef/,
     "must have an idle-paused flag");
   assert.match(pb, /cancelAnimationFrame/,
     "must cancel animation frames on cleanup");
-  // Idle pause condition: phase is Idle AND no activity for ~4s.
   assert.match(pb, /BreathingPhase\.Idle\s*&&\s*Date\.now\(\)\s*-\s*lastActivityTimeRef\.current\s*>\s*4000/,
     "must pause rAF when Idle and inactive for ~4s");
-  // Must resume on activity (pointer, wheel, resize) or phase change.
   assert.match(pb, /idlePausedRef\.current\s*=\s*false/,
     "must clear idle-paused flag on resume");
-  // Must store animate in a ref so the phase-sync effect can restart it.
   assert.match(pb, /animateRef\.current\s*=\s*animate/,
     "animate function must be stored in a ref for cross-effect restart");
 });

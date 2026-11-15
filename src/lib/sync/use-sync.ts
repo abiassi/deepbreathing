@@ -87,7 +87,6 @@ export function useSync(isAuthenticated: boolean) {
         }
       }
     } catch {
-      // Silent fail
     }
   }, [isAuthenticated]);
 
@@ -108,7 +107,6 @@ export function useSync(isAuthenticated: boolean) {
             }),
           });
         } catch {
-          // Silent fail
         }
       }, 2000);
     },
@@ -126,7 +124,6 @@ export function useSync(isAuthenticated: boolean) {
           body: JSON.stringify({ totalMinutes, sessionsCompleted, sessionDate }),
         });
       } catch {
-        // Silent fail
       }
     },
     [isAuthenticated]

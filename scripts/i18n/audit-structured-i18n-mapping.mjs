@@ -149,7 +149,6 @@ function collectStringLeaves(node, path = []) {
     });
   }
 
-  // Enums, booleans, numbers, and other non-string leaves do not need translation.
   return [];
 }
 
