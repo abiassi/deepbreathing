@@ -147,7 +147,8 @@
           "iosBackgroundMode": false,
           "androidPermissions": [],
           "androidForegroundService": false,
-          "disableFFmpeg": true
+          "disableFFmpeg": true,
+          "disableStaticExternalLibs": true
         }
       ],
       "./plugins/withStripFrameworkSymbols"
