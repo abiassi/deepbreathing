@@ -71,7 +71,6 @@ export function ShareButton({
     if (dismissTimer.current) clearTimeout(dismissTimer.current);
   }, []);
 
-  // Click outside to close
   useEffect(() => {
     if (!popoverOpen) return;
     const handler = (e: MouseEvent) => {
@@ -83,7 +82,6 @@ export function ShareButton({
     return () => document.removeEventListener('mousedown', handler);
   }, [popoverOpen, close]);
 
-  // Auto-dismiss after 8s
   useEffect(() => {
     if (!popoverOpen) return;
     dismissTimer.current = setTimeout(close, 8000);
@@ -93,7 +91,6 @@ export function ShareButton({
   const handleShare = async () => {
     const liveTitle = locale ? title : getLocalizedShareTitle(title);
     const liveText = locale ? text : getLocalizedShareText(text);
-    // Try native share first (mobile)
     if (navigator.share) {
       try {
         await navigator.share({ title: liveTitle, text: liveText, url: appendShareUtm(url, 'native') });
@@ -103,13 +100,11 @@ export function ShareButton({
       }
     }
 
-    // Auto-copy URL to clipboard and open popover
     try {
       await copyToClipboard(appendShareUtm(url, 'copy'));
       setUrlCopied(true);
       setTimeout(() => setUrlCopied(false), 2000);
     } catch {
-      // Clipboard failed, popover still opens so user can manually copy
     }
     setPopoverOpen(true);
   };
@@ -156,7 +151,6 @@ export function ShareButton({
 
       {popoverOpen && (
         <div className="absolute left-0 top-full mt-2 z-50 w-[320px] max-w-[calc(100vw-2rem)] rounded-xl border border-border/60 bg-card shadow-lg backdrop-blur-md overflow-hidden">
-          {/* URL row */}
           <div className="p-3">
             <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1.5">{t("ui.link")}</p>
             <div className="flex items-center gap-2">
@@ -180,7 +174,6 @@ export function ShareButton({
             </div>
           </div>
 
-          {/* Embed row */}
           {embedSnippet && (
             <div className="border-t border-border/40 p-3">
               <div className="flex items-center justify-between">
