@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-// Paths where the banner should NOT show
 const HOLIDAY_PATHS = [
   '/embed',
   '/holiday-breathing-exercises',
@@ -18,27 +17,23 @@ export function SeasonalBanner({ disabled = false }: { disabled?: boolean }) {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    // Check feature flag
     const featureEnabled = process.env.NEXT_PUBLIC_HOLIDAY_BANNER === 'true';
     if (disabled || !featureEnabled) {
       setShouldShow(false);
       return;
     }
 
-    // Check if on a holiday page
     const isHolidayPage = HOLIDAY_PATHS.some(path => pathname?.startsWith(path));
     if (isHolidayPage) {
       setShouldShow(false);
       return;
     }
 
-    // Check if holiday season (December or January)
     const month = new Date().getMonth();
     const isHolidaySeason = month === 11 || month === 0;
 
     setShouldShow(isHolidaySeason);
 
-    // Check if user dismissed it this session
     const wasDismissed = sessionStorage.getItem('holiday-banner-dismissed');
     if (wasDismissed) setDismissed(true);
   }, [disabled, pathname]);

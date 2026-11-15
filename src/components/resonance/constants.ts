@@ -10,7 +10,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 4,
     exhale: 4,
     holdOut: 4,
-    color: "#e11d48" // Rose
+    color: "#e11d48"
   },
   [ModeName.Relax]: {
     name: ModeName.Relax,
@@ -19,7 +19,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 7,
     exhale: 8,
     holdOut: 0,
-    color: "#4f46e5" // Indigo
+    color: "#4f46e5"
   },
   [ModeName.Coherent]: {
     name: ModeName.Coherent,
@@ -28,7 +28,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 0,
     exhale: 5.5,
     holdOut: 0,
-    color: "#059669" // Emerald
+    color: "#059669"
   },
   [ModeName.Sigh]: {
     name: ModeName.Sigh,
@@ -38,7 +38,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 0,
     exhale: 6,
     holdOut: 1,
-    color: "#0ea5e9" // Sky Blue
+    color: "#0ea5e9"
   },
   [ModeName.WimHof]: {
     name: ModeName.WimHof,
@@ -47,7 +47,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 0,
     exhale: 1.5,
     holdOut: 0,
-    color: "#f97316" // Orange (energy)
+    color: "#f97316"
   },
   [ModeName.PursedLip]: {
     name: ModeName.PursedLip,
@@ -56,7 +56,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 0,
     exhale: 4,
     holdOut: 0,
-    color: "#10b981" // Emerald
+    color: "#10b981"
   },
   [ModeName.NadiShodhana]: {
     name: ModeName.NadiShodhana,
@@ -65,7 +65,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 4,
     exhale: 4,
     holdOut: 0,
-    color: "#8b5cf6" // Violet
+    color: "#8b5cf6"
   },
   [ModeName.Ujjayi]: {
     name: ModeName.Ujjayi,
@@ -74,7 +74,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 0,
     exhale: 6,
     holdOut: 0,
-    color: "#0891b2" // Ocean blue (cyan-600)
+    color: "#0891b2"
   },
   [ModeName.Belly]: {
     name: ModeName.Belly,
@@ -83,7 +83,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 0,
     exhale: 6,
     holdOut: 0,
-    color: "#f59e0b" // Warm amber
+    color: "#f59e0b"
   },
   [ModeName.Buteyko]: {
     name: ModeName.Buteyko,
@@ -92,7 +92,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 0,
     exhale: 3,
     holdOut: 3,
-    color: "#38bdf8" // Sky blue
+    color: "#38bdf8"
   },
   [ModeName.Tummo]: {
     name: ModeName.Tummo,
@@ -101,7 +101,7 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 0,
     exhale: 1,
     holdOut: 0,
-    color: "#dc2626" // Deep red
+    color: "#dc2626"
   },
   [ModeName.BreathOfFire]: {
     name: ModeName.BreathOfFire,
@@ -110,20 +110,19 @@ export const BREATHING_PATTERNS: Record<ModeName, BreathingPattern> = {
     holdIn: 0,
     exhale: 0.75,
     holdOut: 0,
-    color: "#ea580c" // Hot orange
+    color: "#ea580c"
   }
 };
 
-// Wim Hof protocol configuration
 export const WIM_HOF_PROTOCOL: ProtocolPattern = {
   name: 'Wim Hof',
   rounds: 3,
   powerBreathCount: 30,
-  powerBreathTiming: { inhale: 1.5, exhale: 1.5 }, // 3s per breath cycle
-  retentionHoldMin: 3, // minimum hold before "end hold" appears
-  retentionHoldMax: 180, // 3 minutes max
-  recoveryTiming: { inhale: 2, hold: 15 }, // deep recovery breath
-  roundRestDuration: 5, // brief rest between rounds
+  powerBreathTiming: { inhale: 1.5, exhale: 1.5 },
+  retentionHoldMin: 3,
+  retentionHoldMax: 3 * 60,
+  recoveryTiming: { inhale: 2, hold: 15 },
+  roundRestDuration: 5,
   color: '#f97316'
 };
 

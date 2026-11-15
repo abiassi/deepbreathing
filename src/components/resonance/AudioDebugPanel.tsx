@@ -28,9 +28,6 @@ const STRIP_LABEL_CLS = 'text-[10px] font-semibold uppercase tracking-[0.15em] t
 const formatDb = (db: number) => (isFinite(db) ? `${db.toFixed(1)}` : '−∞');
 const meterPct = (db: number) => Math.max(0, Math.min(100, ((db + 60) / 60) * 100));
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Imperative meters — direct DOM updates, no React render cost.
-// ─────────────────────────────────────────────────────────────────────────────
 interface LevelMeterHandle {
   update(peakDb: number, rmsDb: number): void;
 }
@@ -89,9 +86,6 @@ const NumericReadout = forwardRef<NumericReadoutHandle, { className?: string; in
 });
 NumericReadout.displayName = 'NumericReadout';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Vertical fader — Radix vertical slider with DAW-style flat cap.
-// ─────────────────────────────────────────────────────────────────────────────
 function VerticalFader({
   value, min, max, step, onChange, ariaLabel, height = 'h-36',
 }: {
@@ -134,10 +128,6 @@ function KnobSlider({
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Channel strip — exposes a single `update(peakDb, rmsDb)` so the rAF loop
-// can drive its meter + numeric readout without re-rendering the slider tree.
-// ─────────────────────────────────────────────────────────────────────────────
 interface ChannelStripHandle {
   update(peakDb: number, rmsDb: number): void;
 }
@@ -183,8 +173,6 @@ export default function AudioDebugPanel({ audio }: Props) {
   const [collapsed, setCollapsed] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // Refs for every imperative meter / readout — the rAF loop pokes these
-  // directly so React never re-renders during playback.
   const droneRef = useRef<ChannelStripHandle>(null);
   const subBassRef = useRef<ChannelStripHandle>(null);
   const pinkRef = useRef<ChannelStripHandle>(null);
@@ -201,7 +189,6 @@ export default function AudioDebugPanel({ audio }: Props) {
 
   const rafRef = useRef<number | null>(null);
 
-  // Imperative meter loop — no setState, no re-render. Runs only when expanded.
   useEffect(() => {
     if (collapsed) return;
     const tick = () => {
@@ -297,7 +284,6 @@ export default function AudioDebugPanel({ audio }: Props) {
 
         {!collapsed && (
           <div className="max-h-[60vh] overflow-y-auto p-3">
-            {/* Bus rack */}
             <div className="flex flex-wrap items-stretch gap-2 pb-3">
               <div className={`${RACK_CLS} flex flex-col gap-1.5`}>
                 <span className={`${LABEL_CLS} mb-0.5`}>Compressor</span>
@@ -340,7 +326,6 @@ export default function AudioDebugPanel({ audio }: Props) {
               </div>
             </div>
 
-            {/* Mixer */}
             <div className="flex items-stretch gap-2 overflow-x-auto pt-2">
               <ChannelStrip
                 ref={droneRef}
@@ -386,7 +371,6 @@ export default function AudioDebugPanel({ audio }: Props) {
                 }
               />
 
-              {/* Master strip */}
               <div className={`${STRIP_CLS} ml-auto bg-card/90 dark:bg-card/50`}>
                 <div className="flex gap-3">
                   <div className="flex flex-col items-center gap-1">

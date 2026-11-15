@@ -54,17 +54,8 @@ export function SessionCompletePrompt({
 
   const phrases = useMemo(() => createRuntimePhraseResolver(locale), [locale]);
 
-  // ── Non-blocking banner ───────────────────────────────────────────────────
-  // The banner renders when the visitor is in the `loss_aversion_banner` bucket
-  // (the ship path — flip ACTIVE_CHALLENGER to enable for real traffic) OR when
-  // `?promptui=card|pill` forces it for preview. `?promptdemo=1` opens it on
-  // mount so you can see it without breathing a full 60s session first.
-  //
-  // When the banner is active we persist the `loss_aversion_banner` bucket, so
-  // the existing funnel events (conversion_prompt_shown / _signup_completed /
-  // signup_user_identified) and the conversion_variant GA4 user property all
-  // tag this cohort — segmenting "saw + registered via the banner" from the
-  // modal, with no new tracking code. No param → unchanged Prompt C.
+  // `?promptui=card|pill` forces the banner for preview; `?promptdemo=1` opens it on mount.
+  // Persisting the banner bucket tags this cohort in the existing funnel events.
   const [bannerUi, setBannerUi] = useState<BannerLayout | null>(
     variant === "loss_aversion_banner" ? "card" : null
   );
@@ -89,9 +80,7 @@ export function SessionCompletePrompt({
       return () => clearTimeout(t);
     }
   }, [variant]);
-  // ──────────────────────────────────────────────────────────────────────────
 
-  // Closing the sheet counts as a dismissal (fires conversion_prompt_dismissed).
   const handleOpenChange = (isOpen: boolean) => {
     if (!isOpen) {
       onDismiss();
@@ -152,8 +141,6 @@ export function SessionCompletePrompt({
   }
 
   if (variant === "social_stats") {
-    // Conversion Prompt B. Show stats block only when both minutes and streak
-    // are real (> 0 / >= 1) — a "0" must never unblur.
     return (
       <SocialStatsSignInSheet
         open={open}

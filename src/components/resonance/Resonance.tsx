@@ -20,7 +20,6 @@ import {
   trackAccountMenuStatsEntryClick,
 } from './authenticated-practice-receipt';
 
-// GA4 event helper — safe to call even if gtag isn't loaded
 function trackEvent(name: string, params?: Record<string, string | number | boolean>) {
   if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
     (window as any).gtag('event', name, params);
@@ -97,28 +96,22 @@ interface ResonanceProps {
   noMobileBottomPad?: boolean;
   /** Explicit native locale. Legacy proxy pages may omit it and use browser detection. */
   locale?: string;
-  /** Canonical route paths that exist in the current native serving mode. */
   localizedRoutePaths?: readonly string[];
-  /** Localized visible name for the route's initial breathing mode. */
   modeDisplayName?: string;
-  /** Route-owned post-session client chrome. Omitted routes keep existing defaults. */
   routeClientMessages?: ResonanceRouteClientMessages;
 }
 
-// Valid duration values in seconds (clamped to prevent abuse)
 const VALID_DURATIONS = [30, 60, 180, 300, 600] as const;
-const MAX_DURATION = 600; // 10 minutes max
-const DEFAULT_DURATION = 60; // 1 min default for new users
+const MAX_DURATION = 10 * 60;
+const DEFAULT_DURATION = 60;
 
 function parseAndClampDuration(value: string | null): number | undefined {
   if (!value) return undefined;
   const parsed = parseInt(value, 10);
   if (isNaN(parsed) || parsed <= 0) return undefined;
-  // Clamp to max duration
   return Math.min(parsed, MAX_DURATION);
 }
 
-// Sound guide phase for a breathing phase. Idle has no sound.
 function guidePhaseKind(phase: BreathingPhase): GuidePhaseKind | null {
   switch (phase) {
     case BreathingPhase.Inhale: return 'inhale';
@@ -134,9 +127,6 @@ function guidePhaseKind(phase: BreathingPhase): GuidePhaseKind | null {
   }
 }
 
-// Parse a boolean-like URL param. Accepts "1"/"0", "true"/"false", "on"/"off".
-// Returns undefined if param is missing/invalid (so callers can fall back to
-// settings persistence or default).
 function parseBoolParam(value: string | null): boolean | undefined {
   if (value === null) return undefined;
   const v = value.toLowerCase();
@@ -200,9 +190,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     () => parseBoolParam(searchParams.get('eyesClosed')),
     [searchParams]
   );
-  // Sound guide (docs/audio/SOUND-DESIGN-2026-11.md). On by default since
-  // 2026-11-15. `?sound=classic` plays the previous phase cues instead, and
-  // `&bed=0` plays the guide without the ambient bed.
   const soundGuideEnabled = useMemo(
     () => searchParams.get('sound') !== 'classic',
     [searchParams]
@@ -221,14 +208,11 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     [searchParams]
   );
 
-  // --- State ---
   const initialMode = defaultMode ?? ModeName.Box;
   const [selectedDuration, setSelectedDuration] = useState<number | null>(() => durationFromUrl ?? DEFAULT_DURATION);
   const [activeMode, setActiveMode] = useState<ModeName>(initialMode);
   const [speedMultiplier, setSpeedMultiplier] = useState(DEFAULT_SPEED_MULTIPLIER);
   const [themeColor, setThemeColor] = useState(BREATHING_PATTERNS[initialMode].color);
-  // v2 audio toggles. Defaults preserve current behavior (binaural on,
-  // eyes-closed off) so existing users see no change unless they opt in.
   const [binauralEnabled, setBinauralEnabled] = useState<boolean>(() => binauralFromUrl ?? true);
   const [eyesClosed, setEyesClosed] = useState<boolean>(() => eyesClosedFromUrl ?? false);
   const [totalMinutes, setTotalMinutes] = useState(0);
@@ -249,7 +233,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     []
   );
 
-  // Auth + conversion triggers
   const { isAuthenticated, user, syncSettings, syncStats, currentStreak: serverStreak } = useAuth();
   const {
     variant: conversionVariant,
@@ -267,7 +250,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const [authenticatedReceipt, setAuthenticatedReceipt] = useState<AuthenticatedReceiptState | null>(null);
   const [authenticatedReceiptPreviewDismissed, setAuthenticatedReceiptPreviewDismissed] = useState(false);
 
-  // Client-side hydration check
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -279,7 +261,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       if (!defaultMode && parsed.mode) setActiveMode(parsed.mode);
       if (parsed.speed) setSpeedMultiplier(parsed.speed);
       if (!defaultMode && parsed.color) setThemeColor(parsed.color);
-      // v2 toggles — URL param wins over storage, storage wins over default.
       if (binauralFromUrl === undefined && typeof parsed.binauralEnabled === 'boolean') {
         setBinauralEnabled(parsed.binauralEnabled);
       }
@@ -340,7 +321,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     setSelectedDuration(durationFromUrl);
   }, [durationFromUrl]);
 
-  // Mirror URL param changes for v2 toggles too (matches durationFromUrl).
   useEffect(() => {
     if (binauralFromUrl === undefined) return;
     setBinauralEnabled(binauralFromUrl);
@@ -362,14 +342,12 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         setSelectedDuration(Math.min(parsed.duration, MAX_DURATION));
       }
     } catch (_err) {
-      // Ignore invalid persisted settings.
     }
   }, [mounted, durationFromUrl]);
 
   const [phase, setPhase] = useState<BreathingPhase>(BreathingPhase.Idle);
   const [isRunning, setIsRunning] = useState(false);
 
-  // Protocol mode state (for Wim Hof and similar multi-round techniques)
   const [isProtocolMode, setIsProtocolMode] = useState(false);
   const [protocolState, setProtocolState] = useState<ProtocolState>({
     currentRound: 1,
@@ -386,7 +364,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const [soundHintVisible, setSoundHintVisible] = useState(false);
   const [soundHintMounted, setSoundHintMounted] = useState(false);
 
-  // Animation State
   const [scale, setScale] = useState(0);
   const [runtimeLocale, setRuntimeLocale] = useState(() => locale ?? 'en');
   const runtimePhrases = useMemo(() => createRuntimePhraseResolver(runtimeLocale), [runtimeLocale]);
@@ -403,7 +380,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   // Per-tab presence token — generated once on mount, no PII.
   const presenceTokenRef = useRef<string | null>(null);
 
-  // Refs
   const audioServiceRef = useRef<AudioService | null>(null);
   const soundHintTimeoutRef = useRef<number | null>(null);
   const soundHintUnmountRef = useRef<number | null>(null);
@@ -421,9 +397,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     return audioServiceRef.current;
   }, [audioDebugEnabled]);
 
-  // Flip the window-level debug flag whenever ?debug=audio is present so any
-  // other code that gates on __RESONANCE_DEBUG (or future debug surfaces)
-  // sees it without having to re-read the URL.
   useEffect(() => {
     if (typeof window === 'undefined') return;
     if (audioDebugEnabled) {
@@ -591,7 +564,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     };
   }, []);
 
-  // --- Persistence Effects ---
   const settingsChangeCountRef = useRef(0);
   useEffect(() => {
     if (!mounted) return;
@@ -603,7 +575,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       binauralEnabled,
       eyesClosed,
     }));
-    // Track settings changes for conversion trigger (skip initial mount)
     settingsChangeCountRef.current++;
     if (settingsChangeCountRef.current > 1) {
       onSettingsChange();
@@ -611,7 +582,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
   }, [activeMode, speedMultiplier, themeColor, selectedDuration, binauralEnabled, eyesClosed, mounted, onSettingsChange, syncSettings]);
 
-  // When the server hydrates (user logs in), update local streak from server truth.
   useEffect(() => {
     if (serverStreak > 0) setCurrentStreak(serverStreak);
   }, [serverStreak]);
@@ -643,28 +613,24 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     }
   }, [themePreference, mounted, themeReady]);
 
-  // --- Haptics Effect ---
   useEffect(() => {
     if (!isRunning || typeof navigator === 'undefined' || typeof navigator.vibrate !== 'function') return;
 
-    // Trigger haptics on phase change
     switch (phase) {
       case BreathingPhase.Inhale:
       case BreathingPhase.Inhale2:
-        navigator.vibrate(100); // Short buzz to start
+        navigator.vibrate(100);
         break;
       case BreathingPhase.HoldIn:
       case BreathingPhase.HoldOut:
-        // Heartbeat pattern
         navigator.vibrate([50, 100, 50]);
         break;
       case BreathingPhase.Exhale:
-        navigator.vibrate(200); // Long grounding buzz
+        navigator.vibrate(200);
         break;
     }
   }, [phase, isRunning]);
 
-  // forcedTheme overrides user preference (used for holiday pages)
   const activeTheme = forcedTheme ?? (themePreference === 'system'
     ? (systemPrefersDark ? 'dark' : 'light')
     : themePreference);
@@ -673,8 +639,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     if (!themeReady) return;
     applyThemePreference(activeTheme);
   }, [activeTheme, applyThemePreference, themeReady]);
-
-  // --- Logic ---
 
   const currentPattern = BREATHING_PATTERNS[activeMode];
   const isDarkTheme = activeTheme === 'dark';
@@ -725,7 +689,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const handleBinauralToggle = useCallback(() => {
     const next = !binauralEnabled;
     setBinauralEnabled(next);
-    updateBoolParam('binaural', next, true); // default ON
+    updateBoolParam('binaural', next, true);
     trackEvent('binaural_toggled', { enabled: next, mode: activeMode });
     // Live response: stop binaural mid-session if user disables; if they
     // re-enable mid-session it picks up at the next phase transition.
@@ -737,12 +701,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
   const handleEyesClosedToggle = useCallback(() => {
     const next = !eyesClosed;
     setEyesClosed(next);
-    updateBoolParam('eyesClosed', next, false); // default OFF
+    updateBoolParam('eyesClosed', next, false);
     trackEvent('eyes_closed_toggled', { enabled: next, mode: activeMode });
   }, [eyesClosed, updateBoolParam, activeMode]);
 
-  // Live mid-session eyes-closed toggle: start/stop the phase envelope so
-  // users get audio feedback the moment they flip the switch.
   useEffect(() => {
     if (!isRunning) return;
     const audio = getAudioService();
@@ -768,8 +730,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       let newSessions = sessionsCompleted;
       if (delta > 0) {
         newMinutes = totalMinutes + Math.floor(delta / 60);
-        // Count the session exactly once — on the first commit. Subsequent
-        // pause→resume→pause cycles update minutes but not the session count.
         if (sessionCommittedSeconds === 0) newSessions = sessionsCompleted + 1;
         setTotalMinutes(newMinutes);
         if (newSessions !== sessionsCompleted) setSessionsCompleted(newSessions);
@@ -822,14 +782,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           // Activity history is best-effort local persistence.
         }
 
-        // Offer the signed-out sign-up prompt after ~1 min of real breathing,
-        // however the session ended: a timer auto-complete, a manual stop, a
-        // tap-to-pause, or an iOS background pause (visibilitychange/pagehide).
-        // Previously this only fired for 'completed'/'mode_switched', so an
-        // Open (no-timer) session, a manual pause, or an iOS backgrounded
-        // session never showed the prompt. sessionPromptFiredRef keeps it to
-        // one fire per physical session so onSessionComplete's own accounting
-        // isn't double-counted across pause→resume→pause commits.
         if (seconds >= 60 && !sessionPromptFiredRef.current) {
           sessionPromptFiredRef.current = true;
           setLastSessionSeconds(seconds);
@@ -873,7 +825,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     ]
   );
 
-  // Keep the ref pointed at the latest endSession for the background handler.
   useEffect(() => {
     endSessionRef.current = endSession;
   }, [endSession]);
@@ -901,7 +852,7 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
             : `${Date.now()}-${Math.random().toString(36).slice(2)}`
         );
         setSessionCommittedSeconds(0);
-        sessionPromptFiredRef.current = false; // fresh session → prompt may fire again
+        sessionPromptFiredRef.current = false;
         authenticatedReceiptFiredRef.current = false;
         trackEvent('breathing_session_start', {
           mode: activeMode,
@@ -910,7 +861,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         });
       }
 
-      // Check if this is Wim Hof (protocol mode)
       if (activeMode === ModeName.WimHof) {
         setIsProtocolMode(true);
         setProtocolState({
@@ -923,18 +873,16 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         protocolPhaseStartRef.current = performance.now();
         setInstructionKey('protocol.power_breathe');
 
-        // Wim Hof uses energizing drone + beta waves
         await audio.startDrone(themeColor);
         await audio.startSubBass(themeColor);
         if (binauralEnabled) {
-          await audio.startBinaural(15); // Beta waves for alertness
+          await audio.startBinaural(15);
         }
         if (eyesClosed) {
           await audio.startPhaseEnvelope(themeColor);
         }
         audio.playCue('inhale', themeColor);
       } else {
-        // Normal pattern mode
         setIsProtocolMode(false);
         setPhase(BreathingPhase.Inhale);
         phaseStartRef.current = performance.now();
@@ -962,26 +910,19 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           });
           setInstructionKey('instruction.inhale_slowly');
         } else {
-          // Adaptive Audio Logic
           if (activeMode === ModeName.Relax || activeMode === ModeName.Coherent) {
-            // Relax/Coherent get Pink Noise (Rain → Ocean with breath-coupled filter)
             await audio.startPinkNoise();
             if (binauralEnabled) {
-              // Relax gets Delta Waves (Sleep), Coherent gets Alpha
               const hz = activeMode === ModeName.Relax ? 2 : 10;
               await audio.startBinaural(hz);
             }
           } else {
-            // Others get Drone Synth + Alpha
             await audio.startDrone(themeColor);
             if (binauralEnabled) {
               await audio.startBinaural(10);
             }
           }
-          // Sub-bass body-resonance layer pairs with both drone and noise beds.
           await audio.startSubBass(themeColor);
-          // Eyes-closed mode: add a phase-length tonal envelope so the audio
-          // carries the breath when the visuals are dimmed.
           if (eyesClosed) {
             await audio.startPhaseEnvelope(themeColor);
           }
@@ -1084,11 +1025,9 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     getAudioService().toggleMute(newMute);
   };
 
-  // --- The Loop ---
   const animate = useCallback((time: number) => {
     if (!isRunning) return;
 
-    // Update 8D Spatial Audio Position + session-arc evolution.
     const audio = getAudioService();
     audio.updateSpatial(time);
     audio.tickSessionArc(sessionSecondsRef.current);
@@ -1106,18 +1045,14 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     let progress = 0;
     let nextPhase = phase;
 
-    // --- State Machine ---
-
     if (phase === BreathingPhase.Inhale) {
       currentPhaseDuration = inhaleDur;
       progress = Math.min(timeSincePhaseStart / currentPhaseDuration, 1);
 
-      // If there is a second inhale, only scale to 75%
       const maxScale = inhale2Dur > 0 ? 0.75 : 1.0;
       setScale(progress * maxScale);
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
-        // Check for Inhale 2 (Double Inhale)
         if (inhale2Dur > 0) {
           nextPhase = BreathingPhase.Inhale2;
           setInstructionKey('instruction.inhale_again');
@@ -1131,7 +1066,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     else if (phase === BreathingPhase.Inhale2) {
       currentPhaseDuration = inhale2Dur;
       progress = Math.min(timeSincePhaseStart / currentPhaseDuration, 1);
-      // Scale from 0.75 to 1.0
       setScale(0.75 + (progress * 0.25));
 
       if (timeSincePhaseStart >= currentPhaseDuration) {
@@ -1206,16 +1140,12 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     requestRef.current = requestAnimationFrame(animate);
   }, [activeMode, getAudioService, getSafePhrase, isRunning, phase, setInstructionKey, soundGuideEnabled, speedMultiplier, themeColor]);
 
-  // --- Wim Hof Protocol Animation ---
   const animateProtocol = useCallback((time: number) => {
     if (!isRunning || !isProtocolMode) return;
 
     const audio = getAudioService();
     audio.updateSpatial(time);
     audio.tickSessionArc(sessionSecondsRef.current);
-    // Couple phase envelope to the visual phase + a rough progress estimate.
-    // The protocol's power-breath cycle is fast so the envelope tracks it via
-    // the visual phase set later in this callback.
     if (phase === BreathingPhase.Inhale || phase === BreathingPhase.Inhale2) {
       audio.updatePhaseEnvelope('inhale', Math.min(1, (time - protocolPhaseStartRef.current) / 1500));
     } else if (phase === BreathingPhase.Exhale) {
@@ -1238,12 +1168,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       let next = { ...prev };
 
       if (prev.phase === ProtocolPhase.PowerBreathe) {
-        // Calculate which breath we're on and progress within that breath
         const breathIndex = Math.floor(timeSincePhaseStart / breathCycleDur);
         const withinBreathTime = timeSincePhaseStart % breathCycleDur;
 
         if (breathIndex >= protocol.powerBreathCount) {
-          // Done with power breaths, transition to retention hold
           next.phase = ProtocolPhase.RetentionHold;
           next.retentionTime = 0;
           next.isUserControlledHold = true;
@@ -1251,11 +1179,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           protocolPhaseStartRef.current = time;
           setInstructionKey('instruction.hold_your_breath');
           audio.playCue('hold', themeColor);
-          setScale(0); // Empty lungs
+          setScale(0);
         } else {
           next.currentBreathIndex = breathIndex + 1;
 
-          // Animate the breath
           if (withinBreathTime < inhaleDur) {
             const progress = withinBreathTime / inhaleDur;
             setScale(progress);
@@ -1269,12 +1196,10 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         const holdSeconds = Math.floor((time - retentionStartRef.current) / 1000);
         next.retentionTime = holdSeconds;
 
-        // Update instruction with timer
         const mins = Math.floor(holdSeconds / 60);
         const secs = holdSeconds % 60;
         setInstruction(`${mins}:${String(secs).padStart(2, '0')}`);
 
-        // Auto-end at max hold time
         if (holdSeconds >= protocol.retentionHoldMax) {
           next.phase = ProtocolPhase.RecoveryInhale;
           protocolPhaseStartRef.current = time;
@@ -1298,7 +1223,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         const holdProgress = timeSincePhaseStart / recoveryHoldDur;
 
         if (timeSincePhaseStart >= recoveryHoldDur) {
-          // Check if more rounds
           if (prev.currentRound < protocol.rounds) {
             next.currentRound = prev.currentRound + 1;
             next.currentBreathIndex = 0;
@@ -1307,11 +1231,9 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
             setInstructionKey('protocol.round_complete', { round: prev.currentRound });
             setScale(0.5);
           } else {
-            // Protocol complete
             next.phase = ProtocolPhase.ProtocolComplete;
             setInstructionKey('protocol.complete');
             setScale(0.5);
-            // Stop the session
             setIsRunning(false);
             audio.stopDrone();
             audio.stopSubBass();
@@ -1321,7 +1243,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         }
       }
       else if (prev.phase === ProtocolPhase.RoundComplete) {
-        // Brief pause between rounds
         if (timeSincePhaseStart >= protocol.roundRestDuration * 1000) {
           next.phase = ProtocolPhase.PowerBreathe;
           protocolPhaseStartRef.current = time;
@@ -1331,10 +1252,8 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         }
       }
 
-      // Sync the visual effect phase (particles/bg) with the protocol phase
       let nextVisualPhase = phase;
       if (next.phase === ProtocolPhase.PowerBreathe) {
-        // Determine if inhaling or exhaling within power breath
         const { inhale } = protocol.powerBreathTiming;
         const inhaleDur = inhale * 1000;
         const breathCycleDur = (inhale * 1000) + (protocol.powerBreathTiming.exhale * 1000);
@@ -1363,7 +1282,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     requestRef.current = requestAnimationFrame(animateProtocol);
   }, [isRunning, isProtocolMode, getAudioService, phase, setInstructionKey, themeColor]);
 
-  // End hold button handler for Wim Hof
   const handleEndHold = useCallback(() => {
     if (!isProtocolMode || protocolState.phase !== ProtocolPhase.RetentionHold) return;
 
@@ -1404,13 +1322,11 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         });
       }, 1000);
     } else if (!isRunning && sessionSeconds === 0) {
-      // Hard end / fresh — reset the ref too.
       sessionSecondsRef.current = 0;
     }
     return () => clearInterval(interval);
   }, [isRunning, sessionSeconds]);
 
-  // Auto-stop when targetDuration is reached
   useEffect(() => {
     if (typeof selectedDuration === 'number' && isRunning && sessionSeconds >= selectedDuration) {
       const audio = getAudioService();
@@ -1418,13 +1334,11 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
       setPhase(BreathingPhase.Idle);
       setInstructionKey('session.complete');
       endSession('completed', sessionSeconds, true);
-      // Stop all audio
       audio.stopDrone();
       audio.stopSubBass();
       audio.stopPhaseEnvelope();
       audio.stopPinkNoise();
       audio.stopBinaural();
-      // The sound guide ends a completed session with its closing chord.
       audio.stopSoundGuide({ seconds: 1.6, closing: true });
     }
   }, [selectedDuration, isRunning, sessionSeconds, getAudioService, setInstructionKey, endSession]);
@@ -1468,7 +1382,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     };
   }, [isRunning]);
 
-  // Presence heartbeat: fire on start, then every 60s while running.
   useEffect(() => {
     if (!isRunning) return;
     const token = presenceTokenRef.current;
@@ -1573,13 +1486,11 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
     return getSafePhrase('ui.duration_sec', { n: selectedDuration });
   }, [selectedDuration, getSafePhrase]);
 
-  // --- Helper for Stats ---
   const renderStats = () => {
     const p = BREATHING_PATTERNS[activeMode];
     const isRelax = activeMode === ModeName.Relax;
     const isWimHof = activeMode === ModeName.WimHof;
 
-    // Wim Hof has special stats display
     if (isWimHof) {
       return (
         <div className="mt-4 rounded-lg bg-card/70 p-3 text-xs text-muted-foreground shadow-inner backdrop-blur supports-[backdrop-filter]:bg-card/60 dark:bg-card/30">
@@ -1661,7 +1572,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
 
   if (!mounted) return null;
 
-  // Winter blue background: deep navy that works well with snow
   const winterBlueBase = '#0c1929';
   const winterBlueActive = '#0f1f33';
 
@@ -1777,7 +1687,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
         className={`relative z-10 flex flex-1 flex-col items-center justify-center sm:pb-0 ${noMobileBottomPad ? 'pb-24' : 'pb-44'}`}
         style={dimmedStyle}
       >
-        {/* Protocol UI: Round and breath counter */}
         {isProtocolMode && isRunning && (
           <div className="absolute top-8 left-0 right-0 z-20 flex flex-col items-center gap-2">
             <div className="rounded-full bg-card/80 px-4 py-2 text-sm font-medium text-card-foreground backdrop-blur">
@@ -1849,7 +1758,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           />
         )}
 
-        {/* Duration chips — visible before session starts */}
         {!isRunning && (
           <div className="mt-5 flex items-center gap-1.5">
             {durationOptions.filter(o => o.value !== null).map((option) => {
@@ -1871,7 +1779,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
           </div>
         )}
 
-        {/* End Hold button for Wim Hof retention phase */}
         {isProtocolMode && protocolState.phase === ProtocolPhase.RetentionHold && protocolState.retentionTime >= WIM_HOF_PROTOCOL.retentionHoldMin && (
           <button
             onClick={handleEndHold}
@@ -1930,7 +1837,6 @@ const Resonance: React.FC<ResonanceProps> = ({ apiKey, className = '', defaultMo
                     {muted ? getSafePhrase('ui.sound_off') : getSafePhrase('ui.sound_on')}
                   </button>
                 </div>
-                {/* v2 audio toggles */}
                 {/*
                   Eyes-closed toggle parked — feature needs voice narration in
                   each locale to be useful on its own (visual cues are removed,

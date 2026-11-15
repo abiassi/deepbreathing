@@ -57,7 +57,6 @@ export const analyzeMood = async (moodText: string, apiKey: string): Promise<AIR
 
   } catch (error) {
     console.error("Gemini Analysis Failed:", error);
-    // Fallback recommendation
     return {
       recommendedMode: ModeName.Box,
       explanation: "We couldn't connect to your AI guide, but Box Breathing is excellent for centering yourself.",
