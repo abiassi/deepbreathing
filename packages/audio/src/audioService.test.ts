@@ -237,6 +237,28 @@ describe('AudioService lifecycle safety', () => {
     expect(reverb.disconnectCalls.every((destination) => destination !== undefined)).toBe(true);
   });
 
+  it('splits each phase cue only at nodes that write their own output buffer', async () => {
+    // On react-native-audio-api 0.13.6 a gain or filter node processes in
+    // place on its input's buffer, and the second node that reads its output
+    // gets silence. A cue graph that splits at such a node loses a path.
+    const context = new FakeContext();
+    const service = createService(context);
+    await service.startDrone('#e11d48');
+
+    const nodeStart = context.createdNodes.length;
+    service.setBreathingMode(ModeName.Box);
+    service.playCue('inhale', '#e11d48');
+    const cueNodes = new Set<unknown>(context.createdNodes.slice(nodeStart));
+    const reverbs = [...(service as unknown as { cueReverbCache: Map<string, FakeConvolver> }).cueReverbCache.values()];
+    reverbs.forEach((reverb) => cueNodes.add(reverb));
+
+    const splits = [...cueNodes].filter(
+      (node) => (node as FakeNode).connections.filter((destination) => cueNodes.has(destination)).length > 1,
+    );
+    expect(splits.length).toBeGreaterThan(0);
+    expect(splits.every((node) => node instanceof FakePanner || node instanceof FakeConvolver)).toBe(true);
+  });
+
   it('bounds completion-cue graph lifetime when ended is interrupted', async () => {
     vi.useFakeTimers();
     const context = new FakeContext();
