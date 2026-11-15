@@ -98,6 +98,17 @@ database migrations or backfills, auth and session changes, account or data
 deletion, payments, secrets or environment changes, and anything that sends
 messages to users. Mobile EAS and App Store releases keep their own process.
 
+### Rules that checks enforce
+
+State a rule as a check, not a code comment. Each row's check names the fix in its error.
+
+| Rule | Enforced by |
+|---|---|
+| `ModeName` is defined only in `packages/domain/src/modes.ts` | ESLint `no-restricted-syntax` (`.eslintrc.json`, `src/` only) |
+| Every `src/app/api/**/route.ts` exports `dynamic = "force-dynamic"` | ESLint `no-restricted-syntax` override |
+| OG and avatar images avoid CSS that Satori can't render | ESLint `no-restricted-syntax` override |
+| Generated i18n inventory matches source line numbers | `pnpm test` (`native-i18n-inventory.test.mjs`) |
+
 ## Experiments — before you ship
 
 **STOP — read [`docs/SEO-EXPERIMENTS.md`](docs/SEO-EXPERIMENTS.md) FIRST.** Any SEO-adjacent task — a GSC/Bing alert, an indexing report, a redirect, a title/meta change, a sitemap or hreflang question, a crawl-health investigation — starts by reviewing that log. Many "new" problems are already diagnosed there as benign or already-fixed (e.g. the recurring "Page with redirect" WNC alert is a known no-action finding). Do not re-investigate from scratch and do not ship a change before checking whether it was already tried. This is non-negotiable; it is the whole reason the log exists.

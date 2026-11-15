@@ -7,9 +7,6 @@ export enum BreathingPhase {
   Idle = 'Ready'
 }
 
-// Canonical definition moved to @resonance/audio (single copy shared with
-// mobile); re-exported here so the rest of the web app keeps importing it
-// from './types' unchanged.
 import { ModeName } from '@resonance/audio';
 export { ModeName };
 
