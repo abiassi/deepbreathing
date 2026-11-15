@@ -81,11 +81,6 @@ function appleSignInErrorResponse() {
   );
 }
 
-/**
- * Exchange Apple's short-lived, one-time authorization code for a refresh
- * token. The caller supplies the client-secret generator so this helper can
- * be tested without importing credentials or making a network request.
- */
 export async function exchangeAppleAuthorizationCode(
   authorizationCode: string,
   identityToken: string,

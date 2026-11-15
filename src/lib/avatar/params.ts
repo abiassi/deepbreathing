@@ -9,8 +9,6 @@
 //
 // Design notes live in docs/research/per-user-blob-avatars.md.
 
-// --- hashing -------------------------------------------------------------
-
 // xmur3: string -> seeded 32-bit generator with GOOD avalanche. We do NOT
 // reuse og-scene's djb2 here: djb2 has weak avalanche, so sequential re-roll
 // seeds (seed#1, seed#2, ...) would produce near-identical avatars — the exact
@@ -29,7 +27,6 @@ export function xmur3(str: string): () => number {
   };
 }
 
-// mulberry32: same PRNG already used across the codebase (og-scene, particles).
 export function mulberry32(a: number): () => number {
   return () => {
     a |= 0;
@@ -39,8 +36,6 @@ export function mulberry32(a: number): () => number {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
-
-// --- OKLCH -> sRGB hex (gamut-clamped, quantized) ------------------------
 
 // Björn Ottosson's OKLab -> linear sRGB.
 function oklabToLinearSrgb(L: number, a: number, b: number): [number, number, number] {
@@ -80,7 +75,7 @@ function toHex2(v: number): string {
 export function oklchToHex(Lin: number, Cin: number, Hin: number): string {
   const L = Math.round(Lin * 255) / 255;
   let C = Math.round(Cin * 255) / 255;
-  const H = Math.round(((Hin % 360) + 360) % 360); // 1-degree grid
+  const H = Math.round(((Hin % 360) + 360) % 360);
   const hr = (H * Math.PI) / 180;
   const ca = Math.cos(hr);
   const sa = Math.sin(hr);
@@ -100,8 +95,6 @@ export function oklchToHex(Lin: number, Cin: number, Hin: number): string {
   return `#${toHex2(gammaEncode(rgb[0]))}${toHex2(gammaEncode(rgb[1]))}${toHex2(gammaEncode(rgb[2]))}`;
 }
 
-// --- silhouette ----------------------------------------------------------
-
 // Sample an 8-value CSS border-radius inside the measured brand band [30,70],
 // enforcing "opposite corners sum to ~100" so the blob stays convex/balanced
 // and never pinches. This is the ONE shape language the live CSS orb, Satori,
@@ -116,8 +109,6 @@ function sampleBorderRadius(rng: () => number): string {
   return `${r(h0)}% ${r(h1)}% ${r(100 - h0)}% ${r(100 - h1)}% / ${r(v0)}% ${r(v1)}% ${r(100 - v0)}% ${r(100 - v1)}%`;
 }
 
-// --- particles -----------------------------------------------------------
-
 export interface AvatarParticle {
   cx: number; // 0..100, percent of tile
   cy: number; // 0..100
@@ -125,8 +116,6 @@ export interface AvatarParticle {
   alpha: number;
 }
 
-// Constellation in a 0..100 unit square that avoids the central blob. Richness
-// only — invisible below ~64px, so renderers drop these at small sizes.
 function generateParticles(rng: () => number): AvatarParticle[] {
   const out: AvatarParticle[] = [];
   const target = 14;
@@ -135,36 +124,32 @@ function generateParticles(rng: () => number): AvatarParticle[] {
     attempts++;
     const cx = rng() * 100;
     const cy = rng() * 100;
-    if (Math.hypot(cx - 50, cy - 50) < 38) continue; // keep clear of the orb
+    if (Math.hypot(cx - 50, cy - 50) < 38) continue;
     out.push({ cx, cy, r: 0.7 + rng() * 1.6, alpha: 0.16 + rng() * 0.26 });
   }
   return out;
 }
 
-// --- public API ----------------------------------------------------------
-
 export const AVATAR_VERSION = 1;
 
 export interface BlobHarmonic {
-  k: number; // angular frequency (number of lobes-ish)
-  amp: number; // amplitude
-  phase: number; // radians
+  k: number;
+  amp: number;
+  phase: number;
 }
 
 export interface AvatarParams {
   version: number;
   seed: string;
-  fill: string; // hex — the orb body
-  glow: string; // hex — lighter derivative for the soft glow
-  ring: string; // hex — deeper derivative for the orbit ring
-  bgTint: string; // hex — brand cream tile background
-  // SHAPE (primary identity channel): sum-of-sines harmonics -> SVG path. Far more
-  // silhouette variety than border-radius. Build the path with blobPath(harmonics, R).
+  fill: string;
+  glow: string;
+  ring: string;
+  bgTint: string;
   harmonics: BlobHarmonic[];
   borderRadius: string; // 8-value CSS string — kept for the live CSS orb surface
-  morph: string[]; // border-radius keyframes the live blob tweens through
+  morph: string[];
   particles: AvatarParticle[];
-  hueDrift: number; // deg, for the live hue-rotate accent
+  hueDrift: number;
 }
 
 // The brand's warm cream background (globals.css `--background: 32 72% 97%`,
@@ -204,7 +189,6 @@ export function blobPath(harmonics: BlobHarmonic[], R = 33, cx = 50, cy = 50, n 
     for (const h of harmonics) r += h.amp * Math.sin(h.k * t + h.phase);
     pts.push([cx + R * r * Math.cos(t), cy + R * r * Math.sin(t)]);
   }
-  // Closed Catmull-Rom -> cubic beziers for a smooth outline.
   const r2 = (x: number) => Math.round(x * 100) / 100;
   const m = pts.length;
   let d = `M ${r2(pts[0][0])} ${r2(pts[0][1])} `;
