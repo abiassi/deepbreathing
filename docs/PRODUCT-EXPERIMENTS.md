@@ -108,7 +108,9 @@ See also: [docs/FUNNEL-DASHBOARD.md](FUNNEL-DASHBOARD.md) for the current state,
 
 **Qualitative signal:** Send that customer the link when the guide ships. The answer is a signal, not the verdict.
 
-**Measure-after:** 4 full weeks after the rollout date plus GA4's two-day maturation window. Record the rollout date and merge commit here.
+**Rollout:** 2026-11-15, merge commit `235d09d` (PR #103), production deploy verified the same day: a session on `/breathe/coherent` starts with `sound: "guide"`, and `?sound=classic` starts without it.
+
+**Measure-after:** 2026-12-15. The after window is the 4 full weeks 2026-11-16 to 2026-12-13, plus GA4's two-day maturation window.
 
 **Not part of this entry:** the iOS app. An iOS rollout needs its own physical-device criteria.
 
