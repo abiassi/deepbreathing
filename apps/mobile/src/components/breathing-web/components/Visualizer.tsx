@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo } from 'react';
-import { Pause } from 'lucide-react';
+import { Pause } from '../icons';
 import { BreathingPhase } from '../types';
 
 // Play triangle matching the desktop site's lucide 0.471 `Play` polygon

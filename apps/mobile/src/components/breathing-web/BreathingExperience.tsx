@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { Volume2, Activity, Waves, Wind, Sun, Moon, X, Settings as SettingsIcon } from 'lucide-react';
+import { Volume2, Activity, Waves, Wind, Sun, Moon, X, SettingsIcon } from './icons';
 import { BreathingPhase, ModeName, ProtocolPhase, ProtocolState, BreathingPattern } from './types';
 import { BREATHING_PATTERNS, DEFAULT_SPEED_MULTIPLIER, WIM_HOF_PROTOCOL } from './constants';
 import { AudioService } from '@resonance/audio';
