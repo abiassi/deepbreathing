@@ -3,8 +3,6 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 
-// Static source-assertion tests (matches the repo's other auth/event tests, which
-// read the .tsx/.ts source directly rather than transpiling + running it).
 const ROOT = process.cwd();
 const VARIANT = path.join(ROOT, "src", "lib", "conversion", "variant.ts");
 const SHEET = path.join(ROOT, "src", "components", "auth", "loss-aversion-sign-in-sheet.tsx");
@@ -39,7 +37,6 @@ test("variant.ts: provider-complete keep_practice is the active guest completion
     /export const CHALLENGER_SHARE\s*=\s*1\b/,
     "CHALLENGER_SHARE should be 1 (100% challenger); 0 is the instant rollback"
   );
-  // At CHALLENGER_SHARE=1, Math.random() (always < 1) resolves to ACTIVE_CHALLENGER.
   assert.match(
     src,
     /Math\.random\(\)\s*<\s*CHALLENGER_SHARE\s*\?\s*ACTIVE_CHALLENGER\s*:\s*"control"/,
@@ -61,7 +58,6 @@ test("variant.ts: provider-parity storage key re-buckets returning visitors", ()
     /const VARIANT_KEY\s*=\s*"resonance_conversion_variant_v6"/,
     "the provider-parity hotfix must re-bucket returning loss_aversion visitors"
   );
-  // The active key const must not still be the un-bumped key.
   assert.doesNotMatch(
     src,
     /const VARIANT_KEY\s*=\s*"resonance_conversion_variant"\s*;/,
@@ -107,7 +103,6 @@ test("loss-aversion sheet renders the real session card + reference copy", () =>
   assert.match(src, /One tap\. No password\./, "Google subtitle");
   assert.match(src, /or save with email/, "email expand label");
   assert.match(src, /notNow: "Not now"/, "preserves the reviewed English dismiss copy");
-  // honest-by-construction: none of the simulated social-proof from Prompt B
   assert.doesNotMatch(src, /breathing right now/, "must not carry the fake live count");
   assert.doesNotMatch(src, /Day streak/, "must not carry the fake streak");
 });
@@ -134,7 +129,6 @@ test("Resonance passes activeMode down to SessionCompletePrompt", () => {
   assert.match(block[0], /activeMode=\{activeMode\}/, "must thread activeMode through");
 });
 
-// ── Shipped non-blocking banner (loss_aversion_banner) ──────────────────────
 const BANNER = path.join(ROOT, "src", "components", "auth", "non-blocking-sign-in-banner.tsx");
 
 test("session-complete-prompt routes loss_aversion_banner to the NonBlockingSignInBanner", () => {

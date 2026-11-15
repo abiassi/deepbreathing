@@ -26,7 +26,6 @@ function assertReviewerIdentity(source, messagePrefix) {
     `${messagePrefix} must not reintroduce a hardcoded default reviewer — that fabricates reviewedBy for unreviewed pages`
   );
 
-  // reviewedBy must be conditional on reviewerName being set.
   assert.match(
     source,
     /reviewerName\s*(?:\?|&&)[\s\S]{0,200}reviewedBy:\s*\{/,

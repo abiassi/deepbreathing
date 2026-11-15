@@ -13,9 +13,6 @@ const INVENTORY_FILE = path.join(ROOT, "docs", "native-i18n", "INVENTORY.md");
 const LOCALE_PREFIXES = ["es", "pt", "fr", "de", "ja"];
 const CATALOG_LOCALES = ["de-de", "es-es", "fr-fr", "ja-jp", "pt-br"];
 
-// Every marker in the checked-in document must resolve to a real line. This is
-// portable and gates the build — it catches a classified marker whose source
-// moved or was reworded.
 test("every marker in the inventory resolves to a real line", () => {
   const document = fs.readFileSync(INVENTORY_FILE, "utf8");
   assert.doesNotMatch(document, /\(marker missing\)/);

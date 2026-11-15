@@ -69,7 +69,6 @@ test("PRODUCTION_HOSTNAMES is exported from google-analytics for reuse", () => {
 test("Non-production hosts do not load GA script (verified by component conditional)", () => {
   const gaScriptSrc = fs.readFileSync(GA_SCRIPT_PATH, "utf8");
 
-  // The component returns null if not production, preventing the remote Script render.
   assert.match(gaScriptSrc, /if\s*\(\s*!isProduction\s*\)\s*return\s+null/, "GA script must return null when not production");
   assert.match(gaScriptSrc, /Script\s+src=\{GOOGLE_ANALYTICS_SCRIPT_SRC\}/, "GA script only renders inside conditional component");
 });
