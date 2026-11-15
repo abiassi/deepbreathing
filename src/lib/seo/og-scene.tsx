@@ -9,13 +9,8 @@ import React from 'react';
 // fake the same feel with radial-gradient + non-inset box-shadow + a static
 // asymmetric borderRadius.
 //
-// Satori constraints to remember when editing:
-// - every multi-child div needs display:flex
-// - every absolutely-positioned child needs explicit width + height
-// - no `inset` box-shadow, no filter:blur, no textShadow, no textTransform,
-//   no letterSpacing (use .toUpperCase() instead, omit letter-spacing)
-// - radial-gradient(circle, ...) works; radial-gradient(circle at X Y, ...)
-//   has historically been rejected — keep gradients positional-arg-free
+// Satori needs display:flex on every multi-child div, and explicit width and
+// height on every absolutely positioned child. ESLint rejects the CSS it can't render.
 
 function hexToRgb(hex: string) {
   const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);

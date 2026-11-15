@@ -1,3 +1,54 @@
 {
-  "extends": ["next/core-web-vitals"]
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "TSEnumDeclaration[id.name='ModeName'], TSTypeAliasDeclaration[id.name='ModeName']",
+        "message": "ModeName has one definition: packages/domain/src/modes.ts. Import it from '@resonance/domain' (or '@resonance/audio') instead of declaring a copy."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/app/api/**/route.ts", "src/app/api/**/route.tsx"],
+      "rules": {
+        "no-restricted-syntax": [
+          "error",
+          {
+            "selector": "TSEnumDeclaration[id.name='ModeName'], TSTypeAliasDeclaration[id.name='ModeName']",
+            "message": "ModeName has one definition: packages/domain/src/modes.ts. Import it from '@resonance/domain' (or '@resonance/audio') instead of declaring a copy."
+          },
+          {
+            "selector": "Program:not(:has(ExportNamedDeclaration > VariableDeclaration > VariableDeclarator[id.name='dynamic'][init.value='force-dynamic']))",
+            "message": "API routes read request state (session, database). Add `export const dynamic = \"force-dynamic\";` so the build never prerenders this route without env."
+          }
+        ]
+      }
+    },
+    {
+      "files": ["src/lib/seo/og-*.tsx", "src/lib/avatar/*.tsx", "src/app/og/**/*.tsx", "src/app/avatar/**/*.tsx"],
+      "rules": {
+        "no-restricted-syntax": [
+          "error",
+          {
+            "selector": "TSEnumDeclaration[id.name='ModeName'], TSTypeAliasDeclaration[id.name='ModeName']",
+            "message": "ModeName has one definition: packages/domain/src/modes.ts. Import it from '@resonance/domain' (or '@resonance/audio') instead of declaring a copy."
+          },
+          {
+            "selector": "Property[key.name=/^(textShadow|textTransform|letterSpacing|filter)$/]",
+            "message": "Satori (next/og) does not render textShadow, textTransform, letterSpacing or filter. Uppercase the string with .toUpperCase() and drop the property."
+          },
+          {
+            "selector": "Property[key.name='boxShadow'] Literal[value=/inset/], Property[key.name='boxShadow'] TemplateElement[value.raw=/inset/]",
+            "message": "Satori (next/og) does not render inset box-shadow. Use a non-inset boxShadow or a radial-gradient background."
+          },
+          {
+            "selector": "Literal[value=/radial-gradient\\(\\s*circle at/], TemplateElement[value.raw=/radial-gradient\\(\\s*circle at/]",
+            "message": "Satori (next/og) rejects radial-gradient(circle at X Y, ...). Use radial-gradient(circle, ...) and position the element instead."
+          }
+        ]
+      }
+    }
+  ]
 }

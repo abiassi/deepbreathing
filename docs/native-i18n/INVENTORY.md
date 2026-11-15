@@ -262,7 +262,7 @@ The groups below separate live coupling from migration provenance and historical
 |---|---|
 | `src/lib/auth-client.ts:10` | Forces browser auth calls to the origin host because the apex proxy mangles responses. |
 | `src/lib/auth.ts:4` | Retains proxy-driven Better Auth workarounds and trusts the origin host for cross-subdomain callbacks. |
-| `src/app/api/auth/[...all]/route.ts:15` | Allows the origin host in the auth route CORS contract. |
+| `src/app/api/auth/[...all]/route.ts:11` | Allows the origin host in the auth route CORS contract. |
 | `apps/mobile/src/auth/auth-client.ts:5` | Pins native-app auth to the proxy-bypass origin host. |
 | `apps/mobile/src/breathing/ga4-mp.ts:22` | Pins consent-gated native analytics to the first-party origin endpoint so no Google Measurement Protocol secret is shipped in the app. |
 | `src/app/api/auth/[...all]/route.test.ts:38` | Pins the origin-host Expo authorization proxy rejection path without exercising a live identity provider. |
@@ -279,7 +279,7 @@ The groups below separate live coupling from migration provenance and historical
 | `src/data/og-translations.json:3` | Checked-in localized OG-title artifact produced by live-site scraping. |
 | `src/app/og/route.tsx:5` | Consumes the proxy-derived OG-title artifact for query-based images. |
 | `src/app/og/[slug]/route.tsx:6` | Consumes the proxy-derived OG-title artifact for slug-based images. |
-| `src/lib/seo/og-scene.tsx:111` | Locale normalization and image-copy assumptions are documented in proxy terms. |
+| `src/lib/seo/og-scene.tsx:106` | Locale normalization and image-copy assumptions are documented in proxy terms. |
 
 ### Snapshot migration provenance (temporary, not runtime)
 
@@ -308,7 +308,7 @@ The groups below separate live coupling from migration provenance and historical
 
 | Evidence | Dependency / cutover implication |
 |---|---|
-| `CLAUDE.md:128` | Canonical project guidance still documents proxy URL semantics and old OAuth context. |
+| `CLAUDE.md:139` | Canonical project guidance still documents proxy URL semantics and old OAuth context. |
 | `AGENTS.md:21` | Project environment declares the origin application endpoint. |
 | `.claude/skills/daily-indexing/SKILL.md:19` | Correctly states that MassTranslate submission/OAuth paths are retired for indexing; keep this negative dependency true. |
 | `docs/runbooks/tools-and-data-sources.md:71` | Primary live runbook for proxy cache, signed-webhook bypass, URL semantics, and remaining GSC/Bing fallbacks. |

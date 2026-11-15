@@ -70,6 +70,9 @@ Auth: `Authorization: Bearer $DKMT_CC_KEY`
 ## Merging web PRs
 - Merge a low-risk, revertible web app PR yourself once every CI check passes. Never use `gh pr merge --auto`, because `main` has no branch protection and it merges before CI finishes. Ask first for migrations, auth, data deletion, payments, secrets or user messaging. Details: `CLAUDE.md`, "Merging web PRs: merge once CI passes".
 
+## Rules that checks enforce
+- State a rule as an ESLint rule or test, not a code comment. The table is in `CLAUDE.md`, "Rules that checks enforce".
+
 ## Local Mac development
 - Never run local dev against `vercel env pull --environment=development`. That env points at the production Neon host.
 - Run `scripts/dev/setup-local-db.sh` once per checkout. It needs Homebrew Postgres on 127.0.0.1:5432. It creates the local `deepbreathing` database, writes `.env.local`, and applies the better-auth and `src/lib/db/migrations` schema. It is safe to rerun.
