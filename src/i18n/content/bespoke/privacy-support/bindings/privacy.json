@@ -99,14 +99,6 @@
       "reason": "Explicit external-link label binding."
     },
     {
-      "messagePath": "sections.contact.darkmatterLabel",
-      "reviewedSourceHash": "46d9902e7bdf4e44566ba128ac4d2a0ed7f68f5ef925e9968d5574391ce16c79",
-      "catalogRoute": "/privacy",
-      "occurrenceKey": "sel:a.font-semibold.text-primary:ctx:link:pos:1",
-      "catalogSourceText": "Darkmatter AI Labs",
-      "reason": "Explicit external-link label binding."
-    },
-    {
       "messagePath": "sections.contact.backLink",
       "reviewedSourceHash": "a8e75b814e600400a66751578855d1f1148fbf3d59ac19b3f2e241932a1f8c5b",
       "catalogRoute": "/privacy",

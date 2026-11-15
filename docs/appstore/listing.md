@@ -193,5 +193,5 @@ Complete the age rating questionnaire in App Store Connect as follows:
 ## Copyright
 
 ```
-© 2026 Darkmatter AI Labs
+© 2026 Amorim Abiassi Ferreira
 ```

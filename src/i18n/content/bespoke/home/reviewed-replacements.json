@@ -239,6 +239,13 @@
       "translations": {
         "ja-jp": "ゆっくりと均一な呼吸は、迷走神経を介した心拍変動（HRV）を高め、実践中に感じるストレスを軽減することがよくあります。"
       }
+    },
+    {
+      "messagePath": "footer.credits.darkmatter",
+      "sourceText": "Amorim Abiassi Ferreira",
+      "reviewedSourceHash": "4084b4a488ba601556c54353bdd34f4cb96929fd8bcf5674edec597640ac982d",
+      "reason": "Credit renamed to the owner's legal name, 2026-11-15. A proper name is not translated.",
+      "translations": { "de-de": "Amorim Abiassi Ferreira", "es-es": "Amorim Abiassi Ferreira", "fr-fr": "Amorim Abiassi Ferreira", "ja-jp": "Amorim Abiassi Ferreira", "pt-br": "Amorim Abiassi Ferreira" }
     }
   ]
 }

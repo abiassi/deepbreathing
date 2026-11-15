@@ -189,7 +189,7 @@ test("R-W04 route-owned trust renderers preserve schemas and localize only inter
   assert.match(abiRenderer, /https:\/\/x\.com\/abiassi_/);
   assert.match(editorialRenderer, /datePublished\s*=\s*["']2026-01-27["']/);
   assert.match(editorialRenderer, /dateModified\s*=\s*["']2026-05-06["']/);
-  assert.match(editorialRenderer, /https:\/\/darkmatter\.is\//);
+  assert.match(editorialRenderer, /https:\/\/abiassi\.com\//);
   assert.match(renderers, /glow-card rounded-\[32px\]/);
   assert.doesNotMatch(renderers, /["']use client["']/);
   assert.doesNotMatch(

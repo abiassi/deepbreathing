@@ -48,7 +48,7 @@ const MESSAGE_MAPPINGS = [
   ["sections.links.privacy", "Privacy"],
   ["sections.credits.title", "Created by"],
   ["sections.credits.abiassi", "Abiassi"],
-  ["sections.credits.darkmatter", "Darkmatter AI Labs"],
+  ["sections.credits.darkmatter", "Amorim Abiassi Ferreira"],
 ].map(([messagePath, sourceText, catalogRoute = ABOUT_ROUTE]) => ({
   catalogRoute,
   messagePath,
