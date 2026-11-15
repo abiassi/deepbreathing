@@ -106,7 +106,6 @@ const Visualizer: React.FC<VisualizerProps> = ({
         style={ringStyle}
       />
 
-      {/* Interactive Orb */}
       <button
         onClick={onClick}
         className="group absolute z-20 flex h-full w-full cursor-pointer items-center justify-center rounded-full outline-none hover:brightness-110 animate-blob animate-hue"
@@ -114,9 +113,7 @@ const Visualizer: React.FC<VisualizerProps> = ({
         aria-label={interactionLabel ?? (isRunning ? 'Pause Session' : 'Start Session')}
       />
 
-      {/* Overlay Content (Not Scaled) */}
       <div className="pointer-events-none absolute z-30 flex h-full w-full flex-col items-center justify-center">
-        {/* Play Icon */}
         <div
           className={`absolute flex items-center justify-center transition-all duration-500 ${!isRunning ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
             }`}
@@ -124,7 +121,6 @@ const Visualizer: React.FC<VisualizerProps> = ({
           <Play size={64} className="ml-2 fill-white text-white opacity-90 drop-shadow-md" />
         </div>
 
-        {/* Text visuals */}
         <div
           className={`absolute flex flex-col items-center justify-center transition-all duration-300 ${isRunning ? 'opacity-100' : 'opacity-0'
             }`}
@@ -141,12 +137,10 @@ const Visualizer: React.FC<VisualizerProps> = ({
           </div>
         </div>
 
-        {/* Pause Icon Overlay */}
         <div
           className={`absolute flex items-center justify-center transition-all duration-300 ${isRunning ? 'opacity-0' : 'opacity-0'
             } pointer-events-none`}
         >
-          {/* Pause icon removed from hover state to keep text visible, can re-add if needed */}
         </div>
       </div>
     </div>

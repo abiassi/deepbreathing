@@ -15,7 +15,6 @@ const AIAdvisor: React.FC<AIAdvisorProps> = ({ onRecommendation, apiKey }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  // If no API key is provided, do not render the AI features
   if (!apiKey) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,7 +28,6 @@ const AIAdvisor: React.FC<AIAdvisorProps> = ({ onRecommendation, apiKey }) => {
       setInput('');
       setIsOpen(false);
     } catch (err) {
-      // Error handled in service, but UI could show toast here
     } finally {
       setIsLoading(false);
     }
