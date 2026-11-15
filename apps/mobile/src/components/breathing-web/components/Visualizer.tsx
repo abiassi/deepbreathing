@@ -38,22 +38,11 @@ interface VisualizerProps {
   instructions: string;
   isRunning: boolean;
   onClick: () => void;
-  /** Applied to the draggable ball assembly (orb + glow + content).
-   *  Also the particle field's anchor rect. */
   dragRef?: React.RefObject<HTMLDivElement | null>;
-  /** Applied to the glow aura layer (wraps the blurred halo). The host
-   *  drives lag + velocity stretch + brightness imperatively; the orb's
-   *  morph stays untouched. */
   glowRef?: React.RefObject<HTMLDivElement | null>;
-  /** Applied to the outer ring's own layer, which the host translates to
-   *  slowly chase the ball (lagging follower). */
   ringRef?: React.RefObject<HTMLDivElement | null>;
-  /** Session wall-clock progress 0..1 — drives the dot travelling the ring.
-   *  When null the dot is hidden (open-ended session / not running). */
   sessionProgress?: number | null;
-  /** Disable decorative animation when the user requests Reduced Motion. */
   reduceMotion?: boolean;
-  /** Live phase status element announced by the host. */
   statusId?: string;
 }
 
@@ -95,9 +84,6 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
     [color]
   );
 
-  // Session-progress dot: rides the ring clockwise from 12 o'clock.
-  // Placed inside the scaled ring-border div so it stays on the border edge.
-  // Hidden when sessionProgress is null (open-ended / not running).
   const showDot = sessionProgress != null;
   const dotAngle = (sessionProgress ?? 0) * 2 * Math.PI;
   const dotStyle = useMemo(
@@ -116,9 +102,6 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
 
   return (
     <div className="group relative z-10 flex h-64 w-64 flex-col items-center justify-center sm:h-80 sm:w-80 md:h-96 md:w-96">
-      {/* Outer ring — a lagging follower: the host slowly eases this layer
-          toward the ball's offset while it is pulled, then drifts it back
-          home at a slower pace than the ball itself. */}
       <div
         ref={ringRef}
         aria-hidden
@@ -156,7 +139,6 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
           <span className="block rounded-full" style={glowStyle} />
         </div>
 
-        {/* Interactive Orb */}
         <button
           type="button"
           onClick={onClick}
@@ -167,9 +149,7 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
           aria-describedby={statusId}
         />
 
-        {/* Overlay Content (Not Scaled) */}
         <div className="pointer-events-none absolute z-30 flex h-full w-full flex-col items-center justify-center">
-        {/* Play Icon */}
         <div
           className={`absolute flex items-center justify-center transition-all duration-500 ${!isRunning ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
             }`}
@@ -177,7 +157,6 @@ const Visualizer: React.FC<VisualizerProps> = ({ scale, color, label, instructio
           <PlayTriangle size={64} className="ml-2 fill-white text-white opacity-90 drop-shadow-md" />
         </div>
 
-        {/* Text visuals */}
         <div
           className={`absolute flex flex-col items-center justify-center transition-all duration-300 ${isRunning ? 'opacity-100' : 'opacity-0'
             }`}

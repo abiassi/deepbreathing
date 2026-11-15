@@ -5,7 +5,6 @@ import { palette } from './constants';
 
 interface PhaseLabelProps {
   phase: BreathingPhase;
-  /** Mode tagline shown under the phase when idle (e.g. the pattern description). */
   subtitle?: string;
   isIdle: boolean;
   accent: string;

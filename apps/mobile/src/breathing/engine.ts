@@ -1,9 +1,5 @@
 // Pure breathing-phase engine. No React Native imports — fully unit-testable in Node.
-// Ported from the `expo-attempt-1` tag (packages/engine/src/engine.ts).
 //
-// All functions are pure: given a phase + elapsed time + pattern, they return the
-// next phase / duration / visual scale. The drift-resistant scheduling that *drives*
-// these functions lives in ./session.ts so that this file stays trivially testable.
 
 import {
   BreathingPhase,

@@ -59,19 +59,15 @@ interface BreathingExperienceProps {
   noMobileBottomPad?: boolean;
   isNativeApp?: boolean;
   safeAreaInsets?: { top: number; right: number; bottom: number; left: number };
-  /** Host accessibility overrides (the DOM component also auto-detects them). */
   reduceMotion?: boolean;
   largeText?: boolean;
-  /** Native Dynamic Type scale (1 = system default). Clamped in the DOM. */
   fontScale?: number;
-  /** Native AsyncStorage mirror — seeds localStorage when empty (app only). */
   initialPersistedSnapshot?: Partial<Record<string, string | null>>;
 }
 
-// Valid duration values in seconds (clamped to prevent abuse)
 const VALID_DURATIONS = [30, 60, 180, 300, 600] as const;
-const MAX_DURATION = 600; // 10 minutes max
-const DEFAULT_DURATION = 60; // 1 min default for new users
+const MAX_DURATION = 600;
+const DEFAULT_DURATION = 60;
 const PACE_BAR_HIDE_DELAY_MS = 5000;
 const FOCUSABLE_SELECTOR = [
   'a[href]',
@@ -189,20 +185,11 @@ interface PaceSliderProps {
   value: number;
   onChange: (value: number) => void;
   accent: string;
-  /** Whether the floating control is currently exposed to pointer/focus. */
   visible?: boolean;
-  /** Called by pointer/focus/value interactions to reveal/reset the bar. */
   onInteract?: () => void;
-  /** Bare mode (floating control): no label, no number — the track's
-   *  opacity fill is the only readout. Settings keeps the labeled row. */
   minimal?: boolean;
 }
 
-// Single pace slider (one measure: 0.5×–2×). The track is a hairline line
-// tinted with the mode color; the portion up to the thumb renders at high
-// opacity and the rest at low, so the "extended opacity" IS the speed readout.
-// Stays live during a session — the engine re-anchors the current phase so
-// changes apply in real time.
 const PaceSlider: React.FC<PaceSliderProps> = ({
   value,
   onChange,
@@ -220,13 +207,8 @@ const PaceSlider: React.FC<PaceSliderProps> = ({
     if (!visible) sliderRef.current?.blur();
   }, [visible]);
 
-  // value = duration multiplier (internal); the slider position is mapped so
-  // LEFT = slower (2×), MIDDLE = default (1×), RIGHT = faster (0.5×), and the
-  // label reads as speed (1/multiplier).
   const sliderValue = multiplierToSlider(value);
   const pct = sliderFillPercent(sliderValue);
-  // Secondary control: hairline track, mostly transparent; the thumb blends
-  // with the background instead of shouting in the mode color.
   const track = `linear-gradient(to right, ${toRgba(accent, 0.5)} 0%, ${toRgba(accent, 0.5)} ${pct}%, ${toRgba(accent, 0.12)} ${pct}%, ${toRgba(accent, 0.12)} 100%)`;
   const slider = (
     <input
@@ -305,19 +287,12 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
   fontScale,
   initialPersistedSnapshot,
 }) => {
-  // `defaultMode` and `initialMode` are aliases — the dom wrapper passes
-  // `initialMode`. effectiveDefaultMode carries the full lock semantics
-  // (suppress saved settings, force hidden-unless-active modes); when both
-  // are omitted, saved localStorage restores as before.
   const effectiveDefaultMode = defaultMode ?? initialMode;
 
-  // --- State ---
   const resolvedInitialMode = effectiveDefaultMode ?? ModeName.Box;
   const [selectedDuration, setSelectedDuration] = useState<number | null>(() => initialDuration ?? DEFAULT_DURATION);
   const [activeMode, setActiveMode] = useState<ModeName>(resolvedInitialMode);
   const [speedMultiplier, setSpeedMultiplier] = useState(DEFAULT_SPEED_MULTIPLIER);
-  // Per-mode presets: { mode -> last-used speed + duration }. Hydrated from
-  // saved settings; kept current by an effect below; persisted with settings.
   const [modePresets, setModePresets] = useState<Record<string, ModePreset>>({});
   const [themeColor, setThemeColor] = useState(BREATHING_PATTERNS[resolvedInitialMode].color);
   const [totalMinutes, setTotalMinutes] = useState(0);
@@ -334,7 +309,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     []
   );
 
-  // Client-side hydration check
   const [mounted, setMounted] = useState(false);
   const storageHydratedRef = useRef(false);
   const durationHydratedRef = useRef(false);
@@ -366,9 +340,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
       );
       if (!effectiveDefaultMode && savedMode) setActiveMode(savedMode);
 
-      // Per-mode presets win over the flat speed/duration fields: a user who
-      // last used 1.4x + 5min in Relax gets exactly that back, not the values
-      // of whatever mode was active when the settings were last written.
       const rawPresets = isRecord(parsedSettings.modePresets)
         ? Object.fromEntries(
             Object.entries(parsedSettings.modePresets).flatMap(([mode, value]) => {
@@ -436,9 +407,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
   }, [effectiveDefaultMode, isNativeApp, initialPersistedSnapshot]);
 
   useEffect(() => {
-    // An explicit initialDuration (passed from native) wins over the
-    // localStorage-persisted duration — mirrors the original URL-param
-    // precedence (durationFromUrl beat the saved value).
     if (!mounted || durationHydratedRef.current) return;
     // Hydrate this one time only. The mode/snapshot props can legitimately
     // change later (for example when the native sheet changes mode), but a
@@ -454,8 +422,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     const parsed = parsePersistedJson(savedSettings);
     if (!parsed) return;
 
-    // The mode this saved settings block belongs to: an explicit
-    // initialMode (native sheet) wins, else the saved mode.
     const savedMode = resolvePersistedMode(parsed.mode ?? parsed.selectedMode ?? parsed.pattern);
     const presetMode = effectiveDefaultMode ?? savedMode ?? activeMode;
     const rawPresets = isRecord(parsed.modePresets)
@@ -503,12 +469,8 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
   const [phase, setPhase] = useState<BreathingPhase>(BreathingPhase.Idle);
   const phaseRef = useRef<BreathingPhase>(BreathingPhase.Idle);
   const [isRunning, setIsRunning] = useState(false);
-  // The floating pace bar is transient running-session chrome. Pausing,
-  // stopping, or completing a session removes it with the rest of the active
-  // breathing controls.
   const [paceBarVisible, setPaceBarVisible] = useState(false);
 
-  // Protocol mode state (for Wim Hof and similar multi-round techniques)
   const [isProtocolMode, setIsProtocolMode] = useState(false);
   const [protocolState, setProtocolState] = useState<ProtocolState>({
     currentRound: 1,
@@ -532,16 +494,12 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
   const settingsBackgroundRef = useRef<HTMLDivElement | null>(null);
   const settingsPreviouslyFocusedRef = useRef<HTMLElement | null>(null);
   const settingsWasOpenRef = useRef(false);
-  // In-app light/dark override (null = follow the native/device theme prop).
   const [themeOverride, setThemeOverride] = useState<'light' | 'dark' | null>(null);
   const [soundStatus, setSoundStatus] = useState<'unknown' | 'confirmed'>('unknown');
   const [soundHintVisible, setSoundHintVisible] = useState(false);
   const [soundHintMounted, setSoundHintMounted] = useState(false);
 
-  // Animation State
   const [scale, setScale] = useState(0);
-  // Session clock 0..1 for the ring dot (wall-clock; reaches the top when the
-  // chosen duration elapses). Frozen while paused, reset on stop/complete.
   const [sessionProgress, setSessionProgress] = useState(0);
   const [runtimeLocale] = useState(locale);
   const runtimePhrases = useMemo(() => createRuntimePhraseResolver(runtimeLocale), [runtimeLocale]);
@@ -552,7 +510,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
   const [sessionSeconds, setSessionSeconds] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(Boolean(reduceMotionOverride));
 
-  // Refs
   const audioServiceRef = useRef<AudioService | null>(null);
   const soundHintTimeoutRef = useRef<number | null>(null);
   const soundHintUnmountRef = useRef<number | null>(null);
@@ -580,21 +537,9 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
   }, [clearPaceBarHideTimer]);
 
   const handlePaceBarInteraction = useCallback(() => {
-    // Every pointer/focus/value interaction is a fresh five-second window.
     if (isRunning) revealPaceBar(true);
   }, [isRunning, revealPaceBar]);
 
-  // --- Orb drag ("pull the ball") -------------------------------------------
-  // The ball assembly (Visualizer's inner layer) follows the finger while the
-  // outer ring stays anchored; particles get pulled along via the layer's
-  // live rect (see ParticleBackground's orb anchor). A drag past ~10px
-  // suppresses the tap-to-toggle so pulling never accidentally starts/pauses.
-  //
-  // Physics: the ball is a mass on a spring the whole time. While dragging it
-  // eases toward the finger (stiff spring, slight rubbery lag — weight, not
-  // stickiness); on release the spring retunes to its calm return constants
-  // and the ball glides home with its momentum intact. One continuous rAF
-  // sim, so "following the finger" and "coming home" are seamless.
   const orbBallRef = useRef<HTMLDivElement>(null);
   const orbDragRef = useRef({ dragging: false, startX: 0, startY: 0, moved: 0 });
   const suppressClickRef = useRef(false);
@@ -611,17 +556,11 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
   const orbSpringStateRef = useRef({ x: 0, y: 0, vx: 0, vy: 0 });
   const orbTargetRef = useRef({ x: 0, y: 0 });
   const orbSpringLastTsRef = useRef(0);
-  const orbReturningRef = useRef(false); // true between release and settle
+  const orbReturningRef = useRef(false);
   const reduceMotionRef = useRef(false);
 
-  // Landing ripple: set with a timestamp when the ball settles home; the
-  // particle field reads it once and clears it (one soft outward wave).
   const orbRippleRef = useRef<{ t: number } | null>(null);
 
-  // Outer ring as a slow lagging follower. While the ball is pulled it eases
-  // toward the ball's offset (rate ~4.5/s); on release it drifts back home at
-  // a slower rate (~2.2/s) than the ball's spring-back, so the ring visibly
-  // trails the ball both ways.
   const ringLayerRef = useRef<HTMLDivElement>(null);
   const ringOffsetRef = useRef({ x: 0, y: 0 });
   const ringTargetRef = useRef({ x: 0, y: 0 });
@@ -662,13 +601,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     }
   }, [chaseRing]);
 
-  // --- Glow aura (secondary action) -----------------------------------------
-  // The blurred halo is its own layer (Visualizer's glowRef) so it can lag
-  // the blob with momentum, stretch subtly along velocity, and brighten with
-  // speed — while the morphing blob silhouette stays untouched. This is the
-  // "secondary action" that makes the drag feel alive: the core moves, the
-  // aura follows. Calm tuning: quick tight lag, small stretch, gentle
-  // brightening; all decays the moment the pull ends.
   const glowRef = useRef<HTMLDivElement>(null);
   const glowStateRef = useRef({ x: 0, y: 0, vx: 0, vy: 0, s: 0, vs: 0 });
   const glowLoopRef = useRef<number | null>(null);
@@ -697,8 +629,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     const ball = orbSpringStateRef.current;
     const speed = Math.hypot(ball.vx, ball.vy);
 
-    // Lag target: trail along the fixed horizontal axis (opposite side), with
-    // magnitude from current speed. The glow never rotates with the blob.
     const lagAmount = Math.min(speed * GLOW_LAG_VEL, GLOW_LAG_MAX);
     const tx = -lagAmount;
     const ty = 0;
@@ -707,7 +637,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     g.x += g.vx * dt;
     g.y += g.vy * dt;
 
-    // Velocity-coupled stretch + brightness, always on the glow's fixed axis.
     const moving = speed >= GLOW_SETTLE_SPEED;
     const target = moving
       ? Math.min(speed / GLOW_STRETCH_RATE, GLOW_STRETCH_MAX)
@@ -798,8 +727,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
       el.style.transition = '';
       orbSpringRef.current = null;
       if (orbReturningRef.current) {
-        // The ball has landed home after a release — send one soft ripple
-        // out through the particle field so the landing reads.
         orbReturningRef.current = false;
         if (!reduceMotionRef.current && orbRippleRef.current === null) {
           orbRippleRef.current = { t: performance.now() };
@@ -810,7 +737,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     orbSpringRef.current = requestAnimationFrame(stepOrbSpring);
   }, []);
 
-  // Stop the chase loops when the component unmounts.
   useEffect(() => {
     return () => {
       if (ringChaseRef.current !== null) cancelAnimationFrame(ringChaseRef.current);
@@ -823,8 +749,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     const el = orbBallRef.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    // Only start a "pull" when the press lands on the ball itself (or its
-    // immediate halo). Anything else is background particle interaction.
     const dx = e.clientX - (r.left + r.width / 2);
     const dy = e.clientY - (r.top + r.height / 2);
     if (Math.hypot(dx, dy) > r.width / 2 + 12) return;
@@ -850,7 +774,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     drag.moved = Math.max(drag.moved, Math.hypot(dx, dy));
     if (drag.moved > 4) {
       if (reduceMotionRef.current) {
-        // Reduced motion: stick to the finger directly, no physics.
         el.style.transition = 'none';
         el.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
         ringTargetRef.current = { x: dx, y: dy };
@@ -869,13 +792,10 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
       orbTargetRef.current = { x: e.clientX - drag.startX, y: e.clientY - drag.startY };
       el.style.transition = 'none';
       if (orbSpringRef.current === null) {
-        // Fresh pull: start the chase from wherever the ball is.
         orbSpringLastTsRef.current = 0;
         orbSpringRef.current = requestAnimationFrame(stepOrbSpring);
       }
       ensureGlowAura();
-      // Ring target: chase the ball's live position (it lags the finger on
-      // the drag spring), so the ring always trails the ball itself.
       ringTargetRef.current = {
         x: orbSpringStateRef.current.x,
         y: orbSpringStateRef.current.y
@@ -893,25 +813,19 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     if (drag.moved > 10) suppressClickRef.current = true;
     if (el && drag.moved > 4) {
       if (reduceMotionRef.current) {
-        // Reduced motion: no physics — glide straight home.
         el.style.transition = 'transform 300ms ease-out';
         el.style.transform = 'translate3d(0, 0, 0)';
       } else {
-        // Release: retune the spring to its calm return and let the ball
-        // glide home from wherever it is, keeping its momentum.
         orbReturningRef.current = true;
         orbTargetRef.current = { x: 0, y: 0 };
         if (orbSpringRef.current === null) {
           orbSpringLastTsRef.current = 0;
           orbSpringRef.current = requestAnimationFrame(stepOrbSpring);
         }
-        // Wake the aura so it follows the return glide with momentum.
         ensureGlowAura();
       }
-      // The ring keeps floating behind and then settles home at its own pace.
       ringTargetRef.current = { x: 0, y: 0 };
       ensureRingChase();
-      // Gentle impact haptic for a real pull release.
       if (appState === 'active') {
         onEvent?.('drag_haptic', { action: 'release' });
         if (!isNativeApp && typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
@@ -934,9 +848,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     };
   }, [orbPointerDown, orbPointerMove, orbPointerUp]);
 
-  // Detect prefers-reduced-motion (iOS accessibility setting) so the return
-  // spring can degrade to a plain glide home. The state value is also exposed
-  // on the root DOM node so CSS/assistive tooling can make the same choice.
   useEffect(() => {
     if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
       reduceMotionRef.current = Boolean(reduceMotionOverride);
@@ -1209,13 +1120,10 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     };
   }, [clearPaceBarHideTimer]);
 
-  // Never let the running-session timeout fire after a pause/background
-  // transition. The render path removes the bar whenever playback stops.
   useEffect(() => {
     if (!isRunning) clearPaceBarHideTimer();
   }, [clearPaceBarHideTimer, isRunning]);
 
-  // --- Persistence Effects ---
   // Keep the active mode's preset current: whatever speed/duration the user
   // last had for THIS mode is remembered per mode. Gated on hydration so the
   // first commit's defaults can't clobber a stored preset before load.
@@ -1276,8 +1184,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     onEvent?.('settings_open', { open: controlsOpen });
   }, [controlsOpen, onEvent]);
 
-  // Keyboard escape hatch for the full-page settings — matters on the web
-  // target where the removed Radix Sheet used to provide it.
   useEffect(() => {
     if (!controlsOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -1287,9 +1193,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [controlsOpen]);
 
-  // The settings surface is a true modal for keyboard and VoiceOver users:
-  // background content is inert/hidden, focus starts on Close, Tab wraps
-  // inside the dialog, and closing restores the trigger that opened it.
   useEffect(() => {
     const background = settingsBackgroundRef.current;
     if (!controlsOpen || !background) return;
@@ -1367,7 +1270,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     });
   }, [activeMode, isNativeApp, isRunning, muted, onEvent, selectedDuration]);
 
-  // Theme: in-app toggle wins, else the native/device theme prop.
   const activeTheme = themeOverride ?? forcedTheme;
   const resolvedFontScale = Math.min(2, Math.max(1, finiteNumber(fontScale) ?? (largeText ? 1.2 : 1)));
 
@@ -1399,8 +1301,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
       else root.dataset.resonanceLargeText = previousMarker;
     };
   }, [resolvedFontScale]);
-
-  // --- Logic ---
 
   const currentPattern = BREATHING_PATTERNS[activeMode];
 
@@ -1462,10 +1362,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     ]
   );
 
-  // The native mode library changes initialMode after mount. If a user switches
-  // while paused, the previous implementation kept the old session id and
-  // elapsed seconds, then resumed them under the new mode. Treat an external
-  // mode change as a hard boundary so one practice session never spans patterns.
   useEffect(() => {
     if (!mounted || !effectiveDefaultMode) return;
     if (lastExternalModeRef.current === effectiveDefaultMode) return;
@@ -1487,9 +1383,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
 
     setActiveMode(effectiveDefaultMode);
     setThemeColor(BREATHING_PATTERNS[effectiveDefaultMode].color);
-    // Per-mode presets: restore the mode's own speed + duration. A mode
-    // with no preset yet inherits the current values (they become its
-    // preset the moment the user adjusts them).
     const preset = modePresets[effectiveDefaultMode];
     if (preset) {
       setSpeedMultiplier(preset.speed);
@@ -1507,7 +1400,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
   ]);
 
   const handleTogglePlay = useCallback(async () => {
-    // A drag that pulled the ball shouldn't toggle the session.
     if (suppressClickRef.current) {
       suppressClickRef.current = false;
       return;
@@ -1550,7 +1442,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
         onEvent?.('breathing_session_start', { mode: activeMode, duration: selectedDuration ?? 0 });
       }
 
-      // Check if this is Wim Hof (protocol mode)
       if (activeMode === ModeName.WimHof) {
         protocolCompletionHandledRef.current = false;
         setIsProtocolMode(true);
@@ -1570,7 +1461,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
         playPhaseCue(BreathingPhase.Inhale);
         announcePhase(BreathingPhase.Inhale);
       } else {
-        // Normal pattern mode
         setIsProtocolMode(false);
         setPhase(BreathingPhase.Inhale);
         phaseRef.current = BreathingPhase.Inhale;
@@ -1659,14 +1549,8 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     getAudioService().toggleMute(newMute);
   };
 
-  // Last frame's phase duration/progress — the pace-remap effect reads these
-  // to re-anchor phaseStartRef without a scale jump.
   const lastPhaseDurationRef = useRef(0);
 
-  // Haptic tick for the speed slider — fires only when the slider position
-  // actually changes by at least one step (0.05), throttled to ~1 per 35 ms
-  // so fast drags don't spam.  Emitted via the onEvent bridge so the native
-  // host can fire Haptics.selectionAsync() for tactile "adapting on the go".
   const paceHapticLastPosRef = useRef<number>(multiplierToSlider(DEFAULT_SPEED_MULTIPLIER));
   const paceHapticLastTimeRef = useRef<number>(0);
 
@@ -1693,7 +1577,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     [isNativeApp, onEvent],
   );
 
-  // --- The Loop ---
   const animate = useCallback((time: number) => {
     if (!isRunning) return;
 
@@ -1714,7 +1597,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
       }
     }
 
-    // Update 8D Spatial Audio Position
     const audio = getAudioService();
     audio.updateSpatial(time);
 
@@ -1780,7 +1662,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     requestRef.current = requestAnimationFrame(animate);
   }, [activeMode, announcePhase, getAudioService, isRunning, playPhaseCue, selectedDuration, setInstructionKey, speedMultiplier]);
 
-  // --- Wim Hof Protocol Animation ---
   const animateProtocol = useCallback((time: number) => {
     if (!isRunning || !isProtocolMode || protocolCompletionHandledRef.current) return;
 
@@ -1828,12 +1709,10 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
       let next = { ...prev };
 
       if (prev.phase === ProtocolPhase.PowerBreathe) {
-        // Calculate which breath we're on and progress within that breath
         const breathIndex = Math.floor(timeSincePhaseStart / breathCycleDur);
         const withinBreathTime = timeSincePhaseStart % breathCycleDur;
 
         if (breathIndex >= protocol.powerBreathCount) {
-          // Done with power breaths, transition to retention hold
           next.phase = ProtocolPhase.RetentionHold;
           const retentionStart = protocolPhaseStartRef.current + protocol.powerBreathCount * breathCycleDur;
           next.retentionTime = Math.max(0, Math.floor((time - retentionStart) / 1000));
@@ -1843,11 +1722,10 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
           setInstructionKey('instruction.hold_your_breath');
           playPhaseCue(BreathingPhase.HoldOut);
           announcePhase(BreathingPhase.HoldOut);
-          setScale(0); // Empty lungs
+          setScale(0);
         } else {
           next.currentBreathIndex = breathIndex + 1;
 
-          // Animate the breath
           if (withinBreathTime < inhaleDur) {
             const progress = withinBreathTime / inhaleDur;
             setScale(progress);
@@ -1861,12 +1739,10 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
         const holdSeconds = Math.floor((time - retentionStartRef.current) / 1000);
         next.retentionTime = holdSeconds;
 
-        // Update instruction with timer
         const mins = Math.floor(holdSeconds / 60);
         const secs = holdSeconds % 60;
         setInstruction(`${mins}:${String(secs).padStart(2, '0')}`);
 
-        // Auto-end at max hold time
         if (holdSeconds >= protocol.retentionHoldMax) {
           next.phase = ProtocolPhase.RecoveryInhale;
           protocolPhaseStartRef.current = retentionStartRef.current + protocol.retentionHoldMax * 1000;
@@ -1892,7 +1768,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
         const holdProgress = timeSincePhaseStart / recoveryHoldDur;
 
         if (timeSincePhaseStart >= recoveryHoldDur) {
-          // Check if more rounds
           if (prev.currentRound < protocol.rounds) {
             next.currentRound = prev.currentRound + 1;
             next.currentBreathIndex = 0;
@@ -1901,27 +1776,22 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
             setInstructionKey('protocol.round_complete', { round: prev.currentRound });
             setScale(0.5);
           } else {
-            // Protocol complete
             next.phase = ProtocolPhase.ProtocolComplete;
           }
         }
       }
       else if (prev.phase === ProtocolPhase.RoundComplete) {
-        // Brief pause between rounds
         if (timeSincePhaseStart >= protocol.roundRestDuration * 1000) {
           next.phase = ProtocolPhase.PowerBreathe;
           protocolPhaseStartRef.current += protocol.roundRestDuration * 1000;
-          // Clean instruction to allow getLabel() to show Inhale/Exhale
           setInstruction('');
           playPhaseCue(BreathingPhase.Inhale);
           announcePhase(BreathingPhase.Inhale);
         }
       }
 
-      // Sync the visual effect phase (particles/bg) with the protocol phase
       let nextVisualPhase = phase;
       if (next.phase === ProtocolPhase.PowerBreathe) {
-        // Determine if inhaling or exhaling within power breath
         const { inhale } = protocol.powerBreathTiming;
         const inhaleDur = inhale * speedMultiplier * 1000;
         const breathCycleDur = (inhale * speedMultiplier * 1000) + (protocol.powerBreathTiming.exhale * speedMultiplier * 1000);
@@ -1954,7 +1824,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     }
   }, [announcePhase, endSession, getAudioService, isProtocolMode, isRunning, phase, playPhaseCue, setInstructionKey, speedMultiplier, syncSessionClock]);
 
-  // End hold button handler for Wim Hof
   const handleEndHold = useCallback(() => {
     if (!isProtocolMode || protocolState.phase !== ProtocolPhase.RetentionHold) return;
 
@@ -1986,9 +1855,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     };
   }, [isRunning, animate, animateProtocol, isProtocolMode]);
 
-  // Live pace change mid-phase: re-anchor phaseStartRef so the CURRENT phase
-  // keeps its progress fraction at the new duration instead of jumping the
-  // orb. The next animation frame then continues at the new pace seamlessly.
   useEffect(() => {
     if (!isRunning || isProtocolMode || phase === BreathingPhase.Idle) return;
     const prevDur = lastPhaseDurationRef.current;
@@ -2009,7 +1875,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     return () => clearInterval(interval);
   }, [isRunning, syncSessionClock]);
 
-  // Auto-stop when targetDuration is reached
   useEffect(() => {
     if (protocolCompletionHandledRef.current && isProtocolMode) return;
     if (typeof selectedDuration === 'number' && isRunning && sessionSeconds >= selectedDuration) {
@@ -2021,7 +1886,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
       if (!isNativeApp) setInstructionKey('session.complete');
       endSession('completed', selectedDuration, true);
       setScale(0);
-      // Stop all audio
       audio.stopDrone();
       audio.stopPinkNoise();
       audio.stopBinaural();
@@ -2064,13 +1928,11 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     return getSafePhrase('phase.ready');
   };
 
-  // --- Helper for Stats ---
   const renderStats = () => {
     const p = BREATHING_PATTERNS[activeMode];
     const isRelax = activeMode === ModeName.Relax;
     const isWimHof = activeMode === ModeName.WimHof;
 
-    // Wim Hof has special stats display
     if (isWimHof) {
       return (
         <div className="mt-4 rounded-lg bg-card/70 p-3 text-xs text-muted-foreground shadow-inner backdrop-blur supports-[backdrop-filter]:bg-card/60 dark:bg-card/30">
@@ -2151,7 +2013,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
 
   if (!mounted) return null;
 
-  // Winter blue background: deep navy that works well with snow
   const winterBlueBase = '#0c1929';
   const winterBlueActive = '#0f1f33';
 
@@ -2162,8 +2023,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
     return isRunning ? `${themeColor}1a` : undefined;
   };
 
-  // A paused session keeps the pace bar exposed even if the running-session
-  // five-second window had already elapsed.
   const paceBarIsVisible = isRunning && paceBarVisible;
 
   return (
@@ -2252,7 +2111,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
         className={`relative z-10 flex flex-1 flex-col items-center justify-center sm:pb-0 ${noMobileBottomPad ? 'pb-24' : 'pb-44'}`}
         style={{ touchAction: 'none' }}
       >
-        {/* Protocol UI: Round and breath counter */}
         {isProtocolMode && isRunning && (
           <div className="absolute top-8 left-0 right-0 z-20 flex flex-col items-center gap-2">
             <div className="rounded-full bg-card/80 px-4 py-2 text-sm font-medium text-card-foreground backdrop-blur">
@@ -2323,7 +2181,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
           })}
         </div>
 
-        {/* End Hold button for Wim Hof retention phase */}
         {isProtocolMode && protocolState.phase === ProtocolPhase.RetentionHold && protocolState.retentionTime >= WIM_HOF_PROTOCOL.retentionHoldMin && (
           <button
             onClick={handleEndHold}
@@ -2357,11 +2214,6 @@ const BreathingExperience: React.FC<BreathingExperienceProps> = ({
         </div>
       )}
 
-      {/* Live pace control — no toggle, no panel: the bare slider briefly
-          cues itself on start/resume, then tucks away while running. Pause,
-          stop, and completion remove it. Writes
-          speedMultiplier, which the animation loop applies on the next frame
-          (current phase re-anchored, no jump). */}
       {isRunning && (
         <div
           data-pace-bar

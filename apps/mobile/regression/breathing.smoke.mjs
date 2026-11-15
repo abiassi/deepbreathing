@@ -1,21 +1,10 @@
 #!/usr/bin/env node
-/**
- * Live Playwright smoke suite for the breathing experience.
- *
- * Assumes Metro is ALREADY running at http://localhost:8081.
- * Skips gracefully when Metro is unreachable or Chromium is missing.
- * Uses only node:assert — no test-runner dependency.
- *
- * Usage: node ./regression/breathing.spec.mjs
- */
 
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 
 const METRO_URL = 'http://localhost:8081';
 const VIEWPORT = { width: 402, height: 874 };
-
-// ── helpers ────────────────────────────────────────────────────────────────
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -34,7 +23,6 @@ async function metroIsUp() {
 async function setupPage(context) {
   const page = await context.newPage();
   await page.goto(METRO_URL, { wait_until: 'domcontentloaded', timeout: 30000 });
-  // Wait for React hydration, mode sheet animation, etc.
   await page.waitForTimeout(8000);
 
   // Fresh installs now ask for analytics consent before any identifier or event
@@ -45,13 +33,11 @@ async function setupPage(context) {
     await page.waitForTimeout(400);
   }
 
-  // Press Escape to dismiss any open overlays
   await page.keyboard.press('Escape');
   await page.waitForTimeout(400);
   await page.keyboard.press('Escape');
   await page.waitForTimeout(400);
 
-  // Force-click any remaining backdrops
   const backdrops = await page.$$('[aria-label="Bottom sheet backdrop"]');
   for (const bd of backdrops) {
     try { await bd.click({ force: true, timeout: 1000 }); await page.waitForTimeout(300); } catch {}
@@ -91,8 +77,6 @@ async function getPaceBarState(page) {
   });
 }
 
-// ── main suite ─────────────────────────────────────────────────────────────
-
 async function main() {
   console.log('[smoke] Checking Metro at', METRO_URL);
   if (!(await metroIsUp())) {
@@ -128,13 +112,9 @@ async function main() {
   }
 
   try {
-    // ──────────────────────────────────────────────────────────────────────
-    // CONTEXT 1 — Tests 1-5 (default settings)
-    // ──────────────────────────────────────────────────────────────────────
     const ctx = await browser.newContext({ viewport: VIEWPORT });
     const page = await setupPage(ctx);
 
-    // ── TEST 1: speed slider absent before session, visible during ────────
     console.log('[smoke] 1. Speed slider visibility');
 
     let sliderEl = await page.$('input[type="range"][aria-label="Breath speed"]');
@@ -188,12 +168,9 @@ async function main() {
       assert.equal(paceBarPaused, null);
     });
 
-    // Use the persistent Settings slider for its attribute/persistence checks.
-    // Test 1 already proved the live slider appears and hides during a session.
     await page.click('button[aria-label="Settings"]');
     await page.waitForSelector('[role="dialog"] input[type="range"][aria-label="Breath speed"]');
 
-    // ── TEST 2: slider attributes ─────────────────────────────────────────
     console.log('\n[smoke] 2. Slider attributes');
 
     const sliderAttrs = await page.evaluate(() => {
@@ -207,7 +184,6 @@ async function main() {
     check('2c: step 0.05', () => assert.equal(sliderAttrs.step, '0.05'));
     check('2d: default 1.25 (centered)', () => assert.equal(sliderAttrs.value, '1.25'));
 
-    // ── TEST 3: speed persistence ─────────────────────────────────────────
     console.log('\n[smoke] 3. Speed persistence');
 
     await page.evaluate(() => {
@@ -230,7 +206,6 @@ async function main() {
     settings = await page.evaluate(() => { const r = localStorage.getItem('resonance_settings'); return r ? JSON.parse(r) : null; });
     check('3b: slider 2.0 → speed 0.5', () => { assert.ok(settings); assert.equal(settings.speed, 0.5); });
 
-    // Reset to default
     await page.evaluate(() => {
       const el = document.querySelector('input[type="range"][aria-label="Breath speed"]');
       const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
@@ -238,13 +213,11 @@ async function main() {
     });
     await page.waitForTimeout(500);
 
-    // ── TEST 4: no "Adjust breath pace" pill ──────────────────────────────
     console.log('\n[smoke] 4. No pace toggle pill');
 
     const pacePill = await page.$('[aria-label="Adjust breath pace"]');
     check('4: aria-label "Adjust breath pace" absent', () => assert.equal(pacePill, null));
 
-    // ── TEST 5: settings overlay — exactly ONE range input ─────────────────
     console.log('\n[smoke] 5. Settings overlay range inputs');
 
     const dialogRangeCount = await page.evaluate(() => {
@@ -257,15 +230,12 @@ async function main() {
     await page.keyboard.press('Escape');
     await page.waitForTimeout(500);
 
-    // ── TEST 6: phase duration scaling (same session, media) ──────────────
     console.log('\n[smoke] 6. Phase duration scaling');
 
     await checkAsync('6a: speed 2.0 inhale ~8s (±2s)', async () => {
-      // Resume session, change slider to 0.5 (speed 2.0), wait for next inhale cycle
       await clickOrb(page, 'Start Session');
       await page.waitForTimeout(300);
 
-      // Set slider to far left (0.5 = speed 2.0 = slowest)
       await page.evaluate(() => {
         const el = document.querySelector('input[type="range"][aria-label="Breath speed"]');
         const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
@@ -273,7 +243,6 @@ async function main() {
       });
       await page.waitForTimeout(500);
 
-      // Measure next full inhale: wait for inhale start, then time until it ends
       const t0 = Date.now();
       let inhaleStart = 0;
       let timeout = false;
@@ -303,7 +272,6 @@ async function main() {
     });
 
     await checkAsync('6b: speed 0.5 inhale ~2s (±1.2s)', async () => {
-      // Set slider to far right (2.0 = speed 0.5 = fastest)
       await page.evaluate(() => {
         const el = document.querySelector('input[type="range"][aria-label="Breath speed"]');
         const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
@@ -337,7 +305,6 @@ async function main() {
         `Expected ~2s at speed 0.5, got ${measured.toFixed(1)}s`);
     });
 
-    // Reset and pause
     await page.evaluate(() => {
       const el = document.querySelector('input[type="range"][aria-label="Breath speed"]');
       const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
@@ -349,15 +316,11 @@ async function main() {
 
     await ctx.close();
 
-    // ──────────────────────────────────────────────────────────────────────
-    // CONTEXT 2 — Tests 7-8: Orb drag & ring follower
-    // ──────────────────────────────────────────────────────────────────────
     console.log('\n[smoke] 7. Orb drag');
 
     const ctx2 = await browser.newContext({ viewport: VIEWPORT });
     const page2 = await setupPage(ctx2);
 
-    // Get orb center position
     const orbBox = await page2.$eval('button[aria-label="Start Session"]', el => {
       const r = el.getBoundingClientRect();
       return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
@@ -373,7 +336,6 @@ async function main() {
       return { ball: fmt(ball), ring: fmt(ring) };
     });
 
-    // ── 7: ball returns to origin, session NOT toggled ────────────────────
     await page2.mouse.move(orbBox.x, orbBox.y);
     await page2.mouse.down();
     await page2.waitForTimeout(50);
@@ -400,7 +362,6 @@ async function main() {
       assert.equal(orbLabelAfter, 'Start Session', `Unexpected: ${orbLabelAfter}`);
     });
 
-    // ── 8: outer ring follows slowly ──────────────────────────────────────
     console.log('\n[smoke] 8. Outer ring lagging follower');
 
     await page2.mouse.move(orbBox.x, orbBox.y);
@@ -430,15 +391,11 @@ async function main() {
 
     await ctx2.close();
 
-    // ──────────────────────────────────────────────────────────────────────
-    // CONTEXT 3 — Test 9: Session-clock dot on the outer ring
-    // ──────────────────────────────────────────────────────────────────────
     console.log('\n[smoke] 9. Session-clock dot on the outer ring');
 
     const ctx3 = await browser.newContext({ viewport: VIEWPORT });
     const page3 = await setupPage(ctx3);
 
-    // 9a: dot hidden before a session starts (no session clock)
     const dotBefore = await page3.evaluate(() => {
       const dot = document.querySelector('[data-session-dot]');
       return dot ? getComputedStyle(dot).opacity : null;
@@ -451,7 +408,6 @@ async function main() {
     await clickOrb(page3, 'Start Session');
     await page3.waitForTimeout(1500);
 
-    // 9b: dot visible during a session with a fixed duration
     const dot1 = await page3.evaluate(() => {
       const dot = document.querySelector('[data-session-dot]');
       if (!dot) return null;
@@ -464,7 +420,6 @@ async function main() {
       assert.ok(dot1.x > 0 && dot1.y > 0, `dot off-screen: ${dot1.x},${dot1.y}`);
     });
 
-    // 9c: dot travels clockwise — position changes ~1.5s later
     await page3.waitForTimeout(1500);
     const dot2 = await page3.evaluate(() => {
       const dot = document.querySelector('[data-session-dot]');
@@ -480,9 +435,6 @@ async function main() {
 
     await ctx3.close();
 
-    // ──────────────────────────────────────────────────────────────────────
-    // CONTEXT 4 — Tests 10-11: Reduced motion + idle pause
-    // ──────────────────────────────────────────────────────────────────────
     console.log('\n[smoke] 10. Reduced motion — attribute + particles frozen on press');
 
     const ctx4 = await browser.newContext({ viewport: VIEWPORT });
@@ -504,23 +456,18 @@ async function main() {
     await page4.keyboard.press('Escape');
     await page4.waitForTimeout(400);
 
-    // 10a: canvas must carry data-reduced-motion attribute.
     await checkAsync('10a: canvas has data-reduced-motion="true"', async () => {
       const attr = await page4.$eval('canvas', el => el.getAttribute('data-reduced-motion'));
       assert.equal(attr, 'true', `Expected "true", got ${attr}`);
     });
 
-    // 10b: reduced-motion canvas is alive and attribute persists after press.
     await checkAsync('10b: canvas alive after press in reduced-motion mode', async () => {
-      // Simulate a press in the center of the screen.
       await page4.mouse.click(200, 400);
       await page4.waitForTimeout(500);
 
-      // Attribute must still be present.
       const attr = await page4.$eval('canvas', el => el.getAttribute('data-reduced-motion'));
       assert.equal(attr, 'true', 'data-reduced-motion must persist after interaction');
 
-      // Canvas must exist and have non-zero dimensions.
       const dims = await page4.$eval('canvas', el => ({ w: el.width, h: el.height }));
       assert.ok(dims.w > 0 && dims.h > 0,
         `Canvas dimensions must be positive, got ${dims.w}x${dims.h}`);
@@ -541,25 +488,19 @@ async function main() {
 
     await ctx4.close();
 
-    // ──────────────────────────────────────────────────────────────────────
-    // CONTEXT 5 — Test 11: Idle pause (best-effort canvas still renders)
-    // ──────────────────────────────────────────────────────────────────────
     console.log('\n[smoke] 11. Idle pause — canvas still renders after idle');
 
     const ctx5 = await browser.newContext({ viewport: VIEWPORT });
     const page5 = await setupPage(ctx5);
 
-    // Wait for the idle pause to kick in (~5s of no activity while Idle).
     await page5.waitForTimeout(6000);
 
-    // Screenshot should have non-empty canvas pixels (the last frame is frozen).
     await checkAsync('11: canvas still has content after idle pause', async () => {
       const pixelCount = await page5.evaluate(() => {
         const c = document.querySelector('canvas');
         if (!c) return 0;
         const ctx = c.getContext('2d');
         if (!ctx) return 0;
-        // Sample a grid of pixels; count non-transparent ones.
         const w = c.width;
         const h = c.height;
         if (w < 10 || h < 10) return 0;
@@ -577,7 +518,6 @@ async function main() {
     await ctx5.close();
 
 
-    // ── Summary ──────────────────────────────────────────────────────────
     console.log(`\n[smoke] ───────────────────────────────────────────`);
     console.log(`[smoke] Results: ${passed} passed, ${failed} failed`);
 

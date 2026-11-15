@@ -122,7 +122,6 @@ function ownerKey(owner: SyncOwner, artifact: string): string {
   return `${STORAGE_PREFIX}.${owner.kind}.${encodeURIComponent(owner.id)}.${artifact}`;
 }
 
-/** Exposed for deterministic tests and for the host's owner-switch bridge. */
 export function getOwnerStorageKeys(owner: SyncOwner): OwnerStorageKeys {
   return {
     outbox: ownerKey(owner, 'outbox'),
@@ -428,7 +427,6 @@ function settingsPayloadFromValue(
   return Object.keys(payload).length > 0 ? payload : null;
 }
 
-/** Queue the latest persisted settings for the signed-in account. */
 export async function enqueueSettingsSync(
   value: string | Record<string, unknown>,
 ): Promise<boolean> {
@@ -819,7 +817,6 @@ function mergeBootstrapSettings(
   };
 }
 
-/** Uploads guest events first, then hydrates canonical account history/stats. */
 export async function hydrateAccountState(): Promise<boolean> {
   await pendingOutboxWrite;
   const cookie = getAuthCookieSafe();

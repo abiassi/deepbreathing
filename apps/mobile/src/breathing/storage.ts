@@ -1,6 +1,3 @@
-// AsyncStorage glue for persisted settings. Thin: validation lives in the pure
-// settings.ts; this file just reads/writes JSON and never throws.
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {

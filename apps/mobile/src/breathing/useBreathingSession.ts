@@ -1,12 +1,3 @@
-// The session hook — the one stateful, RN-coupled piece of the engine.
-//
-// Design (see GOAL.md "two drift-critical decisions"):
-//   * The wall-clock cursor (session.ts) is advanced off a short interval, on an
-//     EFFECTIVE clock (real time minus paused spans) so pausing/backgrounding
-//     never drifts the schedule or counts toward auto-stop.
-//   * The orb is animated with Reanimated `withTiming` per phase; we re-fire that
-//     animation on every phase-change AND speed-change via the pure
-//     `orbAnimationTarget` helper, so the fire-and-forget animation can't desync.
 //
 // Stale-closure discipline: the interval callback and every action read ONLY refs
 // and stable setters/shared values — never props or state directly. That keeps the
@@ -42,7 +33,6 @@ import {
 /** How often the cursor is checked for a phase boundary. 100ms keeps the orb
  *  retarget latency imperceptible while staying battery-cheap. */
 const TICK_MS = 100;
-/** Orb deflate animation when a session ends. */
 const DEFLATE_MS = 400;
 
 export type SessionStatus = "idle" | "running" | "paused";
@@ -52,7 +42,6 @@ export interface BreathingSessionInput {
   speedMultiplier: number;
   /** Auto-stop after this many seconds. 0 = open-ended. */
   selectedDurationSec: number;
-  /** Fired once when a timed session reaches its target. */
   onComplete?: () => void;
 }
 
@@ -63,7 +52,6 @@ export interface BreathingSession {
   isPaused: boolean;
   sessionSeconds: number;
   themeColor: string;
-  /** Orb scale 0..1 (empty..full). Map to a visible size floor in the view. */
   scale: SharedValue<number>;
   start: () => void;
   pause: () => void;
@@ -83,7 +71,6 @@ export function useBreathingSession({
 
   const scale = useSharedValue(0);
 
-  // --- refs read by the interval + actions (never props/state directly) ---
   const statusRef = useRef<SessionStatus>("idle");
   const cursorRef = useRef<PhaseCursor>(createCursor(0));
   const pauseRef = useRef<PauseState>(createPauseState());
@@ -135,7 +122,6 @@ export function useBreathingSession({
     scale.value = withTiming(0, { duration: DEFLATE_MS, easing: Easing.linear });
   }, [scale, stopTimers]);
 
-  // One interval drives everything: seconds, auto-stop, phase advance + orb.
   const tick = useCallback(() => {
     if (statusRef.current !== "running") return;
     const eff = effectiveNow(pauseRef.current, Date.now());
@@ -220,14 +206,10 @@ export function useBreathingSession({
     startTimers();
   }, [fireOrbAnimation, startTimers]);
 
-  // Keep duration in sync for the interval (no behavioural change needed live).
   useEffect(() => {
     durationRef.current = selectedDurationSec;
   }, [selectedDurationSec]);
 
-  // Speed change: update the ref, then (if running) advance + retarget the orb so
-  // the in-flight withTiming doesn't keep running at the old duration. Per the v1
-  // rule the new speed applies to the current phase's remaining time onward.
   //
   // A speed change can recompute the current phase as already-elapsed and roll the
   // cursor across a boundary. We must propagate that with setPhase here — otherwise
@@ -252,8 +234,6 @@ export function useBreathingSession({
     }
   }, [speedMultiplier, fireOrbAnimation]);
 
-  // Mode change: keep the pattern ref current. Changing mode while a session is
-  // live stops it (v1 rule) — the parent re-starts in the new mode.
   useEffect(() => {
     patternRef.current = BREATHING_PATTERNS[mode];
     if (statusRef.current !== "idle") {
@@ -261,7 +241,6 @@ export function useBreathingSession({
     }
   }, [mode, stop]);
 
-  // Pause when the app is backgrounded (no background session in v1).
   useEffect(() => {
     const sub = AppState.addEventListener("change", (next) => {
       if (next !== "active" && statusRef.current === "running") {
@@ -271,7 +250,6 @@ export function useBreathingSession({
     return () => sub.remove();
   }, [pause]);
 
-  // Clear the interval on unmount.
   useEffect(() => stopTimers, [stopTimers]);
 
   return {

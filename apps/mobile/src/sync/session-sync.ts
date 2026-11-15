@@ -17,11 +17,6 @@ export interface CreateSessionSegmentInput {
   clientVersion?: string;
 }
 
-/**
- * Turn a cumulative DOM session commit into an immutable ledger delta.
- * `completed` only marks an actual timer completion, matching the local stats
- * model. `practiceId` lets history group pause/resume segments later.
- */
 export function createSessionSegment(
   input: CreateSessionSegmentInput,
 ): SessionEvent | null {

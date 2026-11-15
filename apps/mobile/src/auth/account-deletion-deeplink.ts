@@ -37,7 +37,6 @@ export function parseAccountDeletionDeepLink(
   }
 }
 
-/** Add a token to the prompt set only once while an Alert is visible. */
 export function claimAccountDeletionPrompt(
   token: string,
   pendingTokens: Set<string>,

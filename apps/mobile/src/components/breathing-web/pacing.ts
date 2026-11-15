@@ -1,8 +1,3 @@
-/**
- * Pacing math — re-exported from the single shared source in @resonance/domain.
- *
- * @see packages/domain/src/pacing.ts
- */
 export {
   BreathingPhase,
   type BreathingPattern,

@@ -1,9 +1,3 @@
-/**
- * Breathing pattern catalog — re-exported from the single canonical copy in
- * @resonance/domain. This file only carries fork-specific additions.
- *
- * @see packages/domain/src/patterns.ts
- */
 import { ModeName } from '@resonance/domain';
 export { ModeName };
 export {

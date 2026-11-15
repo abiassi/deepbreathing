@@ -10,7 +10,6 @@ interface SpeedSliderProps {
   onChange: (value: number) => void;
 }
 
-/** Round to 1 decimal so the label and stored value stay tidy (0.5–2.0, step 0.1). */
 const round1 = (n: number) => Math.round(n * 10) / 10;
 
 export function SpeedSlider({ value, accent, onChange }: SpeedSliderProps) {
