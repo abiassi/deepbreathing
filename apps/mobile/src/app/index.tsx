@@ -47,6 +47,7 @@ import { useNativeSoundscape } from '../breathing/native-soundscape';
 import CompletionSummary, { type CompletionSummaryData } from '../components/CompletionSummary';
 import ModeLibrarySheet from '../components/ModeLibrarySheet';
 import { BREATHING_PATTERNS, ModeName } from '../components/breathing-web/constants';
+import { BreathingPhase } from '../components/breathing-web/types';
 import type { BreathingMode, SessionEndReason } from '@resonance/domain';
 import { randomUUID } from 'expo-crypto';
 import { authClient, useSession } from '../auth/auth-client';
@@ -73,12 +74,25 @@ import { accountAvatarUri } from '../auth/account-avatar';
 
 const KEEP_AWAKE_TAG = 'breathing-session';
 
-// Native haptics bridge. The DOM experience emits this event in the same function
-// call that starts each audio cue, and the native host turns it into the shortest,
-// lightest system haptic. A phase change should feel like a quiet metronome tick,
-// not a notification or alert.
-const firePhaseHaptic = () => {
+const EXHALE_TAP_GAP_MS = 150;
+const HOLD_BUZZ_TAPS = 8;
+const HOLD_BUZZ_GAP_MS = 35;
+
+const tick = () => {
   Haptics.selectionAsync().catch(() => {});
+};
+
+const firePhaseHaptic = (phase: unknown) => {
+  if (phase === BreathingPhase.HoldIn || phase === BreathingPhase.HoldOut) {
+    for (let i = 0; i < HOLD_BUZZ_TAPS; i += 1) {
+      setTimeout(() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => {});
+      }, i * HOLD_BUZZ_GAP_MS);
+    }
+    return;
+  }
+  tick();
+  if (phase === BreathingPhase.Exhale) setTimeout(tick, EXHALE_TAP_GAP_MS);
 };
 
 const toBreathingAppState = (status: typeof AppState.currentState): 'active' | 'background' =>
@@ -579,7 +593,7 @@ export default function HomeScreen() {
         duration: 380,
         useNativeDriver: true,
       }).start();
-      firePhaseHaptic();
+      firePhaseHaptic(params?.phase);
       return;
     }
     if (name === 'pace_haptic') {

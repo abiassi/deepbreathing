@@ -5,9 +5,7 @@ import * as Haptics from 'expo-haptics';
 import { BreathingPhase } from '.';
 import type { SessionStatus } from './useBreathingSession';
 
-const EXHALE_TAP_GAP_MS = 130;
-const HOLD_BUZZ_TAPS = 7;
-const HOLD_BUZZ_GAP_MS = 40;
+const HOLD_TAP_GAP_MS = 130;
 
 const impact = (style: Haptics.ImpactFeedbackStyle) =>
   Haptics.impactAsync(style).catch(() => {
@@ -47,22 +45,16 @@ export function useBreathingHaptics({
         break;
       case BreathingPhase.HoldIn:
       case BreathingPhase.HoldOut: {
-        const timers = Array.from({ length: HOLD_BUZZ_TAPS }, (_, i) =>
-          setTimeout(
-            () => impact(Haptics.ImpactFeedbackStyle.Rigid),
-            i * HOLD_BUZZ_GAP_MS
-          )
-        );
-        return () => timers.forEach(clearTimeout);
-      }
-      case BreathingPhase.Exhale: {
         impact(Haptics.ImpactFeedbackStyle.Medium);
         const t = setTimeout(
           () => impact(Haptics.ImpactFeedbackStyle.Medium),
-          EXHALE_TAP_GAP_MS
+          HOLD_TAP_GAP_MS
         );
         return () => clearTimeout(t);
       }
+      case BreathingPhase.Exhale:
+        impact(Haptics.ImpactFeedbackStyle.Heavy);
+        break;
       default:
         break;
     }
