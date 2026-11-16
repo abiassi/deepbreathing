@@ -74,25 +74,27 @@ import { accountAvatarUri } from '../auth/account-avatar';
 
 const KEEP_AWAKE_TAG = 'breathing-session';
 
-const EXHALE_TAP_GAP_MS = 150;
-const HOLD_BUZZ_TAPS = 8;
-const HOLD_BUZZ_GAP_MS = 35;
+const EXHALE_TAP_GAP_MS = 220;
+const HOLD_BUZZ_TAPS = 5;
+const HOLD_BUZZ_GAP_MS = 80;
 
-const tick = () => {
-  Haptics.selectionAsync().catch(() => {});
+const impact = (style: Haptics.ImpactFeedbackStyle) => {
+  Haptics.impactAsync(style).catch(() => {});
 };
 
 const firePhaseHaptic = (phase: unknown) => {
   if (phase === BreathingPhase.HoldIn || phase === BreathingPhase.HoldOut) {
     for (let i = 0; i < HOLD_BUZZ_TAPS; i += 1) {
-      setTimeout(() => {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => {});
-      }, i * HOLD_BUZZ_GAP_MS);
+      setTimeout(() => impact(Haptics.ImpactFeedbackStyle.Medium), i * HOLD_BUZZ_GAP_MS);
     }
     return;
   }
-  tick();
-  if (phase === BreathingPhase.Exhale) setTimeout(tick, EXHALE_TAP_GAP_MS);
+  if (phase === BreathingPhase.Exhale) {
+    impact(Haptics.ImpactFeedbackStyle.Heavy);
+    setTimeout(() => impact(Haptics.ImpactFeedbackStyle.Heavy), EXHALE_TAP_GAP_MS);
+    return;
+  }
+  Haptics.selectionAsync().catch(() => {});
 };
 
 const toBreathingAppState = (status: typeof AppState.currentState): 'active' | 'background' =>
