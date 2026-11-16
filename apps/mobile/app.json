@@ -2,7 +2,7 @@
   "expo": {
     "name": "Deep Breathing",
     "slug": "deep-breathing",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "runtimeVersion": {
       "policy": "fingerprint"
     },
@@ -140,7 +140,18 @@
       "expo-image",
       "expo-secure-store",
       "expo-status-bar",
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+        "react-native-audio-api",
+        {
+          "iosBackgroundMode": false,
+          "androidPermissions": [],
+          "androidForegroundService": false,
+          "disableFFmpeg": true,
+          "disableStaticExternalLibs": true
+        }
+      ],
+      "./plugins/withStripFrameworkSymbols"
     ],
     "experiments": {
       "typedRoutes": true,

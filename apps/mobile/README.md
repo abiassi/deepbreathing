@@ -71,6 +71,18 @@ The iOS release workflow runs the same checks with pinned Node/pnpm versions. EA
 builds additionally require a clean Git commit; see `apps/mobile/eas.json` and the App Store
 Build 18 checklist.
 
+## App size
+
+These choices keep the thinned iPhone install near 28.5 MB. Keep them when you change dependencies.
+
+- `plugins/withStripFrameworkSymbols.js` strips local symbols from embedded frameworks in
+  Release builds. CocoaPods does not, and the symbols cost about 12 MB.
+- `react-native-audio-api` builds without FFmpeg, Opus or Vorbis. The app synthesizes every
+  sound and never decodes audio files. Re-enable them in `app.json` before decoding a file.
+- Import lucide icons from `src/components/breathing-web/icons.ts`. Metro does not
+  tree-shake, so `from 'lucide-react'` embeds all icons (about 1.8 MB).
+- Each autolinked native package adds code even when nothing imports it. Remove unused ones.
+
 ### Other setup steps
 
 - For linting, run `pnpm --filter mobile lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
