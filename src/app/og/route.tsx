@@ -1,47 +1,49 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import { BREATHING_PATTERNS } from '@/components/resonance/constants';
-import { ModeName } from '@/components/resonance/types';
 import ogTranslations from '@/data/og-translations.json';
 import { loadOgFonts } from '@/lib/og-fonts';
-import { BREATHE_LABELS, normalizeOgLocale, renderOgScene } from '@/lib/seo/og-scene';
+import { findStaticOgImagePath } from '@/lib/seo/og-image';
+import { normalizeOgImageSpec } from '@/lib/seo/og-image-spec';
+import { redirectToStaticOgImage } from '@/lib/seo/og-redirect';
+import {
+  BREATHE_LABELS,
+  OG_TITLE_MAX_LENGTH,
+  clampOgText,
+  normalizeOgLocale,
+  renderOgScene,
+} from '@/lib/seo/og-scene';
 
 type LocaleMap = Record<string, Record<string, string>>;
 const byTitle = (ogTranslations as { byTitle: LocaleMap }).byTitle;
 
 export const runtime = 'edge';
 
-const DEFAULT_TITLE = 'Deep Breathing Exercises';
 const DEFAULT_SUBTITLE = 'deepbreathingexercises.com';
-const DEFAULT_PATTERN = BREATHING_PATTERNS[ModeName.Box];
 
-function isHexColor(value?: string | null): value is string {
-  return Boolean(value && /^#?[0-9a-fA-F]{6}$/.test(value));
-}
-
-function normalizeHexColor(value: string) {
-  return value.startsWith('#') ? value : `#${value}`;
-}
-
-function clampText(value: string, maxLength: number) {
-  return value.length > maxLength ? `${value.slice(0, maxLength - 1)}…` : value;
-}
-
+// Legacy URL: pages now link /og/t/<id>.png. English requests for a registered
+// image redirect there; anything else (a `lang` from the old proxy, or a title
+// no page uses any more) still renders here.
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const requestedTitle = searchParams.get('title')?.trim();
+    const { title: enTitle, color } = normalizeOgImageSpec(
+      searchParams.get('title'),
+      searchParams.get('color'),
+    );
     const requestedSubtitle = searchParams.get('subtitle')?.trim();
-    const requestedColor = searchParams.get('color')?.trim();
-
-    const color = isHexColor(requestedColor) ? normalizeHexColor(requestedColor) : DEFAULT_PATTERN.color;
-    const enTitle = requestedTitle || DEFAULT_TITLE;
-    const subtitle = clampText(requestedSubtitle || DEFAULT_SUBTITLE, 56);
+    const subtitle = clampOgText(requestedSubtitle || DEFAULT_SUBTITLE, 56);
     const locale = normalizeOgLocale(searchParams.get('lang')) ?? 'en';
+
+    if (locale === 'en') {
+      const staticPath = findStaticOgImagePath({ title: enTitle, color });
+      if (staticPath) {
+        return redirectToStaticOgImage(request, staticPath);
+      }
+    }
 
     const localizedTitle =
       locale !== 'en' && byTitle[enTitle]?.[locale] ? byTitle[enTitle][locale] : enTitle;
-    const title = clampText(localizedTitle, 72);
+    const title = clampOgText(localizedTitle, OG_TITLE_MAX_LENGTH);
 
     return new ImageResponse(renderOgScene({ title, subtitle, color, locale }), {
       width: 1200,

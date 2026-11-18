@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Smoke-test the /og and /og/[slug] PNG endpoints.
+# Smoke-test the /og and /og/[slug] PNG endpoints. English requests for a
+# registered image redirect to its static /og/t/<id>.png, so curl follows them.
 # Each route must return HTTP 200, content-type: image/png, and a body
 # bigger than MIN_BYTES (default 10 KB — anything below that is almost
 # certainly a satori or font-load failure returning empty/error bytes).
@@ -40,7 +41,7 @@ echo
 
 for url in "${URLS[@]}"; do
   tmp=$(mktemp -t og-check.XXXXXX)
-  metrics=$(curl -sS -o "$tmp" -w '%{http_code} %{size_download} %{content_type}' "$url" || true)
+  metrics=$(curl -sSL -o "$tmp" -w '%{http_code} %{size_download} %{content_type}' "$url" || true)
   read -r status size ctype <<< "$metrics"
 
   ok=1
@@ -68,7 +69,7 @@ done
 echo
 if [ "$fails" -gt 0 ]; then
   echo "${RED}${fails} OG endpoint(s) failed.${OFF}"
-  echo "Likely causes: missing fonts (loadInterFonts), satori CSS rejections (display:flex,"
+  echo "Likely causes: missing fonts (loadOgFonts), satori CSS rejections (display:flex,"
   echo "explicit width/height on absolute children), or @vercel/og version regression."
   echo "Check Vercel runtime logs filtered by level=error for the exact satori message."
   exit 1

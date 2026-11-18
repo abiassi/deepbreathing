@@ -1,42 +1,45 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
-import { breathingPageMap } from '@/data/breathing-pages';
-import { BREATHING_PATTERNS } from '@/components/resonance/constants';
-import { ModeName } from '@/components/resonance/types';
 import ogTranslations from '@/data/og-translations.json';
 import { loadOgFonts } from '@/lib/og-fonts';
-import { BREATHE_LABELS, normalizeOgLocale, renderOgScene } from '@/lib/seo/og-scene';
+import { breathingOgImageSpec } from '@/lib/seo/breathing-og-image';
+import { findStaticOgImagePath } from '@/lib/seo/og-image';
+import { redirectToStaticOgImage } from '@/lib/seo/og-redirect';
+import {
+  BREATHE_LABELS,
+  OG_TITLE_MAX_LENGTH,
+  clampOgText,
+  normalizeOgLocale,
+  renderOgScene,
+} from '@/lib/seo/og-scene';
 
 type LocaleMap = Record<string, Record<string, string>>;
 const bySlug = (ogTranslations as { bySlug: LocaleMap }).bySlug;
 
-function clampText(value: string, maxLength: number) {
-  return value.length > maxLength ? `${value.slice(0, maxLength - 1)}…` : value;
-}
-
 export const runtime = 'edge';
 
+// Legacy URL: breathing pages now link /og/t/<id>.png. English requests
+// redirect there; a `lang` from the old proxy still renders here.
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
     const { slug } = await params;
-    const page = breathingPageMap[slug];
-
-    const pattern = page
-      ? BREATHING_PATTERNS[page.mode]
-      : BREATHING_PATTERNS[ModeName.Box];
-
-    const enTitle = page?.hero.title || 'Interactive Breathing Visualizer';
+    const { title: enTitle, color } = breathingOgImageSpec(slug);
     const subtitle = 'deepbreathingexercises.com';
-    const color = pattern.color;
-
     const locale = normalizeOgLocale(request.nextUrl.searchParams.get('lang')) ?? 'en';
+
+    if (locale === 'en') {
+      const staticPath = findStaticOgImagePath({ title: enTitle, color });
+      if (staticPath) {
+        return redirectToStaticOgImage(request, staticPath);
+      }
+    }
 
     const localizedTitle =
       locale !== 'en' && bySlug[slug]?.[locale] ? bySlug[slug][locale] : enTitle;
-    const title = clampText(localizedTitle, 72);
+    const title = clampOgText(localizedTitle, OG_TITLE_MAX_LENGTH);
 
     return new ImageResponse(renderOgScene({ title, subtitle, color, locale }), {
       width: 1200,

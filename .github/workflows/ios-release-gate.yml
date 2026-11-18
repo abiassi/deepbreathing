@@ -83,6 +83,9 @@ jobs:
       - name: Compile the production web and API surface
         run: pnpm exec next build
 
+      - name: Check every linked OG image is prerendered
+        run: pnpm run check:og-registry
+
       - name: Run mobile unit tests
         run: pnpm --filter mobile test
 
