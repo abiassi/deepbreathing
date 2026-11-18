@@ -267,7 +267,7 @@ The groups below separate live coupling from migration provenance and historical
 | `apps/mobile/src/breathing/ga4-mp.ts:22` | Pins consent-gated native analytics to the first-party origin endpoint so no Google Measurement Protocol secret is shipped in the app. |
 | `src/app/api/auth/[...all]/route.test.ts:38` | Pins the origin-host Expo authorization proxy rejection path without exercising a live identity provider. |
 | `src/app/api/v1/analytics/route.test.ts:25` | Pins the first-party analytics relay contract while keeping Measurement Protocol credentials server-side. |
-| `scripts/check-og-image.sh:16` | Defaults diagnostics to the origin alias rather than the apex. |
+| `scripts/check-og-image.sh:17` | Defaults diagnostics to the origin alias rather than the apex. |
 | `.claude/skills/dbe-accounts-auth/SKILL.md:44` | The auth health runbook explicitly probes the origin callback path. |
 
 ### Generated translation content and build tooling (active until replaced)
@@ -277,8 +277,8 @@ The groups below separate live coupling from migration provenance and historical
 | `scripts/build-og-translations.mjs:2` | Scrapes localized apex pages and treats proxy-produced `og:title` as authoritative. |
 | `package.json:15` | Exposes the proxy-scraping OG translation build command. |
 | `src/data/og-translations.json:3` | Checked-in localized OG-title artifact produced by live-site scraping. |
-| `src/app/og/route.tsx:5` | Consumes the proxy-derived OG-title artifact for query-based images. |
-| `src/app/og/[slug]/route.tsx:6` | Consumes the proxy-derived OG-title artifact for slug-based images. |
+| `src/app/og/route.tsx:3` | Consumes the proxy-derived OG-title artifact for query-based images. |
+| `src/app/og/[slug]/route.tsx:3` | Consumes the proxy-derived OG-title artifact for slug-based images. |
 | `src/lib/seo/og-scene.tsx:106` | Locale normalization and image-copy assumptions are documented in proxy terms. |
 
 ### Snapshot migration provenance (temporary, not runtime)
@@ -308,7 +308,7 @@ The groups below separate live coupling from migration provenance and historical
 
 | Evidence | Dependency / cutover implication |
 |---|---|
-| `CLAUDE.md:144` | Canonical project guidance still documents proxy URL semantics and old OAuth context. |
+| `CLAUDE.md:145` | Canonical project guidance still documents proxy URL semantics and old OAuth context. |
 | `AGENTS.md:21` | Project environment declares the origin application endpoint. |
 | `.claude/skills/daily-indexing/SKILL.md:19` | Correctly states that MassTranslate submission/OAuth paths are retired for indexing; keep this negative dependency true. |
 | `docs/runbooks/tools-and-data-sources.md:71` | Primary live runbook for proxy cache, signed-webhook bypass, URL semantics, and remaining GSC/Bing fallbacks. |

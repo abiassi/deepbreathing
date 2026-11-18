@@ -13,6 +13,8 @@
     "typecheck": "tsc --noEmit",
     "ping:sitemap": "node ./scripts/ping-sitemap.mjs",
     "build:og-translations": "node ./scripts/build-og-translations.mjs",
+    "og:registry": "node ./scripts/build-og-registry.mjs",
+    "check:og-registry": "node ./scripts/build-og-registry.mjs --check",
     "build:native-i18n-about": "node ./scripts/i18n/bespoke/compile-about-content.mjs",
     "check:native-i18n-about": "node ./scripts/i18n/bespoke/compile-about-content.mjs --check",
     "build:native-i18n-home": "node ./scripts/i18n/bespoke/compile-home-content.mjs",

@@ -1,0 +1,1045 @@
+{
+  "generatedBy": "scripts/build-og-registry.mjs",
+  "images": {
+    "00cgzg9ux8l": {
+      "title": "目的別呼吸法ガイド",
+      "color": "#e11d48"
+    },
+    "00d2ya3cpzq": {
+      "title": "Assistance",
+      "color": "#e11d48"
+    },
+    "013qhisnbid": {
+      "title": "Respiración 4-7-8 para dormir: duerme en 2 minutos",
+      "color": "#4f46e5"
+    },
+    "016jn1wnbxq": {
+      "title": "コヒーレント呼吸アプリ、無料のブラウザタイマー",
+      "color": "#e11d48"
+    },
+    "01jascxehsw": {
+      "title": "Notre Politique Éditoriale",
+      "color": "#e11d48"
+    },
+    "045syv3fylb": {
+      "title": "Animation respiration gratuite en ligne – 10 techniques, sans téléchargement",
+      "color": "#e11d48"
+    },
+    "04dplipqng1": {
+      "title": "年末年始のリラックス呼吸法 — シーズン中に落ち着きを見つける",
+      "color": "#38bdf8"
+    },
+    "0552okxr9ru": {
+      "title": "Mit Atemübungen Stress abbauen: In 30 Sekunden zur Ruhe finden.",
+      "color": "#0ea5e9"
+    },
+    "05xc6h39dr8": {
+      "title": "Breathing Exercises Before Surgery, Calm Pre-Op Anxiety",
+      "color": "#e11d48"
+    },
+    "060kkojz6u0": {
+      "title": "Minuteur de respiration 4-7-8 (gratuit en ligne)",
+      "color": "#e11d48"
+    },
+    "06f9qnuew8w": {
+      "title": "Datenschutzrichtlinie",
+      "color": "#e11d48"
+    },
+    "06hkg6i7z9b": {
+      "title": "Unsere Redaktionsrichtlinien",
+      "color": "#e11d48"
+    },
+    "06v1az68ucp": {
+      "title": "Lung Capacity Exercises: Increase Your Breathing Power",
+      "color": "#f59e0b"
+    },
+    "0759iki93o4": {
+      "title": "2-minütige entspannungs atemübung – Schneller Neustart",
+      "color": "#e11d48"
+    },
+    "07fp9ir46xi": {
+      "title": "Guía completa de los pranayamas: técnicas de respiración",
+      "color": "#8b5cf6"
+    },
+    "07vnwa4vf7x": {
+      "title": "Exercícios de respiração para crianças: técnicas para acalmar",
+      "color": "#e11d48"
+    },
+    "083fh7y3v76": {
+      "title": "Encuentra calma con ejercicios de respiración para relajarse",
+      "color": "#38bdf8"
+    },
+    "085oolmf6w1": {
+      "title": "Holiday Stress Relief in 30 Seconds: Physiological Sigh",
+      "color": "#0ea5e9"
+    },
+    "08m8rbzo6wa": {
+      "title": "5分間の呼吸エクササイズ — 深いリラクゼーション",
+      "color": "#e11d48"
+    },
+    "09ambyacwyj": {
+      "title": "Nossa Política Editorial",
+      "color": "#e11d48"
+    },
+    "09c2bwp8xbr": {
+      "title": "2分間の深呼吸 の やり方 — クイックリセット",
+      "color": "#e11d48"
+    },
+    "0aivlckm8vj": {
+      "title": "アスリートの回復を加速：セット間の生理的ため息による筋トレ 呼吸法",
+      "color": "#0ea5e9"
+    },
+    "0b6aw9h654t": {
+      "title": "Descubre técnicas de relajación infantil con sencillos ejercicios de respiración para ayudar a los niños a calmarse y gestionar sus emociones.",
+      "color": "#e11d48"
+    },
+    "0cgenglewut": {
+      "title": "Exercícios de Respiração para Superar a Ansiedade de Fim de Ano e Encontrar a Calma na Temporada Festiva",
+      "color": "#38bdf8"
+    },
+    "0ckif29gsfr": {
+      "title": "Visualizador Gratuito de Respiração Guiada Online — 10 Técnicas, Sem Download",
+      "color": "#e11d48"
+    },
+    "0cnztge7937": {
+      "title": "Exercícios de respiração para acalmar o estresse — Relaxe em 30 segundos",
+      "color": "#0ea5e9"
+    },
+    "0cr1nalp3qv": {
+      "title": "Relajación 5 minutos con ejercicios de respiración",
+      "color": "#e11d48"
+    },
+    "0d02wjuhygf": {
+      "title": "Box Breathing Before Presentation, Calm Nerves in 60 Seconds",
+      "color": "#e11d48"
+    },
+    "0dj3219dact": {
+      "title": "Sobre Abi Abiassi",
+      "color": "#e11d48"
+    },
+    "0dsymgqefxj": {
+      "title": "Ejercicios para aumentar la capacidad pulmonar: mejora tu potencia respiratoria",
+      "color": "#f59e0b"
+    },
+    "0dtccgw4ty8": {
+      "title": "Protocoles de respiration Huberman Lab : 6 techniques adaptées à votre objectif",
+      "color": "#0ea5e9"
+    },
+    "0e0xeyajljm": {
+      "title": "Exercícios de Respiração para Cantar: Construa Apoio Vocal",
+      "color": "#f59e0b"
+    },
+    "0eaamlyo1lp": {
+      "title": "Ejercicios de respiración para el estrés: cálmate en 30 segundos",
+      "color": "#0ea5e9"
+    },
+    "0ecfbxwdxkl": {
+      "title": "Exercices de respiration avant la chirurgie, calmer l'anxiété préopératoire",
+      "color": "#e11d48"
+    },
+    "0f00qeqb6ae": {
+      "title": "4-7-8 Breathing Visualizer",
+      "color": "#4f46e5"
+    },
+    "0fenhg60hvi": {
+      "title": "Descubre técnicas de relajación rápidas con este ejercicio",
+      "color": "#e11d48"
+    },
+    "0gn3m8e9sg1": {
+      "title": "Protocolos de respiración de Huberman Lab: 6 técnicas para tu objetivo",
+      "color": "#0ea5e9"
+    },
+    "0gnad9sb99f": {
+      "title": "About Deep Breathing Exercises",
+      "color": "#e11d48"
+    },
+    "0h4xl5n87on": {
+      "title": "Technique de respiration pour la crise de panique. Arrêtez la panique en 30 secondes",
+      "color": "#e11d48"
+    },
+    "0hhxco3feb5": {
+      "title": "プライバシーポリシー",
+      "color": "#e11d48"
+    },
+    "0hmzkbeutee": {
+      "title": "Sobre nosotros: ejercicios de respiración",
+      "color": "#e11d48"
+    },
+    "0hvd6w9zvt0": {
+      "title": "About Abi Abiassi",
+      "color": "#e11d48"
+    },
+    "0ib7kwl33rk": {
+      "title": "Free Breathing Visualizer: Calm Anxiety in 60 Seconds",
+      "color": "#e11d48"
+    },
+    "0igeizfui7j": {
+      "title": "Atemübungen gegen Reiseangst: Flugangst überwinden und stundenlang gelassen bleiben.",
+      "color": "#059669"
+    },
+    "0ih4ata1ftq": {
+      "title": "Guides de respiration par objectif",
+      "color": "#e11d48"
+    },
+    "0jdkx4zymvh": {
+      "title": "Atemtechniken (Kostenlose geführte Visualisierer)",
+      "color": "#e11d48"
+    },
+    "0jiqvuy2l45": {
+      "title": "Kohärente-Atem-App, kostenloser Browser-Timer",
+      "color": "#e11d48"
+    },
+    "0k6wc5xnndp": {
+      "title": "Atemübungen Singen: Stärkung der stimmlichen Atemstütze",
+      "color": "#f59e0b"
+    },
+    "0ka4gan3ogg": {
+      "title": "Stop a Panic Attack in 30 Seconds - Physiological Sigh",
+      "color": "#0ea5e9"
+    },
+    "0kek068er45": {
+      "title": "Detén un ataque de pánico en 30 segundos: suspiro fisiológico",
+      "color": "#0ea5e9"
+    },
+    "0kyhvy88eo6": {
+      "title": "瞑想が苦手ですか？コヒーレント呼吸から始めましょう",
+      "color": "#059669"
+    },
+    "0ld1ne25gn8": {
+      "title": "Kostenlose Atemübungen App (ohne Download)",
+      "color": "#e11d48"
+    },
+    "0ljexy94iwt": {
+      "title": "Kostenlose Atemübungen Online mit Visualizer – 10 Techniken, kein Download",
+      "color": "#e11d48"
+    },
+    "0m3ckxwr96h": {
+      "title": "Support",
+      "color": "#e11d48"
+    },
+    "0mb43163739": {
+      "title": "Respiração 4-7-8 para Insônia: Durma em Minutos",
+      "color": "#e11d48"
+    },
+    "0mc2muhek7x": {
+      "title": "Conoce nuestra política de privacidad para una respiración",
+      "color": "#e11d48"
+    },
+    "0mg0ufxaaa2": {
+      "title": "手術前の呼吸エクササイズ、術前の不安を落ち着かせる",
+      "color": "#e11d48"
+    },
+    "0mw35grfm2o": {
+      "title": "Free Online Box Breathing Timer",
+      "color": "#e11d48"
+    },
+    "0nc9qcc559s": {
+      "title": "スピーチ 呼吸法で舞台恐怖症を克服",
+      "color": "#e11d48"
+    },
+    "0nii731lx5g": {
+      "title": "Exercices de respiration pour le stress – Calmez-vous en 30 secondes",
+      "color": "#0ea5e9"
+    },
+    "0nlep2t7p9f": {
+      "title": "Atemtechniken nach Ziel",
+      "color": "#e11d48"
+    },
+    "0o4pdgogx60": {
+      "title": "4-7-8 Breathing for Insomnia, Fall Asleep in Minutes",
+      "color": "#e11d48"
+    },
+    "0o8kl2ivrat": {
+      "title": "Techniques de respiration (Visualisations guidées gratuites)",
+      "color": "#e11d48"
+    },
+    "0od40o6udzp": {
+      "title": "ストレス 呼吸法 — 30秒で心を落ち着かせる",
+      "color": "#0ea5e9"
+    },
+    "0ohhzajveq9": {
+      "title": "Coherent Breathing App, Free Browser Timer",
+      "color": "#e11d48"
+    },
+    "0pe0szm3j3x": {
+      "title": "Exercícios de respiração para o medo de voar e ansiedade em viagens — Mantenha a calma por horas.",
+      "color": "#059669"
+    },
+    "0pewn6fvad3": {
+      "title": "Breathing Exercises for Public Speaking: Stop Stage Fright",
+      "color": "#e11d48"
+    },
+    "0pt8d1jmpd7": {
+      "title": "Temporizador de respiração 4-7-8 (grátis online)",
+      "color": "#e11d48"
+    },
+    "0py3f8ndt42": {
+      "title": "Respiración para bajar la tensión de forma natural",
+      "color": "#4f46e5"
+    },
+    "0q2h2jl4ov0": {
+      "title": "Exercício de Respiração de 1 Minuto — Calma Rápida",
+      "color": "#e11d48"
+    },
+    "0q72n4tx6p4": {
+      "title": "Vous n'arrivez pas à méditer ? Débutez avec la respiration cohérente.",
+      "color": "#059669"
+    },
+    "0qf7cxjmhhk": {
+      "title": "Deep Breathing Brand Lab",
+      "color": "#e11d48"
+    },
+    "0qpsuts1m0s": {
+      "title": "Feiertagsstress in 30 Sekunden lindern – Physiologischer Seufzer. Effektive Atemübungen, die Stress abbauen.",
+      "color": "#0ea5e9"
+    },
+    "0r7oekf70rx": {
+      "title": "Respiración en caja antes de la presentación, calma los nervios en 60 segundos",
+      "color": "#e11d48"
+    },
+    "0renesq4eso": {
+      "title": "Tecniche di respirazione (visualizzatori guidati gratuiti)",
+      "color": "#e11d48"
+    },
+    "0rk8oefqbbp": {
+      "title": "子どもの心を落ち着かせる呼吸法：子ども マインドフルネス",
+      "color": "#e11d48"
+    },
+    "0svxoslbcil": {
+      "title": "Pranayama-Atmung: Der umfassende Leitfaden zu yogischer Atmung",
+      "color": "#8b5cf6"
+    },
+    "0t14vsescgi": {
+      "title": "Minuteur de respiration carrée gratuit en ligne",
+      "color": "#e11d48"
+    },
+    "0t9r4tbgzne": {
+      "title": "Kostenloser Atem-Visualizer: Angst in 60 Sekunden beruhigen",
+      "color": "#e11d48"
+    },
+    "0tfgi7o4a8b": {
+      "title": "呼吸アプリ 無料版（ダウンロード不要）",
+      "color": "#e11d48"
+    },
+    "0tngf4pxeg3": {
+      "title": "Temporizador de respiración 4-7-8 (gratis en línea)",
+      "color": "#e11d48"
+    },
+    "0trd6kxq0ib": {
+      "title": "Une respiration grossesse sûre pour gérer l'anxiété et l'accouchement",
+      "color": "#4f46e5"
+    },
+    "0u47iwxo1vp": {
+      "title": "歌の腹式呼吸エクササイズ：声のサポートを築く",
+      "color": "#f59e0b"
+    },
+    "0umctpzib2o": {
+      "title": "1分間呼吸法 — すばやく落ち着きを",
+      "color": "#e11d48"
+    },
+    "0umwjts6f1p": {
+      "title": "Coherent Breathing Trainer",
+      "color": "#059669"
+    },
+    "0uo5zype3nc": {
+      "title": "Guias de Exercícios Respiratórios por Objetivo",
+      "color": "#e11d48"
+    },
+    "0vtdmdssnb6": {
+      "title": "Realiza ejercicios de respiración con nuestra app gratuita",
+      "color": "#e11d48"
+    },
+    "0vuucgcjgpa": {
+      "title": "5 Minuten Atemübung – Tiefe Entspannung",
+      "color": "#e11d48"
+    },
+    "0wb1ohbns2t": {
+      "title": "妊娠中の不安と陣痛を和らげる安全な出産 呼吸法",
+      "color": "#4f46e5"
+    },
+    "0wge8xyxtrk": {
+      "title": "深呼吸練習について",
+      "color": "#e11d48"
+    },
+    "0wqynuno8c8": {
+      "title": "Our Editorial Policy",
+      "color": "#e11d48"
+    },
+    "0wv4bq6vxnd": {
+      "title": "Suporte",
+      "color": "#e11d48"
+    },
+    "0xhli1awd50": {
+      "title": "Respiration 4-7-8 pour l'insomnie : endormez-vous vite",
+      "color": "#e11d48"
+    },
+    "0yan3mhrvuq": {
+      "title": "Le soupir physiologique : une solution en 30 secondes pour la respiration stressante des fêtes.",
+      "color": "#0ea5e9"
+    },
+    "0yunb8zcu58": {
+      "title": "5 Minute Breathing Exercise, Deep Relaxation",
+      "color": "#e11d48"
+    },
+    "0z61an91ebq": {
+      "title": "高血圧を自然に下げる呼吸法：血圧を10ポイント低下",
+      "color": "#4f46e5"
+    },
+    "0zb4n90i1pz": {
+      "title": "Respiración cuadrada de los Navy SEAL para la ansiedad",
+      "color": "#e11d48"
+    },
+    "0zhpikz3sq4": {
+      "title": "眠れない時に役立つ4-7-8呼吸法：2分で眠りにつく",
+      "color": "#4f46e5"
+    },
+    "1079i0vcamj": {
+      "title": "Respiração pranayama: guia completo da respiração iogue",
+      "color": "#8b5cf6"
+    },
+    "10bcs8rw7j8": {
+      "title": "Aumente o Foco em 40%: A Respiração Coerente para Foco e Concentração",
+      "color": "#059669"
+    },
+    "10esdo7fhit": {
+      "title": "Physiological Sigh: Instant Stress Relief",
+      "color": "#0ea5e9"
+    },
+    "114spv256lj": {
+      "title": "プラーナ ヤーマ呼吸法：ヨガの呼吸法完全ガイド",
+      "color": "#8b5cf6"
+    },
+    "11fm1wivjfh": {
+      "title": "Respiration en carré avant une présentation, calmez vos nerfs en 60 secondes",
+      "color": "#e11d48"
+    },
+    "11j5hkx4nww": {
+      "title": "4-7-8呼吸タイマー（無料オンライン）",
+      "color": "#e11d48"
+    },
+    "11yvtrx9rx4": {
+      "title": "Exercício de respiração de 2 minutos — Reset Rápido",
+      "color": "#e11d48"
+    },
+    "12auwgy8xi1": {
+      "title": "Visualizador de respiración guiada online gratis – 10 técnicas",
+      "color": "#e11d48"
+    },
+    "12m9c9nmo77": {
+      "title": "Seitenstechen in 30 Sekunden stoppen – Kostenloser Lauf-Timer für die richtige Atmung beim Joggen.",
+      "color": "#0ea5e9"
+    },
+    "12qb2u4dshv": {
+      "title": "Belly Breathing: Diaphragmatic Breathing Exercises",
+      "color": "#f59e0b"
+    },
+    "132y7o434iy": {
+      "title": "30秒でパニック発作を止める過呼吸の止め方 - 生理的ため息",
+      "color": "#0ea5e9"
+    },
+    "13mj8mne856": {
+      "title": "4-7-8 Breathing Timer (Free Online)",
+      "color": "#e11d48"
+    },
+    "13sx39edk6p": {
+      "title": "Atemübungen für Kinder: Techniken zum Kinder beruhigen.",
+      "color": "#e11d48"
+    },
+    "149h2o21oi7": {
+      "title": "Exercices de respiration pour enfants : techniques de calme",
+      "color": "#e11d48"
+    },
+    "14ca3q08dee": {
+      "title": "4-7-8 Breathing for Sleep: Fall Asleep in 2 Minutes",
+      "color": "#4f46e5"
+    },
+    "14x8w86jktg": {
+      "title": "Técnicas de Respiração (Visualizadores Guiados Gratuitos)",
+      "color": "#e11d48"
+    },
+    "14zd8blmida": {
+      "title": "Améliorez votre concentration de 40 % : Les techniques de respiration cohérente pour une meilleure concentration",
+      "color": "#059669"
+    },
+    "15wl2uleq3p": {
+      "title": "無料オンライン ボックス呼吸法 アプリ",
+      "color": "#e11d48"
+    },
+    "16162f85wu0": {
+      "title": "Ejercicios de respiración embarazo para la ansiedad y el parto",
+      "color": "#4f46e5"
+    },
+    "1627mo89f8x": {
+      "title": "Atemübungen vor der Operation, präoperative Angst beruhigen",
+      "color": "#e11d48"
+    },
+    "16p50fqzzo0": {
+      "title": "Respiração quadrada antes da apresentação, acalme os nervos em 60 segundos",
+      "color": "#e11d48"
+    },
+    "176cphi6q9e": {
+      "title": "分娩のための呼吸エクササイズ、収縮を自然にコントロール",
+      "color": "#e11d48"
+    },
+    "17qt65hn6en": {
+      "title": "Mejora tu concentración un 40%: Respiración coherente",
+      "color": "#059669"
+    },
+    "180cbp5cnzb": {
+      "title": "Blutdruck senken Atemübungen: Natürlich den Blutdruck um 10 Punkte reduzieren.",
+      "color": "#4f46e5"
+    },
+    "18nukb77ult": {
+      "title": "Wenn Meditation schwerfällt: Beginnen Sie mit kohärenter Atmung",
+      "color": "#059669"
+    },
+    "193fkm8pv5e": {
+      "title": "Informativa sulla privacy",
+      "color": "#e11d48"
+    },
+    "19e4wp62e1a": {
+      "title": "4-7-8 Atemtechnik bei Schlaflosigkeit: Einschlafen in Minuten",
+      "color": "#e11d48"
+    },
+    "19kw9pi0xjc": {
+      "title": "無料の呼吸ビジュアライザー：60秒で不安を鎮める深呼吸効果",
+      "color": "#e11d48"
+    },
+    "19p85npvjco": {
+      "title": "Buteyko Breathing: Light, Nasal Breathing Method",
+      "color": "#38bdf8"
+    },
+    "1a1uyh3vh5l": {
+      "title": "Exercices de respiration pour les fêtes : trouvez le calme pendant la saison.",
+      "color": "#38bdf8"
+    },
+    "1aaid9slkx1": {
+      "title": "Free Online Breathing Visualizer, 10 Techniques, No Download",
+      "color": "#e11d48"
+    },
+    "1aqg95e4tkg": {
+      "title": "Sobre os benefícios da respiração profunda e os exercícios para praticá-la.",
+      "color": "#e11d48"
+    },
+    "1awxfhqzb73": {
+      "title": "パニック発作のための呼吸法。30秒でパニックを止める",
+      "color": "#e11d48"
+    },
+    "1axdm1c8qq2": {
+      "title": "Lower Blood Pressure Naturally with 4-7-8 Breathing",
+      "color": "#4f46e5"
+    },
+    "1bimtywmyil": {
+      "title": "Breathing Technique for Panic Attack. Stop Panic in 30 Seconds",
+      "color": "#e11d48"
+    },
+    "1bu1qvt4u7n": {
+      "title": "Sichere Atemübungen Schwangerschaft für Angst und Geburt",
+      "color": "#4f46e5"
+    },
+    "1cnzx5miqf7": {
+      "title": "Privacy Policy",
+      "color": "#e11d48"
+    },
+    "1cos61amv3w": {
+      "title": "Atemtechnik bei Panikattacke. Stoppe Panik in 30 Sekunden",
+      "color": "#e11d48"
+    },
+    "1cpxie6mmpl": {
+      "title": "Ejercicios de respiración para el parto, controla las contracciones de forma natural",
+      "color": "#e11d48"
+    },
+    "1dnrp1uckjw": {
+      "title": "集中力を40%向上させる「集中力 呼吸法」：コヒーレント呼吸で集中力アップ",
+      "color": "#059669"
+    },
+    "1dwl87qvctk": {
+      "title": "サポート",
+      "color": "#e11d48"
+    },
+    "1e4o5zhr7f9": {
+      "title": "Free Breathing App (No Download)",
+      "color": "#e11d48"
+    },
+    "1f0joaacumj": {
+      "title": "Optimisez votre respiration course à pied : Arrêtez les points de côté en 30 secondes - Minuteur gratuit.",
+      "color": "#0ea5e9"
+    },
+    "1f0t8wunj8h": {
+      "title": "Ujjayi Breathing: The Ocean Breath Technique",
+      "color": "#0891b2"
+    },
+    "1f1hac49gu1": {
+      "title": "App de respiração coerente, temporizador grátis no navegador",
+      "color": "#e11d48"
+    },
+    "1f57sb8j75i": {
+      "title": "Steigern Sie Ihre Konzentration um 40 %: Kohärente Atemübungen für mehr Fokus",
+      "color": "#059669"
+    },
+    "1gbhh7wboh6": {
+      "title": "9D Breathwork Explained",
+      "color": "#f97316"
+    },
+    "1gfeopa3rq9": {
+      "title": "Ejercicio de respiración para cantar: apoyo vocal",
+      "color": "#f59e0b"
+    },
+    "1gkbp3bvl2p": {
+      "title": "ヒューバーマン・ラボの呼吸法プロトコル：スタンフォード式呼吸法を含む、あなたの目標に合わせた6つのテクニック",
+      "color": "#0ea5e9"
+    },
+    "1gqbfl68eq0": {
+      "title": "呼吸法 種類（無料ガイド付き視覚化ツール）",
+      "color": "#e11d48"
+    },
+    "1guu1yiklo4": {
+      "title": "Kurze Atemübung – Schnelle Ruhe",
+      "color": "#e11d48"
+    },
+    "1hdk0ijorcj": {
+      "title": "Kostenloser Online Box-Atmung Timer",
+      "color": "#e11d48"
+    },
+    "1hiizlyk4pu": {
+      "title": "Recuperación atlética más rápida: El suspiro fisiológico",
+      "color": "#0ea5e9"
+    },
+    "1hszjx7g82a": {
+      "title": "Visualiseur de respiration gratuit : Calmez l'anxiété en 60 secondes",
+      "color": "#e11d48"
+    },
+    "1ion4ica13n": {
+      "title": "Améliorez votre capacité pulmonaire avec un entraînement respiratoire pour une puissance accrue",
+      "color": "#f59e0b"
+    },
+    "1j7896303o0": {
+      "title": "Faster Athletic Recovery: Physiological Sigh Between Sets",
+      "color": "#0ea5e9"
+    },
+    "1jei67p0m8j": {
+      "title": "Breathing Exercises for Travel Anxiety: Stay Calm for Hours",
+      "color": "#059669"
+    },
+    "1jfwg3i7l9a": {
+      "title": "App de respiración coherente, temporizador gratuito en el navegador",
+      "color": "#e11d48"
+    },
+    "1jr0xtcntav": {
+      "title": "Application de respiration gratuite (sans téléchargement)",
+      "color": "#e11d48"
+    },
+    "1k5p6s140z2": {
+      "title": "App de Respiração Gratuito (Sem Download)",
+      "color": "#e11d48"
+    },
+    "1k6g1krpmyy": {
+      "title": "Política de Privacidade",
+      "color": "#e11d48"
+    },
+    "1k9cneetywj": {
+      "title": "脇腹痛を30秒で解消 - 無料ランニングタイマー",
+      "color": "#0ea5e9"
+    },
+    "1ke6gf1qzkp": {
+      "title": "Visualizzatore gratuito di respirazione: calma l'ansia in 60 secondi",
+      "color": "#e11d48"
+    },
+    "1kfd1jktw32": {
+      "title": "Box Breathing vor der Präsentation, Nerven in 60 Sekunden beruhigen",
+      "color": "#e11d48"
+    },
+    "1kp8vbut46z": {
+      "title": "Schnellere sportliche Erholung durch Atemübungen für Sportler: Das physiologische Seufzen zwischen den Sätzen.",
+      "color": "#0ea5e9"
+    },
+    "1l0sw6hw9le": {
+      "title": "無料のオンライン呼吸ビジュアライザー。10種類の呼吸法をダウンロード不要で体験できる深呼吸アプリです。",
+      "color": "#e11d48"
+    },
+    "1ll8ut088ja": {
+      "title": "Holiday Breathing Exercises, Find Calm During the Season",
+      "color": "#38bdf8"
+    },
+    "1llnh0rlotc": {
+      "title": "Recuperação atlética mais rápida: o suspiro fisiológico",
+      "color": "#0ea5e9"
+    },
+    "1m0fmxslzg0": {
+      "title": "Le pranayama : Guide complet de la respiration yogique",
+      "color": "#8b5cf6"
+    },
+    "1m8rcn35wl5": {
+      "title": "Técnicas de respiración (Visualizadores guiados gratis)",
+      "color": "#e11d48"
+    },
+    "1mmqreunwfp": {
+      "title": "30秒でできるストレス解消呼吸法 — 生理的ため息",
+      "color": "#0ea5e9"
+    },
+    "1nsl5kqido5": {
+      "title": "Ejercicios de respiración para hablar en público: detén el miedo escénico",
+      "color": "#e11d48"
+    },
+    "1nzukubysfb": {
+      "title": "Exercícios de respiração antes da cirurgia, acalmar a ansiedade pré-operatória",
+      "color": "#e11d48"
+    },
+    "1o3enikcd54": {
+      "title": "Deep Breathing Exercises in 7 languages",
+      "color": "#e11d48"
+    },
+    "1p2l9cdv1xz": {
+      "title": "Breathing for Running Recovery: Stop Side Stitches Fast",
+      "color": "#0ea5e9"
+    },
+    "1psl9rmu7r3": {
+      "title": "4-7-8-Atemtimer (kostenlos online)",
+      "color": "#e11d48"
+    },
+    "1q3udarzfuz": {
+      "title": "A técnica de respiração 4-7-8 para dormir: adormeça em 2 minutos",
+      "color": "#4f46e5"
+    },
+    "1q91ozwn0cl": {
+      "title": "Exercices de respiration pour chanter : Développez votre soutien vocal",
+      "color": "#f59e0b"
+    },
+    "1qa841pd2e2": {
+      "title": "¿No puedes meditar? Empieza con la respiración coherente",
+      "color": "#059669"
+    },
+    "1qt6qypmyog": {
+      "title": "Não consegue meditar? Comece com a Respiração Coerente",
+      "color": "#059669"
+    },
+    "1qwug8x6on6": {
+      "title": "Über Tiefe Atemübungen",
+      "color": "#e11d48"
+    },
+    "1r903kyvar4": {
+      "title": "Exercices de respiration pour l'anxiété de voyage : restez calme pendant des heures et maîtrisez la respiration anxiété.",
+      "color": "#059669"
+    },
+    "1rbovoxdbpz": {
+      "title": "Récupération sportive plus rapide : le soupir physiologique entre les séries",
+      "color": "#0ea5e9"
+    },
+    "1rbwk4w7fk1": {
+      "title": "Visualizador de Respiração Grátis: Calma a Ansiedade em 60 Segundos",
+      "color": "#e11d48"
+    },
+    "1rkarkcijuk": {
+      "title": "Alivio del estrés navideño en 30 segundos: suspiro fisiológico",
+      "color": "#0ea5e9"
+    },
+    "1ry41x9i0hq": {
+      "title": "2 Minute Breathing Exercise, Quick Reset",
+      "color": "#e11d48"
+    },
+    "1rzua6g50o0": {
+      "title": "Respiration et hypertension : Réduisez votre tension artérielle naturellement de 10 points",
+      "color": "#4f46e5"
+    },
+    "1s3rtrup54w": {
+      "title": "Safe Breathing for Pregnancy Anxiety & Labor",
+      "color": "#4f46e5"
+    },
+    "1sattr23e81": {
+      "title": "Maîtriser une respiration crise de panique en 30 secondes - Soupir physiologique",
+      "color": "#0ea5e9"
+    },
+    "1sdzdomz9aw": {
+      "title": "Exercício para Fortalecer o Pulmão: Aumente Sua Capacidade Respiratória",
+      "color": "#f59e0b"
+    },
+    "1stfhq1vlta": {
+      "title": "Exercícios de respiração para o trabalho de parto, gerencie as contrações naturalmente",
+      "color": "#e11d48"
+    },
+    "1u77tyuyp9h": {
+      "title": "Exercice de respiration d'une minute — Calme rapide",
+      "color": "#e11d48"
+    },
+    "1uz0s614tm3": {
+      "title": "Breathing Exercises for Stress: Calm Down in 30 Seconds",
+      "color": "#0ea5e9"
+    },
+    "1v4jesbmhsz": {
+      "title": "Nuestra Política Editorial",
+      "color": "#e11d48"
+    },
+    "1vcqrwk9mb3": {
+      "title": "Pare as Dores Laterais em 30 Segundos – Cronômetro Grátis para Corredores: Saiba como respirar correndo.",
+      "color": "#0ea5e9"
+    },
+    "1vkcg8vwj4d": {
+      "title": "Exercices de respiration pour le travail, gérer les contractions naturellement",
+      "color": "#e11d48"
+    },
+    "1vmhjissk5s": {
+      "title": "Ejercicios de respiración para la ansiedad al viajar: mantén la calma durante horas",
+      "color": "#059669"
+    },
+    "1vw7crz35tv": {
+      "title": "Exercices de respiration pour la prise de parole en public et la gestion du stress — Stoppez le trac",
+      "color": "#e11d48"
+    },
+    "1wjq6ci1loq": {
+      "title": "Wim Hof Breathing Method",
+      "color": "#f97316"
+    },
+    "1wvodxr1o9h": {
+      "title": "アビ・アビアッシについて",
+      "color": "#e11d48"
+    },
+    "1x06wy6v15x": {
+      "title": "Breath of Fire: Kundalini Yoga Breathing Exercise",
+      "color": "#ea580c"
+    },
+    "1xl0dzxpjfa": {
+      "title": "Ejercicios de respiración antes de la cirugía, calmar la ansiedad preoperatoria",
+      "color": "#e11d48"
+    },
+    "1xn5ebxl2z9": {
+      "title": "Can't Meditate? Start with Coherent Breathing",
+      "color": "#059669"
+    },
+    "1y147m00lew": {
+      "title": "Améliorez votre respiration sommeil avec la méthode 4-7-8 – Endormez-vous en 2 minutes",
+      "color": "#4f46e5"
+    },
+    "1y4h1wrbqrc": {
+      "title": "Alívio da ansiedade fim de ano em 30 segundos — Suspiro Fisiológico",
+      "color": "#0ea5e9"
+    },
+    "1yxznr844yb": {
+      "title": "Pare um Ataque de Pânico em 30 Segundos - Suspiro Fisiológico",
+      "color": "#0ea5e9"
+    },
+    "1z286fmlq3a": {
+      "title": "Application de respiration cohérente, minuteur gratuit dans le navigateur",
+      "color": "#e11d48"
+    },
+    "1z65bwn2cdw": {
+      "title": "Ejercicios de respiración de 1 minuto: calma rápida",
+      "color": "#e11d48"
+    },
+    "1zf8hxbesjt": {
+      "title": "Cohérence cardiaque 5 min — Relaxation profonde",
+      "color": "#e11d48"
+    },
+    "1zq3jrp91vp": {
+      "title": "Atemübungen, um die Lungenkapazität zu erhöhen: Steigern Sie Ihre Atemkraft",
+      "color": "#f59e0b"
+    },
+    "1zxznth1dyd": {
+      "title": "Técnica de respiração para ataque de pânico. Pare o pânico em 30 segundos",
+      "color": "#e11d48"
+    },
+    "2043ba73wb4": {
+      "title": "プレゼン前のボックス呼吸法、60秒で緊張を鎮める",
+      "color": "#e11d48"
+    },
+    "20kr09amlfn": {
+      "title": "Atemübungen für öffentliche Reden – Lampenfieber stoppen. Eine effektive Atemtechnik gegen Angst.",
+      "color": "#e11d48"
+    },
+    "213ohpf8nzf": {
+      "title": "Hope Cartel 9D Breathwork",
+      "color": "#f97316"
+    },
+    "21fmnanmxig": {
+      "title": "Tummo Breathing: How to Do the Tibetan Inner Fire Technique",
+      "color": "#dc2626"
+    },
+    "21gob4mppio": {
+      "title": "Breathing Guides by Goal",
+      "color": "#e11d48"
+    },
+    "21m38nsvwhg": {
+      "title": "Exercice de respiration de 2 minutes — Réinitialisation rapide",
+      "color": "#e11d48"
+    },
+    "22pw8sm7qi7": {
+      "title": "Respiración 4-7-8 para insomnio: duerme en minutos",
+      "color": "#e11d48"
+    },
+    "22vep7vxt1v": {
+      "title": "Politique de confidentialité",
+      "color": "#e11d48"
+    },
+    "22xz5vc98we": {
+      "title": "Descubre guías de ejercicios de respiración para mejorar",
+      "color": "#e11d48"
+    },
+    "23ep1x23yii": {
+      "title": "Breathing Exercises for Singing: Build Vocal Breath Support",
+      "color": "#f59e0b"
+    },
+    "23hlmuspn1m": {
+      "title": "Breathing Exercises for Labor, Manage Contractions Naturally",
+      "color": "#e11d48"
+    },
+    "246012twqa5": {
+      "title": "Pursed Lip Breathing Technique",
+      "color": "#10b981"
+    },
+    "249w11un7gw": {
+      "title": "Pranayama Breathing: Complete Guide to Yogic Breathing",
+      "color": "#8b5cf6"
+    },
+    "24sks90l6a5": {
+      "title": "Huberman Lab Breathing Protocols: 6 Techniques Matched to Your Goal",
+      "color": "#0ea5e9"
+    },
+    "24uhxl8sib7": {
+      "title": "Respiration anxiété : stoppez-la en 60 secondes avec la technique carrée des Navy SEAL",
+      "color": "#e11d48"
+    },
+    "262h69nkchi": {
+      "title": "Técnica de respiración para el ataque de pánico. Detén el pánico en 30 segundos",
+      "color": "#e11d48"
+    },
+    "26blzhkdbih": {
+      "title": "不眠症のための4-7-8呼吸法：数分で眠りにつく",
+      "color": "#e11d48"
+    },
+    "26kq8wo75dr": {
+      "title": "飛行機が怖い気持ちを克服し、旅行の不安を解消する呼吸法 — 何時間も落ち着きを保ちましょう。",
+      "color": "#059669"
+    },
+    "27cdp8wukau": {
+      "title": "Soporte",
+      "color": "#e11d48"
+    },
+    "27mrx34g2px": {
+      "title": "Huberman Lab Atemprotokolle: 6 Techniken, abgestimmt auf Ihr Ziel",
+      "color": "#0ea5e9"
+    },
+    "28am5u4wpb5": {
+      "title": "À propos des exercices de respiration profonde",
+      "color": "#e11d48"
+    },
+    "28dyn2ybo49": {
+      "title": "Über Abi Abiassi",
+      "color": "#e11d48"
+    },
+    "28kxo4ctmb6": {
+      "title": "Técnicas de respiração segura para ansiedade na gravidez e para a respiração no parto",
+      "color": "#4f46e5"
+    },
+    "28ugrt4rfiq": {
+      "title": "Meditação guiada 5 minutos para relaxar profundamente",
+      "color": "#e11d48"
+    },
+    "28yulsmqjez": {
+      "title": "Como baixar pressão arterial naturalmente: Reduza a PA em 10 pontos",
+      "color": "#4f46e5"
+    },
+    "2933zwx2xcd": {
+      "title": "Stop Anxiety in 60 Seconds - Navy SEAL Box Breathing",
+      "color": "#e11d48"
+    },
+    "297gg7xcvn4": {
+      "title": "À propos d'Abi Abiassi",
+      "color": "#e11d48"
+    },
+    "297nzzgw0x1": {
+      "title": "Alternate Nostril Breathing (Nadi Shodhana)",
+      "color": "#8b5cf6"
+    },
+    "29bl6xzfm6o": {
+      "title": "Atemübungen gegen Angst: Die Navy SEAL Box-Atmung stoppt Angst in 60 Sekunden.",
+      "color": "#e11d48"
+    },
+    "29d69n8o8f9": {
+      "title": "Visualizador de respiración gratis: calma la ansiedad en 60 segundos",
+      "color": "#e11d48"
+    },
+    "29ji068ca30": {
+      "title": "60秒で不安を止める：ネイビーシールズ式ボックス呼吸法",
+      "color": "#e11d48"
+    },
+    "29tcv3gcywq": {
+      "title": "肺活量を鍛えるエクササイズ：呼吸力を高めよう",
+      "color": "#f59e0b"
+    },
+    "2a4mise7how": {
+      "title": "Boost Focus by 40%: Coherent Breathing for Concentration",
+      "color": "#059669"
+    },
+    "2amzp8mnfps": {
+      "title": "Timer di respirazione 4-7-8 (gratuito online)",
+      "color": "#e11d48"
+    },
+    "2anh0257gm8": {
+      "title": "Respiração Quadrada para Ansiedade: Pare em 60 Segundos - Método Navy SEAL",
+      "color": "#e11d48"
+    },
+    "2blg3veod7m": {
+      "title": "Deep Breathing Exercises for Kids: Calm Techniques",
+      "color": "#e11d48"
+    },
+    "2bmonsrckp4": {
+      "title": "Free Breathing Widget",
+      "color": "#e11d48"
+    },
+    "2bnzkz3gc24": {
+      "title": "Respiración para recuperarte al correr: elimina rápido el flato",
+      "color": "#0ea5e9"
+    },
+    "2btz2sayqmn": {
+      "title": "Exercícios de Respiração para Vencer o Medo de Falar em Público — Diga Adeus ao Pânico de Palco",
+      "color": "#e11d48"
+    },
+    "2c0q3sok3ur": {
+      "title": "1 Minute Breathing Exercise, Quick Calm",
+      "color": "#e11d48"
+    },
+    "2cvhwa4yekh": {
+      "title": "Panikattacke in 30 Sekunden stoppen – Physiologischer Seufzer",
+      "color": "#0ea5e9"
+    },
+    "2drnt7n1guw": {
+      "title": "Atemübungen für die Feiertage: Finden Sie Entspannung Weihnachten und innere Ruhe",
+      "color": "#38bdf8"
+    },
+    "2e9i4z211ze": {
+      "title": "Breathing Techniques (Free Guided Visualizers)",
+      "color": "#e11d48"
+    },
+    "2ecah4lgs11": {
+      "title": "Atemübungen für die Geburt, Wehen natürlich bewältigen",
+      "color": "#e11d48"
+    },
+    "2ej6oetr05q": {
+      "title": "Box Breathing (4-4-4-4) Visualizer",
+      "color": "#e11d48"
+    },
+    "2ffc8fyd70j": {
+      "title": "Temporizador de respiración cuadrada online gratis",
+      "color": "#e11d48"
+    },
+    "2fpg87ucp5c": {
+      "title": "Protocolos de respiração do Huberman Lab: 6 técnicas ideais para o seu objetivo.",
+      "color": "#0ea5e9"
+    },
+    "2fqg0jmradx": {
+      "title": "Assistenza",
+      "color": "#e11d48"
+    },
+    "2fxaiubi4ks": {
+      "title": "Timer Online Grátis para Respiração Quadrada",
+      "color": "#e11d48"
+    },
+    "2g7rpkkvgph": {
+      "title": "編集方針",
+      "color": "#e11d48"
+    },
+    "2gjfdjgsixl": {
+      "title": "4-7-8 Atemübungen zum Einschlafen — In 2 Minuten einschlafen",
+      "color": "#4f46e5"
+    }
+  }
+}

@@ -9,6 +9,7 @@ import { breathingPageMap, type BreathingPageContent, type OwnedVideoEmbed } fro
 import { LocalizedDate } from "@/components/seo/localized-date";
 import { LanguageSwitcherFooter } from "@/components/language-switcher-footer-lazy";
 import { renderInlineLinks } from "@/lib/render-inline-links";
+import { createBreathingOgImagePath } from "@/lib/seo/breathing-og-image";
 import { ShareButton } from "@/components/ui/share-button-lazy";
 import {
   resolveNativeInternalHref,
@@ -27,7 +28,7 @@ export function createPatternMetadataFromContent(
   const canonicalUrl = new URL(canonicalPath, baseUrl).toString();
   const ogImageUrl = pageContent.meta.ogImage && !pageContent.meta.ogImage.startsWith('og/')
     ? new URL(pageContent.meta.ogImage, baseUrl).toString()
-    : new URL(`/og/${pageContent.slug}`, baseUrl).toString();
+    : new URL(createBreathingOgImagePath(pageContent.slug), baseUrl).toString();
 
   return {
     metadataBase: new URL(baseUrl),
@@ -98,7 +99,7 @@ export function PatternPage({
   const reviewerName = page.meta.reviewer || null;
   const ogImageUrl = page.meta.ogImage && !page.meta.ogImage.startsWith('og/')
     ? new URL(page.meta.ogImage, baseUrl).toString()
-    : new URL(`/og/${page.slug}`, baseUrl).toString();
+    : new URL(createBreathingOgImagePath(page.slug), baseUrl).toString();
 
   const faqSchema = {
     "@context": "https://schema.org",

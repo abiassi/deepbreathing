@@ -2341,6 +2341,10 @@ The preceding localized window recorded 37 clicks and 1,233 impressions. Current
 
 ## Recent Follow-Up Log
 
+### 2026-11-18 — OG images served as static files (CPU fix, not an experiment)
+
+`og:image`, `twitter:image` and JSON-LD `image` now point at `/og/t/<id>.png`, drawn once per build instead of per request. The `/og?title=` renders had used most of the free Vercel team's Fluid Active CPU, because every production deploy emptied the CDN cache for all 260 images. The images are unchanged: 252 of 260 are pixel-identical, and 8 Japanese titles differ by about 1 px of kerning. The new files keep `X-Robots-Tag: noindex`. Old `/og?title=` and `/og/<slug>` URLs redirect (307) to them. No hypothesis or success criteria: nothing visible to searchers or sharers changes. Watch only that the 42 `/og?title=` URLs in GSC "Crawled - currently not indexed" (2026-06-10 entry) are not joined by `/og/t/` URLs reported as errors.
+
 ### 2026-07-25 — `/languages` was missing OG/Twitter images (omission fix, not an experiment)
 
 Found by the `og-metadata-coverage` test once the suite was actually wired to a runner (it had been failing unnoticed; see [UX-BACKLOG.md](UX-BACKLOG.md) on the 22 rotted tests). `/languages` is `robots: { index: true, follow: true }` and is the crawl hub referenced throughout this log, but its metadata defined no `openGraph.images` or `twitter.images`, so shares of it unfurled with no card image.

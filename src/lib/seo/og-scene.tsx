@@ -111,6 +111,12 @@ export function normalizeOgLocale(value: unknown): keyof typeof BREATHE_LABELS |
   return base in BREATHE_LABELS ? (base as keyof typeof BREATHE_LABELS) : null;
 }
 
+export function clampOgText(value: string, maxLength: number) {
+  return value.length > maxLength ? `${value.slice(0, maxLength - 1)}…` : value;
+}
+
+export const OG_TITLE_MAX_LENGTH = 72;
+
 export function renderOgScene({
   title,
   color,

@@ -113,6 +113,7 @@ State a rule as a check, not a code comment. Each row's check names the fix in i
 | Every `src/app/api/**/route.ts` exports `dynamic = "force-dynamic"` | ESLint `no-restricted-syntax` override |
 | OG and avatar images avoid CSS that Satori can't render | ESLint `no-restricted-syntax` override |
 | Generated i18n inventory matches source line numbers | `pnpm test` (`native-i18n-inventory.test.mjs`) |
+| Every OG image a page links is prerendered (`src/data/og-images.json` is current) | CI `pnpm run check:og-registry` after `next build` |
 
 ## Experiments — before you ship
 
